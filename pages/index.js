@@ -1,65 +1,143 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React, {useContext} from 'react';
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import Garanties from "../components/GarantiesMaxEtLea";
+import Engagement from "../components/Engagement";
+import {Card} from 'react-bootstrap'
+import '../styles/index.module.css';
+import {useTranslation} from "react-i18next";
+import {AppContext} from "../context/AppContext";
+import Link from "next/link";
 
-export default function Home() {
+const HomeScreen = () => {
+
+  const [ cart, setCart ] = useContext( AppContext );
+  console.log('cart', cart)
+
+  const { t, i18n } = useTranslation();
+
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <div>
+      <Header/>
+      <div className="baby-container">
+        <div className="head-title-container">
+          <h1 className="head-title">{t("HomeScreen1")}<br/> {t("HomeScreen7")}</h1>
         </div>
-      </main>
+        <div>
+          <p className="description-title">{t("HomeScreen2")}</p>
+        </div>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+
+        <div className="grid-container">
+
+          <div className="row-card-home">
+
+
+            <Card className="card-jouet playboard">
+              <Link href="/playboard">
+                <p className="card-jouet-title" color="textSecondary" >
+                  PLAYBOARD
+                </p>
+                <img src={'./public/playboard.png'} alt="" className="img-card"/>
+              </Link>
+            </Card>
+
+
+
+            <Card className="card-jouet tour">
+              <Link href="/tour">
+                <p className="card-jouet-title" color="textSecondary">
+                  TOUR ARC EN CIEL
+                </p>
+                <img src={'./public/tour.png'} alt="" className="img-card"/>
+              </Link>
+            </Card>
+          </div>
+
+          <div className="row-card-home">
+
+            <Card className="card-jouet xylophone">
+              <Link href="/xylophone">
+                <p className="card-jouet-title" color="textSecondary">
+                  XYLOPHONE
+                </p>
+                <img alt="" className="img-card"/>
+              </Link>
+            </Card>
+
+
+
+            <Card className="card-jouet bidule">
+              <Link href="/playboard">
+                <p className="card-jouet-title" color="textSecondary">
+                  BIDULE
+                </p>
+                <img alt="" className="img-card"/>
+              </Link>
+            </Card>
+
+
+          </div>
+
+          <div className="row-card-home">
+
+
+            <Card className="card-jouet bidule2">
+              <Link href="/playboard">
+                <p className="card-jouet-title" color="textSecondary">
+                  BIDULE 2
+                </p>
+                <img alt="" className="img-card"/>
+              </Link>
+            </Card>
+
+
+            <Card className="card-jouet bidule3">
+
+              <Link href="/playboard">
+                <p className="card-jouet-title" color="textSecondary">
+                  TOUR ARC EN CIEL
+                </p>
+                <img alt="" className="img-card"/>
+              </Link>
+            </Card>
+
+
+          </div>
+
+          <div className="row-card-home-special">
+
+
+            <Card className="card-jouet bidule4">
+              <Link href="/playboard">
+                <p className="card-jouet-title" color="textSecondary">
+                  BIDULE 4
+                </p>
+                <img  alt="" className="img-card"/>
+              </Link>
+            </Card>
+
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div>
+        <Garanties/>
+      </div>
+
+      <div>
+        <Engagement/>
+      </div>
+
+      <Footer/>
     </div>
   )
-}
+
+};
+
+export default HomeScreen

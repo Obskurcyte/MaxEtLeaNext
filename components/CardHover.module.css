@@ -1,0 +1,28 @@
+.hover-container {
+  position: absolute;
+  top: 25%;
+  left: 65%;
+  z-index: 3;
+  background-color: white;
+  padding: 1%;
+}
+
+.image-container {
+  display: flex;
+}
+
+.subtotal {
+  font-weight: bold;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-popper {
+  background-color: #E72C59;
+  font-family: "D KButterfly Ball", sans-serif;
+  color: white;
+  text-align: center;
+}

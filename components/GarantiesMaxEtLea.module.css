@@ -1,0 +1,60 @@
+.satisfactions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.inner-satisfaction {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  text-align: center;
+  width: 50%;
+}
+
+.fas {
+  color: #09AE99;
+  font-size: 45px;
+}
+
+.fa-dolly {
+  color: orange;
+}
+
+.fa-headphones-alt {
+  color: darkgreen;
+}
+
+.garanties-title  {
+  color: #717171;
+  font-size: 38px;
+  font-weight: 550;
+  letter-spacing: 1.5px;
+}
+
+.garanties-undertitle {
+  color: #717171;
+  line-height: 1.2em;
+  letter-spacing: 1px;
+}
+
+.garanties-paragraph {
+  color: #9F9F9F;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6em;
+  letter-spacing: 0.4px;
+}
+
+.garanties-supercontainer {
+  padding-top: 5%;
+  background-color: #F0F0F0;
+}
+
+.image-garanties {
+  margin-bottom: 5%;
+}
+
+.satisfaction-mini-container {
+  display: flex;
+  justify-content: space-around;
+}
