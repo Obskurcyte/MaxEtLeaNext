@@ -1,0 +1,82 @@
+.input-quantity {
+  display: flex;
+  height: 50px;
+  width: 20%
+}
+
+.change-quantity {
+  width: 33%;
+  height: 92%;
+  margin: 0;
+  border: 1px solid #e4e4e4;
+  font-size: 16px;
+  text-align: center;
+}
+
+.increase-button {
+  width: 33%;
+  height: 100%;
+  border: 1px solid #e4e4e4;
+}
+
+.decrease-button {
+  width: 33%;
+  height: 100%;
+  border: 1px solid #e4e4e4;
+}
+
+.add-panier {
+  display: flex;
+  height: 6%;
+  position: relative;
+}
+
+.button-add-panier {
+  display: flex;
+  width: 30%;
+  margin-left: 5%;
+  height: 50px;
+}
+
+.button-add-panier button {
+  border-radius: 5px 5px 5px 5px;
+  background-color: #E72C59;
+  transition: all 0.2s;
+  color: #ffffff;
+  width: 200%;
+  border-style: solid;
+  border-top-width: 0;
+  border-right-width: 0;
+  border-left-width: 0;
+  border-bottom-width: 0;
+  padding: 5% 15%;
+}
+
+.xylophone-prix {
+  width: 20%;
+}
+
+.xylophone-prix h5 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #E72C59;
+  margin-bottom: 5px;
+}
+
+.inner-xylophone {
+  position: absolute;
+  top: -80%;
+  margin-left: 3%;
+}
+
+.succes-xylo {
+  margin-top: 10%;
+}
+
+.succes-xylo p {
+  line-height: 1.6;
+  color: #545454;
+  font-size: 17px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}

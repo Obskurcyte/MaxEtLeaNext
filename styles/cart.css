@@ -1,0 +1,147 @@
+.croix {
+  width: 30px;
+}
+
+.input-card {
+  display: flex;
+  height: 50px;
+  width: 40%;
+  position: relative;
+  bottom: 15%;
+  left: 30%;
+  margin-right: 0!important;
+}
+
+thead {
+  background-color: #fbfbfb;
+}
+
+table {
+  border: 1px solid #ebebeb;
+}
+
+.rose {
+  color: #e72c59;
+  font-weight: bold;
+}
+
+.gras {
+  font-weight: bold;
+}
+
+.cart-image {
+  width: 60%;
+}
+
+.button-supp {
+  display: block;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 21px;
+  border-radius: 100%;
+  color: #ccc;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  margin: 0;
+}
+
+.code-promo {
+  display: flex;
+}
+
+.code-promo-input{
+  width: 200px;
+}
+
+.cart-button {
+  width: 100%;
+  background-color: #E72C59 !important;
+  border-color: #E72C59;
+  border-width: 0px !important;
+  height: 100%;
+  color: white;
+  font-weight: bold;
+}
+
+
+.cart-button-container {
+  border-radius: 5px;
+  width: 300px;
+  height: 50px;
+}
+
+.cart-input {
+  border: none;
+  width: 40px;
+  font-size: 16px;
+}
+
+Table {
+  width: 100%;
+  margin-top: 5%;
+}
+
+td {
+  width: 16.6%;
+  text-align: center;
+}
+
+th {
+  width: 16.6%;
+}
+
+.container-croix {
+  width: 5%!important;
+}
+
+.tr-product {
+  height: 150px;
+}
+
+.container-cart {
+  padding: 0 15%;
+}
+
+.cart-valide {
+  padding-top: 15px;
+  padding-right: 35px;
+  padding-bottom: 15px;
+  padding-left: 35px;
+  color: #ffffff;
+  font-size: 1.1em;
+  line-height: 1.8em;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  overflow: visible;
+  left: auto;
+  margin-top: 5%;
+  border-radius: 5px 5px 5px 5px !important;
+  background-color: #E72C59 !important;
+  transition: all 0.2s !important;
+  border-width: 0px !important;
+}
+
+.total-panier {
+  background-color: #fbfbfb;
+  padding: 0.2% 0
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total-text {
+  border: 1px solid rgba(0, 0, 0, .1);
+  width: 95.5%;
+}
+
+.total-price {
+  border: 1px solid rgba(0, 0, 0, .1);
+}

@@ -4,10 +4,10 @@ import Header from "../components/Header";
 import Garanties from "../components/GarantiesMaxEtLea";
 import Engagement from "../components/Engagement";
 import {Card} from 'react-bootstrap'
-import '../styles/index.module.css';
 import {useTranslation} from "react-i18next";
 import {AppContext} from "../context/AppContext";
 import Link from "next/link";
+
 
 const HomeScreen = () => {
 
@@ -36,10 +36,12 @@ const HomeScreen = () => {
 
             <Card className="card-jouet playboard">
               <Link href="/playboard">
+                <a>
                 <p className="card-jouet-title" color="textSecondary" >
                   PLAYBOARD
                 </p>
-                <img src={'./public/playboard.png'} alt="" className="img-card"/>
+                <img src={'/playboard.png'} alt="" className="img-card"/>
+                </a>
               </Link>
             </Card>
 
@@ -47,11 +49,14 @@ const HomeScreen = () => {
 
             <Card className="card-jouet tour">
               <Link href="/tour">
+                <a>
                 <p className="card-jouet-title" color="textSecondary">
                   TOUR ARC EN CIEL
                 </p>
-                <img src={'./public/tour.png'} alt="" className="img-card"/>
+                <img src={'/tour.png'} alt="" className="img-card"/>
+                </a>
               </Link>
+
             </Card>
           </div>
 
@@ -59,10 +64,12 @@ const HomeScreen = () => {
 
             <Card className="card-jouet xylophone">
               <Link href="/xylophone">
+                <a>
                 <p className="card-jouet-title" color="textSecondary">
                   XYLOPHONE
                 </p>
-                <img alt="" className="img-card"/>
+                <img alt="" className="img-card" src={'/xylophonecard.png'}/>
+                </a>
               </Link>
             </Card>
 
@@ -70,10 +77,12 @@ const HomeScreen = () => {
 
             <Card className="card-jouet bidule">
               <Link href="/playboard">
+                <a>
                 <p className="card-jouet-title" color="textSecondary">
                   BIDULE
                 </p>
-                <img alt="" className="img-card"/>
+                <img alt="" className="img-card" src={'/playboard.png'}/>
+                </a>
               </Link>
             </Card>
 
@@ -85,10 +94,12 @@ const HomeScreen = () => {
 
             <Card className="card-jouet bidule2">
               <Link href="/playboard">
+                <a>
                 <p className="card-jouet-title" color="textSecondary">
                   BIDULE 2
                 </p>
-                <img alt="" className="img-card"/>
+                <img alt="" className="img-card" src={'/playboard.png'}/>
+                </a>
               </Link>
             </Card>
 
@@ -96,10 +107,12 @@ const HomeScreen = () => {
             <Card className="card-jouet bidule3">
 
               <Link href="/playboard">
+                <a>
                 <p className="card-jouet-title" color="textSecondary">
                   TOUR ARC EN CIEL
                 </p>
-                <img alt="" className="img-card"/>
+                <img alt="" className="img-card" src={'/playboard.png'}/>
+                </a>
               </Link>
             </Card>
 
@@ -111,10 +124,12 @@ const HomeScreen = () => {
 
             <Card className="card-jouet bidule4">
               <Link href="/playboard">
+                <a>
                 <p className="card-jouet-title" color="textSecondary">
                   BIDULE 4
                 </p>
-                <img  alt="" className="img-card"/>
+                <img  alt="" className="img-card" src={'/playboard.png'}/>
+                </a>
               </Link>
             </Card>
 

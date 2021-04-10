@@ -3,7 +3,7 @@
   justify-content: space-around;
 }
 
-.inner-satisfaction {
+.innerSatisfaction {
   display: flex;
   flex-direction: column;
   padding: 5%;
@@ -24,20 +24,20 @@
   color: darkgreen;
 }
 
-.garanties-title  {
+.garantiesTitle  {
   color: #717171;
   font-size: 38px;
   font-weight: 550;
   letter-spacing: 1.5px;
 }
 
-.garanties-undertitle {
+.garantiesUndertitle {
   color: #717171;
   line-height: 1.2em;
   letter-spacing: 1px;
 }
 
-.garanties-paragraph {
+.garantiesParagraph {
   color: #9F9F9F;
   font-size: 14px;
   font-weight: 300;
@@ -45,16 +45,16 @@
   letter-spacing: 0.4px;
 }
 
-.garanties-supercontainer {
+.garantiesSupercontainer {
   padding-top: 5%;
   background-color: #F0F0F0;
 }
 
-.image-garanties {
+.imageGaranties {
   margin-bottom: 5%;
 }
 
-.satisfaction-mini-container {
+.satisfactionMiniContainer {
   display: flex;
   justify-content: space-around;
 }

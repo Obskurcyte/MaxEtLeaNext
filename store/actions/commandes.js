@@ -5,7 +5,9 @@ import {GET_BLOG} from "./blog";
 
 export const GET_COMMANDES = 'GET_COMMANDES';
 export const CREATE_COMMANDE = 'CREATE_COMMANDE';
-const userID = localStorage.getItem('userID');
+
+
+/*const userID = localStorage.getItem('userID');
 const prenom = localStorage.getItem('prenom')
 const nom = localStorage.getItem('nom')
 const adresse = localStorage.getItem('adresse')
@@ -71,6 +73,8 @@ const CREATE_COMMANDE_MUTATION = gql `mutation CreateOrder {
   }
 }`
 
+
+
 export const createCommande = () => {
   return async dispatch => {
     const result = await client.mutate({mutation: CREATE_COMMANDE_MUTATION});
@@ -95,4 +99,6 @@ export const getCommandes = () => {
     })
   }
 };
+
+ */
 

@@ -18,7 +18,7 @@
   margin-bottom: 7%;
 }
 
-.container-photo1 {
+.containerphoto1 {
   width: 30%;
   height: 50%;
   margin: 3% auto;
@@ -37,6 +37,68 @@
   width: 25%;
 }
 
-.engagement-container {
+.engagementContainer {
   padding-top: 5%;
 }
+
+.satisfactions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.innerSatisfaction {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  text-align: center;
+  width: 50%;
+}
+
+.fas {
+  color: #09AE99;
+  font-size: 45px;
+}
+
+.fa-dolly {
+  color: orange;
+}
+
+.fa-headphones-alt {
+  color: darkgreen;
+}
+
+.garantiesTitle  {
+  color: #717171;
+  font-size: 38px;
+  font-weight: 550;
+  letter-spacing: 1.5px;
+}
+
+.garantiesUndertitle {
+  color: #717171;
+  line-height: 1.2em;
+  letter-spacing: 1px;
+}
+
+.garantiesParagraph {
+  color: #9F9F9F;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6em;
+  letter-spacing: 0.4px;
+}
+
+.garantiesSupercontainer {
+  padding-top: 5%;
+  background-color: #F0F0F0;
+}
+
+.imageGaranties {
+  margin-bottom: 5%;
+}
+
+.satisfactionMiniContainer {
+  display: flex;
+  justify-content: space-around;
+}
+

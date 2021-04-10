@@ -1,0 +1,85 @@
+{
+  "NavBar1": "ACCUEIL",
+  "NavBar2": "SHOP",
+  "NavBar3": "A PROPOS",
+  "NavBar4": "CONTACT",
+  "NavBar5": "BLOG",
+
+  "Garanties1": "LES GARANTIES MAX & LEA",
+  "Garanties2": "100% Paiements sécurisés",
+  "Garanties3": "Connexion cryptée (SSL) et sécurisation des paiements par STRIPE et PayPal",
+  "Garanties4": "100% Satisfait ou Remboursé",
+  "Garanties5": "Si vous n'êtes pas pleinement satisfait, nous remboursons 100% de votre achat",
+  "Garanties6": "100% Service client réactif",
+  "Garanties7": "Notre service est à votre écoute 7/7 et répond dans un délai de 24h maximum",
+  "Garanties8": "100% Livraison Express",
+  "Garanties9": "Livraison depuis Paris (France) en 3-5 jours pour l’ensemble de l’Europe.",
+
+  "HomeScreen1": "S'ÉVEILLER, S'EMERVEILLER",
+  "HomeScreen7": "GRANDIR & S'AMUSER",
+  "HomeScreen2": "Des jouets Naturels, Eco-Responsables et parfaits pour les 1 à 6 ans",
+  "HomeScreen3": "Accéder au shop",
+  "HomeScreen4": "NOS MEILLEURS JOUETS",
+  "HomeScreen5": "JE VEUX EMERVEILLER MES ENFANTS",
+  "HomeScreen6": "Accéder au shop",
+
+  "Engagement": {
+    "1": "Max et Léa s'engagent à 100% pour vous",
+    "2": "100% Sécurisé",
+    "3": "100% Respect des exigences Sécurité Jouet Européennes. Tailles et formes des pièces en accord avec les gabarits sécurité officiels",
+    "4": "100% Eco-Friendly",
+    "5": "100% Bois et 100% Naturel. Peinture & vernis Écologique à base d'eau",
+    "6": "100% Qualité",
+    "7": "Conçue et dessinée en France. Finitions soignées. Conception robuste et Qualité des matériaux",
+    "8": "100% Eveil",
+    "9": "Pensée pour le développement Psycho-moteur de l’enfant. Ludique et divertissante"
+  },
+  "Footer": {
+    "1": "A propos",
+    "2": "L'Equipe",
+    "3": "Contactez-nous",
+    "4": "Mentions légales",
+    "5": "CGV",
+    "6": "Se connecter",
+    "7": "S'inscrire"
+  },
+  "Login": {
+    "1": "Adresse email",
+    "2": "Mot de passe",
+    "3": "Se souvenir de moi",
+    "4": "Se connecter",
+    "5": "S'inscrire",
+    "6": "Mot de passe oublié ?"
+  },
+  "Contact": {
+    "1": "Contactez nous",
+    "2": "Nom",
+    "3": "Prénom",
+    "4": "Email",
+    "5": "Sujet",
+    "6": "Message",
+    "7": "Envoyer"
+  },
+  "Propos": {
+    "1": "Bienvenue chez Max & Léa",
+    "2": "C’est en regardant nos enfants jouer et évoluer que nos premières esquisses se sont profilées. Max & Lea est le fruit d’une bonne dose de créativité et de reflexion pour penser des jouets",
+    "3": "ludiques, évolutifs et durables.",
+    "4": "c’est l’histoire de deux supers Papa",
+    "5": "qui aiment profondément leurs jeunes enfants et souhaitent les aider à bien grandir et à s’éveiller. Très préoccupés par les dangers des écrans sur les enfants et par la pollution plastique, ils décident de lancer une gamme de jouets naturels, sains et éducatifs. Ces jouets permettront à chaque enfant d’apprendre en s’amusant. Chaque jouet est pensé évolutif et  s’adaptera à chaque âge de l’enfant qui les gardera et y jouera ainsi plus longtemps.",
+    "6": "Avec ses jouets Max & Lea, votre enfant va beaucoup s’amuser. Nos jouets sont pensés pour être 100% ludiques et parfaits pour développer son imagination. ",
+    "7": "Il ",
+    "8": "s’éveillera et travaillera sa motricité",
+    "9": "grâce aux innombrables interactions qu’il rencontrera avec nos jouets. Nous croyons au développement par le jeu, c’est pour cette raison que nous dessinons nos produits en pensant à l’utilisation qu’en fera votre petit. Sans cesse penser à ce que nos jouets lui apporteront est LA question principale que nous nous posons à chaque fois que nous développons un nouveau jouet.",
+    "10": "Chez Max & Lea ",
+    "11": "nous croyons que chaque enfant a du talent",
+    "12": " et qu’il existe un génie en chacun d’eux. Nous savons que chaque enfant a le pouvoir de construire et d’embellir le monde de demain. Nous croyons que c’est en explorant leur propre monde que chaque enfant pourra réaliser et vivre ses rêves. ",
+    "13": "C’est pour cela que chez Max & Lea, nous concevons nos jouets avec beaucoup d’amour et en gardant toujours à l’esprit les ",
+    "14": "4 fondements",
+    "15": " de notre idéal d’éducation : ",
+    "16": "Éveil, Autonomie, Créativité & Plaisir de jouer !",
+    "17": "Nous espérons que nos jouets vous donneront autant satisfaction que nous avons pris de plaisir à les concevoir et à voir nos enfants jouer avec.",
+    "18": "Pierre et Ludovic ",
+    "19": "Les fondateurs de Max & Lea",
+    "20": "Retrouver l'équipe Max et Léa au complet"
+  }
+}

@@ -1,48 +1,47 @@
 import React from 'react';
-import './GarantiesMaxEtLea.module.css'
-import "./Engagement.module.css";
+import styles from "./Engagement.module.css";
 import {useTranslation} from "react-i18next";
 
 const Engagement = () => {
   const { t, i18n } = useTranslation();
   return (
     <React.Fragment>
-    <div className="engagement-container">
+    <div className={styles.engagementContainer}>
       <h1 style={{textAlign: 'center'}} className="garanties-title">Max et Léa s'engage à</h1>
-      <div className="container-photo1">
-        <img src={'../public/100.png'} alt="" className="photo1"/>
+      <div className={styles.containerphoto1}>
+        <img src={'/100.png'} alt="" className={styles.photo1}/>
       </div>
-      <div className="satisfactions">
-        <div className="satisfaction-mini-container">
-        <div className="inner-satisfaction">
+      <div className={styles.satisfactions}>
+        <div className={styles.satisfactionMiniContainer}>
+        <div className={styles.innerSatisfaction}>
           <div>
-            <img src={'../public/childcare.png'} alt="" className="image-garanties"/>
+            <img src={'/childcare.png'} alt="" className={styles.imageGaranties}/>
           </div>
-          <h3 className="garanties-undertitle">{t("Engagement.2")}</h3>
-          <p className="garanties-paragraph">{t("Engagement.3")}</p>
+          <h3 className={styles.garantiesUndertitle}>{t("Engagement.2")}</h3>
+          <p className={styles.garantiesParagraph}>{t("Engagement.3")}</p>
         </div>
-        <div className="inner-satisfaction">
+        <div className={styles.innerSatisfaction}>
           <div>
-            <img src={'../public/eco-label.png'} alt="" className="image-garanties"/>
+            <img src={'/eco-label.png'} alt="" className={styles.imageGaranties}/>
           </div>
-          <h3 className="garanties-undertitle">{t("Engagement.4")}</h3>
-          <p className="garanties-paragraph">{t("Engagement.5")}</p>
+          <h3 className={styles.garantiesUndertitle}>{t("Engagement.4")}</h3>
+          <p className={styles.garantiesParagraph}>{t("Engagement.5")}</p>
         </div>
         </div>
-        <div className="satisfaction-mini-container">
-        <div className="inner-satisfaction">
+        <div className={styles.satisfactionMiniContainer}>
+        <div className={styles.innerSatisfaction}>
           <div>
-            <img src={'../public/stars.png'} alt="" className="image-garanties"/>
+            <img src={'/stars.png'} alt="" className={styles.imageGaranties}/>
           </div>
-          <h3 className="garanties-undertitle">{t("Engagement.6")}</h3>
-          <p className="garanties-paragraph">{t("Engagement.7")}</p>
+          <h3 className={styles.garantiesUndertitle}>{t("Engagement.6")}</h3>
+          <p className={styles.garantiesParagraph}>{t("Engagement.7")}</p>
         </div>
-        <div className="inner-satisfaction">
+        <div className={styles.innerSatisfaction}>
           <div>
-            <img src={'../public/ellipse2.png'} alt="" className="image-garanties"/>
+            <img src={'/ellipse2.png'} alt="" className={styles.imageGaranties}/>
           </div>
-          <h3 className="garanties-undertitle">{t("Engagement.8")}</h3>
-          <p className="garanties-paragraph">{t("Engagement.9")}</p>
+          <h3 className={styles.garantiesUndertitle}>{t("Engagement.8")}</h3>
+          <p className={styles.garantiesParagraph}>{t("Engagement.9")}</p>
         </div>
         </div>
       </div>
