@@ -7,21 +7,8 @@ import * as productAction from '../store/actions/product'
 
 const PlayBoardScreen = props => {
 
-  const dispatch = useDispatch();
-  const product = useSelector(state => state.product);
 
-  useEffect(() => {
-    dispatch(productAction.getProducts())
-  }, [dispatch])
 
-  const productArray = product.products
-  console.log(productArray)
-
-  if (productArray.length === 0) {
-    return <h1>Pas de produit disponibles</h1>
-  }
-
-  if (productArray.length !==0) {
     return (
       <div>
         <Header/>
@@ -141,7 +128,6 @@ const PlayBoardScreen = props => {
         <Footer/>
       </div>
     )
-  }
 };
 
 export default PlayBoardScreen;
