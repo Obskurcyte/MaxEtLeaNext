@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import { Nav } from 'react-bootstrap';
 import styles from "./Header.module.css";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useTranslation } from 'react-i18next';
-import {AppContext} from "../context/AppContext";
-import {useContext} from 'react';
+import {AppContext, AppProvider} from "./context/AppContext";
 import i18next from "i18next";
 import CardHover from "./CardHover";
 import Link from 'next/link';
@@ -18,13 +17,14 @@ const Header = () => {
 
   const lang = i18next.language;
   const [cart, setCart] = useContext(AppContext);
-  console.log(cart);
+  console.log('cart', cart);
   let totalPrice1 = 0;
   if (cart) {
     for (let data in cart.products) {
       totalPrice1 += parseFloat(cart.products[data].totalPrice)
     }
   }
+  console.log(totalPrice1)
   let user = '';
 
   useEffect(() => {
@@ -58,7 +58,6 @@ const Header = () => {
   }
 
   return (
-    <React.Fragment>
     <div>
       <div style={{backgroundColor: '#e72c59', textAlign: 'center', height: '70px'}}>
         <h1 className={styles.freeLivraison}>Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
@@ -72,7 +71,7 @@ const Header = () => {
           <Nav className={styles.navBar}>
             <div className={styles.imgContainer}><img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1536x567.png" alt="" className={styles.imgNavbar}/></div>
             <Link href="/" style={{marginTop: '5%'}}>
-              <Nav.Link><img src={'../public/home.png'} alt="" style={{width: "80%"}} className={styles.home}/></Nav.Link>
+              <img src={'/home.png'} alt="" style={{width: "3%", height: '3%'}} className={styles.home}/>
             </Link>
 
             <Menu
@@ -107,7 +106,6 @@ const Header = () => {
         </nav>
       {open && renderCart()}
     </div>
-    </React.Fragment>
   )
 }
 

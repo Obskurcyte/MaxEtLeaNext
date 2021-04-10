@@ -1,6 +1,6 @@
 import {Fragment, useContext} from 'react';
 import CartItem from "./CartItem";
-import {AppContext} from "../context/AppContext";
+import {AppContext} from "./context/AppContext";
 
 const YourOrder = ( { cart } ) => {
 

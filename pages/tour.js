@@ -1,24 +1,47 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import Header from "../components/Header";
 import {Col, Row} from "react-bootstrap";
-import {useSelector, useDispatch} from "react-redux";
-import * as productAction from '../store/actions/product'
-import {Link} from "react-router-dom";
-import {AppContext} from "../context/AppContext";
+import {AppContext} from "../components/context/AppContext";
+import gql from "graphql-tag";
+import client from "../components/ApolloClient";
+
+
+const PRODUCTS_QUERY = gql `query GetProducts {
+  products {
+    nodes {
+    ... on SimpleProduct {
+        id
+        name
+        description
+        price
+        slug
+        featuredImage {
+          node {
+            uri
+            title
+            srcSet
+            sourceUrl
+          }
+        }
+        galleryImages {
+          nodes {
+            uri
+            title
+            srcSet
+            sourceUrl
+          }
+        }
+      }
+    }
+  }
+}`;
+
 
 const TourScreen = props => {
 
   const [cart, setCart] = useContext(AppContext);
 
-  const dispatch = useDispatch();
-  const product = useSelector(state => state.product);
-
-  useEffect(() => {
-    dispatch(productAction.getProducts())
-  }, [dispatch])
-
-  const productArray = product.products
-  console.log(productArray)
+  const {products} = props;
 
   let valueCount = 1;
 
@@ -102,7 +125,7 @@ const TourScreen = props => {
    * @returns {*}
    */
   const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart,productArray[1].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart,products[1].id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -140,20 +163,15 @@ const TourScreen = props => {
       if (existingCart) {
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
-        const updatedCart = updateCart(existingCart, productArray[1], qtyToBeAdded);
+        const updatedCart = updateCart(existingCart, products[1], qtyToBeAdded);
         setCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(productArray[1]);
+        const newCart = addFirstProduct(products[1]);
         setCart(newCart)
       }
     }
   }
 
-  if (productArray.length === 0) {
-    return <h1>Pas de produit disponibles</h1>
-  }
-
-  if (productArray.length !==0) {
     return (
       <div>
         <Header/>
@@ -231,8 +249,17 @@ const TourScreen = props => {
         </div>
       </div>
     )
-  }
 };
+
+
+
+TourScreen.getInitialProps = async () => {
+  const result = await client.query({query: PRODUCTS_QUERY});
+
+  return {
+    products: result.data.products.nodes
+  }
+}
 
 export default TourScreen;
 

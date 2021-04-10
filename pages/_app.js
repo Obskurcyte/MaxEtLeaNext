@@ -12,6 +12,8 @@ import ReduxThunk from 'redux-thunk';
 import productReducer from "../store/reducers/product";
 import blogReducer from "../store/reducers/blog";
 import commandeReducer from "../store/reducers/commandes";
+import {AppProvider} from "../components/context/AppContext";
+import React from "react";
 
 const rootReducer = combineReducers({
   product: productReducer,
@@ -24,9 +26,11 @@ const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 function MyApp({ Component, pageProps }) {
   return(
+    <AppProvider>
   <Provider store={store}>
     <Component {...pageProps} />
   </Provider>
+    </AppProvider>
   )
 }
 

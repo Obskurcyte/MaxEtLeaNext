@@ -1,4 +1,4 @@
-.hover-container {
+.hoverContainer {
   position: absolute;
   top: 25%;
   left: 65%;
@@ -7,7 +7,7 @@
   padding: 1%;
 }
 
-.image-container {
+.imageContainer {
   display: flex;
 }
 
@@ -15,12 +15,12 @@
   font-weight: bold;
 }
 
-.buttons-container {
+.buttonsContainer {
   display: flex;
   flex-direction: column;
 }
 
-.link-popper {
+.linkPopper {
   background-color: #E72C59;
   font-family: "D KButterfly Ball", sans-serif;
   color: white;

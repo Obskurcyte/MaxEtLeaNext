@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
-import './CardHover.module.css'
-import {AppContext} from "../context/AppContext";
+import styles from './CardHover.module.css'
+import {AppContext} from "./context/AppContext";
 import Link from 'next/link';
 
 
@@ -15,7 +15,7 @@ const CardHoverItem = ({item}) => {
   return (
     <React.Fragment>
       <div>
-          <div className="image-container">
+          <div className={styles.imageContainer}>
             <img src="https://maxandlea.com/wp-content/uploads/2020/07/XYLOPHONE-TABS-compress-150x150.jpg" alt=""/>
             <div>
               <p>{item.name}</p>
@@ -43,7 +43,7 @@ const CardHover = () => {
     }
   }
   return (
-    <div className="hover-container">
+    <div className={styles.hoverContainer}>
       {
         cart ? (
           cart.products.map(item => (
@@ -55,12 +55,12 @@ const CardHover = () => {
         ) : <p>Vous n'avez pas d'articles dans votre panier</p>
       }
       <div className="prix-container">
-        <p className="subtotal">Sous-total : {totalPrice1} €</p>
+        <p className={styles.subtotal}>Sous-total : {totalPrice1} €</p>
         <hr/>
       </div>
-      <div className="buttons-container">
-        <Link href="/cart" className="link-popper">Voir le panier</Link>
-        <Link href="/checkout" className="link-popper">Commander</Link>
+      <div className={styles.buttonsContainer}>
+        <Link href="/cart" className={styles.linkPopper}>Voir le panier</Link>
+        <Link href="/checkout" className={styles.linkPopper}>Commander</Link>
       </div>
     </div>
   )

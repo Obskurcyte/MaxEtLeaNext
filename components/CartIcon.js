@@ -1,6 +1,6 @@
 import React from 'react';
 import {useContext} from 'react';
-import {AppContext} from "../context/AppContext";
+import {AppContext} from "./context/AppContext";
 
 const CartIcon = () => {
   const [cart, setCart] = useContext(AppContext)

@@ -5,16 +5,20 @@ import Garanties from "../components/GarantiesMaxEtLea";
 import Engagement from "../components/Engagement";
 import {Card} from 'react-bootstrap'
 import {useTranslation} from "react-i18next";
-import {AppContext} from "../context/AppContext";
+import {AppContext} from "../components/context/AppContext";
 import Link from "next/link";
 
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
 
   const [ cart, setCart ] = useContext( AppContext );
   console.log('cart', cart)
 
   const { t, i18n } = useTranslation();
+
+  const {products} = props;
+
+  console.log(products)
 
 
   return (
@@ -27,7 +31,6 @@ const HomeScreen = () => {
         <div>
           <p className="description-title">{t("HomeScreen2")}</p>
         </div>
-
 
         <div className="grid-container">
 

@@ -1,13 +1,12 @@
 import React, {useContext} from 'react';
 import Header from "../components/Header";
-import {AppContext} from "../context/AppContext";
+import {AppContext} from "../components/context/AppContext";
 import {Table} from 'react-bootstrap';
 import CartItem from "../components/CartItem";
 import Link from 'next/link'
 
 
 const CartScreen = props => {
-
 
   const [cart, setCart] = useContext(AppContext)
   let totalPrice1 = 0;
@@ -112,7 +111,7 @@ const CartScreen = props => {
                 </div>
               </div>
             </div>
-            <Link to="/checkout">
+            <Link href="/checkout">
               <button className="cart-valide">Valider la commande</button>
             </Link>
           </div>

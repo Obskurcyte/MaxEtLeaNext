@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import * as productAction from "../store/actions/product";
-import {AppContext} from "../context/AppContext";
-import {useHistory} from "react-router-dom";
+import {AppContext} from "./context/AppContext";
+
 
 
 const CartItem = ({item}) => {
@@ -11,7 +11,6 @@ const CartItem = ({item}) => {
 
   const [cart, setCart] = useContext(AppContext)
 
-  let router = useHistory();
 
   const dispatch = useDispatch();
   const product = useSelector(state => state.product);
