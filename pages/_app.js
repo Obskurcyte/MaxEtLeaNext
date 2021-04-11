@@ -4,6 +4,7 @@ import '../styles/footer.css';
 import '../styles/playboard.css';
 import '../styles/xylophone.css';
 import '../styles/cart.css';
+import '../styles/contact.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import '../i18n';
 import { createStore, combineReducers, applyMiddleware } from 'redux';

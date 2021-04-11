@@ -8,9 +8,10 @@ import {useDispatch} from "react-redux";
 import * as commandeActions from '../store/actions/commandes';
 import client from "../components/ApolloClient";
 import XylophoneScreen from "./xylophone";
+import gql from "graphql-tag";
 
 
-const userID = localStorage.getItem('userID');
+/* const userID = localStorage.getItem('userID');
 const prenom = localStorage.getItem('prenom')
 const nom = localStorage.getItem('nom')
 const adresse = localStorage.getItem('adresse')
@@ -20,12 +21,16 @@ const pays = localStorage.getItem('pays')
 const phone = localStorage.getItem('phone')
 const email = localStorage.getItem('email')
 
-const CREATE_COMMANDE_MUTATION = gql `mutation CreateOrder {
+ */
+
+/*const CREATE_COMMANDE_MUTATION = gql `mutation CreateOrder {
   __typename
   createOrder(input: {status: PROCESSING, shipping: {address1: "${adresse}", city: "${ville}", email: "${email}", country: FR, firstName: "${prenom}", lastName: "${nom}", phone: "${phone}", postcode: "${postalcode}", state: "Essone"}, billing: {address1: "${adresse}", city: "${ville}", address2: "", country: FR, company: "", email: "${email}", firstName: "${prenom}", lastName: "${nom}", overwrite: true, phone: "${phone}", postcode: "${postalcode}", state: "Essone"}, lineItems: {productId: 3163, quantity: 2, total: "10", subtotal: "5"}, isPaid: true, feeLines: {amount: "15", total: "15"}, paymentMethod: "cod", shippingLines: {methodId: "cod", methodTitle: "Paiement à la livraison", total: "5"}, customerId: ${userID}}) {
     orderId
   }
 }`
+
+ */
 
 const PaiementScreen = props => {
 
@@ -88,7 +93,7 @@ const PaiementScreen = props => {
   )
 };
 
-PaiementScreen.getInitialProps = async () => {
+/*PaiementScreen.getInitialProps = async () => {
   const result = await client.query({query: CREATE_COMMANDE_MUTATION});
 
 
@@ -96,5 +101,7 @@ PaiementScreen.getInitialProps = async () => {
     commande: result.data
   }
 }
+
+ */
 
 export default PaiementScreen

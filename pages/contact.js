@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
 import Header from "../components/Header";
-import "./ContactScreen.css";
 import {Formik} from 'formik'
 import Footer from "../components/Footer";
 import {useTranslation} from "react-i18next";
 import axios from 'axios';
-import nodemailer from 'nodemailer';
 
 
 
@@ -34,7 +32,7 @@ const ContactScreen = props => {
             onSubmit={async values => {
               console.log(values)
               try {
-                await axios.post("http://localhost:5000/send", {
+                await axios.post("/api/contact", {
                   nom: values.nom,
                   prenom: values.prenom,
                   email: values.email,
