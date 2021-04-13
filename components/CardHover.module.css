@@ -1,7 +1,7 @@
 .hoverContainer {
   position: absolute;
-  top: 25%;
   left: 65%;
+  margin-top: 70px;
   z-index: 3;
   background-color: white;
   padding: 1%;

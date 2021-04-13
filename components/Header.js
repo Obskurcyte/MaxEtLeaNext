@@ -58,7 +58,7 @@ const Header = () => {
   }
 
   return (
-    <div>
+    <div className={styles.stickyHeader}>
       <div style={{backgroundColor: '#e72c59', textAlign: 'center', height: '70px'}}>
         <h1 className={styles.freeLivraison}>Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
       </div>
@@ -87,7 +87,7 @@ const Header = () => {
               <MenuItem onClick={() => handleClose('fr', 'https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png" alt=""/></MenuItem>
 
             </Menu>
-            <div className={styles.accountShopping}>
+            <div className={styles.accountShopping} onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
               <Link href="/cart">
                 <Nav.Link>
 
@@ -95,16 +95,16 @@ const Header = () => {
                     {productCount && (<div className={styles.productsCountContainer}>
                       <div className={styles.productCountInnerContainer}>{productCount ? <span className={styles.productCountText}>{productCount}</span> : ''}</div>
                     </div>)}
-                    <img src={'/shoppingcart.png'} alt="shopping cart" onMouseOver={() => setOpen(!open)}/>
+                    <img src={'/shoppingcart.png'} alt="shopping cart" />
                     {totalPrice1 ? <span className={styles.totalPriceSpan}>€{totalPrice1.toFixed(2)}</span> : ''}
                   </div>
                 </Nav.Link>
 
               </Link>
+              {open && renderCart()}
             </div>
           </Nav>
         </nav>
-      {open && renderCart()}
     </div>
   )
 }

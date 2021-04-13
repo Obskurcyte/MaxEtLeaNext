@@ -355,6 +355,8 @@
 }
 
 .imagesContainer {
+  max-width:1500px;
+  margin: auto;
   height: 350px;
   margin-top: 50%;
   display: flex;
