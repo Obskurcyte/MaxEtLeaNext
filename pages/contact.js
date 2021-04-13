@@ -3,9 +3,7 @@ import Header from "../components/Header";
 import {Formik} from 'formik'
 import Footer from "../components/Footer";
 import {useTranslation} from "react-i18next";
-import axios from 'axios';
-
-
+import axios from "axios";
 
 const ContactScreen = props => {
 

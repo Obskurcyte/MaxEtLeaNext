@@ -1,130 +1,316 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Header from "../components/Header";
-import {Row, Col} from "react-bootstrap";
+import Link from 'next/link';
 import Footer from "../components/Footer";
-import {useSelector, useDispatch} from "react-redux";
-import * as productAction from '../store/actions/product'
+import Engagement from "../components/Engagement";
+import Garanties from "../components/GarantiesMaxEtLea";
 
 const PlayBoardScreen = props => {
-
-
 
     return (
       <div>
         <Header/>
-        <div className="playboard-container">
-          <div className="playboard-description">
-            <div className="playboard-images">
-              <div className="playboard-image">
-                <img src="https://maxandlea.com/wp-content/uploads/2020/10/VueProduit-Tablette-MaxAndLea-2-min.png"
-                     alt=""/>
-              </div>
-              <div className="playboard-petites-images">
-                <Row className="">
-                  <Col sm={12} md={2} lg={2} xl={2}>
-                    <img
-                      src="https://maxandlea.com/wp-content/uploads/2020/10/VueProduit-Tablette-MaxAndLea-2-min-100x100.png"
-                      alt=""/>
-                    <img src="https://maxandlea.com/wp-content/uploads/2020/05/VISUEL-CTA-EN-100x100.jpg" alt=""/>
-                    <img src="https://maxandlea.com/wp-content/uploads/2020/05/TabletteUtilisée-VueDessus-100x100.jpg"
-                         alt=""/>
-                    <img src="https://maxandlea.com/wp-content/uploads/2020/05/IMG_5094-logo-100x100.jpg" alt=""/>
-                    <img src="https://maxandlea.com/wp-content/uploads/2020/05/IMG_3528-100x100.jpg" alt=""/>
-                    <img src="https://maxandlea.com/wp-content/uploads/2020/05/IMG_4636-logo-1-100x100.jpg" alt=""/>
-                    <img src="https://maxandlea.com/wp-content/uploads/2020/05/IMG_4203-copie-100x100.jpg" alt=""/>
-                    <img src="https://maxandlea.com/wp-content/uploads/2020/05/IMG_5098-logo-100x100.jpg" alt=""/>
-                  </Col>
-                </Row>
-              </div>
-            </div>
-            <div className="playboard-total">
-              <div className="playboard-rating">
-                <h1 className="playboard-title">
-                  La PlayBoard
-                </h1>
-                <div>
-                  <i className="fas fa-star"/>
-                  <i className="fas fa-star"/>
-                  <i className="fas fa-star"/>
-                  <i className="fas fa-star"/>
-                  <i className="fas fa-star"/>
-                </div>
-              </div>
-              <div className="succes-playboard">
-                <h5 className="playboard-prix">49,90€</h5>
-                <p className="playboard-succes">Victime de son succès, la PlayBoard est actuellement en rupture de
-                  stock. Elle sera de nouveau disponible le 01/03/2021.
-                  Laissez nous votre e-mail pour être informé des qu’elle sera de nouveau disponible :
-                </p>
-                <input type="text" placeholder="Email"/>
-                <div className="button-container">
-                  <div className="bouton-playboard">
-                    <button className="playboard-button">Envoyer</button>
-                  </div>
-                </div>
-                <p className="description-playboard">La PlayBoard est le jouet le plus complet pour <span>stimuler l’éveil</span> et
-                  la <span>motricité fine des enfants. </span>
 
-                  La PlayBoard est une véritable boite à outils avec laquelle votre
-                  petit <span>développera ses talents.</span> Votre enfant apprendra <span>à son rythme</span> et <span>en s’amusant.</span>
-                </p>
-                <div className="ebookgratuits">
-                  <img src="https://play.maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt=""/>
-                  <p style={{fontWeight: 'bold'}}>3 ebooks <span
-                    style={{textDecoration: 'underline'}}>GRATUITS</span> avec votre PlayBoard</p>
-                </div>
-                <div className="rangement-offert">
-                  <img
-                    src="https://play.maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-copie-6.png"
-                    alt=""/>
-                  <p style={{fontWeight: 'bold'}}>Un sac de rangement <span
-                    style={{textDecoration: 'underline'}}>OFFERT</span></p>
-                </div>
-              </div>
-            </div>
+        <div className="imgCouverture">
+          <div className="playboard-title-container">
+            <h1 className="playboard-title">PLAYBOARD</h1>
           </div>
-          <div className="video">
-            <video src="https://maxandlea.com/wp-content/uploads/2020/10/MaxEtLea-GIF-FR-V3-600.mp4"/>
+          <div className="playboard-paragraph-container">
+            <p className="playboard-paragraph">La playboard est le jouet le plus complet pour stimuler l'éveil et la motricité fine des enfants !</p>
+          </div>
+          <div className="video-container">
+            <video controls className="video-presentation">
+              <source src="https://firebasestorage.googleapis.com/v0/b/roundpower-88ef9.appspot.com/o/GymPower%2FGanache%202021-03-31%2011-01-10.mp4?alt=media&token=e8810212-67b8-4d24-8bb2-9d4b7112d138"
+                      type="video/mp4" />
+            </video>
+          </div>
+          <div className="voir-offre">
+            <h3 className="voir-offre-title">Voir notre offre</h3>
+          </div>
+          <div className="icones">
+            <img src={'/icones2.png'} alt=""/>
+          </div>
+          <div className="icones3">
+            <img src={'/icones3.png'} alt=""/>
+          </div>
+          <div className="icones4">
+            <img src={'/icones4.png'} alt=""/>
           </div>
         </div>
 
-        <div className="developpement-psycho">
-          <h2>Pensée pour chaque étape du <span>développement psychomoteur</span> de l'enfant</h2>
-          <div style={{display: 'flex', justifyContent: 'space-around'}}>
-            <div>
-              <div style={{display: 'flex', flexDirection: 'column'}}>
-                <div className="psycho">
-                  <i className="fas fa-palette"/>
-                  <p>Développez sa <span>créativité</span></p>
-                </div>
-                <div className="psycho">
-                  <i className="fas fa-sign-language"/>
-                  <p>Développez son <span>habilité</span></p>
-                </div>
-                <div className="psycho">
-                  <i className="fas fa-child"/>
-                  <p>Travaillez sa <span>motricité</span></p>
-                </div>
-              </div>
+        <div className="pensee-container">
+          <div className="img-bebe-container">
+            <img src={"/bebeIcone.png"} alt="" className="img-bebe"/>
+          </div>
+          <div className="pensee-paragraph-container">
+            <p className="pensee-paragraph">Pensée pour chaque étape du développement psychomoteur de l'enfant</p>
+          </div>
+        </div>
+
+        <div className="icone-container1">
+          <div className="row-icone">
+
+            <div className="icone-mini-container">
+              <img src={'/creativite.png'} alt=""/>
+              <p>Développer <br/>sa Créativité</p>
             </div>
-            <div>
-              <div style={{display: 'flex', flexDirection: 'column'}}>
-                <div className="psycho">
-                  <i className="fas fa-brain"/>
-                  <p>Aiguiser sa <span>concentration</span></p>
-                </div>
-                <div className="psycho">
-                  <i className="far fa-grin-stars"/>
-                  <p><span>Apprendre est un jeu</span></p>
-                </div>
-                <div className="psycho">
-                  <i className="fas fa-user-check"/>
-                  <p>Travaillez sa <span>motricité</span></p>
-                </div>
-              </div>
+
+            <div className="icone-mini-container">
+              <img src={'/habilite.png'} alt=""/>
+              <p>Améliorer <br/>son habilité</p>
+            </div>
+
+            <div className="icone-mini-container">
+              <img src={'/motricite.png'} alt=""/>
+              <p>Travailler <br/>sa motricité</p>
+            </div>
+          </div>
+
+          <div className="row-icone">
+
+            <div className="icone-mini-container">
+              <img src={'/concentration.png'} alt=""/>
+              <p>Aiguiser <br/>sa concentration</p>
+            </div>
+
+            <div className="icone-mini-container">
+              <img src={'/apprendre.png'} alt=""/>
+              <p>Apprendre <br/>en s'amusant</p>
+            </div>
+
+            <div className="icone-mini-container">
+              <img src={'/autonomie.png'} alt=""/>
+              <p>Développer <br/>l'autonomie</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div className="image-recap-container">
+          <img src={'/imagerecap.png'} alt="" className="image-recap"/>
+        </div>
+
+        <div className="huitEnUnContainerText">
+          <p className="huitEnUnText">L'outil 8 en 1 d'éveil et d'apprentissage le plus complet du marché</p>
+        </div>
+
+        <div className="containerIcones2">
+          <div className="rowIcone2">
+
+            <div className="miniIconeContainer2">
+              <img src={'/calcul.png'} alt=""/>
+              <p>Les signes et les nombres lui permettront de réaliser différents calculs simples et d'évoluer vers des calculs plus complexes</p>
+            </div>
+
+
+            <div className="miniIconeContainer2">
+              <img src={'/couleur.png'} alt=""/>
+              <p>L'outil idéal pour la mémoire des couleurs, pour les découvrir et les reconnaitre. Aide à développer ses aptitudes visuelles et mentales</p>
+            </div>
+
+
+            <div className="miniIconeContainer2">
+              <img src={'/degrade.png'} alt=""/>
+              <p>Découvrir les contrastes et les dégradés de couleurs pour développer sa sensibilité visuelle et artistique.</p>
+            </div>
+
+            <div className="miniIconeContainer2">
+              <img src={'/eveil.png'} alt=""/>
+              <p>Votre enfant prendra plaisir à jouer des heures entières avec sa PlayBoard et développera sa créativité.</p>
+            </div>
+
+          </div>
+
+          <div className="rowIcone2">
+
+            <div className="miniIconeContainer2">
+              <img src={'/animaux.png'} alt=""/>
+              <p>Il découvrira les animaux grâce à des représentations mignonnes et réalistes et apprendra à les associer avec leur alimentation.</p>
+            </div>
+
+            <div className="miniIconeContainer2">
+              <img src={'/formes.png'} alt=""/>
+              <p>Plus de 20 formes géométriques simples et complexes pour un maximum de plaisir et travailler sa motricité fine.</p>
+            </div>
+
+            <div className="miniIconeContainer2">
+              <img src={'/coordination.png'} alt=""/>
+              <p>Empiler différentes formes géométriques pour travailler sa coordination et son habileté.</p>
+            </div>
+
+            <div className="miniIconeContainer2">
+              <img src={'/nombres.png'} alt=""/>
+              <p>A force de jouer avec les chiffres, leur maîtrise devient naturelle et instinctive. Ce qui favorise sa mémoire des chiffres.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div className="playboardBoisContainer">
+          <img src={'/playboardBois.png'} alt="" className="playboardBoisImg"/>
+        </div>
+
+        <div className="videoContainer">
+          <video controls className="video-presentation">
+            <source src="https://firebasestorage.googleapis.com/v0/b/roundpower-88ef9.appspot.com/o/GymPower%2FGanache%202021-03-31%2011-01-10.mp4?alt=media&token=e8810212-67b8-4d24-8bb2-9d4b7112d138"
+                    type="video/mp4" />
+          </video>
+
+          <div className="robusteContainer">
+            <div className="constructionRobuste">
+              <div><p className="robusteTitle">CONSTRUCTION ROBUSTE EN BOIS</p></div>
+              <div><p className="p1">Bois issu de forêts certifiées
+                FSC® et de haute qualité.</p></div>
+              <div><p className="p2">Matériaux nobles &
+                construction solide</p></div>
+              <div><p className="p3">Une fabrication soignée
+                pour une durabilité maximale.</p></div>
+            </div>
+
+            <div className="finitionSoignees">
+              <div><p className="finitionTitle">FINITIONS SOIGNEES</p></div>
+              <div><p className="p1">Des couleurs douces et
+                chaleureuses étudiées pour
+                apaiser l’enfant.</p></div>
+              <div><p className="p2">Angles biseautés et finitions soignées</p></div>
+              <div><p className="p3">Des textures douces et délicates
+                pour une parfaite prise en main.</p></div>
+              <div><p className="p4">Des images travaillées pour faciliter
+                la reconnaissance.</p></div>
             </div>
           </div>
         </div>
+
+        <div className="UnaSixContainer">
+          <h2 className="UnaSixTitle">DE <span> 1 </span> A <span> 6 </span> ANS</h2>
+          <div className="UnaSixDescription">
+          <p className="">La <span>Playboard®</span> accompagne votre
+            enfant à chaque étape de
+            son développement.</p>
+          </div>
+          <div className="frereEtSoeur">
+           <img src={'/frereEtSoeur.png'} alt="" style={{width: '100%', height: '100%'}} />
+          </div>
+        </div>
+
+        <div className="imagesContainer">
+
+          <div className="garconSouriantContainer">
+            <img src={'/bebeBrasTendu.png'} alt="" className="bebeBrasTendu"/>
+          </div>
+
+          <div className="pour">
+            <h5>POUR LES 2 A 3 ANS</h5>
+
+            <div className="rowIcone">
+              <img src={'/vector1.png'} alt=""/>
+              <p>Il travaille son habileté</p>
+            </div>
+
+            <div className="rowIcone">
+              <img src={'/vector1.png'} alt=""/>
+              <p>Il découvre les formes</p>
+            </div>
+
+            <div className="rowIcone">
+              <img src={'/vector1.png'} alt=""/>
+              <p>Il assimile les couleurs</p>
+            </div>
+
+            <div className="rowIcone">
+              <img src={'/vector1.png'} alt=""/>
+              <p>Il reconnait les animaux</p>
+            </div>
+
+            <div className="rowIcone">
+              <img src={'/vector1.png'} alt=""/>
+              <p>Il améliore sa coordination oeil-main</p>
+            </div>
+          </div>
+
+          <div className="garconSouriantContainer">
+            <img src={'/garconSouriant.png'} alt="" className="garconSouriant"/>
+          </div>
+
+          <div className="garconSouriantContainer">
+            <img src={'/filleSouriant.png'} alt="" className="garconSouriant"/>
+          </div>
+
+        </div>
+
+        <div className="apprentissage">
+          <div className="apprendreContainer">
+            <h5>Ce que les enfants ont appris
+              avec la PlayBoard®</h5>
+            <p>Reconnaître les couleurs </p>
+            <div className="rectangleContainer">
+              <img src={'/rectangle.png'} alt="" className="rectangle"/>
+            </div>
+          </div>
+
+          <div className="enfantTableauContainer">
+            <img src={'/garconTableau.png'} alt="" className="enfantTableau"/>
+          </div>
+        </div>
+
+        <div className="recommendation">
+          <h5 className="recommendation-title">Ils recommandent la Playboard®</h5>
+        </div>
+
+        <div className="distribution">
+          <div className="distribution-inner">
+            <p>Ils distribuent la PlayBoard®</p>
+            <p>Nos clients nous font confiance</p>
+          </div>
+          <div className="photoContainer">
+            <img src={'/photoPartenaire.png'} alt="" className="photo"/>
+          </div>
+        </div>
+
+        <div className="playboardContainer">
+          <div className="imgPlayboardContainer">
+            <img src={'/playboardGood.png'} alt="" className="playboardGood"/>
+          </div>
+          <div className="imgPlayboardPrixContainer">
+            <img src={'/playboardprice.png'} alt="" className="playboardprice"/>
+          </div>
+          <div className="imgOffertContainer">
+            <img src={'/offertPhoto.png'} alt="" className="offertPhoto"/>
+          </div>
+          <div className="imgEbookContainer">
+            <img src={'/ebook.png'} alt="" className="ebook"/>
+          </div>
+          <div className="imgBestSellerContainer">
+            <img src={'/bestSeller.png'} alt="" className='bestSeller'/>
+          </div>
+          <div className="addPanierContainer">
+            <Link href="/cart"><p>Ajouter au panier</p></Link>
+          </div>
+        </div>
+
+        <div className="clientSatisfait">
+          <h5>6867 clients déjà satisfaits</h5>
+        </div>
+
+        <div className="sourireContainer">
+          <div className="sourireTextContainer">
+          <h5>LE SOURIRE DE VOS ENFANTS
+            NOTRE PLUS BELLE RECOMPENSE</h5>
+          </div>
+        </div>
+
+        <div className="sourireEnfantImgContainer">
+          <img src={'/sourireEnfant.png'} alt="" className="sourireEnfant"/>
+        </div>
+
+        <div>
+          <Garanties/>
+        </div>
+
+        <div>
+          <Engagement/>
+        </div>
+
         <Footer/>
       </div>
     )

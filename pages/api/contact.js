@@ -38,3 +38,5 @@ const handler = (req, res) => {
     console.log("Message sent: %s", info.messageId);
   }
 };
+
+export default handler;

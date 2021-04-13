@@ -1,188 +1,607 @@
+.imgCouverture {
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  height: 800px;
+  position: relative;
+  background-color: #D6D3D3;
+  padding: 2% 2%;
+}
+
+.icones {
+  position: absolute;
+  top: 15%;
+}
+
+.icones3 {
+  position: absolute;
+  top: 15%;
+  left: 72%;
+}
+
+.icones4 {
+  position: absolute;
+  top: 120%;
+}
+
+.img-couverture {
+  width: 100%;
+}
+.playboard-title-container {
+  width: 494px;
+  border-radius: 71px;
+  background-color: #f13f57;
+  text-align: center;
+  align-items: center;
+  margin: 3% auto;
+}
+
 .playboard-title {
-  font-size: 3.25rem;
-  color: #333333;
-  margin-bottom: 1%;
-}
-
-.fa-star {
-  color: orange;
-  font-size: 170%;
-  margin-right: 1%;
-}
-
-.playboard-container {
-  background: linear-gradient(#F5F4F4, 5%, white, 90%, white);
-  height: 1150px;
-  padding: 0 15%
-}
-
-.playboard-rating {
-  width: 70%;
-  margin-bottom: 6%;
-}
-
-.playboard-rating h1{
-  width: 100%;
-}
-
-.ebookgratuits {
-  display: flex;
-}
-
-.ebookgratuits img{
-  width: 5%;
-}
-
-.rangement-offert {
-  display: flex;
-}
-
-.rangement-offert img{
-  width: 5%;
-  height: 2%;
-  margin-top: 1%;
-  margin-right: 1%;
-}
-
-
-.playboard-description {
-  display: flex;
-  margin-bottom: 7%;
-}
-
-.playboard-petites-images img {
-  opacity: 0.5;
-  width: 25%;
-}
-
-.playboard-petites-images{
-  width: 90%;
-}
-
-.playboard-petites-images img:hover {
-  opacity: 1;
-}
-
-.playboard-image img {
-  width: 90%;
-}
-
-Col {
-  display: flex;
-  flex-direction: row;
-}
-
-.playboard-images {
-  display: flex;
-  flex-direction: column;
-  margin-top: 15%;
-}
-
-.playboard-total {
-  display: flex;
-  flex-direction: column;
-}
-
-.playboard-prix {
-  color: #E72C59;
-  font-size: 1.75rem;
-  font-weight: bold;
-  margin-bottom: 3%;
-}
-
-.playboard-succes {
-  color: #E72C59;
-  line-height: 1.6;
-}
-
-.playboard-button {
-  background-color: #e72c59 !important;
-  border-radius: 5px 5px 5px 5px !important;
-  color: #FFFFFF;
-  height: 45px;
-  border-radius: 5px 5px 5px 5px !important;
-  font-size: 0.9375rem;
-  font-weight: 400;
-  padding-top: 15px;
-  padding-right: 35px;
-  padding-bottom: 15px;
-  padding-left: 35px;
-  border-style: solid;
-  border-top-width: 0;
-  border-right-width: 0;
-  border-left-width: 0;
-  border-bottom-width: 0;
-}
-
-.button-container {
-  width: 100%;
-  margin-top: 4%;
-}
-
-.bouton-playboard {
-  width: 30%;
-  margin: 0 auto;
-}
-
-.description-playboard {
-  line-height: 1.6;
-  font-size: 110%;
-}
-
-.video {
-  width: 50%;
-  margin: 0 auto;
-}
-
-.psycho {
-  display: flex;
-}
-
-.fa-palette {
-  color: #BF14B4C4;
-  font-size: 30px;
-}
-
-.fa-sign-language {
-  color: #E12A54;
-  font-size: 30px;
-}
-
-.fa-child {
-  color: #00B1CC;
-  font-size: 30px;
-  margin-top: 0;
-}
-
-.fa-grin-stars{
-  color: #31A73A;
-  font-size: 30px;
-}
-
-.fa-brain {
-  color: #09AE99;
-  font-size: 30px;
-}
-
-.fa-user-check {
-  color: #F28D2A;
-  font-size: 30px;
-}
-
-.developpement-psycho {
-  background-color: #F5F5F5;
-  margin-top: 10%;
-  height: 200px;
-  padding: 5% 15%;
+  font-size: 89px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
-.developpement-psycho h2 {
-  color: #54595F;
-  font-family: "Roboto", Sans-serif;
-  font-size: 28px;
+.playboard-paragraph-container {
+  padding-bottom: 5%;
+}
+
+.playboard-paragraph {
+  width: 50%;
+  font-size: 40px;
+  letter-spacing: 0px;
+  color: #00b2cc;
+  font-family: "D KButterfly Ball", sans-serif;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.voir-offre {
+  width: 499px;
+  border-radius: 44px;
+  filter: drop-shadow(1.871px 8.803px 13.5px #bebebe);
+  background-color: #e72c59;
+  margin: 0 auto;
+  padding: 2% 2%;
+  position: absolute;
+  top: 113%;
+  left: 37%;
+}
+
+.voir-offre-title {
+  font-size: 56px;
+  letter-spacing: -2px;
+  color: #ffffff;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.video-container {
+  width: 50%;
+  height: 30%;
+  position: absolute;
+  left: 25%;
+}
+
+.video-presentation {
+  width: 100%;
+}
+
+.pensee-container {
+  width: 100%;
+  margin-top: 20%;
+}
+
+.img-bebe-container {
+  width: 20%;
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+}
+
+.pensee-paragraph {
+  font-size: 40px;
+  letter-spacing: 0px;
+  color: #0cb6ce;
   font-weight: 300;
-  line-height: 1.5em;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.pensee-paragraph-container {
+  max-width: 50%;
+  margin: 2% auto;
+  text-align: center;
+}
+
+.icone-container1 {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.row-icone {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 2% 2%;
+}
+
+.icone-mini-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center ;
+}
+
+.icone-mini-container p {
+  font-size: 20px;
+  letter-spacing: 0px;
+  color: #225b6c;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  margin-top: 5%;
+}
+
+.image-recap-container {
+  width: 50%;
+  margin: 2% auto;
+}
+
+.image-recap {
+  width: 100%;
+}
+
+.huitEnUnContainerText {
+  margin: 4% auto;
+  width: 50%;
+  text-align: center;
+  align-items: center;
+
+}
+
+.huitEnUnText {
+  font-size: 48px;
+  letter-spacing: 0px;
+  color: #0cb6ce;
+  font-family: "D KButterfly Ball";
+  text-align: center;
+}
+
+.containerIcones2 {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 55%;
+  align-items: center;
+}
+
+.rowIcone2 {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 2% 2%;
+}
+
+.miniIconeContainer2 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: 22%;
+}
+
+.miniIconeContainer2 p {
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: #9bb0b7;
+  font-weight: 300;
+  font-style: italic;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  margin-top: 8%;
+}
+
+.playboardBoisContainer {
+  width: 30%;
+  margin: 4% auto;
+  align-items: center;
+}
+
+.playboardBoisImg {
+  width: 100%;
+}
+
+.robusteContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.constructionRobuste {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.finitionSoignees {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.robusteTitle {
+  font-size: 39px;
+  color: #abcdd7;
+  font-family: "D KButterfly Ball", sans-serif;
+}
+
+.finitionTitle {
+  font-size: 39px;
+  color: #abcdd7;
+  font-family: "D KButterfly Ball", sans-serif;
+}
+
+.p1 {
+  font-size: 25px;
+  color: #819ea7;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.p2 {
+  font-size: 25px;
+  color: #f78904;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.p3 {
+  font-size: 25px;
+  color: #60bec8;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.p4 {
+  font-size: 25px;
+  color: #73c467;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.videoContainer {
+  width: 50%;
+  position: relative;
+  margin: 0 auto;
+  border: 0.3px solid black;
+  border-radius: 20px;
+  z-index: 3;
+}
+
+.backgroundMaron {
+  height: 518px;
+  width: 100%;
+  background-color: #e5e1da;
+  z-index: 1;
+}
+
+.UnaSixContainer {
+  position: relative;
+  align-items: center;
+  margin-top: 5%
+}
+
+.UnaSixTitle {
+  font-size: 80px;
+  letter-spacing: -5px;
+  color: #80c9b4;
+  font-family: "D KButterfly Ball", sans-serif;
+  text-align: center;
+  z-index: 3;
+}
+
+.UnaSixDescription {
+  font-size: 25px;
+  color: #5b737e;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  max-width: 35%;
+  margin: 3% auto;
+  z-index: 3;
+  position: absolute;
+  left: 30%;
+}
+
+.frereEtSoeur {
+  position: absolute;
+  z-index: 1;
+  left: 16%;
+  top: 84%;
+  width: 70%;
+  height: 700px;
+}
+
+.UnaSixTitle span {
+  font-size: 110px;
+  font-weight: bold;
+}
+
+.UnaSixDescription p span {
+  font-weight: bold;
+}
+
+.bebeBrasTendu {
+  width: 100%;
+  height: 100%;
+}
+
+.garconSouriant {
+  width: 100%;
+  height: 100%;
+}
+
+.imagesContainer {
+  height: 350px;
+  margin-top: 50%;
+  display: flex;
+  justify-content: space-around;
 }
 
 
+.pour {
+  width: 20%;
+  height: 350px;
+  border-radius: 46px;
+  filter: drop-shadow(1.917px 21.916px 19px rgba(59,57,54,0.1));
+  background-color: #3dad2d;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.rowIcone {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 12%;
+}
+
+.garconSouriantContainer {
+  border-radius: 20px;
+  width: 20%;
+  box-shadow: 3px 3px lightgrey
+}
+
+.rowIcone img {
+  margin-right: 3%;
+}
+.pour h5 {
+  font-size: 30px;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-align: center;
+  font-family: "D KButterfly Ball", sans-serif;
+}
+
+.pour p {
+  font-size: 18px;
+  letter-spacing: 0px;
+  color: #ffffff;
+  font-family: "D KButterfly Ball", sans-serif;
+}
+
+.rowIcone p {
+  margin-top: 6%;
+}
+
+.apprentissage {
+  align-items: center;
+  text-align: center;
+  margin-top: 20%;
+  position: relative;
+}
+
+.apprentissage h5 {
+  font-size: 44px;
+  letter-spacing: 1px;
+  color: #1bb0ca;
+  font-family: "D KButterfly Ball", sans-serif;
+  text-align: center;
+}
+
+.apprendreContainer p {
+  font-size: 34px;
+  letter-spacing: 0px;
+  color: #e72c59;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.rectangleContainer {
+  width: 100%;
+}
+
+.rectangle {
+  width: 100%;
+}
+
+.apprendreContainer {
+  align-items: center;
+  border-radius: 30px;
+  box-shadow: 3px 3px 3px 3px lightgrey;
+  width: 40%;
+  padding : 3%;
+  margin: 0 auto;
+  position: absolute;
+  top: -57%;
+  left: 30%;
+  z-index: 3;
+  background-color: white;
+}
+
+.enfantTableauContainer {
+  z-index: 1;
+  height: 450px;
+  width: 50%;
+  margin : 0 auto;
+  border-radius: 20px;
+}
+
+.enfantTableau {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.recommendation-title {
+  font-size: 50px;
+  letter-spacing: 1px;
+  color: #648793;
+  font-family: "D KButterfly Ball";
+  text-align: center;
+}
+
+.recommendation {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.distribution-inner {
+  display: flex;
+  justify-content: space-between;
+  width: 55%;
+  margin: 0 auto
+}
+
+.distribution-inner p {
+  font-size: 24px;
+  line-height: 37px;
+  color: #f8596e;
+  font-weight: 600;
+  font-family: "Montserrat";
+  text-align: center;
+}
+
+.photoContainer {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.photo {
+  width: 100%;
+}
+
+.playboardContainer {
+  background-color: #D6D3D3;
+  margin-top: 13%;
+  position: relative;
+  height: 850px;
+}
+
+.imgPlayboardContainer {
+  position: absolute;
+  left: 20%;
+  height: 55%;
+  top: 10%
+}
+
+.playboardGood {
+  width: 100%;
+  height: 100%;
+}
+.imgPlayboardPrixContainer {
+  position: absolute;
+  top: 7%;
+  left: 5%;
+}
+
+.imgOffertContainer {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+}
+
+.imgEbookContainer {
+  position: absolute;
+  top: 75%;
+  left: 10%
+}
+
+.imgBestSellerContainer {
+  position: absolute;
+  left: 43%;
+  top: -20%;
+}
+
+.addPanierContainer {
+  position: absolute;
+  border-radius: 64px;
+  filter: drop-shadow(1.871px 8.803px 13.5px #bebebe);
+  background-color: #e72c59;
+  top: 93%;
+  left: 38%;
+  padding: 1% 3%;
+}
+
+.addPanierContainer p {
+  font-size: 50px;
+  letter-spacing: -3px;
+  color: white!important;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.clientSatisfait h5 {
+  font-size: 50px;
+  letter-spacing: 1px;
+  color: #648793;
+  font-family: "D KButterfly Ball", sans-serif;
+  text-align: center;
+}
+
+.clientSatisfait {
+  margin-top: 10%;
+}
+
+.sourireContainer h5 {
+  font-size: 76px;
+  letter-spacing: 1px;
+  color: #f18916;
+  width: 100%;
+  margin-bottom: 5%;
+  font-family: "D KButterfly Ball", sans-serif;
+  text-align: center;
+}
+
+.sourireContainer {
+  margin-top: 10%;
+}
+
+.sourireEnfantImgContainer {
+  align-items: center;
+  text-align: center;
+}
+
+.sourireTextContainer {
+  margin: 0 auto;
+  width: 60%;
+}

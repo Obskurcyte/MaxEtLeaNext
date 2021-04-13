@@ -23,14 +23,14 @@ const email = localStorage.getItem('email')
 
  */
 
-/*const CREATE_COMMANDE_MUTATION = gql `mutation CreateOrder {
+const CREATE_COMMANDE_MUTATION = gql `mutation CreateOrder {
   __typename
-  createOrder(input: {status: PROCESSING, shipping: {address1: "${adresse}", city: "${ville}", email: "${email}", country: FR, firstName: "${prenom}", lastName: "${nom}", phone: "${phone}", postcode: "${postalcode}", state: "Essone"}, billing: {address1: "${adresse}", city: "${ville}", address2: "", country: FR, company: "", email: "${email}", firstName: "${prenom}", lastName: "${nom}", overwrite: true, phone: "${phone}", postcode: "${postalcode}", state: "Essone"}, lineItems: {productId: 3163, quantity: 2, total: "10", subtotal: "5"}, isPaid: true, feeLines: {amount: "15", total: "15"}, paymentMethod: "cod", shippingLines: {methodId: "cod", methodTitle: "Paiement à la livraison", total: "5"}, customerId: ${userID}}) {
+  createOrder(input: {status: PROCESSING, shipping: {address1: "${localStorage.getItem('adresse')}", city: "${localStorage.getItem('ville')}", email: "${localStorage.getItem('email')}", country: FR, firstName: "${localStorage.getItem('prenom')}", lastName: "${localStorage.getItem('nom')}", phone: "${localStorage.getItem('phone')}", postcode: "${localStorage.getItem('postalcode')}", state: "Essone"}, billing: {address1: "${localStorage.getItem('adresse')}", city: "${localStorage.getItem('ville')}", address2: "", country: FR, company: "", email: "${localStorage.getItem('email')}", firstName: "${localStorage.getItem('prenom')}", lastName: "${localStorage.getItem('nom')}", overwrite: true, phone: "${localStorage.getItem('phone')}", postcode: "${localStorage.getItem('postalcode')}", state: "Essone"}, lineItems: {productId: 3163, quantity: 2, total: "10", subtotal: "5"}, isPaid: true, feeLines: {amount: "15", total: "15"}, paymentMethod: "cod", shippingLines: {methodId: "cod", methodTitle: "Paiement à la livraison", total: "5"}, customerId: ${userID}}) {
     orderId
   }
 }`
 
- */
+
 
 const PaiementScreen = props => {
 
@@ -93,7 +93,7 @@ const PaiementScreen = props => {
   )
 };
 
-/*PaiementScreen.getInitialProps = async () => {
+PaiementScreen.getInitialProps = async () => {
   const result = await client.query({query: CREATE_COMMANDE_MUTATION});
 
 
@@ -101,7 +101,5 @@ const PaiementScreen = props => {
     commande: result.data
   }
 }
-
- */
 
 export default PaiementScreen
