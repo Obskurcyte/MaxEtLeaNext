@@ -58,7 +58,7 @@ const HeaderJouet = (props) => {
   }
 
   return (
-    <div>
+    <div className={styles.stickyHeader}>
       <div style={{backgroundColor: '#e72c59', textAlign: 'center', height: '70px'}}>
         <h1 className={styles.freeLivraison}>Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
       </div>
@@ -108,24 +108,24 @@ const HeaderJouet = (props) => {
           <div className={styles.ajouterPanier}>
             <Link href="/cart"><p className={styles.ajouterPanierText}>Ajouter au panier</p></Link>
           </div>
-          <div className={styles.accountShopping}>
-            <Link href="/cart">
-              <Nav.Link>
+          <div className={styles.accountShopping} onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+              <Link href="/cart">
+                <Nav.Link>
 
-                <div className="cart-wrap">
-                  {productCount && (<div className={styles.productsCountContainer}>
-                    <div className={styles.productCountInnerContainer}>{productCount ? <span className={styles.productCountText}>{productCount}</span> : ''}</div>
-                  </div>)}
-                  <img src={'/shoppingcart.png'} alt="shopping cart" onMouseOver={() => setOpen(!open)}/>
-                  {totalPrice1 ? <span className={styles.totalPriceSpan}>€{totalPrice1.toFixed(2)}</span> : ''}
-                </div>
-              </Nav.Link>
+                  <div className="cart-wrap">
+                    {productCount && (<div className={styles.productsCountContainer}>
+                      <div className={styles.productCountInnerContainer}>{productCount ? <span className={styles.productCountText}>{productCount}</span> : ''}</div>
+                    </div>)}
+                    <img src={'/shoppingcart.png'} alt="shopping cart" />
+                    {totalPrice1 ? <span className={styles.totalPriceSpan}>€{totalPrice1.toFixed(2)}</span> : ''}
+                  </div>
+                </Nav.Link>
 
-            </Link>
-          </div>
+              </Link>
+              {open && renderCart()}
+            </div>
         </Nav>
       </nav>
-      {open && renderCart()}
     </div>
   )
 }
