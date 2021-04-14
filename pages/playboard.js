@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactPlayer from 'react-player'
 import Header from "../components/Header";
 import Link from 'next/link';
 import Footer from "../components/Footer";
@@ -19,10 +20,15 @@ const PlayBoardScreen = props => {
             <p className="playboard-paragraph">La playboard est le jouet le plus complet pour stimuler l'éveil et la motricité fine des enfants !</p>
           </div>
           <div className="video-container">
-            <video controls className="video-presentation">
-              <source src="https://firebasestorage.googleapis.com/v0/b/roundpower-88ef9.appspot.com/o/GymPower%2FGanache%202021-03-31%2011-01-10.mp4?alt=media&token=e8810212-67b8-4d24-8bb2-9d4b7112d138"
-                      type="video/mp4" />
-            </video>
+            <ReactPlayer
+            url="https://maxandlea.com/wp-content/uploads/2020/05/Patchwork-V3-600-1.mp4"
+            width="100%"
+            height="560px"
+            className="video-presentation"
+            playing
+            playIcon={<img src="https://maxandlea.com/wp-content/uploads/2021/04/Lire-la-video.png" alt=""/>}
+            light="https://maxandlea.com/wp-content/uploads/2021/04/overlay-video-1.png"
+          />
           </div>
           <div className="voir-offre">
             <h3 className="voir-offre-title">Voir notre offre</h3>

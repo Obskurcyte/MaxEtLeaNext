@@ -86,8 +86,10 @@
   left: 25%;
 }
 
-.video-presentation {
+.video-presentation video{
   width: 100%;
+  border-radius: 70px;
+  box-shadow: 0px 10px 25px 10px rgb(0 0 0 / 20%);
 }
 
 .pensee-container {
