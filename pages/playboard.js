@@ -23,25 +23,17 @@ const PlayBoardScreen = props => {
           <div className="video-container">
             <ReactPlayer
             url="https://maxandlea.com/wp-content/uploads/2020/05/Patchwork-V3-600-1.mp4"
-            width="100%"
-            height="560px"
             className="video-presentation"
             playing
-            playIcon={<img src="https://maxandlea.com/wp-content/uploads/2021/04/Lire-la-video.png" alt=""/>}
-            light="https://maxandlea.com/wp-content/uploads/2021/04/overlay-video-1.png"
+            height="100%"
+            width="100%"
+            loop="true"
+            playIcon={<img src="https://maxandlea.fr/wp-content/uploads/2021/04/Lire-la-video.png" alt=""/>}
+            light="https://maxandlea.fr/wp-content/uploads/2021/04/image.png"
           />
           </div>
           <div className="voir-offre">
-            <h3 className="voir-offre-title">Voir notre offre</h3>
-          </div>
-          <div className="icones">
-            <img src={'/icones2.png'} alt=""/>
-          </div>
-          <div className="icones3">
-            <img src={'/icones3.png'} alt=""/>
-          </div>
-          <div className="icones4">
-            <img src={'/icones4.png'} alt=""/>
+            <Link href="#offre"><h3 className="voir-offre-title">Voir notre offre</h3></Link>
           </div>
         </div>
 
@@ -55,37 +47,37 @@ const PlayBoardScreen = props => {
         </div>
 
         <div className="icone-container1">
-          <div className="row-icone">
+          <div className="row">
 
-            <div className="icone-mini-container">
+            <div className="col icone-mini-container">
               <img src={'/creativite.png'} alt=""/>
               <p>Développer <br/>sa Créativité</p>
             </div>
 
-            <div className="icone-mini-container">
+            <div className="col icone-mini-container">
               <img src={'/habilite.png'} alt=""/>
               <p>Améliorer <br/>son habilité</p>
             </div>
 
-            <div className="icone-mini-container">
+            <div className="col icone-mini-container">
               <img src={'/motricite.png'} alt=""/>
               <p>Travailler <br/>sa motricité</p>
             </div>
           </div>
 
-          <div className="row-icone">
+          <div className="row">
 
-            <div className="icone-mini-container">
+            <div className="col icone-mini-container">
               <img src={'/concentration.png'} alt=""/>
               <p>Aiguiser <br/>sa concentration</p>
             </div>
 
-            <div className="icone-mini-container">
+            <div className="col icone-mini-container">
               <img src={'/apprendre.png'} alt=""/>
               <p>Apprendre <br/>en s'amusant</p>
             </div>
 
-            <div className="icone-mini-container">
+            <div className="col icone-mini-container">
               <img src={'/autonomie.png'} alt=""/>
               <p>Développer <br/>l'autonomie</p>
             </div>
@@ -102,50 +94,50 @@ const PlayBoardScreen = props => {
         </div>
 
         <div className="containerIcones2">
-          <div className="rowIcone2">
+          <div className="row">
 
-            <div className="miniIconeContainer2">
+            <div className="col miniIconeContainer2">
               <img src={'/calcul.png'} alt=""/>
               <p>Les signes et les nombres lui permettront de réaliser différents calculs simples et d'évoluer vers des calculs plus complexes</p>
             </div>
 
 
-            <div className="miniIconeContainer2">
+            <div className="col miniIconeContainer2">
               <img src={'/couleur.png'} alt=""/>
               <p>L'outil idéal pour la mémoire des couleurs, pour les découvrir et les reconnaitre. Aide à développer ses aptitudes visuelles et mentales</p>
             </div>
 
 
-            <div className="miniIconeContainer2">
+            <div className="col miniIconeContainer2">
               <img src={'/degrade.png'} alt=""/>
               <p>Découvrir les contrastes et les dégradés de couleurs pour développer sa sensibilité visuelle et artistique.</p>
             </div>
 
-            <div className="miniIconeContainer2">
+            <div className="col miniIconeContainer2">
               <img src={'/eveil.png'} alt=""/>
               <p>Votre enfant prendra plaisir à jouer des heures entières avec sa PlayBoard et développera sa créativité.</p>
             </div>
 
           </div>
 
-          <div className="rowIcone2">
+          <div className="row">
 
-            <div className="miniIconeContainer2">
+            <div className="col miniIconeContainer2">
               <img src={'/animaux.png'} alt=""/>
               <p>Il découvrira les animaux grâce à des représentations mignonnes et réalistes et apprendra à les associer avec leur alimentation.</p>
             </div>
 
-            <div className="miniIconeContainer2">
+            <div className="col miniIconeContainer2">
               <img src={'/formes.png'} alt=""/>
               <p>Plus de 20 formes géométriques simples et complexes pour un maximum de plaisir et travailler sa motricité fine.</p>
             </div>
 
-            <div className="miniIconeContainer2">
+            <div className="col miniIconeContainer2">
               <img src={'/coordination.png'} alt=""/>
               <p>Empiler différentes formes géométriques pour travailler sa coordination et son habileté.</p>
             </div>
 
-            <div className="miniIconeContainer2">
+            <div className="col miniIconeContainer2">
               <img src={'/nombres.png'} alt=""/>
               <p>A force de jouer avec les chiffres, leur maîtrise devient naturelle et instinctive. Ce qui favorise sa mémoire des chiffres.</p>
             </div>
@@ -156,34 +148,44 @@ const PlayBoardScreen = props => {
         <div className="playboardBoisContainer">
           <img src={'/playboardBois.png'} alt="" className="playboardBoisImg"/>
         </div>
+        <div className="fullwidth">
+          <div className="videoContainer">
+          <div className="video-container">
+            <ReactPlayer
+                url="https://maxandlea.com/wp-content/uploads/2020/05/Patchwork-V3-600-1.mp4"
+                width="100%"
+                height="480px"
+                className="video-presentation"
+                playing
+                height="100%"
+                width="100%"
+                loop="true"
+                playIcon={<img src="https://maxandlea.fr/wp-content/uploads/2021/04/Lire-la-video.png" alt=""/>}
+                light="https://maxandlea.fr/wp-content/uploads/2021/04/image.png"
+              />
+          </div>
+            <div className="robusteContainer">
+              <div className="constructionRobuste">
+                <div><p className="robusteTitle">CONSTRUCTION ROBUSTE EN BOIS</p></div>
+                <div><p className="p1">Bois issu de forêts certifiées
+                  FSC® et de haute qualité.</p></div>
+                <div><p className="p2">Matériaux nobles &
+                  construction solide</p></div>
+                <div><p className="p3">Une fabrication soignée
+                  pour une durabilité maximale.</p></div>
+              </div>
 
-        <div className="videoContainer">
-          <video controls className="video-presentation">
-            <source src="https://firebasestorage.googleapis.com/v0/b/roundpower-88ef9.appspot.com/o/GymPower%2FGanache%202021-03-31%2011-01-10.mp4?alt=media&token=e8810212-67b8-4d24-8bb2-9d4b7112d138"
-                    type="video/mp4" />
-          </video>
-
-          <div className="robusteContainer">
-            <div className="constructionRobuste">
-              <div><p className="robusteTitle">CONSTRUCTION ROBUSTE EN BOIS</p></div>
-              <div><p className="p1">Bois issu de forêts certifiées
-                FSC® et de haute qualité.</p></div>
-              <div><p className="p2">Matériaux nobles &
-                construction solide</p></div>
-              <div><p className="p3">Une fabrication soignée
-                pour une durabilité maximale.</p></div>
-            </div>
-
-            <div className="finitionSoignees">
-              <div><p className="finitionTitle">FINITIONS SOIGNEES</p></div>
-              <div><p className="p1">Des couleurs douces et
-                chaleureuses étudiées pour
-                apaiser l’enfant.</p></div>
-              <div><p className="p2">Angles biseautés et finitions soignées</p></div>
-              <div><p className="p3">Des textures douces et délicates
-                pour une parfaite prise en main.</p></div>
-              <div><p className="p4">Des images travaillées pour faciliter
-                la reconnaissance.</p></div>
+              <div className="finitionSoignees">
+                <div><p className="finitionTitle">FINITIONS SOIGNEES</p></div>
+                <div><p className="p1">Des couleurs douces et
+                  chaleureuses étudiées pour
+                  apaiser l’enfant.</p></div>
+                <div><p className="p2">Angles biseautés et finitions soignées</p></div>
+                <div><p className="p3">Des textures douces et délicates
+                  pour une parfaite prise en main.</p></div>
+                <div><p className="p4">Des images travaillées pour faciliter
+                  la reconnaissance.</p></div>
+              </div>
             </div>
           </div>
         </div>
@@ -203,44 +205,147 @@ const PlayBoardScreen = props => {
         <div className="imagesContainer">
 
           <div className="garconSouriantContainer">
-            <img src={'/bebeBrasTendu.png'} alt="" className="bebeBrasTendu"/>
+          <div class="ageContainer">
+          <img src={'/bebeBrasTendu.png'} alt="" className="bebeBrasTendu ageImg"/>
+            <div class="ageOverlay">
+              <div className="pour">
+                <h5>POUR LES 2 A 3 ANS</h5>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il travaille son habileté</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il découvre les formes</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il assimile les couleurs</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il reconnait les animaux</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il améliore sa coordination oeil-main</p>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <div className="pour">
-            <h5>POUR LES 2 A 3 ANS</h5>
-
-            <div className="rowIcone">
-              <img src={'/vector1.png'} alt=""/>
-              <p>Il travaille son habileté</p>
-            </div>
-
-            <div className="rowIcone">
-              <img src={'/vector1.png'} alt=""/>
-              <p>Il découvre les formes</p>
-            </div>
-
-            <div className="rowIcone">
-              <img src={'/vector1.png'} alt=""/>
-              <p>Il assimile les couleurs</p>
-            </div>
-
-            <div className="rowIcone">
-              <img src={'/vector1.png'} alt=""/>
-              <p>Il reconnait les animaux</p>
-            </div>
-
-            <div className="rowIcone">
-              <img src={'/vector1.png'} alt=""/>
-              <p>Il améliore sa coordination oeil-main</p>
-            </div>
           </div>
 
           <div className="garconSouriantContainer">
-            <img src={'/garconSouriant.png'} alt="" className="garconSouriant"/>
+          <div class="ageContainer">
+          <img src="https://maxandlea.com/wp-content/uploads/2020/05/Be%CC%81be%CC%812ans.jpg" alt="" className="bebeBrasTendu ageImg"/>
+            <div class="ageOverlay">
+              <div className="pour">
+                <h5>POUR LES 2 A 3 ANS</h5>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il travaille son habileté</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il découvre les formes</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il assimile les couleurs</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il reconnait les animaux</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il améliore sa coordination oeil-main</p>
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
 
           <div className="garconSouriantContainer">
-            <img src={'/filleSouriant.png'} alt="" className="garconSouriant"/>
+          <div class="ageContainer">
+          <img src={'/garconSouriant.png'} alt="" className="garconSouriant ageImg"/>
+            <div class="ageOverlay">
+              <div className="pour">
+                <h5>POUR LES 2 A 3 ANS</h5>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il travaille son habileté</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il découvre les formes</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il assimile les couleurs</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il reconnait les animaux</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il améliore sa coordination oeil-main</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <div className="garconSouriantContainer">
+          <div class="ageContainer">
+          <img src={'/filleSouriant.png'} alt="" className="garconSouriant ageImg"/>
+            <div class="ageOverlay">
+              <div className="pour">
+                <h5>POUR LES 2 A 3 ANS</h5>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il travaille son habileté</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il découvre les formes</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il assimile les couleurs</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il reconnait les animaux</p>
+                </div>
+
+                <div className="rowIcone">
+                  <img src={'/vector1.png'} alt=""/>
+                  <p>Il améliore sa coordination oeil-main</p>
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
 
         </div>
@@ -274,24 +379,28 @@ const PlayBoardScreen = props => {
           </div>
         </div>
 
-        <div className="playboardContainer">
-          <div className="imgPlayboardContainer">
-            <img src={'/playboardGood.png'} alt="" className="playboardGood"/>
-          </div>
-          <div className="imgPlayboardPrixContainer">
-            <img src={'/playboardprice.png'} alt="" className="playboardprice"/>
-          </div>
-          <div className="imgOffertContainer">
-            <img src={'/offertPhoto.png'} alt="" className="offertPhoto"/>
-          </div>
-          <div className="imgEbookContainer">
-            <img src={'/ebook.png'} alt="" className="ebook"/>
-          </div>
+        <div className="playboardContainer" id="offre">
+          <div className="playboardSubContainer">
           <div className="imgBestSellerContainer">
-            <img src={'/bestSeller.png'} alt="" className='bestSeller'/>
-          </div>
-          <div className="addPanierContainer">
-            <Link href="/cart"><p>Ajouter au panier</p></Link>
+              <img src={'/bestSeller.png'} alt="" className='bestSeller'/>
+            </div>
+            <div className="imgPlayboardPrixContainer">
+              <img src={'/playboardprice.png'} alt="" className="playboardprice"/>
+            </div>
+            <div className="imgPlayboardContainer">
+              <img src={'/playboardGood.png'} alt="" className="playboardGood"/>
+            </div>
+            <div class="row align-items-center">
+              <div className="imgEbookContainer col">
+                <img src={'/ebook.png'} alt="" className="ebook"/>
+              </div>
+              <div className="imgOffertContainer col">
+                <img src={'/offertPhoto.png'} alt="" className="offertPhoto"/>
+              </div>
+            </div>
+            <div className="addPanierContainer">
+              <Link href="/cart"><p>Ajouter au panier</p></Link>
+            </div>
           </div>
         </div>
 

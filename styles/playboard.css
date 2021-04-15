@@ -4,24 +4,9 @@
   width: 100%;
   height: 800px;
   position: relative;
-  background-color: #D6D3D3;
+  background-color: #e2dfd8;
+  background-image: url(https://maxandlea.com/wp-content/uploads/2020/05/background-1.png);
   padding: 2% 2%;
-}
-
-.icones {
-  position: absolute;
-  top: 15%;
-}
-
-.icones3 {
-  position: absolute;
-  top: 15%;
-  left: 72%;
-}
-
-.icones4 {
-  position: absolute;
-  top: 120%;
 }
 
 .img-couverture {
@@ -68,6 +53,7 @@
   position: absolute;
   top: 113%;
   left: 37%;
+  cursor: pointer;
 }
 
 .voir-offre-title {
@@ -80,16 +66,43 @@
 }
 
 .video-container {
-  width: 50%;
-  height: 30%;
+  width: 100%;
+  max-width: 850px;
+  height: 450px;
+  position: relative;
+  margin: auto;
+}
+
+.video-container .react-player__preview{
+  border-radius: 70px;
+}
+
+.imgCouverture .video-presentation video{
+  height: auto !important;
+}
+
+.imgCouverture .video-presentation{
+  width: 100%;
+  border-radius: 70px;
+  margin: auto;
+  box-shadow: 0px 10px 25px 10px rgb(0 0 0 / 20%);
+}
+
+.videoContainer .video-presentation{
+  border-radius: 70px;
+  margin-bottom: 50px;
   position: absolute;
-  left: 25%;
+  top: -250px;
+  -moz-transform: scale(1) rotate(-3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+  -webkit-transform: scale(1) rotate(-3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+  -o-transform: scale(1) rotate(-3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+  -ms-transform: scale(1) rotate(-3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+  transform: scale(1) rotate(-3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+
 }
 
 .video-presentation video{
-  width: 100%;
   border-radius: 70px;
-  box-shadow: 0px 10px 25px 10px rgb(0 0 0 / 20%);
 }
 
 .pensee-container {
@@ -139,6 +152,8 @@
   flex-direction: column;
   text-align: center;
   align-items: center ;
+  min-width: 230px;
+  margin-bottom: 20px
 }
 
 .icone-mini-container p {
@@ -148,7 +163,6 @@
   font-weight: 300;
   font-family: "Roboto", sans-serif;
   text-align: center;
-  margin-top: 5%;
 }
 
 .image-recap-container {
@@ -192,11 +206,8 @@
 }
 
 .miniIconeContainer2 {
-  display: flex;
-  flex-direction: column;
   text-align: center;
   align-items: center;
-  width: 22%;
 }
 
 .miniIconeContainer2 p {
@@ -211,8 +222,9 @@
 }
 
 .playboardBoisContainer {
-  width: 30%;
-  margin: 4% auto;
+  width: 95%;
+  max-width: 450px;
+  margin: 50px auto 250px auto;
   align-items: center;
 }
 
@@ -223,10 +235,19 @@
 .robusteContainer {
   display: flex;
   width: 100%;
+  bottom: 20px;
+  max-width: 950px;
   align-items: center;
   justify-content: space-around;
-  padding-left: 2%;
-  padding-right: 2%;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: absolute;
+  -moz-transform: scale(1) rotate(-3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+  -webkit-transform: scale(1) rotate(-3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+  -o-transform: scale(1) rotate(-3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+  -ms-transform: scale(1) rotate(-3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+  transform: scale(1) rotate(-3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+
 }
 
 .constructionRobuste {
@@ -285,13 +306,28 @@
   text-align: center;
 }
 
+.fullwidth{
+  background-image: url(https://maxandlea.fr/wp-content/uploads/2021/04/bg-grey.png);
+  background-size: cover;
+  background-position: bottom;
+}
+
 .videoContainer {
-  width: 50%;
+  background-color: white;
+  min-height: 780px;
+  padding: 100px;
+  width: 95%;
+  max-width: 1100px;
   position: relative;
   margin: 0 auto;
-  border: 0.3px solid black;
   border-radius: 20px;
+  box-shadow: 0px 10px 25px 10px rgb(0 0 0 / 20%);
   z-index: 3;
+  -moz-transform: scale(1) rotate(3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+    -webkit-transform: scale(1) rotate(3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+    -o-transform: scale(1) rotate(3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+    -ms-transform: scale(1) rotate(3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+    transform: scale(1) rotate(3deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
 }
 
 .backgroundMaron {
@@ -321,20 +357,17 @@
   color: #5b737e;
   font-family: "Roboto", sans-serif;
   text-align: center;
-  max-width: 35%;
-  margin: 3% auto;
+  max-width: 500px;
+  margin: auto;
   z-index: 3;
-  position: absolute;
-  left: 30%;
 }
 
 .frereEtSoeur {
-  position: absolute;
   z-index: 1;
-  left: 16%;
-  top: 84%;
-  width: 70%;
-  height: 700px;
+  margin: auto;
+  max-width: 750px;
+  width: 100%;
+  height: auto;
 }
 
 .UnaSixTitle span {
@@ -358,23 +391,23 @@
 
 .imagesContainer {
   max-width:1500px;
-  margin: auto;
-  height: 350px;
-  margin-top: 50%;
+  margin: 100px auto;
   display: flex;
   justify-content: space-around;
 }
 
+.ageImg{
+  border-radius: 46px;
+  box-shadow: 3px 3px lightgrey
+}
+
 
 .pour {
-  width: 20%;
-  height: 350px;
   border-radius: 46px;
+  height: 100%;
   filter: drop-shadow(1.917px 21.916px 19px rgba(59,57,54,0.1));
   background-color: #3dad2d;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-left: 1%;
+  padding-left: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -384,13 +417,36 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: 12%;
+}
+
+.ageContainer {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+
+/* The overlay effect (full height and width) - lays on top of the container and over the image */
+.ageOverlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+}
+
+/* When you mouse over the container, fade in the overlay icon*/
+.ageContainer:hover .ageOverlay {
+  opacity: 1;
 }
 
 .garconSouriantContainer {
   border-radius: 20px;
   width: 20%;
-  box-shadow: 3px 3px lightgrey
 }
 
 .rowIcone img {
@@ -412,13 +468,14 @@
 }
 
 .rowIcone p {
-  margin-top: 6%;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .apprentissage {
   align-items: center;
   text-align: center;
-  margin-top: 20%;
+  margin-top : 50px;
   position: relative;
 }
 
@@ -451,21 +508,20 @@
   align-items: center;
   border-radius: 30px;
   box-shadow: 3px 3px 3px 3px lightgrey;
-  width: 40%;
-  padding : 3%;
+  width: 90%;
+  position: inherit;
+  max-width: 700px;
+  padding : 30px;
   margin: 0 auto;
-  position: absolute;
-  top: -57%;
-  left: 30%;
   z-index: 3;
   background-color: white;
 }
 
 .enfantTableauContainer {
   z-index: 1;
-  height: 450px;
-  width: 50%;
-  margin : 0 auto;
+  width: 100%;
+  max-width: 900px;
+  margin : -100px auto 50px auto;
   border-radius: 20px;
 }
 
@@ -514,45 +570,51 @@
 }
 
 .playboardContainer {
-  background-color: #D6D3D3;
-  margin-top: 13%;
+  background-color: #e2dfd8;
+  margin-top: 200px;
+  padding-bottom: 100px;
   position: relative;
-  height: 850px;
+}
+
+.playboardSubContainer{
+  width:100%;
+  max-width: 1100px;
+  margin: auto;
 }
 
 .imgPlayboardContainer {
-  position: absolute;
-  left: 20%;
-  height: 55%;
-  top: 10%
-}
+  width: 95%;
+  max-width: 950px;
+  margin: -200px auto 0px auto;
+} 
 
 .playboardGood {
   width: 100%;
   height: 100%;
 }
 .imgPlayboardPrixContainer {
-  position: absolute;
-  top: 7%;
-  left: 5%;
+  width: 100%;
+  max-width: 800px;
 }
 
 .imgOffertContainer {
-  position: absolute;
-  top: 60%;
-  left: 50%;
+  width: 100%;
+  max-width: 800px;
 }
 
 .imgEbookContainer {
-  position: absolute;
-  top: 75%;
-  left: 10%
+  width: 100%;
+  max-width: 800px;
 }
 
 .imgBestSellerContainer {
-  position: absolute;
-  left: 43%;
-  top: -20%;
+  width: 70%;
+  max-width: 250px;
+  margin: auto;
+}
+
+.imgBestSellerContainer img{
+  margin-top: -150px;
 }
 
 .addPanierContainer {
@@ -563,6 +625,7 @@
   top: 93%;
   left: 38%;
   padding: 1% 3%;
+  cursor: pointer;
 }
 
 .addPanierContainer p {

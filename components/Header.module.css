@@ -1,8 +1,8 @@
 .navBar {
   display: flex;
   justify-content: space-around;
-  padding-top: 2%;
-  padding-bottom: 1%;
+  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 15%;
   padding-right: 15%;
 }
@@ -10,17 +10,16 @@
 
 .imgContainer {
   width: 20%;
-  height: 50px;
   position: relative;
   bottom: 10%;
-  margin-top: 1.5%;
 }
 .imgNavbar  {
   max-width: 100%;
 }
 
 .home {
-  margin-top: 5%;
+  margin-top: 40px;
+  cursor: pointer;
 }
 
 .fa-shopping-basket{
@@ -40,7 +39,7 @@
   display: flex;
   flex-direction: column;
   width: 200px;
-  margin-top: 4%;
+  margin-top: 20px;
 }
 
 .accountIcon {
@@ -183,13 +182,12 @@
   display: flex;
   justify-content: space-around;
   height: 50px;
-  margin-top: 25%;
+  margin-top: 25px;
 }
 
 .jouet {
   display: flex;
   flex-direction: column;
-  height: 150px;
 }
 
 .jouetName {
@@ -215,7 +213,7 @@
 
 .economie {
   font-size: 13px;
-  line-height: 48px;
+  line-height: 1;
   color: #adadad;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
@@ -224,7 +222,7 @@
 
 .prixBarre {
   font-size: 13px;
-  line-height: 48px;
+  line-height: 1;
   color: #adadad;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
@@ -243,7 +241,8 @@
   padding-right: 2%;
   padding-left: 2%;
   text-align: center;
-  margin-top: 4%;
+  margin-top: 30px;
+  cursor: pointer;
 }
 
 .ajouterPanierText {
@@ -261,4 +260,5 @@
   top: 0;
   z-index: 999;
   background-color: white;
+  box-shadow: 0px 10px 25px 10px rgb(0 0 0 / 10%);
 }
