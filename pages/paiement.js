@@ -21,18 +21,33 @@ const pays = localStorage.getItem('pays')
 const phone = localStorage.getItem('phone')
 const email = localStorage.getItem('email')
 
- */
+*/
 
-const CREATE_COMMANDE_MUTATION = gql `mutation CreateOrder {
-  __typename
-  createOrder(input: {status: PROCESSING, shipping: {address1: "${localStorage.getItem('adresse')}", city: "${localStorage.getItem('ville')}", email: "${localStorage.getItem('email')}", country: FR, firstName: "${localStorage.getItem('prenom')}", lastName: "${localStorage.getItem('nom')}", phone: "${localStorage.getItem('phone')}", postcode: "${localStorage.getItem('postalcode')}", state: "Essone"}, billing: {address1: "${localStorage.getItem('adresse')}", city: "${localStorage.getItem('ville')}", address2: "", country: FR, company: "", email: "${localStorage.getItem('email')}", firstName: "${localStorage.getItem('prenom')}", lastName: "${localStorage.getItem('nom')}", overwrite: true, phone: "${localStorage.getItem('phone')}", postcode: "${localStorage.getItem('postalcode')}", state: "Essone"}, lineItems: {productId: 3163, quantity: 2, total: "10", subtotal: "5"}, isPaid: true, feeLines: {amount: "15", total: "15"}, paymentMethod: "cod", shippingLines: {methodId: "cod", methodTitle: "Paiement à la livraison", total: "5"}, customerId: ${userID}}) {
-    orderId
+const CREATE_COMMANDE_MUTATION = gql`
+mutation CHECKOUT_MUTATION( $input: CheckoutInput! ) {
+  checkout(input: $input) {
+    clientMutationId
+    order {
+      id
+      orderKey
+      refunds {
+        nodes {
+          amount
+        }
+      }
+      status
+    }
+    result
+    redirect
   }
-}`
+}
+`;
 
 
 
 const PaiementScreen = props => {
+
+
 
   const [ cart, setCart ] = useContext( AppContext );
   console.log('cart', cart)

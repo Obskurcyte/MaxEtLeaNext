@@ -2,39 +2,7 @@ import React, {useEffect, useContext, useState} from 'react';
 import Header from "../components/Header";
 import {Col, Row} from "react-bootstrap";
 import {AppContext} from "../components/context/AppContext";
-import gql from "graphql-tag";
-import client from "../components/ApolloClient";
-
-
-const PRODUCTS_QUERY = gql `query GetProducts {
-  products {
-    nodes {
-    ... on SimpleProduct {
-        id
-        name
-        description
-        price
-        slug
-        featuredImage {
-          node {
-            uri
-            title
-            srcSet
-            sourceUrl
-          }
-        }
-        galleryImages {
-          nodes {
-            uri
-            title
-            srcSet
-            sourceUrl
-          }
-        }
-      }
-    }
-  }
-}`;
+import * as product from '../products';
 
 const XylophoneScreen = props => {
 
@@ -43,11 +11,11 @@ const XylophoneScreen = props => {
 //  const [carty, setCart] = useState(cart)
 
 
+  console.log(product)
   const [cart, setCart] = useContext(AppContext);
   console.log(cart)
 
-  const {products} = props
-
+  const products = product.products
   const [viewCart, setViewCart] = useState(false);
 
 
@@ -69,8 +37,6 @@ const XylophoneScreen = props => {
       document.querySelector('.change-quantity').value = valueCount;
     }
   }
-
-
 
   const getFloatVal = (string) => {
     let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
@@ -133,6 +99,7 @@ const XylophoneScreen = props => {
 
 
 
+
   /**
    * Get updated products array
    *
@@ -142,6 +109,8 @@ const XylophoneScreen = props => {
    * @param newQty
    * @returns {*}
    */
+
+
   const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
     const productExistsIndex = isProductInCart(existingProductsInCart, products[2].id);
 
@@ -266,12 +235,7 @@ const XylophoneScreen = props => {
     )
 };
 
-XylophoneScreen.getInitialProps = async () => {
-  const result = await client.query({query: PRODUCTS_QUERY});
-
-  return {
-    products: result.data.products.nodes
-  }
-}
-
 export default XylophoneScreen;
+
+
+

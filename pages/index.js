@@ -7,18 +7,17 @@ import {Card} from 'react-bootstrap'
 import {useTranslation} from "react-i18next";
 import {AppContext} from "../components/context/AppContext";
 import Link from "next/link";
+import * as products from '../products';
 
+const HomeScreen = () => {
 
-const HomeScreen = (props) => {
+  console.log(products.products)
 
   const [ cart, setCart ] = useContext( AppContext );
   console.log('cart', cart)
 
   const { t, i18n } = useTranslation();
 
-  const {products} = props;
-
-  console.log(products)
 
 
   return (

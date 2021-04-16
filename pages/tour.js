@@ -2,46 +2,14 @@ import React, {useContext} from 'react';
 import Header from "../components/Header";
 import {Col, Row} from "react-bootstrap";
 import {AppContext} from "../components/context/AppContext";
-import gql from "graphql-tag";
-import client from "../components/ApolloClient";
+import * as product from '../products';
 
 
-const PRODUCTS_QUERY = gql `query GetProducts {
-  products {
-    nodes {
-    ... on SimpleProduct {
-        id
-        name
-        description
-        price
-        slug
-        featuredImage {
-          node {
-            uri
-            title
-            srcSet
-            sourceUrl
-          }
-        }
-        galleryImages {
-          nodes {
-            uri
-            title
-            srcSet
-            sourceUrl
-          }
-        }
-      }
-    }
-  }
-}`;
-
-
-const TourScreen = props => {
+const TourScreen = () => {
 
   const [cart, setCart] = useContext(AppContext);
 
-  const {products} = props;
+  const products = product.products
 
   let valueCount = 1;
 
@@ -124,6 +92,7 @@ const TourScreen = props => {
    * @param newQty
    * @returns {*}
    */
+
   const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
     const productExistsIndex = isProductInCart(existingProductsInCart,products[1].id);
 
@@ -251,15 +220,6 @@ const TourScreen = props => {
     )
 };
 
-
-
-TourScreen.getInitialProps = async () => {
-  const result = await client.query({query: PRODUCTS_QUERY});
-
-  return {
-    products: result.data.products.nodes
-  }
-}
 
 export default TourScreen;
 
