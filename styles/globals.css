@@ -16,6 +16,10 @@ a {
   text-decoration: none!important;
 }
 
+*:focus {
+  outline: none;
+}
+
 
 * {
   box-sizing: border-box;
