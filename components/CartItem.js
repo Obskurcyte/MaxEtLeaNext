@@ -21,7 +21,7 @@ const CartItem = ({item}) => {
 
   const productArray = product.products;
 
-  console.log(productArray)
+
 
   // const [cart, setCart] = useContext(AppContext);
 
@@ -67,7 +67,7 @@ const CartItem = ({item}) => {
 
   const createNewProduct = (product, productPrice, qty) => {
     return {
-      productId: product.id,
+      productId: product.productId,
       name: product.name,
       price: productPrice,
       qty: qty,
@@ -76,10 +76,10 @@ const CartItem = ({item}) => {
   };
 
   const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProducts(existingCart.products, productArray[2], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProducts(existingCart.products, product, qtyToBeAdded, newQty);
     const addPrice = (total, item) => {
 
-      total.totalPrice = item.totalPrice;
+      total.totalPrice += item.totalPrice;
       total.qty += item.qty;
       console.log('total', total)
       console.log('item', item)
@@ -112,7 +112,7 @@ const CartItem = ({item}) => {
    * @returns {*}
    */
   const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, productArray[2].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart, product.productId);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -142,33 +142,13 @@ const CartItem = ({item}) => {
   };
 
 
-  const handleAddToCart = () => {
-    if (process.browser) {
-      let existingCart = localStorage.getItem('woo-next-cart');
-      console.log('clicked')
-      console.log(existingCart)
-      if (existingCart) {
-        existingCart = JSON.parse(existingCart)
-        const qtyToBeAdded = 1
-        const updatedCart = updateCart(existingCart, productArray[2], qtyToBeAdded);
-        setCart(updatedCart)
-      } else {
-        const newCart = addFirstProduct(productArray[2]);
-        setCart(newCart)
-      }
-
-      router.push('/cart')
-
-    }
-  }
-
-
 
   const [productCount, setProductCount] = useState(item.qty);
 
   const handleQtyChange = (event) => {
     if (process.browser) {
       const newQty = event.target.value
+      console.log('new Qty', newQty)
       setProductCount(newQty)
 
       let existingCart = localStorage.getItem('woo-next-cart');
@@ -185,7 +165,9 @@ const CartItem = ({item}) => {
 
     let existingCart = localStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart);
+    console.log('existing', existingCart)
 
+    console.log('existing products' ,existingCart.products.length)
     if (1 === existingCart.products.length) {
       localStorage.removeItem('woo-next-cart')
       return null;
@@ -193,6 +175,9 @@ const CartItem = ({item}) => {
 
     const productExistIndex = isProductInCart(existingCart.products, productId);
 
+    console.log('product exist index', productExistIndex)
+
+    console.log('product', existingCart.products)
     if (-1 < productExistIndex) {
       const productToBeRemoved = existingCart.products[productExistIndex];
       const qtyTBeRemovedFromTotal = productToBeRemoved.qty;
@@ -220,7 +205,7 @@ const CartItem = ({item}) => {
     <tr key={item.productId} className="tr-product">
       <th className="cart-element">
       <span onClick={(event) => handleRemoveProduct(event, item.productId)}>
-        <i className="fa fa-times-circle"></i>
+        <td className="croix"><button className="button-supp">x</button></td>
       </span>
       </th>
       <td>

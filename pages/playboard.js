@@ -5,29 +5,13 @@ import Link from 'next/link';
 import Footer from "../components/Footer";
 import Engagement from "../components/Engagement";
 import Garanties from "../components/GarantiesMaxEtLea";
-import AvisClients from "../components/AvisClients";
-import HeaderJouet from "../components/HeaderJouet";
-import Head from 'next/head'
+import HeaderPlayboard from "../components/HeaderPlayboard";
 
 const PlayBoardScreen = props => {
 
     return (
       <div>
-        <Head>
-          <title>Max And Lea - PlayBoard</title>
-          <link
-            rel="stylesheet"
-            type="text/css"
-            charset="UTF-8"
-            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-          />
-        </Head>
-        <HeaderJouet jouetName="PLAYBOARD" jouetPrix="29,90€"/>
+        <HeaderPlayboard />
 
         <div className="imgCouverture">
           <div className="playboard-title-container">
@@ -477,10 +461,6 @@ const PlayBoardScreen = props => {
 
         <div className="sourireEnfantImgContainer">
           <img src={'/sourireEnfant.png'} alt="" className="sourireEnfant"/>
-        </div>
-
-        <div>
-          <AvisClients/>
         </div>
 
         <div>

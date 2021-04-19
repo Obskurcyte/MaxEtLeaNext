@@ -15,6 +15,8 @@ import blogReducer from "../store/reducers/blog";
 import commandeReducer from "../store/reducers/commandes";
 import {AppProvider} from "../components/context/AppContext";
 import React from "react";
+import { ApolloProvider } from '@apollo/client/react';
+import client from "../components/ApolloClient";
 
 const rootReducer = combineReducers({
   product: productReducer,
@@ -28,9 +30,11 @@ const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 function MyApp({ Component, pageProps }) {
   return(
     <AppProvider>
+      <ApolloProvider client={client}>
   <Provider store={store}>
     <Component {...pageProps} />
   </Provider>
+      </ApolloProvider>
     </AppProvider>
   )
 }
