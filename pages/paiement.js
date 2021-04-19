@@ -4,11 +4,7 @@ import YourOrder from "../components/YourOrder";
 import {AppContext} from "../components/context/AppContext";
 import {ListGroup} from "react-bootstrap";
 import {PayPalButton} from "react-paypal-button-v2";
-import {useDispatch} from "react-redux";
-import * as commandeActions from '../store/actions/commandes';
-import client from "../components/ApolloClient";
-import XylophoneScreen from "./xylophone";
-import gql from "graphql-tag";
+import {useRouter} from 'next/router';
 
 
 /* const userID = localStorage.getItem('userID');
@@ -22,28 +18,6 @@ const phone = localStorage.getItem('phone')
 const email = localStorage.getItem('email')
 
 */
-
-const CREATE_COMMANDE_MUTATION = gql`
-mutation CHECKOUT_MUTATION( $input: CheckoutInput! ) {
-  checkout(input: $input) {
-    clientMutationId
-    order {
-      id
-      orderKey
-      refunds {
-        nodes {
-          amount
-        }
-      }
-      status
-    }
-    result
-    redirect
-  }
-}
-`;
-
-
 
 const PaiementScreen = props => {
 
@@ -62,9 +36,7 @@ const PaiementScreen = props => {
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult)
-
-
-   // router.push('/payment-recap')
+    router.push('/payment-recap')
     localStorage.removeItem('woo-next-cart')
     console.log(cart)
     console.log('ok')
@@ -108,13 +80,6 @@ const PaiementScreen = props => {
   )
 };
 
-PaiementScreen.getInitialProps = async () => {
-  const result = await client.query({query: CREATE_COMMANDE_MUTATION});
 
-
-  return {
-    commande: result.data
-  }
-}
 
 export default PaiementScreen

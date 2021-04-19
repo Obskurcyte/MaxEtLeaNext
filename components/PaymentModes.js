@@ -1,5 +1,5 @@
 import React from "react";
-
+import Error from "./Error";
 
 const PaymentModes = ( { input, handleOnChange } ) => {
 	return (

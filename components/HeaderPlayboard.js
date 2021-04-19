@@ -4,19 +4,168 @@ import styles from "./Header.module.css";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useTranslation } from 'react-i18next';
-import {AppContext, AppProvider} from "./context/AppContext";
+import {AppContext} from "./context/AppContext";
 import i18next from "i18next";
 import CardHover from "./CardHover";
 import Link from 'next/link';
+import * as product from '../products';
 
-const HeaderJouet = (props) => {
+const HeaderPlayboard = (props) => {
+
+  console.log(product)
+  const [cart, setCart] = useContext(AppContext);
+  console.log(cart)
+
+  const products = product.products
+  const [viewCart, setViewCart] = useState(false);
+
+
+  // const [cart, setCart] = useContext(AppContext);
+
+
+  let valueCount = 1;
+
+  const onIncreaseClick = () => {
+    valueCount ++;
+    document.querySelector('.change-quantity').value = valueCount;
+  }
+
+  const onDecreaseClick = () => {
+    if (valueCount === 1) {
+      return;
+    } else {
+      valueCount --;
+      document.querySelector('.change-quantity').value = valueCount;
+    }
+  }
+
+  const getFloatVal = (string) => {
+    let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
+    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)): '';
+  };
+
+  const addFirstProduct = (product) => {
+    let productPrice = getFloatVal(product.price)
+
+    let newCart = {
+      products: [],
+      totalProductCount: 1,
+      totalProductsPrice: productPrice
+    }
+
+    const newProduct = createNewProduct(product, productPrice, 1)
+    newCart.products.push(newProduct);
+    localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
+    console.log('newCart', newCart)
+    return newCart
+
+  };
+
+  const createNewProduct = (product, productPrice, qty) => {
+    return {
+      productId: product.id,
+      name: product.name,
+      price: productPrice,
+      qty: qty,
+      totalPrice: parseFloat((productPrice * qty).toFixed(2))
+    }
+  };
+
+
+  const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
+    const updatedProducts = getUpdatedProducts(existingCart.products, products[4], qtyToBeAdded, newQty);
+    const addPrice = (total, item) => {
+
+      total.totalPrice = item.totalPrice;
+      total.qty += item.qty;
+      console.log('total', total)
+      console.log('item', item)
+      console.log(total)
+      return total;
+    }
+
+    // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
+    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+
+    const updatedCart = {
+      products: updatedProducts,
+      totalProductCount: parseInt(total.qty),
+      totalProductsPrice: parseFloat(total.totalPrice)
+    }
+
+    localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart))
+    return updatedCart
+  };
+
+
+
+
+
+  /**
+   * Get updated products array
+   *
+   * @param existingProductsInCart
+   * @param product
+   * @param qtyToBeAdded
+   * @param newQty
+   * @returns {*}
+   */
+
+
+  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[4].id);
+
+    if (-1 < productExistsIndex) {
+      let updatedProducts = existingProductsInCart;
+      let updatedProduct = updatedProducts[productExistsIndex];
+
+      updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
+      updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
+      return updatedProducts;
+    } else {
+      let productPrice = parseFloat(product.price);
+      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+      existingProductsInCart.push(newProduct);
+      return existingProductsInCart
+    }
+  };
+
+  const isProductInCart = (existingProductsInCart, productId) => {
+    const returnItemThatExists = (item, index) => {
+      if (productId === item.productId) {
+        return item;
+      }
+    };
+
+    const newArray = existingProductsInCart.filter(returnItemThatExists)
+
+    return existingProductsInCart.indexOf(newArray[0]);
+  };
+
+
+  const handleAddToCart = () => {
+    if (process.browser) {
+      let existingCart = localStorage.getItem('woo-next-cart');
+      console.log('clicked')
+      console.log('existingCart', existingCart)
+      if (existingCart!=null) {
+        existingCart = JSON.parse(existingCart)
+        const qtyToBeAdded = 1
+        const updatedCart = updateCart(existingCart, products[4], qtyToBeAdded);
+        setCart(updatedCart)
+      } else {
+        const newCart = addFirstProduct(products[4]);
+        setCart(newCart)
+      }
+    }
+  }
+
 
   const { t, i18n } = useTranslation();
 
   const [open, setOpen] = useState(false);
 
   const lang = i18next.language;
-  const [cart, setCart] = useContext(AppContext);
   console.log('cart', cart);
   let totalPrice1 = 0;
   if (cart) {
@@ -91,8 +240,8 @@ const HeaderJouet = (props) => {
 
           <div className={styles.jouet}>
             <div className={styles.prixJouet}>
-              <p className={styles.jouetName}>{props.jouetName}</p>
-              <p className={styles.jouetPrix}>{props.jouetPrix}</p>
+              <p className={styles.jouetName}>PLAYBOARD</p>
+              <p className={styles.jouetPrix}>29,90€</p>
             </div>
 
             <div className={styles.prixReduc}>
@@ -106,7 +255,7 @@ const HeaderJouet = (props) => {
           </div>
 
           <div className={styles.ajouterPanier}>
-            <Link href="/cart"><p className={styles.ajouterPanierText}>Ajouter au panier</p></Link>
+            <button onClick={handleAddToCart}><p className={styles.ajouterPanierText}>Ajouter au panier</p></button>
           </div>
           <div className={styles.accountShopping} onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
               <Link href="/cart">
@@ -130,4 +279,4 @@ const HeaderJouet = (props) => {
   )
 }
 
-export default HeaderJouet;
+export default HeaderPlayboard;

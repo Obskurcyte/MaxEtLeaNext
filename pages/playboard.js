@@ -5,13 +5,14 @@ import Link from 'next/link';
 import Footer from "../components/Footer";
 import Engagement from "../components/Engagement";
 import Garanties from "../components/GarantiesMaxEtLea";
-import HeaderJouet from "../components/HeaderJouet";
+import HeaderPlayboard from "../components/HeaderPlayboard";
 
 const PlayBoardScreen = props => {
 
+
     return (
       <div>
-        <HeaderJouet jouetName="PLAYBOARD" jouetPrix="29,90€"/>
+        <HeaderPlayboard />
 
         <div className="imgCouverture">
           <div className="playboard-title-container">
