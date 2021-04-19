@@ -48,6 +48,7 @@
 .garantiesSupercontainer {
   padding-top: 5%;
   background-color: #F0F0F0;
+  text-align: center;
 }
 
 .imageGaranties {
@@ -57,4 +58,13 @@
 .satisfactionMiniContainer {
   display: flex;
   justify-content: space-around;
+}
+
+@media screen and (max-width: 900px){
+  .garantiesTitle{
+    font-size: 23px;
+  }
+  .garantiesUndertitle{
+    font-size: 17px;
+  }
 }

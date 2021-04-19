@@ -48,16 +48,13 @@
   border-radius: 44px;
   filter: drop-shadow(1.871px 8.803px 13.5px #bebebe);
   background-color: #e72c59;
-  margin: 0 auto;
-  padding: 2% 2%;
-  position: absolute;
-  top: 113%;
-  left: 37%;
+  margin: -40px auto;
+  padding: 10px;
   cursor: pointer;
 }
 
 .voir-offre-title {
-  font-size: 56px;
+  font-size: 40px;
   letter-spacing: -2px;
   color: #ffffff;
   font-weight: 400;
@@ -88,7 +85,7 @@
   box-shadow: 0px 10px 25px 10px rgb(0 0 0 / 20%);
 }
 
-.videoContainer .video-presentation{
+.computer .videoContainer .video-presentation{
   border-radius: 70px;
   margin-bottom: 50px;
   position: absolute;
@@ -166,7 +163,8 @@
 }
 
 .image-recap-container {
-  width: 50%;
+  width: 90%;
+  max-width: 550px;
   margin: 2% auto;
 }
 
@@ -232,7 +230,7 @@
   width: 100%;
 }
 
-.robusteContainer {
+.computer .robusteContainer {
   display: flex;
   width: 100%;
   bottom: 20px;
@@ -312,7 +310,7 @@
   background-position: bottom;
 }
 
-.videoContainer {
+.computer .videoContainer {
   background-color: white;
   min-height: 780px;
   padding: 100px;
@@ -446,7 +444,7 @@
 
 .garconSouriantContainer {
   border-radius: 20px;
-  width: 20%;
+  min-width: 220px;
 }
 
 .rowIcone img {
@@ -572,8 +570,8 @@
 .playboardContainer {
   background-color: #e2dfd8;
   margin-top: 200px;
-  padding-bottom: 100px;
   position: relative;
+  padding-bottom: 50px;
 }
 
 .playboardSubContainer{
@@ -618,19 +616,18 @@
 }
 
 .addPanierContainer {
-  position: absolute;
   border-radius: 64px;
   filter: drop-shadow(1.871px 8.803px 13.5px #bebebe);
   background-color: #e72c59;
-  top: 93%;
-  left: 38%;
   padding: 1% 3%;
   cursor: pointer;
+  margin: -40px auto;
+  max-width: 400px;
 }
 
 .addPanierContainer p {
-  font-size: 50px;
-  letter-spacing: -3px;
+  font-size: 35px;
+  letter-spacing: -1px;
   color: white!important;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
@@ -671,4 +668,104 @@
 .sourireTextContainer {
   margin: 0 auto;
   width: 60%;
+}
+
+.offertPhoto, .ebook{
+  width: 100%;
+}
+
+.mobile{
+  display: none;
+}
+
+.icone-container1 img{
+  height: 75px;
+}
+
+@media screen and (max-width: 900px){
+  .playboard-title{
+    font-size: 35px;
+  }
+  .playboard-title-container, .pensee-paragraph-container, .img-bebe-container{
+    width: 100%;
+    max-width: 250px;
+  }
+  .playboard-paragraph, .pensee-paragraph,.apprendreContainer p{
+    font-size: 20px;
+    width: 90%;
+    margin: auto;
+  }
+  .sourireEnfant{
+    width: 100%;
+  }
+  .voir-offre{
+    width: 100%;
+    max-width: 250px;
+    top: auto;
+    margin: -25px auto;
+    left: 0;
+  }
+  .voir-offre-title{
+    font-size: 25px;
+  }
+  .computer{
+    display: none;
+  }
+  .mobile{
+    display: block;
+  }
+  .sourireTextContainer, .huitEnUnContainerText, .icone-container1{
+    width: 95%;
+    max-width: 500px;
+  }
+  .icone-container1{
+    margin-top: 20px;
+  }
+  .sourireTextContainer h5, .huitEnUnText, .apprentissage h5, .UnaSixTitle, .recommendation-title, .clientSatisfait h5{
+    font-size: 30px;
+  }
+  .UnaSixTitle{
+    letter-spacing: 0px;
+  }
+  .UnaSixTitle span{
+    font-size: 40px;
+  }
+  .video-container{
+    height: 200px;
+    max-width: 350px;
+  }
+  .react-player__preview img{
+    max-width: 100px;
+  }
+  .garconSouriantContainer{
+    margin-bottom: 25px;
+  }
+  .imgCouverture{
+    height: 450px;
+  }
+  .playboardBoisContainer{
+    margin: auto;
+  }
+  .addPanierContainer p{
+    font-size: 25px;
+    margin: 0px;
+  }
+  .addPanierContainer {
+    max-width: 250px;
+    margin: -20px auto;
+  }
+  .enfantTableauContainer{
+    margin: -50px auto 20px auto;
+  }
+  .icone-mini-container{
+    min-width: 100px;
+  }
+  .icone-mini-container p{
+    font-size: 15px;
+  }
+  .videoContainer{
+    width: 100%;
+    margin: auto;
+    background-color: white;
+  }
 }

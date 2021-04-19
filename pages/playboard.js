@@ -164,7 +164,7 @@ const PlayBoardScreen = props => {
         <div className="playboardBoisContainer">
           <img src={'/playboardBois.png'} alt="" className="playboardBoisImg"/>
         </div>
-        <div className="fullwidth">
+        <div className="fullwidth computer">
           <div className="videoContainer">
           <div className="video-container">
             <ReactPlayer
@@ -180,8 +180,8 @@ const PlayBoardScreen = props => {
                 light="https://maxandlea.fr/wp-content/uploads/2021/04/image.png"
               />
           </div>
-            <div className="robusteContainer">
-              <div className="constructionRobuste">
+            <div className="robusteContainer row">
+              <div className="constructionRobuste col">
                 <div><p className="robusteTitle">CONSTRUCTION ROBUSTE EN BOIS</p></div>
                 <div><p className="p1">Bois issu de forêts certifiées
                   FSC® et de haute qualité.</p></div>
@@ -191,7 +191,49 @@ const PlayBoardScreen = props => {
                   pour une durabilité maximale.</p></div>
               </div>
 
-              <div className="finitionSoignees">
+              <div className="finitionSoignees col">
+                <div><p className="finitionTitle">FINITIONS SOIGNEES</p></div>
+                <div><p className="p1">Des couleurs douces et
+                  chaleureuses étudiées pour
+                  apaiser l’enfant.</p></div>
+                <div><p className="p2">Angles biseautés et finitions soignées</p></div>
+                <div><p className="p3">Des textures douces et délicates
+                  pour une parfaite prise en main.</p></div>
+                <div><p className="p4">Des images travaillées pour faciliter
+                  la reconnaissance.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="fullwidth mobile">
+          <div className="videoContainer">
+          <div className="video-container">
+            <ReactPlayer
+                url="https://maxandlea.com/wp-content/uploads/2020/05/Patchwork-V3-600-1.mp4"
+                width="100%"
+                height="480px"
+                className="video-presentation"
+                playing
+                height="100%"
+                width="100%"
+                loop="true"
+                playIcon={<img src="https://maxandlea.fr/wp-content/uploads/2021/04/Lire-la-video.png" alt=""/>}
+                light="https://maxandlea.fr/wp-content/uploads/2021/04/image.png"
+              />
+          </div>
+            <div className="robusteContainer row">
+              <div className="constructionRobuste col">
+                <div><p className="robusteTitle">CONSTRUCTION ROBUSTE EN BOIS</p></div>
+                <div><p className="p1">Bois issu de forêts certifiées
+                  FSC® et de haute qualité.</p></div>
+                <div><p className="p2">Matériaux nobles &
+                  construction solide</p></div>
+                <div><p className="p3">Une fabrication soignée
+                  pour une durabilité maximale.</p></div>
+              </div>
+
+              <div className="finitionSoignees col">
                 <div><p className="finitionTitle">FINITIONS SOIGNEES</p></div>
                 <div><p className="p1">Des couleurs douces et
                   chaleureuses étudiées pour
@@ -219,8 +261,8 @@ const PlayBoardScreen = props => {
         </div>
 
         <div className="imagesContainer">
-
-          <div className="garconSouriantContainer">
+        <div className="row">
+          <div className="garconSouriantContainer col">
           <div class="ageContainer">
           <img src={'/bebeBrasTendu.png'} alt="" className="bebeBrasTendu ageImg"/>
             <div class="ageOverlay">
@@ -255,8 +297,9 @@ const PlayBoardScreen = props => {
             </div>
           </div>
           </div>
+          
 
-          <div className="garconSouriantContainer">
+          <div className="garconSouriantContainer col">
           <div class="ageContainer">
           <img src="https://maxandlea.com/wp-content/uploads/2020/05/Be%CC%81be%CC%812ans.jpg" alt="" className="bebeBrasTendu ageImg"/>
             <div class="ageOverlay">
@@ -292,7 +335,7 @@ const PlayBoardScreen = props => {
           </div>
           </div>
 
-          <div className="garconSouriantContainer">
+          <div className="garconSouriantContainer col">
           <div class="ageContainer">
           <img src={'/garconSouriant.png'} alt="" className="garconSouriant ageImg"/>
             <div class="ageOverlay">
@@ -328,7 +371,7 @@ const PlayBoardScreen = props => {
           </div>
           </div>
 
-          <div className="garconSouriantContainer">
+          <div className="garconSouriantContainer col">
           <div class="ageContainer">
           <img src={'/filleSouriant.png'} alt="" className="garconSouriant ageImg"/>
             <div class="ageOverlay">
@@ -363,7 +406,7 @@ const PlayBoardScreen = props => {
             </div>
           </div>
           </div>
-
+          </div>
         </div>
 
         <div className="apprentissage">
@@ -414,11 +457,12 @@ const PlayBoardScreen = props => {
                 <img src={'/offertPhoto.png'} alt="" className="offertPhoto"/>
               </div>
             </div>
-            <div className="addPanierContainer">
-              <Link href="/cart"><p>Ajouter au panier</p></Link>
-            </div>
+            
           </div>
         </div>
+        <div className="addPanierContainer">
+              <Link href="/cart"><p>Ajouter au panier</p></Link>
+            </div>
 
         <div className="clientSatisfait">
           <h5>6867 clients déjà satisfaits</h5>
