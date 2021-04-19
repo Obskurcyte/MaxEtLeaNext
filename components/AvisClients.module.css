@@ -1,0 +1,33 @@
+.avisContainer{
+    max-width:850px;
+    margin: 50px auto 50px auto;
+}
+
+.avisName{
+    color: #272727;
+    font-style: italic;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+.paysContainer{
+    width: 100%;
+}
+
+.paysContainer p, .paysContainer img{
+    display: inline-block;
+}
+
+.paysContainer p{
+    margin-right: 10px;
+    margin-bottom: 0px;
+}
+
+.stars{
+    max-width: 110px;
+}
+
+.avisDesc{
+    color: #7A7A7A;
+    font-style: italic;
+}

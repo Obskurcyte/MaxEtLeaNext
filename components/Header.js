@@ -59,7 +59,7 @@ const Header = () => {
 
   return (
     <div className={styles.stickyHeader}>
-      <div style={{backgroundColor: '#e72c59', textAlign: 'center', height: '70px'}}>
+      <div className={styles.freeContainer}>
         <h1 className={styles.freeLivraison}>Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
       </div>
 
@@ -69,7 +69,11 @@ const Header = () => {
             <img src={imgurl} alt="drapeau français" className={styles.drapeauImg} onClick={handleClick}/>
           </div>
           <Nav className={styles.navBar}>
-            <div className={styles.imgContainer}><img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1536x567.png" alt="" className={styles.imgNavbar}/></div>
+            <div className={styles.imgContainer}>
+              <Link href="/">
+                <img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1536x567.png" alt="" className={styles.imgNavbar}/>
+              </Link>
+            </div>
             <Link href="/" style={{marginTop: '5%'}}>
               <img src={'/home.png'} alt="" style={{width: "3%", height: '3%'}} className={styles.home}/>
             </Link>
@@ -91,7 +95,7 @@ const Header = () => {
               <Link href="/cart">
                 <Nav.Link>
 
-                  <div className="cart-wrap">
+                  <div className={styles.cartWrap}>
                     {productCount && (<div className={styles.productsCountContainer}>
                       <div className={styles.productCountInnerContainer}>{productCount ? <span className={styles.productCountText}>{productCount}</span> : ''}</div>
                     </div>)}
