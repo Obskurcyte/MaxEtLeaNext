@@ -254,7 +254,7 @@ const HeaderTour = (props) => {
           </div>
 
           <div className={styles.ajouterPanier}>
-            <button onClick={handleAddToCart}><p className={styles.ajouterPanierText}>Ajouter au panier</p></button>
+            <button onClick={handleAddToCart} className={styles.innerBtnCart}><p className={styles.ajouterPanierText}>Ajouter au panier</p></button>
           </div>
           <div className={styles.accountShopping} onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
             <Link href="/cart">

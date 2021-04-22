@@ -280,6 +280,11 @@
   flex-direction: column;
 }
 
+.innerBtnCart{
+  background: transparent;
+  border: none;
+}
+
 @media screen and (max-width: 900px){
   .home, .productsCountContainer, .jouetName, .economie, .langue{
     display: none;

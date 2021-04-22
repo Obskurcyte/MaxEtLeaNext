@@ -7,11 +7,43 @@ import Engagement from "../components/Engagement";
 import Garanties from "../components/GarantiesMaxEtLea";
 import HeaderPlayboard from "../components/HeaderPlayboard";
 import AvisClients from "../components/AvisClients";
+import Head from 'next/head'
+
+const handleAddToCart = () => {
+  if (process.browser) {
+    let existingCart = localStorage.getItem('woo-next-cart');
+    console.log('clicked')
+    console.log('existingCart', existingCart)
+    if (existingCart!=null) {
+      existingCart = JSON.parse(existingCart)
+      const qtyToBeAdded = 1
+      const updatedCart = updateCart(existingCart, products[4], qtyToBeAdded);
+      setCart(updatedCart)
+    } else {
+      const newCart = addFirstProduct(products[4]);
+      setCart(newCart)
+    }
+  }
+}
 
 const PlayBoardScreen = props => {
 
     return (
       <div>
+        <Head>
+          <title>Max And Lea - PlayBoard</title>
+          <link
+            rel="stylesheet"
+            type="text/css"
+            charset="UTF-8"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+          />
+        </Head>
         <HeaderPlayboard />
 
         <div className="imgCouverture">
@@ -446,12 +478,15 @@ const PlayBoardScreen = props => {
           </div>
         </div>
         <div className="addPanierContainer">
-              <Link href="/cart"><p>Ajouter au panier</p></Link>
+              
+              <button className="innerBtnCart"><p>Ajouter au panier</p></button>
             </div>
 
         <div className="clientSatisfait">
           <h5>6867 clients déjà satisfaits</h5>
         </div>
+
+        <AvisClients/>
 
         <div className="sourireContainer">
           <div className="sourireTextContainer">

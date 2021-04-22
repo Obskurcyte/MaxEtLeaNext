@@ -193,7 +193,7 @@ const CheckoutScreen = props => {
             <div className="productContainer">
               <div className="imgContainer">
                 {
-                  cart.products.length && (
+                  cart && cart.products.length && (
                     cart.products.map(item => (
                         <CartItem
                           key={item.productId}
@@ -223,7 +223,7 @@ const CheckoutScreen = props => {
           <img src={'/Séparation.png'} alt="" className=""/>
           <div className="prixContainer">
             <div className="prixText">
-              <a href="#" onClick={() => setGoPaiement(false)}>
+              <a href="javascript:void(0);" onClick={() => setGoPaiement(false)}>
               <p className={!goPaiement ? 'coordonneesText' : 'coordonneesTextLight'}>Coordonnées</p>
               </a>
               <p className={goPaiement ? 'coordonneesText' : 'coordonneesTextLight'}>Paiement</p>

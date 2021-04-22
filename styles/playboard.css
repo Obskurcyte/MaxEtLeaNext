@@ -682,6 +682,11 @@
   height: 75px;
 }
 
+.innerBtnCart{
+  background: transparent;
+  border: none;
+}
+
 @media screen and (max-width: 900px){
   .playboard-title{
     font-size: 35px;
