@@ -266,7 +266,7 @@ const HeaderPlayboard = (props) => {
                       <div className={styles.productCountInnerContainer}>{productCount ? <span className={styles.productCountText}>{productCount}</span> : ''}</div>
                     </div>)}
                     <img src={'/shoppingcart.png'} alt="shopping cart" />
-                    {totalPrice1 ? <span className={styles.totalPriceSpan}>€{totalPrice1.toFixed(2)}</span> : ''}
+                    {totalPrice1 ? <span className={styles.totalPriceSpan}>{totalPrice1.toFixed(2)}€</span> : ''}
                   </div>
                 </Nav.Link>
 

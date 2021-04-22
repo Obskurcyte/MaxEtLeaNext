@@ -183,10 +183,18 @@ const CartItem = ({item}) => {
       const qtyTBeRemovedFromTotal = productToBeRemoved.qty;
       const priceToBeDeductedFromTotal = productToBeRemoved.totalPrice;
 
-      let updatedCart = existingCart;
-      updatedCart.products.splice(productExistIndex)
+      console.log('qtyTBeRemovedFromTotal', qtyTBeRemovedFromTotal)
+      console.log('priceToBeDeductedFromTotal', priceToBeDeductedFromTotal)
+
+      let updatedCart = existingCart
+      /*if(productExistIndex == 0){
+        updatedCart.products.shift()
+      }
+      else*/ updatedCart.products.splice(productExistIndex, 1)
       updatedCart.totalProductCount = updatedCart.totalProductCount - qtyTBeRemovedFromTotal;
       updatedCart.totalProductsPrice = updatedCart.totalProductsPrice - priceToBeDeductedFromTotal;
+
+      console.log('updatedCart', updatedCart)
 
       localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
       return updatedCart
@@ -205,7 +213,7 @@ const CartItem = ({item}) => {
     <tr key={item.productId} className="tr-product">
       <th className="cart-element">
       <span onClick={(event) => handleRemoveProduct(event, item.productId)}>
-        <td className="croix"><button className="button-supp">x</button></td>
+        <td className="croix"><button className="button-supp">t</button></td>
       </span>
       </th>
       <td>
