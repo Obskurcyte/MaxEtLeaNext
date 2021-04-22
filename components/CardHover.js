@@ -224,7 +224,7 @@ const CardHover = () => {
         <hr/>
       </div>
       <div className={styles.buttonsContainer}>
-        <Link href="/cart" className={styles.linkPopper}>Commander</Link>
+        <Link href="/checkout" className={styles.linkPopper}>Commander</Link>
       </div>
     </div>
   )

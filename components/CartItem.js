@@ -10,7 +10,7 @@ const CartItem = ({item}) => {
 
 
   const [cart, setCart] = useContext(AppContext)
-
+  console.log(cart)
 
   const dispatch = useDispatch();
   const product = useSelector(state => state.product);
@@ -25,20 +25,33 @@ const CartItem = ({item}) => {
 
   // const [cart, setCart] = useContext(AppContext);
 
+  const [productCount, setProductCount] = useState(item.qty);
 
-  let valueCount = 1;
 
+  console.log(productCount)
   const onIncreaseClick = () => {
-    valueCount ++;
-    document.querySelector('.change-quantity').value = valueCount;
+    setProductCount(productCount + 1);
+    let existingCart = localStorage.getItem('woo-next-cart');
+    existingCart = JSON.parse(existingCart);
+
+    const updatedCart = updateCart(existingCart, item, false, productCount + 1)
+
+    setCart(updatedCart)
+    document.querySelector('.change-quantity').value = productCount;
   }
 
   const onDecreaseClick = () => {
-    if (valueCount === 1) {
+    if (productCount === 1) {
       return;
     } else {
-      valueCount --;
-      document.querySelector('.change-quantity').value = valueCount;
+      setProductCount(productCount - 1);
+      let existingCart = localStorage.getItem('woo-next-cart');
+      existingCart = JSON.parse(existingCart);
+
+      const updatedCart = updateCart(existingCart, item, false, productCount -1)
+
+      setCart(updatedCart)
+      document.querySelector('.change-quantity').value = productCount;
     }
   }
 
@@ -74,6 +87,7 @@ const CartItem = ({item}) => {
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };
+
 
   const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
     const updatedProducts = getUpdatedProducts(existingCart.products, product, qtyToBeAdded, newQty);
@@ -143,25 +157,7 @@ const CartItem = ({item}) => {
 
 
 
-  const [productCount, setProductCount] = useState(item.qty);
-
-  const handleQtyChange = (event) => {
-    if (process.browser) {
-      const newQty = event.target.value
-      console.log('new Qty', newQty)
-      setProductCount(newQty)
-
-      let existingCart = localStorage.getItem('woo-next-cart');
-      existingCart = JSON.parse(existingCart);
-
-    const updatedCart = updateCart(existingCart, item, false, newQty)
-
-    setCart(updatedCart)
-    }
-  //  setCart(updateCart)
-  }
-
-  const removeProduct = (productId) => {
+    const removeProduct = (productId) => {
 
     let existingCart = localStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart);
@@ -210,35 +206,32 @@ const CartItem = ({item}) => {
 
 
   return (
-    <tr key={item.productId} className="tr-product">
-      <th className="cart-element">
-      <span onClick={(event) => handleRemoveProduct(event, item.productId)}>
-        <td className="croix"><button className="button-supp">t</button></td>
-      </span>
-      </th>
-      <td>
-        <td><img src="https://maxandlea.com/wp-content/uploads/2020/07/XYLOPHONE-TABS-compress-150x150.jpg" className="cart-image" alt=""/></td>
-      </td>
-      <td>
-        {item.name}
-      </td>
-      <td>
-        {item.price.toFixed(2)}
-      </td>
-      <td>
-        <div className="input-card">
-          <input
-            type="number"
-            className="cart-input"
-            value={productCount}
-            onChange={handleQtyChange}
-          />
+    <div key={item.productId} className="tr-product">
+      <div className="innerContainerCart">
+        <span onClick={(event) => handleRemoveProduct(event, item.productId)}>
+          <div className="croix"><button className="button-supp">x</button></div>
+        </span>
+
+        <div className="imgContainerCart">
+          <img src="https://maxandlea.com/wp-content/uploads/2020/07/XYLOPHONE-TABS-compress-150x150.jpg" className="cart-image" alt=""/>
         </div>
-      </td>
-      <td>
-        {item.totalPrice}
-      </td>
-    </tr>
+
+        <div className="prixDescriptionContainer">
+          <div>
+            <p className="itemPrix">{item.totalPrice} EUR</p>
+          </div>
+          <div className="descriptionProduit">
+            <p className="descriptionProduitText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque corporis fugiat harum id illum ipsum mollitia pariatur quibusdam? Eveniet, nulla!</p>
+          </div>
+          <div className="input-quantity">
+            <button className="decrease-button" onClick={onDecreaseClick}>-</button>
+              <input type="text" className="change-quantity" value={productCount}/>
+            <button className="increase-button" style={{color: "#e72c59"}} onClick={onIncreaseClick}>+</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
   )
 }
 

@@ -1,0 +1,63 @@
+.recommandeTitle {
+  font-size: 70px;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #648793;
+  font-family: "D KButterfly Ball", sans-serif;
+  text-align: center;
+}
+
+.avisContainer {
+  margin: 0 auto;
+  width: 40%;
+}
+
+.avisImg {
+  width: 100%;
+}
+
+.title {
+  font-size: 20px;
+  letter-spacing: 0px;
+  color: #4f7a88;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.imgAvatarContainer {
+  height: 25%;
+  width: 20%;
+  margin: 2% auto;
+  align-items: center;
+}
+
+.avatarImg {
+  height: 100%;
+  width: 100%;
+}
+
+.description {
+  font-size: 20px;
+  letter-spacing: 0px;
+  color: #9bb0b7;
+  font-weight: 300;
+  font-style: italic;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  margin-top: 2%;
+}
+
+.avisInnerContainer {
+  width: 90%;
+}
+
+.avisCarousel {
+  margin: 0 auto;
+}
+
+.carouselContainer {
+  margin: 0 auto;
+  width: 85%;
+}

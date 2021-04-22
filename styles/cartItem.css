@@ -1,5 +1,6 @@
 .croix {
   width: 30px;
+  margin-top: 100px;
 }
 
 .input-card {
@@ -30,9 +31,36 @@ table {
 }
 
 .cart-image {
-  width: 60%;
+  width: 100%;
+  height: 100%;
+  text-align: center;
 }
 
+.itemPrix {
+  font-size: 40px;
+  letter-spacing: -1px;
+  color: #11c47e;
+  font-weight: bold;
+  font-family: "Myriad Pro", sans-serif;
+}
+
+.descriptionProduitText {
+  font-size: 20px;
+  letter-spacing: 0px;
+  color: #000000;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+}
+
+.imgContainerCart {
+  border-radius: 166px;
+  background-color: #f2f4f6;
+  width: 25%;
+  height: 200px;
+  overflow: hidden;
+  align-items: center;
+  margin-top: 5%;
+}
 .button-supp {
   display: block;
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
@@ -144,4 +172,69 @@ th {
 
 .total-price {
   border: 1px solid rgba(0, 0, 0, .1);
+}
+
+.input-quantity {
+  display: flex;
+  height: 50px;
+  width: 35%
+}
+
+
+.increase-button {
+  width: 33%;
+  height: 100%;
+  border: 1px solid #e4e4e4;
+}
+
+.decrease-button {
+  width: 33%;
+  height: 100%;
+  border: 1px solid #e4e4e4;
+}
+
+
+.change-quantity {
+  width: 33%;
+  height: 100%;
+  margin: 0;
+  border: 1px solid #e4e4e4;
+  font-size: 16px;
+  text-align: center;
+}
+
+.innerContainerCart {
+  display: flex;
+  justify-content: space-around;
+}
+
+.prixDescriptionContainer {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+}
+
+.sousTotal {
+  display: flex;
+}
+
+.sousTotalText {
+  font-size: 25px;
+  letter-spacing: 0px;
+  line-height: 55px;
+  color: #11c47e;
+  font-family: "Myriad Pro", sans-serif;
+}
+
+.itemTotalPrice {
+  font-size: 25px;
+  letter-spacing: 0px;
+  line-height: 55px;
+  color: #11c47e;
+  font-family: "Myriad Pro", sans-serif;
+  font-weight: bold;
+}
+
+.tr-product {
+  margin-bottom: 18%;
 }
