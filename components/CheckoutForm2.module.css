@@ -1,0 +1,29 @@
+.checkboxContainer {
+  display: flex;
+}
+
+.bigInput {
+  width: 100% !important;
+  margin-right: 0px!important;
+  margin-left: 0px!important;
+}
+
+.inputMoyenGauche {
+  width: 50% !important;
+  margin-left: 0!important;
+}
+
+.inputMoyenDroit {
+  width: 50% !important;
+  margin-right: 0!important;
+}
+
+.inputContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.paragraphFacturation {
+  margin-top: 2.5%;
+}

@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Engagement from "../components/Engagement";
 import Garanties from "../components/GarantiesMaxEtLea";
 import HeaderPlayboard from "../components/HeaderPlayboard";
+import AvisClients from "../components/AvisClients";
 
 const PlayBoardScreen = props => {
 
@@ -281,7 +282,7 @@ const PlayBoardScreen = props => {
             </div>
           </div>
           </div>
-          
+
 
           <div className="garconSouriantContainer col">
           <div class="ageContainer">
@@ -441,7 +442,7 @@ const PlayBoardScreen = props => {
                 <img src={'/offertPhoto.png'} alt="" className="offertPhoto"/>
               </div>
             </div>
-            
+
           </div>
         </div>
         <div className="addPanierContainer">
