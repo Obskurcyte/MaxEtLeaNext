@@ -207,7 +207,7 @@ const HeaderTour = (props) => {
 
   return (
     <div className={styles.stickyHeader}>
-      <div style={{backgroundColor: '#e72c59', textAlign: 'center', height: '70px'}}>
+      <div className={styles.freeContainer}>
         <h1 className={styles.freeLivraison}>Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
       </div>
 

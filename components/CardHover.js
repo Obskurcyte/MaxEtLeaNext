@@ -149,7 +149,7 @@ const CardHoverItem = ({item}) => {
       const priceToBeDeductedFromTotal = productToBeRemoved.totalPrice;
 
       let updatedCart = existingCart;
-      updatedCart.products.splice(productExistIndex)
+      updatedCart.products.splice(productExistIndex,1)
       updatedCart.totalProductCount = updatedCart.totalProductCount - qtyTBeRemovedFromTotal;
       updatedCart.totalProductsPrice = updatedCart.totalProductsPrice - priceToBeDeductedFromTotal;
 
@@ -172,7 +172,6 @@ const CardHoverItem = ({item}) => {
       <div>
           <div className={styles.imageContainer}>
             <td className="croix"><button className="button-supp" onClick={(e) => handleRemoveProduct(e, item.productId)}>x</button></td>
-            <img src="https://maxandlea.com/wp-content/uploads/2020/07/XYLOPHONE-TABS-compress-150x150.jpg" alt=""/>
             <div>
               <p>{item.name}</p>
             </div>

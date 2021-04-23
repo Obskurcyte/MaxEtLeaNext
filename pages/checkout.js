@@ -126,7 +126,14 @@ const CheckoutScreen = props => {
   const [adress, setAdresse] = useState('');
   const [ville, setVille] = useState('');
   const [codePostal, setCodePostal] = useState('');
-
+  const [prenom, setPrenom] = useState('');
+  const [nom, setNom] = useState('');
+  const [pays, setPays] = useState('');
+  const [adresseFacturation, setAdresseFacturation] = useState('')
+  const [villeFacturation, setVilleFacturation] = useState('')
+  const [codepostalFaturation, setCodepostalFacturation] = useState('')
+  const [paysFacturation, setPaysFacturation] = useState('')
+  const [phone, setPhone] = useState('')
   const [firstStep, setFirstStep] = useState(false);
 
 
@@ -197,7 +204,7 @@ const CheckoutScreen = props => {
             <div className="productContainer">
               <div className="imgContainer">
                 {
-                  cart.products.length && (
+                  cart && cart.products.length && (
                     cart.products.map(item => (
                         <CartItem
                           key={item.productId}
@@ -227,7 +234,7 @@ const CheckoutScreen = props => {
           <img src={'/Séparation.png'} alt="" className=""/>
           <div className="prixContainer">
             <div className="prixText">
-              <a href="#" onClick={() => setGoPaiement(false)}>
+              <a href="javascript:void(0);" onClick={() => setGoPaiement(false)}>
               <p className={!goPaiement ? 'coordonneesText' : 'coordonneesTextLight'}>Coordonnées</p>
               </a>
               <p className={goPaiement ? 'coordonneesText' : 'coordonneesTextLight'}>Paiement</p>
@@ -242,6 +249,11 @@ const CheckoutScreen = props => {
                     setEmail(values.email)
                     setAdresse(values.adresse)
                     setCodePostal(values.postalcode)
+                    setAdresseFacturation(values.adresseFacturation)
+                    setCodepostalFacturation(values.codePostalFacturation)
+                    setVilleFacturation(values.villeFacturation)
+                    setPaysFacturation(values.paysFacturation)
+                    setPhone(values.phone)
                     setGoPaiement(true)
                   }}
                 >
@@ -408,7 +420,21 @@ const CheckoutScreen = props => {
                 </Formik>
               ): <Elements stripe={stripePromise}>
                 <div className="formData">
-                  <CheckoutFormStripe adress={adress} codePostal={codePostal} ville={ville} email={email} price={totalPrice1}/>
+                  <CheckoutFormStripe
+                    adress={adress}
+                    codePostal={codePostal}
+                    ville={ville}
+                    email={email}
+                    price={totalPrice1}
+                    prenom={prenom}
+                    nom={nom}
+                    pays={pays}
+                    adresseFacturation={adresseFacturation}
+                    paysFacturation={paysFacturation}
+                    villeFacturation={villeFacturation}
+                    codePostalFacturation={codepostalFaturation}
+                    phone={phone}
+                  />
                 </div>
               </Elements>}
 

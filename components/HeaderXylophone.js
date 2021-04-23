@@ -10,6 +10,7 @@ import CardHover from "./CardHover";
 import Link from 'next/link';
 import * as product from '../products';
 
+
 const HeaderXylophone = (props) => {
 
   console.log(product)
@@ -207,7 +208,7 @@ const HeaderXylophone = (props) => {
 
   return (
     <div className={styles.stickyHeader}>
-      <div style={{backgroundColor: '#e72c59', textAlign: 'center', height: '70px'}}>
+      <div className={styles.freeContainer}>
         <h1 className={styles.freeLivraison}>Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
       </div>
 
@@ -254,7 +255,7 @@ const HeaderXylophone = (props) => {
           </div>
 
           <div className={styles.ajouterPanier}>
-            <Link href="/cart"><p className={styles.ajouterPanierText}>Ajouter au panier</p></Link>
+              <button onClick={handleAddToCart} className={styles.innerBtnCart}><p className={styles.ajouterPanierText}>Ajouter au panier</p></button>
           </div>
           <div className={styles.accountShopping} onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
             <Link href="/cart">
