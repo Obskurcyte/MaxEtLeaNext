@@ -139,7 +139,20 @@ const PlayBoardScreen = props => {
     return (
       <div>
         <HeaderPlayboard />
-
+        <Head>
+          <title>Max And Lea - PlayBoard</title>
+          <link
+            rel="stylesheet"
+            type="text/css"
+            charset="UTF-8"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+          />
+        </Head>
         <div className="imgCouverture">
           <div className="playboard-title-container">
             <h1 className="playboard-title">PLAYBOARD</h1>
@@ -576,6 +589,10 @@ const PlayBoardScreen = props => {
 
         <div className="clientSatisfait">
           <h5>6867 clients déjà satisfaits</h5>
+        </div>
+
+        <div>
+          <AvisClients/>
         </div>
 
         <div className="sourireContainer">
