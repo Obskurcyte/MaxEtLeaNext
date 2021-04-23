@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import ReactPlayer from 'react-player'
 import Header from "../components/Header";
 import Link from 'next/link';
@@ -7,8 +7,134 @@ import Engagement from "../components/Engagement";
 import Garanties from "../components/GarantiesMaxEtLea";
 import HeaderPlayboard from "../components/HeaderPlayboard";
 import AvisClients from "../components/AvisClients";
+import * as product from "../products";
+import {AppContext} from "../components/context/AppContext";
 
 const PlayBoardScreen = props => {
+
+  const [cart, setCart] = useContext(AppContext);
+  const products = product.products
+
+  const getFloatVal = (string) => {
+    let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
+    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)): '';
+  };
+
+  const addFirstProduct = (product) => {
+    let productPrice = getFloatVal(product.price)
+
+    let newCart = {
+      products: [],
+      totalProductCount: 1,
+      totalProductsPrice: productPrice
+    }
+
+    const newProduct = createNewProduct(product, productPrice, 1)
+    newCart.products.push(newProduct);
+    localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
+    console.log('newCart', newCart)
+    return newCart
+
+  };
+
+  const createNewProduct = (product, productPrice, qty) => {
+    return {
+      productId: product.id,
+      name: product.name,
+      price: productPrice,
+      qty: qty,
+      totalPrice: parseFloat((productPrice * qty).toFixed(2))
+    }
+  };
+
+
+  const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
+    const updatedProducts = getUpdatedProducts(existingCart.products, products[4], qtyToBeAdded, newQty);
+    const addPrice = (total, item) => {
+
+      total.totalPrice = item.totalPrice;
+      total.qty += item.qty;
+      console.log('total', total)
+      console.log('item', item)
+      console.log(total)
+      return total;
+    }
+
+    // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
+    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+
+    const updatedCart = {
+      products: updatedProducts,
+      totalProductCount: parseInt(total.qty),
+      totalProductsPrice: parseFloat(total.totalPrice)
+    }
+
+    localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart))
+    return updatedCart
+  };
+
+
+
+
+
+  /**
+   * Get updated products array
+   *
+   * @param existingProductsInCart
+   * @param product
+   * @param qtyToBeAdded
+   * @param newQty
+   * @returns {*}
+   */
+
+
+  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[4].id);
+
+    if (-1 < productExistsIndex) {
+      let updatedProducts = existingProductsInCart;
+      let updatedProduct = updatedProducts[productExistsIndex];
+
+      updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
+      updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
+      return updatedProducts;
+    } else {
+      let productPrice = parseFloat(product.price);
+      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+      existingProductsInCart.push(newProduct);
+      return existingProductsInCart
+    }
+  };
+
+  const isProductInCart = (existingProductsInCart, productId) => {
+    const returnItemThatExists = (item, index) => {
+      if (productId === item.productId) {
+        return item;
+      }
+    };
+
+    const newArray = existingProductsInCart.filter(returnItemThatExists)
+
+    return existingProductsInCart.indexOf(newArray[0]);
+  };
+
+
+  const handleAddToCart = () => {
+    if (process.browser) {
+      let existingCart = localStorage.getItem('woo-next-cart');
+      console.log('clicked')
+      console.log('existingCart', existingCart)
+      if (existingCart!=null) {
+        existingCart = JSON.parse(existingCart)
+        const qtyToBeAdded = 1
+        const updatedCart = updateCart(existingCart, products[4], qtyToBeAdded);
+        setCart(updatedCart)
+      } else {
+        const newCart = addFirstProduct(products[4]);
+        setCart(newCart)
+      }
+    }
+  }
 
     return (
       <div>
@@ -442,12 +568,11 @@ const PlayBoardScreen = props => {
                 <img src={'/offertPhoto.png'} alt="" className="offertPhoto"/>
               </div>
             </div>
-
           </div>
         </div>
-        <div className="addPanierContainer">
-              <Link href="/cart"><p>Ajouter au panier</p></Link>
-            </div>
+        <div className="addPanierContainer" onClick={handleAddToCart}>
+              <Link href='#'><p>Ajouter au panier</p></Link>
+        </div>
 
         <div className="clientSatisfait">
           <h5>6867 clients déjà satisfaits</h5>

@@ -21,9 +21,8 @@ import Carousel from 'react-elastic-carousel';
 import Recommande from "../components/Recommande";
 
 
-const stripePromise = loadStripe('pk_test_sIdQGEQcwKTcbOMKcdDnNxTO00z76c41q8')
+const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
-console.log(process.env.REACT_APP_PUBLISHABLE_KEY)
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -122,6 +121,11 @@ const CheckoutScreen = props => {
     }
   }
 
+
+  const [email, setEmail] = useState('');
+  const [adress, setAdresse] = useState('');
+  const [ville, setVille] = useState('');
+  const [codePostal, setCodePostal] = useState('');
 
   const [firstStep, setFirstStep] = useState(false);
 
@@ -234,6 +238,10 @@ const CheckoutScreen = props => {
                 <Formik
                   initialValues={initialValues}
                   onSubmit={values => {
+                    setVille(values.ville)
+                    setEmail(values.email)
+                    setAdresse(values.adresse)
+                    setCodePostal(values.postalcode)
                     setGoPaiement(true)
                   }}
                 >
@@ -396,12 +404,11 @@ const CheckoutScreen = props => {
                       </Link>
                     </form>
                   )
-
                   }
                 </Formik>
               ): <Elements stripe={stripePromise}>
                 <div className="formData">
-                  <CheckoutFormStripe/>
+                  <CheckoutFormStripe adress={adress} codePostal={codePostal} ville={ville} email={email} price={totalPrice1}/>
                 </div>
               </Elements>}
 
