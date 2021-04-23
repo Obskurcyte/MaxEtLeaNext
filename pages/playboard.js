@@ -9,6 +9,7 @@ import HeaderPlayboard from "../components/HeaderPlayboard";
 import AvisClients from "../components/AvisClients";
 import * as product from "../products";
 import {AppContext} from "../components/context/AppContext";
+import Head from 'next/head'
 
 const PlayBoardScreen = props => {
 
@@ -167,7 +168,7 @@ const PlayBoardScreen = props => {
             playing
             height="100%"
             width="100%"
-            loop="true"
+            loop
             playIcon={<img src="https://maxandlea.fr/wp-content/uploads/2021/04/Lire-la-video.png" alt=""/>}
             light="https://maxandlea.fr/wp-content/uploads/2021/04/image.png"
           />
@@ -299,7 +300,7 @@ const PlayBoardScreen = props => {
                 playing
                 height="100%"
                 width="100%"
-                loop="true"
+                loop
                 playIcon={<img src="https://maxandlea.fr/wp-content/uploads/2021/04/Lire-la-video.png" alt=""/>}
                 light="https://maxandlea.fr/wp-content/uploads/2021/04/image.png"
               />
