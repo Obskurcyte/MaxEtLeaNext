@@ -857,7 +857,7 @@
   .mobile{
     display: block;
   }
-  .sourireTextContainer, .huitEnUnContainerText, ..icone-container1{
+  .sourireTextContainer, .huitEnUnContainerText, .icone-container1{
     width: 95%;
     max-width: 500px;
   }
