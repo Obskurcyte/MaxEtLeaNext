@@ -8,6 +8,7 @@ import {useTranslation} from "react-i18next";
 import {AppContext} from "../components/context/AppContext";
 import Link from "next/link";
 import * as products from '../products';
+import Head from 'next/head'
 
 const HomeScreen = () => {
 
@@ -22,6 +23,9 @@ const HomeScreen = () => {
 
   return (
     <div>
+      <Head>
+        <title>Max And Lea - Accueil</title>
+      </Head>
       <Header/>
       <div className="baby-container">
         <div className="head-title-container">

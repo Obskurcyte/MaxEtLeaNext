@@ -9,9 +9,49 @@ import HeaderPlayboard from "../components/HeaderPlayboard";
 import AvisClients from "../components/AvisClients";
 import * as product from "../products";
 import {AppContext} from "../components/context/AppContext";
-import Head from 'next/head'
+import Slider from "react-slick";
+import Head from 'next/head';
+import Collapsible from 'react-collapsible';
+
+const icon = React.createElement('i', { className: 'far fa-question-circle' }, "");
+const title1 = React.createElement('p', {}, "La PlayBoard s'abime-t-elle avec le temps ?");
+const faqHeader1 = React.createElement('div', {className: 'faqHeaderContainer' }, [icon,title1]);
+const title2 = React.createElement('p', {}, "A partir de quel âge mon enfant peut-il commencer à jouer avec ?");
+const faqHeader2 = React.createElement('div', {className: 'faqHeaderContainer' }, [icon,title2]);
+const title3 = React.createElement('p', {}, "Jusqu'à quel âge la PlayBoard est-elle recommandée ?");
+const faqHeader3 = React.createElement('div', {className: 'faqHeaderContainer' }, [icon,title3]);
+const title4 = React.createElement('p', {}, "Je n’ai pas reçu mes E-Books OFFERTS avec ma commande ? ");
+const faqHeader4 = React.createElement('div', {className: 'faqHeaderContainer' }, [icon,title4]);
+const title5 = React.createElement('p', {}, "Comment récupérer mon sac de rangement OFFERT ?");
+const faqHeader5 = React.createElement('div', {className: 'faqHeaderContainer' }, [icon,title5]);
+const title6 = React.createElement('p', {}, "En combien de temps vais-je recevoir ma PlayBoard ?");
+const faqHeader6 = React.createElement('div', {className: 'faqHeaderContainer' }, [icon,title6]);
+const title7 = React.createElement('p', {}, "Si je vis hors Europe, comment puis-je acquérir la PlayBoard ?");
+const faqHeader7 = React.createElement('div', {className: 'faqHeaderContainer' }, [icon,title7]);
+const title8 = React.createElement('p', {}, "J’ai une question ou une remarque ?");
+const faqHeader8 = React.createElement('div', {className: 'faqHeaderContainer' }, [icon,title8]);
 
 const PlayBoardScreen = props => {
+
+  var settings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplaySpeed: 2100,
+  };
+
+  var settingsRecommandations = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplaySpeed: 3000,
+  };
 
   const [cart, setCart] = useContext(AppContext);
   const products = product.products
@@ -153,6 +193,12 @@ const PlayBoardScreen = props => {
             type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
+            <link 
+              rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
+              integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" 
+              crossorigin="anonymous" 
+              />
         </Head>
         <div className="imgCouverture">
           <div className="playboard-title-container">
@@ -163,14 +209,14 @@ const PlayBoardScreen = props => {
           </div>
           <div className="video-container">
             <ReactPlayer
-            url="https://maxandlea.com/wp-content/uploads/2020/05/Patchwork-V3-600-1.mp4"
+            url="https://play.maxandlea.com/wp-content/uploads/2020/09/Video2-MAXLEA-FR-SHORT-SHORT-V4-600.mp4"
             className="video-presentation"
             playing
             height="100%"
             width="100%"
             loop
             playIcon={<img src="https://maxandlea.fr/wp-content/uploads/2021/04/Lire-la-video.png" alt=""/>}
-            light="https://maxandlea.fr/wp-content/uploads/2021/04/image.png"
+            light="/overlayVideo.webp"
           />
           </div>
           <div className="voir-offre">
@@ -227,7 +273,7 @@ const PlayBoardScreen = props => {
         </div>
 
         <div className="image-recap-container">
-          <img src={'/imagerecap.png'} alt="" className="image-recap"/>
+          <img src={'/imagerecap.webp'} alt="" className="image-recap"/>
         </div>
 
         <div className="huitEnUnContainerText">
@@ -302,7 +348,7 @@ const PlayBoardScreen = props => {
                 width="100%"
                 loop
                 playIcon={<img src="https://maxandlea.fr/wp-content/uploads/2021/04/Lire-la-video.png" alt=""/>}
-                light="https://maxandlea.fr/wp-content/uploads/2021/04/image.png"
+                light="/PapaFille.webp"
               />
           </div>
             <div className="robusteContainer row">
@@ -342,9 +388,9 @@ const PlayBoardScreen = props => {
                 playing
                 height="100%"
                 width="100%"
-                loop="true"
+                loop
                 playIcon={<img src="https://maxandlea.fr/wp-content/uploads/2021/04/Lire-la-video.png" alt=""/>}
-                light="https://maxandlea.fr/wp-content/uploads/2021/04/image.png"
+                light="/PapaFille.webp"
               />
           </div>
             <div className="robusteContainer row">
@@ -538,10 +584,50 @@ const PlayBoardScreen = props => {
           <div className="apprendreContainer">
             <h5>Ce que les enfants ont appris
               avec la PlayBoard®</h5>
-            <p>Reconnaître les couleurs </p>
-            <div className="rectangleContainer">
-              <img src={'/rectangle.png'} alt="" className="rectangle"/>
-            </div>
+              <Slider {...settings}>
+                <div>
+                  <p style={{color:"#e72c59"}}>Reconnaître les couleurs</p>
+                  <div className="rectangleContainer">
+                    <img src={'/redP.webp'} alt="" className="rectangle"/>
+                  </div>
+                </div>
+                <div>
+                  <p style={{color:"#e59131"}}>Maîtriser les dégradés</p>
+                  <div className="rectangleContainer">
+                    <img src={'/orangeP.webp'} alt="" className="rectangle"/>
+                  </div>
+                </div>
+                <div>
+                  <p style={{color:"#efcb03"}}>Emboiter les formes</p>
+                  <div className="rectangleContainer">
+                    <img src={'/yellowP.webp'} alt="" className="rectangle"/>
+                  </div>
+                </div>
+                <div>
+                  <p style={{color:"#4cb155"}}>Apprendre à compter</p>
+                  <div className="rectangleContainer">
+                    <img src={'/greenP.webp'} alt="" className="rectangle"/>
+                  </div>
+                </div>
+                <div>
+                  <p style={{color:"#22b9ca"}}>Reconnaitre les animaux​​​</p>
+                  <div className="rectangleContainer">
+                    <img src={'/blueP.webp'} alt="" className="rectangle"/>
+                  </div>
+                </div>
+                <div>
+                  <p style={{color:"#e7456c"}}>Débuter en calcul</p>
+                  <div className="rectangleContainer">
+                    <img src={'/pinkP.webp'} alt="" className="rectangle"/>
+                  </div>
+                </div>
+                <div>
+                  <p style={{color:"#c436bc"}}>Plaisir de jouer</p>
+                  <div className="rectangleContainer">
+                    <img src={'/purpleP.webp'} alt="" className="rectangle"/>
+                  </div>
+                </div>
+              </Slider>
           </div>
 
           <div className="enfantTableauContainer">
@@ -551,35 +637,80 @@ const PlayBoardScreen = props => {
 
         <div className="recommendation">
           <h5 className="recommendation-title">Ils recommandent la Playboard®</h5>
+          <div className="row">
+            <div className="col recommendationCol">
+            <p className="distributionP">Ils distribuent la PlayBoard®</p>
+              <Slider {...settingsRecommandations}>
+                  <div>
+                    <img src={'/amazon-prime.webp'} alt=""/>
+                    <p>Avis : <b>4.9</b>/5</p>
+                  </div>
+                  <div>
+                    <img src={'/etsy.webp'} alt=""/>
+                    <p>Avis : <b>4.9</b>/5</p>
+                  </div>
+                  <div>
+                    <img src={'/apesanteur.webp'} alt=""/>
+                  </div>
+                  <div>
+                    <img src={'/neminemo.webp'} alt=""/>
+                  </div>
+                  <div>
+                    <img src={'/trait-union.webp'} alt=""/>
+                  </div>
+                </Slider>
+            </div>
+            <div className="col recommendationCol">
+            <p className="distributionP">Nos clients nous font confiance</p>
+              <Slider {...settingsRecommandations}>
+                  <div>
+                      <a target="_blank" href='https://fr.trustpilot.com/review/maxandlea.com'>
+                        <img src={'/trustpilot.webp'} alt=""/>
+                        <p>Avis : <b>4.9</b>/5</p>
+                      </a>
+                  </div>
+                  <div>
+                      <a target="_blank" href='https://www.google.com/search?biw=2559&bih=1222&ei=MdKIX5WlLsvIaNvaq6AF&q=Max+%26+Lea+review&oq=Max+%26+Lea+review&gs_lcp=CgZwc3ktYWIQAzIICAAQBxAFEB5QxThYxThgvjtoAnAAeACAAWSIAWSSAQMwLjGYAQCgAQGqAQdnd3Mtd2l6wAEB&sclient=psy-ab&ved=0ahUKEwjVgb_K17fsAhVLJBoKHVvtClQQ4dUDCA0&uact=5'>
+                        <img src={'/Google-Reviews.webp'} alt=""/>
+                        <p>Avis : <b>4.9</b>/5</p>
+                      </a>
+                  </div>
+                </Slider>
+            </div>
+          </div>
         </div>
 
-        <div className="distribution">
-          <div className="distribution-inner">
-            <p>Ils distribuent la PlayBoard®</p>
-            <p>Nos clients nous font confiance</p>
-          </div>
-          <div className="photoContainer">
-            <img src={'/photoPartenaire.png'} alt="" className="photo"/>
-          </div>
-        </div>
-
+        
         <div className="playboardContainer" id="offre">
           <div className="playboardSubContainer">
-          <div className="imgBestSellerContainer">
+            <div className="imgBestSellerContainer">
               <img src={'/bestSeller.png'} alt="" className='bestSeller'/>
             </div>
-            <div className="imgPlayboardPrixContainer">
-              <img src={'/playboardprice.png'} alt="" className="playboardprice"/>
-            </div>
-            <div className="imgPlayboardContainer">
-              <img src={'/playboardGood.png'} alt="" className="playboardGood"/>
-            </div>
             <div class="row align-items-center">
-              <div className="imgEbookContainer col">
-                <img src={'/ebook.png'} alt="" className="ebook"/>
+              <div className="imgPlayboardPrixContainer col">
+                <img src={'/playboardTitle.webp'} alt="" className="playboardprice"/>
+                <p className="oldPrice">
+                49,90€
+                </p>
+                <p className="newPrice">
+                29,90€
+                </p>
+                <p className="saveAmount">
+                (-40% vous économisez 20€)
+                </p>
               </div>
-              <div className="imgOffertContainer col">
-                <img src={'/offertPhoto.png'} alt="" className="offertPhoto"/>
+              <div className="imgPlayboardContainer col">
+                <img src={'/playboardGood.webp'} alt="" className="playboardGood"/>
+              </div>
+            </div>
+            <div className="offreContainer">
+              <div className="row align-items-center">
+                <div className="imgEbookContainer col">
+                  <img src={'/ebook.webp'} alt="" className="ebook"/>
+                </div>
+                <div className="imgOffertContainer col">
+                  <img src={'/offertPhoto.webp'} alt="" className="offertPhoto"/>
+                </div>
               </div>
             </div>
           </div>
@@ -604,7 +735,7 @@ const PlayBoardScreen = props => {
         </div>
 
         <div className="sourireEnfantImgContainer">
-          <img src={'/sourireEnfant.png'} alt="" className="sourireEnfant"/>
+          <img src={'/sourireEnfant.webp'} alt="" className="sourireEnfant"/>
         </div>
 
         <div>
@@ -613,6 +744,55 @@ const PlayBoardScreen = props => {
 
         <div>
           <Engagement/>
+        </div>
+
+        <div className="faqContainer">
+        <h5>QUESTIONS FRÉQUENTES</h5>
+          <div className="row">
+            <div className="col">
+                <Collapsible trigger={faqHeader1}>
+                  <p>
+                  La PlayBoard est conçue à base de hêtre, un bois solide et résistant. L’ensemble de ses pièces sont parfaitement peintes, ce qui leur donne une durée de vie de plusieurs dizaines d’années en restant intactes.
+                  </p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader2}>
+                  <p>
+                  La PlayBoard est certifiée CE à partir de 12 mois. Les études montrent qu’à partir de 7 mois le jeune enfant commence à prendre des jouets dans ses mains et dès 10 mois sa motricité fine se développe. Il peut donc commencer à jouer avec sa tablette très tôt. Nous recommandons toujours qu’un adulte surveille le jeune enfant pendant qu’il joue pour éviter tout risque.
+                  </p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader3}>
+                  <p>
+                  Nous recommandons la PlayBoard jusqu’à 6 ans, mais il n’est pas rare de voir des enfants de plus de 6 ans continuer à l’utiliser car elle leur sert à apprendre le calcul.
+                  </p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader4}>
+                <p>
+                  Lors de l’achat de votre PlayBoard, un e-mail contenant les liens pour télécharger vos E-books vous est automatiquement envoyé par e-mail. Cet email est peut parfois se retrouver dans vos spams. Si vous ne le trouvez pas, n’hésitez pas à nous contacter à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">notre formulaire</a>, nous vous le renverrons avec plaisir.
+                </p>
+                </Collapsible>
+            </div>
+            <div className="col">
+                <Collapsible trigger={faqHeader5}>
+                  <p>
+                  Le sac de rangement est inséré dans l’emballage de votre PlayBoard, vous le découvrirez donc lors de la reception de votre commande.
+                  </p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader6}>
+                  <p>
+                   La PlayBoard est envoyée depuis notre entrepôt situé à Evreux (France <img src="https://maxandlea.com/wp-content/uploads/2020/06/france-flag-icon-16.png"/>). 
+Pour une livraison en France (y compris Monaco) nos délais sont de 3 à 5 jours ouvrés (livraison Standard à domicile ou en Point Mondial Relay), et 2 à 3 jours ouvrés en livraison Express. 
+
+Pour le reste de l’Europe, nos délais de livraison sont de 5 à 7 jours ouvrés en livraison Standard et 3 à 5 jours en livraison Express.
+                  </p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader7}>
+                <p>Max &amp; Lea livre toute l’Europe (y compris Suisse et Royaume Uni), les Etats Unis et le Canada. En dehors de ces zones géographiques nous vous invitons à nous contacter directement par email à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via le <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">formulaire de contact</a>.</p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader8}>
+                <p>Notre service client est à votre écoute du Lundi au Samedi de 9h à 19h heure Française. Nous nous ferons un plaisir de vous répondre très rapidement (Notre délais moyen de réponse est de 45 minutes). Nous sommes joignable par email à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via le <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">formulaire de contact</a>.</p>
+                </Collapsible>
+            </div>
+          </div>
         </div>
 
         <Footer/>

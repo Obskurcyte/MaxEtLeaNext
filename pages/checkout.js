@@ -19,6 +19,7 @@ import Garanties from "../components/GarantiesMaxEtLea";
 import Footer from "../components/Footer";
 import Carousel from 'react-elastic-carousel';
 import Recommande from "../components/Recommande";
+import Head from 'next/head'
 
 
 const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
@@ -142,6 +143,9 @@ const CheckoutScreen = props => {
   console.log(goPaiement)
   return (
     <div>
+      <Head>
+        <title>Max And Lea - Checkout</title>
+      </Head>
       <Header />
       <div className="sliderContainer">
         <img src={'/slider.png'} alt="" className="sliderImgContainer"/>
@@ -231,7 +235,7 @@ const CheckoutScreen = props => {
               </div>
             </div>
           </div>
-          <img src={'/Séparation.png'} alt="" className=""/>
+          <img src={'/separation.png'} alt="" className=""/>
           <div className="prixContainer">
             <div className="prixText">
               <a href="javascript:void(0);" onClick={() => setGoPaiement(false)}>
