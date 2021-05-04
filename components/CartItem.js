@@ -10,7 +10,6 @@ const CartItem = ({item}) => {
 
 
   const [cart, setCart] = useContext(AppContext)
-  console.log(cart)
 
   const dispatch = useDispatch();
   const product = useSelector(state => state.product);
@@ -28,7 +27,6 @@ const CartItem = ({item}) => {
   const [productCount, setProductCount] = useState(item.qty);
 
 
-  console.log(productCount)
   const onIncreaseClick = () => {
     setProductCount(productCount + 1);
     let existingCart = localStorage.getItem('woo-next-cart');
@@ -95,9 +93,6 @@ const CartItem = ({item}) => {
 
       total.totalPrice += item.totalPrice;
       total.qty += item.qty;
-      console.log('total', total)
-      console.log('item', item)
-      console.log(total)
       return total;
     }
 
@@ -114,7 +109,7 @@ const CartItem = ({item}) => {
     return updatedCart
   };
 
-  console.log(cart)
+
 
   /**
    * Get updated products array
@@ -161,9 +156,7 @@ const CartItem = ({item}) => {
 
     let existingCart = localStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart);
-    console.log('existing', existingCart)
 
-    console.log('existing products' ,existingCart.products.length)
     if (1 === existingCart.products.length) {
       localStorage.removeItem('woo-next-cart')
       return null;
@@ -171,16 +164,13 @@ const CartItem = ({item}) => {
 
     const productExistIndex = isProductInCart(existingCart.products, productId);
 
-    console.log('product exist index', productExistIndex)
 
-    console.log('product', existingCart.products)
+
+
     if (-1 < productExistIndex) {
       const productToBeRemoved = existingCart.products[productExistIndex];
       const qtyTBeRemovedFromTotal = productToBeRemoved.qty;
       const priceToBeDeductedFromTotal = productToBeRemoved.totalPrice;
-
-      console.log('qtyTBeRemovedFromTotal', qtyTBeRemovedFromTotal)
-      console.log('priceToBeDeductedFromTotal', priceToBeDeductedFromTotal)
 
       let updatedCart = existingCart
       /*if(productExistIndex == 0){
@@ -190,7 +180,6 @@ const CartItem = ({item}) => {
       updatedCart.totalProductCount = updatedCart.totalProductCount - qtyTBeRemovedFromTotal;
       updatedCart.totalProductsPrice = updatedCart.totalProductsPrice - priceToBeDeductedFromTotal;
 
-      console.log('updatedCart', updatedCart)
 
       localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
       return updatedCart

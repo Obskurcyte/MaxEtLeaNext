@@ -35,7 +35,8 @@ export const products = [
     description: null,
     id: "cHJvZHVjdDozMTYz",
     name: "La PlayBoard",
-    price: "49,90€",
+    price: "29,90€",
+    priceAugmente: "49,90€",
     slug: "play-board",
     __typename: "SimpleProduct"
   }

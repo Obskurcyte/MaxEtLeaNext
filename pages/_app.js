@@ -6,6 +6,8 @@ import '../styles/xylophone.css';
 import '../styles/cartItem.css';
 import '../styles/contact.css';
 import '../styles/checkout.css';
+import '../styles/blogs.css';
+import '../styles/pageBlog.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../i18n';
 import { createStore, combineReducers, applyMiddleware } from 'redux';

@@ -48,7 +48,8 @@ const Header = () => {
 
   console.log(open)
   const handleClose = (lang, url) => {
-    i18n.changeLanguage(lang).then(() => setAnchorEl(null)).then(() => setImgUrl(url));
+    i18n.changeLanguage(lang).then(() => setAnchorEl(null))
+    setImgUrl(url);
   };
 
   const renderCart = () => {

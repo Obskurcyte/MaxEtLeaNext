@@ -2,16 +2,13 @@ import React, {useContext, useState} from 'react';
 import Header from "../components/Header";
 import { makeStyles } from '@material-ui/core/styles';
 import {AppContext} from "../components/context/AppContext";
-import CheckoutForm from "../components/CheckoutForm";
 import {CardElement} from '@stripe/react-stripe-js';
 import {loadStripe} from "@stripe/stripe-js/pure";
 import {Elements} from "@stripe/react-stripe-js";
 import CheckoutFormStripe from "../components/CheckoutFormStripe";
 import CartItem from "../components/CartItem";
-import CheckoutForm2 from "../components/CheckoutForm2";
 import {Formik} from "formik";
 import TextField from "@material-ui/core/TextField";
-import styles from "../components/CheckoutForm2.module.css";
 import MenuItem from "@material-ui/core/MenuItem";
 import Checkbox from "@material-ui/core/Checkbox";
 import Link from "next/link";
@@ -34,6 +31,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CheckoutScreen = props => {
+
+
+  const breakPoints = [
+    {width: 200, itemsToShow: 1},
+    {width: 600, itemsToShow: 2},
+    {width: 1000, itemsToShow: 3},
+  ]
 
 
 
@@ -121,6 +125,14 @@ const CheckoutScreen = props => {
     }
   }
 
+  console.log('cart', cart)
+  let playboardReducPrice = 0
+  if (cart) {
+    const playboard = cart.products.filter(obj => {
+      return obj.productId === 'cHJvZHVjdDozMTYz'
+    })
+    playboardReducPrice = playboard[0].qty * 20
+  }
 
   const [email, setEmail] = useState('');
   const [adress, setAdresse] = useState('');
@@ -190,7 +202,7 @@ const CheckoutScreen = props => {
           <p className="progressBarText">ADRESSE DE LIVRAISON ET DE FACTURATION</p>
           <p className="progressBarText">PAIEMENT</p>
         </div>
-        <div className="hrContainer">
+        <div className="hrContainerCheckout">
           <img src={'/ellipsePetite.png'} alt="" className="ellipseImg"/>
           <hr className={firstStep ? 'premierHrDone' : 'premierHr'}/>
           <img src={'/ellipsePetite.png'} alt="" className="ellipseImg"/>
@@ -220,7 +232,7 @@ const CheckoutScreen = props => {
             <div className="prixRecap">
               <div className="sousTotal">
                 <p className="sousTotalText">Discount PlayBoard</p>
-                <p className="itemTotalPrice">20 €</p>
+                <p className="itemTotalPrice">{playboardReducPrice} €</p>
               </div>
               <hr className="hrPrix"/>
               <div className="sousTotal">
@@ -231,7 +243,7 @@ const CheckoutScreen = props => {
               </div>
             </div>
           </div>
-          <img src={'/Séparation.png'} alt="" className=""/>
+          <img src={'/Séparation.png'} alt="" className="separation"/>
           <div className="prixContainer">
             <div className="prixText">
               <a href="javascript:void(0);" onClick={() => setGoPaiement(false)}>
@@ -268,10 +280,10 @@ const CheckoutScreen = props => {
                           label="Email"
                           variant="outlined"
                           onFocus={() => setFirstStep(true)}
-                          className={styles.bigInput}
+                          className="bigInput"
                         />
                       </div>
-                      <div className={styles.inputContainer}>
+                      <div className="inputContainer">
                         <TextField
                           required
                           value={props.values.prenom}
@@ -279,7 +291,7 @@ const CheckoutScreen = props => {
                           id="outlined-error"
                           label="Prénom"
                           variant="outlined"
-                          className={styles.inputMoyenGauche}
+                          className="inputMoyenGauche"
                         />
                         <TextField
                           id="outlined-error"
@@ -288,10 +300,10 @@ const CheckoutScreen = props => {
                           required
                           label="Nom"
                           variant="outlined"
-                          className={styles.inputMoyenDroit}
+                          className="inputMoyenDroit"
                         />
                       </div>
-                      <div className={styles.inputContainer}>
+                      <div className="inputContainer">
                         <TextField
                           required
                           value={props.values.adresse}
@@ -299,7 +311,7 @@ const CheckoutScreen = props => {
                           id="outlined-error"
                           label="Numéro et nom de rue"
                           variant="outlined"
-                          className={styles.inputMoyenGauche}
+                          className="inputMoyenGauche"
                         />
                         <TextField
                           required
@@ -308,17 +320,17 @@ const CheckoutScreen = props => {
                           id="outlined-error"
                           label="Code postal"
                           variant="outlined"
-                          className={styles.inputMoyenDroit}
+                          className="inputMoyenDroit"
                         />
                       </div>
-                      <div className={styles.inputContainer}>
+                      <div className="inputContainer">
                         <TextField
                           required
                           value={props.values.ville}
                           onChange={props.handleChange('ville')}
                           label="Ville"
                           variant="outlined"
-                          className={styles.inputMoyenGauche}
+                          className="inputMoyenGauche"
                         />
                         <TextField
                           select
@@ -327,7 +339,7 @@ const CheckoutScreen = props => {
                           label="Select"
                           helperText="Veuillez sélectionner un pays"
                           defaultValue="France"
-                          className={styles.inputMoyenDroit}
+                          className="inputMoyenDroit"
 
                         >
                           {countries.map((option) => (
@@ -338,18 +350,18 @@ const CheckoutScreen = props => {
                         </TextField>
                       </div>
 
-                      <div className={styles.checkboxContainer}>
+                      <div className="checkboxContainer">
                         <Checkbox
                           checked={checked}
                           onChange={handleChange}
                           inputProps={{ 'aria-label': 'primary checkbox' }}
                         />
-                        <p className={styles.paragraphFacturation}>Utiliser une adresse de facturation différente</p>
+                        <p className="paragraphFacturation">Utiliser une adresse de facturation différente</p>
                       </div>
 
                       {checked ? (
                         <div className="facturationDifferente">
-                          <div className={styles.inputContainer}>
+                          <div className="inputContainer">
                             <TextField
                               required
                               value={props.values.adresseFacturation}
@@ -357,7 +369,7 @@ const CheckoutScreen = props => {
                               id="outlined-error"
                               label="Numéro et nom de rue"
                               variant="outlined"
-                              className={styles.inputMoyenGauche}
+                              className="inputMoyenGauche"
                             />
                             <TextField
                               required
@@ -366,11 +378,11 @@ const CheckoutScreen = props => {
                               id="outlined-error"
                               label="Ville"
                               variant="outlined"
-                              className={styles.inputMoyenDroit}
+                              className="inputMoyenDroit"
                             />
                           </div>
 
-                          <div className={styles.inputContainer}>
+                          <div className="inputContainer">
                             <TextField
                               required
                               value={props.values.codePostalFacturation}
@@ -378,7 +390,7 @@ const CheckoutScreen = props => {
                               id="outlined-error"
                               label="Code Postal"
                               variant="outlined"
-                              className={styles.inputMoyenGauche}
+                              className="inputMoyenGauche"
                             />
                             <TextField
                               select
@@ -387,7 +399,7 @@ const CheckoutScreen = props => {
                               label="Select"
                               helperText="Veuillez sélectionner un pays"
                               defaultValue="France"
-                              className={styles.inputMoyenDroit}
+                              className="inputMoyenDroit"
                             >
                               {countries.map((option) => (
                                 <MenuItem key={option.value} value={option.value}>
@@ -400,14 +412,14 @@ const CheckoutScreen = props => {
                       ) : ''}
 
 
-                      <div className={styles.inputContainer}>
+                      <div className="inputContainer">
                         <TextField
                           value={props.values.phone}
                           onChange={props.handleChange('phone')}
                           id="outlined-error"
                           label="Numéro de téléphone (facultatif)"
                           variant="outlined"
-                          className={styles.bigInput}
+                          className="bigInput"
                         />
                       </div>
 
@@ -446,7 +458,7 @@ const CheckoutScreen = props => {
 
       <div className="addOtherArticlesPanier">
         <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 10% sur tout votre panier !</h5>
-        <Carousel itemsToShow={3} isRTL={false} className="addItemsCarousel">
+        <Carousel itemsToShow={3} isRTL={false} className="addItemsCarousel" breakPoints={breakPoints}>
           <div className="innerArticleContainer">
             <div className="imgContainerCarousel">
               <img src={'/xylophone.png'} alt="" className="xylophoneImg"/>

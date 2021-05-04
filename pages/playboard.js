@@ -9,7 +9,8 @@ import HeaderPlayboard from "../components/HeaderPlayboard";
 import AvisClients from "../components/AvisClients";
 import * as product from "../products";
 import {AppContext} from "../components/context/AppContext";
-import Head from 'next/head'
+import Head from 'next/head';
+
 
 const PlayBoardScreen = props => {
 
