@@ -21,6 +21,64 @@
   margin: 3% auto;
 }
 
+.faqContainer{
+  width: 95%;
+  max-width: 980px;
+  margin: 30px auto;
+}
+
+.faqContainer .Collapsible{
+  cursor: pointer;
+  min-width: 300px;
+}
+
+.faqContainer .row{
+  margin: 30px 0px;
+}
+
+.faqContainer a{
+  color: #696969;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+    font-family: roboto;
+    font-weight: 500;
+}
+
+.faqHeaderContainer{
+  padding-top: 15px;
+  display: flex;
+}
+
+.faqContainer .fa-question-circle:before{
+  color: #E72C59;
+  margin-right: 15px;
+}
+
+.faqContainer p{
+  margin-top: -3px;
+  font-family: roboto;
+}
+
+.faqHeaderContainer p{
+  color: #424242;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2em;
+  letter-spacing: 1px;
+}
+
+.faqContainer .Collapsible__contentOuter{
+  margin-top: -5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.342);
+}
+
+.faqContainer .Collapsible__contentOuter p{
+  color: #696969;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  text-align: justify;
+}
+
 .playboard-title {
   font-size: 89px;
   letter-spacing: 1px;
@@ -104,7 +162,7 @@
 
 .pensee-container {
   width: 100%;
-  margin-top: 20%;
+  margin-top: 200px;
 }
 
 .img-bebe-container {
@@ -192,7 +250,8 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 55%;
+  width: 95%;
+  max-width: 950px;
   align-items: center;
 }
 
@@ -206,6 +265,7 @@
 .miniIconeContainer2 {
   text-align: center;
   align-items: center;
+  min-width: 150px;
 }
 
 .miniIconeContainer2 p {
@@ -232,7 +292,7 @@
 
 .computer .robusteContainer {
   display: flex;
-  width: 100%;
+  width: 95%;
   bottom: 20px;
   max-width: 950px;
   align-items: center;
@@ -421,6 +481,7 @@
   position: relative;
   width: 100%;
   max-width: 400px;
+  margin: auto;
 }
 
 
@@ -444,7 +505,8 @@
 
 .garconSouriantContainer {
   border-radius: 20px;
-  min-width: 220px;
+  min-width: 320px;
+  max-width: 370px;;
 }
 
 .rowIcone img {
@@ -456,6 +518,25 @@
   color: #ffffff;
   text-align: center;
   font-family: "D KButterfly Ball", sans-serif;
+}
+
+.recommendationCol{
+  max-width: 600px !important;
+  text-align: center;
+  margin: auto;
+}
+
+.recommendationCol a p{
+  font-family: var(--bs-font-sans-serif);
+  color: #212529;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.recommendationCol img{
+  margin: auto;
+  width: 100%;
+  max-width: 180px;
 }
 
 .pour p {
@@ -477,7 +558,7 @@
   position: relative;
 }
 
-.apprentissage h5 {
+.apprentissage h5, .faqContainer h5 {
   font-size: 44px;
   letter-spacing: 1px;
   color: #1bb0ca;
@@ -488,7 +569,6 @@
 .apprendreContainer p {
   font-size: 34px;
   letter-spacing: 0px;
-  color: #e72c59;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
   text-align: center;
@@ -538,8 +618,9 @@
 }
 
 .recommendation {
-  margin-top: 5%;
-  margin-bottom: 5%;
+  width: 90%;
+  max-width: 1200px;
+  margin: 100px auto;
 }
 
 .distribution-inner {
@@ -549,7 +630,7 @@
   margin: 0 auto
 }
 
-.distribution-inner p {
+.distributionP {
   font-size: 24px;
   line-height: 37px;
   color: #f8596e;
@@ -590,9 +671,45 @@
   width: 100%;
   height: 100%;
 }
-.imgPlayboardPrixContainer {
+.imgPlayboardPrixContainer, .offreContainer {
   width: 100%;
+  text-align: center;
+}
+
+.offreContainer {
+  width: 90%;
   max-width: 800px;
+  margin: auto;
+}
+
+.imgPlayboardPrixContainer img{
+  width:100%;
+  max-width: 250px;
+}
+
+.imgPlayboardPrixContainer p{
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+  line-height: 1;
+}
+
+.imgPlayboardPrixContainer .oldPrice{
+  margin-top: 15px;
+  color: #a19c93;
+  font-size: 3em;
+  text-decoration: line-through;
+}
+
+.imgPlayboardPrixContainer .newPrice{
+  color: #ef3551;
+  font-size: 5em;
+}
+
+.imgPlayboardPrixContainer .saveAmount{
+  color: #ef3551;
+  font-size: 1em;
+  font-weight: 700;
 }
 
 .imgOffertContainer {
@@ -609,10 +726,14 @@
   width: 70%;
   max-width: 250px;
   margin: auto;
+  align-items: center;
+  text-align: center;
 }
 
 .imgBestSellerContainer img{
-  margin-top: -150px;
+  margin-top: -100px;
+  margin-bottom: -100px;
+  max-width: 200px;
 }
 
 .addPanierContainer {
@@ -643,7 +764,7 @@
 }
 
 .clientSatisfait {
-  margin-top: 10%;
+  margin-top: 80px;
 }
 
 .sourireContainer h5 {
@@ -657,7 +778,7 @@
 }
 
 .sourireContainer {
-  margin-top: 10%;
+  margin-top: 80px;
 }
 
 .sourireEnfantImgContainer {
@@ -687,9 +808,26 @@
   border: none;
 }
 
+@media screen and (max-width: 1700px){
+  .icone-container1{
+    width: 95%;
+    max-width: 800px;
+  }
+
+  .icone-mini-container{
+    min-width: 200px;
+  }
+}
+
 @media screen and (max-width: 900px){
   .playboard-title{
     font-size: 35px;
+  }
+  .robusteContainer .p1, .robusteContainer .p2, .robusteContainer .p3, .robusteContainer .p4{
+    font-size: 15px;
+  }
+  .robusteTitle, .finitionTitle{
+    font-size: 25px;
   }
   .playboard-title-container, .pensee-paragraph-container, .img-bebe-container{
     width: 100%;
@@ -707,7 +845,7 @@
     width: 100%;
     max-width: 250px;
     top: auto;
-    margin: -25px auto;
+    margin: -15px auto;
     left: 0;
   }
   .voir-offre-title{
@@ -726,8 +864,8 @@
   .icone-container1{
     margin-top: 20px;
   }
-  .sourireTextContainer h5, .huitEnUnText, .apprentissage h5, .UnaSixTitle, .recommendation-title, .clientSatisfait h5{
-    font-size: 30px;
+  .sourireTextContainer h5, .huitEnUnText, .apprentissage h5, .UnaSixTitle, .recommendation-title, .clientSatisfait h5, .faqContainer h5{
+    font-size: 25px;
   }
   .UnaSixTitle{
     letter-spacing: 0px;
@@ -772,5 +910,53 @@
     width: 100%;
     margin: auto;
     background-color: white;
+  }
+  .pensee-container {
+    margin-top: 60px;
+  }
+
+  .imgPlayboardPrixContainer .oldPrice{
+    font-size: 1em;
+  }
+  
+  .imgPlayboardPrixContainer .newPrice{
+    font-size: 2em;
+  }
+  
+  .imgPlayboardPrixContainer .saveAmount{
+    font-size: 0.7em;
+  }
+
+  .imgBestSellerContainer img {
+    max-width: 150px;
+    margin-top: -110px;
+    margin-bottom: 0px;
+  }
+
+  .playboardContainer {
+    margin-top: 50px;
+  }
+  .distributionP{
+    margin-top: 30px;
+  }
+  .garconSouriantContainer {
+    min-width: 150px;
+  }
+  .pour{
+    padding: 20px 0px;
+  }
+  .pour h5{
+    font-size: 17px;
+  }
+  .pour p {
+    font-size: 13px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+  }
+  .imagesContainer{
+    margin: 10px 0px 0px 0px;
+  }
+  .sourireTextContainer{
+    width: 90%;
   }
 }

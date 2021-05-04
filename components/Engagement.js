@@ -28,7 +28,7 @@ const Engagement = () => {
         </div>
         <div className="col" style={{minWidth: '170px'}}>
           <div>
-            <img src={'/stars.png'} alt="" className={styles.imageGaranties}/>
+            <img src={'/stars.webp'} alt="" className={styles.imageGaranties}/>
           </div>
           <h3 className={styles.garantiesUndertitle}>{t("Engagement.6")}</h3>
           <p className={styles.garantiesParagraph}>{t("Engagement.7")}</p>

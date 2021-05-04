@@ -450,12 +450,16 @@
   }
   .inputContainer {
     display: block;
+    margin-left: 0;
   }
   .addArticleTitle {
     font-size: 25px;
   }
   .makeStyles-root-1 .MuiTextField-root {
     width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .MuiFormControl-root {
     margin-left: 0 !important;
   }
   .MuiFormControl-root {
