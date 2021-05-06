@@ -4,6 +4,13 @@ import Carousel from "react-elastic-carousel";
 import Link from "next/link";
 
 const Recommande = () => {
+
+  const breakPoints = [
+    {width: 200, itemsToShow: 1},
+    {width: 600, itemsToShow: 2},
+    {width: 1000, itemsToShow: 3},
+  ]
+
   return (
     <div className={styles.recommandeContainer}>
       <h1 className={styles.recommandeTitle}>Ils recommandent Max et Lea</h1>
@@ -12,7 +19,7 @@ const Recommande = () => {
       </div>
 
       <div className={styles.carouselContainer}>
-      <Carousel itemsToShow={3} isRTL={false} className={styles.avisCarousel}>
+      <Carousel itemsToShow={3} isRTL={false} className={styles.avisCarousel} breakPoints={breakPoints}>
           <div className={styles.avisInnerContainer}>
             <div className={styles.imgAvatarContainer}>
               <img src={"/avatar.png"} alt="" className={styles.avatarImg}/>

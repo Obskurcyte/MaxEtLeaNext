@@ -9,8 +9,8 @@ import HeaderPlayboard from "../components/HeaderPlayboard";
 import AvisClients from "../components/AvisClients";
 import * as product from "../products";
 import {AppContext} from "../components/context/AppContext";
-import Slider from "react-slick";
 import Head from 'next/head';
+import Slider from "react-slick";
 import Collapsible from 'react-collapsible';
 
 const icon = React.createElement('i', { className: 'far fa-question-circle' }, "");
@@ -30,6 +30,7 @@ const title7 = React.createElement('p', {}, "Si je vis hors Europe, comment puis
 const faqHeader7 = React.createElement('div', {className: 'faqHeaderContainer' }, [icon,title7]);
 const title8 = React.createElement('p', {}, "J’ai une question ou une remarque ?");
 const faqHeader8 = React.createElement('div', {className: 'faqHeaderContainer' }, [icon,title8]);
+
 
 const PlayBoardScreen = props => {
 
@@ -193,11 +194,11 @@ const PlayBoardScreen = props => {
             type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
-            <link 
+            <link
               rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
-              integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" 
-              crossorigin="anonymous" 
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+              integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+              crossorigin="anonymous"
               />
         </Head>
         <div className="imgCouverture">
@@ -680,7 +681,7 @@ const PlayBoardScreen = props => {
           </div>
         </div>
 
-        
+
         <div className="playboardContainer" id="offre">
           <div className="playboardSubContainer">
             <div className="imgBestSellerContainer">
@@ -779,8 +780,8 @@ const PlayBoardScreen = props => {
                 </Collapsible>
                 <Collapsible trigger={faqHeader6}>
                   <p>
-                   La PlayBoard est envoyée depuis notre entrepôt situé à Evreux (France <img src="https://maxandlea.com/wp-content/uploads/2020/06/france-flag-icon-16.png"/>). 
-Pour une livraison en France (y compris Monaco) nos délais sont de 3 à 5 jours ouvrés (livraison Standard à domicile ou en Point Mondial Relay), et 2 à 3 jours ouvrés en livraison Express. 
+                   La PlayBoard est envoyée depuis notre entrepôt situé à Evreux (France <img src="https://maxandlea.com/wp-content/uploads/2020/06/france-flag-icon-16.png"/>).
+Pour une livraison en France (y compris Monaco) nos délais sont de 3 à 5 jours ouvrés (livraison Standard à domicile ou en Point Mondial Relay), et 2 à 3 jours ouvrés en livraison Express.
 
 Pour le reste de l’Europe, nos délais de livraison sont de 5 à 7 jours ouvrés en livraison Standard et 3 à 5 jours en livraison Express.
                   </p>

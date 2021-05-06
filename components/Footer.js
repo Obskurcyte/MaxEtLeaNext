@@ -23,6 +23,7 @@ const Footer = () => {
             <Link href="/contact">Contactez-nous</Link>
           </div>
         <div className="footer-column">
+          <Link href="/blogs">Blog</Link>
           <Link href="#">Mentions légales</Link>
           <Link href="#">CGV</Link>
         </div>

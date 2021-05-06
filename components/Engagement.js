@@ -11,29 +11,29 @@ const Engagement = () => {
       <div >
         <img src={'/100.png'} alt="" className={styles.photo1}/>
       </div>
-      <div class="row" style={{maxWidth: '1200px', margin: '20px auto'}}>
-        <div class="col" style={{minWidth: '170px'}}>
+      <div className="row" style={{maxWidth: '1200px', margin: '20px auto'}}>
+        <div className="col" style={{minWidth: '170px'}}>
           <div>
             <img src={'/childcare.png'} alt="" className={styles.imageGaranties}/>
           </div>
           <h3 className={styles.garantiesUndertitle}>{t("Engagement.2")}</h3>
           <p className={styles.garantiesParagraph}>{t("Engagement.3")}</p>
         </div>
-        <div class="col" style={{minWidth: '170px'}}>
+        <div className="col" style={{minWidth: '170px'}}>
           <div>
             <img src={'/eco-label.png'} alt="" className={styles.imageGaranties}/>
           </div>
           <h3 className={styles.garantiesUndertitle}>{t("Engagement.4")}</h3>
           <p className={styles.garantiesParagraph}>{t("Engagement.5")}</p>
         </div>
-        <div class="col" style={{minWidth: '170px'}}>
+        <div className="col" style={{minWidth: '170px'}}>
           <div>
             <img src={'/stars.webp'} alt="" className={styles.imageGaranties}/>
           </div>
           <h3 className={styles.garantiesUndertitle}>{t("Engagement.6")}</h3>
           <p className={styles.garantiesParagraph}>{t("Engagement.7")}</p>
         </div>
-        <div class="col" style={{minWidth: '170px'}}>
+        <div className="col" style={{minWidth: '170px'}}>
           <div>
             <img src={'/ellipse2.png'} alt="" className={styles.imageGaranties}/>
           </div>

@@ -1,0 +1,249 @@
+.img-blog {
+  width: 100%;
+  height: 100%;
+}
+
+.img-blog-container {
+  height: 600px;
+  overflow: hidden;
+  margin-bottom: 3%;
+}
+
+.img-blog-container2 {
+  height: 600px;
+  width: 30%;
+  overflow: hidden;
+  margin-bottom: 3%;
+}
+.img-blog-container3 {
+   height: 1000px;
+   width: 30%;
+   overflow: hidden;
+   margin-bottom: 3%;
+ }
+.date-container{
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+  width: 200px;
+  height: 50px;
+  justify-content: space-around;
+}
+
+.date-text {
+  margin-bottom: 3%;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.calendar{
+  width: 20% !important;
+  height: 50% !important;
+}
+
+.paragraph-blog1 {
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+  height: 600px;
+}
+
+.paragraph1-text {
+  width: 60%;
+  padding: 2% 5%;
+  text-align: justify;
+}
+
+.paragraph-blog2 {
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+  height: 1000px;
+}
+
+.paragraph-blog3 {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  height: 1000px;
+}
+.enfants-souriant-blog {
+  height: 100%;
+}
+
+.enfants-souriant-blog2 {
+  height:40%;
+  width: 100%
+}
+
+.enfants-souriant-blog3 {
+  height: 50%;
+  margin-top: 10%;
+}
+
+.description-blog {
+  width: 70%;
+  margin: 3% auto;
+}
+
+.img-blog2-container {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.img-blog2 {
+  width: 100%;
+}
+
+.conseilTitre {
+  display: flex;
+  height: 50px;
+
+}
+
+.paragraph1-text1 ul li span {
+  font-weight: bold;
+}
+
+.conseilMaxEtLea h4 {
+  font-weight: bold;
+}
+.conseilTitre h5 {
+  margin-top: 0.5%;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+.jeuContainer {
+  font-family: Roboto, sans-serif;
+}
+
+.titre-img{
+  height: 70%;
+}
+
+.conseilMaxEtLea {
+  width: 70%;
+  margin: 3% auto
+}
+
+.conseilMaxEtLea h4 {
+  margin-bottom: 3%;
+}
+
+.conseildescription p {
+  font-size: 18px;
+  text-align: justify;
+}
+.introduction {
+  width: 70%;
+  margin: 0 auto;
+  text-align: justify;
+}
+.aimez-aussi {
+  background-color: #F5F5F5;
+  text-align: center;
+  padding: 2% 0;
+  margin-top: 5%;
+}
+
+.aimez-aussi h2 {
+  color: #333333;
+  font-family: roboto, sans-serif;
+  margin-bottom: 3%;
+}
+
+.commentContainer p {
+  color: #868686;
+}
+
+.imgPsy{
+  border-radius: 80px;
+  height: 150px;
+  margin-left: 30%;
+}
+
+.description-blog p {
+  font-size: 18px;
+}
+
+.commentContainer {
+  display: flex;
+  width: 70%;
+  margin: 4% auto;
+}
+
+.paragraph1-text ul li {
+  margin-top: 5%;
+}
+
+.encadrement {
+  box-shadow : 0px 0px 10px 0px rgb(0 0 0 / 20%);
+  width: 70%;
+  margin: 4% auto;
+  padding: 2%;
+}
+
+.grosseLettre{
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.outil {
+  display: flex;
+  width: 70%;
+  justify-content: space-around;
+  margin: 4% auto;
+}
+
+.apprentissageDescription {
+  width: 60%;
+}
+
+.outil h3 {
+  text-align: center;
+}
+
+.hrContainer {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.hrContainer hr {
+  height: 3px!important;
+  border: none;
+  color: black;
+  background-color: black;
+}
+
+.playboard-card {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  width: 30%;
+  margin: 0 auto
+}
+
+.prix-playboard-card-cross {
+  font-weight: normal;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: line-through;
+  color: lightgray;
+}
+
+.prix-playboard-card-true {
+  font-weight: normal;
+  font-size: 16px;
+  color: #E72763;
+}
+
+.playboard-card-undisplay {
+  display: none;
+  height: 30px;
+}
+
+.card-no-margin {
+  margin-bottom: 6%!important;
+}
