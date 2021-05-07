@@ -126,13 +126,41 @@ const CheckoutScreen = props => {
     }
   }
 
-  console.log('cart', cart)
   let playboardReducPrice = 0
+  let playboardInCart = []
   if (cart) {
     const playboard = cart.products.filter(obj => {
       return obj.productId === 'cHJvZHVjdDozMTYz'
     })
-    playboardReducPrice = playboard[0].qty * 20
+    if (playboard.length !== 0) {
+      playboardInCart = playboard
+      playboardReducPrice = playboard[0].qty * 20
+    }
+  }
+
+  let tourReducPrice = 0
+  let tourInCart = []
+  if (cart) {
+    const tour = cart.products.filter(obj => {
+      return obj.productId === 'cHJvZHVjdDo0NTI3'
+    })
+    if (tour.length !== 0) {
+      tourInCart = tour
+      tourReducPrice = tour[0].qty * 20
+    }
+  }
+
+
+  let xyloReducPrice = 0
+  let xyloInCart = []
+  if (cart) {
+    const xylo = cart.products.filter(obj => {
+      return obj.productId === 'cHJvZHVjdDo0NTM1'
+    })
+    if (xylo.length !== 0) {
+      xyloInCart = xylo
+      xyloReducPrice = xylo[0].qty * 20
+    }
   }
 
   const [email, setEmail] = useState('');
@@ -235,11 +263,37 @@ const CheckoutScreen = props => {
             </div>
             <div className="prixRecap">
               <div className="sousTotal">
-                <p className="sousTotalText">Discount PlayBoard</p>
-                <p className="itemTotalPrice">{playboardReducPrice} €</p>
+
+                <div>
+                {playboardInCart.length !== 0 && (
+                  <div className="prix-reduc-container">
+                  <p className="sousTotalText">Discount PlayBoard</p>
+                  <p className="itemTotalPrice">{playboardReducPrice} €</p>
+                  </div>
+                )}
+                </div>
+
+                <div>
+                {xyloInCart.length !== 0 && (
+                  <div className="prix-reduc-container">
+                    <p className="sousTotalText">Discount Xylophone</p>
+                    <p className="itemTotalPrice">{xyloReducPrice} €</p>
+                  </div>
+                )}
+                </div>
+
+                <div>
+                {tourInCart.length !== 0 && (
+                  <div className="prix-reduc-container">
+                    <p className="sousTotalText">Discount Tour</p>
+                    <p className="itemTotalPrice">{tourReducPrice} €</p>
+                  </div>
+                )}
+                </div>
+
               </div>
               <hr className="hrPrix"/>
-              <div className="sousTotal">
+              <div className="sousTotal2">
                 <p className="sousTotalText">
                   Sous-total
                 </p>

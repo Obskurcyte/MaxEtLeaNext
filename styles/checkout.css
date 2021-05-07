@@ -5,12 +5,18 @@
 .MuiFormControl-root {
   margin: 2% !important;
 }
+
 .sliderImgContainer {
   width: 100%;
 }
 
 .checkboxContainer {
   display: flex;
+}
+
+.prix-reduc-container{
+  display: flex;
+  justify-content: space-between;
 }
 
 .bigInput {
@@ -184,6 +190,14 @@
 }
 
 .sousTotal {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 30%;
+}
+
+.sousTotal2 {
   width: 60%;
   display: flex;
   justify-content: space-between;

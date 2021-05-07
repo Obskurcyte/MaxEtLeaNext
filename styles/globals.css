@@ -10,9 +10,8 @@ html {
 a {
   font-size: 22px;
   letter-spacing: 0px;
-  color: #666666;
+  color: #666666 !important;
   font-weight: 300;
-  font-family: "D KButterfly Ball", sans-serif;
   text-decoration: none!important;
 }
 

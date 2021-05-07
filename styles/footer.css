@@ -1,6 +1,9 @@
 .footer-container {
   display: flex;
-  padding: 2% 10%;
+  padding-top: 2%;
+  padding-left: 6%;
+  padding-bottom: 2%;
+  padding-right: 5%;
   flex-direction: row;
   justify-content: space-around;
   text-align: center;
@@ -19,15 +22,44 @@
 .footer-column {
   display: flex;
   flex-direction: column;
-  margin-top: 5%;
+  width: 40%;
+  margin-top: 3%;
+  justify-content: space-around;
+}
+
+.footer-column2 {
+  display: flex;
+  margin-top: 3%;
+  flex-direction: column;
   width: 40%;
 }
 
-.icons-social {
+.footer-column3 {
   display: flex;
-  margin-left: 10%
+  flex-direction: column;
+  width: 40%;
 }
 
+.photo-arbre {
+  height: 100%;
+}
+.icons-social {
+  display: flex;
+  margin-left: 13%
+}
+
+.img-container-arbre {
+  height: 100px;
+}
+.arbre-replantes {
+  width: 30%;
+  height: 100%;
+}
+.photo-container {
+  display: flex;
+  margin-left: 30%;
+  margin-top: 5%;
+}
 .img-footer {
   width: 100%;
   margin-top: 8%;
