@@ -23,78 +23,15 @@ const ContactScreen = props => {
       <div className="contact">
         <h1 className="contact-us">{t("Contact.1")}</h1>
       </div>
-      <div className="contact-wrapper">
-        <div className="contact-form">
-          <Formik
-            initialValues={initialValues}
-            onSubmit={async values => {
-              console.log(values)
-              try {
-                await axios.post("/api/contact", {
-                  nom: values.nom,
-                  prenom: values.prenom,
-                  email: values.email,
-                  sujet: values.sujet,
-                  message: values.message
-                })
-              } catch (err) {
-                console.log(err)
-              }
-            }
-            }
-          >
-            {props => (
-              <div>
-                {success}
-                <div className="nomprenom">
-                  <div className="nom">
-                    <label>{t("Contact.2")}<span className="star"> *</span></label>
-                    <input
-                      type="text"
-                      onChange={props.handleChange('nom')}
-                      value={props.values.nom}/>
-                  </div>
-                  <div className="prenom">
-                    <label>{t("Contact.3")}<span className="star"> *</span></label>
-                    <input
-                      type="text"
-                      onChange={props.handleChange('prenom')}
-                      value={props.values.prenom}/>
-                  </div>
-                </div>
-                <div className="email input-container">
-                  <label>{t("Contact.4")}<span className="star"> *</span></label>
-                  <input
-                    type="text"
-                    onChange={props.handleChange('email')}
-                    value={props.values.email}
-                  />
-                </div>
-                <div className="sujet input-container">
-                  <label>{t("Contact.5")}<span className="star"> *</span></label>
-                  <input
-                    type="text"
-                    onChange={props.handleChange("sujet")}
-                    value={props.values.sujet}
-                  />
-                </div>
-                <div className="message input-container">
-                  <label>{t("Contact.6")}<span className="star"> *</span></label>
-                  <input
-                    type="text-area"
-                    onChange={props.handleChange('message')}
-                    value={props.values.message}
-                  />
-                </div>
-                <div className="container-send">
-                  <button className="send" type="submit" onClick={props.handleSubmit}>{t("Contact.7")}</button>
-                </div>
-              </div>
-            )}
-
-          </Formik>
-        </div>
-      </div>
+      <iframe 
+        width="740" 
+        height="705" 
+        src="https://b31d5692.sibforms.com/serve/MUIEALeHloHr3oeQjJIdOnstS0X8NDMtM-xNZD3ttoNXRLBnsiFHQI_rp3gSIZ52m3iYdfobk4K6mdMVdnf9FLmpc4kKT-tlHrc658CrAAW1Jgq2Ve86sWuMviHukCkg3K6CzBlKVPi5uf0-nmIpPi8uv_l2qzUoAZqKl6CF_4DDDZZKTO60iZ95YOPEl4v0K6MWPCmD6xdWCUBK" 
+        frameBorder="0" 
+        scrolling="auto" 
+        allowFullScreen 
+        style={{display:"block", marginLeft: "auto", marginRight: "auto",maxWidth:"100%", marginBottom: "20px" }} >
+      </iframe>
       <Footer />
     </div>
 
