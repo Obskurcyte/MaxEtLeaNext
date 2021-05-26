@@ -1,0 +1,51 @@
+.equipeDescriptionContainer {
+  margin: 0 auto;
+  padding-right: 8%;
+  padding-left: 8%;
+  max-width: 80%;
+}
+
+.equipeDescriptionContainer p, h5 {
+  text-align: center;
+}
+
+.colequipe {
+  width: 25%;
+}
+
+.equipeDescriptionContainer hr {
+  width: 15%;
+  text-align: center;
+  margin-left: 40%;
+  color: black;
+  height: 3px
+}
+.imgPresentationContainer {
+  align-items: center;
+  width: 100px;
+}
+
+.imgPresentationContainer img{
+  border-radius: 50%;
+  text-align: center;
+  width: 100%;
+  margin-left: 18%;
+  margin-bottom: 5%
+}
+
+.equipeContainer {
+  max-width: 100%;
+  position: relative;
+  margin-bottom: 4%;
+}
+
+.equipeContainer img {
+  max-width: 100%;
+  opacity: 0.6;
+}
+
+.team {
+  position: absolute;
+  bottom: 35%;
+  left: 37%;
+}

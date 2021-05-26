@@ -4,10 +4,11 @@ import {useTranslation} from "react-i18next";
 
 const Engagement = () => {
   const { t, i18n } = useTranslation();
+
   return (
     <React.Fragment>
     <div className={styles.engagementContainer}>
-      <h1 style={{textAlign: 'center'}} className="garanties-title">Max et Léa s'engage à</h1>
+      <h1 style={{textAlign: 'center'}} className="garanties-title">{t("Engagement.1")}</h1>
       <div >
         <img src={'/100.png'} alt="" className={styles.photo1}/>
       </div>

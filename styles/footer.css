@@ -11,13 +11,49 @@
   box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 20%);
 }
 
+.arbresDialogContainer h5{
+  color: #91BB1F;
+  font-size: 35px;
+}
 .copyright {
   color: #6EC1E4;
+  font-size: 12px;
+}
+
+.arbresRow h5 {
+  font-size: 25px;
+}
+
+.arbresButtonClose {
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  position: absolute;
+  font-size: 20px;
+  top: 2%;
+  right: 2%
+}
+.arbresRow {
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.seePage {
+  color: #91BB1F !important;
+  text-align: center;
   font-size: 12px;
 }
 .element:nth-child(1)
 {
   flex: 2;
+}
+
+.arbresDialogContainer {
+  font-family: "D KButterfly Ball", sans-serif;
+  align-items: center;
 }
 .footer-column {
   display: flex;
@@ -27,6 +63,9 @@
   justify-content: space-around;
 }
 
+.arbresRow{
+  display: flex;
+}
 .footer-column2 {
   display: flex;
   margin-top: 3%;
@@ -45,7 +84,6 @@
 }
 .icons-social {
   display: flex;
-  margin-left: 13%
 }
 
 .img-container-arbre {
@@ -89,32 +127,31 @@
   margin-right: 5px;
 }
 
-.fa-facebook {
-  color: blue;
-  font-size: 200%;
-  margin-right: 5%;
+.iconFacebook {
+  color: #3b5998;
+  width: 33% !important;
+  height: 60%;
 }
 
-.fa-instagram {
-  color: black;
-  font-size: 200%;
-  margin-right: 5%;
+.iconInstagram {
+  color: #262626;
+  width: 33% !important;
+  height: 60%;
 }
 
-.fa-youtube{
-  color: red;
-  font-size: 200%;
-  margin-right: 5%;
+.iconYoutube {
+  color: #cd201f;
+  width: 33% !important;
+  height: 60%;
 }
 
-
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1050px){
   .footer-container  {
     padding: 2% 5%;
   }
 }
 
-@media screen and (max-width: 750px){
+@media screen and (max-width: 770px){
   .footer-container {
     flex-direction: column;
     align-items: center;
@@ -123,3 +160,5 @@
     width: 100%;
   }
 }
+
+

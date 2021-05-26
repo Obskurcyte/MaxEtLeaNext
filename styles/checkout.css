@@ -2,6 +2,29 @@
   max-width: 100%;
 }
 
+.livraisonRow {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding-right: 5%;
+}
+
+.livraisonChoice {
+  margin-top: 2%;
+}
+
+.livraisonPrice {
+  margin-top: 2%;
+}
+
+.livraison {
+  margin-top: 5%;
+}
+
+.livraisonTitle {
+  margin-bottom: 6%;
+}
+
 .MuiFormControl-root {
   margin: 2% !important;
 }
@@ -50,7 +73,7 @@
   letter-spacing: -5px;
   color: #225d71;
   font-weight: bold;
-  font-family: "Calibre", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -129,7 +152,7 @@
   letter-spacing: 1px;
   color: #7c95a2;
   font-weight: 900;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
 }
 
 .produitPaiementContainer {
@@ -148,7 +171,7 @@
   letter-spacing: 1px;
   color: #7c95a2;
   font-weight: 900;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -157,7 +180,7 @@
   letter-spacing: 1px;
   color: lightgrey;
   font-weight: 900;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -190,11 +213,11 @@
 }
 
 .sousTotal {
-  width: 60%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-left: 30%;
+  margin-left: 5%;
 }
 
 .sousTotal2 {
@@ -240,7 +263,7 @@
   letter-spacing: -1px;
   color: #3f7284;
   font-weight: 300;
-  font-family: "Calibre", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
   margin-top: 5%;
 }
@@ -250,7 +273,7 @@
   letter-spacing: -3px;
   color: #ef675c;
   font-weight: bold;
-  font-family: "Calibre", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
   margin-bottom: 0;
 }
@@ -302,12 +325,12 @@
 }
 
 .addCarousel {
-  font-size: 25px;
+  font-size: 22px;
   letter-spacing: 0px;
   line-height: 41px;
   color: #7c95a2;
   font-weight: bold;
-  font-family: "Calibri", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
 }
 
 .savoirplus {
@@ -315,7 +338,7 @@
   letter-spacing: 0px;
   line-height: 41px;
   color: #666768;
-  font-family: "Calibri", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   margin-left: 15%;
 }
 
@@ -337,7 +360,7 @@
   line-height: 41px;
   color: #ff6376;
   font-weight: bold;
-  font-family: "Calibri", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
 }
 
 .prixReduc {
@@ -362,6 +385,7 @@
   height: 50px;
   margin-top: 10%;
   margin-left: 10%;
+  width: 100%;
 }
 
 .fauxPrix {
@@ -389,7 +413,7 @@
     font-size: 18px;
   }
   .addCarousel {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 
@@ -402,7 +426,7 @@
     font-size: 18px;
   }
   .addCarousel {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 
@@ -418,6 +442,9 @@
   }
   .imgContainerCart {
     height: 150px;
+  }
+  .sousTotalText {
+    font-size: 20px;
   }
 }
 
@@ -448,7 +475,10 @@
     justify-content: space-between;
   }
   .sousTotalText {
-    font-size: 20px;
+    font-size: 15px;
+  }
+  .itemTotalPrice {
+    font-size: 17px;
   }
 }
 
@@ -491,9 +521,6 @@
   .coordonneesTextLight {
     font-size: 20px;
   }
-  .sousTotal {
-    margin-left: 20%;
-  }
   .hrPrix {
     margin-left: 20%;
   }
@@ -512,7 +539,7 @@
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   .imgContainerCart {
     height: 100px;
   }
@@ -529,7 +556,7 @@
 }
 
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 790px) {
   .progressBarContainer {
     display: none;
   }
@@ -547,6 +574,7 @@
   }
   .cadeauContainerText {
     font-size: 60px;
+    font-family: "D KButterfly Ball", sans-serif;
   }
   .addArticleTitle {
     font-size: 17px;

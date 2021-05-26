@@ -20,7 +20,6 @@ const HomeScreen = () => {
   const { t, i18n } = useTranslation();
 
 
-
   return (
     <div>
       <Head>
@@ -57,7 +56,7 @@ const HomeScreen = () => {
               <Link href="/tour">
                 <a>
                 <p className="card-jouet-title" color="textSecondary">
-                  TOUR ARC EN CIEL
+                  {t("HomeScreen3")}
                 </p>
                 <img src={'/tour.png'} alt="" className="img-card"/>
                 </a>
@@ -72,7 +71,7 @@ const HomeScreen = () => {
               <Link href="/xylophone">
                 <a>
                 <p className="card-jouet-title" color="textSecondary">
-                  XYLOPHONE
+                  {t("HomeScreen4")}
                 </p>
                 <img alt="" className="img-card" src={'/xylophonecard.png'}/>
                 </a>

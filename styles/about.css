@@ -1,0 +1,175 @@
+.bienvenue {
+  background-color: #F5F5F5;
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  padding: 20px 0px 20px 0px;
+  text-align: center;
+}
+
+
+.bienvenue-title {
+  color: #666666;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.5em;
+  letter-spacing: 2px;
+}
+
+main {
+  padding: 5% 15%
+}
+
+.grande-photo {
+  width: 45%;
+  margin-right: 3%;
+}
+
+.container {
+  display: flex;
+}
+
+.container-photo {
+  margin-bottom: 5%;
+}
+
+.paragraph {
+  display: flex;
+  flex-direction: column;
+}
+
+.paragraph1 {
+  display: flex;
+}
+
+.paragraph2 {
+  display: flex;
+
+}
+
+.paragraph3 {
+  display: flex;
+}
+
+.paragraph4 {
+  display: flex;
+}
+
+.paragraph5 {
+  display: flex;
+}
+
+span {
+  font-weight: bold;
+}
+
+.petite-photo1 {
+  width: 35px;
+  margin-bottom: 43%;
+  float: left;
+}
+
+.petite-photo2 {
+  width: 35px;
+  margin-bottom: 10%;
+  float: left;
+}
+
+
+.petite-photo3 {
+  width: 35px;
+  margin-bottom: 37%;
+  float: left;
+}
+
+.petite-photo4 {
+  width: 35px;
+  margin-bottom: 28%;
+  float: left;
+}
+
+.petite-photo5 {
+  width: 35px;
+  margin-bottom: 16%;
+  float: left;
+}
+
+
+.moyenne-photo {
+  width: 100%;
+}
+
+.fa-quote-left {
+  width: 1em;
+  height: 1em;
+  position: relative;
+  display: block;
+  font-weight: 900;
+  color: #BDBDBD;
+}
+
+main {
+  color: #666666;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8em;
+  letter-spacing: 1px;
+}
+
+.Apropos-title {
+  margin-bottom: 5%;
+}
+
+.paragraphs2 {
+  max-width: 50%;
+  margin-right: 5%;
+}
+
+.card-citation {
+  box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 20%);
+  text-align: center;
+  padding: 5% ;
+  border-radius: 10px;
+  color: #545454;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.8em;
+  letter-spacing: 1px;
+  max-width: 100%;
+  font-size: 19px;
+  position: relative;
+  margin-bottom: 5%;
+
+}
+
+.signature {
+  color: #5D5757;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 1.8em;
+  letter-spacing: 1px;
+  position: absolute;
+  text-align: right;
+  top: 60%;
+  left: 75%;
+}
+
+.equipe-button {
+  font-size: 20px;
+  fill: #FFFFFF;
+  color: #FFFFFF;
+  transition: all .2s ease-in-out;
+  background-color: #E72C59;
+  border-radius: 8px 8px 8px 8px;
+  padding: 18px 30px 18px 30px;
+  border-color: #FFFFFF;
+  margin: 0 auto
+}
+
+.equipe-button:hover {
+  transform: scale(1.2);
+}
+
+.mega-photo {
+  margin: 0 auto;
+  max-width: 100%;
+}

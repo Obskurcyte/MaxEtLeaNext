@@ -9,6 +9,21 @@
   padding: 2% 2%;
 }
 
+.buttonPopupClose {
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  position: absolute;
+  font-size: 20px;
+}
+
+.reducImg {
+  width: 100%;
+  height: 100%;
+}
 .img-couverture {
   width: 100%;
 }
@@ -40,7 +55,7 @@
   color: #696969;
   font-size: 16px;
   letter-spacing: 0.5px;
-    font-family: roboto;
+    font-family: "D KButterfly Ball", sans-serif;
     font-weight: 500;
 }
 
@@ -56,7 +71,7 @@
 
 .faqContainer p{
   margin-top: -3px;
-  font-family: roboto;
+  font-family: "D KButterfly Ball", sans-serif;
 }
 
 .faqHeaderContainer p{
@@ -116,7 +131,7 @@
   letter-spacing: -2px;
   color: #ffffff;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -177,7 +192,7 @@
   letter-spacing: 0px;
   color: #0cb6ce;
   font-weight: 300;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -216,7 +231,7 @@
   letter-spacing: 0px;
   color: #225b6c;
   font-weight: 300;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -274,7 +289,7 @@
   color: #9bb0b7;
   font-weight: 300;
   font-style: italic;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
   margin-top: 8%;
 }
@@ -336,7 +351,7 @@
   font-size: 25px;
   color: #819ea7;
   font-weight: 500;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -344,7 +359,7 @@
   font-size: 25px;
   color: #f78904;
   font-weight: 500;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -352,7 +367,7 @@
   font-size: 25px;
   color: #60bec8;
   font-weight: 500;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -360,7 +375,7 @@
   font-size: 25px;
   color: #73c467;
   font-weight: 500;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -413,7 +428,7 @@
 .UnaSixDescription {
   font-size: 25px;
   color: #5b737e;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
   max-width: 500px;
   margin: auto;
@@ -509,6 +524,7 @@
   max-width: 370px;;
 }
 
+
 .rowIcone img {
   margin-right: 3%;
 }
@@ -570,7 +586,7 @@
   font-size: 34px;
   letter-spacing: 0px;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -651,7 +667,7 @@
 .playboardContainer {
   background-color: #e2dfd8;
   margin-top: 200px;
-  position: relative;
+  padding-top: 3%;
   padding-bottom: 50px;
 }
 
@@ -659,13 +675,102 @@
   width:100%;
   max-width: 1100px;
   margin: auto;
+  position: relative;
+  border-radius: 25px;
+  padding: 3% 5%;
+  background-color: white;
+}
+
+.playboardImgContainer {
+  position: absolute;
+  left: 40%;
+  bottom: 5%;
+}
+.playboardRedPrice {
+  font-size: 28px;
+  letter-spacing: -1px;
+  color: #e12a54;
+  font-weight: 700;
+  font-family: "D KButterfly Ball", sans-serif;
+  text-align: center;
+}
+
+.ebook {
+  display: flex;
+}
+
+.sacRangement {
+  margin-top: 5%;
+}
+
+.ebook img {
+  width: 2%
+}
+
+.ebook p {
+  font-family: "D KButterfly Ball", sans-serif;
+  margin-bottom: 0%;
+  margin-top: 0%  ;
+}
+
+.ajouterPanierContainer {
+  font-size: 20px;
+  fill: #FFFFFF;
+  color: #FFFFFF;
+  background-color: #E72C59;
+  box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 30%);
+  padding: 2%;
+  height: 50%;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.ajouterPanierContainer p {
+  margin-bottom: 0;
+  margin-top: 3%;
+  text-align: center;
+}
+
+.playboardContainer p {
+  font-family: "D KButterfly Ball", sans-serif;
+}
+.ebookOffertText {
+  display: flex;
+}
+
+.ebookOffertText img {
+  width: 2%;
+  height: 2%;
+}
+
+.ebookTitle {
+  font-weight: bold;
+  font-family: "D KButterfly Ball", sans-serif;
+}
+.prixPlayboardContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.priceFalse {
+  color: rgba(118, 118, 118, 0.68);
+  text-decoration: line-through;
+  font-size: 28px;
+  margin-bottom: 0;
+}
+
+.reduction {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .imgPlayboardContainer {
   width: 95%;
   max-width: 950px;
   margin: -200px auto 0px auto;
-} 
+}
 
 .playboardGood {
   width: 100%;
@@ -688,7 +793,7 @@
 }
 
 .imgPlayboardPrixContainer p{
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   letter-spacing: 1px;
   margin-bottom: 3px;
   line-height: 1;
@@ -751,7 +856,7 @@
   letter-spacing: -1px;
   color: white!important;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -918,11 +1023,11 @@
   .imgPlayboardPrixContainer .oldPrice{
     font-size: 1em;
   }
-  
+
   .imgPlayboardPrixContainer .newPrice{
     font-size: 2em;
   }
-  
+
   .imgPlayboardPrixContainer .saveAmount{
     font-size: 0.7em;
   }
@@ -959,4 +1064,16 @@
   .sourireTextContainer{
     width: 90%;
   }
+  .playboardImgContainer {
+    width: 50%;
+    left: 45%;
+    bottom: 10%
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .playboardImgContainer {
+    display: none;
+  }
+
 }

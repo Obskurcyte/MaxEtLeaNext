@@ -1,9 +1,13 @@
 import React from 'react';
 import Header from "../components/Header";
+import Head from "next/head";
 
 const RecapitulatifScreen = props => {
   return (
     <div>
+      <Head>
+        <title>Max And Lea - Recapitulatif</title>
+      </Head>
       <Header />
       <div>
         <h1>Merci de votre achat !</h1>

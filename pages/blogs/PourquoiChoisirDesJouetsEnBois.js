@@ -9,6 +9,7 @@ import {AppContext} from "../../components/context/AppContext";
 import * as product from "../../products";
 import i18next from "i18next";
 import {useTranslation} from "react-i18next";
+import Head from "next/head";
 
 const PourquoiChoisirDesJouetsEnBois = () => {
 
@@ -144,6 +145,9 @@ const PourquoiChoisirDesJouetsEnBois = () => {
 
   return (
     <div className='jeuContainer'>
+      <Head>
+        <title>Max And Lea - Blog-Pourquoi choisir des jouets en bois</title>
+      </Head>
       <Header />
       <div className="img-blog-container">
         <img src={'/handschildren.jpg'} className="img-blog" alt={'jeu extérieur'}/>

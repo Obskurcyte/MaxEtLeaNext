@@ -80,7 +80,7 @@
   letter-spacing: 0px;
   color: #ffffff;
   font-weight: 400;
-  font-family: "Roboto";
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -105,7 +105,7 @@
   line-height: 44px;
   color: #fefefe;
   font-weight: 500;
-  font-family: "Roboto";
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -138,7 +138,7 @@
   line-height: 44px;
   color: #fefefe;
   font-weight: 500;
-  font-family: "Roboto", serif;
+  font-family: "D KButterfly Ball", serif;
   text-align: center;
 }
 
@@ -158,7 +158,7 @@
   line-height: 44px;
   color: #fefefe;
   font-weight: 500;
-  font-family: "Roboto";
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -181,7 +181,7 @@
   line-height: 53px;
   color: #00b2cc;
   font-weight: 700;
-  font-family: "Roboto";
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -214,7 +214,7 @@
   color: #0b4b61;
   margin-top: 2%;
   font-weight: 700;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -223,7 +223,7 @@
   line-height: 1;
   color: #adadad;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -232,7 +232,7 @@
   line-height: 1;
   color: #adadad;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
   text-decoration: line-through;
 }
@@ -257,7 +257,7 @@
   letter-spacing: -1px;
   color: #ffffff;
   font-weight: 400;
-  font-family: "Roboto";
+  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
   margin-top: 1rem!important;
 }
@@ -347,5 +347,5 @@
     height: auto;
     margin: -6px auto 0px auto;
   }
-  
+
 }

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import {CardElement, useStripe, useElements, Elements} from "@stripe/react-stripe-js";
 import axios from "axios";
 import {ListGroup, Row} from 'react-bootstrap'
@@ -12,6 +12,12 @@ import gql from "graphql-tag";
 import {AppContext} from "./context/AppContext";
 import {useRouter} from 'next/router';
 import {PayPalButton} from "react-paypal-button-v2";
+import ReactDOM from 'react-dom'
+import Head from "next/head";
+import {useDispatch} from "react-redux";
+import {getCart, setMauvaisCart} from "../store/actions/commandes";
+import query from "apollo-cache-inmemory/lib/fragmentMatcherIntrospectionQuery";
+import Link from "next/link";
 
 const CHECKOUT_MUTATION = gql`
 mutation CHECKOUT_MUTATION( $input: CheckoutInput! ) {
@@ -47,7 +53,8 @@ const CheckoutFormStripe = ({
                               adresseFacturation,
   villeFacturation,
   codePostalFacturation,
-  phone
+  phone,
+  remerciement
                             }) => {
   const [isProcessing, setProcessingTo] = useState(false);
 
@@ -56,15 +63,56 @@ const CheckoutFormStripe = ({
   const [visaClicked, setVisaClicked] = useState(false);
   const [paypalClicked, setPaypalClicked] = useState(false);
 
-  console.log(visaClicked)
-  console.log(paypalClicked)
+  const dispatch = useDispatch();
 
+  console.log(visaClicked)
+  const [ cart, setCart ] = useContext( AppContext );
+  console.log(paypalClicked)
+  const router = useRouter()
   //############    PAYPAL #############//
 
-  const [ cart, setCart ] = useContext( AppContext );
+
+  const Paypal = () => {
+    const paypal = useRef();
+    useEffect(() => {
+      window.paypal.Buttons({
+        createOrder : (data, actions, err) => {
+          return actions.order.create({
+            intent: "CAPTURE",
+            purchase_units: [
+              {
+                description: 'articles',
+                amount: {
+                  currency: "EUR",
+                  value: totalPrice1
+                }
+              }
+            ]
+          })
+        },
+        onApprove: async (data, actions) => {
+          const order = await actions.order.capture();
+          if (order.status === 'COMPLETED') {
+            localStorage.removeItem('woo-next-cart')
+            await router.push('/remerciement')
+          }
+          console.log(order)
+        },
+        onError: (err) => {
+          console.log(err)
+        }
+      }).render(paypal.current)
+    }, [])
+    return (
+      <div>
+        <div ref={paypal}></div>
+      </div>
+    )
+  }
+
   console.log('cart', cart)
 
-  const router = useRouter()
+
   let totalPrice1 = 0;
   if (cart) {
     for (let data in cart.products) {
@@ -73,35 +121,21 @@ const CheckoutFormStripe = ({
   }
 
 
-  const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult)
-    router.push('/remerciement')
-    localStorage.removeItem('woo-next-cart')
-    console.log(cart)
-    console.log('ok')
+  if (cart.products.length === 2) {
+    totalPrice1 = totalPrice1 * 0.90
   }
-  const [sdKready, setSdkReady] = useState(false)
+
+  if (cart.products.length === 3) {
+    totalPrice1 = totalPrice1 * 0.85
+  }
 
 
-  useEffect(() => {
-    const addPayPalScript = async () => {
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = "https://www.paypal.com/sdk/js?client-id=Aa3c7qfO6HfeBDSRyk6_Pf1MITgO3qCXZ7kA2PPaW3atVSBQNO5tHhbhq7HU2FIinlIeT83X4Cxv5Gqw"
-      script.async = true
-      script.onload = () => {
-        setSdkReady(true)
-      }
-      document.body.appendChild(script)
-    }
-    addPayPalScript()
-    setSdkReady(true)
-  });
+
 
 
   //##############   STRIPE #############//
 
-  const [ checkout, { data: checkoutResponse, loading: checkoutLoading, error: checkoutError } ] = useMutation( CHECKOUT_MUTATION, {
+  const [ checkout, { data: checkoutResponse, loading: checkoutLoading, error: checkoutError1 } ] = useMutation( CHECKOUT_MUTATION, {
     variables: {
       input: checkoutData
     },
@@ -120,6 +154,7 @@ const CheckoutFormStripe = ({
   const stripe = useStripe();
   const elements = useElements();
 
+  const [checkoutError, setCheckoutError] = useState('')
 
   const CardElementContainer = styled.div`
   height: 40px;
@@ -156,9 +191,18 @@ const CheckoutFormStripe = ({
     hidePostalCode: true
   };
 
+  const onSuccessfullCheckout = () => {
+    router.push('/remerciement')
+  }
   return (
 
     <div>
+      <div className={styles.codePromo}>
+        <div>
+          <input type="text" placeholder="Code promo" className="inputPromo"/>
+        </div>
+        <button className="cart-valide">Valider votre code promo</button>
+      </div>
       <div className={styles.paymentMethods}>
         <div className={visaClicked ? styles.visaContainerClicked : styles.visaContainer} onClick={() => {
           setPaypalClicked(false)
@@ -223,7 +267,10 @@ const CheckoutFormStripe = ({
 
             const {data: clientSecret} = await axios.post("/api/payment_intents", {
               amount: price * 100
-            });
+            }).then(() => {
+              localStorage.removeItem('woo-next-cart')
+              router.push('/remerciement')
+            })
 
             console.log(clientSecret)
 
@@ -238,31 +285,15 @@ const CheckoutFormStripe = ({
             const confirmedCardPayment = await stripe.confirmCardPayment(clientSecret, {
               payment_method: paymentMethodReq.paymentMethod.id
             })
-            console.log(paymentMethodReq)
-            console.log(confirmedCardPayment)
 
-            /* if (paymentMethodReq.error) {
+
+            console.log('wola', paymentMethodReq)
+            console.log('wola2', confirmedCardPayment)
+
+            if (paymentMethodReq.error) {
                setCheckoutError(paymentMethodReq.error.message);
                setProcessingTo(false);
-               return;
              }
-
-             const { error } = await stripe.confirmCardPayment(clientSecret, {
-               payment_method: paymentMethodReq.paymentMethod.id
-             });
-
-             if (error) {
-               setCheckoutError(error.message);
-               setProcessingTo(false);
-               return;
-             }
-
-             onSuccessfulCheckout();
-           } catch (err) {
-             setCheckoutError(err.message);
-           }
-           */
-
           }}
         >
           {props => (
@@ -305,11 +336,7 @@ const CheckoutFormStripe = ({
       {paypalClicked && (
         <div >
           <ListGroup.Item>
-            <PayPalButton
-              amount={totalPrice1}
-              shippingPreference="NO_SHIPPING"
-              onSuccess={successPaymentHandler}
-            />
+          <Paypal />
           </ListGroup.Item>
         </div>
       )}

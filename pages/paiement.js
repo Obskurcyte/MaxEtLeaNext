@@ -5,6 +5,7 @@ import {AppContext} from "../components/context/AppContext";
 import {ListGroup} from "react-bootstrap";
 import {PayPalButton} from "react-paypal-button-v2";
 import {useRouter} from 'next/router';
+import Head from "next/head";
 
 
 /* const userID = localStorage.getItem('userID');
@@ -60,6 +61,9 @@ const PaiementScreen = props => {
 
   return (
     <div>
+      <Head>
+        <title>Max And Lea - Paiement</title>
+      </Head>
       <Header />
       <div>
         <h1>Choisissez votre moyen de paiement</h1>

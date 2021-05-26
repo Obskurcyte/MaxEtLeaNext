@@ -8,12 +8,16 @@ import {AppContext, AppProvider} from "./context/AppContext";
 import i18next from "i18next";
 import CardHover from "./CardHover";
 import Link from 'next/link';
+import {useDispatch, useSelector} from "react-redux";
+import {getDrapeau} from "../store/actions/drapeau";
 
 const Header = () => {
 
   const { t, i18n } = useTranslation();
 
   const [open, setOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   const lang = i18next.language;
   const [cart, setCart] = useContext(AppContext);
@@ -33,9 +37,10 @@ const Header = () => {
     }
   })
 
+  const drapeau = useSelector(state => state.drapeau.drapeau)
 
+  console.log(drapeau)
   const productCount = (null !== cart && Object.keys(cart).length) ? cart.totalProductCount : '';
-  const totalPrice = (null !== cart && Object.keys(cart).length) ? cart.totalProductsPrice: '';
 
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -44,12 +49,19 @@ const Header = () => {
     setAnchorEl(event.currentTarget);
   };
 
-  const [imgurl, setImgUrl] = useState("https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png")
 
   console.log(open)
-  const handleClose = (lang, url) => {
+  const handleClose = (lang) => {
     i18n.changeLanguage(lang).then(() => setAnchorEl(null))
-    setImgUrl(url);
+    if (lang === 'fr') {
+      dispatch(getDrapeau('https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png'))
+    } if (lang === 'en') {
+      dispatch(getDrapeau('https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png'))
+    } if (lang === 'es') {
+      dispatch(getDrapeau('https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png'))
+    } if (lang === 'al') {
+      dispatch(getDrapeau('https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/langfr-225px-Flag_of_Germany.svg.png'))
+    }
   };
 
   const renderCart = () => {
@@ -67,7 +79,7 @@ const Header = () => {
         <nav>
           <div className={styles.drapeauContainer}>
             <p className={styles.langue}>{lang}</p>
-            <img src={imgurl} alt="drapeau français" className={styles.drapeauImg} onClick={handleClick}/>
+            <img src={drapeau} alt="drapeau français" className={styles.drapeauImg} onClick={handleClick}/>
           </div>
           <Nav className={styles.navBar}>
             <div className={styles.imgContainer}>
@@ -86,10 +98,10 @@ const Header = () => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={() => handleClose('en', 'https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt=""/></MenuItem>
-              <MenuItem onClick={() => handleClose('es', 'https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png" alt=""/></MenuItem>
-              <MenuItem onClick={() => handleClose('al', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/langfr-225px-Flag_of_Germany.svg.png')}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/langfr-225px-Flag_of_Germany.svg.png" className={styles.drapeauAllemand} alt=""/></MenuItem>
-              <MenuItem onClick={() => handleClose('fr', 'https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png" alt=""/></MenuItem>
+              <MenuItem onClick={() => handleClose('en')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt=""/></MenuItem>
+              <MenuItem onClick={() => handleClose('es')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png" alt=""/></MenuItem>
+              <MenuItem onClick={() => handleClose('al')}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/langfr-225px-Flag_of_Germany.svg.png" className={styles.drapeauAllemand} alt=""/></MenuItem>
+              <MenuItem onClick={() => handleClose('fr')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png" alt=""/></MenuItem>
 
             </Menu>
             <div className={styles.accountShopping} onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>

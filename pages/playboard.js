@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import ReactPlayer from 'react-player'
 import Header from "../components/Header";
 import Link from 'next/link';
@@ -13,6 +13,12 @@ import Head from 'next/head';
 import Slider from "react-slick";
 import Collapsible from 'react-collapsible';
 import Recommendation from "../components/Recommendation";
+import {useTranslation} from "react-i18next";
+import { useTheme } from '@material-ui/core/styles';
+
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const icon = React.createElement('i', { className: 'far fa-question-circle' }, "");
 const title1 = React.createElement('p', {}, "La PlayBoard s'abime-t-elle avec le temps ?");
@@ -35,6 +41,17 @@ const faqHeader8 = React.createElement('div', {className: 'faqHeaderContainer' }
 
 const PlayBoardScreen = props => {
 
+  const [open, setOpen] = React.useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const { t, i18n } = useTranslation();
+
   var settings = {
     dots: true,
     infinite: true,
@@ -50,6 +67,7 @@ const PlayBoardScreen = props => {
   const [cart, setCart] = useContext(AppContext);
   const products = product.products
 
+  console.log('products', products)
   const getFloatVal = (string) => {
     let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
     return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)): '';
@@ -69,7 +87,6 @@ const PlayBoardScreen = props => {
     localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
     console.log('newCart', newCart)
     return newCart
-
   };
 
   const createNewProduct = (product, productPrice, qty) => {
@@ -78,6 +95,7 @@ const PlayBoardScreen = props => {
       name: product.name,
       price: productPrice,
       qty: qty,
+      image: product.image,
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };
@@ -199,7 +217,7 @@ const PlayBoardScreen = props => {
             <h1 className="playboard-title">PLAYBOARD</h1>
           </div>
           <div className="playboard-paragraph-container">
-            <p className="playboard-paragraph">La playboard est le jouet le plus complet pour stimuler l'éveil et la motricité fine des enfants !</p>
+            <p className="playboard-paragraph">{t("Playboard1")}</p>
           </div>
           <div className="video-container">
             <ReactPlayer
@@ -214,7 +232,7 @@ const PlayBoardScreen = props => {
           />
           </div>
           <div className="voir-offre">
-            <Link href="#offre"><h3 className="voir-offre-title">Voir notre offre</h3></Link>
+            <Link href="#offre"><h3 className="voir-offre-title">{t("Playboard2")}</h3></Link>
           </div>
         </div>
 
@@ -223,7 +241,7 @@ const PlayBoardScreen = props => {
             <img src={"/bebeIcone.png"} alt="" className="img-bebe"/>
           </div>
           <div className="pensee-paragraph-container">
-            <p className="pensee-paragraph">Pensée pour chaque étape du développement psychomoteur de l'enfant</p>
+            <p className="pensee-paragraph">{t("Playboard3")}</p>
           </div>
         </div>
 
@@ -232,17 +250,17 @@ const PlayBoardScreen = props => {
 
             <div className="col icone-mini-container">
               <img src={'/creativite.png'} alt=""/>
-              <p>Développer <br/>sa Créativité</p>
+              <p>{t("Playboard4")}<br/>{t("Playboard5")}</p>
             </div>
 
             <div className="col icone-mini-container">
               <img src={'/habilite.png'} alt=""/>
-              <p>Améliorer <br/>son habilité</p>
+              <p>{t("Playboard6")} <br/>{t("Playboard7")}</p>
             </div>
 
             <div className="col icone-mini-container">
               <img src={'/motricite.png'} alt=""/>
-              <p>Travailler <br/>sa motricité</p>
+              <p>{t("Playboard8")}<br/>{t("Playboard9")}</p>
             </div>
           </div>
 
@@ -250,17 +268,17 @@ const PlayBoardScreen = props => {
 
             <div className="col icone-mini-container">
               <img src={'/concentration.png'} alt=""/>
-              <p>Aiguiser <br/>sa concentration</p>
+              <p>{t("Playboard1O")}<br/>{t("Playboard11")}</p>
             </div>
 
             <div className="col icone-mini-container">
               <img src={'/apprendre.png'} alt=""/>
-              <p>Apprendre <br/>en s'amusant</p>
+              <p>{t("Playboard12")}<br/>{t("Playboard13")}</p>
             </div>
 
             <div className="col icone-mini-container">
               <img src={'/autonomie.png'} alt=""/>
-              <p>Développer <br/>l'autonomie</p>
+              <p>{t("Playboard14")}<br/>{t("Playboard15")}</p>
             </div>
 
           </div>
@@ -637,40 +655,64 @@ const PlayBoardScreen = props => {
 
         <div className="playboardContainer" id="offre">
           <div className="playboardSubContainer">
-            <div className="imgBestSellerContainer">
-              <img src={'/bestSeller.png'} alt="" className='bestSeller'/>
-            </div>
-            <div className="row align-items-center">
-              <div className="imgPlayboardPrixContainer col">
-                <img src={'/playboardTitle.webp'} alt="" className="playboardprice"/>
-                <p className="oldPrice">
-                49,90€
-                </p>
-                <p className="newPrice">
-                29,90€
-                </p>
-                <p className="saveAmount">
-                (-40% vous économisez 20€)
-                </p>
+
+            <div className="prixPlayboardContainer">
+              <div className="playboardPrix">
+                <p className="priceFalse">49,90 €</p>
+                <p className="playboardRedPrice">29,90 €    <span className="reduction">(-40%, économisez 20€)</span></p>
               </div>
-              <div className="imgPlayboardContainer col">
-                <img src={'/playboardGood.webp'} alt="" className="playboardGood"/>
+              <div>
+              <div onClick={handleAddToCart} className="ajouterPanierContainer">
+                <p>Ajouter au panier</p>
+              </div>
+              <p>Une question ? Contactez-nous</p>
               </div>
             </div>
-            <div className="offreContainer">
-              <div className="row align-items-center">
-                <div className="imgEbookContainer col">
-                  <img src={'/ebook.webp'} alt="" className="ebook"/>
+
+
+            <div className="ebooksContainer">
+              <p className="ebookTitle">3 ebooks GRATUITS avec votre commande : </p>
+              <div className="ebook">
+                <img src="https://play.maxandlea.com/wp-content/uploads/2020/05/dot_1-1.svg" alt="" />
+                <p>1 guide d'activités pour enfants</p>
+              </div>
+              <div className="ebook">
+                <img src="https://play.maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt="" />
+                <p>1 livre de contes</p>
+              </div>
+              <div className="ebook">
+                <img src="https://play.maxandlea.com/wp-content/uploads/2020/05/dot_3t.svg" alt="" />
+                <p>1 cahier de coloriage</p>
+              </div>
+            </div>
+
+            <div className="sacRangement">
+              <p className="ebookTitle">1 sac de rangement OFFERT :</p>
+              <div className="ebookOffertText">
+                <img src="https://play.maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-copie-6.png" alt=""/>
+                <p>Conçu pour ranger les pièces de la Playboard</p>
+              </div>
+            </div>
+
+            <div className="playboardImgContainer" onClick={() => setOpen(true)}>
+              <img src="https://play.maxandlea.com/wp-content/uploads/2020/05/fr2.png" alt="" className="reducImg"/>
+            </div>
+
+            <Dialog
+              fullScreen={fullScreen}
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="responsive-dialog-title"
+            >
+              <DialogContent>
+                <div>
+                  <img src={'/popup.png'} alt="" style={{maxWidth: '100%'}}/>
+                  <button className="buttonPopupClose" onClick={() => setOpen(false)}>x</button>
                 </div>
-                <div className="imgOffertContainer col">
-                  <img src={'/offertPhoto.webp'} alt="" className="offertPhoto"/>
-                </div>
-              </div>
-            </div>
+              </DialogContent>
+            </Dialog>
+
           </div>
-        </div>
-        <div className="addPanierContainer" onClick={handleAddToCart}>
-              <Link href='#'><p>Ajouter au panier</p></Link>
         </div>
 
         <div className="clientSatisfait">

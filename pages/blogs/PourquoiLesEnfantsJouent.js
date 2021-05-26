@@ -9,6 +9,7 @@ import {AppContext} from "../../components/context/AppContext";
 import * as product from "../../products";
 import i18next from "i18next";
 import {useTranslation} from "react-i18next";
+import Head from "next/head";
 
 const PourquoiLesEnfantsJouent = () => {
 
@@ -142,6 +143,9 @@ const PourquoiLesEnfantsJouent = () => {
 
   return (
     <div className='jeuContainer'>
+      <Head>
+        <title>Max And Lea - Blog-Pourquoi les enfants jouent</title>
+      </Head>
       <Header />
       <div className="img-blog-container">
         <img src={'/playboardBlog.jpg'} className="img-blog" alt={'mathématiques'}/>

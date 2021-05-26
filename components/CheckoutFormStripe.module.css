@@ -24,7 +24,7 @@
   line-height: 39px;
   color: #ffffff;
   font-weight: bold;
-  font-family: "Calibri";
+  font-family: "D KButterfly Ball", sans-serif;
   background-color: #E62B56;
   border: none;
   border-radius: 30px;
@@ -38,6 +38,7 @@
   display: flex;
   margin-bottom: 10%;
   width: 150%;
+  margin-top: 10%;
 }
 
 .visaContainer {
@@ -93,3 +94,4 @@
   height: 100%;
   opacity: 0.6
 }
+

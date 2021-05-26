@@ -1,10 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Header from "../../components/Header";
-import {useDispatch, useSelector} from "react-redux";
 import Link from 'next/link';
 import {Card, Row, Col, Container} from "react-bootstrap";
 import Footer from "../../components/Footer";
-import MathematiquesEtJeunesEnfants from "./MathematiquesEtJeunesEnfants";
 import i18next from "i18next";
 import {useTranslation} from "react-i18next";
 

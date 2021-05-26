@@ -2,6 +2,10 @@
   width: 30px;
 }
 
+.itemsuppr {
+  margin-top: 150%;
+}
+
 .input-card {
   display: flex;
   height: 50px;
@@ -36,11 +40,12 @@ table {
 }
 
 .itemPrix {
-  font-size: 40px;
+  font-size: 30px;
   letter-spacing: -1px;
   color: #11c47e;
+  margin-bottom: 0;
   font-weight: bold;
-  font-family: "Myriad Pro", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
 }
 
 .descriptionProduitText {
@@ -48,14 +53,13 @@ table {
   letter-spacing: 0px;
   color: #000000;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  margin-bottom: 0;
+  font-family: "D KButterfly Ball", sans-serif;
 }
 
 .imgContainerCart {
-  border-radius: 166px;
-  background-color: #f2f4f6;
   width: 25%;
-  height: 200px;
+  height: 100px;
   overflow: hidden;
   align-items: center;
   margin-top: 5%;
@@ -128,6 +132,7 @@ th {
 
 .tr-product {
   height: 150px;
+  margin-bottom: 5%;
 }
 
 .container-cart {
@@ -222,7 +227,7 @@ th {
   letter-spacing: 0px;
   line-height: 55px;
   color: #11c47e;
-  font-family: "Myriad Pro", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
 }
 
 .itemTotalPrice {
@@ -230,10 +235,8 @@ th {
   letter-spacing: 0px;
   line-height: 55px;
   color: #11c47e;
-  font-family: "Myriad Pro", sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   font-weight: bold;
 }
 
-.tr-product {
-  margin-bottom: 18%;
-}
+

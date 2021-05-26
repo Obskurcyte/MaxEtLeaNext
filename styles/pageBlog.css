@@ -3,6 +3,9 @@
   height: 100%;
 }
 
+.jeuContainer p {
+  color: #7A7A7A;
+}
 .img-blog-container {
   height: 600px;
   overflow: hidden;
@@ -111,11 +114,11 @@
 .conseilTitre h5 {
   margin-top: 0.5%;
   font-weight: bold;
-  font-family: Arial, sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
 }
 
 .jeuContainer {
-  font-family: Roboto, sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
 }
 
 .titre-img{
@@ -149,7 +152,7 @@
 
 .aimez-aussi h2 {
   color: #333333;
-  font-family: roboto, sans-serif;
+  font-family: "D KButterfly Ball", sans-serif;
   margin-bottom: 3%;
 }
 

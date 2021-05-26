@@ -44,6 +44,7 @@ const XylophoneScreen = props => {
       name: product.name,
       price: productPrice,
       qty: qty,
+      image: product.image,
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };

@@ -15,13 +15,21 @@
   "Garanties8": "100% Livraison Express",
   "Garanties9": "Livraison depuis Paris (France) en 3-5 jours pour l’ensemble de l’Europe.",
 
+
   "HomeScreen1": "S'ÉVEILLER, S'EMERVEILLER",
   "HomeScreen7": "GRANDIR & S'AMUSER",
   "HomeScreen2": "Des jouets Naturels, Eco-Responsables et parfaits pour les 1 à 6 ans",
-  "HomeScreen3": "Accéder au shop",
-  "HomeScreen4": "NOS MEILLEURS JOUETS",
-  "HomeScreen5": "JE VEUX EMERVEILLER MES ENFANTS",
-  "HomeScreen6": "Accéder au shop",
+  "HomeScreen3": "TOUR ARC EN CIEL",
+  "HomeScreen4": "XYLOPHONE",
+  "HomeScreen5": "",
+  "HomeScreen6": "",
+  "HomeScreen8": "",
+  "HomeScreen9": "",
+  "HomeScreen10": "",
+  "HomeScreen11": "",
+  "HomeScreen12": "",
+
+
 
   "Engagement": {
     "1": "Max et Léa s'engagent à 100% pour vous",
@@ -34,15 +42,38 @@
     "8": "100% Eveil",
     "9": "Pensée pour le développement Psycho-moteur de l’enfant. Ludique et divertissante"
   },
+
+
   "Footer": {
     "1": "A propos",
     "2": "L'Equipe",
-    "3": "Contactez-nous",
-    "4": "Mentions légales",
-    "5": "CGV",
-    "6": "Se connecter",
-    "7": "S'inscrire"
+    "3": "Blogs",
+    "4": "Contactez-nous",
+    "5": "Mentions légales",
+    "6": "CGV"
   },
+
+  "Playboard1" : "La playboard est le jouet le plus complet pour stimuler l'éveil et la motricité fine des enfants !",
+  "Playboard2" : "Voir notre offre",
+  "Playboard3" : "Pensée pour chaque étape du développement psychomoteur de l'enfant",
+  "Playboard4" : "Développer",
+  "Playboard5" : "sa Créativité",
+  "Playboard6" : "Améliorer",
+  "Playboard7" : "son habilité",
+  "Playboard8" : "Travailler",
+  "Playboard9" : "sa motricité",
+  "Playboard10" : "Aiguiser",
+  "Playboard11" : "sa concentration",
+  "Playboard12" : "Apprendre",
+  "Playboard13" : "en s'amusant",
+  "Playboard14" : "Développer",
+  "Playboard15" : "l'autonomie",
+  "Playboard16" : "",
+  "Playboard17" : "",
+
+
+
+
   "Login": {
     "1": "Adresse email",
     "2": "Mot de passe",

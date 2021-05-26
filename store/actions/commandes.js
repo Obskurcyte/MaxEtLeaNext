@@ -1,11 +1,12 @@
 import gql from "graphql-tag";
 import client from "../../components/ApolloClient";
-import {GET_BLOG} from "./blog";
+import {GET_BLOG, GET_DRAPEAU} from "./drapeau";
 
 
 export const GET_COMMANDES = 'GET_COMMANDES';
 export const CREATE_COMMANDE = 'CREATE_COMMANDE';
-
+export const GET_CART = 'GET_CART';
+export const SET_CART = 'SET_CART';
 
 
 
@@ -72,5 +73,23 @@ export const getCommandes = () => {
 };
 
  */
+
+export const setMauvaisCart = (cart) => {
+  return async dispatch => {
+    dispatch({
+      type: SET_CART,
+      cart,
+    })
+    console.log(cart)
+  }
+}
+
+export const getCart = () => {
+  return async dispatch => {
+    dispatch({
+      type: GET_CART,
+    })
+  }
+}
 
 

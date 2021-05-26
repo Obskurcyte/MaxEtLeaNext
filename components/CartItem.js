@@ -193,16 +193,17 @@ const CartItem = ({item}) => {
     setCart(updatedCart)
   }
 
+  console.log(item)
 
   return (
     <div key={item.productId} className="tr-product">
       <div className="innerContainerCart">
         <span onClick={(event) => handleRemoveProduct(event, item.productId)}>
-          <div className="croix"><button className="button-supp">x</button></div>
+          <div className="croix itemsuppr"><button className="button-supp">x</button></div>
         </span>
 
         <div className="imgContainerCart">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/07/XYLOPHONE-TABS-compress-150x150.jpg" className="cart-image" alt=""/>
+          <img src={item.image} className="cart-image" alt=""/>
         </div>
 
         <div className="prixDescriptionContainer">
@@ -210,7 +211,7 @@ const CartItem = ({item}) => {
             <p className="itemPrix">{item.totalPrice} EUR</p>
           </div>
           <div className="descriptionProduit">
-            <p className="descriptionProduitText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque corporis fugiat harum id illum ipsum mollitia pariatur quibusdam? Eveniet, nulla!</p>
+            <p className="descriptionProduitText">{item.name}</p>
           </div>
           <div className="input-quantity">
             <button className="decrease-button" onClick={onDecreaseClick}>-</button>

@@ -9,6 +9,7 @@ import {AppContext} from "../../components/context/AppContext";
 import * as product from "../../products";
 import {useTranslation} from "react-i18next";
 import i18next from "i18next";
+import Head from "next/head";
 
 const AideMoiAFaireSeul = () => {
 
@@ -141,6 +142,9 @@ const AideMoiAFaireSeul = () => {
 
   return (
     <div className='jeuContainer'>
+      <Head>
+        <title>Max And Lea - Blog-Aide-moi à faire seul</title>
+      </Head>
       <Header />
       <div className="img-blog-container">
         <img src={'https://maxandlea.com/wp-content/uploads/2020/05/father-53e5d44a48_1280.jpg'} className="img-blog" alt={'mathématiques'}/>

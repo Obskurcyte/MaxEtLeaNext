@@ -9,12 +9,14 @@ import i18next from "i18next";
 import CardHover from "./CardHover";
 import Link from 'next/link';
 import * as product from '../products';
+import {getDrapeau} from "../store/actions/drapeau";
+import {useDispatch} from "react-redux";
 
 
 const HeaderXylophone = (props) => {
 
   console.log(product)
-  const [cart, setCart] = useContext(AppContext);
+  const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
   console.log(cart)
 
   const products = product.products
@@ -46,7 +48,7 @@ const HeaderXylophone = (props) => {
   };
 
   const addFirstProduct = (product) => {
-    let productPrice = getFloatVal(product.price)
+    let productPrice = product.price
 
     let newCart = {
       products: [],
@@ -57,6 +59,7 @@ const HeaderXylophone = (props) => {
     const newProduct = createNewProduct(product, productPrice, 1)
     newCart.products.push(newProduct);
     localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
+    localStorage.setItem('commande-cart', JSON.stringify(newCart))
     console.log('newCart', newCart)
     return newCart
 
@@ -68,9 +71,11 @@ const HeaderXylophone = (props) => {
       name: product.name,
       price: productPrice,
       qty: qty,
+      image: product.image,
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };
+
 
   const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
     const updatedProducts = getUpdatedProducts(existingCart.products, products[2], qtyToBeAdded, newQty);
@@ -93,7 +98,8 @@ const HeaderXylophone = (props) => {
       totalProductsPrice: parseFloat(total.totalPrice)
     }
 
-    localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart))
+    localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+    localStorage.setItem('commande-cart', JSON.stringify(updatedCart));
     return updatedCart
   };
 
@@ -146,16 +152,20 @@ const HeaderXylophone = (props) => {
   const handleAddToCart = () => {
     if (process.browser) {
       let existingCart = localStorage.getItem('woo-next-cart');
+      let commandeCart = localStorage.getItem('commande-cart');
       console.log('clicked')
       console.log('existingCart', existingCart)
       if (existingCart!=null) {
+        commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
         const updatedCart = updateCart(existingCart, products[2], qtyToBeAdded);
         setCart(updatedCart)
+        setCommandeCart(updatedCart)
       } else {
         const newCart = addFirstProduct(products[2]);
         setCart(newCart)
+        setCommandeCart(newCart)
       }
     }
   }
@@ -193,11 +203,21 @@ const HeaderXylophone = (props) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const dispatch = useDispatch()
   const [imgurl, setImgUrl] = useState("https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png")
 
   console.log(open)
-  const handleClose = (lang, url) => {
-    i18n.changeLanguage(lang).then(() => setAnchorEl(null)).then(() => setImgUrl(url));
+  const handleClose = (lang) => {
+    i18n.changeLanguage(lang).then(() => setAnchorEl(null))
+    if (lang === 'fr') {
+      dispatch(getDrapeau('https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png'))
+    } if (lang === 'en') {
+      dispatch(getDrapeau('https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png'))
+    } if (lang === 'es') {
+      dispatch(getDrapeau('https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png'))
+    } if (lang === 'al') {
+      dispatch(getDrapeau('https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/langfr-225px-Flag_of_Germany.svg.png'))
+    }
   };
 
   const renderCart = () => {
@@ -231,10 +251,10 @@ const HeaderXylophone = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={() => handleClose('en', 'https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt=""/></MenuItem>
-            <MenuItem onClick={() => handleClose('es', 'https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png" alt=""/></MenuItem>
-            <MenuItem onClick={() => handleClose('al', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/langfr-225px-Flag_of_Germany.svg.png')}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/langfr-225px-Flag_of_Germany.svg.png" className={styles.drapeauAllemand} alt=""/></MenuItem>
-            <MenuItem onClick={() => handleClose('fr', 'https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png" alt=""/></MenuItem>
+            <MenuItem onClick={() => handleClose('en')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt=""/></MenuItem>
+            <MenuItem onClick={() => handleClose('es')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png" alt=""/></MenuItem>
+            <MenuItem onClick={() => handleClose('al')}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/langfr-225px-Flag_of_Germany.svg.png" className={styles.drapeauAllemand} alt=""/></MenuItem>
+            <MenuItem onClick={() => handleClose('fr')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png" alt=""/></MenuItem>
 
           </Menu>
 

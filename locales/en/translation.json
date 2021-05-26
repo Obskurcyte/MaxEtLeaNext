@@ -15,14 +15,59 @@
   "Garanties8": "100% Express Delivery",
   "Garanties9": "Delivery from Paris (France) in 3/5 days to Europe.",
 
+  "Footer": {
+    "1": "About",
+    "2": "The team",
+    "3": "Blogs",
+    "4": "Get in touch",
+    "5": "Legal Notes",
+    "6": "Terms and Conditions"
+  },
+
+
+  "Engagement": {
+    "1": "Max & Lea is 100% committed to you:",
+    "2": "100% Safe",
+    "3": "100% Compliance with the European requirements of the Toy Safety Directive\nSizes and shapes of parts comply with official safety templates",
+    "4": "100% Eco-friendly",
+    "5": "100% Wood and 100% Natural\nEcological water-based paint & varnish",
+    "6": "100% High Quality",
+    "7": "Neat finishes\nHigh quality materials",
+    "8": "100% Stimulating",
+    "9": "Designed for the fine motor skills development of children\nFun and Entertaining"
+  },
+
+
   "HomeScreen1": "AWAKEN, DISCOVER",
   "HomeScreen7": "DEVELOP & HAVE FUN",
   "HomeScreen2": "Natural, eco-friendly and perfect toys for children from 1 to 6 years old",
-  "HomeScreen3": "Go to the shop",
-  "HomeScreen4": "OUR BEST TOYS",
-  "HomeScreen5": "I WANT TO AMAZE MY CHILDREN",
-  "HomeScreen6": "Go to the shop",
+  "HomeScreen3": "RAINBOW TOWER",
+  "HomeScreen4": "XYLOPHONE",
+  "HomeScreen5": "",
+  "HomeScreen6": "",
+  "HomeScreen8": "",
+  "HomeScreen9": "",
+  "HomeScreen10": "",
+  "HomeScreen11": "",
+  "HomeScreen12": "",
 
+  "Playboard1" : "",
+  "Playboard2" : "",
+  "Playboard3" : "",
+  "Playboard4" : "",
+  "Playboard5" : "",
+  "Playboard6" : "",
+  "Playboard7" : "",
+  "Playboard8" : "",
+  "Playboard9" : "",
+  "Playboard10" : "",
+  "Playboard11" : "",
+  "Playboard12" : "",
+  "Playboard13" : "",
+  "Playboard14" : "",
+  "Playboard15" : "",
+  "Playboard16" : "",
+  "Playboard17" : "",
 
   "AideMoiAFaireSeul": {
     "0": "June 29, 2020",
