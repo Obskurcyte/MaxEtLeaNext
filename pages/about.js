@@ -19,7 +19,7 @@ const About = () => {
       </div>
       <main>
         <p className="Apropos-title">{t("Propos.2")}<span>{t("Propos.3")}</span></p>
-        <div className="container">
+        <div className="container-about">
           <img src="https://maxandlea.com/wp-content/uploads/2020/06/iStock-478587034-1.jpg" alt="" className="grande-photo"/>
           <div className="paragraphs">
             <div className="paragraph1">
@@ -36,7 +36,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="container container-photo">
+        <div className="container-about container-photo">
           <div className="paragraphs2">
             <div className="paragraph4">
               <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt="" className="petite-photo4"/>
@@ -51,7 +51,7 @@ const About = () => {
             <img src="https://maxandlea.com/wp-content/uploads/2020/06/iStock-623688768-1.jpg" alt="" className="moyenne-photo"/>
           </div>
         </div>
-        <div className="card-citation container">
+        <div className="card-citation container-about">
           <div style={{display: 'flex', marginBottom: '5%'}}>
             <i className="fas fa-quote-left"/>
             <p>{t("Propos.17")}</p>
@@ -59,10 +59,10 @@ const About = () => {
           <p className="signature">{t("Propos.18")}<br/>
             {t("Propos.19")}</p>
         </div>
-        <div className="container">
+        <div className="container-about">
           <button className="equipe-button container">{t("Propos.20")}</button>
         </div>
-        <div className="container">
+        <div className="container-about">
           <img src="https://maxandlea.com/wp-content/uploads/2020/06/iStock-912734770-1.jpg" alt="" className="mega-photo"/>
         </div>
       </main>

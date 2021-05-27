@@ -31,95 +31,98 @@ const Footer = () => {
     <React.Fragment>
     <footer>
       <div className="footer-container">
-        <div className="footer-img">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1024x378.png" alt="" className="img-footer"/>
-          <div className="icons-social">
-            <FontAwesomeIcon icon={faFacebookSquare} className="iconFacebook" href="https://www.facebook.com/MaxandleaToys/"/>
-            <FontAwesomeIcon icon={faInstagramSquare} className="iconInstagram" href="https://www.instagram.com/max.and.lea/"/>
-            <FontAwesomeIcon icon={faYoutubeSquare} className="iconYoutube" href="https://www.youtube.com/channel/UCHaUOBoknhDUyNExyux9yvg/featured"/>
-          </div>
-        </div>
-          <div className="footer-column">
-            <Link href="/about">{t("Footer.1")}</Link>
-            <Link href="/equipe">{t("Footer.2")}</Link>
-            <Link href="/blogs">{t("Footer.3")}</Link>
-            <Link href="/contact">{t("Footer.4")}</Link>
-          </div>
-        <div className="footer-column2">
-          <Link href="/mentionsLegales">{t("Footer.5")}</Link>
-          <Link href="#">{t("Footer.6")}</Link>
-        </div>
-        <div className="footer-column3 footer-terre" >
-          <div style={{display: "flex", marginBottom: '10%', flexDirection: 'column', justifyContent: "space-around"}} onClick={() => setOpen(true)}>
-            <div className="img-container-arbre">
-             <img src={'/arbres.png'} alt="" style={{marginBottom: '5%'}} className="photo-arbre"/>
+        <div className="footer-subcontainer">
+      
+          <div className="footer-img">
+            <img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1024x378.png" alt="" className="img-footer"/>
+            <div className="icons-social">
+              <a target="_blank" href="https://www.facebook.com/MaxandleaToys/"><FontAwesomeIcon icon={faFacebookSquare} className="iconFacebook"/></a>
+              <a target="_blank" href="https://www.instagram.com/max.and.lea/"><FontAwesomeIcon icon={faInstagramSquare} className="iconInstagram"/></a>
+              <a target="_blank" href="https://www.youtube.com/channel/UCHaUOBoknhDUyNExyux9yvg/featured"><FontAwesomeIcon icon={faYoutubeSquare} className="iconYoutube"/></a>
             </div>
-            <div className="photo-container" >
-              <img src={'/arbresreplantes.png'} alt="" className="arbre-replantes"/>
-              <img src={'/logo_reforest.png'} alt="" className="arbre-replantes"/>
+          </div>
+            <div className="footer-column">
+              <Link href="/about">{t("Footer.1")}</Link>
+              <Link href="/equipe">{t("Footer.2")}</Link>
+              <Link href="/blogs">{t("Footer.3")}</Link>
+              <Link href="/contact">{t("Footer.4")}</Link>
             </div>
+          <div className="footer-column2">
+            <Link href="/mentionsLegales">{t("Footer.5")}</Link>
+            <Link href="#">{t("Footer.6")}</Link>
+          </div>
+          <div className="footer-column3 footer-terre" >
+            <div style={{display: "flex", marginBottom: '10%', flexDirection: 'column', justifyContent: "space-around"}} onClick={() => setOpen(true)}>
+              <div className="img-container-arbre">
+              <img src={'/arbres.png'} alt="" style={{marginBottom: '5%'}} className="photo-arbre"/>
+              </div>
+              <div className="photo-container" >
+                <img src={'/arbresreplantes.png'} alt="" className="arbre-replantes"/>
+                <img src={'/logo_reforest.png'} alt="" className="arbre-replantes"/>
+              </div>
 
-            <Dialog
-              fullScreen={fullScreen}
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="responsive-dialog-title"
-            >
-              <DialogContent>
-                <div className="arbresDialogContainer">
-                  <h5>257 arbres</h5>
-                  <p>Plantés par Max & Léa dans la forêt de Monchique (Portugal)</p>
-                  <hr />
-                    <p>Bénéfices pour l'environnement :</p>
-                  <div className="beneficesContainer">
-                    <div className="arbresRow">
-                          <div>
-                            <img src="https://maxandlea.com/wp-content/uploads/elementor/thumbs/carte-benefices-nuage-1-ox6w2acn9kffruv4ypghfx20j15d0wwotvc9kp1fuc.png" alt=""/>
-                          </div>
-                      <div>
-                        <h5>CLIMAT</h5>
-                        <p><span style={{color: '#91BB1F'}}>38</span> tonnes de CO2 stockées</p>
+              <Dialog
+                fullScreen={fullScreen}
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="responsive-dialog-title"
+              >
+                <DialogContent>
+                  <div className="arbresDialogContainer">
+                    <h5>257 arbres</h5>
+                    <p>Plantés par Max & Léa dans la forêt de Monchique (Portugal)</p>
+                    <hr />
+                      <p>Bénéfices pour l'environnement :</p>
+                    <div className="beneficesContainer">
+                      <div className="arbresRow">
+                            <div>
+                              <img src="https://maxandlea.com/wp-content/uploads/elementor/thumbs/carte-benefices-nuage-1-ox6w2acn9kffruv4ypghfx20j15d0wwotvc9kp1fuc.png" alt=""/>
+                            </div>
+                        <div>
+                          <h5>CLIMAT</h5>
+                          <p><span style={{color: '#91BB1F'}}>38</span> tonnes de CO2 stockées</p>
+                        </div>
                       </div>
+
+                      <div className="arbresRow">
+                        <div>
+                          <img src="https://maxandlea.com/wp-content/uploads/elementor/thumbs/carte-benefices-bird-1-ox6w2d65u2jaqor1i8od5eceb6rgo07vu9aq0ix9c8.png" alt=""/>
+                        </div>
+                        <div>
+                          <h5>BIODIVERSITE</h5>
+                          <p><span style={{color: '#91BB1F'}}>771</span> abris pour animaux crées</p>
+                        </div>
+                      </div>
+
+                      <div className="arbresRow">
+                        <div>
+                          <img src="https://maxandlea.com/wp-content/uploads/elementor/thumbs/carte-benefices-coeur-1-ox6w2f1u7qlvdwob79hmadvbhyi73efciiloz2uh1q.png" alt=""/>
+                        </div>
+                        <div>
+                          <h5>SANTE</h5>
+                          <p><span style={{color: '#91BB1F'}}>1028</span> mois d'oxygène générés</p>
+                        </div>
+                      </div>
+
+                      <div className="arbresRow">
+                        <div>
+                          <img src="https://maxandlea.com/wp-content/uploads/elementor/thumbs/carte-benefices-hand-1-ox6w2fzoekn5pimy1rw8uvms3cdkb3j2un96gct2ta.jpg" alt=""/>
+                        </div>
+                        <div>
+                          <h5>EMPLOI</h5>
+                          <p><span style={{color: '#91BB1F'}}>257</span> theures de travail créées</p>
+                        </div>
+                      </div>
+
+                      <p style={{textAlign: 'center', fontSize: '12px'}}>C'est grâce à vous !</p>
+                      <a href="https://www.reforestaction.com/en/max-lea" className="seePage"><p>Voir notre page</p></a>
                     </div>
-
-                    <div className="arbresRow">
-                      <div>
-                        <img src="https://maxandlea.com/wp-content/uploads/elementor/thumbs/carte-benefices-bird-1-ox6w2d65u2jaqor1i8od5eceb6rgo07vu9aq0ix9c8.png" alt=""/>
-                      </div>
-                      <div>
-                        <h5>BIODIVERSITE</h5>
-                        <p><span style={{color: '#91BB1F'}}>771</span> abris pour animaux crées</p>
-                      </div>
-                    </div>
-
-                    <div className="arbresRow">
-                      <div>
-                        <img src="https://maxandlea.com/wp-content/uploads/elementor/thumbs/carte-benefices-coeur-1-ox6w2f1u7qlvdwob79hmadvbhyi73efciiloz2uh1q.png" alt=""/>
-                      </div>
-                      <div>
-                        <h5>SANTE</h5>
-                        <p><span style={{color: '#91BB1F'}}>1028</span> mois d'oxygène générés</p>
-                      </div>
-                    </div>
-
-                    <div className="arbresRow">
-                      <div>
-                        <img src="https://maxandlea.com/wp-content/uploads/elementor/thumbs/carte-benefices-hand-1-ox6w2fzoekn5pimy1rw8uvms3cdkb3j2un96gct2ta.jpg" alt=""/>
-                      </div>
-                      <div>
-                        <h5>EMPLOI</h5>
-                        <p><span style={{color: '#91BB1F'}}>257</span> theures de travail créées</p>
-                      </div>
-                    </div>
-
-                    <p style={{textAlign: 'center', fontSize: '12px'}}>C'est grâce à vous !</p>
-                    <a href="https://www.reforestaction.com/en/max-lea" className="seePage"><p>Voir notre page</p></a>
+                    <button className="arbresButtonClose" onClick={() => setOpen(false)}>x</button>
                   </div>
-                  <button className="arbresButtonClose" onClick={() => setOpen(false)}>x</button>
-                </div>
-              </DialogContent>
-            </Dialog>
+                </DialogContent>
+              </Dialog>
 
+            </div>
           </div>
         </div>
       </div>
