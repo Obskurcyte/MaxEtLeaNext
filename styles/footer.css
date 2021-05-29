@@ -11,6 +11,14 @@
   box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 20%);
 }
 
+.footer-subcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: auto;
+}
+
 .arbresDialogContainer h5{
   color: #91BB1F;
   font-size: 35px;
@@ -84,6 +92,7 @@
 }
 .icons-social {
   display: flex;
+  justify-content: space-around;
 }
 
 .img-container-arbre {
@@ -129,20 +138,18 @@
 
 .iconFacebook {
   color: #3b5998;
-  width: 33% !important;
-  height: 60%;
+  width: 30px;
 }
 
 .iconInstagram {
   color: #262626;
-  width: 33% !important;
-  height: 60%;
+  width: 30px;
 }
 
 .iconYoutube {
   color: #cd201f;
-  width: 33% !important;
-  height: 60%;
+  width: 30px;
+  
 }
 
 @media screen and (max-width: 1050px){
