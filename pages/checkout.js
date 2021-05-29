@@ -23,6 +23,7 @@ import * as product from "../products";
 import Menu from "@material-ui/core/Menu";
 import {getCart, setMauvaisCart} from "../store/actions/commandes";
 import {useDispatch, useSelector} from "react-redux";
+import styles from "../components/CheckoutFormStripe.module.css";
 
 const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
@@ -516,6 +517,13 @@ const CheckoutScreen = props => {
                 )}
               </div>
 
+              <div className="codepromoContainer">
+                <div>
+                  <input type="text" placeholder="Code promo" className="inputPromo"/>
+                </div>
+                <button className="buttonCodepromo">Valider votre code promo</button>
+              </div>
+
               <div className="addOtherArticlesPanier">
                 {qtyTotale === 1 && (
                   <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 10% sur tout votre panier !</h5>
@@ -592,7 +600,7 @@ const CheckoutScreen = props => {
                   </div>
                 </Carousel>
               </div>
-              
+
             </div>
 
             <img src={'/separation.png'} alt="" className="separation"/>

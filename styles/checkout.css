@@ -9,8 +9,30 @@
   padding-right: 5%;
 }
 
+.codepromoContainer{
+  display: flex;
+  justify-content: space-around;
+}
 .livraisonChoice {
   margin-top: 2%;
+}
+
+.buttonCodepromo {
+  padding-top: 15px;
+  padding-right: 35px;
+  padding-bottom: 15px;
+  padding-left: 35px;
+  color: #ffffff;
+  font-size: 1em;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  overflow: visible;
+  left: auto;
+  border-radius: 5px 5px 5px 5px !important;
+  background-color: #E72C59 !important;
+  transition: all 0.2s !important;
+  border-width: 0px !important;
 }
 
 .livraisonPrice {
@@ -282,7 +304,7 @@
 .checkoutContainer {
   width: 95%;
   border-radius: 20px;
-  margin: 0 auto;
+  margin: 2% auto;
   filter: drop-shadow(8.773px 38px 49px rgba(103,119,115,0.26));
   background-color: #ffffff;
   padding-top: 2%;

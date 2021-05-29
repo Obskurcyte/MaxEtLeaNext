@@ -197,12 +197,6 @@ const CheckoutFormStripe = ({
   return (
 
     <div>
-      <div className={styles.codePromo}>
-        <div>
-          <input type="text" placeholder="Code promo" className="inputPromo"/>
-        </div>
-        <button className="cart-valide">Valider votre code promo</button>
-      </div>
       <div className={styles.paymentMethods}>
         <div className={visaClicked ? styles.visaContainerClicked : styles.visaContainer} onClick={() => {
           setPaypalClicked(false)
