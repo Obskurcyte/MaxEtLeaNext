@@ -3,7 +3,7 @@
 }
 
 .itemsuppr {
-  margin-top: 150%;
+  margin-top: 50%;
 }
 
 .input-card {
@@ -40,7 +40,7 @@ table {
 }
 
 .itemPrix {
-  font-size: 30px;
+  font-size: 17px;
   letter-spacing: -1px;
   color: #11c47e;
   margin-bottom: 0;
@@ -58,8 +58,8 @@ table {
 }
 
 .imgContainerCart {
-  width: 25%;
-  height: 100px;
+  width: 15%;
+  height: 30px;
   overflow: hidden;
   align-items: center;
   margin-top: 5%;
@@ -131,8 +131,9 @@ th {
 }
 
 .tr-product {
-  height: 150px;
+  height: 70px;
   margin-bottom: 5%;
+  width: 60%;
 }
 
 .container-cart {
@@ -180,7 +181,7 @@ th {
 
 .input-quantity {
   display: flex;
-  height: 50px;
+  height: 20px;
   width: 35%
 }
 
@@ -223,20 +224,24 @@ th {
 }
 
 .sousTotalText {
-  font-size: 25px;
+  font-size: 18px;
   letter-spacing: 0px;
   line-height: 55px;
   color: #11c47e;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .itemTotalPrice {
-  font-size: 25px;
+  font-size: 18px;
   letter-spacing: 0px;
   line-height: 55px;
   color: #11c47e;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: bold;
 }
 
+.nameAndQty {
+  display: flex;
+  justify-content: space-between;
+}
 

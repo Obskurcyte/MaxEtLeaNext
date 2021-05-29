@@ -20,6 +20,7 @@ export const products = [
     id: "cHJvZHVjdDo0NTM1",
     name: "Xylophone",
     price: "21.90",
+    priceReduc: "12.90",
     slug: "xylophone",
     __typename: "SimpleProduct",
     image: "https://maxandlea.com/wp-content/uploads/2020/07/XYLOPHONE-TABS-compress.jpg"
@@ -29,6 +30,7 @@ export const products = [
     id: "cHJvZHVjdDo0NTI3",
     name: "Tour Arc en ciel",
     price: "19.90",
+    priceReduc: "12.90",
     slug: "tour-arc-en-ciel",
     __typename: "SimpleProduct",
     image: "https://maxandlea.com/wp-content/uploads/2020/06/tour-carre.png"

@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
         <div className="footer-column2">
           <Link href="/mentionsLegales">{t("Footer.5")}</Link>
-          <Link href="#">{t("Footer.6")}</Link>
+          <Link href="/CGV">{t("Footer.6")}</Link>
         </div>
         <div className="footer-column3 footer-terre" >
           <div style={{display: "flex", marginBottom: '10%', flexDirection: 'column', justifyContent: "space-around"}} onClick={() => setOpen(true)}>

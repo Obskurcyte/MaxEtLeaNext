@@ -79,7 +79,7 @@ const HomeScreen = () => {
             </Card>
 
 
-
+            {/*
             <Card className="card-jouet bidule">
               <Link href="/playboard">
                 <a>
@@ -138,7 +138,7 @@ const HomeScreen = () => {
               </Link>
             </Card>
 
-
+          */}
 
           </div>
 

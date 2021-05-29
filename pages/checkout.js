@@ -18,7 +18,7 @@ import Carousel from 'react-elastic-carousel';
 import Recommande from "../components/Recommande";
 import Head from 'next/head';
 import * as countries from '../listCountries';
-
+import * as product from "../products";
 
 import Menu from "@material-ui/core/Menu";
 import {getCart, setMauvaisCart} from "../store/actions/commandes";
@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 const CheckoutScreen = props => {
 
 
+  const products = product.products
 
   console.log(countries.listCountries);
   const breakPoints = [
@@ -46,6 +47,141 @@ const CheckoutScreen = props => {
     {width: 600, itemsToShow: 2},
     {width: 1000, itemsToShow: 3},
   ]
+
+  //---------------------AJOUTER PANIER-----------------------//
+
+
+  const getFloatVal = (string) => {
+    let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
+    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)): '';
+  };
+
+  const addFirstProduct = (product) => {
+    let productPrice = getFloatVal(product.price)
+
+    let newCart = {
+      products: [],
+      totalProductCount: 1,
+      totalProductsPrice: productPrice
+    }
+
+    const newProduct = createNewProduct(product, productPrice, 1)
+    newCart.products.push(newProduct);
+    localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
+    console.log('newCart', newCart)
+    return newCart
+
+  };
+
+  const createNewProduct = (product, productPrice, qty) => {
+    return {
+      productId: product.id,
+      name: product.name,
+      price: productPrice,
+      qty: qty,
+      image: product.image,
+      totalPrice: parseFloat((productPrice * qty).toFixed(2))
+    }
+  };
+
+
+  const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
+    const updatedProducts = getUpdatedProducts(existingCart.products, products[3], qtyToBeAdded, newQty);
+    const addPrice = (total, item) => {
+
+      total.totalPrice = item.totalPrice;
+      total.qty += item.qty;
+      console.log('total', total)
+      console.log('item', item)
+      console.log(total)
+      return total;
+    }
+
+    // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
+    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+
+    const updatedCart = {
+      products: updatedProducts,
+      totalProductCount: parseInt(total.qty),
+      totalProductsPrice: parseFloat(total.totalPrice)
+    }
+
+    localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart))
+    return updatedCart
+  };
+
+
+
+
+
+  /**
+   * Get updated products array
+   *
+   * @param existingProductsInCart
+   * @param product
+   * @param qtyToBeAdded
+   * @param newQty
+   * @returns {*}
+   */
+
+
+  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[3].id);
+
+    if (-1 < productExistsIndex) {
+      let updatedProducts = existingProductsInCart;
+      let updatedProduct = updatedProducts[productExistsIndex];
+
+      updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
+      updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
+      return updatedProducts;
+    } else {
+      let productPrice = parseFloat(product.price);
+      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+      existingProductsInCart.push(newProduct);
+      return existingProductsInCart
+    }
+  };
+
+  const isProductInCart = (existingProductsInCart, productId) => {
+    const returnItemThatExists = (item, index) => {
+      if (productId === item.productId) {
+        return item;
+      }
+    };
+
+    const newArray = existingProductsInCart.filter(returnItemThatExists)
+
+    return existingProductsInCart.indexOf(newArray[0]);
+  };
+
+
+  const handleAddToCart = () => {
+    if (process.browser) {
+      let existingCart = localStorage.getItem('woo-next-cart');
+      console.log('clicked')
+      console.log('existingCart', existingCart)
+      if (existingCart!=null) {
+        existingCart = JSON.parse(existingCart)
+        const qtyToBeAdded = 1
+        const updatedCart = updateCart(existingCart, products[3], qtyToBeAdded);
+        setCart(updatedCart)
+      } else {
+        const newCart = addFirstProduct(products[3]);
+        setCart(newCart)
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
 
   //-------------------- LIVRAISON ----------------------------
 
@@ -379,6 +515,84 @@ const CheckoutScreen = props => {
                   </div>
                 )}
               </div>
+
+              <div className="addOtherArticlesPanier">
+                {qtyTotale === 1 && (
+                  <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 10% sur tout votre panier !</h5>
+                )}
+
+                {qtyTotale >= 2 && (
+                  <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 15% sur tout votre panier !</h5>
+                )}
+                <Carousel itemsToShow={3} isRTL={false} className="addItemsCarousel" breakPoints={breakPoints}>
+                  <div className="innerArticleContainer">
+                    <div className="imgContainerCarousel">
+                      <img src="https://maxandlea.com/wp-content/uploads/2020/06/VueProduit-2-Tablette-MaxAndLea-sans-logo.jpg" alt="playboard" className="xylophoneImg"/>
+                      <Link href={'/playboard'}><p className="savoirplus">En savoir plus</p></Link>
+                    </div>
+
+                    <div className="carouselItemAdd">
+                      <p className='addCarousel'>Ajouter la Playboard !</p>
+                      <div className="prixReduc">
+                        <p className="prixReducText">{products[4].price} €</p>
+                        <p className="fauxPrix">{products[4].priceAugmente} €</p>
+                      </div>
+                      <div className="economie">
+                        <p className="economieText">(-41% economisez {products[4].priceAugmente - products[4].price} €)</p>
+                      </div>
+                      <div className="buttonAddPanierContainer">
+                        <button className="buttonAddPanier">Ajouter au panier</button>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div className="innerArticleContainer">
+                    <div className="imgContainerCarousel">
+                      <img src={'/xylophone.png'} alt="" className="xylophoneImg"/>
+                      <Link href={'/xylophone'}><p className="savoirplus">En savoir plus</p></Link>
+                    </div>
+
+                    <div className="carouselItemAdd">
+                      <p className='addCarousel'>Ajouter le Xylophone !</p>
+                      <div className="prixReduc">
+                        <p className="prixReducText">{products[2].priceReduc} €</p>
+                        <p className="fauxPrix">{products[2].price} €</p>
+                      </div>
+                      <div className="economie">
+                        <p className="economieText">(-41% economisez {(products[2].price - products[2].priceReduc).toFixed(2)} €)</p>
+                      </div>
+                      <div className="buttonAddPanierContainer">
+                        <button className="buttonAddPanier">Ajouter au panier</button>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div className="innerArticleContainer">
+                    <div className="imgContainerCarousel">
+                      <img src={'/tourCarre.png'} alt="" className="xylophoneImg"/>
+                      <Link href={'/tour'}><p className="savoirplus">En savoir plus</p></Link>
+                    </div>
+
+                    <div className="carouselItemAdd">
+                      <p className='addCarousel'>Ajouter la Tour Arc en Ciel !</p>
+                      <div className="prixReduc">
+                        <p className="prixReducText">{products[3].priceReduc} €</p>
+                        <p className="fauxPrix">{products[3].price} €</p>
+                      </div>
+                      <div className="economie">
+                        <p className="economieText">(-41% economisez {(products[3].price - products[3].priceReduc).toFixed(2)} €)</p>
+                      </div>
+                      <div className="buttonAddPanierContainer">
+                        <button className="buttonAddPanier">Ajouter au panier</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </Carousel>
+              </div>
+              
             </div>
 
             <img src={'/separation.png'} alt="" className="separation"/>
@@ -846,83 +1060,6 @@ const CheckoutScreen = props => {
             </div>
 
           </div>
-        </div>
-
-        <div className="addOtherArticlesPanier">
-          {qtyTotale === 1 && (
-            <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 10% sur tout votre panier !</h5>
-          )}
-
-          {qtyTotale >= 2 && (
-            <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 15% sur tout votre panier !</h5>
-          )}
-          <Carousel itemsToShow={3} isRTL={false} className="addItemsCarousel" breakPoints={breakPoints}>
-            <div className="innerArticleContainer">
-              <div className="imgContainerCarousel">
-                <img src={'/xylophone.png'} alt="" className="xylophoneImg"/>
-                <Link href={'/#'}><p className="savoirplus">En savoir plus</p></Link>
-              </div>
-
-              <div className="carouselItemAdd">
-                <p className='addCarousel'>Ajouter la Playboard !</p>
-                <div className="prixReduc">
-                  <p className="prixReducText">12,90 €</p>
-                  <p className="fauxPrix">21,90 €</p>
-                </div>
-                <div className="economie">
-                  <p className="economieText">(-41% economisez 9€)</p>
-                </div>
-                <div className="buttonAddPanierContainer">
-                  <button className="buttonAddPanier">Ajouter au panier</button>
-                </div>
-              </div>
-
-            </div>
-
-            <div className="innerArticleContainer">
-              <div className="imgContainerCarousel">
-                <img src={'/xylophone.png'} alt="" className="xylophoneImg"/>
-                <Link href={'/#'}><p className="savoirplus">En savoir plus</p></Link>
-              </div>
-
-              <div className="carouselItemAdd">
-                <p className='addCarousel'>Ajouter le Xylophone !</p>
-                <div className="prixReduc">
-                  <p className="prixReducText">12,90 €</p>
-                  <p className="fauxPrix">21,90 €</p>
-                </div>
-                <div className="economie">
-                  <p className="economieText">(-41% economisez 9€)</p>
-                </div>
-                <div className="buttonAddPanierContainer">
-                  <button className="buttonAddPanier">Ajouter au panier</button>
-                </div>
-              </div>
-
-            </div>
-
-            <div className="innerArticleContainer">
-              <div className="imgContainerCarousel">
-                <img src={'/xylophone.png'} alt="" className="xylophoneImg"/>
-                <Link href={'/#'}><p className="savoirplus">En savoir plus</p></Link>
-              </div>
-
-              <div className="carouselItemAdd">
-                <p className='addCarousel'>Ajouter la Tour Arc en Ciel !</p>
-                <div className="prixReduc">
-                  <p className="prixReducText">12,90 €</p>
-                  <p className="fauxPrix">21,90 €</p>
-                </div>
-                <div className="economie">
-                  <p className="economieText">(-41% economisez 9€)</p>
-                </div>
-                <div className="buttonAddPanierContainer">
-                  <button className="buttonAddPanier">Ajouter au panier</button>
-                </div>
-              </div>
-
-            </div>
-          </Carousel>
         </div>
 
         <div>
