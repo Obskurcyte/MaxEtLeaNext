@@ -1,5 +1,5 @@
 body {
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 
@@ -31,6 +31,7 @@ body {
 .img-card {
   position: relative;
   bottom: 25%;
+  left: 7%;
   transition: transform .4s;
 }
 .card-jouet-title {
@@ -38,7 +39,7 @@ body {
   letter-spacing: 1px;
   line-height: 74px;
   color: #ffffff;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 .card-jouet a{
   margin-top:-30px;
@@ -102,7 +103,7 @@ body {
   font-size: 58px;
   letter-spacing: 1px;
   color: #e72c59;
-  font-family: "D KButterfly Ball", serif;
+  font-family: "Roboto", serif;
   text-align: center;
   z-index: 2;
 }
@@ -171,7 +172,7 @@ body {
   font-size: 61px;
   letter-spacing: 3px;
   color: #ffffff;
-  font-family: "D KButterfly Ball";
+  font-family: "Roboto";
   text-align: center;
   margin-bottom: 5%;
 }
@@ -286,7 +287,7 @@ body {
   font-size: 25px;
   letter-spacing: 0px;
   color: #00b2cc;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   padding: 1% 25%;
   z-index: 2;
@@ -336,7 +337,7 @@ body {
 
 .link-shop {
   color: #ffffff;
-  font-family: "D KButterfly Ball";
+  font-family: "Roboto";
   letter-spacing: 0px;
   font-size: 39px;
   text-decoration: none!important;
@@ -347,7 +348,7 @@ body {
   font-size: 82px;
   letter-spacing: 1px;
   color: #e72c59;
-  font-family: "D KButterfly Ball";
+  font-family: "Roboto";
   text-align: center;
 }
 
@@ -365,7 +366,7 @@ body {
   font-size: 77px;
   letter-spacing: 1px;
   color: #00b2cc;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -373,7 +374,7 @@ body {
   font-size: 17px;
   letter-spacing: 0px;
   color: #0b4b61;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   margin-bottom: 0px!important;
 }

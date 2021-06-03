@@ -193,7 +193,6 @@ const CartItem = ({item}) => {
     setCart(updatedCart)
   }
 
-  console.log(item)
 
   return (
     <div key={item.productId} className="tr-product">

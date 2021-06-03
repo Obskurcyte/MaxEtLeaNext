@@ -55,7 +55,7 @@
   color: #696969;
   font-size: 16px;
   letter-spacing: 0.5px;
-    font-family: "D KButterfly Ball", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 500;
 }
 
@@ -71,7 +71,7 @@
 
 .faqContainer p{
   margin-top: -3px;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .faqHeaderContainer p{
@@ -98,7 +98,7 @@
   font-size: 89px;
   letter-spacing: 1px;
   color: #ffffff;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -111,7 +111,7 @@
   font-size: 40px;
   letter-spacing: 0px;
   color: #00b2cc;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   margin: 0 auto;
 }
@@ -131,7 +131,7 @@
   letter-spacing: -2px;
   color: #ffffff;
   font-weight: 400;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -192,7 +192,7 @@
   letter-spacing: 0px;
   color: #0cb6ce;
   font-weight: 300;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -231,7 +231,7 @@
   letter-spacing: 0px;
   color: #225b6c;
   font-weight: 300;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -257,7 +257,7 @@
   font-size: 48px;
   letter-spacing: 0px;
   color: #0cb6ce;
-  font-family: "D KButterfly Ball";
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -289,7 +289,7 @@
   color: #9bb0b7;
   font-weight: 300;
   font-style: italic;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   margin-top: 8%;
 }
@@ -338,20 +338,20 @@
 .robusteTitle {
   font-size: 39px;
   color: #abcdd7;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .finitionTitle {
   font-size: 39px;
   color: #abcdd7;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .p1 {
   font-size: 25px;
   color: #819ea7;
   font-weight: 500;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -359,7 +359,7 @@
   font-size: 25px;
   color: #f78904;
   font-weight: 500;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -367,7 +367,7 @@
   font-size: 25px;
   color: #60bec8;
   font-weight: 500;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -375,7 +375,7 @@
   font-size: 25px;
   color: #73c467;
   font-weight: 500;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -420,7 +420,7 @@
   font-size: 80px;
   letter-spacing: -5px;
   color: #80c9b4;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   z-index: 3;
 }
@@ -428,7 +428,7 @@
 .UnaSixDescription {
   font-size: 25px;
   color: #5b737e;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   max-width: 500px;
   margin: auto;
@@ -559,7 +559,7 @@
   font-size: 18px;
   letter-spacing: 0px;
   color: #ffffff;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .rowIcone p {
@@ -578,7 +578,7 @@
   font-size: 44px;
   letter-spacing: 1px;
   color: #1bb0ca;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -586,7 +586,7 @@
   font-size: 34px;
   letter-spacing: 0px;
   font-weight: 400;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -629,7 +629,7 @@
   font-size: 50px;
   letter-spacing: 1px;
   color: #648793;
-  font-family: "D KButterfly Ball";
+  font-family: "Roboto";
   text-align: center;
 }
 
@@ -691,7 +691,7 @@
   letter-spacing: -1px;
   color: #e12a54;
   font-weight: 700;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -708,7 +708,7 @@
 }
 
 .ebook p {
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   margin-bottom: 0%;
   margin-top: 0%  ;
 }
@@ -732,7 +732,7 @@
 }
 
 .playboardContainer p {
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 .ebookOffertText {
   display: flex;
@@ -745,7 +745,7 @@
 
 .ebookTitle {
   font-weight: bold;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 .prixPlayboardContainer {
   display: flex;
@@ -793,7 +793,7 @@
 }
 
 .imgPlayboardPrixContainer p{
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   letter-spacing: 1px;
   margin-bottom: 3px;
   line-height: 1;
@@ -856,7 +856,7 @@
   letter-spacing: -1px;
   color: white!important;
   font-weight: 400;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -864,7 +864,7 @@
   font-size: 50px;
   letter-spacing: 1px;
   color: #648793;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -878,7 +878,7 @@
   color: #f18916;
   width: 100%;
   margin-bottom: 5%;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 

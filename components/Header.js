@@ -21,14 +21,12 @@ const Header = () => {
 
   const lang = i18next.language;
   const [cart, setCart] = useContext(AppContext);
-  console.log('cart', cart);
   let totalPrice1 = 0;
   if (cart) {
     for (let data in cart.products) {
       totalPrice1 += parseFloat(cart.products[data].totalPrice)
     }
   }
-  console.log(totalPrice1)
   let user = '';
 
   useEffect(() => {
@@ -39,7 +37,6 @@ const Header = () => {
 
   const drapeau = useSelector(state => state.drapeau.drapeau)
 
-  console.log(drapeau)
   const productCount = (null !== cart && Object.keys(cart).length) ? cart.totalProductCount : '';
 
 
@@ -49,8 +46,6 @@ const Header = () => {
     setAnchorEl(event.currentTarget);
   };
 
-
-  console.log(open)
   const handleClose = (lang) => {
     i18n.changeLanguage(lang).then(() => setAnchorEl(null))
     if (lang === 'fr') {
@@ -65,9 +60,7 @@ const Header = () => {
   };
 
   const renderCart = () => {
-
     return <CardHover />
-
   }
 
   return (
