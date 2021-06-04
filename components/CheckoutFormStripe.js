@@ -49,11 +49,12 @@ const CheckoutFormStripe = ({
                               prenom,
                               nom,
                               pays,
+  donneesClient,
+  loaded,
                               paysFacturation,
-                              adresseFacturation,
-  villeFacturation,
-  codePostalFacturation,
   phone,
+  totalPrice2,
+  prixLivraison,
   remerciement
                             }) => {
   const [isProcessing, setProcessingTo] = useState(false);
@@ -63,15 +64,39 @@ const CheckoutFormStripe = ({
   const [visaClicked, setVisaClicked] = useState(false);
   const [paypalClicked, setPaypalClicked] = useState(false);
 
+  const  [
+    cart, setCart,
+    commandeCart, setCommandeCart,
+    adresseFacturation, setAdresseFacturation,
+    total, setTotal,
+    sousTotal, setSousTotal,
+    expedition, setExpedition,
+    adresseLivraison, setAdresseLivraison,
+    codePostalFacturation, setcodePostalFacturation,
+    codePostalLivraison, setCodePostalLivraison,
+    villeFacturation, setVilleFacturation,
+    villeLivraison, setVilleLivraison
+  ] = useContext(AppContext)
+
+
+  let moyenPaiement;
+  if (visaClicked) {
+    moyenPaiement = 'Carte de Paiement'
+  }
+
+  if (paypalClicked) {
+    moyenPaiement = 'Paypal'
+  }
+
+
   const dispatch = useDispatch();
 
-  console.log(visaClicked)
-  const [ cart, setCart ] = useContext( AppContext );
-  console.log(paypalClicked)
+
   const router = useRouter()
   //############    PAYPAL #############//
 
-
+  let totalPrice = totalPrice2.toFixed(2);
+  console.log(totalPrice)
   const Paypal = () => {
     const paypal = useRef();
     useEffect(() => {
@@ -84,7 +109,7 @@ const CheckoutFormStripe = ({
                 description: 'articles',
                 amount: {
                   currency: "EUR",
-                  value: totalPrice1
+                  value: totalPrice2
                 }
               }
             ]
@@ -94,7 +119,11 @@ const CheckoutFormStripe = ({
           const order = await actions.order.capture();
           if (order.status === 'COMPLETED') {
             localStorage.removeItem('woo-next-cart')
-            await router.push('/remerciement')
+            localStorage.setItem('moyenPaiement', moyenPaiement);
+            await router.push({
+              pathname: '/remerciement',
+            })
+            window.location.reload()
           }
           console.log(order)
         },
@@ -103,12 +132,14 @@ const CheckoutFormStripe = ({
         }
       }).render(paypal.current)
     }, [])
+
     return (
       <div>
         <div ref={paypal}></div>
       </div>
     )
   }
+
 
   console.log('cart', cart)
 
@@ -218,6 +249,9 @@ const checkPromo = (event) => {
   return (
 
     <div>
+      <Head >
+        <title>CheckoutStripe</title>
+      </Head>
       <div className={styles.codePromo}>
         <div>
           <input type="text" placeholder="Code promo" className="inputPromo"/>
@@ -290,7 +324,8 @@ const checkPromo = (event) => {
               amount: price * 100
             }).then(() => {
               localStorage.removeItem('woo-next-cart')
-              router.push('/remerciement')
+              localStorage.setItem('moyenPaiement', moyenPaiement);
+              router.push('/remerciement').then(() => window.location.reload())
             })
 
             console.log(clientSecret)
@@ -354,13 +389,13 @@ const checkPromo = (event) => {
       )}
 
 
-      {paypalClicked && (
+      {(paypalClicked) ? (
         <div >
           <ListGroup.Item>
-          <Paypal />
+            <Paypal />
           </ListGroup.Item>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

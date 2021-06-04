@@ -193,7 +193,6 @@ const CartItem = ({item}) => {
     setCart(updatedCart)
   }
 
-  console.log(item)
 
   return (
     <div key={item.productId} className="tr-product">
@@ -210,6 +209,7 @@ const CartItem = ({item}) => {
           <div>
             <p className="itemPrix">{item.totalPrice} EUR</p>
           </div>
+          <div className="nameAndQty">
           <div className="descriptionProduit">
             <p className="descriptionProduitText">{item.name}</p>
           </div>
@@ -218,9 +218,11 @@ const CartItem = ({item}) => {
               <input type="text" className="change-quantity" value={productCount}/>
             <button className="increase-button" style={{color: "#e72c59"}} onClick={onIncreaseClick}>+</button>
           </div>
+          </div>
         </div>
 
       </div>
+      <hr/>
     </div>
   )
 }

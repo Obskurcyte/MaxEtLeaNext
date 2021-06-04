@@ -11,7 +11,9 @@ import '../styles/pageBlog.css';
 import '../styles/about.css';
 import '../styles/equipe.css';
 import '../styles/mentionsLegales.css';
+import '../styles/remerciement.css';
 import 'bootstrap/dist/css/bootstrap.css';
+
 import '../i18n';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import {Provider} from 'react-redux';
@@ -51,7 +53,9 @@ function MyApp({ Component, pageProps }) {
               <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
   crossOrigin="anonymous"/>
-            <script src="https://www.paypal.com/sdk/js?client-id=AfiMbg3knsQVR1llxcjFizkj0V-9sNkWH6Hy_P9xrpftezR8yQOy_H3iHrJbXUx7sRhi4pqubOYIa2MB&currency=EUR" />
+            {process.browser && <script src="https://www.paypal.com/sdk/js?client-id=AfiMbg3knsQVR1llxcjFizkj0V-9sNkWH6Hy_P9xrpftezR8yQOy_H3iHrJbXUx7sRhi4pqubOYIa2MB" />
+            }
+
           </Head>
     <noscript dangerouslySetInnerHTML={{__html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KV59DL8" height="0" width="0" style="display:none;visibility:hidden;"></iframe>`}} />
 

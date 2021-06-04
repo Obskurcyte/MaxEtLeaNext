@@ -15,14 +15,17 @@ import Link from "next/link";
 import Garanties from "../components/GarantiesMaxEtLea";
 import Footer from "../components/Footer";
 import Carousel from 'react-elastic-carousel';
-import Recommendation from "../components/Recommendation";
+import Recommande from "../components/Recommendation";
 import Head from 'next/head';
 import * as countries from '../listCountries';
-
-
+import * as product from "../products";
+import * as Yup from 'yup';
 import Menu from "@material-ui/core/Menu";
 import {getCart, setMauvaisCart} from "../store/actions/commandes";
 import {useDispatch, useSelector} from "react-redux";
+import styles from "../components/CheckoutFormStripe.module.css";
+import Slider from "react-slick";
+import AvisClients from "../components/AvisClients";
 
 const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
@@ -39,13 +42,318 @@ const useStyles = makeStyles((theme) => ({
 const CheckoutScreen = props => {
 
 
+  const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
 
-  console.log(countries.listCountries);
+  const [donneesClient, setdonneesClient] = useState({})
+
+  const products = product.products
+
   const breakPoints = [
     {width: 200, itemsToShow: 1},
     {width: 600, itemsToShow: 2},
     {width: 1000, itemsToShow: 3},
   ]
+
+  //---------------------AJOUTER PANIER-----------------------//
+
+
+  const getFloatVal = (string) => {
+    let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
+    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)): '';
+  };
+
+  const addFirstProduct = (product) => {
+    let productPrice = getFloatVal(product.price)
+
+    let newCart = {
+      products: [],
+      totalProductCount: 1,
+      totalProductsPrice: productPrice
+    }
+
+    const newProduct = createNewProduct(product, productPrice, 1)
+    newCart.products.push(newProduct);
+    localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
+    localStorage.setItem('commande-cart', JSON.stringify(newCart))
+    return newCart
+
+  };
+
+  const createNewProduct = (product, productPrice, qty) => {
+    return {
+      productId: product.id,
+      name: product.name,
+      price: productPrice,
+      qty: qty,
+      image: product.image,
+      totalPrice: parseFloat((productPrice * qty).toFixed(2))
+    }
+  };
+
+
+  const updateCartTour = (existingCart, product, qtyToBeAdded, newQty = false) => {
+    const updatedProducts = getUpdatedProductsTour(existingCart.products, products[3], qtyToBeAdded, newQty);
+    const addPrice = (total, item) => {
+
+      total.totalPrice = item.totalPrice;
+      total.qty += item.qty;
+      console.log('total', total)
+      console.log('item', item)
+      console.log(total)
+      return total;
+    }
+
+    // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
+    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+
+    const updatedCart = {
+      products: updatedProducts,
+      totalProductCount: parseInt(total.qty),
+      totalProductsPrice: parseFloat(total.totalPrice)
+    }
+
+    localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart))
+    localStorage.setItem('commande-cart', JSON.stringify(updatedCart));
+    return updatedCart
+  };
+
+
+
+
+
+  /**
+   * Get updated products array
+   *
+   * @param existingProductsInCart
+   * @param product
+   * @param qtyToBeAdded
+   * @param newQty
+   * @returns {*}
+   */
+
+
+  const getUpdatedProductsTour = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[3].id);
+
+    if (-1 < productExistsIndex) {
+      let updatedProducts = existingProductsInCart;
+      let updatedProduct = updatedProducts[productExistsIndex];
+
+      updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
+      updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
+      return updatedProducts;
+    } else {
+      let productPrice = parseFloat(product.price);
+      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+      existingProductsInCart.push(newProduct);
+      return existingProductsInCart
+    }
+  };
+
+  const isProductInCart = (existingProductsInCart, productId) => {
+    const returnItemThatExists = (item, index) => {
+      if (productId === item.productId) {
+        return item;
+      }
+    };
+
+    const newArray = existingProductsInCart.filter(returnItemThatExists)
+
+    return existingProductsInCart.indexOf(newArray[0]);
+  };
+
+
+  const handleAddToCartTour = () => {
+    if (process.browser) {
+      let existingCart = localStorage.getItem('woo-next-cart');
+      let commandeCart = localStorage.getItem('commande-cart');
+      console.log('clicked')
+      console.log('existingCart', existingCart)
+      if (existingCart!=null) {
+        commandeCart = JSON.parse(commandeCart)
+        existingCart = JSON.parse(existingCart)
+        const qtyToBeAdded = 1
+        const updatedCart = updateCartTour(existingCart, products[2], qtyToBeAdded);
+        setCart(updatedCart)
+        setCommandeCart(updatedCart)
+      } else {
+        const newCart = addFirstProduct(products[2]);
+        setCart(newCart)
+        setCommandeCart(newCart)
+      }
+    }
+  }
+
+  const updateCartXylo = (existingCart, product, qtyToBeAdded, newQty = false) => {
+    const updatedProducts = getUpdatedProductsXylo(existingCart.products, products[2], qtyToBeAdded, newQty);
+    const addPrice = (total, item) => {
+
+      total.totalPrice = item.totalPrice;
+      total.qty += item.qty;
+      console.log('total', total)
+      console.log('item', item)
+      console.log(total)
+      return total;
+    }
+
+    // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
+    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+
+    const updatedCart = {
+      products: updatedProducts,
+      totalProductCount: parseInt(total.qty),
+      totalProductsPrice: parseFloat(total.totalPrice)
+    }
+
+    localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart))
+    localStorage.setItem('commande-cart', JSON.stringify(updatedCart));
+    return updatedCart
+  };
+
+
+
+
+
+  /**
+   * Get updated products array
+   *
+   * @param existingProductsInCart
+   * @param product
+   * @param qtyToBeAdded
+   * @param newQty
+   * @returns {*}
+   */
+
+
+  const getUpdatedProductsXylo = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[2].id);
+
+    if (-1 < productExistsIndex) {
+      let updatedProducts = existingProductsInCart;
+      let updatedProduct = updatedProducts[productExistsIndex];
+
+      updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
+      updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
+      return updatedProducts;
+    } else {
+      let productPrice = parseFloat(product.price);
+      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+      existingProductsInCart.push(newProduct);
+      return existingProductsInCart
+    }
+  };
+
+
+  const handleAddToCartXylo = () => {
+    if (process.browser) {
+      let existingCart = localStorage.getItem('woo-next-cart');
+      let commandeCart = localStorage.getItem('commande-cart');
+      console.log('clicked')
+      console.log('existingCart', existingCart)
+      if (existingCart!=null) {
+        commandeCart = JSON.parse(commandeCart)
+        existingCart = JSON.parse(existingCart)
+        const qtyToBeAdded = 1
+        const updatedCart = updateCartXylo(existingCart, products[3], qtyToBeAdded);
+        setCart(updatedCart)
+        setCommandeCart(updatedCart)
+      } else {
+        const newCart = addFirstProduct(products[3]);
+        setCart(newCart)
+        setCommandeCart(newCart)
+      }
+    }
+  }
+
+  const updateCartPlayboard = (existingCart, product, qtyToBeAdded, newQty = false) => {
+    const updatedProducts = getUpdatedProductsPlayboard(existingCart.products, products[4], qtyToBeAdded, newQty);
+    const addPrice = (total, item) => {
+
+      total.totalPrice = item.totalPrice;
+      total.qty += item.qty;
+      console.log('total', total)
+      console.log('item', item)
+      console.log(total)
+      return total;
+    }
+
+    // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
+    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+
+    const updatedCart = {
+      products: updatedProducts,
+      totalProductCount: parseInt(total.qty),
+      totalProductsPrice: parseFloat(total.totalPrice)
+    }
+
+    localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart))
+    localStorage.setItem('commande-cart', JSON.stringify(updatedCart));
+    return updatedCart
+  };
+
+
+
+
+
+  /**
+   * Get updated products array
+   *
+   * @param existingProductsInCart
+   * @param product
+   * @param qtyToBeAdded
+   * @param newQty
+   * @returns {*}
+   */
+
+
+  const getUpdatedProductsPlayboard = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[4].id);
+
+    if (-1 < productExistsIndex) {
+      let updatedProducts = existingProductsInCart;
+      let updatedProduct = updatedProducts[productExistsIndex];
+
+      updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
+      updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
+      return updatedProducts;
+    } else {
+      let productPrice = parseFloat(product.price);
+      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+      existingProductsInCart.push(newProduct);
+      return existingProductsInCart
+    }
+  };
+
+
+  const handleAddToCartPlayboard = () => {
+    if (process.browser) {
+      let existingCart = localStorage.getItem('woo-next-cart');
+      let commandeCart = localStorage.getItem('commande-cart');
+      console.log('clicked')
+      console.log('existingCart', existingCart)
+      if (existingCart!=null) {
+        commandeCart = JSON.parse(commandeCart)
+        existingCart = JSON.parse(existingCart)
+        const qtyToBeAdded = 1
+        const updatedCart = updateCartPlayboard(existingCart, products[4], qtyToBeAdded);
+        setCart(updatedCart)
+        setCommandeCart(updatedCart)
+      } else {
+        const newCart = addFirstProduct(products[4]);
+        setCart(newCart)
+        setCommandeCart(newCart)
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
 
   //-------------------- LIVRAISON ----------------------------
 
@@ -122,23 +430,58 @@ const CheckoutScreen = props => {
     {id: 5, title: 'dhhdndndjznjznndzjdzndjznjdzjdnzdz  dzndzd zidzjd zdijzjdzi d zdjzjidzj d zjzdz dz djzjd zd'}
   ]
 
+  //----------------FORMULAIRE DE LIVRAISON ------------------//
+
+
+  const [nom, setNom] = useState('');
+  const [prenom, setPrenom] = useState('');
+  const [email, setEmail] = useState('');
+  const [adresseLivraison, setAdresseLivraison] = useState('');
+  const [villeLivraison, setVilleLivraison] = useState('');
+  const [codePostalLivraison, setCodePostalLivraison] = useState('');
+  const [pays, setPays] = useState('');
+  const [adresseFacturation, setAdresseFacturation] = useState('')
+  const [villeFacturation, setVilleFacturation] = useState('')
+  const [codePostalFacturation, setCodePostalFacturation] = useState('')
+  const [paysFacturation, setPaysFacturation] = useState('')
+  const [phone, setPhone] = useState('');
+  const [expedition, setExpedition] = useState('');
+  const [total, setTotal] = useState('');
+  const [sousTotal, setSousTotal] = useState('');
+  let [prixLivraison, setPrixLivraison] = useState(0);
+
+  const livraisonSchema = Yup.object().shape({
+    email: Yup.string().email('Cet email est invalide').required('Ce champ est requis'),
+    prenom: Yup.string().required('Ce champ est requis'),
+    nom: Yup.string().required('Ce champ est requis'),
+    adresseLivraison: Yup.string().required('Ce champ est requis'),
+    codePostalLivraison: Yup.string().required('Ce champ est requis'),
+    villeLivraison: Yup.string().required('Ce champ est requis'),
+    pays: Yup.string().required('Ce champ est requis'),
+    phone: Yup.string().required('Ce champ est requis'),
+  });
+
   const initialValues = {
-    nom: '',
+    email: '',
     prenom:'',
-    adresse: '',
-    postalcode: '',
-    ville: '',
+    nom: '',
+    adresseLivraison: '',
+    codePostalLivraison: '',
+    villeLivraison: '',
     pays: '',
-    phone: ''
+    phone: '',
+    adresseFacturation: '',
+    codePostalFacturation: '',
+    villeFacturation: ''
   }
 
-  const [ cart, setCart ] = useContext( AppContext );
 
 
   const classes = useStyles();
 
-  let [prixLivraison, setPrixLivraison] = useState(0);
+
   let totalPrice1 = 0;
+  let totalPrice2 = 0
   let qtyTotale = 0
   if (cart) {
     for (let data in cart.products) {
@@ -147,9 +490,9 @@ const CheckoutScreen = props => {
     }
   }
 
+  console.log(totalPrice2)
   console.log('qty', qtyTotale)
-  totalPrice1 = totalPrice1 + prixLivraison
-
+  totalPrice2 = totalPrice1 + prixLivraison
 
   let playboardReducPrice = 0
   let playboardInCart = []
@@ -189,10 +532,6 @@ const CheckoutScreen = props => {
   }
 
 
-
-  console.log('cart', cart);
-
-
   if (qtyTotale === 2) {
     totalPrice1 = totalPrice1 * 0.90
   }
@@ -202,28 +541,17 @@ const CheckoutScreen = props => {
   }
 
 
-  const [email, setEmail] = useState('');
-  const [adress, setAdresse] = useState('');
-  const [ville, setVille] = useState('');
-  const [codePostal, setCodePostal] = useState('');
-  const [prenom, setPrenom] = useState('');
-  const [nom, setNom] = useState('');
-  const [pays, setPays] = useState('');
-  const [adresseFacturation, setAdresseFacturation] = useState('')
-  const [villeFacturation, setVilleFacturation] = useState('')
-  const [codepostalFaturation, setCodepostalFacturation] = useState('')
-  const [paysFacturation, setPaysFacturation] = useState('')
-  const [phone, setPhone] = useState('')
+
   const [firstStep, setFirstStep] = useState(false);
 
-
-
-  console.log(prixLivraison)
-  console.log(pays)
   const [goPaiement, setGoPaiement] = useState(false)
 
+
+
+
+
     return (
-      <div style={{fontFamily: "\"D KButterfly Ball\", sans-serif"}}>
+      <div style={{fontFamily: "Roboto, sans-serif"}}>
         <Head>
           <title>Max And Lea - Checkout</title>
           <link
@@ -237,47 +565,21 @@ const CheckoutScreen = props => {
             type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
+            <link
+              rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+              integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+              crossorigin="anonymous"
+              />
         </Head>
         <Header />
-        <div className="sliderContainer">
-          <img src={'/slider.png'} alt="" className="sliderImgContainer"/>
-        </div>
 
         <div className="cadeauContainer">
           <h2 className="cadeauContainerText">Le plus beau cadeau pour votre enfant</h2>
         </div>
 
-        <div className="carouselContainer">
-          <Carousel itemsToShow={1} isRTL={false} className="Carousel">
-            <div>
-              <div className="carouselInnerContainer">
-                <img src={'/apostrophe.png'} alt="" className="apostropheImg"/>
-                <p className="carouselDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias magnam magni obcaecati possimus saepe. Dolorum ducimus laudantium sequi suscipit vel.</p>
-                <img src={'/apostropheClose.png'} alt="" className="apostropheImg"/>
-              </div>
-              <p className="auteur">Clara, Italie</p>
-            </div>
-            <div>
-              <div className="carouselInnerContainer">
-                <img src={'/apostrophe.png'} alt="" className="apostropheImg"/>
-                <p className="carouselDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias magnam magni obcaecati possimus saepe. Dolorum ducimus laudantium sequi suscipit vel.</p>
-                <img src={'/apostropheClose.png'} alt="" className="apostropheImg"/>
-              </div>
-              <p className="auteur">Clara, Italie</p>
-            </div>
-            <div>
-              <div className="carouselInnerContainer">
-                <img src={'/apostrophe.png'} alt="" className="apostropheImg"/>
-                <p className="carouselDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias magnam magni obcaecati possimus saepe. Dolorum ducimus laudantium sequi suscipit vel.</p>
-                <img src={'/apostropheClose.png'} alt="" className="apostropheImg"/>
-              </div>
-              <p className="auteur">Clara, Italie</p>
-            </div>
-          </Carousel>
-        </div>
-
-        <div className="checkoutTextContainer">
-          <h1 className="checkoutText">Checkout</h1>
+        <div>
+          <AvisClients/>
         </div>
 
         <div className="checkoutContainer">
@@ -365,31 +667,140 @@ const CheckoutScreen = props => {
                   </div>
 
                   <div>
-                    {prixLivraison !== 0 && (
-                      <div className="prix-reduc-container">
-                        <p className="sousTotalText">Prix livraison</p>
-                        <p className="itemTotalPrice">{prixLivraison} €</p>
-                      </div>
-                    )}
-                  </div>
-                  <div>
 
                   </div>
 
                 </div>
 
+                <hr/>
                 {(cart && cart.products.length) && (
-                  <div>
-                    <hr className="hrPrix"/>
-                    <div className="sousTotal2">
-                      <p className="sousTotalText">
-                        Sous-total
-                      </p>
-                      <p className="itemTotalPrice">{totalPrice1.toFixed(2)} €</p>
+                  <div className="sousTotal">
+                    <div>
+                      <div className="prix-reduc-container">
+                        <p className="sousTotalText2">Sous-total</p>
+                        <p className="itemTotalPrice2">{totalPrice1.toFixed(2)} €</p>
+                      </div>
                     </div>
+
+                    <div>
+                      {prixLivraison !== 0 && (
+                        <div className="prix-reduc-container">
+                          <p className="sousTotalText2">Prix livraison</p>
+                          <p className="itemTotalPrice2">{prixLivraison} €</p>
+                        </div>
+                      )}
+                    </div>
+
+                    <hr/>
+                    <div>
+                        <div className="prix-reduc-container">
+                          <p className="sousTotalText2" style={{fontWeight: 'bold'}}>Total</p>
+                          <p className="itemTotalPrice2" style={{fontWeight: 'bold'}}>{totalPrice2.toFixed(2)} €</p>
+                        </div>
+                    </div>
+                    <hr/>
+
+                    <div>
+
+                    </div>
+
                   </div>
                 )}
               </div>
+
+              <div className="codepromoContainer">
+                <div>
+                  <input type="text" placeholder="Code promo" className="inputPromo"/>
+                </div>
+                <button className="buttonCodepromo">Valider votre code promo</button>
+              </div>
+
+              <div className="addOtherArticlesPanier">
+                {qtyTotale === 1 && (
+                  <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 10% sur tout votre panier !</h5>
+                )}
+
+                {qtyTotale >= 2 && (
+                  <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 15% sur tout votre panier !</h5>
+                )}
+                <Carousel itemsToShow={3} isRTL={false} className="addItemsCarousel" breakPoints={breakPoints}>
+                  <div className="innerArticleContainer">
+                    <div className="imgContainerCarousel">
+                      <img src="https://maxandlea.com/wp-content/uploads/2020/06/VueProduit-2-Tablette-MaxAndLea-sans-logo.jpg" alt="playboard" className="xylophoneImg"/>
+                      <Link href={'/playboard'}><p className="savoirplus">En savoir plus</p></Link>
+                    </div>
+
+                    <div className="carouselItemAdd">
+                      <p className='addCarousel'>Ajouter la Playboard !</p>
+                      <div className="prixReduc">
+                        <p className="prixReducText">{products[4].price} €</p>
+                        <p className="fauxPrix">{products[4].priceAugmente} €</p>
+                      </div>
+                      <div className="economie">
+                        <p className="economieText">(-41% economisez {products[4].priceAugmente - products[4].price} €)</p>
+                      </div>
+                      <div className="buttonAddPanierContainer">
+                        <button className="buttonAddPanier" onClick={() => {
+                          handleAddToCartPlayboard()
+                          window.location.reload()
+                        }}>Ajouter au panier</button>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div className="innerArticleContainer">
+                    <div className="imgContainerCarousel">
+                      <img src={'/xylophone.png'} alt="" className="xylophoneImg"/>
+                      <Link href={'/xylophone'}><p className="savoirplus">En savoir plus</p></Link>
+                    </div>
+
+                    <div className="carouselItemAdd">
+                      <p className='addCarousel'>Ajouter le Xylophone !</p>
+                      <div className="prixReduc">
+                        <p className="prixReducText">{products[2].priceReduc} €</p>
+                        <p className="fauxPrix">{products[2].price} €</p>
+                      </div>
+                      <div className="economie">
+                        <p className="economieText">(-41% economisez {(products[2].price - products[2].priceReduc).toFixed(2)} €)</p>
+                      </div>
+                      <div className="buttonAddPanierContainer">
+                        <button className="buttonAddPanier" onClick={() => {
+                          handleAddToCartXylo()
+                          window.location.reload()
+                        }}>Ajouter au panier</button>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div className="innerArticleContainer">
+                    <div className="imgContainerCarousel">
+                      <img src={'/tourCarre.png'} alt="" className="xylophoneImg"/>
+                      <Link href={'/tour'}><p className="savoirplus">En savoir plus</p></Link>
+                    </div>
+
+                    <div className="carouselItemAdd">
+                      <p className='addCarousel'>Ajouter la Tour Arc en Ciel !</p>
+                      <div className="prixReduc">
+                        <p className="prixReducText">{products[3].priceReduc} €</p>
+                        <p className="fauxPrix">{products[3].price} €</p>
+                      </div>
+                      <div className="economie">
+                        <p className="economieText">(-41% economisez {(products[3].price - products[3].priceReduc).toFixed(2)} €)</p>
+                      </div>
+                      <div className="buttonAddPanierContainer">
+                        <button className="buttonAddPanier" onClick={() => {
+                          handleAddToCartTour()
+                          window.location.reload()
+                        }}>Ajouter au panier</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </Carousel>
+              </div>
+
             </div>
 
             <img src={'/separation.png'} alt="" className="separation"/>
@@ -405,18 +816,59 @@ const CheckoutScreen = props => {
               <div className="content">
                 {!goPaiement ? (
                   <Formik
-                    initialValues={initialValues}
+                    initialValues={{
+                      email: '',
+                      prenom:'',
+                      nom: '',
+                      adresseLivraison: '',
+                      codePostalLivraison: '',
+                      villeLivraison: '',
+                      pays: '',
+                      phone: '',
+                      adresseFacturation: '',
+                      codePostalFacturation: '',
+                      villeFacturation: ''
+                    }}
+                    validationSchema={livraisonSchema}
                     onSubmit={values => {
-                      console.log(values)
-                      setVille(values.ville)
-                      setEmail(values.email)
-                      setAdresse(values.adresse)
-                      setCodePostal(values.postalcode)
-                      setAdresseFacturation(values.adresseFacturation)
-                      setCodepostalFacturation(values.codePostalFacturation)
-                      setVilleFacturation(values.villeFacturation)
-                      setPaysFacturation(values.paysFacturation)
-                      setPhone(values.phone)
+                      console.log(checked)
+
+                      let donnesClient = {}
+                      if (checked) {
+                        donnesClient = {
+                          adresseFacturation : values.adresseFacturation,
+                          codePostalFacturation : values.codePostalFacturation,
+                          villeFacturation : values.villeFacturation,
+                          villeLivraison : values.villeLivraison,
+                          email : values.email,
+                          nom : values.nom,
+                          prenom : values.prenom,
+                          phone : values.phone,
+                          prixLivraison,
+                          adresseLivraison : values.adresseLivraison,
+                          codePostalLivraison : values.codePostalLivraison,
+                          total : totalPrice2,
+                          sousTotal : totalPrice1
+                        }
+                      } else {
+                        donnesClient = {
+                          adresseFacturation : values.adresseLivraison,
+                          codePostalFacturation : values.codePostalLivraison,
+                          villeFacturation : values.villeLivraison,
+                          villeLivraison : values.villeLivraison,
+                          email : values.email,
+                          nom : values.nom,
+                          prenom : values.prenom,
+                          phone : values.phone,
+                          prixLivraison,
+                          adresseLivraison : values.adresseLivraison,
+                          codePostalLivraison : values.codePostalLivraison,
+                          total : totalPrice2.toFixed(2),
+                          sousTotal : totalPrice1
+                        }
+                      }
+                      localStorage.setItem('livraison', JSON.stringify(donnesClient))
+
                       setGoPaiement(true)
                     }}
                   >
@@ -427,25 +879,29 @@ const CheckoutScreen = props => {
                             required
                             value={props.values.email}
                             onChange={props.handleChange('email')}
-                            id="outlined-error"
+                            id="email"
                             label="Email"
                             variant="outlined"
                             onFocus={() => setFirstStep(true)}
                             className="bigInput"
                           />
                         </div>
+                        {props.errors.email && props.touched.email && <div style={{color: 'red'}}>{props.errors.email}</div>}
+
                         <div className="inputContainer">
                           <TextField
                             required
                             value={props.values.prenom}
                             onChange={props.handleChange('prenom')}
-                            id="outlined-error"
+                            id="prenom"
                             label="Prénom"
                             variant="outlined"
                             className="inputMoyenGauche"
                           />
+                          {props.errors.prenom && props.touched.prenom && <div style={{color: 'red'}}>{props.errors.prenom}</div>}
+
                           <TextField
-                            id="outlined-error"
+                            id="nom"
                             value={props.values.nom}
                             onChange={props.handleChange('nom')}
                             required
@@ -453,36 +909,45 @@ const CheckoutScreen = props => {
                             variant="outlined"
                             className="inputMoyenDroit"
                           />
+                          {props.errors.nom && props.touched.nom && <div style={{color: 'red'}}>{props.errors.nom}</div>}
+
                         </div>
                         <div className="inputContainer">
                           <TextField
                             required
-                            value={props.values.adresse}
-                            onChange={props.handleChange('adresse')}
-                            id="outlined-error"
+                            value={props.values.adresseLivraison}
+                            onChange={props.handleChange('adresseLivraison')}
+                            id="adresse"
                             label="Numéro et nom de rue"
                             variant="outlined"
                             className="inputMoyenGauche"
                           />
+                          {props.errors.adresseLivraison && props.touched.adresseLivraison && <div style={{color: 'red'}}>{props.errors.adresseLivraison}</div>}
+
                           <TextField
                             required
-                            value={props.values.postalcode}
-                            onChange={props.handleChange('postalcode')}
-                            id="outlined-error"
+                            value={props.values.codePostalLivraison}
+                            onChange={props.handleChange('codePostalLivraison')}
+                            id="postalcode"
                             label="Code postal"
                             variant="outlined"
                             className="inputMoyenDroit"
                           />
+                          {props.errors.codePostalLivraison && props.touched.codePostalLivraison && <div style={{color: 'red'}}>{props.errors.codePostalLivraison}</div>}
+
                         </div>
                         <div className="inputContainer">
                           <TextField
+                            id="ville"
                             required
-                            value={props.values.ville}
-                            onChange={props.handleChange('ville')}
+                            value={props.values.villeLivraison}
+                            onChange={props.handleChange('villeLivraison')}
                             label="Ville"
                             variant="outlined"
                             className="inputMoyenGauche"
                           />
+                          {props.errors.villeLivraison && props.touched.villeLivraison && <div style={{color: 'red'}}>{props.errors.villeLivraison}</div>}
+
                           <TextField
                             select
                             value={props.values.pays}
@@ -491,8 +956,9 @@ const CheckoutScreen = props => {
                             helperText="Veuillez sélectionner un pays"
                             defaultValue="France"
                             className="inputMoyenDroit"
-
                           >
+                            {props.errors.pays && props.touched.pays && <div style={{color: 'red'}}>Ce champ est requis</div>}
+
 
                             {countries.listCountries.map((option) => (
                               <MenuItem key={option.code} value={option.code} onClick={() => {
@@ -827,7 +1293,7 @@ const CheckoutScreen = props => {
                         </div>
 
                         <Link href="#">
-                          <button className="cart-valide" onClick={props.handleSubmit}>Aller à l'étape suivante</button>
+                          <button className="cart-valide" type="submit" onClick={props.handleSubmit}>Aller à l'étape suivante</button>
                         </Link>
                       </form>
                     )
@@ -836,18 +1302,21 @@ const CheckoutScreen = props => {
                 ): <Elements stripe={stripePromise}>
                   <div className="formData">
                     <CheckoutFormStripe
-                      adress={adress}
-                      codePostal={codePostal}
-                      ville={ville}
+                      adress={adresseLivraison}
+                      codePostal={codePostalLivraison}
+                      ville={villeLivraison}
                       email={email}
                       price={totalPrice1}
                       prenom={prenom}
                       nom={nom}
+                      donneesClient={donneesClient}
+                      prixLivraison={prixLivraison}
+                      totalPrice2={totalPrice2}
                       pays={pays}
                       adresseFacturation={adresseFacturation}
                       paysFacturation={paysFacturation}
                       villeFacturation={villeFacturation}
-                      codePostalFacturation={codepostalFaturation}
+                      codePostalFacturation={codePostalFacturation}
                       phone={phone}
                     />
                   </div>
@@ -859,86 +1328,9 @@ const CheckoutScreen = props => {
           </div>
         </div>
 
-        <div className="addOtherArticlesPanier">
-          {qtyTotale === 1 && (
-            <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 10% sur tout votre panier !</h5>
-          )}
-
-          {qtyTotale >= 2 && (
-            <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 15% sur tout votre panier !</h5>
-          )}
-          <Carousel itemsToShow={3} isRTL={false} className="addItemsCarousel" breakPoints={breakPoints}>
-            <div className="innerArticleContainer">
-              <div className="imgContainerCarousel">
-                <img src={'/xylophone.png'} alt="" className="xylophoneImg"/>
-                <Link href={'/#'}><p className="savoirplus">En savoir plus</p></Link>
-              </div>
-
-              <div className="carouselItemAdd">
-                <p className='addCarousel'>Ajouter la Playboard !</p>
-                <div className="prixReduc">
-                  <p className="prixReducText">12,90 €</p>
-                  <p className="fauxPrix">21,90 €</p>
-                </div>
-                <div className="economie">
-                  <p className="economieText">(-41% economisez 9€)</p>
-                </div>
-                <div className="buttonAddPanierContainer">
-                  <button className="buttonAddPanier">Ajouter au panier</button>
-                </div>
-              </div>
-
-            </div>
-
-            <div className="innerArticleContainer">
-              <div className="imgContainerCarousel">
-                <img src={'/xylophone.png'} alt="" className="xylophoneImg"/>
-                <Link href={'/#'}><p className="savoirplus">En savoir plus</p></Link>
-              </div>
-
-              <div className="carouselItemAdd">
-                <p className='addCarousel'>Ajouter le Xylophone !</p>
-                <div className="prixReduc">
-                  <p className="prixReducText">12,90 €</p>
-                  <p className="fauxPrix">21,90 €</p>
-                </div>
-                <div className="economie">
-                  <p className="economieText">(-41% economisez 9€)</p>
-                </div>
-                <div className="buttonAddPanierContainer">
-                  <button className="buttonAddPanier">Ajouter au panier</button>
-                </div>
-              </div>
-
-            </div>
-
-            <div className="innerArticleContainer">
-              <div className="imgContainerCarousel">
-                <img src={'/xylophone.png'} alt="" className="xylophoneImg"/>
-                <Link href={'/#'}><p className="savoirplus">En savoir plus</p></Link>
-              </div>
-
-              <div className="carouselItemAdd">
-                <p className='addCarousel'>Ajouter la Tour Arc en Ciel !</p>
-                <div className="prixReduc">
-                  <p className="prixReducText">12,90 €</p>
-                  <p className="fauxPrix">21,90 €</p>
-                </div>
-                <div className="economie">
-                  <p className="economieText">(-41% economisez 9€)</p>
-                </div>
-                <div className="buttonAddPanierContainer">
-                  <button className="buttonAddPanier">Ajouter au panier</button>
-                </div>
-              </div>
-
-            </div>
-          </Carousel>
-        </div>
-
         <div className="recommendation">
           <h5 className="recommendation-title">Ils recommandent la Playboard®</h5>
-          <Recommendation />
+          <Recommande />
         </div>
         <div>
           <Garanties />

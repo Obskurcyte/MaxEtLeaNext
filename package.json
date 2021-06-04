@@ -46,7 +46,8 @@
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
     "stripe": "^8.145.0",
-    "styled-components": "^5.2.3"
+    "styled-components": "^5.2.3",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "axios": "^0.21.1",

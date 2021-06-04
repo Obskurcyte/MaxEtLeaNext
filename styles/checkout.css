@@ -9,8 +9,35 @@
   padding-right: 5%;
 }
 
+.codepromoContainer{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 3%;
+}
+
 .livraisonChoice {
   margin-top: 2%;
+}
+
+.prixRecap hr {
+  margin: 0.3rem;
+}
+.buttonCodepromo {
+  padding-top: 15px;
+  padding-right: 35px;
+  padding-bottom: 15px;
+  padding-left: 35px;
+  color: #ffffff;
+  font-size: 1em;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  overflow: visible;
+  left: auto;
+  border-radius: 5px 5px 5px 5px !important;
+  background-color: #E72C59 !important;
+  transition: all 0.2s !important;
+  border-width: 0px !important;
 }
 
 .livraisonPrice {
@@ -40,6 +67,7 @@
 .prix-reduc-container{
   display: flex;
   justify-content: space-between;
+  height: 40px;
 }
 
 .bigInput {
@@ -73,15 +101,16 @@
   letter-spacing: -5px;
   color: #225d71;
   font-weight: bold;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
+  margin-top: 50px;
 }
 
 .checkoutText {
   font-size: 150px;
   text-align: center;
   color: #8ed1bf;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .checkoutTextContainer {
@@ -125,7 +154,7 @@
   font-size: 30px;
   letter-spacing: 0px;
   color: #7c95a2;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -152,7 +181,7 @@
   letter-spacing: 1px;
   color: #7c95a2;
   font-weight: 900;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .produitPaiementContainer {
@@ -171,7 +200,7 @@
   letter-spacing: 1px;
   color: #7c95a2;
   font-weight: 900;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
@@ -180,12 +209,12 @@
   letter-spacing: 1px;
   color: lightgrey;
   font-weight: 900;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
 .prixContainer {
-  width: 40%;
+  width: 50%;
   margin-left: 4%
 }
 
@@ -205,7 +234,7 @@
 }
 
 .prixRecap {
-  margin-top: 30%;
+  margin-top: 5%;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -221,15 +250,15 @@
 }
 
 .sousTotal2 {
-  width: 60%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   margin-left: 30%;
 }
 
 .hrPrix {
-  width: 60%;
-  margin-left: 30%;
+  margin-right: 2%;
+  width: 100%;
 }
 
 .carouselContainer {
@@ -238,7 +267,8 @@
   filter: drop-shadow(8.773px 38px 49px rgba(103,119,115,0.26));
   background-color: #ffffff;
   padding-top: 3%;
-  width: 80%;
+      width: 100%;
+    max-width: 1100px;
   margin: 4% auto;
 }
 
@@ -263,7 +293,7 @@
   letter-spacing: -1px;
   color: #3f7284;
   font-weight: 300;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   margin-top: 5%;
 }
@@ -273,15 +303,16 @@
   letter-spacing: -3px;
   color: #ef675c;
   font-weight: bold;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   margin-bottom: 0;
 }
 
 .checkoutContainer {
-  width: 95%;
+  width: 100%;
+  max-width: 1600px;
   border-radius: 20px;
-  margin: 0 auto;
+  margin: 2% auto;
   filter: drop-shadow(8.773px 38px 49px rgba(103,119,115,0.26));
   background-color: #ffffff;
   padding-top: 2%;
@@ -309,7 +340,7 @@
   font-size: 35px;
   letter-spacing: 1px;
   color: #ff6376;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   margin-bottom: 2%;
   margin-left: 5%;
@@ -330,7 +361,7 @@
   line-height: 41px;
   color: #7c95a2;
   font-weight: bold;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .savoirplus {
@@ -338,7 +369,7 @@
   letter-spacing: 0px;
   line-height: 41px;
   color: #666768;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
   margin-left: 15%;
 }
 
@@ -360,7 +391,7 @@
   line-height: 41px;
   color: #ff6376;
   font-weight: bold;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .prixReduc {
@@ -574,7 +605,7 @@
   }
   .cadeauContainerText {
     font-size: 60px;
-    font-family: "D KButterfly Ball", sans-serif;
+    font-family: "Roboto", sans-serif;
   }
   .addArticleTitle {
     font-size: 17px;

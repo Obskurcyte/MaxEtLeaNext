@@ -32,13 +32,12 @@ const Footer = () => {
     <footer>
       <div className="footer-container">
         <div className="footer-subcontainer">
-      
           <div className="footer-img">
             <img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1024x378.png" alt="" className="img-footer"/>
             <div className="icons-social">
-              <a target="_blank" href="https://www.facebook.com/MaxandleaToys/"><FontAwesomeIcon icon={faFacebookSquare} className="iconFacebook"/></a>
-              <a target="_blank" href="https://www.instagram.com/max.and.lea/"><FontAwesomeIcon icon={faInstagramSquare} className="iconInstagram"/></a>
-              <a target="_blank" href="https://www.youtube.com/channel/UCHaUOBoknhDUyNExyux9yvg/featured"><FontAwesomeIcon icon={faYoutubeSquare} className="iconYoutube"/></a>
+              <a href="https://www.facebook.com/MaxandleaToys/" target="_blank"><FontAwesomeIcon icon={faFacebookSquare} className="iconFacebook"/></a>
+              <a href="https://www.instagram.com/max.and.lea/" target="_blank"><FontAwesomeIcon icon={faInstagramSquare} className="iconInstagram" href=""/></a>
+              <a href="https://www.youtube.com/channel/UCHaUOBoknhDUyNExyux9yvg/featured" target="_blank"><FontAwesomeIcon icon={faYoutubeSquare} className="iconYoutube"/></a>
             </div>
           </div>
             <div className="footer-column">
@@ -49,7 +48,7 @@ const Footer = () => {
             </div>
           <div className="footer-column2">
             <Link href="/mentionsLegales">{t("Footer.5")}</Link>
-            <Link href="#">{t("Footer.6")}</Link>
+            <Link href="/CGV">{t("Footer.6")}</Link>
           </div>
           <div className="footer-column3 footer-terre" >
             <div style={{display: "flex", marginBottom: '10%', flexDirection: 'column', justifyContent: "space-around"}} onClick={() => setOpen(true)}>

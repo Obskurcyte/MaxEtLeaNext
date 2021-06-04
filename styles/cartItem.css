@@ -3,7 +3,7 @@
 }
 
 .itemsuppr {
-  margin-top: 150%;
+  margin-top: 50%;
 }
 
 .input-card {
@@ -39,12 +39,12 @@ table {
 }
 
 .itemPrix {
-  font-size: 30px;
+  font-size: 17px;
   letter-spacing: -1px;
   color: #11c47e;
   margin-bottom: 0;
   font-weight: bold;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .descriptionProduitText {
@@ -53,15 +53,13 @@ table {
   color: #000000;
   font-weight: 400;
   margin-bottom: 0;
-  font-family: "D KButterfly Ball", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .imgContainerCart {
-  width: 25%;
-  height: 100px;
+  height: 40px;
   overflow: hidden;
   align-items: center;
-  margin-top: 5%;
 }
 .button-supp {
   display: block;
@@ -130,8 +128,8 @@ th {
 }
 
 .tr-product {
-  height: 150px;
-  margin-bottom: 5%;
+  height: 70px;
+  margin-bottom: 1%;
 }
 
 .container-cart {
@@ -179,8 +177,7 @@ th {
 
 .input-quantity {
   display: flex;
-  height: 50px;
-  width: 35%
+  height: 30px;
 }
 
 
@@ -209,6 +206,7 @@ th {
 .innerContainerCart {
   display: flex;
   justify-content: space-around;
+  margin-top: 3%;
 }
 
 .prixDescriptionContainer {
@@ -222,20 +220,35 @@ th {
 }
 
 .sousTotalText {
-  font-size: 25px;
+  font-size: 15px;
   letter-spacing: 0px;
-  line-height: 55px;
   color: #11c47e;
-  font-family: "D KButterfly Ball", sans-serif;
+  margin: 0.2rem;
+  font-family: "Roboto", sans-serif;
 }
 
+.sousTotalText2 {
+  font-size: 15px;
+  margin: 0.2rem;
+  letter-spacing: 0px;
+  font-family: "Roboto", sans-serif;
+}
 .itemTotalPrice {
-  font-size: 25px;
+  font-size: 15px;
+  margin: 0.2rem;
   letter-spacing: 0px;
-  line-height: 55px;
   color: #11c47e;
-  font-family: "D KButterfly Ball", sans-serif;
-  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+}
+.itemTotalPrice2 {
+  margin: 0.2rem;
+  font-size: 15px;
+  letter-spacing: 0px;
+  font-family: "Roboto", sans-serif;
 }
 
+.nameAndQty {
+  display: flex;
+  justify-content: space-between;
+}
 

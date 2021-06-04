@@ -54,6 +54,7 @@ const Equipe = () => {
               <p>Ludovic coordonne les opérations de développement informatique.
                 Il développe et dessine avec sa femme les nouveaux jouets, les ebooks et travaille sur le développement commercial de Max & Lea.</p>
             </div>
+
           </div>
 
           <div className="col">
