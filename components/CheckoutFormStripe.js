@@ -194,6 +194,27 @@ const CheckoutFormStripe = ({
   const onSuccessfullCheckout = () => {
     router.push('/remerciement')
   }
+
+  const fetchAffiliates = async () => {
+    const encoded = window.btoa("51c3be50ab9c71d50de81306ddb8590a:bdf2b2c8119512ea65c31d49d96c7e92")
+    ///wp-json/affwp/v1/affiliates
+    ///wp-json/affwp/v1/referrals?user_name=theo&amount=15&status=unpaid
+    const res = await fetch(`https://maxandlea.fr/wp-json/affwp/v1/affiliates`, {
+        //method: 'POST',
+        headers: {
+          'Authorization': "Basic "+encoded
+        }
+      })
+    const newData = await res.json();
+    console.log(newData);
+    //return setData(newData.results);
+};
+
+const checkPromo = (event) => {
+  event.preventDefault();
+    fetchAffiliates();
+};
+
   return (
 
     <div>
@@ -201,7 +222,7 @@ const CheckoutFormStripe = ({
         <div>
           <input type="text" placeholder="Code promo" className="inputPromo"/>
         </div>
-        <button className="cart-valide">Valider votre code promo</button>
+        <button onClick={checkPromo} className="cart-valide">Valider votre code promo</button>
       </div>
       <div className={styles.paymentMethods}>
         <div className={visaClicked ? styles.visaContainerClicked : styles.visaContainer} onClick={() => {
