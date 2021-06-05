@@ -15,7 +15,7 @@ import Link from "next/link";
 import Garanties from "../components/GarantiesMaxEtLea";
 import Footer from "../components/Footer";
 import Carousel from 'react-elastic-carousel';
-import Recommande from "../components/Recommande";
+import Recommande from "../components/Recommendation";
 import Head from 'next/head';
 import * as countries from '../listCountries';
 import * as product from "../products";
@@ -24,6 +24,8 @@ import Menu from "@material-ui/core/Menu";
 import {getCart, setMauvaisCart} from "../store/actions/commandes";
 import {useDispatch, useSelector} from "react-redux";
 import styles from "../components/CheckoutFormStripe.module.css";
+import Slider from "react-slick";
+import AvisClients from "../components/AvisClients";
 
 const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
@@ -552,47 +554,32 @@ const CheckoutScreen = props => {
       <div style={{fontFamily: "Roboto, sans-serif"}}>
         <Head>
           <title>Max And Lea - Checkout</title>
+          <link
+            rel="stylesheet"
+            type="text/css"
+            charset="UTF-8"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+          />
+            <link
+              rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+              integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+              crossorigin="anonymous"
+              />
         </Head>
         <Header />
-        <div className="sliderContainer">
-          <img src={'/slider.png'} alt="" className="sliderImgContainer"/>
-        </div>
 
         <div className="cadeauContainer">
           <h2 className="cadeauContainerText">Le plus beau cadeau pour votre enfant</h2>
         </div>
 
-        <div className="carouselContainer">
-          <Carousel itemsToShow={1} isRTL={false} className="Carousel">
-            <div>
-              <div className="carouselInnerContainer">
-                <img src={'/apostrophe.png'} alt="" className="apostropheImg"/>
-                <p className="carouselDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias magnam magni obcaecati possimus saepe. Dolorum ducimus laudantium sequi suscipit vel.</p>
-                <img src={'/apostropheClose.png'} alt="" className="apostropheImg"/>
-              </div>
-              <p className="auteur">Clara, Italie</p>
-            </div>
-            <div>
-              <div className="carouselInnerContainer">
-                <img src={'/apostrophe.png'} alt="" className="apostropheImg"/>
-                <p className="carouselDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias magnam magni obcaecati possimus saepe. Dolorum ducimus laudantium sequi suscipit vel.</p>
-                <img src={'/apostropheClose.png'} alt="" className="apostropheImg"/>
-              </div>
-              <p className="auteur">Clara, Italie</p>
-            </div>
-            <div>
-              <div className="carouselInnerContainer">
-                <img src={'/apostrophe.png'} alt="" className="apostropheImg"/>
-                <p className="carouselDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias magnam magni obcaecati possimus saepe. Dolorum ducimus laudantium sequi suscipit vel.</p>
-                <img src={'/apostropheClose.png'} alt="" className="apostropheImg"/>
-              </div>
-              <p className="auteur">Clara, Italie</p>
-            </div>
-          </Carousel>
-        </div>
-
-        <div className="checkoutTextContainer">
-          <h1 className="checkoutText">Checkout</h1>
+        <div>
+          <AvisClients/>
         </div>
 
         <div className="checkoutContainer">
@@ -892,7 +879,7 @@ const CheckoutScreen = props => {
                             required
                             value={props.values.email}
                             onChange={props.handleChange('email')}
-                            id="outlined-error"
+                            id="email"
                             label="Email"
                             variant="outlined"
                             onFocus={() => setFirstStep(true)}
@@ -906,7 +893,7 @@ const CheckoutScreen = props => {
                             required
                             value={props.values.prenom}
                             onChange={props.handleChange('prenom')}
-                            id="outlined-error"
+                            id="prenom"
                             label="Prénom"
                             variant="outlined"
                             className="inputMoyenGauche"
@@ -914,7 +901,7 @@ const CheckoutScreen = props => {
                           {props.errors.prenom && props.touched.prenom && <div style={{color: 'red'}}>{props.errors.prenom}</div>}
 
                           <TextField
-                            id="outlined-error"
+                            id="nom"
                             value={props.values.nom}
                             onChange={props.handleChange('nom')}
                             required
@@ -930,7 +917,7 @@ const CheckoutScreen = props => {
                             required
                             value={props.values.adresseLivraison}
                             onChange={props.handleChange('adresseLivraison')}
-                            id="outlined-error"
+                            id="adresse"
                             label="Numéro et nom de rue"
                             variant="outlined"
                             className="inputMoyenGauche"
@@ -941,7 +928,7 @@ const CheckoutScreen = props => {
                             required
                             value={props.values.codePostalLivraison}
                             onChange={props.handleChange('codePostalLivraison')}
-                            id="outlined-error"
+                            id="postalcode"
                             label="Code postal"
                             variant="outlined"
                             className="inputMoyenDroit"
@@ -951,6 +938,7 @@ const CheckoutScreen = props => {
                         </div>
                         <div className="inputContainer">
                           <TextField
+                            id="ville"
                             required
                             value={props.values.villeLivraison}
                             onChange={props.handleChange('villeLivraison')}
@@ -1340,7 +1328,8 @@ const CheckoutScreen = props => {
           </div>
         </div>
 
-        <div>
+        <div className="recommendation">
+          <h5 className="recommendation-title">Ils recommandent la Playboard®</h5>
           <Recommande />
         </div>
         <div>
