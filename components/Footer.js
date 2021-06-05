@@ -10,7 +10,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {useTheme} from "@material-ui/core/styles";
-
+import {Container, Row, Col} from 'react-bootstrap';
 
 const Footer = () => {
 
@@ -40,16 +40,32 @@ const Footer = () => {
               <a href="https://www.youtube.com/channel/UCHaUOBoknhDUyNExyux9yvg/featured" target="_blank"><FontAwesomeIcon icon={faYoutubeSquare} className="iconYoutube"/></a>
             </div>
           </div>
-            <div className="footer-column">
-              <Link href="/about">{t("Footer.1")}</Link>
-              <Link href="/equipe">{t("Footer.2")}</Link>
-              <Link href="/blogs">{t("Footer.3")}</Link>
-              <Link href="/contact">{t("Footer.4")}</Link>
-            </div>
-          <div className="footer-column2">
-            <Link href="/mentionsLegales">{t("Footer.5")}</Link>
-            <Link href="/CGV">{t("Footer.6")}</Link>
-          </div>
+          <Container>
+            <Row>
+              <Col>
+                <Link href="/about">{t("Footer.1")}</Link>
+              </Col>
+              <Col>
+                <Link href="/mentionsLegales">{t("Footer.5")}</Link>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Link href="/equipe">{t("Footer.2")}</Link>
+              </Col>
+              <Col>
+                <Link href="/CGV">{t("Footer.6")}</Link>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Link href="/blogs">{t("Footer.3")}</Link>
+              </Col>
+              <Col>
+                <Link href="/contact">{t("Footer.4")}</Link>
+              </Col>
+            </Row>
+          </Container>
           <div className="footer-column3 footer-terre" >
             <div style={{display: "flex", marginBottom: '10%', flexDirection: 'column', justifyContent: "space-around"}} onClick={() => setOpen(true)}>
               <div className="img-container-arbre">
