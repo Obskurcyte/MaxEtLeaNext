@@ -2,6 +2,7 @@
   position: absolute;
   left: 65%;
   margin-top: 70px;
+  width: 20%;
   z-index: 3;
   background-color: white;
   padding: 1%;
@@ -9,6 +10,16 @@
 
 .imageContainer {
   display: flex;
+  width: 15%;
+}
+
+.innerContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.image {
+  width: 100%;
 }
 
 .subtotal {
@@ -16,17 +27,23 @@
 }
 
 .buttonsContainer {
-  display: flex;
   flex-direction: column;
+  background-color: #E62B56;
+  color: white!important;
+  padding: 2% 5%;
 }
 
 .linkPopper {
   background-color: #E72C59;
   font-family: "Roboto", sans-serif;
-  color: white;
+  color: white!important;
   text-align: center;
+  font-size: 20px;
 }
 
+#linkCart {
+  color: white!important;
+}
 .inputCardContainer {
   display: flex;
 }

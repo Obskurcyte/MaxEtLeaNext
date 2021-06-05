@@ -169,13 +169,15 @@ const CardHoverItem = ({item}) => {
 
   return (
     <React.Fragment>
-      <div>
+        <div className={styles.innerContainer}>
           <div className={styles.imageContainer}>
-            <td className="croix"><button className="button-supp" onClick={(e) => handleRemoveProduct(e, item.productId)}>x</button></td>
+            <img src={item.image} alt="product-image" className={styles.image}/>
+          </div>
             <div>
               <p>{item.name}</p>
             </div>
-            <hr/>
+          <td className="croix"><button className="button-supp" onClick={(e) => handleRemoveProduct(e, item.productId)}>x</button></td>
+          <hr/>
           </div>
           <div className={styles.inputCardContainer}>
             <p>Quantité : </p>
@@ -187,7 +189,6 @@ const CardHoverItem = ({item}) => {
             />
           </div>
           <hr/>
-      </div>
     </React.Fragment>
   )
 };
@@ -220,11 +221,11 @@ const CardHover = () => {
         ) : <p>Vous n'avez pas d'articles dans votre panier</p>
       }
       <div className="prix-container">
-        <p className={styles.subtotal}>Sous-total : {totalPrice1} €</p>
+        <p className={styles.subtotal}>Sous-total : {totalPrice1.toFixed(2)} €</p>
         <hr/>
       </div>
       <div className={styles.buttonsContainer}>
-        <Link href="/checkout" className={styles.linkPopper}>Commander</Link>
+        <Link href="/checkout"><p className={styles.linkPopper} id="linkCart">Commander</p></Link>
       </div>
     </div>
   )

@@ -10,7 +10,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {useTheme} from "@material-ui/core/styles";
-
+import {Container, Row, Col} from "react-bootstrap";
 
 const Footer = () => {
 
@@ -39,16 +39,32 @@ const Footer = () => {
             <FontAwesomeIcon icon={faYoutubeSquare} className="iconYoutube" href="https://www.youtube.com/channel/UCHaUOBoknhDUyNExyux9yvg/featured"/>
           </div>
         </div>
-          <div className="footer-column">
+        <Container>
+        <Row>
+          <Col>
             <Link href="/about">{t("Footer.1")}</Link>
+          </Col>
+          <Col>
+            <Link href="/mentionsLegales">{t("Footer.5")}</Link>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
             <Link href="/equipe">{t("Footer.2")}</Link>
+          </Col>
+          <Col>
+            <Link href="/CGV">{t("Footer.6")}</Link>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
             <Link href="/blogs">{t("Footer.3")}</Link>
+          </Col>
+          <Col>
             <Link href="/contact">{t("Footer.4")}</Link>
-          </div>
-        <div className="footer-column2">
-          <Link href="/mentionsLegales">{t("Footer.5")}</Link>
-          <Link href="/CGV">{t("Footer.6")}</Link>
-        </div>
+          </Col>
+        </Row>
+        </Container>
         <div className="footer-column3 footer-terre" >
           <div style={{display: "flex", marginBottom: '10%', flexDirection: 'column', justifyContent: "space-around"}} onClick={() => setOpen(true)}>
             <div className="img-container-arbre">
@@ -58,7 +74,6 @@ const Footer = () => {
               <img src={'/arbresreplantes.png'} alt="" className="arbre-replantes"/>
               <img src={'/logo_reforest.png'} alt="" className="arbre-replantes"/>
             </div>
-
             <Dialog
               fullScreen={fullScreen}
               open={open}

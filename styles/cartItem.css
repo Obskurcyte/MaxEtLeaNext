@@ -58,6 +58,7 @@ table {
 
 .imgContainerCart {
   height: 40px;
+  margin-top: 3%;
   overflow: hidden;
   align-items: center;
 }

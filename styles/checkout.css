@@ -328,8 +328,8 @@
 }
 
 .addItemsCarousel {
-  height: 80%;
-  width: 90% !important;
+  height: 100%;
+  width: 100% !important;
   margin: 0 auto;
 }
 
@@ -373,13 +373,14 @@
 .imgContainerCarousel {
   height: 200px;
   width: 35%;
+  padding-top: 10%;
   align-items: center;
   margin-top: 5%;
 }
 
+
 .xylophoneImg {
-  height: 60%;
-  width: 100%;
+  width: 80%;
 }
 
 .prixReducText{
@@ -407,6 +408,7 @@
 .carouselItemAdd {
   height: 150px;
   margin-top: 5%;
+  align-items: center;
 }
 
 .buttonAddPanierContainer {
@@ -459,20 +461,25 @@
 }
 
 @media screen and (max-width: 1400px) {
-  .input-quantity {
-    height: 35px;
+  .addArticleTitle {
+    font-size: 25px;
   }
-  .descriptionProduitText {
-    font-size: 15px;
+  .imakzv {
+    margin: 0!important;
   }
-  .addCarousel {
-    font-size: 18px;
+  .bSWeAW {
+    font-size: 1rem!important;
+    min-width: 30px!important;
+    width: 30px!important;
+    height: 30px!important;
+    line-height: 0px!important;
   }
-  .imgContainerCart {
-    height: 150px;
-  }
-  .sousTotalText {
-    font-size: 20px;
+  .hSiCVM {
+    font-size: 1rem!important;
+    min-width: 30px!important;
+    width: 30px!important;
+    height: 30px!important;
+    line-height: 0px!important;
   }
 }
 
@@ -483,17 +490,17 @@
   .coordonneesTextLight {
     font-size: 23px;
   }
-  .itemPrix {
-    font-size: 30px;
-  }
-  .input-quantity {
-    width: 45%;
-  }
   .addArticleTitle {
-    font-size: 30px;
+    font-size: 25px;
   }
   .progressBarText {
     font-size: 25px;
+  }
+  .addCarousel, .prixReducText, .fauxPrix, .economieText{
+    font-size: 14px;
+  }
+  .savoirplus {
+    font-size: 11px;
   }
   .hrContainerCheckout {
     width: 90%;
@@ -502,21 +509,16 @@
     width: 95%;
     justify-content: space-between;
   }
-  .sousTotalText {
-    font-size: 15px;
+  .codepromoContainer {
+    flex-direction: column;
   }
-  .itemTotalPrice {
-    font-size: 17px;
+  .buttonCodepromo {
+    margin-top: 3%;
   }
+
 }
 
 @media screen and (max-width: 900px) {
-  .imgContainerCart {
-    height: 120px;
-  }
-  .descriptionProduitText {
-    font-size: 12px;
-  }
   .CheckoutForm2_inputContainer__3wDOt {
     display: block!important;
   }
@@ -525,7 +527,7 @@
     margin-left: 0;
   }
   .addArticleTitle {
-    font-size: 25px;
+    font-size: 20px;
   }
   .makeStyles-root-1 .MuiTextField-root {
     width: 100% !important;
@@ -552,12 +554,6 @@
   .hrPrix {
     margin-left: 20%;
   }
-  .sousTotalText {
-    font-size: 17px;
-  }
-  .itemTotalPrice {
-    font-size: 17px;
-  }
   .carouselContainer {
     width: 95%;
   }
@@ -568,9 +564,6 @@
 
 
 @media screen and (max-width: 800px) {
-  .imgContainerCart {
-    height: 100px;
-  }
   .addArticleTitle {
     font-size: 20px;
   }
@@ -592,7 +585,7 @@
     display: none;
   }
   .produitPaiementContainer {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
   .separation {
     display: none
@@ -606,6 +599,12 @@
   }
   .addArticleTitle {
     font-size: 17px;
+  }
+  .codepromoContainer {
+    flex-direction: row;
+  }
+  .buttonCodepromo {
+    margin-top: 0;
   }
   .carouselDescription {
     font-size: 20px;
@@ -639,7 +638,7 @@
   }
   .tr-product {
     margin-bottom: 7%;
-    height: 180px;
+    height: 50px;
   }
   .CheckoutForm2_inputContainer__3wDOt {
     display: flex!important;
@@ -650,6 +649,23 @@
   }
 }
 
+@media screen and (max-width: 650px) {
+  .descriptionProduitText {
+    font-size: 15px;
+  }
+  .input-quantity {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .codepromoContainer {
+    flex-direction: column;
+  }
+  .buttonCodepromo {
+    margin-top: 3%;
+  }
+}
 @media screen and (max-width: 480px) {
   .cadeauContainerText {
     font-size: 50px;
@@ -666,9 +682,6 @@
   .carouselDescription {
     font-size: 17px;
   }
-  .input-quantity {
-    width: 70%;
-  }
   .addCarousel {
     font-size: 14px;
   }
@@ -682,14 +695,14 @@
   .cadeauContainerText {
     font-size: 50px;
   }
+  .tr-product {
+    height: 60px;
+  }
   .auteur {
     font-size: 20px;
   }
   .carouselDescription {
     font-size: 17px;
-  }
-  .input-quantity {
-    width: 70%;
   }
   .CheckoutForm2_inputContainer__3wDOt {
     display: block!important;
@@ -727,12 +740,12 @@
   .savoirplus {
     font-size: 13px;
   }
+  .sousTotalText, .itemTotalPrice {
+    font-size: 13px;
+  }
 }
 
 @media screen and (max-width: 370px) {
-  .tr-product {
-    height: 220px;
-  }
   .sousTotal, .hrPrix {
     width: 90%;
     margin-left: 5%;
@@ -742,5 +755,11 @@
   }
   .buttonAddPanier {
     font-size: 13px;
+  }
+  .input-quantity {
+    width: 40%;
+  }
+  .descriptionProduitText {
+    font-size: 12px;
   }
 }
