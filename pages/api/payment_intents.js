@@ -19,6 +19,7 @@ export default async (req, res) => {
 
       res.status(200).send(paymentIntent.client_secret)
     } catch (err) {
+      console.log(err)
       res.status(500).json({statusCode: 500, message: err.message})
     }
   } else {

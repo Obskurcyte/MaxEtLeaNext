@@ -64,6 +64,7 @@ const CheckoutFormStripe = ({
   const [visaClicked, setVisaClicked] = useState(false);
   const [paypalClicked, setPaypalClicked] = useState(false);
 
+  console.log(price)
   const  [
     cart, setCart,
     commandeCart, setCommandeCart,
@@ -95,8 +96,8 @@ const CheckoutFormStripe = ({
   const router = useRouter()
   //############    PAYPAL #############//
 
-  let totalPrice = totalPrice2.toFixed(2);
-  console.log(totalPrice)
+  console.log(totalPrice2)
+
   const Paypal = () => {
     const paypal = useRef();
     useEffect(() => {
@@ -252,12 +253,6 @@ const checkPromo = (event) => {
       <Head >
         <title>CheckoutStripe</title>
       </Head>
-      <div className={styles.codePromo}>
-        <div>
-          <input type="text" placeholder="Code promo" className="inputPromo"/>
-        </div>
-        <button onClick={checkPromo} className="cart-valide">Valider votre code promo</button>
-      </div>
       <div className={styles.paymentMethods}>
         <div className={visaClicked ? styles.visaContainerClicked : styles.visaContainer} onClick={() => {
           setPaypalClicked(false)
@@ -320,15 +315,15 @@ const checkPromo = (event) => {
 
             setProcessingTo(true);
 
-            const {data: clientSecret} = await axios.post("/api/payment_intents", {
-              amount: price * 100
-            }).then(() => {
-              localStorage.removeItem('woo-next-cart')
-              localStorage.setItem('moyenPaiement', moyenPaiement);
-              router.push('/remerciement').then(() => window.location.reload())
-            })
+              const {data: clientSecret} = await axios.post("/api/payment_intents", {
+                amount: totalPrice2 * 100
+              }).then(() => {
+                localStorage.removeItem('woo-next-cart')
+                localStorage.setItem('moyenPaiement', moyenPaiement);
+                router.push('/remerciement').then(() => window.location.reload())
+              })
 
-            console.log(clientSecret)
+
 
             const cardElement = elements.getElement(CardElement);
 
@@ -350,6 +345,7 @@ const checkPromo = (event) => {
                setCheckoutError(paymentMethodReq.error.message);
                setProcessingTo(false);
              }
+            console.log(checkoutError)
           }}
         >
           {props => (
@@ -377,7 +373,7 @@ const checkPromo = (event) => {
               </Row>
               <Row>
                 {/* TIP always disable your submit button while processing payments */}
-                <button className={styles.payButton} onClick={props.handleSubmit}>
+                <button className={styles.payButton} type="submit" onClick={props.handleSubmit}>
                   Commandez
                 </button>
               </Row>

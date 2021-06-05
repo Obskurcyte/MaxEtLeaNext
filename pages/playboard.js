@@ -15,10 +15,11 @@ import Collapsible from 'react-collapsible';
 import Recommendation from "../components/Recommendation";
 import {useTranslation} from "react-i18next";
 import { useTheme } from '@material-ui/core/styles';
-
+import {faChevronRight} from "@fortawesome/free-solid-svg-icons";
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const icon = React.createElement('i', { className: 'far fa-question-circle' }, "");
 const title1 = React.createElement('p', {}, "La PlayBoard s'abime-t-elle avec le temps ?");
@@ -49,6 +50,13 @@ const PlayBoardScreen = props => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const [value, setValue] = React.useState(0);
+  const width = 100
+  React.useEffect(() => {
+    setValue(0.98 * width);
+  });
+
 
   const { t, i18n } = useTranslation();
 
@@ -443,160 +451,142 @@ const PlayBoardScreen = props => {
           </div>
         </div>
 
-        <div className="imagesContainer">
-        <div className="row">
-          <div className="garconSouriantContainer col">
-          <div class="ageContainer">
-          <img src={'/bebeBrasTendu.png'} alt="" className="bebeBrasTendu ageImg"/>
-            <div class="ageOverlay">
-              <div className="pour">
-                <h5>POUR LES 2 A 3 ANS</h5>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il travaille son habileté</p>
+        <div className="imagesContainer container">
+          <div className="row rowDevelopment">
+            <div className="col">
+              <div className="photoDescriptionContainer">
+                <div className="imgDevelopmentContainer">
+                  <img src="https://play.maxandlea.com/wp-content/uploads/2020/10/Be%CC%81be%CC%81Mouvements-MaxAndLea-2.jpg" alt="bebe qui s'amuse" className="imgDevelopment"/>
                 </div>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il découvre les formes</p>
+                <div className="listeDevelopment">
+                  <p className="developmentTitle" style={{color: '#02B3C8'}}>Pour les 1-2 ans</p>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#02B3C8'}}/>
+                    <p>Il travaille son <span>habilité</span></p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#02B3C8'}}/>
+                    <p>Il découvre les <span>formes</span></p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#02B3C8'}}/>
+                    <p>Il assimile les <span>couleurs</span></p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#02B3C8'}}/>
+                    <p>Il reconnait les <span>animaux</span></p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#02B3C8'}}/>
+                    <p>Il améliore sa <span>coordination oeil-main</span></p>
+                  </div>
                 </div>
+              </div>
+            </div>
 
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il assimile les couleurs</p>
+            <div className="col">
+              <div className="photoDescriptionContainer">
+                <div className="imgDevelopmentContainer">
+                  <img src="https://play.maxandlea.com/wp-content/uploads/2020/10/Be%CC%81be%CC%812ans-1862x2048.jpg" alt="bebe qui s'amuse" className="imgDevelopment"/>
                 </div>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il reconnait les animaux</p>
-                </div>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il améliore sa coordination oeil-main</p>
+                <div className="listeDevelopment">
+                  <p className="developmentTitle" style={{color: '#31A73A'}}>Pour les 2-3 ans</p>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#31A73A'}}/>
+                    <p>Il affine sa <span>motricité</span></p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#31A73A'}}/>
+                    <p>Il s'exerce à empiler <span>les anneaux et les formes</span> </p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#31A73A'}}/>
+                    <p>Il distingue les <span>nuances de couleur</span></p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#31A73A'}}/>
+                    <p>Il s'habitue à <span>compter sur ses doigts</span></p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#31A73A'}}/>
+                    <p>Il apprend à <span>compter jusqu'à cinq</span></p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          </div>
 
-
-          <div className="garconSouriantContainer col">
-          <div class="ageContainer">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/Be%CC%81be%CC%812ans.jpg" alt="" className="bebeBrasTendu ageImg"/>
-            <div class="ageOverlay">
-              <div className="pour">
-                <h5>POUR LES 2 A 3 ANS</h5>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il travaille son habileté</p>
+          <div className="row rowDevelopment">
+            <div className="col">
+              <div className="photoDescriptionContainer reverse">
+                <div className="imgDevelopmentContainer">
+                  <img src="https://play.maxandlea.com/wp-content/uploads/2020/10/FilletteSouriante-802x1024.jpg" alt="bebe qui s'amuse" className="imgDevelopment"/>
                 </div>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il découvre les formes</p>
+                <div className="listeDevelopment">
+                  <p className="developmentTitle" style={{color: '#F28D2A'}}>Pour les 3-4 ans</p>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#F28D2A'}}/>
+                    <p>Il développe son <span>autonomie</span></p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#F28D2A'}}/>
+                    <p>Il fait travailler son <span>imagination</span></p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#F28D2A'}}/>
+                    <p>Il apprend à <span>compter jusqu'à 10</span></p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#F28D2A'}}/>
+                    <p>Il découvre les <span>calculs simples</span></p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: '#F28D2A'}}/>
+                    <p>Il relie les <span>animaux à leur alimentation</span></p>
+                  </div>
                 </div>
+              </div>
+            </div>
 
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il assimile les couleurs</p>
+            <div className="col">
+              <div className="photoDescriptionContainer reverse">
+                <div className="imgDevelopmentContainer">
+                  <img src={'/garconAssis.webp'} alt="bebe qui s'amuse" className="imgDevelopment"/>
                 </div>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il reconnait les animaux</p>
-                </div>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il améliore sa coordination oeil-main</p>
+                <div className="listeDevelopment">
+                  <p className="developmentTitle" style={{color: 'rgba(191, 20, 180, 0.7686274509803922)'}}>Pour les 4-6 ans</p>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: 'rgba(191, 20, 180, 0.7686274509803922)'}}/>
+                    <p>Il améliore sa <span>concentration</span></p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: 'rgba(191, 20, 180, 0.7686274509803922)'}}/>
+                    <p>Il joue avec la tablette et prend <span>plaisir à apprendre</span> </p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: 'rgba(191, 20, 180, 0.7686274509803922)'}}/>
+                    <p>Il <span>progresse en calcul</span></p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: 'rgba(191, 20, 180, 0.7686274509803922)'}}/>
+                    <p>Il apprend à <span>partager et à enseigner à plus petit que lui</span></p>
+                  </div>
+                  <div className="innerItemList">
+                    <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{color: 'rgba(191, 20, 180, 0.7686274509803922)'}}/>
+                    <p>Il apprend à <span>organiser son espace</span></p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          </div>
 
-          <div className="garconSouriantContainer col">
-          <div class="ageContainer">
-          <img src={'/garconSouriant.png'} alt="" className="garconSouriant ageImg"/>
-            <div class="ageOverlay">
-              <div className="pour">
-                <h5>POUR LES 2 A 3 ANS</h5>
 
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il travaille son habileté</p>
-                </div>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il découvre les formes</p>
-                </div>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il assimile les couleurs</p>
-                </div>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il reconnait les animaux</p>
-                </div>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il améliore sa coordination oeil-main</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-
-          <div className="garconSouriantContainer col">
-          <div class="ageContainer">
-          <img src={'/filleSouriant.png'} alt="" className="garconSouriant ageImg"/>
-            <div class="ageOverlay">
-              <div className="pour">
-                <h5>POUR LES 2 A 3 ANS</h5>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il travaille son habileté</p>
-                </div>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il découvre les formes</p>
-                </div>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il assimile les couleurs</p>
-                </div>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il reconnait les animaux</p>
-                </div>
-
-                <div className="rowIcone">
-                  <img src={'/vector1.png'} alt=""/>
-                  <p>Il améliore sa coordination oeil-main</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-          </div>
         </div>
-
+        {/*
         <div className="apprentissage">
-          <div className="apprendreContainer">
             <h5>Ce que les enfants ont appris
               avec la PlayBoard®</h5>
-              <Slider {...settings}>
+             <Slider {...settings}>
                 <div>
                   <p style={{color:"#e72c59"}}>Reconnaître les couleurs</p>
                   <div className="rectangleContainer">
@@ -640,10 +630,48 @@ const PlayBoardScreen = props => {
                   </div>
                 </div>
               </Slider>
-          </div>
+
 
           <div className="enfantTableauContainer">
             <img src={'/garconTableau.png'} alt="" className="enfantTableau"/>
+          </div>
+        </div>
+        */}
+
+        <div className="apprentissagePlayboard">
+          <h5 className="apprentissageTitle">Ce que les enfants ont appris avec la PlayBoard</h5>
+          <div className="imageApprentissageContainer">
+            <img src={'/enfantTableau.jpg'} alt="" className="imgTableau"/>
+            <div className="progressContainer">
+              <div>
+              <p className="apprentissagePara">Reconnaitre les couleurs</p>
+              <img src={'/redProgress.png'} alt="" className="progress"/>
+              </div>
+              <div>
+                <p className="apprentissagePara">Maitriser les dégradés</p>
+                <img src={'/orangeProgress.png'} alt="" className="progress"/>
+              </div>
+              <div>
+                <p className="apprentissagePara">Emboiter les formes</p>
+                <img src={'/yellowProgress.png'} alt="" className="progress"/>
+              </div>
+              <div>
+                <p className="apprentissagePara">Apprendre à compter</p>
+                <img src={'/greenProgress.png'} alt="" className="progress"/>
+              </div>
+              <div>
+                <p className="apprentissagePara">Reconnaitre les animaux</p>
+                <img src={'/blueProgress.png'} alt="" className="progress"/>
+              </div>
+              <div>
+                <p className="apprentissagePara">Débuter en calcul</p>
+                <img src={'/pinkProgress.png'} alt="" className="progress"/>
+              </div>
+              <div>
+                <p className="apprentissagePara">Plaisir de jouer</p>
+                <img src={'/purpleProgress.png'} alt="" className="progress"/>
+              </div>
+            </div>
           </div>
         </div>
 

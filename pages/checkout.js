@@ -44,6 +44,19 @@ const CheckoutScreen = props => {
 
   const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
 
+  const [dataClient, setDataClient] = useState(null);
+
+  useEffect(() => {
+    if ( process.browser) {
+      let cartData = localStorage.getItem('livraison');
+      const trueData = JSON.parse(cartData);
+      setDataClient(trueData)
+    }
+  }, []);
+
+
+  console.log(dataClient);
+
   const [donneesClient, setdonneesClient] = useState({})
 
   const products = product.products
@@ -492,8 +505,12 @@ const CheckoutScreen = props => {
 
   console.log(totalPrice2)
   console.log('qty', qtyTotale)
-  totalPrice2 = totalPrice1 + prixLivraison
 
+
+  console.log(totalPrice1)
+  console.log(totalPrice2)
+  console.log(prixLivraison)
+  console.log(totalPrice1.toFixed(2))
   let playboardReducPrice = 0
   let playboardInCart = []
   if (cart) {
@@ -547,7 +564,7 @@ const CheckoutScreen = props => {
   const [goPaiement, setGoPaiement] = useState(false)
 
 
-
+  totalPrice2 = totalPrice1 + prixLivraison
 
 
     return (

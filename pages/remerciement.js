@@ -1,11 +1,6 @@
 import React, {Fragment, useContext, useEffect, useState} from 'react';
 import Header from "../components/Header";
-import CartItem from "../components/CartItem";
-import {useDispatch, useSelector} from "react-redux";
-import {getCart} from "../store/actions/commandes";
-import {AppContext} from "../components/context/AppContext";
 import Head from "next/head";
-import Image from "next/image";
 import Footer from "../components/Footer";
 
 
@@ -65,10 +60,10 @@ const Remerciement = (props) => {
                   cartCommande.products.map( item => (
                     <tr>
                       <td key={ item.productId } className="tdInner textLeft">
-                        {item.name}
+                        {item.name}  x  {item.qty}
                       </td>
                       <td key={ item.productId } className="textLeft">
-                        {item.price} €
+                        {item.totalPrice} €
                       </td>
                     </tr>
                   ) )

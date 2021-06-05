@@ -18,4 +18,7 @@ module.exports = {
       }
     },
     trailingSlash: true,
+  images: {
+    domains: ['https://play.maxandlea.com'],
+  },
   }
