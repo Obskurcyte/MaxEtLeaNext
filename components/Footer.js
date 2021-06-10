@@ -40,6 +40,7 @@ const Footer = () => {
               <a href="https://www.youtube.com/channel/UCHaUOBoknhDUyNExyux9yvg/featured" target="_blank"><FontAwesomeIcon icon={faYoutubeSquare} className="iconYoutube"/></a>
             </div>
           </div>
+          <div className='flex-footer'>
           <Container>
             <Row>
               <Col>
@@ -139,6 +140,7 @@ const Footer = () => {
 
             </div>
           </div>
+        </div>
         </div>
       </div>
     </footer>

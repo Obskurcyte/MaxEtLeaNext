@@ -98,15 +98,18 @@
 .img-container-arbre {
   height: 100px;
 }
+
 .arbre-replantes {
   width: 30%;
   height: 100%;
 }
+
 .photo-container {
   display: flex;
   margin-left: 30%;
   margin-top: 5%;
 }
+
 .img-footer {
   width: 100%;
   margin-top: 8%;
@@ -149,7 +152,12 @@
 .iconYoutube {
   color: #cd201f;
   width: 30px;
-  
+}
+
+.flex-footer {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
 }
 
 @media screen and (max-width: 1050px){
@@ -165,6 +173,12 @@
   }
   .footer-column{
     width: 100%;
+  }
+  .footer-subcontainer {
+    flex-direction: column-reverse;
+  }
+  .footer-img {
+    margin: 0 auto;
   }
 }
 

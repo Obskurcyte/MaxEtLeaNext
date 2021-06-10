@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import {useTranslation} from "react-i18next";
 import Footer from "../components/Footer";
 import Head from "next/head";
+import Link from "next/link";
 
 const About = () => {
 
@@ -23,28 +24,30 @@ const About = () => {
           <img src="https://maxandlea.com/wp-content/uploads/2020/06/iStock-478587034-1.jpg" alt="" className="grande-photo"/>
           <div className="paragraphs">
             <div className="paragraph1">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_1-1.svg" alt="" className="petite-photo1"/>
-              <p>Max & Lea <span>{t("Propos.4")}</span>{t("Propos.5")}</p>
+              <p>
+                <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_1-1.svg" alt="" className="petite-photo1"/>
+                Max & Lea
+                <span>{t("Propos.4")}</span>{t("Propos.5")}</p>
             </div>
             <div className="paragraph2">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_3t.svg" alt="" className="petite-photo2"/>
-              <p>{t("Propos.6")}</p>
+              <p>              <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_3t.svg" alt="" className="petite-photo2"/>
+                 {t("Propos.6")}</p>
             </div>
             <div className="paragraph3">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_2t.svg" alt="" className="petite-photo3"/>
-              <p>{t("Propos.7")}<span>{t("Propos.8")}</span>{t("Propos.9")}</p>
+              <p>              <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_2t.svg" alt="" className="petite-photo3"/>
+                {t("Propos.7")}<span>{t("Propos.8")}</span>{t("Propos.9")}</p>
             </div>
           </div>
         </div>
         <div className="container-about container-photo">
           <div className="paragraphs2">
             <div className="paragraph4">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt="" className="petite-photo4"/>
-              <p>{t("Propos.10")}<span>{t("Propos.11")}</span>{t("Propos.12")}</p>
+              <p>              <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt="" className="petite-photo4"/>
+                {t("Propos.10")}<span>{t("Propos.11")}</span>{t("Propos.12")}</p>
             </div>
             <div className="paragraph5">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_1-1.svg" alt="" className="petite-photo5"/>
-              <p>{t("Propos.13")}<span>{t("Propos.14")}</span>{t("Propos.15")}<span>{t("Propos.16")}</span></p>
+              <p>              <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_1-1.svg" alt="" className="petite-photo5"/>
+                {t("Propos.13")}<span>{t("Propos.14")}</span>{t("Propos.15")}<span>{t("Propos.16")}</span></p>
             </div>
           </div>
           <div>
@@ -60,7 +63,7 @@ const About = () => {
             {t("Propos.19")}</p>
         </div>
         <div className="container-about">
-          <button className="equipe-button container">{t("Propos.20")}</button>
+          <Link className="container" href="/equipe"><p className="equipe-button">{t("Propos.20")}</p></Link>
         </div>
         <div className="container-about">
           <img src="https://maxandlea.com/wp-content/uploads/2020/06/iStock-912734770-1.jpg" alt="" className="mega-photo"/>

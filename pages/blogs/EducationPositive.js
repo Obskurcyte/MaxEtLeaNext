@@ -179,9 +179,7 @@ const EducationPositive = () => {
           </p>
         </div>
 
-        <div className="img-blog-container">
-          <img src={'https://maxandlea.com/wp-content/uploads/2020/06/pay-wood-one-3208068-777x1024.jpg'} alt="" className="enfants-souriant-blog"/>
-        </div>
+          <img src={'https://maxandlea.com/wp-content/uploads/2020/06/pay-wood-one-3208068-777x1024.jpg'} alt="" className="enfants-souriant-blog4"/>
       </div>
 
       <hr/>
@@ -216,7 +214,7 @@ const EducationPositive = () => {
           <h5>{t("EducationPositive.20")}</h5>
         </div>
         <div className="conseildescription">
-          {t("EducationPositive.21")}
+          <p> {t("EducationPositive.21")}</p>
         </div>
 
         <div className="conseilTitre">
@@ -265,7 +263,7 @@ const EducationPositive = () => {
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'http://localhost:3000/playboardGood.png'} variant="top" className="math-image" />
+                  <Card.Img src={'/playboardGood.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title card-no-margin">La PlayBoard<br/>
                       <div className='playboard-card'>

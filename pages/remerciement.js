@@ -63,7 +63,7 @@ const Remerciement = (props) => {
                         {item.name}  x  {item.qty}
                       </td>
                       <td key={ item.productId } className="textLeft">
-                        {item.totalPrice} €
+                        {(item.totalPrice).toFixed(2)} €
                       </td>
                     </tr>
                   ) )

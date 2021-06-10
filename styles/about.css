@@ -18,8 +18,17 @@ main {
   padding: 5% 15%
 }
 
+.paragraphs p {
+  text-align: justify;
+}
+
+.paragraphs2 p {
+  text-align: justify;
+}
+
 .grande-photo {
   width: 45%;
+  height: 45%;
   margin-right: 3%;
 }
 
@@ -173,3 +182,98 @@ main {
   margin: 0 auto;
   max-width: 100%;
 }
+
+
+@media screen and (max-width: 1300px){
+  .signature {
+    left: 65%
+  }
+}
+
+
+@media screen and (max-width: 1000px){
+  .signature {
+    left: 55%
+  }
+  .card-citation {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 865px){
+  main {
+    padding: 5% 5%;
+  }
+  .signature {
+    left: 55%
+  }
+  .card-citation {
+    font-size: 15px;
+  }
+  .container-about {
+    flex-direction: column;
+  }
+  .container-photo {
+    flex-direction: column-reverse;
+  }
+  .grande-photo {
+    width: 100%;
+  }
+  .paragraphs2 {
+    max-width: 100%;
+  }
+  .paragraphs p {
+    text-align: center;
+  }
+  .paragraphs2 p {
+    text-align: center;
+  }
+  .paragraph1 {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 600px){
+  main {
+    padding: 5% 2%;
+  }
+  .card-citation {
+    padding: 5% 2%;
+  }
+    .signature {
+      left: 45%;
+    }
+}
+
+
+@media screen and (max-width: 600px){
+  main {
+    padding: 5% 2%;
+  }
+  .card-citation {
+    padding: 5% 2%;
+  }
+  .signature {
+    left: 45%;
+  }
+}
+
+@media screen and (max-width: 450px){
+  .card-citation {
+    height: 200px;
+  }
+  .signature {
+    left: 35%;
+  }
+}
+
+
+@media screen and (max-width: 400px){
+  .card-citation {
+    height: 220px;
+  }
+  .signature {
+    left: 25%;
+  }
+}
+

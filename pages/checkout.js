@@ -7,7 +7,7 @@ import {loadStripe} from "@stripe/stripe-js/pure";
 import {Elements} from "@stripe/react-stripe-js";
 import CheckoutFormStripe from "../components/CheckoutFormStripe";
 import CartItem from "../components/CartItem";
-import {Formik} from "formik";
+import {Field, Formik} from "formik";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -474,18 +474,25 @@ const CheckoutScreen = props => {
     phone: Yup.string().required('Ce champ est requis'),
   });
 
+  console.log(dataClient)
+  let dataClientEmail = ''
+  if (dataClient && dataClient.email) {
+    dataClientEmail = dataClient.email
+  }
+
+
   const initialValues = {
-    email: '',
-    prenom:'',
-    nom: '',
-    adresseLivraison: '',
-    codePostalLivraison: '',
-    villeLivraison: '',
-    pays: '',
-    phone: '',
-    adresseFacturation: '',
-    codePostalFacturation: '',
-    villeFacturation: ''
+    email: (dataClient && dataClient.email) ? dataClient.email : '',
+    prenom: (dataClient && dataClient.prenom) ? dataClient.prenom : '',
+    nom: (dataClient && dataClient.nom) ? dataClient.nom : '',
+    adresseLivraison: (dataClient && dataClient.adresseLivraison) ? dataClient.adresseLivraison : '',
+    codePostalLivraison: (dataClient && dataClient.codePostalLivraison) ? dataClient.codePostalLivraison : '',
+    villeLivraison: (dataClient && dataClient.villeLivraison) ? dataClient.villeLivraison : '',
+    pays: (dataClient && dataClient.pays) ? dataClient.pays : '',
+    phone: (dataClient && dataClient.phone) ? dataClient.phone : '',
+    adresseFacturation: (dataClient && dataClient.adresseFacturation) ? dataClient.adresseFacturation : '',
+    codePostalFacturation: (dataClient && dataClient.codePostalFacturation) ? dataClient.codePostalFacturation : '',
+    villeFacturation: (dataClient && dataClient.villeFacturation) ? dataClient.villeFacturation : ''
   }
 
 
@@ -833,21 +840,11 @@ const CheckoutScreen = props => {
               <div className="content">
                 {!goPaiement ? (
                   <Formik
-                    initialValues={{
-                      email: '',
-                      prenom:'',
-                      nom: '',
-                      adresseLivraison: '',
-                      codePostalLivraison: '',
-                      villeLivraison: '',
-                      pays: '',
-                      phone: '',
-                      adresseFacturation: '',
-                      codePostalFacturation: '',
-                      villeFacturation: ''
-                    }}
+                    initialValues={initialValues}
+                    enableReinitialize={true}
                     validationSchema={livraisonSchema}
                     onSubmit={values => {
+                      console.log(values)
                       console.log(checked)
 
                       let donnesClient = {}
@@ -861,6 +858,7 @@ const CheckoutScreen = props => {
                           nom : values.nom,
                           prenom : values.prenom,
                           phone : values.phone,
+                          pays: values.pays,
                           prixLivraison,
                           adresseLivraison : values.adresseLivraison,
                           codePostalLivraison : values.codePostalLivraison,
@@ -875,6 +873,7 @@ const CheckoutScreen = props => {
                           villeLivraison : values.villeLivraison,
                           email : values.email,
                           nom : values.nom,
+                          pays: values.pays,
                           prenom : values.prenom,
                           phone : values.phone,
                           prixLivraison,
@@ -885,7 +884,7 @@ const CheckoutScreen = props => {
                         }
                       }
                       localStorage.setItem('livraison', JSON.stringify(donnesClient))
-
+                      console.log(goPaiement)
                       setGoPaiement(true)
                     }}
                   >
@@ -978,7 +977,7 @@ const CheckoutScreen = props => {
 
 
                             {countries.listCountries.map((option) => (
-                              <MenuItem key={option.code} value={option.code} onClick={() => {
+                              <MenuItem key={option.code} value={option.name} defaultValue={(dataClient && dataClient.pays) ? dataClient.pays : ''} onClick={() => {
                                 setPays(option.name)
                                 setChecked2(false);
                                 setChecked1(false);

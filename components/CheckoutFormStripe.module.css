@@ -28,7 +28,7 @@
   background-color: #E62B56;
   border: none;
   border-radius: 30px;
-  width: 75%;
+  width: 90%;
   padding: 1.5% 5%;
   text-align: center;
   margin: 4% auto;
@@ -95,3 +95,17 @@
   opacity: 0.6
 }
 
+@media screen and (max-width: 1100px){
+  .payButton {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 1000px){
+  .payButton {
+    width: 90% !important;
+  }
+  .rowCheckout {
+    width: 100% !important;
+  }
+}

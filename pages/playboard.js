@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import ReactPlayer from 'react-player'
 import Header from "../components/Header";
 import Link from 'next/link';
@@ -196,6 +196,195 @@ const PlayBoardScreen = props => {
       }
     }
   }
+
+  ///////------------------- Barres de Chargement ----------------////////////////
+
+  function useOnScreen(ref) {
+
+    const [isIntersecting, setIntersecting] = useState(false)
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIntersecting(entry.isIntersecting)
+    )
+
+    useEffect(() => {
+      observer.observe(ref.current)
+      // Remove the observer as soon as the component is unmounted
+      return () => { observer.disconnect() }
+    }, [])
+
+    return isIntersecting
+  }
+
+  const bar1 = useRef()
+  const bar2 = useRef()
+  const bar3 = useRef()
+  const bar4 = useRef()
+  const bar5 = useRef()
+  const bar6 = useRef()
+  const bar7 = useRef()
+  const isBar1Visible = useOnScreen(bar1)
+  const isBar2Visible = useOnScreen(bar2)
+  const isBar3Visible = useOnScreen(bar3)
+  const isBar4Visible = useOnScreen(bar4)
+  const isBar5Visible = useOnScreen(bar5)
+  const isBar6Visible = useOnScreen(bar6)
+  const isBar7Visible = useOnScreen(bar7)
+  let i = 0;
+  function moveBar1() {
+    if (i == 0) {
+      i = 1;
+      var elem = document.getElementById('bar1');
+      var width = 1;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 98) {
+          clearInterval(id);
+          i = 0;
+        } else {
+          width++;
+          elem.style.width = width + "%";
+        }
+      }
+    }
+  }
+  function moveBar2() {
+    if (i == 0) {
+      i = 1;
+      var elem = document.getElementById('bar2');
+      var width = 1;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 97) {
+          clearInterval(id);
+          i = 0;
+        } else {
+          width++;
+          elem.style.width = width + "%";
+        }
+      }
+    }
+  }
+  function moveBar3() {
+    if (i == 0) {
+      i = 1;
+      var elem = document.getElementById('bar3');
+      var width = 1;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 96) {
+          clearInterval(id);
+          i = 0;
+        } else {
+          width++;
+          elem.style.width = width + "%";
+        }
+      }
+    }
+  }
+  function moveBar4() {
+    if (i == 0) {
+      i = 1;
+      var elem = document.getElementById('bar4');
+      var width = 1;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 98) {
+          clearInterval(id);
+          i = 0;
+        } else {
+          width++;
+          elem.style.width = width + "%";
+        }
+      }
+    }
+  }
+  function moveBar5() {
+    if (i == 0) {
+      i = 1;
+      var elem = document.getElementById('bar5');
+      var width = 1;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 90) {
+          clearInterval(id);
+          i = 0;
+        } else {
+          width++;
+          elem.style.width = width + "%";
+        }
+      }
+    }
+  }
+  function moveBar6() {
+    if (i == 0) {
+      i = 1;
+      var elem = document.getElementById('bar6');
+      var width = 1;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 92) {
+          clearInterval(id);
+          i = 0;
+        } else {
+          width++;
+          elem.style.width = width + "%";
+        }
+      }
+    }
+  }
+  function moveBar7() {
+    if (i == 0) {
+      i = 1;
+      var elem = document.getElementById('bar7');
+      var width = 1;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 100) {
+          clearInterval(id);
+          i = 0;
+        } else {
+          width++;
+          elem.style.width = width + "%";
+        }
+      }
+    }
+  }
+
+  if (isBar7Visible) {
+    moveBar7()
+  }
+
+  if (isBar6Visible) {
+    moveBar6()
+  }
+
+  if (isBar5Visible) {
+    moveBar5()
+  }
+  if (isBar4Visible) {
+    moveBar4()
+  }
+
+  if (isBar3Visible) {
+    moveBar3()
+  }
+
+  if (isBar2Visible) {
+    moveBar2()
+  }
+
+  if (isBar1Visible) {
+    moveBar1()
+  }
+
+
+
+
+
+
+
+
 
     return (
       <div>
@@ -643,33 +832,73 @@ const PlayBoardScreen = props => {
           <div className="imageApprentissageContainer">
             <img src={'/enfantTableau.jpg'} alt="" className="imgTableau"/>
             <div className="progressContainer">
-              <div>
               <p className="apprentissagePara">Reconnaitre les couleurs</p>
-              <img src={'/redProgress.png'} alt="" className="progress"/>
+              <div id='progress1' ref={bar1}>
+
+                <div id="bar1">
+                    <p className="progressBarText2">98%</p>
+                </div>
+                {/*<img src={'/redProgress.png'} alt="" className="progress"/> */}
               </div>
               <div>
                 <p className="apprentissagePara">Maitriser les dégradés</p>
-                <img src={'/orangeProgress.png'} alt="" className="progress"/>
+                <div id='progress2' ref={bar2}>
+
+                  <div id="bar2">
+                    <p className="progressBarText2">97%</p>
+                  </div>
+                  {/*<img src={'/redProgress.png'} alt="" className="progress"/> */}
+                </div>
               </div>
               <div>
                 <p className="apprentissagePara">Emboiter les formes</p>
-                <img src={'/yellowProgress.png'} alt="" className="progress"/>
+                <div id='progress3' ref={bar3}>
+
+                  <div id="bar3">
+                    <p className="progressBarText2">96%</p>
+                  </div>
+                  {/*<img src={'/redProgress.png'} alt="" className="progress"/> */}
+                </div>
               </div>
               <div>
                 <p className="apprentissagePara">Apprendre à compter</p>
-                <img src={'/greenProgress.png'} alt="" className="progress"/>
+                <div id='progress4' ref={bar4}>
+
+                  <div id="bar4">
+                    <p className="progressBarText2">98%</p>
+                  </div>
+                  {/*<img src={'/redProgress.png'} alt="" className="progress"/> */}
+                </div>
               </div>
               <div>
                 <p className="apprentissagePara">Reconnaitre les animaux</p>
-                <img src={'/blueProgress.png'} alt="" className="progress"/>
+                <div id='progress5' ref={bar5}>
+
+                  <div id="bar5">
+                    <p className="progressBarText2">90%</p>
+                  </div>
+                  {/*<img src={'/redProgress.png'} alt="" className="progress"/> */}
+                </div>
               </div>
               <div>
                 <p className="apprentissagePara">Débuter en calcul</p>
-                <img src={'/pinkProgress.png'} alt="" className="progress"/>
+                <div id='progress6' ref={bar6}>
+
+                  <div id="bar6">
+                    <p className="progressBarText2">92%</p>
+                  </div>
+                  {/*<img src={'/redProgress.png'} alt="" className="progress"/> */}
+                </div>
               </div>
               <div>
                 <p className="apprentissagePara">Plaisir de jouer</p>
-                <img src={'/purpleProgress.png'} alt="" className="progress"/>
+                <div id='progress7' ref={bar7}>
+
+                  <div id="bar7">
+                    <p className="progressBarText2">100%</p>
+                  </div>
+                  {/*<img src={'/redProgress.png'} alt="" className="progress"/> */}
+                </div>
               </div>
             </div>
           </div>

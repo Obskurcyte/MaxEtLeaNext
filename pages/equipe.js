@@ -4,6 +4,7 @@ import {Card, Row, Col, Container} from "react-bootstrap";
 import Footer from "../components/Footer";
 import Head from "next/head";
 
+
 const Equipe = () => {
 
   return (

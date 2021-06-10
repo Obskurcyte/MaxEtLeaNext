@@ -54,3 +54,42 @@
   height: 10%;
   margin-left: 5%;
 }
+
+@media screen and (max-width: 1050px){
+  .hoverContainer {
+    left: 50%;
+    width: 30%
+  }
+}
+
+
+@media screen and (max-width: 800px){
+  .hoverContainer {
+    left: 50%;
+    width: 40%
+  }
+}
+
+
+@media screen and (max-width: 550px){
+  .hoverContainer {
+    left: 40%;
+    width: 50%
+  }
+}
+
+
+@media screen and (max-width: 450px){
+  .hoverContainer {
+    left: 30%;
+    width: 60%
+  }
+}
+
+
+@media screen and (max-width: 350px){
+  .hoverContainer {
+    left: 20%;
+    width: 70%
+  }
+}

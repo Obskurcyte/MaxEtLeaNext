@@ -7,8 +7,7 @@
   color: #7A7A7A;
 }
 .img-blog-container {
-  height: 600px;
-  overflow: hidden;
+  width: 100%;
   margin-bottom: 3%;
 }
 
@@ -53,7 +52,8 @@
 
 .paragraph1-text {
   width: 60%;
-  padding: 2% 5%;
+  padding-right: 3%;
+  padding-top: 2%;
   text-align: justify;
 }
 
@@ -61,22 +61,30 @@
   display: flex;
   width: 70%;
   margin: 0 auto;
-  height: 1000px;
+  height: 750px;
 }
 
 .paragraph-blog3 {
   display: flex;
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
-  height: 1000px;
+  height: 800px;
 }
 .enfants-souriant-blog {
   height: 100%;
 }
 
+.enfants-souriant-blog4 {
+  width: 40%;
+  height: 80%;
+}
 .enfants-souriant-blog2 {
   height:40%;
   width: 100%
+}
+.enfants-souriant-blog5 {
+  width: 40%;
+  height: 60%;
 }
 
 .enfants-souriant-blog3 {
@@ -177,7 +185,7 @@
 }
 
 .paragraph1-text ul li {
-  margin-top: 5%;
+  margin-top: 0%;
 }
 
 .encadrement {
@@ -187,6 +195,9 @@
   padding: 2%;
 }
 
+.paragraph1-text p {
+  margin-bottom: 0!important;
+}
 .grosseLettre{
   font-size: 40px;
   font-weight: bold;
@@ -249,4 +260,255 @@
 
 .card-no-margin {
   margin-bottom: 6%!important;
+}
+
+
+
+@media screen and (max-width: 1700px){
+  .paragraph-blog3 {
+    height: 900px;
+  }
+}
+
+@media screen and (max-width: 1450px){
+  .paragraph-blog3 {
+    height: 1000px;
+  }
+}
+
+@media screen and (max-width: 1380px) {
+  .outil {
+    width: 80%;
+  }
+  .commentContainer {
+    width: 80%;
+  }
+  .introduction {
+    width: 80%;
+  }
+  .paragraph-blog1 {
+    width: 80%;
+  }
+  .paragraph-blog2 {
+    width: 80%;
+  }
+  .paragraph-blog3 {
+    width: 80%;
+  }
+  .description-blog {
+    width: 80%;
+  }
+  .img-blog2-container {
+    width: 80%;
+  }
+  .conseilMaxEtLea {
+    width: 80%;
+  }
+  .paragraph-blog2 {
+    height: 800px;
+  }
+}
+
+@media screen and (max-width: 1150px){
+  .paragraph-blog3 {
+    height: 1100px;
+  }
+  .enfants-souriant-blog5 {
+    width: 40%;
+    height: 45%;
+  }
+  .paragraph-blog1 {
+    margin-bottom: 5%;
+  }
+  .paragraph1-text {
+    width: 60%;
+  }
+  .enfants-souriant-blog {
+    width: 40%;
+    height: 80%;
+  }
+  .paragraph-blog2 {
+    height: 950px;
+  }
+  .enfants-souriant-blog4 {
+    height: 60%
+  }
+}
+
+@media screen and (max-width: 1070px){
+  .paragraph-blog3 {
+    height: 1200px;
+  }
+}
+
+@media screen and (max-width: 980px){
+  .paragraph-blog3 {
+    height: 1300px;
+  }
+  .enfants-souriant-blog5 {
+    width: 40%;
+    height: 40%;
+  }
+}
+@media screen and (max-width: 900px){
+  .textPsy {
+    width: 70%;
+  }
+  .imgPsy {
+    margin-left: 0;
+  }
+  .paragraph-blog1 {
+    margin-bottom: 5%;
+  }
+  .paragraph1-text {
+    width: 65%;
+  }
+  .enfants-souriant-blog {
+    width: 35%;
+    height: 70%;
+  }
+  .commentContainer {
+    width: 90%;
+    justify-content: space-between;
+  }
+  .outil {
+    width: 90%;
+  }
+  .introduction {
+    width: 90%;
+  }
+  .paragraph-blog1 {
+    width: 90%;
+  }
+  .paragraph-blog2 {
+    width: 90%;
+  }
+  .paragraph-blog3 {
+    width: 90%;
+  }
+  .description-blog {
+    width: 90%;
+  }
+  .img-blog2-container {
+    width: 90%;
+  }
+  .conseilMaxEtLea {
+    width: 90%;
+  }
+}
+
+
+@media screen and (max-width: 810px){
+  .outil {
+    flex-direction: column;
+  }
+  .hrContainer {
+    margin: 0 auto;
+  }
+  .apprentissageDescription {
+    width: 100%;
+  }
+  .paragraph-blog1 {
+    flex-direction: column;
+    height: 1300px;
+    margin-bottom: 15%;
+  }
+  .paragraph-blog2 {
+    flex-direction: column;
+    height: 1300px;
+    margin-bottom: 15%;
+  }
+  .paragraph-blog3 {
+    flex-direction: column;
+    height: 1300px;
+    margin-bottom: 15%;
+  }
+  .paragraph1-text {
+    width: 100%;
+  }
+  .commentContainer {
+    flex-direction: column;
+  }
+  .imgPsy {
+    width: 40%;
+    height: 40%;
+    margin: 0 auto
+  }
+  .textPsy {
+    width: 100%
+  }
+  .enfants-souriant-blog {
+    width: 100%;
+  }
+  .enfants-souriant-blog4 {
+    width: 100%;
+  }
+  .enfants-souriant-blog5 {
+    width: 100%;
+  }
+  .conseilTitre h5 {
+    font-size: 1rem;
+  }
+  .conseildescription p {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 650px){
+  .paragraph-blog3 {
+    height: 1500px;
+  }
+}
+
+@media screen and (max-width: 550px){
+  .paragraph-blog3 {
+    height: 1600px;
+  }
+}
+@media screen and (max-width: 450px){
+  .outil {
+    width: 95%;
+  }
+  .commentContainer {
+    width: 95%;
+  }
+  .introduction {
+    width: 95%;
+  }
+  .paragraph-blog1 {
+    width: 95%;
+  }
+  .paragraph-blog2 {
+    width: 95%;
+  }
+  .paragraph-blog3 {
+    width: 95%;
+  }
+  .description-blog {
+    width: 95%;
+  }
+  .img-blog2-container {
+    width: 95%;
+  }
+  .conseilMaxEtLea {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 440px){
+  .paragraph-blog3 {
+    height: 1800px;
+  }
+}
+
+@media screen and (max-width: 400px){
+  .paragraph-blog3 {
+    height: 2000px;
+  }
+}
+
+@media screen and (max-width: 350px){
+  .paragraph-blog3 {
+    height: 2100px;
+  }
 }

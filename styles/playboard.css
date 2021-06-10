@@ -9,6 +9,123 @@
   padding: 2% 2%;
 }
 
+#progress1 {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 20px;
+}
+
+.progressBarText2 {
+  text-align: right;
+  font-weight: bold;
+  color: white;
+}
+#bar1 {
+  width: 1%;
+  height: 20px;
+  padding-bottom: 25px;
+  padding-right: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: red;
+}
+
+#progress2 {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 20px;
+}
+
+#bar2 {
+  width: 1%;
+  height: 20px;
+  padding-bottom: 25px;
+  padding-right: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #F9B752;
+}
+
+#progress3 {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 20px;
+}
+
+#bar3 {
+  width: 1%;
+  height: 20px;
+  padding-bottom: 25px;
+  padding-right: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #E2DF37;
+}
+
+#progress4 {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 20px;
+}
+
+#bar4 {
+  width: 1%;
+  height: 20px;
+  padding-bottom: 25px;
+  padding-right: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #47C72C;
+}
+
+#progress5 {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 20px;
+}
+
+#bar5 {
+  width: 1%;
+  height: 20px;
+  padding-bottom: 25px;
+  padding-right: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #2FD9CE;
+}
+
+#progress6 {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 20px;
+}
+
+#bar6 {
+  width: 1%;
+  height: 20px;
+  padding-bottom: 25px;
+  padding-right: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #D92F72;
+}
+
+#progress7 {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 20px;
+}
+
+#bar7 {
+  width: 1%;
+  height: 20px;
+  padding-bottom: 25px;
+  padding-right: 10px;
+  border-radius: 20px;
+  background-color: #9322B1;
+}
+
+
 .buttonPopupClose {
   color: inherit;
   border: none;
@@ -331,7 +448,7 @@
 .playboardBoisContainer {
   width: 95%;
   max-width: 450px;
-  margin: 50px auto 250px auto;
+  margin: 50px auto 150px auto;
   align-items: center;
 }
 
@@ -713,7 +830,7 @@
 }
 
 .playboardContainer {
-  background-color: #e2dfd8;
+  background-color: #DEDEDE;
   margin-top: 200px;
   padding-top: 3%;
   padding-bottom: 50px;

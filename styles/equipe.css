@@ -48,3 +48,17 @@
   bottom: 35%;
   left: 37%;
 }
+
+
+@media screen and (max-width: 800px) {
+  .equipeDescriptionContainer {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .equipeDescriptionContainer {
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+}

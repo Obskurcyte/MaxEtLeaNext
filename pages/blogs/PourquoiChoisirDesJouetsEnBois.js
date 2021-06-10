@@ -179,10 +179,9 @@ const PourquoiChoisirDesJouetsEnBois = () => {
 
         </div>
 
-        <div className="img-blog-container3">
-          <img src={'https://maxandlea.com/wp-content/uploads/2020/05/wood-toy-png-6.png'} alt="" className="enfants-souriant-blog2"/>
-          <img src={'https://maxandlea.com/wp-content/uploads/2020/02/IMG_4222-768x1152.jpg'} alt="" className="enfants-souriant-blog3"/>
-        </div>
+
+          <img src={'https://maxandlea.com/wp-content/uploads/2020/05/wood-toy-png-6.png'} alt="" className="enfants-souriant-blog5"/>
+
       </div>
 
       <div className="description-blog">
@@ -256,7 +255,7 @@ const PourquoiChoisirDesJouetsEnBois = () => {
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'http://localhost:3000/playboardGood.png'} variant="top" className="math-image" />
+                  <Card.Img src={'/playboardGood.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title card-no-margin">La PlayBoard<br/>
                       <div className='playboard-card'>

@@ -170,9 +170,7 @@ const PourquoiLesEnfantsJouent = () => {
           <p>{t("PourquoiLesEnfantsJouent.5")}</p>
         </div>
 
-        <div className="img-blog-container">
           <img src={'https://maxandlea.com/wp-content/uploads/2020/11/IMG_4278-768x1152.jpg'} alt="" className="enfants-souriant-blog"/>
-        </div>
       </div>
 
       <div className="description-blog">
@@ -184,7 +182,7 @@ const PourquoiLesEnfantsJouent = () => {
       </div>
 
       <div className="commentContainer">
-        <div>
+        <div className="textPsy">
           <p>Angélique Kosinski</p>
           <p>{t("PourquoiLesEnfantsJouent.11")}</p>
           <p>{t("PourquoiLesEnfantsJouent.12")}</p>

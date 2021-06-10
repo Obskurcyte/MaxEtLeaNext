@@ -188,10 +188,7 @@ const LesEnfantsEtLesEcrans = () => {
             </ul>
           </p>
         </div>
-
-        <div className="img-blog-container">
           <img src={'https://maxandlea.com/wp-content/uploads/2020/05/438057-PEBQAZ-599.jpg'} alt="" className="enfants-souriant-blog"/>
-        </div>
       </div>
 
       <div className="encadrement">
@@ -204,7 +201,7 @@ const LesEnfantsEtLesEcrans = () => {
 
       <div className="outil">
         <div className="hrContainer">
-        <h3>{t("LesEnfantsEtLesEcrans.34")}<br/>{t("LesEnfantsEtLesEcrans.35")}</h3>
+        <h3>{t("LesEnfantsEtLesEcrans.34")}<br className="brseparator"/>{t("LesEnfantsEtLesEcrans.35")}</h3>
         <hr/>
         </div>
         <div className="apprentissageDescription">
@@ -252,7 +249,7 @@ const LesEnfantsEtLesEcrans = () => {
           <h5>{t("LesEnfantsEtLesEcrans.46")}</h5>
         </div>
         <div className="conseildescription">
-          {t("LesEnfantsEtLesEcrans.47")}
+          <p>{t("LesEnfantsEtLesEcrans.47")}</p>
         </div>
 
         <div className="conseilTitre">
@@ -287,7 +284,7 @@ const LesEnfantsEtLesEcrans = () => {
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'http://localhost:3000/playboardGood.png'} variant="top" className="math-image" />
+                  <Card.Img src={'/playboardGood.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title card-no-margin">La PlayBoard<br/>
                       <div className='playboard-card'>

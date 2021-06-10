@@ -167,9 +167,7 @@ const AideMoiAFaireSeul = () => {
           <p>{t("AideMoiAFaireSeul.2")}<a href="https://fr.wikipedia.org/wiki/Maria_Montessori" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>Maria Montessori</a>{t("AideMoiAFaireSeul.3")}</p>
         </div>
 
-        <div className="img-blog-container">
           <img src={'https://maxandlea.com/wp-content/uploads/2020/05/family-baby-crawling-1237701.jpg'} alt="" className="enfants-souriant-blog"/>
-        </div>
       </div>
 
       <div className="encadrement">
@@ -251,7 +249,7 @@ const AideMoiAFaireSeul = () => {
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'http://localhost:3000/playboardGood.png'} variant="top" className="math-image" />
+                  <Card.Img src={'/playboardGood.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title card-no-margin">{t("AideMoiAFaireSeul.22")}<br/>
                       <div className='playboard-card'>

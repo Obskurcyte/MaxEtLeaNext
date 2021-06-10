@@ -350,7 +350,7 @@ const checkPromo = (event) => {
         >
           {props => (
             <form onSubmit={(e) => {e.preventDefault()}}>
-              <Row>
+              <Row className="rowCheckout">
                 <input
                   name="name"
                   type="text"
@@ -361,7 +361,7 @@ const checkPromo = (event) => {
                   className={styles.inputName}
                 />
               </Row>
-              <Row>
+              <Row className="rowCheckout">
                 <div className={styles.CardElementContainer}>
                   <CardElementContainer>
                     <CardElement
