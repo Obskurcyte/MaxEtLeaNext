@@ -224,9 +224,11 @@ const CardHover = () => {
         <p className={styles.subtotal}>Sous-total : {totalPrice1.toFixed(2)} €</p>
         <hr/>
       </div>
-      <div className={styles.buttonsContainer}>
-        <Link href="/checkout"><p className={styles.linkPopper} id="linkCart">Commander</p></Link>
-      </div>
+      <Link href="/checkout">
+        <div className={styles.buttonsContainer}>
+         <p className={styles.linkPopper} id="linkCart">Commander</p>
+        </div>
+      </Link>
     </div>
   )
 

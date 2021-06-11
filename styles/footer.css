@@ -180,6 +180,15 @@
   .footer-img {
     margin: 0 auto;
   }
+  .photo-container {
+    width: 200%;
+    margin-left: 0;
+  }
 }
 
+@media screen and (max-width: 425px){
+  .footer-img {
+    width: 50%
+  }
+}
 

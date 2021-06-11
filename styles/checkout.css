@@ -15,6 +15,12 @@
   margin-top: 3%;
 }
 
+.articlesInPanier {
+  color: #7c95a2;
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center
+}
 legend span {
   display: none;
 }

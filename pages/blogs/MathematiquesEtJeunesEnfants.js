@@ -277,7 +277,7 @@ const MathematiquesEtJeunesEnfants = () => {
                         <p className='prix-playboard-card-true'>29,90€</p>
                       </div>
                     </Card.Title>
-                    <Link href='#'>
+                    <Link href="javascript:void(0);">
                       <a className="read-more-button" onClick={handleAddToCart}>Ajouter au panier</a>
                     </Link>
                   </Card.Body>

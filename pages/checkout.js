@@ -371,10 +371,25 @@ const CheckoutScreen = props => {
   //-------------------- LIVRAISON ----------------------------
 
 
+  const [nom, setNom] = useState('');
+  const [prenom, setPrenom] = useState('');
+  const [email, setEmail] = useState('');
+  const [adresseLivraison, setAdresseLivraison] = useState('');
+  const [villeLivraison, setVilleLivraison] = useState('');
+  const [codePostalLivraison, setCodePostalLivraison] = useState('');
+  const [adresseFacturation, setAdresseFacturation] = useState('');
+  const [prixLivraison, setPrixLivraison] = useState(0);
+  const [villeFacturation, setVilleFacturation] = useState('')
+  const [codePostalFacturation, setCodePostalFacturation] = useState('')
+  const [paysFacturation, setPaysFacturation] = useState('')
+  const [phone, setPhone] = useState('');
+  const [expedition, setExpedition] = useState('');
+  const [total, setTotal] = useState('');
+  const [sousTotal, setSousTotal] = useState('');
+
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(false);
   const [checked3, setChecked3] = useState(false);
-
 
 
   const handleChange = (event) => {
@@ -401,7 +416,7 @@ const CheckoutScreen = props => {
     setChecked2(false);
     setPrixLivraison(prix)
   }
-
+  
 
   const [checked, setChecked] = React.useState(false);
 
@@ -446,22 +461,7 @@ const CheckoutScreen = props => {
   //----------------FORMULAIRE DE LIVRAISON ------------------//
 
 
-  const [nom, setNom] = useState('');
-  const [prenom, setPrenom] = useState('');
-  const [email, setEmail] = useState('');
-  const [adresseLivraison, setAdresseLivraison] = useState('');
-  const [villeLivraison, setVilleLivraison] = useState('');
-  const [codePostalLivraison, setCodePostalLivraison] = useState('');
-  const [pays, setPays] = useState('');
-  const [adresseFacturation, setAdresseFacturation] = useState('')
-  const [villeFacturation, setVilleFacturation] = useState('')
-  const [codePostalFacturation, setCodePostalFacturation] = useState('')
-  const [paysFacturation, setPaysFacturation] = useState('')
-  const [phone, setPhone] = useState('');
-  const [expedition, setExpedition] = useState('');
-  const [total, setTotal] = useState('');
-  const [sousTotal, setSousTotal] = useState('');
-  let [prixLivraison, setPrixLivraison] = useState(0);
+  let pays;
 
   const livraisonSchema = Yup.object().shape({
     email: Yup.string().email('Cet email est invalide').required('Ce champ est requis'),
@@ -564,7 +564,15 @@ const CheckoutScreen = props => {
     totalPrice1 = totalPrice1 * 0.85
   }
 
+  if (qtyTotale >= 4) {
+    totalPrice1 = totalPrice1 * 0.80
+  }
 
+  if (dataClient && dataClient.pays) {
+    pays = dataClient.pays
+  }
+
+  console.log(qtyTotale)
 
   const [firstStep, setFirstStep] = useState(false);
 
@@ -682,10 +690,19 @@ const CheckoutScreen = props => {
                   </div>
 
                   <div>
-                    {qtyTotale >= 3 && (
+                    {qtyTotale === 3 && (
                       <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount Panier (3 articles et plus) 15%</p>
+                        <p className="sousTotalText">Discount Panier (3 articles) 15%</p>
                         <p className="itemTotalPrice">{(totalPrice1 * 0.15).toFixed(2)} €</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div>
+                    {qtyTotale >= 4 && (
+                      <div className="prix-reduc-container">
+                        <p className="sousTotalText">Discount Panier (4 articles et plus) 20%</p>
+                        <p className="itemTotalPrice">{(totalPrice1 * 0.20).toFixed(2)} €</p>
                       </div>
                     )}
                   </div>
@@ -744,8 +761,16 @@ const CheckoutScreen = props => {
                   <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 10% sur tout votre panier !</h5>
                 )}
 
-                {qtyTotale >= 2 && (
+                {qtyTotale === 2 && (
                   <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 15% sur tout votre panier !</h5>
+                )}
+
+                {qtyTotale === 3 && (
+                  <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 20% sur tout votre panier !</h5>
+                )}
+
+                {qtyTotale >= 4 && (
+                  <h5 className="addArticleTitle">Ajouter un article !</h5>
                 )}
                 <Carousel itemsToShow={3} isRTL={false} className="addItemsCarousel" breakPoints={breakPoints}>
                   <div className="innerArticleContainer">
@@ -829,516 +854,527 @@ const CheckoutScreen = props => {
 
             <img src={'/separation.png'} alt="" className="separation"/>
 
+
+
             <div className="prixContainer">
-              <div className="prixText">
-                <a href="javascript:void(0);" onClick={() => setGoPaiement(false)}>
-                  <p className={!goPaiement ? 'coordonneesText' : 'coordonneesTextLight'}>Coordonnées</p>
-                </a>
-                <p className={goPaiement ? 'coordonneesText' : 'coordonneesTextLight'}>Paiement</p>
-              </div>
+              {cart ?
+                <div>
+                <div className="prixText">
+                  <a href="javascript:void(0);" onClick={() => setGoPaiement(false)}>
+                    <p className={!goPaiement ? 'coordonneesText' : 'coordonneesTextLight'}>Coordonnées</p>
+                  </a>
+                  <p className={goPaiement ? 'coordonneesText' : 'coordonneesTextLight'}>Paiement</p>
+                </div>
 
-              <div className="content">
-                {!goPaiement ? (
-                  <Formik
-                    initialValues={initialValues}
-                    enableReinitialize={true}
-                    validationSchema={livraisonSchema}
-                    onSubmit={values => {
-                      console.log(values)
-                      console.log(checked)
+                <div className="content">
+                  {!goPaiement ? (
+                    <Formik
+                      initialValues={initialValues}
+                      enableReinitialize={true}
+                      validationSchema={livraisonSchema}
+                      onSubmit={values => {
+                        console.log(values)
+                        console.log(checked)
 
-                      let donnesClient = {}
-                      if (checked) {
-                        donnesClient = {
-                          adresseFacturation : values.adresseFacturation,
-                          codePostalFacturation : values.codePostalFacturation,
-                          villeFacturation : values.villeFacturation,
-                          villeLivraison : values.villeLivraison,
-                          email : values.email,
-                          nom : values.nom,
-                          prenom : values.prenom,
-                          phone : values.phone,
-                          pays: values.pays,
-                          prixLivraison,
-                          adresseLivraison : values.adresseLivraison,
-                          codePostalLivraison : values.codePostalLivraison,
-                          total : totalPrice2,
-                          sousTotal : totalPrice1
+                        let donnesClient = {}
+                        if (checked) {
+                          donnesClient = {
+                            adresseFacturation : values.adresseFacturation,
+                            codePostalFacturation : values.codePostalFacturation,
+                            villeFacturation : values.villeFacturation,
+                            villeLivraison : values.villeLivraison,
+                            email : values.email,
+                            nom : values.nom,
+                            prenom : values.prenom,
+                            phone : values.phone,
+                            pays: values.pays,
+                            prixLivraison,
+                            adresseLivraison : values.adresseLivraison,
+                            codePostalLivraison : values.codePostalLivraison,
+                            total : totalPrice2,
+                            sousTotal : totalPrice1
+                          }
+                        } else {
+                          donnesClient = {
+                            adresseFacturation : values.adresseLivraison,
+                            codePostalFacturation : values.codePostalLivraison,
+                            villeFacturation : values.villeLivraison,
+                            villeLivraison : values.villeLivraison,
+                            email : values.email,
+                            nom : values.nom,
+                            pays: values.pays,
+                            prenom : values.prenom,
+                            phone : values.phone,
+                            prixLivraison,
+                            adresseLivraison : values.adresseLivraison,
+                            codePostalLivraison : values.codePostalLivraison,
+                            total : totalPrice2.toFixed(2),
+                            sousTotal : totalPrice1
+                          }
                         }
-                      } else {
-                        donnesClient = {
-                          adresseFacturation : values.adresseLivraison,
-                          codePostalFacturation : values.codePostalLivraison,
-                          villeFacturation : values.villeLivraison,
-                          villeLivraison : values.villeLivraison,
-                          email : values.email,
-                          nom : values.nom,
-                          pays: values.pays,
-                          prenom : values.prenom,
-                          phone : values.phone,
-                          prixLivraison,
-                          adresseLivraison : values.adresseLivraison,
-                          codePostalLivraison : values.codePostalLivraison,
-                          total : totalPrice2.toFixed(2),
-                          sousTotal : totalPrice1
-                        }
-                      }
-                      localStorage.setItem('livraison', JSON.stringify(donnesClient))
-                      console.log(goPaiement)
-                      setGoPaiement(true)
-                    }}
-                  >
-                    {props => (
-                      <form className={classes.root} noValidate autoComplete="off">
-                        <div>
-                          <TextField
-                            required
-                            value={props.values.email}
-                            onChange={props.handleChange('email')}
-                            id="email"
-                            label="Email"
-                            variant="outlined"
-                            onFocus={() => setFirstStep(true)}
-                            className="bigInput"
-                          />
-                        </div>
-                        {props.errors.email && props.touched.email && <div style={{color: 'red'}}>{props.errors.email}</div>}
+                        localStorage.setItem('livraison', JSON.stringify(donnesClient))
+                        console.log(goPaiement)
+                        setGoPaiement(true)
+                      }}
+                    >
+                      {props => (
+                        <form className={classes.root} noValidate autoComplete="off">
+                          <div>
+                            <TextField
+                              required
+                              value={props.values.email}
+                              onChange={props.handleChange('email')}
+                              id="email"
+                              label="Email"
+                              variant="outlined"
+                              onFocus={() => setFirstStep(true)}
+                              className="bigInput"
+                            />
+                          </div>
+                          {props.errors.email && props.touched.email && <div style={{color: 'red'}}>{props.errors.email}</div>}
 
-                        <div className="inputContainer">
-                          <TextField
-                            required
-                            value={props.values.prenom}
-                            onChange={props.handleChange('prenom')}
-                            id="prenom"
-                            label="Prénom"
-                            variant="outlined"
-                            className="inputMoyenGauche"
-                          />
-                          {props.errors.prenom && props.touched.prenom && <div style={{color: 'red'}}>{props.errors.prenom}</div>}
+                          <div className="inputContainer">
+                            <TextField
+                              required
+                              value={props.values.prenom}
+                              onChange={props.handleChange('prenom')}
+                              id="prenom"
+                              label="Prénom"
+                              variant="outlined"
+                              className="inputMoyenGauche"
+                            />
+                            {props.errors.prenom && props.touched.prenom && <div style={{color: 'red'}}>{props.errors.prenom}</div>}
 
-                          <TextField
-                            id="nom"
-                            value={props.values.nom}
-                            onChange={props.handleChange('nom')}
-                            required
-                            label="Nom"
-                            variant="outlined"
-                            className="inputMoyenDroit"
-                          />
-                          {props.errors.nom && props.touched.nom && <div style={{color: 'red'}}>{props.errors.nom}</div>}
+                            <TextField
+                              id="nom"
+                              value={props.values.nom}
+                              onChange={props.handleChange('nom')}
+                              required
+                              label="Nom"
+                              variant="outlined"
+                              className="inputMoyenDroit"
+                            />
+                            {props.errors.nom && props.touched.nom && <div style={{color: 'red'}}>{props.errors.nom}</div>}
 
-                        </div>
-                        <div className="inputContainer">
-                          <TextField
-                            required
-                            value={props.values.adresseLivraison}
-                            onChange={props.handleChange('adresseLivraison')}
-                            id="adresse"
-                            label="Numéro et nom de rue"
-                            variant="outlined"
-                            className="inputMoyenGauche"
-                          />
-                          {props.errors.adresseLivraison && props.touched.adresseLivraison && <div style={{color: 'red'}}>{props.errors.adresseLivraison}</div>}
+                          </div>
+                          <div className="inputContainer">
+                            <TextField
+                              required
+                              value={props.values.adresseLivraison}
+                              onChange={props.handleChange('adresseLivraison')}
+                              id="adresse"
+                              label="Numéro et nom de rue"
+                              variant="outlined"
+                              className="inputMoyenGauche"
+                            />
+                            {props.errors.adresseLivraison && props.touched.adresseLivraison && <div style={{color: 'red'}}>{props.errors.adresseLivraison}</div>}
 
-                          <TextField
-                            required
-                            value={props.values.codePostalLivraison}
-                            onChange={props.handleChange('codePostalLivraison')}
-                            id="postalcode"
-                            label="Code postal"
-                            variant="outlined"
-                            className="inputMoyenDroit"
-                          />
-                          {props.errors.codePostalLivraison && props.touched.codePostalLivraison && <div style={{color: 'red'}}>{props.errors.codePostalLivraison}</div>}
+                            <TextField
+                              required
+                              value={props.values.codePostalLivraison}
+                              onChange={props.handleChange('codePostalLivraison')}
+                              id="postalcode"
+                              label="Code postal"
+                              variant="outlined"
+                              className="inputMoyenDroit"
+                            />
+                            {props.errors.codePostalLivraison && props.touched.codePostalLivraison && <div style={{color: 'red'}}>{props.errors.codePostalLivraison}</div>}
 
-                        </div>
-                        <div className="inputContainer">
-                          <TextField
-                            id="ville"
-                            required
-                            value={props.values.villeLivraison}
-                            onChange={props.handleChange('villeLivraison')}
-                            label="Ville"
-                            variant="outlined"
-                            className="inputMoyenGauche"
-                          />
-                          {props.errors.villeLivraison && props.touched.villeLivraison && <div style={{color: 'red'}}>{props.errors.villeLivraison}</div>}
+                          </div>
+                          <div className="inputContainer">
+                            <TextField
+                              id="ville"
+                              required
+                              value={props.values.villeLivraison}
+                              onChange={props.handleChange('villeLivraison')}
+                              label="Ville"
+                              variant="outlined"
+                              className="inputMoyenGauche"
+                            />
+                            {props.errors.villeLivraison && props.touched.villeLivraison && <div style={{color: 'red'}}>{props.errors.villeLivraison}</div>}
 
-                          <TextField
-                            select
-                            value={props.values.pays}
-                            onChange={props.handleChange('pays')}
-                            label="Select"
-                            helperText="Veuillez sélectionner un pays"
-                            defaultValue="France"
-                            className="inputMoyenDroit"
-                          >
-                            {props.errors.pays && props.touched.pays && <div style={{color: 'red'}}>Ce champ est requis</div>}
+                            <TextField
+                              select
+                              value={props.values.pays}
+                              onChange={props.handleChange('pays')}
+                              label="Select"
+                              helperText="Veuillez sélectionner un pays"
+                              defaultValue="France"
+                              className="inputMoyenDroit"
+                            >
+                              {props.errors.pays && props.touched.pays && <div style={{color: 'red'}}>Ce champ est requis</div>}
 
 
-                            {countries.listCountries.map((option) => (
-                              <MenuItem key={option.code} value={option.name} defaultValue={(dataClient && dataClient.pays) ? dataClient.pays : ''} onClick={() => {
-                                setPays(option.name)
-                                setChecked2(false);
-                                setChecked1(false);
-                                setChecked3(false);
-                                prixLivraison = 0
-                              }}>
-                                {option.name}
-                              </MenuItem>
-                            ))}
+                              {countries.listCountries.map((option) => (
+                                <MenuItem key={option.code} value={option.name} defaultValue={(dataClient && dataClient.pays) ? dataClient.pays : ''} onClick={() => {
+                                  if (dataClient && dataClient.pays) {
+                                    pays = dataClient.pays
+                                  } else {
+                                    pays = option.name
+                                  }
+                                  setChecked2(false);
+                                  setChecked1(false);
+                                  setChecked3(false);
+                                  prixLivraison = 0
+                                }}>
+                                  {option.name}
+                                </MenuItem>
+                              ))}
 
-                          </TextField>
-                        </div>
+                            </TextField>
+                          </div>
 
-                        <div className="checkboxContainer">
-                          <Checkbox
-                            checked={checked}
-                            onChange={handleChange}
-                            inputProps={{ 'aria-label': 'primary checkbox' }}
-                          />
-                          <p className="paragraphFacturation">Utiliser une adresse de facturation différente</p>
-                        </div>
+                          <div className="checkboxContainer">
+                            <Checkbox
+                              checked={checked}
+                              onChange={handleChange}
+                              inputProps={{ 'aria-label': 'primary checkbox' }}
+                            />
+                            <p className="paragraphFacturation">Utiliser une adresse de facturation différente</p>
+                          </div>
 
-                        {checked ? (
-                          <div className="facturationDifferente">
-                            <div className="inputContainer">
-                              <TextField
-                                required
-                                value={props.values.adresseFacturation}
-                                onChange={props.handleChange('adresseFacturation')}
-                                id="outlined-error"
-                                label="Numéro et nom de rue"
-                                variant="outlined"
-                                className="inputMoyenGauche"
-                              />
-                              <TextField
-                                required
-                                value={props.values.villeFacturation}
-                                onChange={props.handleChange('villeFacturation')}
-                                id="outlined-error"
-                                label="Ville"
-                                variant="outlined"
-                                className="inputMoyenDroit"
-                              />
-                            </div>
+                          {checked ? (
+                            <div className="facturationDifferente">
+                              <div className="inputContainer">
+                                <TextField
+                                  required
+                                  value={props.values.adresseFacturation}
+                                  onChange={props.handleChange('adresseFacturation')}
+                                  id="outlined-error"
+                                  label="Numéro et nom de rue"
+                                  variant="outlined"
+                                  className="inputMoyenGauche"
+                                />
+                                <TextField
+                                  required
+                                  value={props.values.villeFacturation}
+                                  onChange={props.handleChange('villeFacturation')}
+                                  id="outlined-error"
+                                  label="Ville"
+                                  variant="outlined"
+                                  className="inputMoyenDroit"
+                                />
+                              </div>
 
-                            <div className="inputContainer">
-                              <TextField
-                                required
-                                value={props.values.codePostalFacturation}
-                                onChange={props.handleChange('codePostalFacturation')}
-                                id="outlined-error"
-                                label="Code Postal"
-                                variant="outlined"
-                                className="inputMoyenGauche"
-                              />
-                              <TextField
-                                select
-                                value={props.values.paysFacturation}
-                                onChange={props.handleChange('paysFacturation')}
-                                label="Select"
-                                helperText="Veuillez sélectionner un pays"
-                                defaultValue="France"
-                                className="inputMoyenDroit"
-                              >
-                                {/* {countries.map((option) => (
+                              <div className="inputContainer">
+                                <TextField
+                                  required
+                                  value={props.values.codePostalFacturation}
+                                  onChange={props.handleChange('codePostalFacturation')}
+                                  id="outlined-error"
+                                  label="Code Postal"
+                                  variant="outlined"
+                                  className="inputMoyenGauche"
+                                />
+                                <TextField
+                                  select
+                                  value={props.values.paysFacturation}
+                                  onChange={props.handleChange('paysFacturation')}
+                                  label="Select"
+                                  helperText="Veuillez sélectionner un pays"
+                                  defaultValue="France"
+                                  className="inputMoyenDroit"
+                                >
+                                  {/* {countries.map((option) => (
                                 <MenuItem key={option.code} value={option.name}>
                                   {option.name}
                                 </MenuItem>
                               ))}
                               */}
-                              </TextField>
+                                </TextField>
+                              </div>
                             </div>
+                          ) : ''}
+
+
+                          <div className="inputContainer">
+                            <TextField
+                              value={props.values.phone}
+                              onChange={props.handleChange('phone')}
+                              id="outlined-error"
+                              label="Numéro de téléphone (facultatif)"
+                              variant="outlined"
+                              className="bigInput"
+                            />
                           </div>
-                        ) : ''}
 
+                          <div className="livraison">
+                            <h4 className="livraisonTitle">Méthode d'expédition</h4>
+                            {(pays === 'France' || pays === 'Monaco') && (
+                              <div>
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <Checkbox
+                                      checked={checked1}
+                                      onChange={() => handleChange1(event, 4.99)}
+                                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                  </div>
+                                  <div className="livraisonChoice">
+                                    <p>Livraison standard (3-5 jours)</p>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>4,99 €</p>
+                                  </div>
+                                </div>
 
-                        <div className="inputContainer">
-                          <TextField
-                            value={props.values.phone}
-                            onChange={props.handleChange('phone')}
-                            id="outlined-error"
-                            label="Numéro de téléphone (facultatif)"
-                            variant="outlined"
-                            className="bigInput"
-                          />
-                        </div>
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <Checkbox
+                                      checked={checked2}
+                                      onChange={() => handleChange2(event, 4.99)}
+                                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                  </div>
+                                  <div className="livraisonChoice">
+                                    <p>Livraison en point Mondial Relay (2-4 jours)</p>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>4,99 €</p>
+                                  </div>
+                                </div>
 
-                        <div className="livraison">
-                          <h4 className="livraisonTitle">Méthode d'expédition</h4>
-                          {(pays === 'France' || pays === 'Monaco') && (
-                            <div>
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <Checkbox
+                                      checked={checked3}
+                                      onChange={() => handleChange3(event, 6.99)}
+                                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                  </div>
+                                  <div className="livraisonChoice">
+                                    <p>Livraison express (2-3 jours)</p>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>6,99 €</p>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+
+                            {pays === 'Etats-Unis' && (
                               <div className="livraisonRow">
                                 <div className="checkboxLivraisonContainer">
                                   <Checkbox
                                     checked={checked1}
-                                    onChange={() => handleChange1(event, 4.99)}
+                                    onChange={() => handleChange3(event, 19.99)}
                                     inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
                                 </div>
                                 <div className="livraisonChoice">
-                                  <p>Livraison standard (3-5 jours)</p>
-                                </div>
-                                <div className="livraisonPrice">
-                                  <p>4,99 €</p>
-                                </div>
-                              </div>
-
-                              <div className="livraisonRow">
-                                <div className="checkboxLivraisonContainer">
-                                  <Checkbox
-                                    checked={checked2}
-                                    onChange={() => handleChange2(event, 4.99)}
-                                    inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                </div>
-                                <div className="livraisonChoice">
-                                  <p>Livraison en point Mondial Relay (2-4 jours)</p>
-                                </div>
-                                <div className="livraisonPrice">
-                                  <p>4,99 €</p>
-                                </div>
-                              </div>
-
-                              <div className="livraisonRow">
-                                <div className="checkboxLivraisonContainer">
-                                  <Checkbox
-                                    checked={checked3}
-                                    onChange={() => handleChange3(event, 6.99)}
-                                    inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                </div>
-                                <div className="livraisonChoice">
-                                  <p>Livraison express (2-3 jours)</p>
-                                </div>
-                                <div className="livraisonPrice">
-                                  <p>6,99 €</p>
-                                </div>
-                              </div>
-                            </div>
-                          )}
-
-                          {pays === 'Etats-Unis' && (
-                            <div className="livraisonRow">
-                              <div className="checkboxLivraisonContainer">
-                                <Checkbox
-                                  checked={checked1}
-                                  onChange={() => handleChange3(event, 19.99)}
-                                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                              </div>
-                              <div className="livraisonChoice">
-                                <p>Livraison Amérique (8-10 jours)</p>
-                              </div>
-                              <div className="livraisonPrice">
-                                <p>19,99 €</p>
-                              </div>
-                            </div>
-                          )}
-
-
-                          {(pays === 'Royaume-Uni (UK)') && (
-                            <div>
-                              <div className="livraisonRow">
-                                <div className="checkboxLivraisonContainer">
-                                  <Checkbox
-                                    checked={checked1}
-                                    onChange={() => handleChange1(event, 6.99)}
-                                    inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                </div>
-                                <div className="livraisonChoice">
-                                  <p>Livraison standard UK (5-7 jours)</p>
-                                </div>
-                                <div className="livraisonPrice">
-                                  <p>6,99 €</p>
-                                </div>
-                              </div>
-
-                              <div className="livraisonRow">
-                                <div className="checkboxLivraisonContainer">
-                                  <Checkbox
-                                    checked={checked2}
-                                    onChange={() => handleChange2(event, 9.99)}
-                                    inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                </div>
-                                <div className="livraisonChoice">
-                                  <p>Livraison Express UK (2-4 jours)</p>
-                                </div>
-                                <div className="livraisonPrice">
-                                  <p>9,99 €</p>
-                                </div>
-                              </div>
-                            </div>
-                          )}
-
-                          {(pays === 'Albanie' || pays === 'Algérie' || pays === 'Argentine' || pays === 'Bolivie' || pays === 'Bulgarie' || pays === 'Brésil' || pays === 'Canada' || pays === 'Chili' || pays === 'Chypre' || pays === 'Colombie' || pays === 'Costa Rica' || pays === 'Gibraltar' || pays === 'Guadeloupe' || pays === 'Guatemala' || pays === 'Guyane' || pays === 'Guyane Française' || pays === 'Israël' || pays === 'La Réunion' || pays === 'Liban' || pays === 'Malte' || pays === 'Maroc' || pays === 'Martinique' || pays === 'Mayotte' || pays === 'Mexique' || pays === 'Moldavie' || pays === 'Nouvelle-Calédonie' || pays === 'Panama' || pays === 'Paraguay' || pays === 'Puerto Rico' || pays === 'Pérou' || pays === 'Saint Pierre et Miquelon' || pays === 'Salvador' || pays === 'Terres Australes Françaises' || pays === 'Tunisie' || pays === 'Ukraine' || pays === 'Uruguay' || pays === 'Vatican' || pays === 'Venezuela' || pays === 'Equateur') && (
-                            <div>
-                              <div className="livraisonRow">
-                                <div className="checkboxLivraisonContainer">
-                                  <Checkbox
-                                    checked={checked1}
-                                    onChange={() => handleChange1(event, 47.99)}
-                                    inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                </div>
-                                <div className="livraisonChoice">
-                                  <p>Livraison monde (8-10 jours)</p>
-                                </div>
-                                <div className="livraisonPrice">
-                                  <p>47,99 €</p>
-                                </div>
-                              </div>
-
-                              <div className="livraisonRow">
-                                <div className="checkboxLivraisonContainer">
-                                  <Checkbox
-                                    checked={checked2}
-                                    onChange={() => handleChange2(event, 54.99)}
-                                    inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                </div>
-                                <div className="livraisonChoice">
-                                  <p>Livraison Express Monde (6-8 jours)</p>
-                                </div>
-                                <div className="livraisonPrice">
-                                  <p>54,99 €</p>
-                                </div>
-                              </div>
-                            </div>
-                          )}
-
-
-                          {(pays === 'Espagne' || pays === 'Allemagne' || pays === 'Andorre' || pays === 'Autriche' || pays === 'Belgique' || pays === 'Danemark' || pays === 'Hongrie' || pays === 'Irlande' || pays === 'Italie' || pays === 'Luxembourg' || pays === 'Liechtenstein' || pays === 'Pays-Bas' || pays === 'Pologne' || pays === 'Portugal' || pays === 'République Tchèque') && (
-                            <div>
-                              <div className="livraisonRow">
-                                <div className="checkboxLivraisonContainer">
-                                  <Checkbox
-                                    checked={checked1}
-                                    onChange={() => handleChange1(event, 9.99)}
-                                    inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                </div>
-                                <div className="livraisonChoice">
-                                  <p>Livraison Standard (5-7 jours)</p>
-                                </div>
-                                <div className="livraisonPrice">
-                                  <p>9,99 €</p>
-                                </div>
-                              </div>
-
-                              <div className="livraisonRow">
-                                <div className="checkboxLivraisonContainer">
-                                  <Checkbox
-                                    checked={checked2}
-                                    onChange={() => handleChange2(event, 12.99)}
-                                    inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                </div>
-                                <div className="livraisonChoice">
-                                  <p>Livraison Express (3-5 jours)</p>
-                                </div>
-                                <div className="livraisonPrice">
-                                  <p>12,99 €</p>
-                                </div>
-                              </div>
-                            </div>
-                          )}
-
-
-                          {(pays === 'Croatie' || pays === 'Islande' || pays === 'Norvège') && (
-                            <div>
-                              <div className="livraisonRow">
-                                <div className="checkboxLivraisonContainer">
-                                  <Checkbox
-                                    checked={checked1}
-                                    onChange={() => handleChange1(event, 24.99)}
-                                    inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                </div>
-                                <div className="livraisonChoice">
-                                  <p>Livraison standard (6-8 jours)</p>
-                                </div>
-                                <div className="livraisonPrice">
-                                  <p>24,99 €</p>
-                                </div>
-                              </div>
-
-                              <div className="livraisonRow">
-                                <div className="checkboxLivraisonContainer">
-                                  <Checkbox
-                                    checked={checked2}
-                                    onChange={() => handleChange2(event, 29.99)}
-                                    inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                </div>
-                                <div className="livraisonChoice">
-                                  <p>Livraison Express (4-6 jours)</p>
-                                </div>
-                                <div className="livraisonPrice">
-                                  <p>29,99 €</p>
-                                </div>
-                              </div>
-                            </div>
-                          )}
-
-                          {(pays === 'Estonie' || pays === 'Finlande' || pays === 'Grèce' || pays === 'Lettonie' || pays === 'Lituanie' || pays === 'Roumanie' || pays === 'Slovaquie' || pays === 'Slovénie' || pays === 'Suède') && (
-                            <div>
-                              <div className="livraisonRow">
-                                <div className="checkboxLivraisonContainer">
-                                  <Checkbox
-                                    checked={checked1}
-                                    onChange={() => handleChange1(event, 14.99)}
-                                    inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                </div>
-                                <div className="livraisonChoice">
-                                  <p>Livraison standard (5-7 jours)</p>
-                                </div>
-                                <div className="livraisonPrice">
-                                  <p>14,99 €</p>
-                                </div>
-                              </div>
-
-                              <div className="livraisonRow">
-                                <div className="checkboxLivraisonContainer">
-                                  <Checkbox
-                                    checked={checked2}
-                                    onChange={() => handleChange2(event, 19.99)}
-                                    inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                </div>
-                                <div className="livraisonChoice">
-                                  <p>Livraison en point Mondial Relay (3-5 jours)</p>
+                                  <p>Livraison Amérique (8-10 jours)</p>
                                 </div>
                                 <div className="livraisonPrice">
                                   <p>19,99 €</p>
                                 </div>
                               </div>
-                            </div>
-                          )}
+                            )}
 
-                        </div>
 
-                        <Link href="#">
-                          <button className="cart-valide" type="submit" onClick={props.handleSubmit}>Aller à l'étape suivante</button>
-                        </Link>
-                      </form>
-                    )
-                    }
-                  </Formik>
-                ): <Elements stripe={stripePromise}>
-                  <div className="formData">
-                    <CheckoutFormStripe
-                      adress={adresseLivraison}
-                      codePostal={codePostalLivraison}
-                      ville={villeLivraison}
-                      email={email}
-                      price={totalPrice1}
-                      prenom={prenom}
-                      nom={nom}
-                      donneesClient={donneesClient}
-                      prixLivraison={prixLivraison}
-                      totalPrice2={totalPrice2}
-                      pays={pays}
-                      adresseFacturation={adresseFacturation}
-                      paysFacturation={paysFacturation}
-                      villeFacturation={villeFacturation}
-                      codePostalFacturation={codePostalFacturation}
-                      phone={phone}
-                    />
-                  </div>
-                </Elements>}
+                            {(pays === 'Royaume-Uni (UK)') && (
+                              <div>
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <Checkbox
+                                      checked={checked1}
+                                      onChange={() => handleChange1(event, 6.99)}
+                                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                  </div>
+                                  <div className="livraisonChoice">
+                                    <p>Livraison standard UK (5-7 jours)</p>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>6,99 €</p>
+                                  </div>
+                                </div>
 
-              </div>
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <Checkbox
+                                      checked={checked2}
+                                      onChange={() => handleChange2(event, 9.99)}
+                                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                  </div>
+                                  <div className="livraisonChoice">
+                                    <p>Livraison Express UK (2-4 jours)</p>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>9,99 €</p>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+
+                            {(pays === 'Albanie' || pays === 'Algérie' || pays === 'Argentine' || pays === 'Bolivie' || pays === 'Bulgarie' || pays === 'Brésil' || pays === 'Canada' || pays === 'Chili' || pays === 'Chypre' || pays === 'Colombie' || pays === 'Costa Rica' || pays === 'Gibraltar' || pays === 'Guadeloupe' || pays === 'Guatemala' || pays === 'Guyane' || pays === 'Guyane Française' || pays === 'Israël' || pays === 'La Réunion' || pays === 'Liban' || pays === 'Malte' || pays === 'Maroc' || pays === 'Martinique' || pays === 'Mayotte' || pays === 'Mexique' || pays === 'Moldavie' || pays === 'Nouvelle-Calédonie' || pays === 'Panama' || pays === 'Paraguay' || pays === 'Puerto Rico' || pays === 'Pérou' || pays === 'Saint Pierre et Miquelon' || pays === 'Salvador' || pays === 'Terres Australes Françaises' || pays === 'Tunisie' || pays === 'Ukraine' || pays === 'Uruguay' || pays === 'Vatican' || pays === 'Venezuela' || pays === 'Equateur') && (
+                              <div>
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <Checkbox
+                                      checked={checked1}
+                                      onChange={() => handleChange1(event, 47.99)}
+                                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                  </div>
+                                  <div className="livraisonChoice">
+                                    <p>Livraison monde (8-10 jours)</p>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>47,99 €</p>
+                                  </div>
+                                </div>
+
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <Checkbox
+                                      checked={checked2}
+                                      onChange={() => handleChange2(event, 54.99)}
+                                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                  </div>
+                                  <div className="livraisonChoice">
+                                    <p>Livraison Express Monde (6-8 jours)</p>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>54,99 €</p>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+
+
+                            {(pays === 'Espagne' || pays === 'Allemagne' || pays === 'Andorre' || pays === 'Autriche' || pays === 'Belgique' || pays === 'Danemark' || pays === 'Hongrie' || pays === 'Irlande' || pays === 'Italie' || pays === 'Luxembourg' || pays === 'Liechtenstein' || pays === 'Pays-Bas' || pays === 'Pologne' || pays === 'Portugal' || pays === 'République Tchèque') && (
+                              <div>
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <Checkbox
+                                      checked={checked1}
+                                      onChange={() => handleChange1(event, 9.99)}
+                                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                  </div>
+                                  <div className="livraisonChoice">
+                                    <p>Livraison Standard (5-7 jours)</p>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>9,99 €</p>
+                                  </div>
+                                </div>
+
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <Checkbox
+                                      checked={checked2}
+                                      onChange={() => handleChange2(event, 12.99)}
+                                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                  </div>
+                                  <div className="livraisonChoice">
+                                    <p>Livraison Express (3-5 jours)</p>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>12,99 €</p>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+
+
+                            {(pays === 'Croatie' || pays === 'Islande' || pays === 'Norvège') && (
+                              <div>
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <Checkbox
+                                      checked={checked1}
+                                      onChange={() => handleChange1(event, 24.99)}
+                                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                  </div>
+                                  <div className="livraisonChoice">
+                                    <p>Livraison standard (6-8 jours)</p>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>24,99 €</p>
+                                  </div>
+                                </div>
+
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <Checkbox
+                                      checked={checked2}
+                                      onChange={() => handleChange2(event, 29.99)}
+                                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                  </div>
+                                  <div className="livraisonChoice">
+                                    <p>Livraison Express (4-6 jours)</p>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>29,99 €</p>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+
+                            {(pays === 'Estonie' || pays === 'Finlande' || pays === 'Grèce' || pays === 'Lettonie' || pays === 'Lituanie' || pays === 'Roumanie' || pays === 'Slovaquie' || pays === 'Slovénie' || pays === 'Suède') && (
+                              <div>
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <Checkbox
+                                      checked={checked1}
+                                      onChange={() => handleChange1(event, 14.99)}
+                                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                  </div>
+                                  <div className="livraisonChoice">
+                                    <p>Livraison standard (5-7 jours)</p>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>14,99 €</p>
+                                  </div>
+                                </div>
+
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <Checkbox
+                                      checked={checked2}
+                                      onChange={() => handleChange2(event, 19.99)}
+                                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                  </div>
+                                  <div className="livraisonChoice">
+                                    <p>Livraison en point Mondial Relay (3-5 jours)</p>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>19,99 €</p>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+
+                          </div>
+
+                          <Link href="#">
+                            <button className="cart-valide" type="submit" onClick={props.handleSubmit}>Aller à l'étape suivante</button>
+                          </Link>
+                        </form>
+                      )
+                      }
+                    </Formik>
+                  ): <Elements stripe={stripePromise}>
+                    <div className="formData">
+                      <CheckoutFormStripe
+                        adress={adresseLivraison}
+                        codePostal={codePostalLivraison}
+                        ville={villeLivraison}
+                        email={email}
+                        price={totalPrice1}
+                        prenom={prenom}
+                        nom={nom}
+                        donneesClient={donneesClient}
+                        prixLivraison={prixLivraison}
+                        totalPrice2={totalPrice2}
+                        pays={pays}
+                        adresseFacturation={adresseFacturation}
+                        paysFacturation={paysFacturation}
+                        villeFacturation={villeFacturation}
+                        codePostalFacturation={codePostalFacturation}
+                        phone={phone}
+                      />
+                    </div>
+                  </Elements>}
+
+                </div>
+                </div>
+              : <p className="articlesInPanier">Veuillez ajouter des articles dans votre panier !</p>}
+
             </div>
 
           </div>

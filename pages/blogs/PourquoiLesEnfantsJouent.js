@@ -209,7 +209,7 @@ const PourquoiLesEnfantsJouent = () => {
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'http://localhost:3000/playboardGood.png'} variant="top" className="math-image" />
+                  <Card.Img src={'/playboardGood.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title card-no-margin">La PlayBoard<br/>
                       <div className='playboard-card'>
@@ -217,9 +217,9 @@ const PourquoiLesEnfantsJouent = () => {
                         <p className='prix-playboard-card-true'>29,90€</p>
                       </div>
                     </Card.Title>
-                    <div onClick={handleAddToCart}>
-                      <a className="read-more-button" >Ajouter au panier</a>
-                    </div>
+                    <Link href="javascript:void(0);">
+                      <a className="read-more-button" onClick={handleAddToCart}>Ajouter au panier</a>
+                    </Link>
                   </Card.Body>
                 </Card>
               </Col>
@@ -227,7 +227,7 @@ const PourquoiLesEnfantsJouent = () => {
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/fr/education-positive/'} variant="top" className="math-image" />
+                  <Card.Img src={'/educationPositive.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">Education positive</Card.Title>
                     <Link href='/blogs/EducationPositive'>

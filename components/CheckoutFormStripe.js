@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
 import {CardElement, useStripe, useElements, Elements} from "@stripe/react-stripe-js";
 import axios from "axios";
-import {ListGroup, Row} from 'react-bootstrap'
+import {ListGroup, Row, Spinner} from 'react-bootstrap'
 import styles from './CheckoutFormStripe.module.css'
 import {loadStripe} from "@stripe/stripe-js/pure";
 import styled from "@emotion/styled";
@@ -268,6 +268,10 @@ const checkPromo = (event) => {
         </div>
       </div>
 
+      {isProcessing && <Spinner animation="border" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner>}
+
       {visaClicked && (
         <Formik
           initialValues={{email: '', cardnumber: ''}}
@@ -318,6 +322,7 @@ const checkPromo = (event) => {
               const {data: clientSecret} = await axios.post("/api/payment_intents", {
                 amount: totalPrice2 * 100
               }).then(() => {
+                setProcessingTo(false)
                 localStorage.removeItem('woo-next-cart')
                 localStorage.setItem('moyenPaiement', moyenPaiement);
                 router.push('/remerciement').then(() => window.location.reload())
