@@ -383,6 +383,7 @@ const CheckoutScreen = props => {
   const [codePostalFacturation, setCodePostalFacturation] = useState('')
   const [paysFacturation, setPaysFacturation] = useState('')
   const [phone, setPhone] = useState('');
+  const [pays, setPays] = useState('');
   const [expedition, setExpedition] = useState('');
   const [total, setTotal] = useState('');
   const [sousTotal, setSousTotal] = useState('');
@@ -416,7 +417,7 @@ const CheckoutScreen = props => {
     setChecked2(false);
     setPrixLivraison(prix)
   }
-  
+
 
   const [checked, setChecked] = React.useState(false);
 
@@ -461,7 +462,7 @@ const CheckoutScreen = props => {
   //----------------FORMULAIRE DE LIVRAISON ------------------//
 
 
-  let pays;
+
 
   const livraisonSchema = Yup.object().shape({
     email: Yup.string().email('Cet email est invalide').required('Ce champ est requis'),
@@ -578,6 +579,8 @@ const CheckoutScreen = props => {
 
   const [goPaiement, setGoPaiement] = useState(false)
 
+
+  console.log('pays', pays)
 
   totalPrice2 = totalPrice1 + prixLivraison
 
@@ -1007,15 +1010,10 @@ const CheckoutScreen = props => {
 
                               {countries.listCountries.map((option) => (
                                 <MenuItem key={option.code} value={option.name} defaultValue={(dataClient && dataClient.pays) ? dataClient.pays : ''} onClick={() => {
-                                  if (dataClient && dataClient.pays) {
-                                    pays = dataClient.pays
-                                  } else {
-                                    pays = option.name
-                                  }
+                                  setPays(option.name)
                                   setChecked2(false);
                                   setChecked1(false);
                                   setChecked3(false);
-                                  prixLivraison = 0
                                 }}>
                                   {option.name}
                                 </MenuItem>
