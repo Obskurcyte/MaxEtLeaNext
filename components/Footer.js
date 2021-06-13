@@ -31,8 +31,8 @@ const Footer = () => {
     <React.Fragment>
     <footer>
       <div className="footer-container">
-        <div className="footer-subcontainer">
-          <div className="footer-img">
+        <div className="footer-subcontainer row">
+          <div className="col-8 col-md-3 order-4 order-md-1 flex-column">
             <img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1024x378.png" alt="" className="img-footer"/>
             <div className="icons-social">
               <a href="https://www.facebook.com/MaxandleaToys/" target="_blank"><FontAwesomeIcon icon={faFacebookSquare} className="iconFacebook"/></a>
@@ -40,42 +40,19 @@ const Footer = () => {
               <a href="https://www.youtube.com/channel/UCHaUOBoknhDUyNExyux9yvg/featured" target="_blank"><FontAwesomeIcon icon={faYoutubeSquare} className="iconYoutube"/></a>
             </div>
           </div>
-          <div className='flex-footer'>
-          <Container>
-            <Row>
-              <Col>
-                <Link href="/about">{t("Footer.1")}</Link>
-              </Col>
-              <Col>
-                <Link href="/mentionsLegales">{t("Footer.5")}</Link>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Link href="/equipe">{t("Footer.2")}</Link>
-              </Col>
-              <Col>
-                <Link href="/CGV">{t("Footer.6")}</Link>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Link href="/blogs">{t("Footer.3")}</Link>
-              </Col>
-              <Col>
-                <Link href="/contact">{t("Footer.4")}</Link>
-              </Col>
-            </Row>
-          </Container>
-          <div className="footer-column3 footer-terre" >
+          <div className="col-6 col-md-3 order-1 order-md-2 my-auto flex-column d-flex">
+            <Link href="/about">{t("Footer.1")}</Link>
+            <Link href="/equipe">{t("Footer.2")}</Link>
+            <Link href="/blogs">{t("Footer.3")}</Link>
+          </div>
+          <div className="col-6 col-md-3 order-2 order-md-3 my-auto flex-column d-flex">
+            <Link href="/mentionsLegales">{t("Footer.5")}</Link>
+            <Link href="/CGV">{t("Footer.6")}</Link>
+            <Link href="/contact">{t("Footer.4")}</Link>
+          </div>
+          <div className="col-8 col-md-3 order-3 order-md-4 my-auto flex-column d-flex" >
             <div style={{display: "flex", marginBottom: '10%', flexDirection: 'column', justifyContent: "space-around"}} onClick={() => setOpen(true)}>
-              <div className="img-container-arbre">
-              <img src={'/arbres.png'} alt="" style={{marginBottom: '5%'}} className="photo-arbre"/>
-              </div>
-              <div className="photo-container" >
-                <img src={'/arbresreplantes.png'} alt="" className="arbre-replantes"/>
-                <img src={'/logo_reforest.png'} alt="" className="arbre-replantes"/>
-              </div>
+              <img src={'/forest.webp'} alt="" style={{marginBottom: '5%', maxWidth: '200px', marginLeft: 'auto', marginRight: 'auto'}} className="photo-arbre"/>
 
               <Dialog
                 fullScreen={fullScreen}
@@ -140,7 +117,6 @@ const Footer = () => {
 
             </div>
           </div>
-        </div>
         </div>
       </div>
     </footer>

@@ -1091,7 +1091,7 @@ const CheckoutScreen = props => {
                             <TextField
                               value={props.values.phone}
                               onChange={props.handleChange('phone')}
-                              id="outlined-error"
+                              id="phone"
                               label="Numéro de téléphone (facultatif)"
                               variant="outlined"
                               className="bigInput"

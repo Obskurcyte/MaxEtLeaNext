@@ -203,11 +203,10 @@ const PlayBoardScreen = props => {
 
     const [isIntersecting, setIntersecting] = useState(false)
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setIntersecting(entry.isIntersecting)
-    )
-
     useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => setIntersecting(entry.isIntersecting)
+      )
       observer.observe(ref.current)
       // Remove the observer as soon as the component is unmounted
       return () => { observer.disconnect() }
@@ -418,14 +417,13 @@ const PlayBoardScreen = props => {
           </div>
           <div className="video-container">
             <ReactPlayer
-            url="https://play.maxandlea.com/wp-content/uploads/2020/09/Video2-MAXLEA-FR-SHORT-SHORT-V4-600.mp4"
+            url="https://play.maxandlea.com/wp-content/uploads/2020/09/MaxEtLea-GIF-FR-V4-600-1.mp4"
             className="video-presentation"
-            playing
+            playing={true}
+            muted
             height="100%"
             width="100%"
             loop
-            playIcon={<img src="https://maxandlea.fr/wp-content/uploads/2021/04/Lire-la-video.png" alt=""/>}
-            light="/overlayVideo.webp"
           />
           </div>
           <div className="voir-offre">
@@ -548,16 +546,15 @@ const PlayBoardScreen = props => {
           <div className="videoContainer">
           <div className="video-container">
             <ReactPlayer
-                url="https://maxandlea.com/wp-content/uploads/2020/05/Patchwork-V3-600-1.mp4"
+                url="https://play.maxandlea.com/wp-content/uploads/2020/09/Patchwork-V3-600.mp4"
                 width="100%"
                 height="480px"
                 className="video-presentation"
-                playing
+                playing={true}
+                muted
                 height="100%"
                 width="100%"
                 loop
-                playIcon={<img src="https://maxandlea.fr/wp-content/uploads/2021/04/Lire-la-video.png" alt=""/>}
-                light="/PapaFille.webp"
               />
           </div>
             <div className="robusteContainer row">
@@ -590,16 +587,15 @@ const PlayBoardScreen = props => {
           <div className="videoContainer">
           <div className="video-container">
             <ReactPlayer
-                url="https://maxandlea.com/wp-content/uploads/2020/05/Patchwork-V3-600-1.mp4"
+                url="https://play.maxandlea.com/wp-content/uploads/2020/09/Patchwork-V3-600.mp4"
                 width="100%"
                 height="480px"
                 className="video-presentation"
-                playing
+                playing={true}
+                muted
                 height="100%"
                 width="100%"
                 loop
-                playIcon={<img src="https://maxandlea.fr/wp-content/uploads/2021/04/Lire-la-video.png" alt=""/>}
-                light="/PapaFille.webp"
               />
           </div>
             <div className="robusteContainer row">
