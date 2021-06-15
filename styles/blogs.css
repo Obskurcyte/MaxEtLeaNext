@@ -139,13 +139,13 @@
   .container {
     max-width: 1000px!important;
   }
-  .row > * {
+  .rowBlog > * {
     width: 50% !important;
   }
 }
 
 @media screen and (max-width: 600px){
-  .row > * {
+  .rowBlog > * {
     width: 100% !important;
   }
 }
