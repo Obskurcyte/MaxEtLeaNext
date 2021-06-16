@@ -779,15 +779,8 @@ const CheckoutScreen = props => {
   if (qtyTotale >= 4) {
     totalPrice1 = totalPrice1 * 0.80
   }
-
-<<<<<<< HEAD
-  console.log(qtyTotale)
-=======
-
-
   console.log('ebook checked', checkedEbookPlayboard)
->>>>>>> 7fd0108518bfa5b3ba6cd973d5fc5d9de77ac17f
-
+  
   const [firstStep, setFirstStep] = useState(false);
 
   const [goPaiement, setGoPaiement] = useState(false)
