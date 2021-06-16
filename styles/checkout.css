@@ -307,6 +307,14 @@ legend span {
   margin-top: 5%;
 }
 
+.ebookInner {
+  display: flex;
+}
+
+.ebookInner p {
+  margin-bottom: 0!important;
+  margin-top: 1%;
+}
 .auteur {
   font-size: 30px;
   letter-spacing: -3px;

@@ -113,9 +113,6 @@ const CheckoutScreen = props => {
 
       total.totalPrice = item.totalPrice;
       total.qty += item.qty;
-      console.log('total', total)
-      console.log('item', item)
-      console.log(total)
       return total;
     }
 
@@ -183,8 +180,6 @@ const CheckoutScreen = props => {
     if (process.browser) {
       let existingCart = localStorage.getItem('woo-next-cart');
       let commandeCart = localStorage.getItem('commande-cart');
-      console.log('clicked')
-      console.log('existingCart', existingCart)
       if (existingCart!=null) {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
@@ -206,9 +201,6 @@ const CheckoutScreen = props => {
 
       total.totalPrice = item.totalPrice;
       total.qty += item.qty;
-      console.log('total', total)
-      console.log('item', item)
-      console.log(total)
       return total;
     }
 
@@ -264,8 +256,6 @@ const CheckoutScreen = props => {
     if (process.browser) {
       let existingCart = localStorage.getItem('woo-next-cart');
       let commandeCart = localStorage.getItem('commande-cart');
-      console.log('clicked')
-      console.log('existingCart', existingCart)
       if (existingCart!=null) {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
@@ -287,9 +277,6 @@ const CheckoutScreen = props => {
 
       total.totalPrice = item.totalPrice;
       total.qty += item.qty;
-      console.log('total', total)
-      console.log('item', item)
-      console.log(total)
       return total;
     }
 
@@ -345,8 +332,6 @@ const CheckoutScreen = props => {
     if (process.browser) {
       let existingCart = localStorage.getItem('woo-next-cart');
       let commandeCart = localStorage.getItem('commande-cart');
-      console.log('clicked')
-      console.log('existingCart', existingCart)
       if (existingCart!=null) {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
@@ -362,8 +347,238 @@ const CheckoutScreen = props => {
     }
   }
 
+  const updateCartEbookPlayboard = (existingCart, product, qtyToBeAdded, newQty = false) => {
+    const updatedProducts = getUpdatedProductsEbookPlayboard(existingCart.products, products[5], qtyToBeAdded, newQty);
+    const addPrice = (total, item) => {
+
+      total.totalPrice = item.totalPrice;
+      total.qty += item.qty;
+      return total;
+    }
+
+    // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
+    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+
+    const updatedCart = {
+      products: updatedProducts,
+      totalProductCount: parseInt(total.qty),
+      totalProductsPrice: parseFloat(total.totalPrice)
+    }
+
+    localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart))
+    localStorage.setItem('commande-cart', JSON.stringify(updatedCart));
+    return updatedCart
+  };
 
 
+
+
+
+  /**
+   * Get updated products array
+   *
+   * @param existingProductsInCart
+   * @param product
+   * @param qtyToBeAdded
+   * @param newQty
+   * @returns {*}
+   */
+
+
+  const getUpdatedProductsEbookPlayboard = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[5].id);
+
+    if (-1 < productExistsIndex) {
+      let updatedProducts = existingProductsInCart;
+      let updatedProduct = updatedProducts[productExistsIndex];
+
+      updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
+      updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
+      return updatedProducts;
+    } else {
+      let productPrice = parseFloat(product.price);
+      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+      existingProductsInCart.push(newProduct);
+      return existingProductsInCart
+    }
+  };
+
+
+  const handleAddToCartEbookPlayboard = () => {
+    if (process.browser) {
+      let existingCart = localStorage.getItem('woo-next-cart');
+      let commandeCart = localStorage.getItem('commande-cart');
+      if (existingCart!=null) {
+        commandeCart = JSON.parse(commandeCart)
+        existingCart = JSON.parse(existingCart)
+        const qtyToBeAdded = 1
+        const updatedCart = updateCartEbookPlayboard(existingCart, products[5], qtyToBeAdded);
+        setCart(updatedCart)
+        setCommandeCart(updatedCart)
+      } else {
+        const newCart = addFirstProduct(products[5]);
+        setCart(newCart)
+        setCommandeCart(newCart)
+      }
+    }
+  }
+
+  const updateCartEbookXylo = (existingCart, product, qtyToBeAdded, newQty = false) => {
+    const updatedProducts = getUpdatedProductsEbookXylo(existingCart.products, products[6], qtyToBeAdded, newQty);
+    const addPrice = (total, item) => {
+
+      total.totalPrice = item.totalPrice;
+      total.qty += item.qty;
+      return total;
+    }
+
+    // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
+    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+
+    const updatedCart = {
+      products: updatedProducts,
+      totalProductCount: parseInt(total.qty),
+      totalProductsPrice: parseFloat(total.totalPrice)
+    }
+
+    localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart))
+    localStorage.setItem('commande-cart', JSON.stringify(updatedCart));
+    return updatedCart
+  };
+
+
+
+
+
+  /**
+   * Get updated products array
+   *
+   * @param existingProductsInCart
+   * @param product
+   * @param qtyToBeAdded
+   * @param newQty
+   * @returns {*}
+   */
+
+
+  const getUpdatedProductsEbookXylo = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[6].id);
+
+    if (-1 < productExistsIndex) {
+      let updatedProducts = existingProductsInCart;
+      let updatedProduct = updatedProducts[productExistsIndex];
+
+      updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
+      updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
+      return updatedProducts;
+    } else {
+      let productPrice = parseFloat(product.price);
+      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+      existingProductsInCart.push(newProduct);
+      return existingProductsInCart
+    }
+  };
+
+
+  const handleAddToCartEbookXylo = () => {
+    if (process.browser) {
+      let existingCart = localStorage.getItem('woo-next-cart');
+      let commandeCart = localStorage.getItem('commande-cart');
+      if (existingCart!=null) {
+        commandeCart = JSON.parse(commandeCart)
+        existingCart = JSON.parse(existingCart)
+        const qtyToBeAdded = 1
+        const updatedCart = updateCartEbookXylo(existingCart, products[6], qtyToBeAdded);
+        setCart(updatedCart)
+        setCommandeCart(updatedCart)
+      } else {
+        const newCart = addFirstProduct(products[6]);
+        setCart(newCart)
+        setCommandeCart(newCart)
+      }
+    }
+  }
+
+  const updateCartEbookTour = (existingCart, product, qtyToBeAdded, newQty = false) => {
+    const updatedProducts = getUpdatedProductsEbookTour(existingCart.products, products[7], qtyToBeAdded, newQty);
+    const addPrice = (total, item) => {
+
+      total.totalPrice = item.totalPrice;
+      total.qty += item.qty;
+
+      return total;
+    }
+
+    // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
+    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+
+    const updatedCart = {
+      products: updatedProducts,
+      totalProductCount: parseInt(total.qty),
+      totalProductsPrice: parseFloat(total.totalPrice)
+    }
+
+    localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart))
+    localStorage.setItem('commande-cart', JSON.stringify(updatedCart));
+    return updatedCart
+  };
+
+
+
+
+
+  /**
+   * Get updated products array
+   *
+   * @param existingProductsInCart
+   * @param product
+   * @param qtyToBeAdded
+   * @param newQty
+   * @returns {*}
+   */
+
+
+  const getUpdatedProductsEbookTour = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[7].id);
+
+    if (-1 < productExistsIndex) {
+      let updatedProducts = existingProductsInCart;
+      let updatedProduct = updatedProducts[productExistsIndex];
+
+      updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
+      updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
+      return updatedProducts;
+    } else {
+      let productPrice = parseFloat(product.price);
+      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+      existingProductsInCart.push(newProduct);
+      return existingProductsInCart
+    }
+  };
+
+
+  const handleAddToCartEbookTour = () => {
+    if (process.browser) {
+      let existingCart = localStorage.getItem('woo-next-cart');
+      let commandeCart = localStorage.getItem('commande-cart');
+      if (existingCart!=null) {
+        commandeCart = JSON.parse(commandeCart)
+        existingCart = JSON.parse(existingCart)
+        const qtyToBeAdded = 1
+        const updatedCart = updateCartEbookTour(existingCart, products[7], qtyToBeAdded);
+        setCart(updatedCart)
+        setCommandeCart(updatedCart)
+      } else {
+        const newCart = addFirstProduct(products[7]);
+        setCart(newCart)
+        setCommandeCart(newCart)
+      }
+    }
+  }
+
+  const [checkedEbookPlayboard, setCheckedEbookPlayboard] = useState(false);
+  const [checkedEbookXylo, setCheckedEbookXylo] = useState(false);
+  const [checkedEbookTour, setCheckedEbookTour] = useState(false);
 
 
 
@@ -484,6 +699,7 @@ const CheckoutScreen = props => {
     dataClientEmail = dataClient.email
   }
 
+  console.log(dataClient)
 
   const initialValues = {
     email: (dataClient && dataClient.email) ? dataClient.email : '',
@@ -514,14 +730,6 @@ const CheckoutScreen = props => {
     }
   }
 
-  console.log(totalPrice2)
-  console.log('qty', qtyTotale)
-
-
-  console.log(totalPrice1)
-  console.log(totalPrice2)
-  console.log(prixLivraison)
-  console.log(totalPrice1.toFixed(2))
   let playboardReducPrice = 0
   let playboardInCart = []
   if (cart) {
@@ -572,14 +780,20 @@ const CheckoutScreen = props => {
     totalPrice1 = totalPrice1 * 0.80
   }
 
+<<<<<<< HEAD
   console.log(qtyTotale)
+=======
+
+
+  console.log('ebook checked', checkedEbookPlayboard)
+>>>>>>> 7fd0108518bfa5b3ba6cd973d5fc5d9de77ac17f
 
   const [firstStep, setFirstStep] = useState(false);
 
   const [goPaiement, setGoPaiement] = useState(false)
 
 
-  console.log('pays', pays)
+
 
   totalPrice2 = totalPrice1 + prixLivraison
 
@@ -735,6 +949,27 @@ const CheckoutScreen = props => {
                   }
                 </div>
               </div>
+              <div className="ebookContainer">
+                <div className="ebookInner">
+                  <p>Ebook Playboard imprimé (9,99€)</p>
+                  <Checkbox checked={checkedEbookPlayboard}
+                            onChange={() => {
+                              setCheckedEbookPlayboard(!checkedEbookPlayboard)
+                              handleAddToCartEbookPlayboard()
+                            }} />
+                </div>
+                <div className="ebookInner">
+                  <p>Ebook Par mail (gratuit)</p>
+                  <Checkbox
+                    checked={true}
+                    disabled
+                    onChange={() => {
+                      setCheckedEbookPlayboard(!checkedEbookPlayboard)
+                      handleAddToCartEbookPlayboard()
+                    }}
+                  />
+                </div>
+              </div>
               <div className="prixRecap">
                 <div className="sousTotal">
 
@@ -799,6 +1034,8 @@ const CheckoutScreen = props => {
                 </div>
 
                 <hr/>
+
+
                 {(cart && cart.products.length) && (
                   <div className="sousTotal">
                     <div>
@@ -958,8 +1195,7 @@ const CheckoutScreen = props => {
                       enableReinitialize={true}
                       validationSchema={livraisonSchema}
                       onSubmit={values => {
-                        console.log(values)
-                        console.log(checked)
+
 
                         let donnesClient = {}
                         if (checked) {
@@ -998,7 +1234,6 @@ const CheckoutScreen = props => {
                           }
                         }
                         localStorage.setItem('livraison', JSON.stringify(donnesClient))
-                        console.log(goPaiement)
                         setGoPaiement(true)
                       }}
                     >
