@@ -780,7 +780,7 @@ const CheckoutScreen = props => {
     totalPrice1 = totalPrice1 * 0.80
   }
   console.log('ebook checked', checkedEbookPlayboard)
-  
+
   const [firstStep, setFirstStep] = useState(false);
 
   const [goPaiement, setGoPaiement] = useState(false)
@@ -826,6 +826,7 @@ const CheckoutScreen = props => {
       //const coupons = await getCoupons(); 
       //console.log(coupons);
       var aff_id = 0;
+      var is_code = false;
       const WooCommerce = new WooCommerceRestApi({
         url: 'https://maxandlea.fr',
         consumerKey: 'ck_9e4d330373ed9a52a684ec88434271aa37652603',
@@ -836,7 +837,8 @@ const CheckoutScreen = props => {
       .then((response) => {
         response.data.forEach( code => {
           if(code.code == promoCode){
-            localStorage.setItem('promoCodeId',JSON.stringify({"id":code.id,"code":code.code,"amount":code.amount}));
+            is_code = true;
+            localStorage.setItem('promoCode',JSON.stringify({"id":code.id,"code":code.code,"amount":code.amount}));
             code.meta_data.forEach( meta => {
               if(meta.key == "affwp_discount_affiliate"){
                   //localStorage.setItem('ref',meta.value);
@@ -846,6 +848,12 @@ const CheckoutScreen = props => {
             });
           }
         });
+        if(is_code){
+          //Rajouter promo en utilisant "amount" dans promoCode dans le localStorage
+        }
+        else{
+          //Afficher "Code incorrect" en dessous de l'input code promo
+        }
 
         if(aff_id != 0){
           fetch(`https://maxandlea.fr/wp-json/affwp/v1/affiliates/`+aff_id+`?user=1`, {
