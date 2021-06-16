@@ -26,6 +26,9 @@ import {useDispatch, useSelector} from "react-redux";
 import styles from "../components/CheckoutFormStripe.module.css";
 import Slider from "react-slick";
 import AvisClients from "../components/AvisClients";
+import {getCoupons} from "../store/actions/coupons.js";
+import {getProducts} from "../store/actions/product.js";
+import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 
 const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
@@ -383,7 +386,7 @@ const CheckoutScreen = props => {
   const [codePostalFacturation, setCodePostalFacturation] = useState('')
   const [paysFacturation, setPaysFacturation] = useState('')
   const [phone, setPhone] = useState('');
-  const [pays, setPays] = useState('');
+  var [pays, setPays] = useState('');
   const [expedition, setExpedition] = useState('');
   const [total, setTotal] = useState('');
   const [sousTotal, setSousTotal] = useState('');
@@ -569,10 +572,6 @@ const CheckoutScreen = props => {
     totalPrice1 = totalPrice1 * 0.80
   }
 
-  if (dataClient && dataClient.pays) {
-    pays = dataClient.pays
-  }
-
   console.log(qtyTotale)
 
   const [firstStep, setFirstStep] = useState(false);
@@ -583,6 +582,89 @@ const CheckoutScreen = props => {
   console.log('pays', pays)
 
   totalPrice2 = totalPrice1 + prixLivraison
+
+  //------AFFILIATE AND COUPON CODES-----//
+
+  const [promoCode, setpromoCode] = useState('')
+
+   const fetchAffiliates = async () => {
+      const encoded = window.btoa("51c3be50ab9c71d50de81306ddb8590a:bdf2b2c8119512ea65c31d49d96c7e92")
+      ///wp-json/affwp/v1/affiliates
+      ///wp-json/affwp/v1/referrals?user_name=theo&amount=15&status=unpaid
+      
+      /*const res = await fetch(`https://maxandlea.fr/wp-json/affwp/v1/affiliates?user=1`, {
+          //method: 'POST',
+          headers: {
+            'Authorization': "Basic "+encoded
+          }
+        })
+      const newData = await res.json(); 
+      var aff_id = 0;
+      newData.forEach( aff => {
+        if(localStorage.getItem('ref').toLowerCase()==aff.user.user_login.toLowerCase()){
+          aff_id = aff.affiliate_id;
+        }
+      });
+      if(aff_id != 0){
+        const linkRefCreate = `https://maxandlea.fr/wp-json/affwp/v1/referrals?affiliate_id=`+aff_id+`&amount=`+totalPrice2.toFixed(2)+`&status=unpaid`;
+        const ref = await fetch( linkRefCreate, {
+          method: 'POST',
+          headers: {
+            'Authorization': "Basic "+encoded
+          }
+        })
+        const newRef = await ref.json();
+        console.log(newRef);
+      }*/
+      //const coupons = await getCoupons(); 
+      //console.log(coupons);
+      var aff_id = 0;
+      const WooCommerce = new WooCommerceRestApi({
+        url: 'https://maxandlea.fr',
+        consumerKey: 'ck_9e4d330373ed9a52a684ec88434271aa37652603',
+        consumerSecret: 'cs_a0272dea628e462d7288a10226cfa3e1f4ffcaff',
+        version: 'wc/v3'
+      }); 
+      WooCommerce.get("coupons")
+      .then((response) => {
+        response.data.forEach( code => {
+          if(code.code == promoCode){
+            localStorage.setItem('promoCodeId',JSON.stringify({"id":code.id,"code":code.code,"amount":code.amount}));
+            code.meta_data.forEach( meta => {
+              if(meta.key == "affwp_discount_affiliate"){
+                  //localStorage.setItem('ref',meta.value);
+                  aff_id = meta.value;
+                  console.log(aff_id);
+              }
+            });
+          }
+        });
+
+        if(aff_id != 0){
+          fetch(`https://maxandlea.fr/wp-json/affwp/v1/affiliates/`+aff_id+`?user=1`, {
+            //method: 'POST',
+            headers: {
+              'Authorization': "Basic "+encoded
+            }
+          })
+          .then(res => res.json())
+          .then(
+            (result) => {
+              localStorage.setItem('ref',result.user.user_login);
+            })
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+
+      
+      //return setData(newData.results);
+    };
+  
+  const checkPromo = (event) => {
+      fetchAffiliates();
+  };
 
 
     return (
@@ -754,9 +836,9 @@ const CheckoutScreen = props => {
 
               <div className="codepromoContainer">
                 <div>
-                  <input type="text" placeholder="Code promo" className="inputPromo"/>
+                  <input type="text" onChange={event => setpromoCode(event.target.value)} placeholder="Code promo" className="inputPromo"/>
                 </div>
-                <button className="buttonCodepromo">Valider votre code promo</button>
+                <button className="buttonCodepromo" onClick={() => {checkPromo()}}>Valider votre code promo</button>
               </div>
 
               <div className="addOtherArticlesPanier">
