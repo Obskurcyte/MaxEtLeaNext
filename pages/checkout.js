@@ -837,7 +837,7 @@ const CheckoutScreen = props => {
   }
 
   if (codePromo && codePromo.amount) {
-    totalPrice1 = totalPrice1 - codePromo.amount
+    totalPrice1 = totalPrice1 * 0.90
   }
   console.log('ebook checked', checkedEbookPlayboard)
 
@@ -1105,7 +1105,7 @@ const CheckoutScreen = props => {
                     {(codePromo && codePromo.amount) && (
                       <div className="prix-reduc-container">
                         <p className="sousTotalText">Code Promo</p>
-                        <p className="itemTotalPrice">{codePromo.amount} €</p>
+                        <p className="itemTotalPrice">{codePromo.amount} %</p>
                       </div>
                     )}
                   </div>
