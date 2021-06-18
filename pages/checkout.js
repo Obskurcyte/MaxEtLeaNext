@@ -7,6 +7,7 @@ import {loadStripe} from "@stripe/stripe-js/pure";
 import {Elements} from "@stripe/react-stripe-js";
 import CheckoutFormStripe from "../components/CheckoutFormStripe";
 import CartItem from "../components/CartItem";
+import {Spinner} from "react-bootstrap";
 import {Field, Formik} from "formik";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -47,13 +48,18 @@ const CheckoutScreen = props => {
 
   const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
 
+  const [codePromo, setCodePromo] = useState('')
   const [dataClient, setDataClient] = useState(null);
 
+  console.log('codePromo', codePromo)
   useEffect(() => {
     if ( process.browser) {
       let cartData = localStorage.getItem('livraison');
       const trueData = JSON.parse(cartData);
+      let codePromoData = localStorage.getItem('promoCode');
+      const promoCodeData = JSON.parse(codePromoData)
       setDataClient(trueData)
+      setCodePromo(promoCodeData)
     }
   }, []);
 
@@ -557,6 +563,50 @@ const CheckoutScreen = props => {
   };
 
 
+
+
+  const removeProduct = (productId) => {
+
+    let existingCart = localStorage.getItem('woo-next-cart');
+    existingCart = JSON.parse(existingCart);
+
+    if (1 === existingCart.products.length) {
+      localStorage.removeItem('woo-next-cart')
+      return null;
+    }
+
+    const productExistIndex = isProductInCart(existingCart.products, productId);
+
+
+
+
+    if (-1 < productExistIndex) {
+      const productToBeRemoved = existingCart.products[productExistIndex];
+      const qtyTBeRemovedFromTotal = productToBeRemoved.qty;
+      const priceToBeDeductedFromTotal = productToBeRemoved.totalPrice;
+
+      let updatedCart = existingCart
+      /*if(productExistIndex == 0){
+        updatedCart.products.shift()
+      }
+      else*/ updatedCart.products.splice(productExistIndex, 1)
+      updatedCart.totalProductCount = updatedCart.totalProductCount - qtyTBeRemovedFromTotal;
+      updatedCart.totalProductsPrice = updatedCart.totalProductsPrice - priceToBeDeductedFromTotal;
+
+
+      localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+      return updatedCart
+    } else {
+      return existingCart;
+    }
+  };
+
+  const handleRemoveProduct = (event, productId) => {
+    const updatedCart = removeProduct(productId);
+    setCart(updatedCart)
+  }
+
+
   const handleAddToCartEbookTour = () => {
     if (process.browser) {
       let existingCart = localStorage.getItem('woo-next-cart');
@@ -577,14 +627,9 @@ const CheckoutScreen = props => {
   }
 
   const [checkedEbookPlayboard, setCheckedEbookPlayboard] = useState(false);
-  const [checkedEbookXylo, setCheckedEbookXylo] = useState(false);
-  const [checkedEbookTour, setCheckedEbookTour] = useState(false);
-
-
-
-
-
-
+  const [codePromoIncorrect, setCodePromoIncorrect] = useState(false);
+  const [codePromoLoading, setCodePromoLoading] = useState(false);
+  const [goodCodePromo, setGoodCodePromo] = useState(false)
 
   //-------------------- LIVRAISON ----------------------------
 
@@ -767,6 +812,17 @@ const CheckoutScreen = props => {
     }
   }
 
+  let ebookInCart = []
+  if (cart) {
+    const ebook = cart.products.filter(obj => {
+      return obj.productId === 'hdkfhdhfdjjJ'
+    })
+    if (ebook.length !== 0) {
+      ebookInCart = ebook
+    }
+  }
+
+  console.log('ebookIncart', ebookInCart)
 
   if (qtyTotale === 2) {
     totalPrice1 = totalPrice1 * 0.90
@@ -778,6 +834,10 @@ const CheckoutScreen = props => {
 
   if (qtyTotale >= 4) {
     totalPrice1 = totalPrice1 * 0.80
+  }
+
+  if (codePromo && codePromo.amount) {
+    totalPrice1 = totalPrice1 - codePromo.amount
   }
   console.log('ebook checked', checkedEbookPlayboard)
 
@@ -798,14 +858,14 @@ const CheckoutScreen = props => {
       const encoded = window.btoa("51c3be50ab9c71d50de81306ddb8590a:bdf2b2c8119512ea65c31d49d96c7e92")
       ///wp-json/affwp/v1/affiliates
       ///wp-json/affwp/v1/referrals?user_name=theo&amount=15&status=unpaid
-      
+
       /*const res = await fetch(`https://maxandlea.fr/wp-json/affwp/v1/affiliates?user=1`, {
           //method: 'POST',
           headers: {
             'Authorization': "Basic "+encoded
           }
         })
-      const newData = await res.json(); 
+      const newData = await res.json();
       var aff_id = 0;
       newData.forEach( aff => {
         if(localStorage.getItem('ref').toLowerCase()==aff.user.user_login.toLowerCase()){
@@ -823,7 +883,7 @@ const CheckoutScreen = props => {
         const newRef = await ref.json();
         console.log(newRef);
       }*/
-      //const coupons = await getCoupons(); 
+      //const coupons = await getCoupons();
       //console.log(coupons);
       var aff_id = 0;
       var is_code = false;
@@ -832,15 +892,17 @@ const CheckoutScreen = props => {
         consumerKey: 'ck_9e4d330373ed9a52a684ec88434271aa37652603',
         consumerSecret: 'cs_a0272dea628e462d7288a10226cfa3e1f4ffcaff',
         version: 'wc/v3'
-      }); 
+      });
+     setCodePromoLoading(true)
       WooCommerce.get("coupons")
       .then((response) => {
+        setCodePromoLoading(false)
         response.data.forEach( code => {
-          if(code.code == promoCode){
+          if(code.code === promoCode){
             is_code = true;
             localStorage.setItem('promoCode',JSON.stringify({"id":code.id,"code":code.code,"amount":code.amount}));
             code.meta_data.forEach( meta => {
-              if(meta.key == "affwp_discount_affiliate"){
+              if(meta.key === "affwp_discount_affiliate"){
                   //localStorage.setItem('ref',meta.value);
                   aff_id = meta.value;
                   console.log(aff_id);
@@ -849,10 +911,11 @@ const CheckoutScreen = props => {
           }
         });
         if(is_code){
-          //Rajouter promo en utilisant "amount" dans promoCode dans le localStorage
+          setCodePromoIncorrect(false)
+          setGoodCodePromo(true)
         }
         else{
-          //Afficher "Code incorrect" en dessous de l'input code promo
+          setCodePromoIncorrect(true)
         }
 
         if(aff_id != 0){
@@ -873,13 +936,14 @@ const CheckoutScreen = props => {
         console.log(error.response.data);
       });
 
-      
+
       //return setData(newData.results);
     };
-  
+
   const checkPromo = (event) => {
       fetchAffiliates();
   };
+
 
 
     return (
@@ -954,9 +1018,17 @@ const CheckoutScreen = props => {
                 <div className="ebookInner">
                   <p>Ebook Playboard imprimé (9,99€)</p>
                   <Checkbox checked={checkedEbookPlayboard}
-                            onChange={() => {
+                            onChange={(event) => {
                               setCheckedEbookPlayboard(!checkedEbookPlayboard)
-                              handleAddToCartEbookPlayboard()
+                              if (ebookInCart && ebookInCart.length!==0) {
+
+                              } else {
+                                if (!checkedEbookPlayboard) {
+                                  handleAddToCartEbookPlayboard()
+                                } else {
+                                  setCheckedEbookPlayboard(false)
+                                }
+                              }
                             }} />
                 </div>
                 <div className="ebookInner">
@@ -1028,6 +1100,16 @@ const CheckoutScreen = props => {
                     )}
                   </div>
 
+
+                  <div>
+                    {(codePromo && codePromo.amount) && (
+                      <div className="prix-reduc-container">
+                        <p className="sousTotalText">Code Promo</p>
+                        <p className="itemTotalPrice">{codePromo.amount} €</p>
+                      </div>
+                    )}
+                  </div>
+
                   <div>
 
                   </div>
@@ -1075,7 +1157,12 @@ const CheckoutScreen = props => {
               <div className="codepromoContainer">
                 <div>
                   <input type="text" onChange={event => setpromoCode(event.target.value)} placeholder="Code promo" className="inputPromo"/>
+                  {codePromoIncorrect ? <p style={{color: 'red'}}>Ce code est incorrect</p>: ''}
+                  {goodCodePromo ? <p style={{color: 'green'}}>Votre code promo a été validé</p>: ''}
                 </div>
+                {codePromoLoading && <Spinner animation="border" role="status">
+                  <span className="sr-only">Loading...</span>
+                </Spinner>}
                 <button className="buttonCodepromo" onClick={() => {checkPromo()}}>Valider votre code promo</button>
               </div>
 
