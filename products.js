@@ -1,23 +1,7 @@
 export const products = [
   {
     description: null,
-    id: "cHJvZHVjdDo5Njk3",
-    name: "Xylophone",
-    price: "14,90€",
-    slug: "xylophone-2",
-    __typename: "SimpleProduct"
-  },
-  {
-    description: null,
-    id: "cHJvZHVjdDo5Njky",
-    name: "Tour Arc en ciel",
-    price: "12,90€",
-    slug: "tour-arc-en-ciel-2",
-    __typename: "SimpleProduct"
-  },
-  {
-    description: null,
-    id: "cHJvZHVjdDo0NTM1",
+    id: "4535",
     name: "Xylophone",
     price: "21.90",
     priceReduc: "12.90",
@@ -27,7 +11,7 @@ export const products = [
   },
   {
     description: null,
-    id: "cHJvZHVjdDo0NTI3",
+    id: "4527",
     name: "Tour Arc en ciel",
     price: "19.90",
     priceReduc: "12.90",
@@ -37,7 +21,7 @@ export const products = [
   },
   {
     description: null,
-    id: "cHJvZHVjdDozMTYz",
+    id: "3163",
     name: "La PlayBoard",
     price: "29.90",
     priceAugmente: "49.90",
