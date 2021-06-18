@@ -145,7 +145,7 @@
   width: 100%;
 }
 .playboard-title-container {
-  width: 494px;
+  width: 680px;
   border-radius: 71px;
   background-color: #f13f57;
   text-align: center;
@@ -153,6 +153,10 @@
   margin: 3% auto;
 }
 
+.pictos {
+  width: 7%;
+  margin-right: 1%;
+}
 .faqContainer{
   width: 95%;
   max-width: 980px;
@@ -435,13 +439,19 @@
 }
 
 .miniIconeContainer2 p {
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0px;
   color: #9bb0b7;
   font-weight: 300;
   font-style: italic;
   font-family: "Roboto", sans-serif;
   text-align: center;
+  margin-top: 8%;
+}
+
+.miniIconeContainer2 h5 {
+  color: #9bb0b7;
+  font-weight: bold;
   margin-top: 8%;
 }
 
@@ -499,7 +509,7 @@
 }
 
 .p1 {
-  font-size: 25px;
+  font-size: 23px;
   color: #819ea7;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
@@ -507,7 +517,7 @@
 }
 
 .p2 {
-  font-size: 25px;
+  font-size: 23px;
   color: #f78904;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
@@ -515,7 +525,7 @@
 }
 
 .p3 {
-  font-size: 25px;
+  font-size: 23px;
   color: #60bec8;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
@@ -594,6 +604,11 @@
   height: auto;
 }
 
+.huitEnUnBigText {
+  font-size: 70px;
+  text-align: center;
+  color: #0cb6ce
+}
 .UnaSixTitle span {
   font-size: 110px;
   font-weight: bold;
@@ -842,8 +857,12 @@
   margin: auto;
   position: relative;
   border-radius: 25px;
-  padding: 3% 5%;
-  background-color: white;
+  padding-left: 1%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background-color: #F1F1F1;
+  box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 20%);
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
 }
 
 .playboardImgContainer {
@@ -1073,7 +1092,7 @@
 }
 
 .sourireContainer h5 {
-  font-size: 76px;
+  font-size: 50px;
   letter-spacing: 1px;
   color: #f18916;
   width: 100%;
@@ -1173,7 +1192,7 @@
   }
   .playboard-title-container, .pensee-paragraph-container, .img-bebe-container{
     width: 100%;
-    max-width: 250px;
+    max-width: 300px;
   }
   .playboard-paragraph, .pensee-paragraph,.apprendreContainer p{
     font-size: 20px;

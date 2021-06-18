@@ -354,7 +354,7 @@ legend span {
 }
 
 .addArticleTitle {
-  font-size: 35px;
+  font-size: 25px;
   letter-spacing: 1px;
   color: #ff6376;
   font-family: "Roboto", sans-serif;
@@ -482,7 +482,7 @@ legend span {
 
 @media screen and (max-width: 1400px) {
   .addArticleTitle {
-    font-size: 25px;
+    font-size: 20px;
   }
   .imakzv {
     margin: 0!important;
@@ -511,7 +511,7 @@ legend span {
     font-size: 23px;
   }
   .addArticleTitle {
-    font-size: 25px;
+    font-size: 20px;
   }
   .progressBarText {
     font-size: 25px;
@@ -547,7 +547,7 @@ legend span {
     margin-left: 0;
   }
   .addArticleTitle {
-    font-size: 20px;
+    font-size: 15px;
   }
   .makeStyles-root-1 .MuiTextField-root {
     width: 100% !important;

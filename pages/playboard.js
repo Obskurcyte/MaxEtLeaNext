@@ -410,7 +410,7 @@ const PlayBoardScreen = props => {
         </Head>
         <div className="imgCouverture">
           <div className="playboard-title-container">
-            <h1 className="playboard-title">PLAYBOARD</h1>
+            <h1 className="playboard-title">LA PLAYBOARD</h1>
           </div>
           <div className="playboard-paragraph-container">
             <p className="playboard-paragraph">{t("Playboard1")}</p>
@@ -480,11 +480,12 @@ const PlayBoardScreen = props => {
         </div>
 
         <div className="image-recap-container">
-          <img src={'/imagerecap.webp'} alt="" className="image-recap"/>
+          <img src={'/playboardIMG.webp'} alt="" className="image-recap"/>
         </div>
 
         <div className="huitEnUnContainerText">
-          <p className="huitEnUnText">L'outil 8 en 1 d'éveil et d'apprentissage le plus complet du marché</p>
+          <p className="huitEnUnBigText">8 en 1</p>
+          <p className="huitEnUnText">L'outil d'éveil et d'apprentissage le plus complet du marché</p>
         </div>
 
         <div className="containerIcones2">
@@ -492,23 +493,27 @@ const PlayBoardScreen = props => {
 
             <div className="col miniIconeContainer2">
               <img src={'/calcul.png'} alt=""/>
+              <h5>CALCUL</h5>
               <p>Les signes et les nombres lui permettront de réaliser différents calculs simples et d'évoluer vers des calculs plus complexes</p>
             </div>
 
 
             <div className="col miniIconeContainer2">
               <img src={'/couleur.png'} alt=""/>
+              <h5>COULEURS</h5>
               <p>L'outil idéal pour la mémoire des couleurs, pour les découvrir et les reconnaitre. Aide à développer ses aptitudes visuelles et mentales</p>
             </div>
 
 
             <div className="col miniIconeContainer2">
               <img src={'/degrade.png'} alt=""/>
+              <h5>DEGRADES DE COULEUR</h5>
               <p>Découvrir les contrastes et les dégradés de couleurs pour développer sa sensibilité visuelle et artistique.</p>
             </div>
 
             <div className="col miniIconeContainer2">
               <img src={'/eveil.png'} alt=""/>
+              <h5>EVEIL</h5>
               <p>Votre enfant prendra plaisir à jouer des heures entières avec sa PlayBoard et développera sa créativité.</p>
             </div>
 
@@ -518,21 +523,25 @@ const PlayBoardScreen = props => {
 
             <div className="col miniIconeContainer2">
               <img src={'/animaux.png'} alt=""/>
+              <h5>ANIMAUX</h5>
               <p>Il découvrira les animaux grâce à des représentations mignonnes et réalistes et apprendra à les associer avec leur alimentation.</p>
             </div>
 
             <div className="col miniIconeContainer2">
               <img src={'/formes.png'} alt=""/>
+              <h5>FORMES</h5>
               <p>Plus de 20 formes géométriques simples et complexes pour un maximum de plaisir et travailler sa motricité fine.</p>
             </div>
 
             <div className="col miniIconeContainer2">
               <img src={'/coordination.png'} alt=""/>
+              <h5>COORDINATION</h5>
               <p>Empiler différentes formes géométriques pour travailler sa coordination et son habileté.</p>
             </div>
 
             <div className="col miniIconeContainer2">
               <img src={'/nombres.png'} alt=""/>
+              <h5>NOMBRE</h5>
               <p>A force de jouer avec les chiffres, leur maîtrise devient naturelle et instinctive. Ce qui favorise sa mémoire des chiffres.</p>
             </div>
 
@@ -559,24 +568,24 @@ const PlayBoardScreen = props => {
           </div>
             <div className="robusteContainer row">
               <div className="constructionRobuste col">
-                <div><p className="robusteTitle">CONSTRUCTION ROBUSTE EN BOIS</p></div>
-                <div><p className="p1">Bois issu de forêts certifiées
+                <div><p className="robusteTitle">ROBUSTE</p></div>
+                <div><p className="p1"><img src={'/picto1.svg'} alt="" className="pictos"/>Bois issu de forêts certifiées
                   FSC® et de haute qualité.</p></div>
-                <div><p className="p2">Matériaux nobles &
+                <div><p className="p2"><img src={'/picto2.svg'} alt="" className="pictos"/>Matériaux nobles &
                   construction solide</p></div>
-                <div><p className="p3">Une fabrication soignée
+                <div><p className="p3"><img src={'/picto1.svg'} alt="" className="pictos"/>Une fabrication soignée
                   pour une durabilité maximale.</p></div>
               </div>
 
               <div className="finitionSoignees col">
                 <div><p className="finitionTitle">FINITIONS SOIGNEES</p></div>
-                <div><p className="p1">Des couleurs douces et
+                <div><p className="p1"><img src={'/picto1.svg'} alt="" className="pictos"/>Des couleurs douces et
                   chaleureuses étudiées pour
                   apaiser l’enfant.</p></div>
-                <div><p className="p2">Angles biseautés et finitions soignées</p></div>
-                <div><p className="p3">Des textures douces et délicates
+                <div><p className="p2"><img src={'/picto2.svg'} alt="" className="pictos"/>Angles biseautés et finitions soignées</p></div>
+                <div><p className="p3"><img src={'/picto1.svg'} alt="" className="pictos"/>Des textures douces et délicates
                   pour une parfaite prise en main.</p></div>
-                <div><p className="p4">Des images travaillées pour faciliter
+                <div><p className="p4"><img src={'/picto3.svg'} alt="" className="pictos"/>Des images travaillées pour faciliter
                   la reconnaissance.</p></div>
               </div>
             </div>
@@ -630,9 +639,6 @@ const PlayBoardScreen = props => {
           <p className="">La <span>Playboard®</span> accompagne votre
             enfant à chaque étape de
             son développement.</p>
-          </div>
-          <div className="frereEtSoeur">
-           <img src={'/frereEtSoeur.png'} alt="" style={{width: '100%', height: '100%'}} />
           </div>
         </div>
 
@@ -823,7 +829,7 @@ const PlayBoardScreen = props => {
         </div>
         */}
 
-        <div className="apprentissagePlayboard">
+        <div className="apprentissagePlayboard container">
           <h5 className="apprentissageTitle">Ce que les enfants ont appris avec la PlayBoard</h5>
           <div className="imageApprentissageContainer">
             <img src={'/enfantTableau.jpg'} alt="" className="imgTableau"/>
@@ -976,7 +982,7 @@ const PlayBoardScreen = props => {
           <AvisClients/>
         </div>
 
-        <div className="sourireContainer">
+        <div className="sourireContainer container">
           <div className="sourireTextContainer">
           <h5>LE SOURIRE DE VOS ENFANTS
             NOTRE PLUS BELLE RECOMPENSE</h5>

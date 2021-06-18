@@ -93,6 +93,8 @@
 .icons-social {
   display: flex;
   justify-content: space-around;
+  width: 50%;
+  margin: 7% auto;
 }
 
 .img-container-arbre {

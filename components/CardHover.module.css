@@ -32,6 +32,8 @@
   color: white!important;
   padding: 2% 5%;
   cursor: pointer;
+  animation: shake 5s;
+  animation-iteration-count: infinite;
 }
 
 .linkPopper {
