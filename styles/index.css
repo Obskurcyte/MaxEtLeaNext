@@ -97,14 +97,16 @@ body {
 .img-tour {
   height: 80%;
 }
+
 .head-title {
   font-size: 58px;
   letter-spacing: 1px;
   color: #e72c59;
-  font-family: "Roboto", serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   z-index: 2;
 }
+
 .subheadtitle {
   color: #5A5A5A;
   font-size: 22px;
@@ -113,6 +115,7 @@ body {
   line-height: 1.6em;
   letter-spacing: 2.5px;
 }
+
 .headtitle {
   color: #E72C59;
   font-size: 33px;
@@ -532,6 +535,18 @@ body {
   }
   .baby-photo {
     bottom: 24%;
+  }
+}
+
+@media screen and (min-width: 2300px){
+  .baby-container {
+    height: 1100px;
+  }
+  .baby-photo {
+    bottom: 24%;
+  }
+  .grid-container {
+    height: 10%
   }
 }
 
