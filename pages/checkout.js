@@ -891,6 +891,7 @@ const CheckoutScreen = props => {
         if(is_code){
           setCodePromoIncorrect(false)
           setGoodCodePromo(true)
+          window.location.reload()
         }
         else{
           setCodePromoIncorrect(true)
