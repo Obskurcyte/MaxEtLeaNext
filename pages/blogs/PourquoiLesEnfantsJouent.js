@@ -53,7 +53,7 @@ const PourquoiLesEnfantsJouent = () => {
 
 
   const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProducts(existingCart.products, products[4], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProducts(existingCart.products, products[2], qtyToBeAdded, newQty);
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -93,7 +93,7 @@ const PourquoiLesEnfantsJouent = () => {
 
 
   const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, products[4].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[2].id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -131,10 +131,10 @@ const PourquoiLesEnfantsJouent = () => {
       if (existingCart!=null) {
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
-        const updatedCart = updateCart(existingCart, products[4], qtyToBeAdded);
+        const updatedCart = updateCart(existingCart, products[2], qtyToBeAdded);
         setCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[4]);
+        const newCart = addFirstProduct(products[2]);
         setCart(newCart)
       }
     }
