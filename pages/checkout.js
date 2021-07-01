@@ -1642,6 +1642,7 @@ const CheckoutScreen = props => {
                                 <div className="livraisonRow">
                                   <div className="checkboxLivraisonContainer">
                                     <Checkbox
+                                      id="relay_check"
                                       checked={checked2}
                                       onChange={() => handleChange2(event, 4.99)}
                                       inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
@@ -1947,6 +1948,8 @@ const CheckoutScreen = props => {
 
                           </div>
 
+                          <div id="Zone_Widget"></div>
+                          
                           <Link href="#">
                             <button className="cart-valide" type="submit" onClick={props.handleSubmit}>Aller à l'étape suivante</button>
                           </Link>

@@ -79,19 +79,6 @@ const Remerciement = (props) => {
           }
         ]
       };
-      /*
-      line_items: [
-          {
-            product_id: 93,
-            quantity: 2
-          },
-          {
-            product_id: 22,
-            variation_id: 23,
-            quantity: 1
-          }
-        ],
-      */
      
 
       WooCommerce.post("orders", data)
@@ -103,7 +90,7 @@ const Remerciement = (props) => {
       });
     }
 
-    createOrderWoo();
+    /*createOrderWoo();*/
   }, []);
 
   return (
