@@ -110,8 +110,9 @@ const CheckoutFormStripe = ({
         purchase_units: [
           {
             amount: {
+              currency: 'EUR',
               // charge users $499 per order
-              value: 499,
+              value: totalPrice2,
             },
           },
         ],
@@ -126,12 +127,18 @@ const CheckoutFormStripe = ({
       });
   };
 
-  const onApprove = (data, actions) => {
-    return actions.order.capture().then(function (details) {
-      const {payer} = details;
-      setBillingDetails(payer);
-      setSucceeded(true);
-    }).catch(err=> setPaypalErrorMessage("Something went wrong."));
+  const onApprove = async (data, actions) => {
+    const order = await actions.order.capture();
+    console.log('wola')
+    if (order.status === 'COMPLETED') {
+      localStorage.removeItem('woo-next-cart')
+      localStorage.setItem('moyenPaiement', moyenPaiement);
+      await router.push({
+        pathname: '/remerciement',
+      })
+      window.location.reload()
+    }
+    console.log(order)
   };
 
   const Paypal = () => {
@@ -151,6 +158,10 @@ const CheckoutFormStripe = ({
               }
             ]
           })
+        },
+        style: {
+          layout: 'horizontal',
+          tagline: 'false'
         },
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
@@ -172,7 +183,7 @@ const CheckoutFormStripe = ({
 
     return (
       <div>
-        <div ref={paypal}></div>
+        <div ref={paypal}/>
       </div>
     )
   }
@@ -265,7 +276,7 @@ const CheckoutFormStripe = ({
 
   return (
 
-    <PayPalScriptProvider options= {{"client-id": process.env.PAYPAL_CLIENT_ID }}>
+
     <div>
       <Head >
         <title>CheckoutStripe</title>
@@ -410,22 +421,11 @@ const CheckoutFormStripe = ({
       {(paypalClicked) ? (
         <div >
           <ListGroup.Item>
-            <PayPalButtons
-              style={{
-                color: "blue",
-                shape: "pill",
-                label: "pay",
-                tagline: false,
-                layout: "horizontal",
-              }}
-              createOrder={createOrder}
-              onApprove={onApprove}
-            /><Paypal />
+           <Paypal />
           </ListGroup.Item>
         </div>
       ) : null}
     </div>
-    </PayPalScriptProvider>
   );
 };
 

@@ -10,7 +10,6 @@ import AvisClients from "../components/AvisClients";
 import * as product from "../products";
 import {AppContext} from "../components/context/AppContext";
 import Head from 'next/head';
-import Slider from "react-slick";
 import Collapsible from 'react-collapsible';
 import Recommendation from "../components/Recommendation";
 import {useTranslation} from "react-i18next";
@@ -20,6 +19,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useRouter} from "next/router";
 
 const icon = React.createElement('i', { className: 'far fa-question-circle' }, "");
 const title1 = React.createElement('p', {}, "La PlayBoard s'abime-t-elle avec le temps ?");
@@ -46,6 +46,7 @@ const PlayBoardScreen = props => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
+  const router = useRouter();
 
   const handleClose = () => {
     setOpen(false);
@@ -924,7 +925,9 @@ const PlayBoardScreen = props => {
               <div onClick={handleAddToCart} className="ajouterPanierContainer">
                 <p>Ajouter au panier</p>
               </div>
-              <p>Une question ? Contactez-nous</p>
+              <p className="question" onClick={async () => {
+                await router.push('/contact')
+              }}>Une question ? Contactez-nous</p>
               </div>
             </div>
 

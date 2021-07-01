@@ -26,6 +26,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import AvisClients from "../components/AvisClients";
 import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
+import {PayPalScriptProvider} from "@paypal/react-paypal-js";
 
 
 const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
@@ -857,7 +858,7 @@ const CheckoutScreen = props => {
     adresseLivraison: (dataClient && dataClient.adresseLivraison) ? dataClient.adresseLivraison : '',
     codePostalLivraison: (dataClient && dataClient.codePostalLivraison) ? dataClient.codePostalLivraison : '',
     villeLivraison: (dataClient && dataClient.villeLivraison) ? dataClient.villeLivraison : '',
-    pays: (dataClient && dataClient.pays) ? dataClient.pays : '',
+    pays: '',
     phone: (dataClient && dataClient.phone) ? dataClient.phone : '',
     adresseFacturation: (dataClient && dataClient.adresseFacturation) ? dataClient.adresseFacturation : '',
     codePostalFacturation: (dataClient && dataClient.codePostalFacturation) ? dataClient.codePostalFacturation : '',
@@ -950,6 +951,7 @@ const CheckoutScreen = props => {
   const [goPaiement, setGoPaiement] = useState(false)
 
 
+  const [errorLivraison, setErrorLivraison] = useState(false)
 
 
   totalPrice2 = totalPrice1 + prixLivraison
@@ -958,47 +960,47 @@ const CheckoutScreen = props => {
 
   const [promoCode, setpromoCode] = useState('')
 
-   const fetchAffiliates = async () => {
-      const encoded = window.btoa("51c3be50ab9c71d50de81306ddb8590a:bdf2b2c8119512ea65c31d49d96c7e92")
-      ///wp-json/affwp/v1/affiliates
-      ///wp-json/affwp/v1/referrals?user_name=theo&amount=15&status=unpaid
+  const fetchAffiliates = async () => {
+    const encoded = window.btoa("51c3be50ab9c71d50de81306ddb8590a:bdf2b2c8119512ea65c31d49d96c7e92")
+    ///wp-json/affwp/v1/affiliates
+    ///wp-json/affwp/v1/referrals?user_name=theo&amount=15&status=unpaid
 
-      /*const res = await fetch(`https://maxandlea.fr/wp-json/affwp/v1/affiliates?user=1`, {
-          //method: 'POST',
-          headers: {
-            'Authorization': "Basic "+encoded
-          }
-        })
-      const newData = await res.json();
-      var aff_id = 0;
-      newData.forEach( aff => {
-        if(localStorage.getItem('ref').toLowerCase()==aff.user.user_login.toLowerCase()){
-          aff_id = aff.affiliate_id;
+    /*const res = await fetch(`https://maxandlea.fr/wp-json/affwp/v1/affiliates?user=1`, {
+        //method: 'POST',
+        headers: {
+          'Authorization': "Basic "+encoded
         }
-      });
-      if(aff_id != 0){
-        const linkRefCreate = `https://maxandlea.fr/wp-json/affwp/v1/referrals?affiliate_id=`+aff_id+`&amount=`+totalPrice2.toFixed(2)+`&status=unpaid`;
-        const ref = await fetch( linkRefCreate, {
-          method: 'POST',
-          headers: {
-            'Authorization': "Basic "+encoded
-          }
-        })
-        const newRef = await ref.json();
-        console.log(newRef);
-      }*/
-      //const coupons = await getCoupons();
-      //console.log(coupons);
-      var aff_id = 0;
-      var is_code = false;
-      const WooCommerce = new WooCommerceRestApi({
-        url: 'https://maxandlea.fr',
-        consumerKey: 'ck_9e4d330373ed9a52a684ec88434271aa37652603',
-        consumerSecret: 'cs_a0272dea628e462d7288a10226cfa3e1f4ffcaff',
-        version: 'wc/v3'
-      });
-     setCodePromoLoading(true)
-      WooCommerce.get("coupons")
+      })
+    const newData = await res.json();
+    var aff_id = 0;
+    newData.forEach( aff => {
+      if(localStorage.getItem('ref').toLowerCase()==aff.user.user_login.toLowerCase()){
+        aff_id = aff.affiliate_id;
+      }
+    });
+    if(aff_id != 0){
+      const linkRefCreate = `https://maxandlea.fr/wp-json/affwp/v1/referrals?affiliate_id=`+aff_id+`&amount=`+totalPrice2.toFixed(2)+`&status=unpaid`;
+      const ref = await fetch( linkRefCreate, {
+        method: 'POST',
+        headers: {
+          'Authorization': "Basic "+encoded
+        }
+      })
+      const newRef = await ref.json();
+      console.log(newRef);
+    }*/
+    //const coupons = await getCoupons();
+    //console.log(coupons);
+    var aff_id = 0;
+    var is_code = false;
+    const WooCommerce = new WooCommerceRestApi({
+      url: 'https://maxandlea.fr',
+      consumerKey: 'ck_9e4d330373ed9a52a684ec88434271aa37652603',
+      consumerSecret: 'cs_a0272dea628e462d7288a10226cfa3e1f4ffcaff',
+      version: 'wc/v3'
+    });
+    setCodePromoLoading(true)
+    WooCommerce.get("coupons")
       .then((response) => {
         setCodePromoLoading(false)
         response.data.forEach( code => {
@@ -1007,9 +1009,9 @@ const CheckoutScreen = props => {
             localStorage.setItem('promoCode',JSON.stringify({"id":code.id,"code":code.code,"amount":code.amount}));
             code.meta_data.forEach( meta => {
               if(meta.key === "affwp_discount_affiliate"){
-                  //localStorage.setItem('ref',meta.value);
-                  aff_id = meta.value;
-                  console.log(aff_id);
+                //localStorage.setItem('ref',meta.value);
+                aff_id = meta.value;
+                console.log(aff_id);
               }
             });
           }
@@ -1030,11 +1032,11 @@ const CheckoutScreen = props => {
               'Authorization': "Basic "+encoded
             }
           })
-          .then(res => res.json())
-          .then(
-            (result) => {
-              localStorage.setItem('ref',result.user.user_login);
-            })
+            .then(res => res.json())
+            .then(
+              (result) => {
+                localStorage.setItem('ref',result.user.user_login);
+              })
         }
       })
       .catch((error) => {
@@ -1042,344 +1044,347 @@ const CheckoutScreen = props => {
       });
 
 
-      //return setData(newData.results);
-    };
+    //return setData(newData.results);
+  };
 
   const checkPromo = (event) => {
-      fetchAffiliates();
+    fetchAffiliates();
   };
 
 
+  console.log(checked1, checked2, checked3)
 
-    return (
-      <div style={{fontFamily: "Roboto, sans-serif"}}>
-        <Head>
-          <title>Max And Lea - Checkout</title>
-          <link
-            rel="stylesheet"
-            type="text/css"
-            charset="UTF-8"
-            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-          />
-            <link
-              rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-              integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-              crossorigin="anonymous"
-              />
-        </Head>
-        <Header />
+  console.log(errorLivraison)
+  return (
+    <PayPalScriptProvider options= {{"client-id": process.env.PAYPAL_CLIENT_ID }}>
+    <div style={{fontFamily: "Roboto, sans-serif"}}>
+      <Head>
+        <title>Max And Lea - Checkout</title>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          charset="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous"
+        />
+      </Head>
+      <Header />
 
-        <div className="cadeauContainer">
-          <h2 className="cadeauContainerText">Le plus beau cadeau pour votre enfant</h2>
+      <div className="cadeauContainer">
+        <h2 className="cadeauContainerText">Le plus beau cadeau pour votre enfant</h2>
+      </div>
+
+      <div>
+        <AvisClients/>
+      </div>
+
+      <div className="checkoutContainer">
+        <div className="progressBarContainer">
+          <p className="progressBarText">CHOIX DU PRODUIT</p>
+          <p className="progressBarText">ADRESSE DE LIVRAISON ET DE FACTURATION</p>
+          <p className="progressBarText">PAIEMENT</p>
+        </div>
+        <div className="hrContainerCheckout">
+          <img src={'/ellipsePetite.png'} alt="" className="ellipseImg"/>
+          <hr className={firstStep ? 'premierHrDone' : 'premierHr'}/>
+          <img src={'/ellipsePetite.png'} alt="" className="ellipseImg"/>
+          <hr className={goPaiement ? 'deuxiemeHrDone' : 'deuxiemeHr'}/>
+          <img src={'/ellipsePetite.png'} alt="" className="ellipseImg"/>
         </div>
 
-        <div>
-          <AvisClients/>
-        </div>
-
-        <div className="checkoutContainer">
-          <div className="progressBarContainer">
-            <p className="progressBarText">CHOIX DU PRODUIT</p>
-            <p className="progressBarText">ADRESSE DE LIVRAISON ET DE FACTURATION</p>
-            <p className="progressBarText">PAIEMENT</p>
-          </div>
-          <div className="hrContainerCheckout">
-            <img src={'/ellipsePetite.png'} alt="" className="ellipseImg"/>
-            <hr className={firstStep ? 'premierHrDone' : 'premierHr'}/>
-            <img src={'/ellipsePetite.png'} alt="" className="ellipseImg"/>
-            <hr className={goPaiement ? 'deuxiemeHrDone' : 'deuxiemeHr'}/>
-            <img src={'/ellipsePetite.png'} alt="" className="ellipseImg"/>
-          </div>
-
-          <div className="produitPaiementContainer">
-            <div className="produitContainer">
-              <p className="produitText">Produit</p>
-              {(!cart || cart.products.length === 0) && (
-                <h2>Vous n'avez pas d'articles dans votre panier</h2>
-              )}
-              <div className="productContainer">
-                <div className="imgContainer">
-                  {
-                    cart && cart.products.length && (
-                      cart.products.map(item => (
-                          <CartItem
-                            key={item.productId}
-                            item={item}
-                            setCart={setCart}
-                          />
-                        )
+        <div className="produitPaiementContainer">
+          <div className="produitContainer">
+            <p className="produitText">Produit</p>
+            {(!cart || cart.products.length === 0) && (
+              <h2>Vous n'avez pas d'articles dans votre panier</h2>
+            )}
+            <div className="productContainer">
+              <div className="imgContainer">
+                {
+                  cart && cart.products.length && (
+                    cart.products.map(item => (
+                        <CartItem
+                          key={item.productId}
+                          item={item}
+                          setCart={setCart}
+                        />
                       )
                     )
-                  }
-                </div>
+                  )
+                }
               </div>
-              <div className="ebookContainer">
-                <div className="ebookInner">
-                  <p>Ebook Playboard imprimé (9,99€)</p>
-                  <Checkbox checked={checkedEbookPlayboard}
-                            onChange={(event) => {
-                              setCheckedEbookPlayboard(!checkedEbookPlayboard)
-                              if (ebookInCart && ebookInCart.length!==0) {
+            </div>
+            <div className="ebookContainer">
+              <div className="ebookInner">
+                <p>Ebook Playboard imprimé (9,99€)</p>
+                <Checkbox checked={checkedEbookPlayboard}
+                          onChange={(event) => {
+                            setCheckedEbookPlayboard(!checkedEbookPlayboard)
+                            if (ebookInCart && ebookInCart.length!==0) {
 
+                            } else {
+                              if (!checkedEbookPlayboard) {
+                                handleAddToCartEbookPlayboard()
                               } else {
-                                if (!checkedEbookPlayboard) {
-                                  handleAddToCartEbookPlayboard()
-                                } else {
-                                  setCheckedEbookPlayboard(false)
-                                }
+                                setCheckedEbookPlayboard(false)
                               }
-                            }} />
-                </div>
-                <div className="ebookInner">
-                  <p>Ebook Par mail (gratuit)</p>
-                  <Checkbox
-                    checked={true}
-                    disabled
-                    onChange={() => {
-                      setCheckedEbookPlayboard(!checkedEbookPlayboard)
-                      handleAddToCartEbookPlayboard()
-                    }}
-                  />
-                </div>
+                            }
+                          }} />
               </div>
-              <div className="prixRecap">
-                <div className="sousTotal">
-
-                  <div>
-                    {playboardInCart.length !== 0 && (
-                      <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount PlayBoard</p>
-                        <p className="itemTotalPrice">{playboardReducPrice} €</p>
-                      </div>
-                    )}
-                  </div>
-
-                  <div>
-                    {xyloInCart.length !== 0 && (
-                      <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount Xylophone</p>
-                        <p className="itemTotalPrice">{xyloReducPrice} €</p>
-                      </div>
-                    )}
-                  </div>
-
-                  <div>
-                    {tourInCart.length !== 0 && (
-                      <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount Tour</p>
-                        <p className="itemTotalPrice">{tourReducPrice} €</p>
-                      </div>
-                    )}
-                  </div>
-
-                  <div>
-                    {qtyTotale === 2 && (
-                      <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount Panier (2 articles) 10%</p>
-                        <p className="itemTotalPrice">{(totalPrice1 * 0.10).toFixed(2)} €</p>
-                      </div>
-                    )}
-                  </div>
-
-                  <div>
-                    {qtyTotale === 3 && (
-                      <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount Panier (3 articles) 15%</p>
-                        <p className="itemTotalPrice">{(totalPrice1 * 0.15).toFixed(2)} €</p>
-                      </div>
-                    )}
-                  </div>
-
-                  <div>
-                    {qtyTotale >= 4 && (
-                      <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount Panier (4 articles et plus) 20%</p>
-                        <p className="itemTotalPrice">{(totalPrice1 * 0.20).toFixed(2)} €</p>
-                      </div>
-                    )}
-                  </div>
-
-
-                  <div>
-                    {(codePromo && codePromo.amount) && (
-                      <div className="prix-reduc-container">
-                        <p className="sousTotalText">Code Promo</p>
-                        <p className="itemTotalPrice">{codePromo.amount} %</p>
-                      </div>
-                    )}
-                  </div>
-
-                  <div>
-
-                  </div>
-
-                </div>
-
-                <hr/>
-
-
-                {(cart && cart.products.length) && (
-                  <div className="sousTotal">
-                    <div>
-                      <div className="prix-reduc-container">
-                        <p className="sousTotalText2">Sous-total</p>
-                        <p className="itemTotalPrice2">{totalPrice1.toFixed(2)} €</p>
-                      </div>
-                    </div>
-
-                    <div>
-                      {prixLivraison !== 0 && (
-                        <div className="prix-reduc-container">
-                          <p className="sousTotalText2">Prix livraison</p>
-                          <p className="itemTotalPrice2">{prixLivraison} €</p>
-                        </div>
-                      )}
-                    </div>
-
-                    <hr/>
-                    <div>
-                        <div className="prix-reduc-container">
-                          <p className="sousTotalText2" style={{fontWeight: 'bold'}}>Total</p>
-                          <p className="itemTotalPrice2" style={{fontWeight: 'bold'}}>{totalPrice2.toFixed(2)} €</p>
-                        </div>
-                    </div>
-                    <hr/>
-
-                    <div>
-
-                    </div>
-
-                  </div>
-                )}
+              <div className="ebookInner">
+                <p>Ebook Par mail (gratuit)</p>
+                <Checkbox
+                  checked={true}
+                  disabled
+                  onChange={() => {
+                    setCheckedEbookPlayboard(!checkedEbookPlayboard)
+                    handleAddToCartEbookPlayboard()
+                  }}
+                />
               </div>
+            </div>
+            <div className="prixRecap">
+              <div className="sousTotal">
 
-              <div className="codepromoContainer">
                 <div>
-                  <input type="text" onChange={event => setpromoCode(event.target.value)} placeholder="Code promo" className="inputPromo"/>
-                  {codePromoIncorrect ? <p style={{color: 'red'}}>Ce code est incorrect</p>: ''}
-                  {goodCodePromo ? <p style={{color: 'green'}}>Votre code promo a été validé</p>: ''}
+                  {playboardInCart.length !== 0 && (
+                    <div className="prix-reduc-container">
+                      <p className="sousTotalText">Discount PlayBoard</p>
+                      <p className="itemTotalPrice">{playboardReducPrice} €</p>
+                    </div>
+                  )}
                 </div>
-                {codePromoLoading && <Spinner animation="border" role="status">
-                  <span className="sr-only">Loading...</span>
-                </Spinner>}
-                <button className="buttonCodepromo" onClick={() => {checkPromo()}}>Valider votre code promo</button>
+
+                <div>
+                  {xyloInCart.length !== 0 && (
+                    <div className="prix-reduc-container">
+                      <p className="sousTotalText">Discount Xylophone</p>
+                      <p className="itemTotalPrice">{xyloReducPrice} €</p>
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  {tourInCart.length !== 0 && (
+                    <div className="prix-reduc-container">
+                      <p className="sousTotalText">Discount Tour</p>
+                      <p className="itemTotalPrice">{tourReducPrice} €</p>
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  {qtyTotale === 2 && (
+                    <div className="prix-reduc-container">
+                      <p className="sousTotalText">Discount Panier (2 articles) 10%</p>
+                      <p className="itemTotalPrice">{(totalPrice1 * 0.10).toFixed(2)} €</p>
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  {qtyTotale === 3 && (
+                    <div className="prix-reduc-container">
+                      <p className="sousTotalText">Discount Panier (3 articles) 15%</p>
+                      <p className="itemTotalPrice">{(totalPrice1 * 0.15).toFixed(2)} €</p>
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  {qtyTotale >= 4 && (
+                    <div className="prix-reduc-container">
+                      <p className="sousTotalText">Discount Panier (4 articles et plus) 20%</p>
+                      <p className="itemTotalPrice">{(totalPrice1 * 0.20).toFixed(2)} €</p>
+                    </div>
+                  )}
+                </div>
+
+
+                <div>
+                  {(codePromo && codePromo.amount) && (
+                    <div className="prix-reduc-container">
+                      <p className="sousTotalText">Code Promo</p>
+                      <p className="itemTotalPrice">{codePromo.amount} %</p>
+                    </div>
+                  )}
+                </div>
+
+                <div>
+
+                </div>
+
               </div>
 
-              <div className="addOtherArticlesPanier">
-                {qtyTotale === 1 && (
-                  <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 10% sur tout votre panier !</h5>
-                )}
+              <hr/>
 
-                {qtyTotale === 2 && (
-                  <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 15% sur tout votre panier !</h5>
-                )}
 
-                {qtyTotale === 3 && (
-                  <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 20% sur tout votre panier !</h5>
-                )}
-
-                {qtyTotale >= 4 && (
-                  <h5 className="addArticleTitle">Ajouter un article !</h5>
-                )}
-                <Carousel itemsToShow={3} isRTL={false} className="addItemsCarousel" breakPoints={breakPoints}>
-                  <div className="innerArticleContainer">
-                    <div className="imgContainerCarousel">
-                      <img src="https://maxandlea.com/wp-content/uploads/2020/06/VueProduit-2-Tablette-MaxAndLea-sans-logo.jpg" alt="playboard" className="xylophoneImg" onClick={() => {
-                        console.log('wola')
-                        handleClickOpenPlayboard()
-                      }}/>
-                      <SimpleDialogPlayboard open={openPlayboard} onClose={handleClosePlayboard} />
-                      <a href={'/playboard'} target="_blank" rel="noopener noreferrer"><p className="savoirplus">En savoir plus</p></a>
+              {(cart && cart.products.length) && (
+                <div className="sousTotal">
+                  <div>
+                    <div className="prix-reduc-container">
+                      <p className="sousTotalText2">Sous-total</p>
+                      <p className="itemTotalPrice2">{totalPrice1.toFixed(2)} €</p>
                     </div>
+                  </div>
 
-                    <div className="carouselItemAdd">
-                      <p className='addCarousel'>Ajouter la Playboard !</p>
-                      <div className="prixReduc">
-                        <p className="prixReducText">{products[2].price} €</p>
-                        <p className="fauxPrix">{products[2].priceAugmente} €</p>
+                  <div>
+                    {prixLivraison !== 0 && (
+                      <div className="prix-reduc-container">
+                        <p className="sousTotalText2">Prix livraison</p>
+                        <p className="itemTotalPrice2">{prixLivraison} €</p>
                       </div>
-                      <div className="economie">
-                        <p className="economieText">(-41% economisez {products[2].priceAugmente - products[2].price} €)</p>
-                      </div>
-                      <div className="buttonAddPanierContainer">
-                        <button className="buttonAddPanier" onClick={() => {
-                          handleAddToCartPlayboard()
-                          window.location.reload()
-                        }}>Ajouter au panier</button>
-                      </div>
+                    )}
+                  </div>
+
+                  <hr/>
+                  <div>
+                    <div className="prix-reduc-container">
+                      <p className="sousTotalText2" style={{fontWeight: 'bold'}}>Total</p>
+                      <p className="itemTotalPrice2" style={{fontWeight: 'bold'}}>{totalPrice2.toFixed(2)} €</p>
                     </div>
+                  </div>
+                  <hr/>
+
+                  <div>
 
                   </div>
 
-                  <div className="innerArticleContainer">
-                    <div className="imgContainerCarousel">
-                      <img src={'/xylophone.png'} alt="" className="xylophoneImg" onClick={handleClickOpenXylo}/>
-                      <SimpleDialogXylo open={openXylo} onClose={handleCloseXylo} />
-                      <a href={'/xylophone'} target="_blank" rel="noopener noreferrer"><p className="savoirplus">En savoir plus</p></a>
-                    </div>
-
-                    <div className="carouselItemAdd">
-                      <p className='addCarousel'>Ajouter le Xylophone !</p>
-                      <div className="prixReduc">
-                        <p className="prixReducText">{products[0].priceReduc} €</p>
-                        <p className="fauxPrix">{products[0].price} €</p>
-                      </div>
-                      <div className="economie">
-                        <p className="economieText">(-41% economisez {(products[0].price - products[0].priceReduc).toFixed(2)} €)</p>
-                      </div>
-                      <div className="buttonAddPanierContainer">
-                        <button className="buttonAddPanier" onClick={() => {
-                          handleAddToCartXylo()
-                          window.location.reload()
-                        }}>Ajouter au panier</button>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div className="innerArticleContainer">
-                    <div className="imgContainerCarousel">
-                      <img src={'/tourCarre.png'} alt="" className="xylophoneImg" onClick={handleClickOpenTour}/>
-                      <SimpleDialogTour open={openTour} onClose={handleCloseTour} />
-                      <a target="_blank" href={'/tour'} rel="noopener noreferrer"><p className="savoirplus">En savoir plus</p></a>
-                    </div>
-
-                    <div className="carouselItemAdd">
-                      <p className='addCarousel'>Ajouter la Tour Arc en Ciel !</p>
-                      <div className="prixReduc">
-                        <p className="prixReducText">{products[1].priceReduc} €</p>
-                        <p className="fauxPrix">{products[1].price} €</p>
-                      </div>
-                      <div className="economie">
-                        <p className="economieText">(-41% economisez {(products[1].price - products[1].priceReduc).toFixed(2)} €)</p>
-                      </div>
-                      <div className="buttonAddPanierContainer">
-                        <button className="buttonAddPanier" onClick={() => {
-                          handleAddToCartTour()
-                          window.location.reload()
-                        }}>Ajouter au panier</button>
-                      </div>
-                    </div>
-
-                  </div>
-                </Carousel>
-              </div>
-
+                </div>
+              )}
             </div>
 
-            <img src={'/separation.png'} alt="" className="separation"/>
+            <div className="codepromoContainer">
+              <div>
+                <input type="text" onChange={event => setpromoCode(event.target.value)} placeholder="Code promo" className="inputPromo"/>
+                {codePromoIncorrect ? <p style={{color: 'red'}}>Ce code est incorrect</p>: ''}
+                {goodCodePromo ? <p style={{color: 'green'}}>Votre code promo a été validé</p>: ''}
+              </div>
+              {codePromoLoading && <Spinner animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+              </Spinner>}
+              <button className="buttonCodepromo" onClick={() => {checkPromo()}}>Valider votre code promo</button>
+            </div>
+
+            <div className="addOtherArticlesPanier">
+              {qtyTotale === 1 && (
+                <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 10% sur tout votre panier !</h5>
+              )}
+
+              {qtyTotale === 2 && (
+                <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 15% sur tout votre panier !</h5>
+              )}
+
+              {qtyTotale === 3 && (
+                <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 20% sur tout votre panier !</h5>
+              )}
+
+              {qtyTotale >= 4 && (
+                <h5 className="addArticleTitle">Ajouter un article !</h5>
+              )}
+              <Carousel itemsToShow={3} isRTL={false} className="addItemsCarousel" breakPoints={breakPoints}>
+                <div className="innerArticleContainer">
+                  <div className="imgContainerCarousel">
+                    <img src="https://maxandlea.com/wp-content/uploads/2020/06/VueProduit-2-Tablette-MaxAndLea-sans-logo.jpg" alt="playboard" className="xylophoneImg" onClick={() => {
+                      console.log('wola')
+                      handleClickOpenPlayboard()
+                    }}/>
+                    <SimpleDialogPlayboard open={openPlayboard} onClose={handleClosePlayboard} />
+                    <a href={'/playboard'} target="_blank" rel="noopener noreferrer"><p className="savoirplus">En savoir plus</p></a>
+                  </div>
+
+                  <div className="carouselItemAdd">
+                    <p className='addCarousel'>Ajouter la Playboard !</p>
+                    <div className="prixReduc">
+                      <p className="prixReducText">{products[2].price} €</p>
+                      <p className="fauxPrix">{products[2].priceAugmente} €</p>
+                    </div>
+                    <div className="economie">
+                      <p className="economieText">(-41% economisez {products[2].priceAugmente - products[2].price} €)</p>
+                    </div>
+                    <div className="buttonAddPanierContainer">
+                      <button className="buttonAddPanier" onClick={() => {
+                        handleAddToCartPlayboard()
+                        window.location.reload()
+                      }}>Ajouter au panier</button>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div className="innerArticleContainer">
+                  <div className="imgContainerCarousel">
+                    <img src={'/xylophone.png'} alt="" className="xylophoneImg" onClick={handleClickOpenXylo}/>
+                    <SimpleDialogXylo open={openXylo} onClose={handleCloseXylo} />
+                    <a href={'/xylophone'} target="_blank" rel="noopener noreferrer"><p className="savoirplus">En savoir plus</p></a>
+                  </div>
+
+                  <div className="carouselItemAdd">
+                    <p className='addCarousel'>Ajouter le Xylophone !</p>
+                    <div className="prixReduc">
+                      <p className="prixReducText">{products[0].priceReduc} €</p>
+                      <p className="fauxPrix">{products[0].price} €</p>
+                    </div>
+                    <div className="economie">
+                      <p className="economieText">(-41% economisez {(products[0].price - products[0].priceReduc).toFixed(2)} €)</p>
+                    </div>
+                    <div className="buttonAddPanierContainer">
+                      <button className="buttonAddPanier" onClick={() => {
+                        handleAddToCartXylo()
+                        window.location.reload()
+                      }}>Ajouter au panier</button>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div className="innerArticleContainer">
+                  <div className="imgContainerCarousel">
+                    <img src={'/tourCarre.png'} alt="" className="xylophoneImg" onClick={handleClickOpenTour}/>
+                    <SimpleDialogTour open={openTour} onClose={handleCloseTour} />
+                    <a target="_blank" href={'/tour'} rel="noopener noreferrer"><p className="savoirplus">En savoir plus</p></a>
+                  </div>
+
+                  <div className="carouselItemAdd">
+                    <p className='addCarousel'>Ajouter la Tour Arc en Ciel !</p>
+                    <div className="prixReduc">
+                      <p className="prixReducText">{products[1].priceReduc} €</p>
+                      <p className="fauxPrix">{products[1].price} €</p>
+                    </div>
+                    <div className="economie">
+                      <p className="economieText">(-41% economisez {(products[1].price - products[1].priceReduc).toFixed(2)} €)</p>
+                    </div>
+                    <div className="buttonAddPanierContainer">
+                      <button className="buttonAddPanier" onClick={() => {
+                        handleAddToCartTour()
+                        window.location.reload()
+                      }}>Ajouter au panier</button>
+                    </div>
+                  </div>
+
+                </div>
+              </Carousel>
+            </div>
+
+          </div>
+
+          <img src={'/separation.png'} alt="" className="separation"/>
 
 
 
-            <div className="prixContainer">
-              {cart ?
-                <div>
+          <div className="prixContainer">
+            {cart ?
+              <div>
                 <div className="prixText">
                   <a href="javascript:void(0);" onClick={() => setGoPaiement(false)}>
                     <p className={!goPaiement ? 'coordonneesText' : 'coordonneesTextLight'}>Coordonnées</p>
@@ -1432,8 +1437,13 @@ const CheckoutScreen = props => {
                             sousTotal : totalPrice1
                           }
                         }
-                        localStorage.setItem('livraison', JSON.stringify(donnesClient))
-                        setGoPaiement(true)
+                        if (!checked1 || !checked2 || !checked3) {
+                          setErrorLivraison(true)
+                        } else {
+                          localStorage.setItem('livraison', JSON.stringify(donnesClient))
+                          setGoPaiement(true)
+                        }
+
                       }}
                     >
                       {props => (
@@ -1525,7 +1535,7 @@ const CheckoutScreen = props => {
 
 
                               {countries.listCountries.map((option) => (
-                                <MenuItem key={option.code} value={option.name} defaultValue={(dataClient && dataClient.pays) ? dataClient.pays : ''} onClick={() => {
+                                <MenuItem key={option.code} value={option.name} onClick={() => {
                                   setPays(option.name)
                                   setChecked2(false);
                                   setChecked1(false);
@@ -1534,7 +1544,6 @@ const CheckoutScreen = props => {
                                   {option.name}
                                 </MenuItem>
                               ))}
-
                             </TextField>
                           </div>
 
@@ -1600,7 +1609,6 @@ const CheckoutScreen = props => {
                             </div>
                           ) : ''}
 
-
                           <div className="inputContainer">
                             <TextField
                               value={props.values.phone}
@@ -1660,8 +1668,11 @@ const CheckoutScreen = props => {
                                     <p>6,99 €</p>
                                   </div>
                                 </div>
+                                {errorLivraison ? <p className='text-danger'>Veuillez remplir ce champ</p> : ''}
                               </div>
-                            )}
+
+                              )}
+
 
                             {pays === 'Etats-Unis' && (
                               <div className="livraisonRow">
@@ -1677,6 +1688,8 @@ const CheckoutScreen = props => {
                                 <div className="livraisonPrice">
                                   <p>19,99 €</p>
                                 </div>
+                                {errorLivraison ? <p className='text-danger'>Veuillez remplir ce champ</p> : ''}
+
                               </div>
                             )}
 
@@ -1712,10 +1725,52 @@ const CheckoutScreen = props => {
                                     <p>9,99 €</p>
                                   </div>
                                 </div>
+                                {errorLivraison ? <p className='text-danger'>Veuillez remplir ce champ</p> : ''}
+
                               </div>
                             )}
 
-                            {(pays === 'Albanie' || pays === 'Algérie' || pays === 'Argentine' || pays === 'Bolivie' || pays === 'Bulgarie' || pays === 'Brésil' || pays === 'Canada' || pays === 'Chili' || pays === 'Chypre' || pays === 'Colombie' || pays === 'Costa Rica' || pays === 'Gibraltar' || pays === 'Guadeloupe' || pays === 'Guatemala' || pays === 'Guyane' || pays === 'Guyane Française' || pays === 'Israël' || pays === 'La Réunion' || pays === 'Liban' || pays === 'Malte' || pays === 'Maroc' || pays === 'Martinique' || pays === 'Mayotte' || pays === 'Mexique' || pays === 'Moldavie' || pays === 'Nouvelle-Calédonie' || pays === 'Panama' || pays === 'Paraguay' || pays === 'Puerto Rico' || pays === 'Pérou' || pays === 'Saint Pierre et Miquelon' || pays === 'Salvador' || pays === 'Terres Australes Françaises' || pays === 'Tunisie' || pays === 'Ukraine' || pays === 'Uruguay' || pays === 'Vatican' || pays === 'Venezuela' || pays === 'Equateur') && (
+
+
+                            {(pays === 'Albanie'
+                              || pays === 'Algérie'
+                              || pays === 'Argentine'
+                              || pays === 'Bolivie'
+                              || pays === 'Bulgarie'
+                              || pays === 'Brésil'
+                              || pays === 'Canada'
+                              || pays === 'Chili'
+                              || pays === 'Chypre'
+                              || pays === 'Colombie'
+                              || pays === 'Costa Rica'
+                              || pays === 'Gibraltar'
+                              || pays === 'Guadeloupe'
+                              || pays === 'Guatemala'
+                              || pays === 'Guyane'
+                              || pays === 'Guyane Française'
+                              || pays === 'Israël'
+                              || pays === 'La Réunion'
+                              || pays === 'Liban'
+                              || pays === 'Malte'
+                              || pays === 'Maroc'
+                              || pays === 'Martinique'
+                              || pays === 'Mayotte'
+                              || pays === 'Mexique'
+                              || pays === 'Moldavie'
+                              || pays === 'Nouvelle-Calédonie'
+                              || pays === 'Panama'
+                              || pays === 'Paraguay'
+                              || pays === 'Puerto Rico'
+                              || pays === 'Pérou'
+                              || pays === 'Saint Pierre et Miquelon'
+                              || pays === 'Salvador'
+                              || pays === 'Terres Australes Françaises'
+                              || pays === 'Tunisie'
+                              || pays === 'Ukraine'
+                              || pays === 'Uruguay'
+                              || pays === 'Vatican'
+                              || pays === 'Venezuela'
+                              || pays === 'Equateur') && (
                               <div>
                                 <div className="livraisonRow">
                                   <div className="checkboxLivraisonContainer">
@@ -1746,11 +1801,28 @@ const CheckoutScreen = props => {
                                     <p>54,99 €</p>
                                   </div>
                                 </div>
+                                {errorLivraison ? <p className='text-danger'>Veuillez remplir ce champ</p> : ''}
+
                               </div>
                             )}
 
 
-                            {(pays === 'Espagne' || pays === 'Allemagne' || pays === 'Andorre' || pays === 'Autriche' || pays === 'Belgique' || pays === 'Danemark' || pays === 'Hongrie' || pays === 'Irlande' || pays === 'Italie' || pays === 'Luxembourg' || pays === 'Liechtenstein' || pays === 'Pays-Bas' || pays === 'Pologne' || pays === 'Portugal' || pays === 'République Tchèque') && (
+
+                            {(pays === 'Espagne'
+                              || pays === 'Allemagne'
+                              || pays === 'Andorre'
+                              || pays === 'Autriche'
+                              || pays === 'Belgique'
+                              || pays === 'Danemark'
+                              || pays === 'Hongrie'
+                              || pays === 'Irlande'
+                              || pays === 'Italie'
+                              || pays === 'Luxembourg'
+                              || pays === 'Liechtenstein'
+                              || pays === 'Pays-Bas'
+                              || pays === 'Pologne'
+                              || pays === 'Portugal'
+                              || pays === 'République Tchèque') && (
                               <div>
                                 <div className="livraisonRow">
                                   <div className="checkboxLivraisonContainer">
@@ -1781,11 +1853,16 @@ const CheckoutScreen = props => {
                                     <p>12,99 €</p>
                                   </div>
                                 </div>
+                                {errorLivraison ? <p className='text-danger'>Veuillez remplir ce champ</p> : ''}
+
                               </div>
                             )}
 
 
-                            {(pays === 'Croatie' || pays === 'Islande' || pays === 'Norvège') && (
+
+                            {(pays === 'Croatie'
+                              || pays === 'Islande'
+                              || pays === 'Norvège') && (
                               <div>
                                 <div className="livraisonRow">
                                   <div className="checkboxLivraisonContainer">
@@ -1816,10 +1893,22 @@ const CheckoutScreen = props => {
                                     <p>29,99 €</p>
                                   </div>
                                 </div>
+                                {errorLivraison ? <p className='text-danger'>Veuillez remplir ce champ</p> : ''}
+
                               </div>
                             )}
 
-                            {(pays === 'Estonie' || pays === 'Finlande' || pays === 'Grèce' || pays === 'Lettonie' || pays === 'Lituanie' || pays === 'Roumanie' || pays === 'Slovaquie' || pays === 'Slovénie' || pays === 'Suède') && (
+
+
+                            {(pays === 'Estonie'
+                              || pays === 'Finlande'
+                              || pays === 'Grèce'
+                              || pays === 'Lettonie'
+                              || pays === 'Lituanie'
+                              || pays === 'Roumanie'
+                              || pays === 'Slovaquie'
+                              || pays === 'Slovénie'
+                              || pays === 'Suède') && (
                               <div>
                                 <div className="livraisonRow">
                                   <div className="checkboxLivraisonContainer">
@@ -1850,8 +1939,11 @@ const CheckoutScreen = props => {
                                     <p>19,99 €</p>
                                   </div>
                                 </div>
+                                {errorLivraison ? <p className='text-danger'>Veuillez remplir ce champ</p> : ''}
+
                               </div>
                             )}
+
 
                           </div>
 
@@ -1886,26 +1978,27 @@ const CheckoutScreen = props => {
                   </Elements>}
 
                 </div>
-                </div>
+              </div>
               : <p className="articlesInPanier">Veuillez ajouter des articles dans votre panier !</p>}
 
-            </div>
-
           </div>
-        </div>
 
-        <div className="recommendation">
-          <h5 className="recommendation-title">Ils recommandent la Playboard®</h5>
-          <Recommande />
-        </div>
-        <div>
-          <Garanties />
-        </div>
-        <div>
-          <Footer />
         </div>
       </div>
-    )
-  };
+
+      <div className="recommendation">
+        <h5 className="recommendation-title">Ils recommandent la Playboard®</h5>
+        <Recommande />
+      </div>
+      <div>
+        <Garanties />
+      </div>
+      <div>
+        <Footer />
+      </div>
+    </div>
+    </PayPalScriptProvider>
+  )
+};
 
 export default CheckoutScreen

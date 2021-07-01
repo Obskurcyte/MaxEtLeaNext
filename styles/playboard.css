@@ -145,6 +145,11 @@
   width: 100%;
 }
 
+.question {
+  cursor: pointer;
+  z-index: 2;
+  margin-bottom: 5%
+}
 .playboard-title-container {
   border-radius: 71px;
   background-color: #f13f57;
@@ -870,7 +875,8 @@
 .playboardImgContainer {
   position: absolute;
   left: 40%;
-  bottom: 5%;
+  bottom: 1%;
+  cursor: pointer;
 }
 
 .playboardRedPrice {
