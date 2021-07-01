@@ -1646,6 +1646,8 @@ const CheckoutScreen = props => {
                                   </div>
                                 </div>
 
+                                <div id="Zone_Widget"></div>
+
                                 <div className="livraisonRow">
                                   <div className="checkboxLivraisonContainer">
                                     <Checkbox
