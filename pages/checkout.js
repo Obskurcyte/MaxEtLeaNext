@@ -1629,7 +1629,10 @@ const CheckoutScreen = props => {
                                   <div className="checkboxLivraisonContainer">
                                     <Checkbox
                                       checked={checked1}
-                                      onChange={() => handleChange1(event, 4.99)}
+                                      onChange={() => {
+                                        handleChange1(event, 4.99)
+                                        setMondialRelay(false)
+                                      }}
                                       inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
                                   </div>
                                   <div className="livraisonChoice">
@@ -1647,7 +1650,7 @@ const CheckoutScreen = props => {
                                       checked={checked2}
                                       onChange={() => {
                                         handleChange2(event, 4.99)
-                                        setMondialRelay(checked2)
+                                        setMondialRelay(true)
                                       }}
                                       inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
                                   </div>
@@ -1663,7 +1666,10 @@ const CheckoutScreen = props => {
                                   <div className="checkboxLivraisonContainer">
                                     <Checkbox
                                       checked={checked3}
-                                      onChange={() => handleChange3(event, 6.99)}
+                                      onChange={() => {
+                                        handleChange3(event, 6.99)
+                                        setMondialRelay(false)
+                                      }}
                                       inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
                                   </div>
                                   <div className="livraisonChoice">
