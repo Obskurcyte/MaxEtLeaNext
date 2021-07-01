@@ -8,7 +8,7 @@ import {Elements} from "@stripe/react-stripe-js";
 import CheckoutFormStripe from "../components/CheckoutFormStripe";
 import CartItem from "../components/CartItem";
 import {Spinner} from "react-bootstrap";
-import {Field, Formik} from "formik";
+import {Formik} from "formik";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -21,18 +21,119 @@ import Head from 'next/head';
 import * as countries from '../listCountries';
 import * as product from "../products";
 import * as Yup from 'yup';
-import Menu from "@material-ui/core/Menu";
-import {getCart, setMauvaisCart} from "../store/actions/commandes";
-import {useDispatch, useSelector} from "react-redux";
-import styles from "../components/CheckoutFormStripe.module.css";
-import Slider from "react-slick";
+import Dialog from '@material-ui/core/Dialog';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import AvisClients from "../components/AvisClients";
-import {getCoupons} from "../store/actions/coupons.js";
-import {getProducts} from "../store/actions/product.js";
 import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
+
 
 const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
+function SimpleDialogPlayboard(props) {
+  const { onClose, selectedValue, open } = props;
+
+  const handleClose = () => {
+    onClose(selectedValue);
+  };
+
+  const handleListItemClick = (value) => {
+    onClose(value);
+  };
+
+  return (
+    <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+      <div>
+        <img src={'/popup.png'} alt="" style={{maxWidth: '100%'}}/>
+      </div>
+    </Dialog>
+  );
+}
+
+function SimpleDialogXylo(props) {
+  const { onClose, selectedValue, open } = props;
+
+  const handleClose = () => {
+    onClose(selectedValue);
+  };
+
+  const handleListItemClick = (value) => {
+    onClose(value);
+  };
+
+  return (
+    <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+      <div>
+        <img src={'/xylopopup.webp'} alt="" style={{maxWidth: '100%'}}/>
+        <div>
+          <div className="flex iconContainer">
+            <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
+            <p>Il découvre <span className="fw-bold">ses premières notes musicales</span></p>
+          </div>
+          <div className="flex iconContainer">
+            <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
+            <p>Il développe sa <span className="fw-bold">capacité auditive</span> et son ouïe</p>
+          </div>
+          <div className="flex iconContainer">
+            <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
+            <p>Une aide au développement <span className="fw-bold">psycho-moteur</span> et à <span className="fw-bold">l'éveil</span> </p>
+          </div>
+          <div className="flex iconContainer">
+            <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
+            <p><span className="fw-bold">8 tonalités différentes</span>pour un maximum de sons et de <span className="fw-bold">plaisirs</span></p>
+          </div>
+          <div className="flex iconContainer">
+            <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
+            <p><span className="fw-bold">7 partitions musicales OFFERTES</span> avec votre xylophone</p>
+          </div>
+
+        </div>
+      </div>
+    </Dialog>
+  );
+}
+
+function SimpleDialogTour(props) {
+  const { onClose, selectedValue, open } = props;
+
+  const handleClose = () => {
+    onClose(selectedValue);
+  };
+
+  const handleListItemClick = (value) => {
+    onClose(value);
+  };
+
+  return (
+    <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+      <div>
+        <img src={'/tourPopup.webp'} alt="" style={{maxWidth: '100%'}}/>
+        <div>
+          <div className="flex iconContainer">
+            <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
+            <p>Développer son sens de <span className="fw-bold">l'organisation</span> et de <span className="fw-bold">l'agencement</span></p>
+          </div>
+          <div className="flex iconContainer">
+            <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
+            <p><span className="fw-bold">Empiler</span> les grosses pièces de couleur</p>
+          </div>
+          <div className="flex iconContainer">
+            <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
+            <p><span className="fw-bold">Réorganiser</span> les couleurs et les dégradés</p>
+          </div>
+          <div className="flex iconContainer">
+            <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
+            <p><span className="fw-bold">Apprendre en jouant</span></p>
+          </div>
+          <div className="flex iconContainer">
+            <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
+            <p><span className="fw-bold">100% Bois et 100% Ecologique</span></p>
+          </div>
+        </div>
+      </div>
+    </Dialog>
+  );
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,6 +146,31 @@ const useStyles = makeStyles((theme) => ({
 
 const CheckoutScreen = props => {
 
+  const [openPlayboard, setOpenPlayboard] = React.useState(false);
+  const [openXylo, setOpenXylo] = useState(false);
+  const [openTour, setOpenTour] = useState(false);
+
+  const handleClickOpenPlayboard = () => {
+    setOpenPlayboard(true);
+  };
+
+  const handleClickOpenXylo = () => {
+    setOpenXylo(true);
+  };
+
+  const handleClickOpenTour = () => {
+    setOpenTour(true);
+  };
+
+  const handleClosePlayboard = (value) => {
+    setOpenPlayboard(false);
+  };
+  const handleCloseXylo = (value) => {
+    setOpenXylo(false);
+  };
+  const handleCloseTour = (value) => {
+    setOpenTour(false);
+  };
 
   const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
 
@@ -1186,8 +1312,12 @@ const CheckoutScreen = props => {
                 <Carousel itemsToShow={3} isRTL={false} className="addItemsCarousel" breakPoints={breakPoints}>
                   <div className="innerArticleContainer">
                     <div className="imgContainerCarousel">
-                      <img src="https://maxandlea.com/wp-content/uploads/2020/06/VueProduit-2-Tablette-MaxAndLea-sans-logo.jpg" alt="playboard" className="xylophoneImg"/>
-                      <Link href={'/playboard'}><p className="savoirplus">En savoir plus</p></Link>
+                      <img src="https://maxandlea.com/wp-content/uploads/2020/06/VueProduit-2-Tablette-MaxAndLea-sans-logo.jpg" alt="playboard" className="xylophoneImg" onClick={() => {
+                        console.log('wola')
+                        handleClickOpenPlayboard()
+                      }}/>
+                      <SimpleDialogPlayboard open={openPlayboard} onClose={handleClosePlayboard} />
+                      <a href={'/playboard'} target="_blank" rel="noopener noreferrer"><p className="savoirplus">En savoir plus</p></a>
                     </div>
 
                     <div className="carouselItemAdd">
@@ -1211,8 +1341,9 @@ const CheckoutScreen = props => {
 
                   <div className="innerArticleContainer">
                     <div className="imgContainerCarousel">
-                      <img src={'/xylophone.png'} alt="" className="xylophoneImg"/>
-                      <Link href={'/xylophone'}><p className="savoirplus">En savoir plus</p></Link>
+                      <img src={'/xylophone.png'} alt="" className="xylophoneImg" onClick={handleClickOpenXylo}/>
+                      <SimpleDialogXylo open={openXylo} onClose={handleCloseXylo} />
+                      <a href={'/xylophone'} target="_blank" rel="noopener noreferrer"><p className="savoirplus">En savoir plus</p></a>
                     </div>
 
                     <div className="carouselItemAdd">
@@ -1236,8 +1367,9 @@ const CheckoutScreen = props => {
 
                   <div className="innerArticleContainer">
                     <div className="imgContainerCarousel">
-                      <img src={'/tourCarre.png'} alt="" className="xylophoneImg"/>
-                      <Link href={'/tour'}><p className="savoirplus">En savoir plus</p></Link>
+                      <img src={'/tourCarre.png'} alt="" className="xylophoneImg" onClick={handleClickOpenTour}/>
+                      <SimpleDialogTour open={openTour} onClose={handleCloseTour} />
+                      <a target="_blank" href={'/tour'} rel="noopener noreferrer"><p className="savoirplus">En savoir plus</p></a>
                     </div>
 
                     <div className="carouselItemAdd">

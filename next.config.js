@@ -29,4 +29,7 @@ module.exports = {
   images: {
     domains: ['https://play.maxandlea.com'],
   },
+  env: {
+    PAYPAL_CLIENT_ID: 'AfiMbg3knsQVR1llxcjFizkj0V-9sNkWH6Hy_P9xrpftezR8yQOy_H3iHrJbXUx7sRhi4pqubOYIa2MB',
+  },
   }

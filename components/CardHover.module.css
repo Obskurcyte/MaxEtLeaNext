@@ -36,6 +36,24 @@
   animation-iteration-count: infinite;
 }
 
+@keyframes shake {
+  1%, 9% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  2%, 8% {
+    transform: translate3d(2px, 0, 0);
+  }
+  3%, 5%, 7% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  4%, 6% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+
+
 .linkPopper {
   background-color: #E72C59;
   font-family: "Roboto", sans-serif;

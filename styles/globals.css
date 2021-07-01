@@ -7,6 +7,10 @@ html {
   margin: 0;
   font-family: "Roboto", sans-serif!important;
 }
+
+.flex {
+  display: flex;
+}
 a {
   font-size: 22px;
   letter-spacing: 0px;

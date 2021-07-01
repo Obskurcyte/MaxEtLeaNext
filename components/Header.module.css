@@ -5,8 +5,8 @@
   flex-direction: row;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 15%;
-  padding-right: 15%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 
@@ -202,7 +202,6 @@
   letter-spacing: 1px;
   color: #e72c59;
   margin-right: 5%;
-
   font-family: "Roboto", sans-serif;
   text-align: center;
   margin-bottom: 5px!important;

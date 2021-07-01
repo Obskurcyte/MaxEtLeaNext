@@ -144,13 +144,15 @@
 .img-couverture {
   width: 100%;
 }
+
 .playboard-title-container {
-  width: 680px;
   border-radius: 71px;
   background-color: #f13f57;
   text-align: center;
   align-items: center;
   margin: 3% auto;
+  display: inline-block;
+  padding: 0% 5%;
 }
 
 .pictos {
@@ -870,6 +872,7 @@
   left: 40%;
   bottom: 5%;
 }
+
 .playboardRedPrice {
   font-size: 28px;
   letter-spacing: -1px;
@@ -1328,7 +1331,28 @@
 }
 
 @media screen and (max-width: 650px) {
+  .ebooksContainer {
+    display: none;
+  }
   .playboardImgContainer {
+    position: unset;
+    width: 100%;
+    margin-right: 15%;
+    margin-top: 10%;
+  }
+  .priceFalse {
+    text-align: center;
+  }
+  .playboardContainer p {
+    text-align: center;
+  }
+  .ajouterPanierContainer p {
+    margin-top: 0;
+  }
+  .prixPlayboardContainer {
+    flex-direction: column;
+  }
+  .sacRangement {
     display: none;
   }
   .innerItemList{
