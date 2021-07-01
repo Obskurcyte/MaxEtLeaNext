@@ -1634,6 +1634,7 @@ const CheckoutScreen = props => {
                                 <div className="livraisonRow">
                                   <div className="checkboxLivraisonContainer">
                                     <Checkbox
+                                      id="relay_check"
                                       checked={checked2}
                                       onChange={() => handleChange2(event, 4.99)}
                                       inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
