@@ -78,7 +78,7 @@ const HeaderXylophone = (props) => {
 
 
   const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProducts(existingCart.products, products[2], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProducts(existingCart.products, products[0], qtyToBeAdded, newQty);
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -119,7 +119,7 @@ const HeaderXylophone = (props) => {
 
 
   const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, products[2].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[0].id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -159,11 +159,11 @@ const HeaderXylophone = (props) => {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
-        const updatedCart = updateCart(existingCart, products[2], qtyToBeAdded);
+        const updatedCart = updateCart(existingCart, products[0], qtyToBeAdded);
         setCart(updatedCart)
         setCommandeCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[2]);
+        const newCart = addFirstProduct(products[0]);
         setCart(newCart)
         setCommandeCart(newCart)
       }

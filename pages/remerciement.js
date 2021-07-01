@@ -2,6 +2,7 @@ import React, {Fragment, useContext, useEffect, useState} from 'react';
 import Header from "../components/Header";
 import Head from "next/head";
 import Footer from "../components/Footer";
+import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 
 
 const Remerciement = (props) => {
@@ -9,6 +10,13 @@ const Remerciement = (props) => {
   const [dataClient, setDataClient] = useState(null);
   const [cartCommande, setCartCommande] = useState(null);
   const [moyenPaiement, setMoyenPaiement] = useState('');
+
+  const WooCommerce = new WooCommerceRestApi({
+    url: 'https://maxandlea.fr',
+    consumerKey: 'ck_9e4d330373ed9a52a684ec88434271aa37652603',
+    consumerSecret: 'cs_a0272dea628e462d7288a10226cfa3e1f4ffcaff',
+    version: 'wc/v3'
+  }); 
 
   useEffect(() => {
     if ( process.browser) {
@@ -22,8 +30,81 @@ const Remerciement = (props) => {
       setMoyenPaiement(moyenPaiement)
       console.log(dataClient)
     }
-  }, []);
 
+    const createOrderWoo = async () => {
+
+      let dataClientCart = JSON.parse(localStorage.getItem('livraison'));
+      let cartClientCommande = JSON.parse(localStorage.getItem('commande-cart'));
+
+      var line_items_array = [];
+      if(cartClientCommande && cartClientCommande.products){
+        cartClientCommande.products.forEach( product => {
+          var temp_obj = {product_id: product.productId, quantity: product.qty};
+          line_items_array.push(temp_obj);
+        });
+      }
+      console.log(dataClientCart);
+      const data = {
+        payment_method: moyenPaiement,
+        payment_method_title: moyenPaiement,
+        set_paid: true,
+        billing: {
+          first_name: dataClientCart.prenom,
+          last_name: dataClientCart.nom,
+          address_1: dataClientCart.adresseFacturation,
+          address_2: "",
+          city: dataClientCart.villeFacturation,
+          state: "",
+          postcode: dataClientCart.codePostalFacturation,
+          country: dataClientCart.pays,
+          email: dataClientCart.email,
+          phone: dataClientCart.phone
+        },
+        shipping: {
+          first_name: dataClientCart.prenom,
+          last_name: dataClientCart.nom,
+          address_1: dataClientCart.adresseLivraison,
+          address_2: "",
+          city: dataClientCart.villeLivraison,
+          state: "",
+          postcode: dataClientCart.codePostalLivraison,
+          country: dataClientCart.pays
+        },
+        line_items: line_items_array,
+        shipping_lines: [
+          {
+            method_id: "flat_rate",
+            method_title: "Flat Rate",
+            total: dataClientCart.prixLivraison.toString()
+          }
+        ]
+      };
+      /*
+      line_items: [
+          {
+            product_id: 93,
+            quantity: 2
+          },
+          {
+            product_id: 22,
+            variation_id: 23,
+            quantity: 1
+          }
+        ],
+      */
+     
+
+      WooCommerce.post("orders", data)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+    }
+
+    createOrderWoo();
+  }, []);
 
   return (
     <div>

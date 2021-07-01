@@ -75,7 +75,7 @@ const HeaderTour = (props) => {
 
 
   const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProducts(existingCart.products, products[3], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProducts(existingCart.products, products[1], qtyToBeAdded, newQty);
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -116,7 +116,7 @@ const HeaderTour = (props) => {
 
 
   const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, products[3].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[1].id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -156,11 +156,11 @@ const HeaderTour = (props) => {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
-        const updatedCart = updateCart(existingCart, products[3], qtyToBeAdded);
+        const updatedCart = updateCart(existingCart, products[1], qtyToBeAdded);
         setCart(updatedCart)
         setCommandeCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[3]);
+        const newCart = addFirstProduct(products[1]);
         setCart(newCart)
         setCommandeCart(newCart)
       }

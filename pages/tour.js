@@ -53,7 +53,7 @@ const TourScreen = props => {
 
 
   const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProducts(existingCart.products, products[3], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProducts(existingCart.products, products[1], qtyToBeAdded, newQty);
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -93,7 +93,7 @@ const TourScreen = props => {
 
 
   const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, products[3].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[1].id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -131,10 +131,10 @@ const TourScreen = props => {
       if (existingCart!=null) {
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
-        const updatedCart = updateCart(existingCart, products[3], qtyToBeAdded);
+        const updatedCart = updateCart(existingCart, products[1], qtyToBeAdded);
         setCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[3]);
+        const newCart = addFirstProduct(products[1]);
         setCart(newCart)
       }
     }

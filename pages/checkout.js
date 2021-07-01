@@ -240,7 +240,7 @@ const CheckoutScreen = props => {
 
 
   const updateCartTour = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProductsTour(existingCart.products, products[3], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProductsTour(existingCart.products, products[1], qtyToBeAdded, newQty);
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -278,7 +278,7 @@ const CheckoutScreen = props => {
 
 
   const getUpdatedProductsTour = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, products[3].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[1].id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -316,11 +316,11 @@ const CheckoutScreen = props => {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
-        const updatedCart = updateCartTour(existingCart, products[2], qtyToBeAdded);
+        const updatedCart = updateCartTour(existingCart, products[0], qtyToBeAdded);
         setCart(updatedCart)
         setCommandeCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[2]);
+        const newCart = addFirstProduct(products[0]);
         setCart(newCart)
         setCommandeCart(newCart)
       }
@@ -328,7 +328,7 @@ const CheckoutScreen = props => {
   }
 
   const updateCartXylo = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProductsXylo(existingCart.products, products[2], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProductsXylo(existingCart.products, products[0], qtyToBeAdded, newQty);
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -366,7 +366,7 @@ const CheckoutScreen = props => {
 
 
   const getUpdatedProductsXylo = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, products[2].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[0].id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -392,11 +392,11 @@ const CheckoutScreen = props => {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
-        const updatedCart = updateCartXylo(existingCart, products[3], qtyToBeAdded);
+        const updatedCart = updateCartXylo(existingCart, products[1], qtyToBeAdded);
         setCart(updatedCart)
         setCommandeCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[3]);
+        const newCart = addFirstProduct(products[1]);
         setCart(newCart)
         setCommandeCart(newCart)
       }
@@ -404,7 +404,7 @@ const CheckoutScreen = props => {
   }
 
   const updateCartPlayboard = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProductsPlayboard(existingCart.products, products[4], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProductsPlayboard(existingCart.products, products[2], qtyToBeAdded, newQty);
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -442,7 +442,7 @@ const CheckoutScreen = props => {
 
 
   const getUpdatedProductsPlayboard = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, products[4].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[2].id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -468,11 +468,11 @@ const CheckoutScreen = props => {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
-        const updatedCart = updateCartPlayboard(existingCart, products[4], qtyToBeAdded);
+        const updatedCart = updateCartPlayboard(existingCart, products[2], qtyToBeAdded);
         setCart(updatedCart)
         setCommandeCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[4]);
+        const newCart = addFirstProduct(products[2]);
         setCart(newCart)
         setCommandeCart(newCart)
       }
@@ -480,7 +480,7 @@ const CheckoutScreen = props => {
   }
 
   const updateCartEbookPlayboard = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProductsEbookPlayboard(existingCart.products, products[5], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProductsEbookPlayboard(existingCart.products, products[3], qtyToBeAdded, newQty);
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -518,7 +518,7 @@ const CheckoutScreen = props => {
 
 
   const getUpdatedProductsEbookPlayboard = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, products[5].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[3].id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -544,39 +544,17 @@ const CheckoutScreen = props => {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
-        const updatedCart = updateCartEbookPlayboard(existingCart, products[5], qtyToBeAdded);
+        const updatedCart = updateCartEbookPlayboard(existingCart, products[3], qtyToBeAdded);
         setCart(updatedCart)
         setCommandeCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[5]);
+        const newCart = addFirstProduct(products[3]);
         setCart(newCart)
         setCommandeCart(newCart)
       }
     }
   }
 
-  const updateCartEbookXylo = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProductsEbookXylo(existingCart.products, products[6], qtyToBeAdded, newQty);
-    const addPrice = (total, item) => {
-
-      total.totalPrice = item.totalPrice;
-      total.qty += item.qty;
-      return total;
-    }
-
-    // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
-    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
-
-    const updatedCart = {
-      products: updatedProducts,
-      totalProductCount: parseInt(total.qty),
-      totalProductsPrice: parseFloat(total.totalPrice)
-    }
-
-    localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart))
-    localStorage.setItem('commande-cart', JSON.stringify(updatedCart));
-    return updatedCart
-  };
 
 
 
@@ -905,7 +883,7 @@ const CheckoutScreen = props => {
   let playboardInCart = []
   if (cart) {
     const playboard = cart.products.filter(obj => {
-      return obj.productId === 'cHJvZHVjdDozMTYz'
+      return obj.productId === '3163'
     })
     if (playboard.length !== 0) {
       playboardInCart = playboard
@@ -917,7 +895,7 @@ const CheckoutScreen = props => {
   let tourInCart = []
   if (cart) {
     const tour = cart.products.filter(obj => {
-      return obj.productId === 'cHJvZHVjdDo0NTI3'
+      return obj.productId === '4527'
     })
     if (tour.length !== 0) {
       tourInCart = tour
@@ -930,7 +908,7 @@ const CheckoutScreen = props => {
   let xyloInCart = []
   if (cart) {
     const xylo = cart.products.filter(obj => {
-      return obj.productId === 'cHJvZHVjdDo0NTM1'
+      return obj.productId === '4535'
     })
     if (xylo.length !== 0) {
       xyloInCart = xylo
@@ -1323,11 +1301,11 @@ const CheckoutScreen = props => {
                     <div className="carouselItemAdd">
                       <p className='addCarousel'>Ajouter la Playboard !</p>
                       <div className="prixReduc">
-                        <p className="prixReducText">{products[4].price} €</p>
-                        <p className="fauxPrix">{products[4].priceAugmente} €</p>
+                        <p className="prixReducText">{products[2].price} €</p>
+                        <p className="fauxPrix">{products[2].priceAugmente} €</p>
                       </div>
                       <div className="economie">
-                        <p className="economieText">(-41% economisez {products[4].priceAugmente - products[4].price} €)</p>
+                        <p className="economieText">(-41% economisez {products[2].priceAugmente - products[2].price} €)</p>
                       </div>
                       <div className="buttonAddPanierContainer">
                         <button className="buttonAddPanier" onClick={() => {
@@ -1349,11 +1327,11 @@ const CheckoutScreen = props => {
                     <div className="carouselItemAdd">
                       <p className='addCarousel'>Ajouter le Xylophone !</p>
                       <div className="prixReduc">
-                        <p className="prixReducText">{products[2].priceReduc} €</p>
-                        <p className="fauxPrix">{products[2].price} €</p>
+                        <p className="prixReducText">{products[0].priceReduc} €</p>
+                        <p className="fauxPrix">{products[0].price} €</p>
                       </div>
                       <div className="economie">
-                        <p className="economieText">(-41% economisez {(products[2].price - products[2].priceReduc).toFixed(2)} €)</p>
+                        <p className="economieText">(-41% economisez {(products[0].price - products[0].priceReduc).toFixed(2)} €)</p>
                       </div>
                       <div className="buttonAddPanierContainer">
                         <button className="buttonAddPanier" onClick={() => {
@@ -1375,11 +1353,11 @@ const CheckoutScreen = props => {
                     <div className="carouselItemAdd">
                       <p className='addCarousel'>Ajouter la Tour Arc en Ciel !</p>
                       <div className="prixReduc">
-                        <p className="prixReducText">{products[3].priceReduc} €</p>
-                        <p className="fauxPrix">{products[3].price} €</p>
+                        <p className="prixReducText">{products[1].priceReduc} €</p>
+                        <p className="fauxPrix">{products[1].price} €</p>
                       </div>
                       <div className="economie">
-                        <p className="economieText">(-41% economisez {(products[3].price - products[3].priceReduc).toFixed(2)} €)</p>
+                        <p className="economieText">(-41% economisez {(products[1].price - products[1].priceReduc).toFixed(2)} €)</p>
                       </div>
                       <div className="buttonAddPanierContainer">
                         <button className="buttonAddPanier" onClick={() => {

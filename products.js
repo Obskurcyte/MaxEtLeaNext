@@ -1,23 +1,7 @@
 export const products = [
   {
     description: null,
-    id: "cHJvZHVjdDo5Njk3",
-    name: "Xylophone",
-    price: "14,90€",
-    slug: "xylophone-2",
-    __typename: "SimpleProduct"
-  },
-  {
-    description: null,
-    id: "cHJvZHVjdDo5Njky",
-    name: "Tour Arc en ciel",
-    price: "12,90€",
-    slug: "tour-arc-en-ciel-2",
-    __typename: "SimpleProduct"
-  },
-  {
-    description: null,
-    id: "cHJvZHVjdDo0NTM1",
+    id: "4535",
     name: "Xylophone",
     price: "21.90",
     priceReduc: "12.90",
@@ -27,7 +11,7 @@ export const products = [
   },
   {
     description: null,
-    id: "cHJvZHVjdDo0NTI3",
+    id: "4527",
     name: "Tour Arc en ciel",
     price: "19.90",
     priceReduc: "12.90",
@@ -37,7 +21,7 @@ export const products = [
   },
   {
     description: null,
-    id: "cHJvZHVjdDozMTYz",
+    id: "3163",
     name: "La PlayBoard",
     price: "29.90",
     priceAugmente: "49.90",
@@ -52,26 +36,8 @@ export const products = [
     price: "9.90",
     slug: "ebook-playboard",
     __typename: "SimpleProduct",
-    image: "https://maxandlea.com/wp-content/uploads/2020/10/VueProduit-Tablette-MaxAndLea-2-min.png"
-  },
-  {
-    description: null,
-    id: "hdkudjiedkjjJ",
-    name: "Ebook Xylophone",
-    price: "9.90",
-    slug: "ebook-xylophone",
-    __typename: "SimpleProduct",
-    image: "https://maxandlea.com/wp-content/uploads/2020/10/VueProduit-Tablette-MaxAndLea-2-min.png"
-  },
-  {
-    description: null,
-    id: "oijcdoijiodJI",
-    name: "Ebook Tour Arc En Ciel",
-    price: "9.90",
-    slug: "ebook-tour",
-    __typename: "SimpleProduct",
-    image: "https://maxandlea.com/wp-content/uploads/2020/10/VueProduit-Tablette-MaxAndLea-2-min.png"
-  },
+    image: "https://maxandlea.com/wp-content/uploads/2020/10/ezgif.com-gif-maker.png"
+  }
 
 ]
 
