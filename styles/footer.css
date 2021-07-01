@@ -186,6 +186,9 @@
     width: 100%;
     margin-left: 0;
   }
+  .footer-container .d-flex {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 425px){

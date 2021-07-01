@@ -29,10 +29,10 @@ const Footer = () => {
 
   return (
     <React.Fragment>
-    <footer>
-      <div className="footer-container container">
+    <footer className="footer-container">
+      <div className="container">
         <div className="footer-subcontainer row">
-          <div className="col-8 col-md-3 order-4 order-md-1 flex-column">
+          <div className="col-8 col-md-3 order-4 order-md-1 flex-column d-flex">
             <img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1024x378.png" alt="" className="img-footer"/>
             <div className="icons-social">
               <a href="https://www.facebook.com/MaxandleaToys/" target="_blank"><FontAwesomeIcon icon={faFacebookSquare} className="iconFacebook"/></a>
