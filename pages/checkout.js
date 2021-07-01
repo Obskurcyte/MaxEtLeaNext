@@ -869,6 +869,7 @@ const CheckoutScreen = props => {
 
   const classes = useStyles();
 
+  console.log(!checked1 && !checked2)
 
   let totalPrice1 = 0;
   let totalPrice2 = 0
@@ -1054,8 +1055,8 @@ const CheckoutScreen = props => {
 
   const [mondialRelay, setMondialRelay] = useState(false);
 
-  console.log(checked1, checked2, checked3)
-
+  console.log('mondial', mondialRelay)
+  console.log(checked2)
   console.log(errorLivraison)
   return (
     <PayPalScriptProvider options= {{"client-id": process.env.PAYPAL_CLIENT_ID }}>
@@ -1439,13 +1440,12 @@ const CheckoutScreen = props => {
                             sousTotal : totalPrice1
                           }
                         }
-                        if (!checked1 || !checked2 || !checked3) {
+                        if (!checked1 && !checked2 && !checked3) {
                           setErrorLivraison(true)
                         } else {
                           localStorage.setItem('livraison', JSON.stringify(donnesClient))
                           setGoPaiement(true)
                         }
-
                       }}
                     >
                       {props => (
@@ -1534,7 +1534,6 @@ const CheckoutScreen = props => {
                               className="inputMoyenDroit"
                             >
                               {props.errors.pays && props.touched.pays && <div style={{color: 'red'}}>Ce champ est requis</div>}
-
 
                               {countries.listCountries.map((option) => (
                                 <MenuItem key={option.code} value={option.name} onClick={() => {
@@ -1648,7 +1647,7 @@ const CheckoutScreen = props => {
                                       checked={checked2}
                                       onChange={() => {
                                         handleChange2(event, 4.99)
-                                        setMondialRelay(checked2)
+                                        setMondialRelay(!checked2)
                                       }}
                                       inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
                                   </div>
@@ -1954,9 +1953,7 @@ const CheckoutScreen = props => {
                           </div>
 
 
-                          {mondialRelay && (
-                            <div id="Zone_Widget"></div>
-                          )}
+                            <div id="Zone_Widget" className={mondialRelay ? "displayNone" : "display"} />
 
 
                           <Link href="#">
