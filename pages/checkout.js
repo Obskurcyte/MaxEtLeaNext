@@ -1052,6 +1052,8 @@ const CheckoutScreen = props => {
   };
 
 
+  const [mondialRelay, setMondialRelay] = useState(false);
+
   console.log(checked1, checked2, checked3)
 
   console.log(errorLivraison)
@@ -1644,7 +1646,10 @@ const CheckoutScreen = props => {
                                     <Checkbox
                                       id="relay_check"
                                       checked={checked2}
-                                      onChange={() => handleChange2(event, 4.99)}
+                                      onChange={() => {
+                                        handleChange2(event, 4.99)
+                                        setMondialRelay(checked2)
+                                      }}
                                       inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
                                   </div>
                                   <div className="livraisonChoice">
@@ -1948,8 +1953,12 @@ const CheckoutScreen = props => {
 
                           </div>
 
-                          <div id="Zone_Widget"></div>
-                          
+
+                          {mondialRelay && (
+                            <div id="Zone_Widget"></div>
+                          )}
+
+
                           <Link href="#">
                             <button className="cart-valide" type="submit" onClick={props.handleSubmit}>Aller à l'étape suivante</button>
                           </Link>
