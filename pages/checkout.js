@@ -1647,8 +1647,6 @@ const CheckoutScreen = props => {
                                   </div>
                                 </div>
 
-                                <div id="Zone_Widget"></div>
-
                                 <div className="livraisonRow">
                                   <div className="checkboxLivraisonContainer">
                                     <Checkbox
@@ -1858,6 +1856,8 @@ const CheckoutScreen = props => {
 
                           </div>
 
+                          <div id="Zone_Widget"></div>
+                          
                           <Link href="#">
                             <button className="cart-valide" type="submit" onClick={props.handleSubmit}>Aller à l'étape suivante</button>
                           </Link>
