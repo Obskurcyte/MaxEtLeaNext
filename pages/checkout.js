@@ -1647,7 +1647,7 @@ const CheckoutScreen = props => {
                                       checked={checked2}
                                       onChange={() => {
                                         handleChange2(event, 4.99)
-                                        setMondialRelay(!checked2)
+                                        setMondialRelay(checked2)
                                       }}
                                       inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
                                   </div>
