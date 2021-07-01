@@ -519,7 +519,7 @@ const CheckoutFormStripe = ({
                 setProcessingTo(false)
                 localStorage.removeItem('woo-next-cart')
                 localStorage.setItem('moyenPaiement', moyenPaiement);
-                router.push('/remerciement').then(() => window.location.reload())
+                //router.push('/remerciement').then(() => window.location.reload())
               })
 
 
