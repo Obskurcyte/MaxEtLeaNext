@@ -268,21 +268,22 @@ const CheckoutFormStripe = ({
                 }
               ]
             };
-          
+
+            await router.push({
+              pathname: '/remerciement',
+            })
 
             WooCommerce.post("orders", data)
             .then((response) => {
               console.log(response.data);
+              localStorage.removeItem('woo-next-cart')
+              localStorage.setItem('moyenPaiement', moyenPaiement);
+              window.location.reload()
             })
             .catch((error) => {
               console.log(error.response.data);
             });
-            localStorage.removeItem('woo-next-cart')
-            localStorage.setItem('moyenPaiement', moyenPaiement);
-            await router.push({
-              pathname: '/remerciement',
-            })
-            window.location.reload()
+            
           }
           console.log(order)
         },
@@ -512,14 +513,19 @@ const CheckoutFormStripe = ({
                 WooCommerce.post("orders", data)
                 .then((response) => {
                   console.log(response.data);
+                  setProcessingTo(false)
+                  localStorage.removeItem('woo-next-cart')
+                  localStorage.setItem('moyenPaiement', moyenPaiement);
+                  router.push('/remerciement').then(() => window.location.reload())
                 })
                 .catch((error) => {
                   console.log(error.response.data);
+                  setProcessingTo(false)
+                  localStorage.removeItem('woo-next-cart')
+                  localStorage.setItem('moyenPaiement', moyenPaiement);
+                  router.push('/remerciement').then(() => window.location.reload())
                 });
-                setProcessingTo(false)
-                localStorage.removeItem('woo-next-cart')
-                localStorage.setItem('moyenPaiement', moyenPaiement);
-                //router.push('/remerciement').then(() => window.location.reload())
+                
               })
 
 
