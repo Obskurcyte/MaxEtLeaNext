@@ -1959,6 +1959,7 @@ const CheckoutScreen = props => {
                           </div>
 
 
+
                             <div id="Zone_Widget" className={mondialRelay ? "displayNone" : "display"} />
 
 

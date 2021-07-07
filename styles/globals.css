@@ -11,6 +11,10 @@ html {
 .flex {
   display: flex;
 }
+
+* {
+  font-family: roboto, sans-serif;
+}
 a {
   font-size: 22px;
   letter-spacing: 0px;
@@ -19,6 +23,8 @@ a {
   font-family: "Roboto", sans-serif;
   text-decoration: none!important;
 }
+
+
 
 *:focus {
   outline: none;

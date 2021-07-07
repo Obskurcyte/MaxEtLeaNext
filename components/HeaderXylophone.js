@@ -227,20 +227,20 @@ const HeaderXylophone = (props) => {
   }
 
   return (
-    <div className={styles.stickyHeader}>
-      <div className={styles.freeContainer}>
-        <h1 className={styles.freeLivraison}>Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
+    <div className="stickyHeader">
+      <div className="freeContainer">
+        <h1 className="freeLivraison">Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
       </div>
 
-      <nav>
-        <div className={styles.drapeauContainer}>
-          <p className={styles.langue}>{lang}</p>
-          <img src={imgurl} alt="drapeau français" className={styles.drapeauImg} onClick={handleClick}/>
+      <nav className="container">
+        <div className="drapeauContainer">
+          <p className="langue">{lang}</p>
+          <img src={drapeau} alt="drapeau français" className="drapeauImg" onClick={handleClick}/>
         </div>
-        <Nav className={styles.navBar}>
-          <div className={styles.imgContainer}><img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1536x567.png" alt="" className={styles.imgNavbar}/></div>
+        <Nav className="navBar">
+          <div className="imgContainer imgContainerjouet"><img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1536x567.png" alt="" className="imgNavbar"/></div>
           <Link href="/" style={{marginTop: '5%'}}>
-            <img src={'/home.png'} alt="" style={{width: "3%", height: '3%'}} className={styles.home}/>
+            <img src={'/home.png'} alt="" style={{width: "3%", height: '3%'}} className="home"/>
           </Link>
 
 
@@ -253,40 +253,40 @@ const HeaderXylophone = (props) => {
           >
             <MenuItem onClick={() => handleClose('en')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt=""/></MenuItem>
             <MenuItem onClick={() => handleClose('es')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png" alt=""/></MenuItem>
-            <MenuItem onClick={() => handleClose('al')}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/langfr-225px-Flag_of_Germany.svg.png" className={styles.drapeauAllemand} alt=""/></MenuItem>
+            <MenuItem onClick={() => handleClose('al')}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/langfr-225px-Flag_of_Germany.svg.png" className="drapeauAllemand" alt=""/></MenuItem>
             <MenuItem onClick={() => handleClose('fr')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png" alt=""/></MenuItem>
 
           </Menu>
 
-          <div className={styles.jouet}>
-            <div className={styles.prixJouet}>
-              <p className={styles.jouetName}>XYLOPHONE</p>
-              <p className={styles.jouetPrix}>21,90€</p>
+          <div className="jouet">
+            <div className="prixJouet">
+              <p className="jouetName">XYLOPHONE</p>
+              <p className="jouetPrix">29,90€</p>
             </div>
 
-            <div className={styles.prixReduc}>
+            <div className="prixReduc">
               <div>
-                <p className={styles.economie}>(-40% vous économisez 20€)</p>
+                <p className="economie">(-40% vous économisez 20€)</p>
               </div>
               <div>
-                <p className={styles.prixBarre}>49,90€</p>
+                <p className="prixBarre">49,90€</p>
               </div>
             </div>
           </div>
 
-          <div className={styles.ajouterPanier}>
-              <button onClick={handleAddToCart} className={styles.innerBtnCart}><p className={styles.ajouterPanierText}>Ajouter au panier</p></button>
+          <div className="ajouterPanier" onClick={handleAddToCart}>
+            <Link href="#"><p className="ajouterPanierText">Ajouter au panier</p></Link>
           </div>
-          <div className={styles.accountShopping} onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+          <div className="accountShopping" onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
             <Link href="/cart">
               <Nav.Link>
 
-                <div className="cart-wrap">
-                  {productCount && (<div className={styles.productsCountContainer}>
-                    <div className={styles.productCountInnerContainer}>{productCount ? <span className={styles.productCountText}>{productCount}</span> : ''}</div>
+                <div className="cartWrap">
+                  {productCount && (<div className="productsCountContainer">
+                    <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{productCount}</span> : ''}</div>
                   </div>)}
                   <img src={'/shoppingcart.png'} alt="shopping cart" />
-                  {totalPrice1 ? <span className={styles.totalPriceSpan}>€{totalPrice1.toFixed(2)}</span> : ''}
+                  {totalPrice1 ? <span className="totalPriceSpan">€{totalPrice1.toFixed(2)}</span> : ''}
                 </div>
               </Nav.Link>
 

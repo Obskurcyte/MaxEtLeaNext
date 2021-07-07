@@ -183,7 +183,7 @@
   color: #696969;
   font-size: 16px;
   letter-spacing: 0.5px;
-    font-family: "Roboto", sans-serif;
+    font-family: "roboto", sans-serif;
     font-weight: 500;
 }
 
@@ -199,7 +199,7 @@
 
 .faqContainer p{
   margin-top: -3px;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
 }
 
 .faqHeaderContainer p{
@@ -260,7 +260,7 @@
   font-size: 75px;
   letter-spacing: 1px;
   color: #ffffff;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -273,7 +273,7 @@
   font-size: 40px;
   letter-spacing: 0px;
   color: #00b2cc;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
   margin: 0 auto;
 }
@@ -293,7 +293,7 @@
   letter-spacing: -2px;
   color: #ffffff;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -354,7 +354,7 @@
   letter-spacing: 0px;
   color: #0cb6ce;
   font-weight: 300;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -393,7 +393,7 @@
   letter-spacing: 0px;
   color: #225b6c;
   font-weight: 300;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -419,7 +419,7 @@
   font-size: 48px;
   letter-spacing: 0px;
   color: #0cb6ce;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -451,7 +451,7 @@
   color: #9bb0b7;
   font-weight: 300;
   font-style: italic;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
   margin-top: 8%;
 }
@@ -506,20 +506,20 @@
 .robusteTitle {
   font-size: 39px;
   color: #abcdd7;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
 }
 
 .finitionTitle {
   font-size: 39px;
   color: #abcdd7;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
 }
 
 .p1 {
   font-size: 23px;
   color: #819ea7;
   font-weight: 500;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -527,7 +527,7 @@
   font-size: 23px;
   color: #f78904;
   font-weight: 500;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -535,7 +535,7 @@
   font-size: 23px;
   color: #60bec8;
   font-weight: 500;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -543,7 +543,7 @@
   font-size: 25px;
   color: #73c467;
   font-weight: 500;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -588,7 +588,7 @@
   font-size: 80px;
   letter-spacing: -5px;
   color: #80c9b4;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
   z-index: 3;
 }
@@ -596,7 +596,7 @@
 .UnaSixDescription {
   font-size: 25px;
   color: #5b737e;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
   max-width: 500px;
   margin: auto;
@@ -746,7 +746,7 @@
   font-size: 18px;
   letter-spacing: 0px;
   color: #ffffff;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
 }
 
 .rowIcone p {
@@ -765,7 +765,7 @@
   font-size: 44px;
   letter-spacing: 1px;
   color: #1bb0ca;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -773,7 +773,7 @@
   font-size: 34px;
   letter-spacing: 0px;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -799,11 +799,24 @@
 }
 
 .enfantTableauContainer {
-  z-index: 1;
-  width: 100%;
+  width: 50%;
   max-width: 900px;
-  margin : -100px auto 50px auto;
   border-radius: 20px;
+}
+
+.barreProgression {
+  width: 50%;
+  margin-left: 4%;
+  margin-top: 2%;
+}
+
+.barreProgression p {
+  text-align: justify;
+  margin-bottom: 0;
+  color: #606060!important;
+  letter-spacing: 2px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .enfantTableau {
@@ -816,7 +829,7 @@
   font-size: 50px;
   letter-spacing: 1px;
   color: #648793;
-  font-family: "Roboto";
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -872,24 +885,30 @@
   transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
 }
 
+.innerPlayboard{
+  width: 90%;
+  margin: 0 auto;
+}
+
 .playboardImgContainer {
   position: absolute;
-  left: 40%;
+  left: 50%;
   bottom: 1%;
   cursor: pointer;
 }
 
 .playboardRedPrice {
-  font-size: 28px;
+  font-size: 32px;
   letter-spacing: -1px;
   color: #e12a54;
   font-weight: 700;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
 .ebook {
   display: flex;
+  margin-bottom: 2%;
 }
 
 .sacRangement {
@@ -901,7 +920,7 @@
 }
 
 .ebook p {
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   margin-bottom: 0%;
   margin-top: 0%  ;
 }
@@ -957,10 +976,12 @@
   margin-bottom: 0;
   margin-top: 3%;
   text-align: center;
+  font-size: 20px;
+  font-weight: bold
 }
 
 .playboardContainer p {
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
 }
 .ebookOffertText {
   display: flex;
@@ -973,7 +994,7 @@
 
 .ebookTitle {
   font-weight: bold;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
 }
 .prixPlayboardContainer {
   display: flex;
@@ -985,7 +1006,7 @@
 .priceFalse {
   color: rgba(118, 118, 118, 0.68);
   text-decoration: line-through;
-  font-size: 28px;
+  font-size: 25px;
   margin-bottom: 0;
 }
 
@@ -1021,7 +1042,7 @@
 }
 
 .imgPlayboardPrixContainer p{
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   letter-spacing: 1px;
   margin-bottom: 3px;
   line-height: 1;
@@ -1084,7 +1105,7 @@
   letter-spacing: -1px;
   color: white!important;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -1092,7 +1113,7 @@
   font-size: 50px;
   letter-spacing: 1px;
   color: #648793;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -1106,7 +1127,7 @@
   color: #f18916;
   width: 100%;
   margin-bottom: 5%;
-  font-family: "Roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
@@ -1240,6 +1261,16 @@
   .UnaSixTitle{
     letter-spacing: 0px;
   }
+  .enfantTableau2 {
+    flex-direction: column;
+  }
+  .enfantTableauContainer {
+    width: 95%;
+    margin: 1% auto;
+  }
+  .barreProgression {
+    width: 95%;
+  }
   .UnaSixTitle span{
     font-size: 40px;
   }
@@ -1266,9 +1297,6 @@
   .addPanierContainer {
     max-width: 250px;
     margin: -20px auto;
-  }
-  .enfantTableauContainer{
-    margin: -50px auto 20px auto;
   }
   .icone-mini-container{
     min-width: 100px;

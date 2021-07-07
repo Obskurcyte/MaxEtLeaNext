@@ -1,6 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react';
 import { Nav } from 'react-bootstrap';
-import styles from "./Header.module.css";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useTranslation } from 'react-i18next';
@@ -64,24 +63,24 @@ const Header = () => {
   }
 
   return (
-    <div className={styles.stickyHeader}>
-      <div className={styles.freeContainer}>
-        <h1 className={styles.freeLivraison}>Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
+    <div className="stickyHeader">
+      <div className="freeContainer">
+        <h1 className="freeLivraison">Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
       </div>
 
-        <nav>
-          <div className={styles.drapeauContainer}>
-            <p className={styles.langue}>{lang}</p>
-            <img src={drapeau} alt="drapeau français" className={styles.drapeauImg} onClick={handleClick}/>
+        <nav className="container">
+          <div className="drapeauContainer">
+            <p className="langue">{lang}</p>
+            <img src={drapeau} alt="drapeau français" className="drapeauImg" onClick={handleClick}/>
           </div>
-          <Nav className={styles.navBar}>
-            <div className={styles.imgContainer}>
+          <Nav className="navBar">
+            <div className="imgContainer">
               <Link href="/">
-                <img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1536x567.png" alt="" className={styles.imgNavbar}/>
+                <img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1536x567.png" alt="" className="imgNavbar"/>
               </Link>
             </div>
             <Link href="/" style={{marginTop: '5%'}}>
-              <img src={'/home.png'} alt="" style={{width: "3%", height: '3%'}} className={styles.home}/>
+              <img src={'/home.png'} alt="" style={{width: "3%", height: '3%'}} className="home"/>
             </Link>
 
             <Menu
@@ -93,20 +92,20 @@ const Header = () => {
             >
               <MenuItem onClick={() => handleClose('en')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt=""/></MenuItem>
               <MenuItem onClick={() => handleClose('es')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png" alt=""/></MenuItem>
-              <MenuItem onClick={() => handleClose('al')}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/langfr-225px-Flag_of_Germany.svg.png" className={styles.drapeauAllemand} alt=""/></MenuItem>
+              <MenuItem onClick={() => handleClose('al')}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/langfr-225px-Flag_of_Germany.svg.png" className="drapeauAllemand" alt=""/></MenuItem>
               <MenuItem onClick={() => handleClose('fr')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png" alt=""/></MenuItem>
 
             </Menu>
-            <div className={styles.accountShopping} onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+            <div className="accountShopping" onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
               <Link href="/cart">
                 <Nav.Link>
 
-                  <div className={styles.cartWrap}>
-                    {productCount && (<div className={styles.productsCountContainer}>
-                      <div className={styles.productCountInnerContainer}>{productCount ? <span className={styles.productCountText}>{productCount}</span> : ''}</div>
+                  <div className="cartWrap">
+                    {productCount && (<div className="productsCountContainer">
+                      <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{productCount}</span> : ''}</div>
                     </div>)}
                     <img src={'/shoppingcart.png'} alt="shopping cart" />
-                    {totalPrice1 ? <span className={styles.totalPriceSpan}>{totalPrice1.toFixed(2)}€</span> : ''}
+                    {totalPrice1 ? <span className="totalPriceSpan">{totalPrice1.toFixed(2)}€</span> : ''}
                   </div>
                 </Nav.Link>
 
@@ -115,6 +114,7 @@ const Header = () => {
             </div>
           </Nav>
         </nav>
+
     </div>
   )
 }

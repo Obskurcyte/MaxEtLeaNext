@@ -108,6 +108,7 @@ const CardHoverItem = ({item}) => {
 
 
 
+  console.log('item', item)
   const [productCount, setProductCount] = useState(item.qty);
 
   const handleQtyChange = (event) => {
@@ -173,20 +174,14 @@ const CardHoverItem = ({item}) => {
           <div className={styles.imageContainer}>
             <img src={item.image} alt="product-image" className={styles.image}/>
           </div>
-            <div>
-              <p>{item.name}</p>
+            <div className="flex-column w-50">
+              <p className={styles.itemName}>{item.name}</p>
+              <div className="quantityContainer flex justify-content-between w-100">
+                <p>{productCount} x {item.price}</p>
+                <td className="croix ml-4"><button className="button-supp" onClick={(e) => handleRemoveProduct(e, item.productId)}>x</button></td>
+              </div>
             </div>
-          <td className="croix"><button className="button-supp" onClick={(e) => handleRemoveProduct(e, item.productId)}>x</button></td>
           <hr/>
-          </div>
-          <div className={styles.inputCardContainer}>
-            <p>Quantité : </p>
-            <input
-              type="number"
-              className={styles.CardInputHover}
-              value={productCount}
-              onChange={handleQtyChange}
-            />
           </div>
           <hr/>
     </React.Fragment>

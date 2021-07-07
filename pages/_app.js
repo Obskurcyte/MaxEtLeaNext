@@ -12,6 +12,7 @@ import '../styles/about.css';
 import '../styles/equipe.css';
 import '../styles/mentionsLegales.css';
 import '../styles/remerciement.css';
+import '../styles/header.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import '../i18n';

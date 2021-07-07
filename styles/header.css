@@ -3,10 +3,9 @@
   justify-content: space-around;
   align-content: center;
   flex-direction: row;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-top: 2%;
+  padding-bottom: 1%;
+  align-items: center;
 }
 
 
@@ -30,11 +29,6 @@
   cursor: pointer;
 }
 
-.fa-shopping-basket{
-  color: black!important;
-  font-size: 20px!important;
-  margin-top: 2%;
-}
 
 .fa-id-card {
   font-size: 20px!important;
@@ -82,6 +76,10 @@
   font-weight: 400;
   font-family: "Roboto", sans-serif;
   text-align: center;
+}
+
+.cartWrap {
+  position: relative;
 }
 
 .drapeauContainer {
@@ -150,6 +148,8 @@
   align-items: center;
   position: absolute;
   padding-left: 15px;
+  left: 60%;
+  bottom: 82%;
 }
 
 .productCountText {
@@ -174,15 +174,22 @@
 }
 
 .totalPriceSpan {
-  top: 3%;
+  top: 20%;
   margin-left: 2%;
   font-size: 21px;
+  margin-top: 13%;
   letter-spacing: -1px;
   line-height: 53px;
-  color: #00b2cc;
+  color: black;
   font-weight: 700;
   font-family: "Roboto", sans-serif;
   text-align: center;
+}
+
+.quantityContainer {
+  color: #d4d4d4;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .prixJouet {
@@ -269,6 +276,7 @@
   box-shadow: 0px 10px 25px 10px rgb(0 0 0 / 10%);
 }
 
+
 .freeContainer{
   background-color: rgb(231, 44, 89);
   text-align: center;
@@ -328,8 +336,8 @@
     margin-top: 0px;;
   }
   .ajouterPanier{
-   padding: 5px;
-   margin-top: 25px;
+    padding: 5px;
+    margin-top: 25px;
 
   }
   .ajouterPanierText{
@@ -347,4 +355,15 @@
     margin: -6px auto 0px auto;
   }
 
+}
+
+.shoppingCart {
+  font-size: 20px;
+  width: 17%;
+  color: black;
+}
+
+.productPrice {
+  width: 40%;
+  margin-top: 3.5%;
 }

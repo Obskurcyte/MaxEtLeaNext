@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import ReactPlayer from 'react-player'
-import Header from "../components/Header";
 import Link from 'next/link';
 import Footer from "../components/Footer";
 import Engagement from "../components/Engagement";
@@ -20,6 +19,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useRouter} from "next/router";
+import QualiteDansLesDetails from "../components/QualiteDansLesDetails";
 
 const icon = React.createElement('i', { className: 'far fa-question-circle' }, "");
 const title1 = React.createElement('p', {}, "La PlayBoard s'abime-t-elle avec le temps ?");
@@ -198,185 +198,6 @@ const PlayBoardScreen = props => {
     }
   }
 
-  ///////------------------- Barres de Chargement ----------------////////////////
-
-  function useOnScreen(ref) {
-
-    const [isIntersecting, setIntersecting] = useState(false)
-
-    useEffect(() => {
-      const observer = new IntersectionObserver(
-        ([entry]) => setIntersecting(entry.isIntersecting)
-      )
-      observer.observe(ref.current)
-      // Remove the observer as soon as the component is unmounted
-      return () => { observer.disconnect() }
-    }, [])
-
-    return isIntersecting
-  }
-
-  const bar1 = useRef()
-  const bar2 = useRef()
-  const bar3 = useRef()
-  const bar4 = useRef()
-  const bar5 = useRef()
-  const bar6 = useRef()
-  const bar7 = useRef()
-  const isBar1Visible = useOnScreen(bar1)
-  const isBar2Visible = useOnScreen(bar2)
-  const isBar3Visible = useOnScreen(bar3)
-  const isBar4Visible = useOnScreen(bar4)
-  const isBar5Visible = useOnScreen(bar5)
-  const isBar6Visible = useOnScreen(bar6)
-  const isBar7Visible = useOnScreen(bar7)
-  let i = 0;
-  function moveBar1() {
-    if (i == 0) {
-      i = 1;
-      var elem = document.getElementById('bar1');
-      var width = 1;
-      var id = setInterval(frame, 10);
-      function frame() {
-        if (width >= 98) {
-          clearInterval(id);
-          i = 0;
-        } else {
-          width++;
-          elem.style.width = width + "%";
-        }
-      }
-    }
-  }
-  function moveBar2() {
-    if (i == 0) {
-      i = 1;
-      var elem = document.getElementById('bar2');
-      var width = 1;
-      var id = setInterval(frame, 10);
-      function frame() {
-        if (width >= 97) {
-          clearInterval(id);
-          i = 0;
-        } else {
-          width++;
-          elem.style.width = width + "%";
-        }
-      }
-    }
-  }
-  function moveBar3() {
-    if (i == 0) {
-      i = 1;
-      var elem = document.getElementById('bar3');
-      var width = 1;
-      var id = setInterval(frame, 10);
-      function frame() {
-        if (width >= 96) {
-          clearInterval(id);
-          i = 0;
-        } else {
-          width++;
-          elem.style.width = width + "%";
-        }
-      }
-    }
-  }
-  function moveBar4() {
-    if (i == 0) {
-      i = 1;
-      var elem = document.getElementById('bar4');
-      var width = 1;
-      var id = setInterval(frame, 10);
-      function frame() {
-        if (width >= 98) {
-          clearInterval(id);
-          i = 0;
-        } else {
-          width++;
-          elem.style.width = width + "%";
-        }
-      }
-    }
-  }
-  function moveBar5() {
-    if (i == 0) {
-      i = 1;
-      var elem = document.getElementById('bar5');
-      var width = 1;
-      var id = setInterval(frame, 10);
-      function frame() {
-        if (width >= 90) {
-          clearInterval(id);
-          i = 0;
-        } else {
-          width++;
-          elem.style.width = width + "%";
-        }
-      }
-    }
-  }
-  function moveBar6() {
-    if (i == 0) {
-      i = 1;
-      var elem = document.getElementById('bar6');
-      var width = 1;
-      var id = setInterval(frame, 10);
-      function frame() {
-        if (width >= 92) {
-          clearInterval(id);
-          i = 0;
-        } else {
-          width++;
-          elem.style.width = width + "%";
-        }
-      }
-    }
-  }
-  function moveBar7() {
-    if (i == 0) {
-      i = 1;
-      var elem = document.getElementById('bar7');
-      var width = 1;
-      var id = setInterval(frame, 10);
-      function frame() {
-        if (width >= 100) {
-          clearInterval(id);
-          i = 0;
-        } else {
-          width++;
-          elem.style.width = width + "%";
-        }
-      }
-    }
-  }
-
-  if (isBar7Visible) {
-    moveBar7()
-  }
-
-  if (isBar6Visible) {
-    moveBar6()
-  }
-
-  if (isBar5Visible) {
-    moveBar5()
-  }
-  if (isBar4Visible) {
-    moveBar4()
-  }
-
-  if (isBar3Visible) {
-    moveBar3()
-  }
-
-  if (isBar2Visible) {
-    moveBar2()
-  }
-
-  if (isBar1Visible) {
-    moveBar1()
-  }
 
 
 
@@ -634,7 +455,7 @@ const PlayBoardScreen = props => {
           </div>
         </div>
 
-        <div className="UnaSixContainer">
+        <div className="UnaSixContainer container">
           <h2 className="UnaSixTitle">DE <span> 1 </span> A <span> 6 </span> ANS</h2>
           <div className="UnaSixDescription">
           <p className="">La <span>Playboard®</span> accompagne votre
@@ -771,66 +592,64 @@ const PlayBoardScreen = props => {
               </div>
             </div>
           </div>
-
-
         </div>
-        {/*
-        <div className="apprentissage">
-            <h5>Ce que les enfants ont appris
+
+        <div className="apprentissage container">
+            <h5 className="mb-5">Ce que les enfants ont appris
               avec la PlayBoard®</h5>
-             <Slider {...settings}>
-                <div>
+          <div className="flex w-100 enfantTableau2">
+            <div className="enfantTableauContainer">
+              <img src={'/garconTableau.png'} alt="" className="enfantTableau"/>
+            </div>
+            <div className="barreProgression">
+                <div className="mb-2">
                   <p style={{color:"#e72c59"}}>Reconnaître les couleurs</p>
                   <div className="rectangleContainer">
                     <img src={'/redP.webp'} alt="" className="rectangle"/>
                   </div>
                 </div>
-                <div>
+                <div className="mb-2">
                   <p style={{color:"#e59131"}}>Maîtriser les dégradés</p>
                   <div className="rectangleContainer">
                     <img src={'/orangeP.webp'} alt="" className="rectangle"/>
                   </div>
                 </div>
-                <div>
+                <div className="mb-2">
                   <p style={{color:"#efcb03"}}>Emboiter les formes</p>
                   <div className="rectangleContainer">
                     <img src={'/yellowP.webp'} alt="" className="rectangle"/>
                   </div>
                 </div>
-                <div>
+                <div className="mb-2">
                   <p style={{color:"#4cb155"}}>Apprendre à compter</p>
                   <div className="rectangleContainer">
                     <img src={'/greenP.webp'} alt="" className="rectangle"/>
                   </div>
                 </div>
-                <div>
-                  <p style={{color:"#22b9ca"}}>Reconnaitre les animaux​​​</p>
+                <div className="mb-2">
+                  <p style={{color:"#22b9ca"}}>Reconnaitre les animaux</p>
                   <div className="rectangleContainer">
                     <img src={'/blueP.webp'} alt="" className="rectangle"/>
                   </div>
                 </div>
-                <div>
+                <div className="mb-2">
                   <p style={{color:"#e7456c"}}>Débuter en calcul</p>
                   <div className="rectangleContainer">
                     <img src={'/pinkP.webp'} alt="" className="rectangle"/>
                   </div>
                 </div>
-                <div>
+                <div className="mb-2">
                   <p style={{color:"#c436bc"}}>Plaisir de jouer</p>
                   <div className="rectangleContainer">
                     <img src={'/purpleP.webp'} alt="" className="rectangle"/>
                   </div>
                 </div>
-              </Slider>
+            </div>
 
-
-          <div className="enfantTableauContainer">
-            <img src={'/garconTableau.png'} alt="" className="enfantTableau"/>
           </div>
         </div>
-        */}
 
-        <div className="apprentissagePlayboard container">
+        {/*   <div className="apprentissagePlayboard container">
           <h5 className="apprentissageTitle">Ce que les enfants ont appris avec la PlayBoard</h5>
           <div className="imageApprentissageContainer">
             <img src={'/enfantTableau.jpg'} alt="" className="imgTableau"/>
@@ -841,7 +660,7 @@ const PlayBoardScreen = props => {
                 <div id="bar1">
                     <p className="progressBarText2">98%</p>
                 </div>
-                {/*<img src={'/redProgress.png'} alt="" className="progress"/> */}
+                {/*<img src={'/redProgress.png'} alt="" className="progress"/>
               </div>
               <div>
                 <p className="apprentissagePara">Maitriser les dégradés</p>
@@ -850,7 +669,7 @@ const PlayBoardScreen = props => {
                   <div id="bar2">
                     <p className="progressBarText2">97%</p>
                   </div>
-                  {/*<img src={'/redProgress.png'} alt="" className="progress"/> */}
+                  {/*<img src={'/redProgress.png'} alt="" className="progress"/>
                 </div>
               </div>
               <div>
@@ -860,7 +679,7 @@ const PlayBoardScreen = props => {
                   <div id="bar3">
                     <p className="progressBarText2">96%</p>
                   </div>
-                  {/*<img src={'/redProgress.png'} alt="" className="progress"/> */}
+                  {/*<img src={'/redProgress.png'} alt="" className="progress"/>
                 </div>
               </div>
               <div>
@@ -870,7 +689,7 @@ const PlayBoardScreen = props => {
                   <div id="bar4">
                     <p className="progressBarText2">98%</p>
                   </div>
-                  {/*<img src={'/redProgress.png'} alt="" className="progress"/> */}
+                  {/*<img src={'/redProgress.png'} alt="" className="progress"/>
                 </div>
               </div>
               <div>
@@ -880,7 +699,7 @@ const PlayBoardScreen = props => {
                   <div id="bar5">
                     <p className="progressBarText2">90%</p>
                   </div>
-                  {/*<img src={'/redProgress.png'} alt="" className="progress"/> */}
+                  {/*<img src={'/redProgress.png'} alt="" className="progress"/>
                 </div>
               </div>
               <div>
@@ -890,7 +709,7 @@ const PlayBoardScreen = props => {
                   <div id="bar6">
                     <p className="progressBarText2">92%</p>
                   </div>
-                  {/*<img src={'/redProgress.png'} alt="" className="progress"/> */}
+                  {/*<img src={'/redProgress.png'} alt="" className="progress"/>
                 </div>
               </div>
               <div>
@@ -900,12 +719,12 @@ const PlayBoardScreen = props => {
                   <div id="bar7">
                     <p className="progressBarText2">100%</p>
                   </div>
-                  {/*<img src={'/redProgress.png'} alt="" className="progress"/> */}
+                  {/*<img src={'/redProgress.png'} alt="" className="progress"/>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="recommendation">
           <h5 className="recommendation-title">Ils recommandent la Playboard®</h5>
@@ -914,8 +733,8 @@ const PlayBoardScreen = props => {
 
 
         <div className="playboardContainer" id="offre">
-          <div className="playboardSubContainer">
-
+          <div className="playboardSubContainer container">
+            <div className="innerPlayboard">
             <div className="prixPlayboardContainer">
               <div className="playboardPrix">
                 <p className="priceFalse">49,90 €</p>
@@ -973,7 +792,7 @@ const PlayBoardScreen = props => {
                 </div>
               </DialogContent>
             </Dialog>
-
+            </div>
           </div>
         </div>
 
@@ -996,13 +815,14 @@ const PlayBoardScreen = props => {
           <img src={'/sourireEnfant.webp'} alt="" className="sourireEnfant"/>
         </div>
 
-        <div>
-          <Garanties/>
-        </div>
 
-        <div>
+          <Garanties/>
+
+
           <Engagement/>
-        </div>
+
+
+          <QualiteDansLesDetails />
 
         <div className="faqContainer">
         <h5>QUESTIONS FRÉQUENTES</h5>

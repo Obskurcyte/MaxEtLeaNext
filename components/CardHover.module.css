@@ -1,18 +1,23 @@
 .hoverContainer {
   position: absolute;
-  left: 65%;
+  left: 60%;
   margin-top: 70px;
   width: 20%;
   z-index: 3;
   background-color: white;
   padding: 1%;
+  border: 1px solid lightgrey;
 }
 
 .imageContainer {
   display: flex;
-  width: 15%;
+  width: 30%;
 }
 
+.itemName {
+  color: #e72c59;
+  font-size: 20px
+}
 .innerContainer {
   display: flex;
   justify-content: space-around;
@@ -24,13 +29,16 @@
 
 .subtotal {
   font-weight: bold;
+  text-align: center;
+  font-size: 25px;
 }
+
 
 .buttonsContainer {
   flex-direction: column;
   background-color: #E62B56;
   color: white!important;
-  padding: 2% 5%;
+  padding: 3% 5%;
   cursor: pointer;
   animation: shake 5s;
   animation-iteration-count: infinite;
@@ -57,9 +65,10 @@
 .linkPopper {
   background-color: #E72C59;
   font-family: "Roboto", sans-serif;
-  color: white!important;
+  color: white !important;
   text-align: center;
   font-size: 20px;
+  margin-bottom: 0 !important
 }
 
 #linkCart {
