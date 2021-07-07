@@ -1303,7 +1303,7 @@ const CheckoutScreen = props => {
                       handleClickOpenPlayboard()
                     }}/>
                     <SimpleDialogPlayboard open={openPlayboard} onClose={handleClosePlayboard} />
-                    <a href={'/playboard'} target="_blank" rel="noopener noreferrer"><p className="savoirplus">En savoir plus</p></a>
+                    <p className="savoirplus" onClick={() => handleClickOpenPlayboard()}>En savoir plus</p>
                   </div>
 
                   <div className="carouselItemAdd">
@@ -1329,7 +1329,7 @@ const CheckoutScreen = props => {
                   <div className="imgContainerCarousel">
                     <img src={'/xylophone.png'} alt="" className="xylophoneImg" onClick={handleClickOpenXylo}/>
                     <SimpleDialogXylo open={openXylo} onClose={handleCloseXylo} />
-                    <a href={'/xylophone'} target="_blank" rel="noopener noreferrer"><p className="savoirplus">En savoir plus</p></a>
+                    <p className="savoirplus" onClick={() => handleClickOpenXylo()}>En savoir plus</p>
                   </div>
 
                   <div className="carouselItemAdd">
@@ -1355,7 +1355,7 @@ const CheckoutScreen = props => {
                   <div className="imgContainerCarousel">
                     <img src={'/tourCarre.png'} alt="" className="xylophoneImg" onClick={handleClickOpenTour}/>
                     <SimpleDialogTour open={openTour} onClose={handleCloseTour} />
-                    <a target="_blank" href={'/tour'} rel="noopener noreferrer"><p className="savoirplus">En savoir plus</p></a>
+                    <p className="savoirplus" onClick={() => handleClickOpenTour()}>En savoir plus</p>
                   </div>
 
                   <div className="carouselItemAdd">
