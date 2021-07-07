@@ -517,6 +517,12 @@ const CheckoutFormStripe = ({
                       method_title: "Flat Rate",
                       total: dataClientCart.prixLivraison.toString()
                     }
+                  ],
+                  meta_data: [
+                    {
+                      key: "Mondial Relay Parcel Shop ID",
+                      value: "FR-051322"
+                    }
                   ]
                 };
               
