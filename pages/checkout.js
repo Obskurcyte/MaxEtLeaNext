@@ -28,6 +28,7 @@ import AvisClients from "../components/AvisClients";
 import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 import {PayPalScriptProvider} from "@paypal/react-paypal-js";
 import Slider from "react-slick";
+import { useRouter } from 'next/router';
 
 
 const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
@@ -147,6 +148,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CheckoutScreen = props => {
+
+  const router = useRouter();
 
   var settingsSlider = {
     dots: true,
@@ -425,6 +428,7 @@ const CheckoutScreen = props => {
 
   const updateCartPlayboard = (existingCart, product, qtyToBeAdded, newQty = false) => {
     const updatedProducts = getUpdatedProductsPlayboard(existingCart.products, products[2], qtyToBeAdded, newQty);
+    if(updatedProducts == null) return null;
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -467,7 +471,13 @@ const CheckoutScreen = props => {
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
       let updatedProduct = updatedProducts[productExistsIndex];
-
+      if(updatedProduct.qty + qtyToBeAdded < 0)
+        return updatedProducts;
+      else if(updatedProduct.qty + qtyToBeAdded == 0){
+        const updatedCart = removeProduct(products[2].id);
+        if(updatedCart == null) return null;
+        setCart(updatedCart);
+      }
       updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
       return updatedProducts;
@@ -487,14 +497,25 @@ const CheckoutScreen = props => {
       if (existingCart!=null) {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
-        const qtyToBeAdded = 1
-        const updatedCart = updateCartPlayboard(existingCart, products[2], qtyToBeAdded);
+        var updatedCart = "";
+        if(!checkedPlayboard){
+          setCheckedPlayboard(true);
+          updatedCart = updateCartPlayboard(existingCart, products[2], 1);
+        }
+        else {
+          setCheckedPlayboard(false);
+          updatedCart = updateCartPlayboard(existingCart, products[2], -1);
+        }
         setCart(updatedCart)
         setCommandeCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[2]);
-        setCart(newCart)
-        setCommandeCart(newCart)
+        if(!checkedPlayboard){
+          setCheckedPlayboard(true);
+          const newCart = addFirstProduct(products[2]);
+          setCart(newCart)
+          setCommandeCart(newCart)
+        }
+        else setCheckedPlayboard(false);
       }
     }
   }
@@ -778,6 +799,9 @@ const CheckoutScreen = props => {
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(false);
   const [checked3, setChecked3] = useState(false);
+  const [checkedPlayboard, setCheckedPlayboard] = useState(false);
+  const [checkedTour, setCheckedTour] = useState(false);
+  const [checkedXylo, setCheckedXylo] = useState(false);
 
 
   const handleChange = (event) => {
@@ -1306,89 +1330,80 @@ const CheckoutScreen = props => {
                   <div className="innerArticleContainer">
                     <div className="innerArticleTop">
                       <label className="labelArticleTop">
-                        <Checkbox style={{display:'inlineBlock'}} onChange={() => {
+                        <Checkbox 
+                        id={products[2].id}
+                        className="checkArticle"
+                        style={{display:'inlineBlock'}} 
+                        checked={checkedPlayboard}
+                        onChange={(event) => {
                           handleAddToCartPlayboard()
                         }}></Checkbox>
-                        <span>Ajouter la Playboard</span>
+                        <span className="innerArticleTitle">Ajouter la Playboard !</span>
+                        <br></br>
+                        <strike className="innerArticleStrike">{products[2].priceAugmente} €</strike>
+                        <span className="innerArticlePrice">{products[2].price} €</span>
+                        <br></br>
+                        <span className="innerArticleReduction">(-41% economisez {products[2].priceAugmente - products[2].price} €)</span>
                         </label>
                     </div>
-                    <div className="innerArticlebottom">
+                    <div className="innerArticleBottom" onClick={() => {
+                        handleClickOpenPlayboard()
+                      }}>
+                    <img src="/playboard.png" alt="playboard" className="articleImg" />
                       
                     </div>
-                    <div className="imgContainerCarousel">
-                      <img src="https://maxandlea.com/wp-content/uploads/2020/06/VueProduit-2-Tablette-MaxAndLea-sans-logo.jpg" alt="playboard" className="xylophoneImg" onClick={() => {
-                        handleClickOpenPlayboard()
-                      }}/>
-                      <SimpleDialogPlayboard open={openPlayboard} onClose={handleClosePlayboard} />
-                    </div>
-
-                    <div className="carouselItemAdd">
-                      <p className='addCarousel'>Ajouter la Playboard !</p>
-                      <div className="prixReduc">
-                        <p className="prixReducText">{products[2].price} €</p>
-                        <p className="fauxPrix">{products[2].priceAugmente} €</p>
-                      </div>
-                      <div className="economie">
-                        <p className="economieText">(-41% economisez {products[2].priceAugmente - products[2].price} €)</p>
-                      </div>
-                      <div className="buttonAddPanierContainer">
-                        
-                      </div>
-                    </div>
+                    <SimpleDialogPlayboard open={openPlayboard} onClose={handleClosePlayboard} />
 
                   </div>
 
                   <div className="innerArticleContainer">
-                    <div className="imgContainerCarousel">
-                      <img src={'/xylophone.png'} alt="" className="xylophoneImg" onClick={handleClickOpenXylo}/>
-                      <SimpleDialogXylo open={openXylo} onClose={handleCloseXylo} />
-                      <p className="savoirplus" onClick={() => handleClickOpenXylo()}>En savoir plus</p>
-                    </div>
-
-                    <div className="carouselItemAdd">
-                      <p className='addCarousel'>Ajouter le Xylophone !</p>
-                      <div className="prixReduc">
-                        <p className="prixReducText">{products[0].priceReduc} €</p>
-                        <p className="fauxPrix">{products[0].price} €</p>
-                      </div>
-                      <div className="economie">
-                        <p className="economieText">(-41% economisez {(products[0].price - products[0].priceReduc).toFixed(2)} €)</p>
-                      </div>
-                      <div className="buttonAddPanierContainer">
-                        <button className="buttonAddPanier" onClick={() => {
+                    <div className="innerArticleTop">
+                      <label className="labelArticleTop">
+                        <Checkbox style={{display:'inlineBlock'}} onChange={() => {
                           handleAddToCartXylo()
-                          window.location.reload()
-                        }}>Ajouter au panier</button>
-                      </div>
+                        }}></Checkbox>
+                        <span className="innerArticleTitle">Ajouter le Xylophone !</span>
+                        <br></br>
+                        <strike className="innerArticleStrike">{products[0].priceAugmente} €</strike>
+                        <span className="innerArticlePrice">{products[0].price} €</span>
+                        <br></br>
+                        <span className="innerArticleReduction">(-41% economisez {Math.round(products[0].priceAugmente - products[0].price)} €)</span>
+                        </label>
                     </div>
+                    <div className="innerArticleBottom" onClick={() => {
+                        handleClickOpenXylo()
+                      }}>
+                    <img src="/xylophonecard.png" alt="playboard" className="articleImg" />
+                      
+                    </div>
+                    <SimpleDialogXylo open={openXylo} onClose={handleCloseXylo} />
 
                   </div>
 
                   <div className="innerArticleContainer">
-                    <div className="imgContainerCarousel">
-                      <img src={'/tourCarre.png'} alt="" className="xylophoneImg" onClick={handleClickOpenTour}/>
-                      <SimpleDialogTour open={openTour} onClose={handleCloseTour} />
-                      <p className="savoirplus" onClick={() => handleClickOpenTour()}>En savoir plus</p>
-                    </div>
-
-                    <div className="carouselItemAdd">
-                      <p className='addCarousel'>Ajouter la Tour Arc en Ciel !</p>
-                      <div className="prixReduc">
-                        <p className="prixReducText">{products[1].priceReduc} €</p>
-                        <p className="fauxPrix">{products[1].price} €</p>
-                      </div>
-                      <div className="economie">
-                        <p className="economieText">(-41% economisez {(products[1].price - products[1].priceReduc).toFixed(2)} €)</p>
-                      </div>
-                      <div className="buttonAddPanierContainer">
-                        <button className="buttonAddPanier" onClick={() => {
+                    <div className="innerArticleTop">
+                      <label className="labelArticleTop">
+                        <Checkbox style={{display:'inlineBlock'}} onChange={() => {
                           handleAddToCartTour()
-                          window.location.reload()
-                        }}>Ajouter au panier</button>
-                      </div>
+                        }}></Checkbox>
+                        <span className="innerArticleTitle">Ajouter la Tour Arc en Ciel !</span>
+                        <br></br>
+                        <strike className="innerArticleStrike">{products[1].priceAugmente} €</strike>
+                        <span className="innerArticlePrice">{products[1].price} €</span>
+                        <br></br>
+                        <span className="innerArticleReduction">(-41% economisez {Math.round(products[1].priceAugmente - products[1].price)} €)</span>
+                        </label>
                     </div>
+                    <div className="innerArticleBottom" onClick={() => {
+                        handleClickOpenTour()
+                      }}>
+                    <img src="/tour.png" alt="playboard" className="articleImg" />
+                      
+                    </div>
+                    <SimpleDialogTour open={openTour} onClose={handleCloseTour} />
 
                   </div>
+
                 </Slider>
               </div>
 
@@ -1984,7 +1999,7 @@ const CheckoutScreen = props => {
                             </div>
 
                             <input type="hidden" id="relay_value"></input>
-                              <div id="Zone_Widget" className={mondialRelay ? "displayNone" : "display"} />
+                              <div id="Zone_Widget" className={mondialRelay ? "display" : "displayNone"} />
 
 
                             <Link href="#">

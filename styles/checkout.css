@@ -1,5 +1,5 @@
 .checkout-sub-container{
-  max-width: 1100px;
+  max-width: 1000px;
   font-family: "Roboto, sans-serif";
   margin: auto;
   background-color: #fff;
@@ -457,10 +457,47 @@ legend span {
 
 .innerArticleTop {
   background: #dddddd;
+  border-radius: 5px 5px 0px 0px;
+  padding-top: 15px;
 }
 
 .innerArticleBottom {
   background: #f1f1f1;
+  border-radius: 0px 0px 5px 5px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  cursor: pointer;
+}
+
+.innerArticleTitle{
+  color: #6ec1e4;
+  font-size: 1.3em;
+  line-height: 1.3em;
+  letter-spacing: 0;
+  font-weight: 500;
+  margin-bottom: -3px;
+}
+
+.innerArticleStrike{
+  color: grey;
+  margin-right: 7px;
+}
+
+.innerArticlePrice{
+  color: #e12a54; 
+  font-size: 20px; 
+  font-weight: 600;
+}
+
+.innerArticleReduction{
+  color: #e12a54; 
+  font-size: 12px; 
+  font-weight: 400;
+}
+
+.articleImg{
+  height: 150px;
+  margin: auto;
 }
 
 .addCarousel {
