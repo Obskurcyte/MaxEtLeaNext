@@ -609,11 +609,11 @@ const CheckoutFormStripe = ({
 
       {(paypalClicked) ? (
         <div >
-          <ListGroup.Item>
            <Paypal />
-          </ListGroup.Item>
         </div>
       ) : null}
+
+      <div className={styles.securePayment}><p>* Paiements 100% sûrs et sécurisés *</p></div>
     </div>
   );
 };

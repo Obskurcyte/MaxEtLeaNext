@@ -28,12 +28,12 @@ const CartItem = ({item}) => {
 
 
   const onIncreaseClick = () => {
-    setProductCount(productCount + 1);
+    
     let existingCart = localStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart);
 
     const updatedCart = updateCart(existingCart, item, false, productCount + 1)
-
+    setProductCount(productCount + 1);
     setCart(updatedCart)
     document.querySelector('.change-quantity').value = productCount;
   }
@@ -42,12 +42,12 @@ const CartItem = ({item}) => {
     if (productCount === 1) {
       return;
     } else {
-      setProductCount(productCount - 1);
+      
       let existingCart = localStorage.getItem('woo-next-cart');
       existingCart = JSON.parse(existingCart);
 
       const updatedCart = updateCart(existingCart, item, false, productCount -1)
-
+      setProductCount(productCount - 1);
       setCart(updatedCart)
       document.querySelector('.change-quantity').value = productCount;
     }
@@ -195,7 +195,7 @@ const CartItem = ({item}) => {
 
 
   return (
-    <div key={item.productId} className="tr-product">
+    <div key={item.productId} className="tr-product" id={"list_"+item.productId}>
       <div className="innerContainerCart">
         <span onClick={(event) => handleRemoveProduct(event, item.productId)}>
           <div className="croix itemsuppr"><button className="button-supp">x</button></div>
@@ -214,9 +214,9 @@ const CartItem = ({item}) => {
             <p className="descriptionProduitText">{item.name}</p>
           </div>
           <div className="input-quantity">
-            <button className="decrease-button" onClick={onDecreaseClick}>-</button>
+            <button className="decrease-button" onClick={onDecreaseClick} target={item.productId}>-</button>
               <input type="text" className="change-quantity" value={productCount}/>
-            <button className="increase-button" style={{color: "#e72c59"}} onClick={onIncreaseClick}>+</button>
+            <button className="increase-button" style={{color: "#e72c59"}} onClick={onIncreaseClick} target={item.productId}>+</button>
           </div>
           </div>
         </div>
