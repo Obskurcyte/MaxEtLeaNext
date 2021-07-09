@@ -1,6 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react';
 import { Nav } from 'react-bootstrap';
-import styles from "./Header.module.css";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useTranslation } from 'react-i18next';
