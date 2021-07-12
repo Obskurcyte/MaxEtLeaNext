@@ -9,7 +9,7 @@ import CardHover from "./CardHover";
 import Link from 'next/link';
 import * as product from '../products';
 import {getDrapeau} from "../store/actions/drapeau";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 
 const HeaderXylophone = (props) => {
