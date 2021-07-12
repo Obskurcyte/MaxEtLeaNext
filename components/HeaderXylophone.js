@@ -203,7 +203,7 @@ const HeaderXylophone = (props) => {
   };
 
   const dispatch = useDispatch()
-  const [imgurl, setImgUrl] = useState("https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png")
+  const drapeau = useSelector(state => state.drapeau.drapeau)
 
   console.log(open)
   const handleClose = (lang) => {
