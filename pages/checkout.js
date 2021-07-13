@@ -154,19 +154,11 @@ const CheckoutScreen = props => {
   var settingsSlider = {
     dots: true,
     arrows:true,
-    infinite: true,
-    autoplay: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1,
-    responsive: [
-        {
-          breakpoint: 900,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          }
-        },
-      ]
+    slidesToScroll: 1
   };
 
   const [openPlayboard, setOpenPlayboard] = React.useState(false);
@@ -264,6 +256,7 @@ const CheckoutScreen = props => {
 
   const updateCartTour = (existingCart, product, qtyToBeAdded, newQty = false) => {
     const updatedProducts = getUpdatedProductsTour(existingCart.products, products[1], qtyToBeAdded, newQty);
+    if(updatedProducts == null) return null;
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -306,7 +299,14 @@ const CheckoutScreen = props => {
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
       let updatedProduct = updatedProducts[productExistsIndex];
-
+      if(updatedProduct.qty + qtyToBeAdded < 0)
+        return updatedProducts;
+      else if(updatedProduct.qty + qtyToBeAdded == 0){
+        const updatedCart = removeProduct(products[1].id);
+        if(updatedCart == null) return null;
+        setCart(updatedCart);
+        return updatedCart.products;
+      }
       updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
       return updatedProducts;
@@ -338,20 +338,32 @@ const CheckoutScreen = props => {
       if (existingCart!=null) {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
-        const qtyToBeAdded = 1
-        const updatedCart = updateCartTour(existingCart, products[0], qtyToBeAdded);
+        var updatedCart = "";
+        if(!checkedTour){
+          setCheckedTour(true);
+          updatedCart = updateCartTour(existingCart, products[1], 1);
+        }
+        else {
+          setCheckedTour(false);
+          updatedCart = updateCartTour(existingCart, products[1], -1);
+        }
         setCart(updatedCart)
         setCommandeCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[0]);
-        setCart(newCart)
-        setCommandeCart(newCart)
+        if(!checkedTour){
+          setCheckedTour(true);
+          const newCart = addFirstProduct(products[1]);
+          setCart(newCart)
+          setCommandeCart(newCart)
+        }
+        else setCheckedTour(false);
       }
     }
   }
 
   const updateCartXylo = (existingCart, product, qtyToBeAdded, newQty = false) => {
     const updatedProducts = getUpdatedProductsXylo(existingCart.products, products[0], qtyToBeAdded, newQty);
+    if(updatedProducts == null) return null;
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -394,7 +406,14 @@ const CheckoutScreen = props => {
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
       let updatedProduct = updatedProducts[productExistsIndex];
-
+      if(updatedProduct.qty + qtyToBeAdded < 0)
+        return updatedProducts;
+      else if(updatedProduct.qty + qtyToBeAdded == 0){
+        const updatedCart = removeProduct(products[0].id);
+        if(updatedCart == null) return null;
+        setCart(updatedCart);
+        return updatedCart.products;
+      }
       updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
       return updatedProducts;
@@ -414,14 +433,25 @@ const CheckoutScreen = props => {
       if (existingCart!=null) {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
-        const qtyToBeAdded = 1
-        const updatedCart = updateCartXylo(existingCart, products[1], qtyToBeAdded);
+        var updatedCart = "";
+        if(!checkedXylo){
+          setCheckedXylo(true);
+          updatedCart = updateCartXylo(existingCart, products[0], 1);
+        }
+        else {
+          setCheckedXylo(false);
+          updatedCart = updateCartXylo(existingCart, products[0], -1);
+        }
         setCart(updatedCart)
         setCommandeCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[1]);
-        setCart(newCart)
-        setCommandeCart(newCart)
+        if(!checkedXylo){
+          setCheckedXylo(true);
+          const newCart = addFirstProduct(products[0]);
+          setCart(newCart)
+          setCommandeCart(newCart)
+        }
+        else setCheckedXylo(false);
       }
     }
   }
@@ -477,6 +507,7 @@ const CheckoutScreen = props => {
         const updatedCart = removeProduct(products[2].id);
         if(updatedCart == null) return null;
         setCart(updatedCart);
+        return updatedCart.products;
       }
       updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
@@ -522,6 +553,7 @@ const CheckoutScreen = props => {
 
   const updateCartEbookPlayboard = (existingCart, product, qtyToBeAdded, newQty = false) => {
     const updatedProducts = getUpdatedProductsEbookPlayboard(existingCart.products, products[3], qtyToBeAdded, newQty);
+    if(updatedProducts == null) return null;
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -564,14 +596,28 @@ const CheckoutScreen = props => {
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
       let updatedProduct = updatedProducts[productExistsIndex];
-
+      if(updatedProduct.qty + qtyToBeAdded < 0)
+        return updatedProducts;
+      else if(updatedProduct.qty + qtyToBeAdded == 0){
+        
+        const updatedCart = removeProduct(products[3].id);
+        if(updatedCart == null){
+          return null;
+        } 
+        setCart(updatedCart);
+        return updatedCart.products;
+      }
       updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
+      console.log("TO SEE");
+      console.log(updatedProducts);
       return updatedProducts;
     } else {
       let productPrice = parseFloat(product.price);
       const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
       existingProductsInCart.push(newProduct);
+      console.log("TO SEE");
+      console.log(existingProductsInCart);
       return existingProductsInCart
     }
   };
@@ -584,14 +630,25 @@ const CheckoutScreen = props => {
       if (existingCart!=null) {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
-        const qtyToBeAdded = 1
-        const updatedCart = updateCartEbookPlayboard(existingCart, products[3], qtyToBeAdded);
+        var updatedCart = "";
+        if(!checkedEbookPlayboard){
+          setCheckedEbookPlayboard(true);
+          updatedCart = updateCartEbookPlayboard(existingCart, products[3], 1);
+        }
+        else {
+          setCheckedEbookPlayboard(false);
+          updatedCart = updateCartEbookPlayboard(existingCart, products[3], -1);
+        }
         setCart(updatedCart)
         setCommandeCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[3]);
-        setCart(newCart)
-        setCommandeCart(newCart)
+        if(!checkedPlayboard){
+          setCheckedEbookPlayboard(true);
+          const newCart = addFirstProduct(products[3]);
+          setCart(newCart)
+          setCommandeCart(newCart)
+        }
+        else setCheckedEbookPlayboard(false);
       }
     }
   }
@@ -711,7 +768,6 @@ const CheckoutScreen = props => {
 
 
   const removeProduct = (productId) => {
-
     let existingCart = localStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart);
 
@@ -722,21 +778,25 @@ const CheckoutScreen = props => {
 
     const productExistIndex = isProductInCart(existingCart.products, productId);
 
-
-
-
     if (-1 < productExistIndex) {
+      console.log("IS SUPPOSED TO REMOVE "+productId)
       const productToBeRemoved = existingCart.products[productExistIndex];
       const qtyTBeRemovedFromTotal = productToBeRemoved.qty;
       const priceToBeDeductedFromTotal = productToBeRemoved.totalPrice;
+
+      console.log(productToBeRemoved)
+      console.log(qtyTBeRemovedFromTotal)
+      console.log(priceToBeDeductedFromTotal)
 
       let updatedCart = existingCart
       /*if(productExistIndex == 0){
         updatedCart.products.shift()
       }
-      else*/ updatedCart.products.splice(productExistIndex, 1)
+      else*/ updatedCart.products.splice(productExistIndex, 1);
       updatedCart.totalProductCount = updatedCart.totalProductCount - qtyTBeRemovedFromTotal;
       updatedCart.totalProductsPrice = updatedCart.totalProductsPrice - priceToBeDeductedFromTotal;
+
+      console.log(updatedCart)
 
 
       localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
@@ -1146,47 +1206,54 @@ const CheckoutScreen = props => {
                 <div>
                   {
                     cart && cart.products.length && (
-                      cart.products.map(item => (
+                      cart.products.map((item) => {
+                        return(
+                        item.productId == 3163 ? (
+                        <>
+                        <div>
+                          <CartItem
+                            key={item.productId}
+                            item={item}
+                            setCart={setCart}
+                          />
+                          <div className="ebookContainer">
+                            <div className="ebookInner">
+                              <p>Ebook Playboard imprimé (9,99€)</p>
+                              <Checkbox checked={checkedEbookPlayboard}
+                                        onChange={(event) => {
+                                          handleAddToCartEbookPlayboard();
+                                        }} />
+                            </div>
+                            <div className="ebookInner">
+                              <p>Ebook Par mail (gratuit)</p>
+                              <Checkbox
+                                checked={true}
+                                disabled
+                                onChange={() => {
+                                  setCheckedEbookPlayboard(!checkedEbookPlayboard)
+                                  handleAddToCartEbookPlayboard()
+                                }}
+                              />
+                            </div>
+                          </div>
+                                                      
+                        </div>
+                        </> 
+                        ) : (
                           <CartItem
                             key={item.productId}
                             item={item}
                             setCart={setCart}
                           />
                         )
-                      )
+                        )
+                      }
                     )
-                  }
+                  )
+                }
                 </div>
               </div>
-              <div className="ebookContainer">
-                <div className="ebookInner">
-                  <p>Ebook Playboard imprimé (9,99€)</p>
-                  <Checkbox checked={checkedEbookPlayboard}
-                            onChange={(event) => {
-                              setCheckedEbookPlayboard(!checkedEbookPlayboard)
-                              if (ebookInCart && ebookInCart.length!==0) {
-
-                              } else {
-                                if (!checkedEbookPlayboard) {
-                                  handleAddToCartEbookPlayboard()
-                                } else {
-                                  setCheckedEbookPlayboard(false)
-                                }
-                              }
-                            }} />
-                </div>
-                <div className="ebookInner">
-                  <p>Ebook Par mail (gratuit)</p>
-                  <Checkbox
-                    checked={true}
-                    disabled
-                    onChange={() => {
-                      setCheckedEbookPlayboard(!checkedEbookPlayboard)
-                      handleAddToCartEbookPlayboard()
-                    }}
-                  />
-                </div>
-              </div>
+              
               <div className="prixRecap">
                 <div className="sousTotal">
 

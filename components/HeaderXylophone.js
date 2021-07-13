@@ -9,7 +9,7 @@ import CardHover from "./CardHover";
 import Link from 'next/link';
 import * as product from '../products';
 import {getDrapeau} from "../store/actions/drapeau";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 
 const HeaderXylophone = (props) => {
@@ -202,7 +202,7 @@ const HeaderXylophone = (props) => {
   };
 
   const dispatch = useDispatch()
-  const [imgurl, setImgUrl] = useState("https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png")
+  const drapeau = useSelector(state => state.drapeau.drapeau)
 
   console.log(open)
   const handleClose = (lang) => {
