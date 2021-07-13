@@ -9,6 +9,8 @@ import CardHover from "./CardHover";
 import Link from 'next/link';
 import {useDispatch, useSelector} from "react-redux";
 import {getDrapeau} from "../store/actions/drapeau";
+import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Header = () => {
 
@@ -68,7 +70,7 @@ const Header = () => {
         <h1 className="freeLivraison">Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
       </div>
 
-        <nav className="container">
+        <nav className="containerHeader">
           <div className="drapeauContainer">
             <p className="langue">{lang}</p>
             <img src={drapeau} alt="drapeau français" className="drapeauImg" onClick={handleClick}/>
@@ -79,9 +81,6 @@ const Header = () => {
                 <img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1536x567.png" alt="" className="imgNavbar"/>
               </Link>
             </div>
-            <Link href="/" style={{marginTop: '5%'}}>
-              <img src={'/home.png'} alt="" style={{width: "3%", height: '3%'}} className="home"/>
-            </Link>
 
             <Menu
               id="simple-menu"
@@ -101,11 +100,15 @@ const Header = () => {
                 <Nav.Link>
 
                   <div className="cartWrap">
-                    {productCount && (<div className="productsCountContainer">
-                      <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{productCount}</span> : ''}</div>
-                    </div>)}
-                    <img src={'/shoppingcart.png'} alt="shopping cart" />
-                    {totalPrice1 ? <span className="totalPriceSpan">{totalPrice1.toFixed(2)}€</span> : ''}
+                    <div className="productsCountContainer">
+                      <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{productCount}</span> : <span className="productCountText">0</span>}</div>
+                    </div>
+                    <div className="flex">
+                      <div className='productPrice'>
+                      {totalPrice1 ? <span className="totalPriceSpan">{totalPrice1.toFixed(2)} €</span> : <span className="totalPriceSpan">0, 00 €</span>}
+                      </div>
+                      <FontAwesomeIcon icon={faShoppingBasket} className="shoppingCart"/>
+                    </div>
                   </div>
                 </Nav.Link>
 

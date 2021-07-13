@@ -31,9 +31,10 @@ const Footer = () => {
     <React.Fragment>
     <footer className="footer-container">
       <div className="container">
-        <div className="footer-subcontainer row">
+        <div className="footer-subcontainer">
           <div className="col-8 col-md-3 order-4 order-md-1 flex-column d-flex">
-            <img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1024x378.png" alt="" className="img-footer"/>
+          <Link href="/"><img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1024x378.png" alt="" className="img-footer"/></Link>
+            <span className="copyright">Copyright © 2021 | Max And Lea</span>
             <div className="icons-social">
               <a href="https://www.facebook.com/MaxandleaToys/" target="_blank"><FontAwesomeIcon icon={faFacebookSquare} className="iconFacebook"/></a>
               <a href="https://www.instagram.com/max.and.lea/" target="_blank"><FontAwesomeIcon icon={faInstagramSquare} className="iconInstagram" href=""/></a>
@@ -46,13 +47,13 @@ const Footer = () => {
             <Link href="/blogs">{t("Footer.3")}</Link>
           </div>
           <div className="col-6 col-md-3 order-2 order-md-3 my-auto flex-column d-flex">
+            <Link href="/contact">{t("Footer.4")}</Link>
             <Link href="/mentionsLegales">{t("Footer.5")}</Link>
             <Link href="/CGV">{t("Footer.6")}</Link>
-            <Link href="/contact">{t("Footer.4")}</Link>
           </div>
           <div className="col-8 col-md-3 order-3 order-md-4 my-auto flex-column d-flex" >
-            <div style={{display: "flex", marginBottom: '10%', flexDirection: 'column', justifyContent: "space-around"}} onClick={() => setOpen(true)}>
-              <img src={'/forest.webp'} alt="" style={{marginBottom: '5%', maxWidth: '200px', marginLeft: 'auto', marginRight: 'auto'}} className="photo-arbre"/>
+            <div style={{display: "flex", marginBottom: '10%', flexDirection: 'column', justifyContent: "space-around"}} >
+              <img src={'/forest.webp'} alt="" className="img-footer" onClick={() => setOpen(true)}/>
 
               <Dialog
                 fullScreen={fullScreen}
@@ -69,7 +70,7 @@ const Footer = () => {
                     <div className="beneficesContainer">
                       <div className="arbresRow">
                             <div>
-                              <img src="https://maxandlea.com/wp-content/uploads/elementor/thumbs/carte-benefices-nuage-1-ox6w2acn9kffruv4ypghfx20j15d0wwotvc9kp1fuc.png" alt=""/>
+                            <img src="https://maxandlea.com/wp-content/uploads/elementor/thumbs/carte-benefices-nuage-1-ox6w2acn9kffruv4ypghfx20j15d0wwotvc9kp1fuc.png" alt=""/>
                             </div>
                         <div>
                           <h5>CLIMAT</h5>
@@ -108,9 +109,9 @@ const Footer = () => {
                       </div>
 
                       <p style={{textAlign: 'center', fontSize: '12px'}}>C'est grâce à vous !</p>
-                      <a href="https://www.reforestaction.com/en/max-lea" className="seePage"><p>Voir notre page</p></a>
+                      <a href="https://www.reforestaction.com/en/max-lea" target="_blank" className="seePage"><p>Voir notre page</p></a>
                     </div>
-                    <button className="arbresButtonClose" onClick={() => setOpen(false)}>x</button>
+                    <button className="arbresButtonClose" onClick={() => handleClose()}>x</button>
                   </div>
                 </DialogContent>
               </Dialog>
