@@ -233,13 +233,17 @@ const HeaderPlayboard = (props) => {
         <h1 className="freeLivraison">Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
       </div>
 
-      <nav className="container">
+      <nav className="containerHeader">
         <div className="drapeauContainer">
           <p className="langue">{lang}</p>
           <img src={drapeau} alt="drapeau français" className="drapeauImg" onClick={handleClick}/>
         </div>
         <Nav className="navBar container">
-          <div className="imgContainer imgContainerjouet"><img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1536x567.png" alt="" className="imgNavbar"/></div>
+        <div className="imgContainer">
+              <Link href="/">
+                <img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1536x567.png" alt="" className="imgNavbar"/>
+              </Link>
+            </div>
 
           <Menu
             id="simple-menu"

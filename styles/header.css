@@ -8,6 +8,10 @@
   align-items: center;
 }
 
+.containerHeader{
+  max-width: 1000px;
+  margin: auto;
+}
 
 .imgContainer {
   width: 20%;
@@ -76,6 +80,7 @@
   font-weight: 400;
   font-family: "Roboto", sans-serif;
   text-align: center;
+  margin-top: 5px;
 }
 
 .cartWrap {
@@ -84,7 +89,7 @@
 
 .drapeauContainer {
   width: 121px;
-  height: 40px;
+  height: 25px;
   border-bottom-left-radius: 21px;
   border-bottom-right-radius: 21px;
   background-color: #dadada;
@@ -92,7 +97,6 @@
   justify-content: space-around;
   position: absolute;
   left: 48%;
-  padding-top: 10px;
   padding-left: 5px;
   align-items: center;
 }
@@ -100,17 +104,16 @@
 .langue {
   font-size: 14px;
   letter-spacing: 0px;
-  line-height: 44px;
+  line-height: 1;
   color: #fefefe;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
   text-align: center;
+  margin-bottom: 5px;
 }
 
 .drapeauImg {
-  width: 20%;
-  height: 50%;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   margin-right: 15px;
 }
 
@@ -141,19 +144,19 @@
 }
 
 .productsCountContainer {
-  width: 28px;
-  height: 28px;
+  width: 20px;
+  height: 20px;
   border-radius: 14px;
   background-color: #00b2cc;
   align-items: center;
   position: absolute;
   padding-left: 15px;
-  left: 60%;
-  bottom: 82%;
+  left: 50%;
+  bottom: 60%;
 }
 
 .productCountText {
-  font-size: 14px;
+  font-size: 11px;
   letter-spacing: 0px;
   line-height: 44px;
   color: #fefefe;
@@ -169,19 +172,17 @@
   border-radius: 14px;
   align-items: center;
   position: absolute;
-  left: 38%;
-  bottom: 25%;
+  left: 35%;
+  bottom: 20%;
 }
 
 .totalPriceSpan {
-  top: 20%;
-  margin-left: 2%;
-  font-size: 21px;
+  font-size: 18px;
   margin-top: 13%;
   letter-spacing: -1px;
   line-height: 53px;
   color: black;
-  font-weight: 700;
+  font-weight: 500;
   font-family: "Roboto", sans-serif;
   text-align: center;
 }
@@ -189,13 +190,15 @@
 .quantityContainer {
   color: #d4d4d4;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 14px;
+}
+.quantityContainer p{
+  margin-bottom: 0px;
 }
 
 .prixJouet {
   display: flex;
   justify-content: space-around;
-  height: 50px;
   margin-top: 25px;
 }
 
@@ -205,27 +208,28 @@
 }
 
 .jouetName {
-  font-size: 32px;
+  font-size: 25px;
   letter-spacing: 1px;
   color: #e72c59;
-  margin-right: 5%;
+  margin-right: 10px;
   font-family: "Roboto", sans-serif;
   text-align: center;
   margin-bottom: 5px!important;
 }
 
 .jouetPrix {
-  font-size: 28px;
+  font-size: 25px;
   letter-spacing: -1px;
   color: #0b4b61;
-  margin-top: 2%;
   font-weight: 700;
   font-family: "Roboto", sans-serif;
   text-align: center;
+  margin-bottom: 5px!important;
 }
 
 .economie {
   font-size: 13px;
+  margin-right: 10px;
   line-height: 1;
   color: #adadad;
   font-weight: 400;
@@ -250,22 +254,39 @@
 .ajouterPanier {
   border-radius: 14px;
   background-color: #e72c59;
-  height: 30%;
-  padding-right: 2%;
-  padding-left: 2%;
+  padding-right: 10px;
+  padding-left: 10px;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 10px;
   cursor: pointer;
+  animation: shake 5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  1%, 9% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  2%, 8% {
+    transform: translate3d(2px, 0, 0);
+  }
+  3%, 5%, 7% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  4%, 6% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
 .ajouterPanierText {
-  font-size: 19px;
-  letter-spacing: -1px;
+  font-size: 16px;
   color: #ffffff;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
   text-align: center;
-  margin-top: 1rem!important;
+  margin-top: 5px!important;
+  margin-bottom: 5px!important;
 }
 
 .stickyHeader{
@@ -280,7 +301,6 @@
 .freeContainer{
   background-color: rgb(231, 44, 89);
   text-align: center;
-  height: 70px;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -332,7 +352,6 @@
     line-height: 1;
   }
   .prixJouet{
-    height: 35px;
     margin-top: 0px;;
   }
   .ajouterPanier{
@@ -358,8 +377,8 @@
 }
 
 .shoppingCart {
-  font-size: 20px;
-  width: 17%;
+  font-size: 17px;
+  width: 20px;
   color: black;
 }
 
