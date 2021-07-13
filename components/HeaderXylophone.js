@@ -14,7 +14,6 @@ import {useDispatch} from "react-redux";
 
 const HeaderXylophone = (props) => {
 
-  console.log(product)
   const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
   console.log(cart)
 
