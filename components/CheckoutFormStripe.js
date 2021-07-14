@@ -21,6 +21,7 @@ import Link from "next/link";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 import GooglePayButton from "@google-pay/button-react";
+import ApplePay from "./ApplePay";
 
 const CHECKOUT_MUTATION = gql`
 mutation CHECKOUT_MUTATION( $input: CheckoutInput! ) {
@@ -394,6 +395,9 @@ const CheckoutFormStripe = ({
     hidePostalCode: true
   };
 
+
+
+
   const onSuccessfullCheckout = () => {
     router.push('/remerciement')
   }
@@ -454,6 +458,9 @@ const CheckoutFormStripe = ({
           buttonColor="black"
           buttonType="buy"
         />
+
+        <ApplePay totalPrice={totalPrice2}/>
+
         <div className={styles.paymentMethods}>
           <div className={visaClicked ? styles.visaContainerClicked : styles.visaContainer} onClick={() => {
             setPaypalClicked(false)
