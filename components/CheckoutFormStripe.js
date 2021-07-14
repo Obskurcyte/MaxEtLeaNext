@@ -132,7 +132,6 @@ const CheckoutFormStripe = ({
 
   const [visaClicked, setVisaClicked] = useState(false);
   const [paypalClicked, setPaypalClicked] = useState(false);
-  const [googlePayClicked, setGooglePayClicked] = useState(false);
 
   console.log(price)
   const  [
@@ -159,9 +158,6 @@ const CheckoutFormStripe = ({
     moyenPaiement = 'Paypal'
   }
 
-  if (googlePayClicked) {
-    moyenPaiement = 'Google Pay'
-  }
 
   const dispatch = useDispatch();
 
@@ -411,7 +407,6 @@ const CheckoutFormStripe = ({
       </Head>
       <div className={styles.paymentMethodsSuperContainer}>
         <GooglePayButton
-          onClick={() => setGooglePayClicked(true)}
           environment="TEST"
           paymentRequest={{
             apiVersion: 2,
@@ -451,7 +446,7 @@ const CheckoutFormStripe = ({
           onPaymentAuthorized={paymentData => {
             console.log('Payment Authorized Success', paymentData)
             localStorage.removeItem('woo-next-cart')
-            localStorage.setItem('moyenPaiement', moyenPaiement);
+            localStorage.setItem('moyenPaiement', 'GooglePay');
             router.push('/remerciement').then(() => window.location.reload())
             return {transactionState: 'success'}
           }}
