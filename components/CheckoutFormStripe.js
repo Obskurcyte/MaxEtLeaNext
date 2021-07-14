@@ -459,7 +459,7 @@ const CheckoutFormStripe = ({
           buttonType="buy"
         />
 
-        <ApplePay totalPrice={totalPrice2}/>
+        {/*<ApplePay totalPrice={totalPrice2}/>*/}
 
         <div className={styles.paymentMethods}>
           <div className={visaClicked ? styles.visaContainerClicked : styles.visaContainer} onClick={() => {

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useStripe, useElements, PaymentRequestButtonElement} from "@stripe/react-stripe-js";
+import axios from "axios";
 
 const ApplePay = (props) => {
 
@@ -12,6 +13,7 @@ const ApplePay = (props) => {
     if (!stripe || !elements) {
       return;
     }
+
     const pr = stripe.paymentRequest({
       currency: 'eur',
       country: 'FR',
@@ -27,6 +29,28 @@ const ApplePay = (props) => {
           setPaymentRequest(pr)
       }
     })
+    pr.on('paymentmethod', async(e) => {
+      const {data: clientSecret} = await axios.post("/api/payment_intents", {
+        amount: parseInt(props.totalPrice * 100)
+      }).then((r) => r.json())
+
+      const {error, paymentIntent} = await stripe.confirmCardPayment(
+        clientSecret, {
+          payment_method: e.paymentMethod.id
+        }, {
+          handleActions: false,
+        }
+        )
+      if (error) {
+        e.complete('fail');
+        return;
+      }
+      e.complete('success');
+      if (paymentIntent.status === 'requires_action') {
+        stripe.confirmCardPayment(clientSecret)
+      }
+      })
+
   }, [stripe, elements]);
 
   return (
