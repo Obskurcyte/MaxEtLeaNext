@@ -53,6 +53,11 @@
   margin-top: 10%;
 }
 
+.paymentMethodsSuperContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .visaContainer {
   border-radius: 20px;
   width: 30%;
