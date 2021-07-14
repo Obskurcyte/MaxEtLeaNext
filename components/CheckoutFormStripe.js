@@ -20,6 +20,8 @@ import query from "apollo-cache-inmemory/lib/fragmentMatcherIntrospectionQuery";
 import Link from "next/link";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
+import GooglePayButton from "@google-pay/button-react";
+import ApplePay from "./ApplePay";
 
 const CHECKOUT_MUTATION = gql`
 mutation CHECKOUT_MUTATION( $input: CheckoutInput! ) {
@@ -46,7 +48,7 @@ const WooCommerce = new WooCommerceRestApi({
   consumerKey: 'ck_9e4d330373ed9a52a684ec88434271aa37652603',
   consumerSecret: 'cs_a0272dea628e462d7288a10226cfa3e1f4ffcaff',
   version: 'wc/v3'
-}); 
+});
 
 const createOrderWoo = async () => {
 
@@ -96,7 +98,7 @@ const createOrderWoo = async () => {
       }
     ]
   };
- 
+
 
   WooCommerce.post("orders", data)
   .then((response) => {
@@ -294,7 +296,7 @@ const CheckoutFormStripe = ({
             .catch((error) => {
               console.log(error.response.data);
             });
-            
+
           }
           console.log(order)
         },
@@ -393,6 +395,9 @@ const CheckoutFormStripe = ({
     hidePostalCode: true
   };
 
+
+
+
   const onSuccessfullCheckout = () => {
     router.push('/remerciement')
   }
@@ -404,18 +409,71 @@ const CheckoutFormStripe = ({
       <Head >
         <title>CheckoutStripe</title>
       </Head>
-      <div className={styles.paymentMethods}>
-        <div className={visaClicked ? styles.visaContainerClicked : styles.visaContainer} onClick={() => {
-          setPaypalClicked(false)
-          setVisaClicked(true)
-        }}>
-          <img src={'/visa.png'} alt="" className={visaClicked ? styles.visaImgClicked : styles.visaImg}/>
-        </div>
-        <div className={paypalClicked ? styles.paypalContainerClicked : styles.paypalContainer} onClick={() => {
-          setVisaClicked(false)
-          setPaypalClicked(true)
-        }}>
-          <img src={'/paypal.png'} alt="" className={paypalClicked ? styles.paypalImgClicked : styles.paypalImg}/>
+      <div className={styles.paymentMethodsSuperContainer}>
+        <GooglePayButton
+          environment="TEST"
+          paymentRequest={{
+            apiVersion: 2,
+            apiVersionMinor: 0,
+            allowedPaymentMethods: [
+              {
+                type: 'CARD',
+                parameters: {
+                  allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                  allowedCardNetworks: ['MASTERCARD', 'VISA'],
+                },
+                tokenizationSpecification: {
+                  type: 'PAYMENT_GATEWAY',
+                  parameters: {
+                    gateway: 'example',
+                    gatewayMerchantId: 'exampleGatewayMerchantId',
+                  },
+                },
+              },
+            ],
+            merchantInfo: {
+              merchantId: '12345678901234567890',
+              merchantName: 'Demo Merchant',
+            },
+            transactionInfo: {
+              totalPriceStatus: 'FINAL',
+              totalPriceLabel: 'Total',
+              totalPrice: `${totalPrice2}`,
+              currencyCode: 'EUR',
+              countryCode: 'FR',
+            },
+            callbackIntents: ['PAYMENT_AUTHORIZATION']
+          }}
+          onLoadPaymentData={paymentRequest => {
+            console.log('load payment data', paymentRequest);
+          }}
+          onPaymentAuthorized={paymentData => {
+            console.log('Payment Authorized Success', paymentData)
+            localStorage.removeItem('woo-next-cart')
+            localStorage.setItem('moyenPaiement', 'GooglePay');
+            router.push('/remerciement').then(() => window.location.reload())
+            return {transactionState: 'success'}
+          }}
+          existingPaymentMethodRequired="false"
+          buttonColor="black"
+          buttonType="buy"
+        />
+
+        {/*<ApplePay totalPrice={totalPrice2}/>*/}
+
+        <div className={styles.paymentMethods}>
+          <div className={visaClicked ? styles.visaContainerClicked : styles.visaContainer} onClick={() => {
+            setPaypalClicked(false)
+            setVisaClicked(true)
+          }}>
+            <img src={'/visa.png'} alt="" className={visaClicked ? styles.visaImgClicked : styles.visaImg}/>
+          </div>
+          <div className={paypalClicked ? styles.paypalContainerClicked : styles.paypalContainer} onClick={() => {
+            setVisaClicked(false)
+            setPaypalClicked(true)
+          }}>
+            <img src={'/paypal.png'} alt="" className={paypalClicked ? styles.paypalImgClicked : styles.paypalImg}/>
+          </div>
         </div>
       </div>
 
@@ -525,7 +583,7 @@ const CheckoutFormStripe = ({
                     }
                   ]
                 };
-              
+
 
                 WooCommerce.post("orders", data)
                 .then((response) => {
@@ -542,7 +600,7 @@ const CheckoutFormStripe = ({
                   localStorage.setItem('moyenPaiement', moyenPaiement);
                   router.push('/remerciement').then(() => window.location.reload())
                 });
-                
+
               })
 
 
