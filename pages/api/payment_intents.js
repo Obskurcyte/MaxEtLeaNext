@@ -5,25 +5,30 @@ const stripe = new Stripe('sk_test_51IjLvTHhHoTNAiE0EVFu8ue0eTtiCsVuZsY0Y3FGCsvt
 })
 
 export default async (req, res) => {
-  if (req.method === 'POST') {
+
+  if (req.method === "POST") {
     try {
       const { amount } = req.body;
 
-      console.log(req.body)
       const paymentIntent = await stripe.paymentIntents.create({
         amount,
-        currency: 'eur'
+        currency: "eur",
+        payment_method_types: ['card', 'bancontact'],
+        payment_method_options: {
+          bancontact: {
+            preferred_language: 'fr',
+          },
+        },
       });
 
-      console.log(paymentIntent)
 
-      res.status(200).send(paymentIntent.client_secret)
+      res.status(200).send(paymentIntent.client_secret);
     } catch (err) {
       console.log(err)
-      res.status(500).json({statusCode: 500, message: err.message})
+      res.status(500).json({ statusCode: 500, message: err.message });
     }
   } else {
     res.setHeader("Allow", "POST");
-    res.status(405).end('Method not allowed')
+    res.status(405).end("Method Not Allowed");
   }
-}
+};

@@ -12,7 +12,9 @@ import {getDrapeau} from "../store/actions/drapeau";
 import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Header = () => {
+
+const Header = (props) => {
+
 
   const { t, i18n } = useTranslation();
 
@@ -64,8 +66,10 @@ const Header = () => {
     return <CardHover />
   }
 
+
   return (
     <div className="stickyHeader">
+
       <div className="freeContainer">
         <h1 className="freeLivraison">Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
       </div>

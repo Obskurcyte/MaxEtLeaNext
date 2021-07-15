@@ -90,6 +90,22 @@
   overflow: hidden;
 }
 
+.banContactContainer {
+  border-radius: 20px;
+  width: 40%;
+  border: 1px solid blue;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.banContactContainerClicked {
+  border-radius: 20px;
+  width: 40%;
+  background-color: lightblue;
+  border: 1px solid blue;
+  overflow: hidden;
+}
+
 .visaImg {
   width: 100%;
   height: 100%;

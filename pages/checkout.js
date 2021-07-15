@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import { makeStyles } from '@material-ui/core/styles';
 import {AppContext} from "../components/context/AppContext";
 import {CardElement} from '@stripe/react-stripe-js';
-import {loadStripe} from "@stripe/stripe-js/pure";
 import {Elements} from "@stripe/react-stripe-js";
 import CheckoutFormStripe from "../components/CheckoutFormStripe";
 import CartItem from "../components/CartItem";
@@ -30,8 +29,6 @@ import {PayPalScriptProvider} from "@paypal/react-paypal-js";
 import Slider from "react-slick";
 import { useRouter } from 'next/router';
 
-
-const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
 function SimpleDialogPlayboard(props) {
   const { onClose, selectedValue, open } = props;
@@ -599,11 +596,11 @@ const CheckoutScreen = props => {
       if(updatedProduct.qty + qtyToBeAdded < 0)
         return updatedProducts;
       else if(updatedProduct.qty + qtyToBeAdded == 0){
-        
+
         const updatedCart = removeProduct(products[3].id);
         if(updatedCart == null){
           return null;
-        } 
+        }
         setCart(updatedCart);
         return updatedCart.products;
       }
@@ -891,35 +888,6 @@ const CheckoutScreen = props => {
 
 
   const [checked, setChecked] = React.useState(false);
-
-  const handleSubmit = async (event) => {
-    // Block native form submission.
-    event.preventDefault();
-
-    const {stripe, elements} = props;
-
-    if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
-      return;
-    }
-
-    // Get a reference to a mounted CardElement. Elements knows how
-    // to find your CardElement because there can only ever be one of
-    // each type of element.
-    const cardElement = elements.getElement(CardElement);
-
-    const {error, paymentMethod} = await stripe.createPaymentMethod({
-      type: 'card',
-      card: cardElement,
-    });
-
-    if (error) {
-      console.log('[error]', error);
-    } else {
-      console.log('[PaymentMethod]', paymentMethod);
-    }
-  };
 
 
   const items = [
@@ -1236,9 +1204,9 @@ const CheckoutScreen = props => {
                               />
                             </div>
                           </div>
-                                                      
+
                         </div>
-                        </> 
+                        </>
                         ) : (
                           <CartItem
                             key={item.productId}
@@ -1253,7 +1221,7 @@ const CheckoutScreen = props => {
                 }
                 </div>
               </div>
-              
+
               <div className="prixRecap">
                 <div className="sousTotal">
 
@@ -1397,10 +1365,10 @@ const CheckoutScreen = props => {
                   <div className="innerArticleContainer">
                     <div className="innerArticleTop">
                       <label className="labelArticleTop">
-                        <Checkbox 
+                        <Checkbox
                         id={products[2].id}
                         className="checkArticle"
-                        style={{display:'inlineBlock'}} 
+                        style={{display:'inlineBlock'}}
                         checked={checkedPlayboard}
                         onChange={(event) => {
                           handleAddToCartPlayboard()
@@ -1417,7 +1385,7 @@ const CheckoutScreen = props => {
                         handleClickOpenPlayboard()
                       }}>
                     <img src="/playboard.png" alt="playboard" className="articleImg" />
-                      
+
                     </div>
                     <SimpleDialogPlayboard open={openPlayboard} onClose={handleClosePlayboard} />
 
@@ -1441,7 +1409,7 @@ const CheckoutScreen = props => {
                         handleClickOpenXylo()
                       }}>
                     <img src="/xylophonecard.png" alt="playboard" className="articleImg" />
-                      
+
                     </div>
                     <SimpleDialogXylo open={openXylo} onClose={handleCloseXylo} />
 
@@ -1465,7 +1433,7 @@ const CheckoutScreen = props => {
                         handleClickOpenTour()
                       }}>
                     <img src="/tour.png" alt="playboard" className="articleImg" />
-                      
+
                     </div>
                     <SimpleDialogTour open={openTour} onClose={handleCloseTour} />
 
@@ -2076,7 +2044,7 @@ const CheckoutScreen = props => {
                         )
                         }
                       </Formik>
-                    ): <Elements stripe={stripePromise}>
+                    ):
                       <div className="formData">
                         <CheckoutFormStripe
                           adress={adresseLivraison}
@@ -2096,8 +2064,7 @@ const CheckoutScreen = props => {
                           codePostalFacturation={codePostalFacturation}
                           phone={phone}
                         />
-                      </div>
-                    </Elements>}
+                      </div>}
 
                   </div>
                 </div>
@@ -2116,7 +2083,7 @@ const CheckoutScreen = props => {
           <Garanties />
         </div>
       </div>
-        
+
     </div>
     <div>
       <Footer />

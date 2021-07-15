@@ -1,9 +1,8 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
-import {CardElement, useStripe, useElements, Elements} from "@stripe/react-stripe-js";
+import {CardElement, useStripe, useElements} from "@stripe/react-stripe-js";
 import axios from "axios";
 import {ListGroup, Row, Spinner} from 'react-bootstrap'
 import styles from './CheckoutFormStripe.module.css'
-import {loadStripe} from "@stripe/stripe-js/pure";
 import styled from "@emotion/styled";
 import {Formik} from "formik";
 import {v4} from "uuid";
@@ -11,14 +10,8 @@ import {useMutation} from "@apollo/client";
 import gql from "graphql-tag";
 import {AppContext} from "./context/AppContext";
 import {useRouter} from 'next/router';
-import {PayPalButton} from "react-paypal-button-v2";
-import ReactDOM from 'react-dom'
 import Head from "next/head";
 import {useDispatch} from "react-redux";
-import {getCart, setMauvaisCart} from "../store/actions/commandes";
-import query from "apollo-cache-inmemory/lib/fragmentMatcherIntrospectionQuery";
-import Link from "next/link";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 import GooglePayButton from "@google-pay/button-react";
 import ApplePay from "./ApplePay";
@@ -62,7 +55,7 @@ const createOrderWoo = async () => {
       line_items_array.push(temp_obj);
     });
   }
-  console.log(dataClientCart);
+
   const data = {
     payment_method: moyenPaiement,
     payment_method_title: moyenPaiement,
@@ -102,7 +95,7 @@ const createOrderWoo = async () => {
 
   WooCommerce.post("orders", data)
   .then((response) => {
-    console.log(response.data);
+
   })
   .catch((error) => {
     console.log(error.response.data);
@@ -133,8 +126,8 @@ const CheckoutFormStripe = ({
 
   const [visaClicked, setVisaClicked] = useState(false);
   const [paypalClicked, setPaypalClicked] = useState(false);
+  const [bancontactClicked, setBancontactClicked] = useState(false);
 
-  console.log(price)
   const  [
     cart, setCart,
     commandeCart, setCommandeCart,
@@ -166,7 +159,7 @@ const CheckoutFormStripe = ({
   const router = useRouter()
   //############    PAYPAL #############//
 
-  console.log(totalPrice2)
+
 
   const [succeeded, setSucceeded] = useState(false);
   const [paypalErrorMessage, setPaypalErrorMessage] = useState("");
@@ -198,7 +191,7 @@ const CheckoutFormStripe = ({
 
   const onApprove = async (data, actions) => {
     const order = await actions.order.capture();
-    console.log('wola')
+
     if (order.status === 'COMPLETED') {
       localStorage.removeItem('woo-next-cart')
       localStorage.setItem('moyenPaiement', moyenPaiement);
@@ -207,7 +200,7 @@ const CheckoutFormStripe = ({
       })
       window.location.reload()
     }
-    console.log(order)
+
   };
 
   const Paypal = () => {
@@ -245,7 +238,7 @@ const CheckoutFormStripe = ({
                 line_items_array.push(temp_obj);
               });
             }
-            console.log(dataClientCart);
+
             const data = {
               payment_method: moyenPaiement,
               payment_method_title: moyenPaiement,
@@ -288,7 +281,6 @@ const CheckoutFormStripe = ({
 
             WooCommerce.post("orders", data)
             .then((response) => {
-              console.log(response.data);
               localStorage.removeItem('woo-next-cart')
               localStorage.setItem('moyenPaiement', moyenPaiement);
               window.location.reload()
@@ -298,7 +290,6 @@ const CheckoutFormStripe = ({
             });
 
           }
-          console.log(order)
         },
         onError: (err) => {
           console.log(err)
@@ -314,7 +305,6 @@ const CheckoutFormStripe = ({
   }
 
 
-  console.log('cart', cart)
 
 
   let totalPrice1 = 0;
@@ -339,6 +329,7 @@ const CheckoutFormStripe = ({
 
   //##############   STRIPE #############//
 
+  const [stripeCheckoutError, setStripeCheckoutError] = useState(null)
   const [ checkout, { data: checkoutResponse, loading: checkoutLoading, error: checkoutError1 } ] = useMutation( CHECKOUT_MUTATION, {
     variables: {
       input: checkoutData
@@ -354,7 +345,6 @@ const CheckoutFormStripe = ({
     }
   } );
 
-  console.log(isProcessing)
   const stripe = useStripe();
   const elements = useElements();
 
@@ -402,7 +392,54 @@ const CheckoutFormStripe = ({
     router.push('/remerciement')
   }
 
-  return (
+  const handleCardDetailsChange = ev => {
+    console.log('ev', ev)
+    ev.error ? setCheckoutError(ev.error.message) : setCheckoutError();
+  };
+
+
+  //##############   BANCONTACT #############//
+
+  const handleBanContact = async (e) => {
+    if (!stripe || !elements) {
+      // Stripe.js has not yet loaded.
+      // Make sure to disable form submission until Stripe.js has loaded.
+      return;
+    }
+
+    // For brevity, this example is using uncontrolled components for
+    // the accountholder's name. In a real world app you will
+    // probably want to use controlled components.
+    // https://reactjs.org/docs/uncontrolled-components.html
+    // https://reactjs.org/docs/forms.html#controlled-components
+
+    const accountholderName = e.target['accountholder-name'];
+
+    const response = await axios.post("/api/payment_intents", {
+      amount: parseInt(totalPrice2 * 100)
+    });
+
+    const {error} = await stripe.confirmBancontactPayment(response.data, {
+      payment_method: {
+        billing_details: {
+          name: accountholderName.value,
+        },
+      },
+      return_url: 'http://localhost:3000/thankyou',
+    });
+
+    if (error) {
+      // Show error to your customer.
+      console.log(error.message);
+    }
+
+    // Otherwise the customer will be redirected away from your
+    // page to complete the payment with their bank.
+  };
+
+
+
+return (
 
 
     <div>
@@ -465,21 +502,36 @@ const CheckoutFormStripe = ({
           <div className={visaClicked ? styles.visaContainerClicked : styles.visaContainer} onClick={() => {
             setPaypalClicked(false)
             setVisaClicked(true)
+            setBancontactClicked(false)
           }}>
             <img src={'/visa.png'} alt="" className={visaClicked ? styles.visaImgClicked : styles.visaImg}/>
           </div>
           <div className={paypalClicked ? styles.paypalContainerClicked : styles.paypalContainer} onClick={() => {
             setVisaClicked(false)
             setPaypalClicked(true)
+            setBancontactClicked(false)
           }}>
             <img src={'/paypal.png'} alt="" className={paypalClicked ? styles.paypalImgClicked : styles.paypalImg}/>
           </div>
+
         </div>
+
+        {pays === 'Belgique' && (
+          <div className={bancontactClicked ? styles.banContactContainerClicked : styles.banContactContainer} onClick={() => {
+            setVisaClicked(false)
+            setPaypalClicked(false)
+            setBancontactClicked(true)
+          }}>
+            <img src={'/Bancontact.png'} alt="" className={bancontactClicked ? styles.paypalImgClicked : styles.paypalImg}/>
+          </div>
+        )}
       </div>
 
       {isProcessing && <Spinner animation="border" role="status">
         <span className="sr-only">Loading...</span>
       </Spinner>}
+
+      {checkoutError && <p className="text-danger">{checkoutError}</p>}
 
       {visaClicked && (
         <Formik
@@ -515,7 +567,6 @@ const CheckoutFormStripe = ({
             }
             setCheckoutData(checkoutData)
 
-            console.log(checkoutData)
 
             const billingDetails = {
               name: values.email,
@@ -526,66 +577,95 @@ const CheckoutFormStripe = ({
               }
             };
 
+            const cardElement = elements.getElement("card");
             setProcessingTo(true);
 
-              const {data: clientSecret} = await axios.post("/api/payment_intents", {
-                amount: totalPrice2 * 100
-              }).then(() => {
-                let dataClientCart = JSON.parse(localStorage.getItem('livraison'));
-                let cartClientCommande = JSON.parse(localStorage.getItem('commande-cart'));
 
-                var line_items_array = [];
-                if(cartClientCommande && cartClientCommande.products){
-                  cartClientCommande.products.forEach( product => {
-                    var temp_obj = {product_id: product.productId, quantity: product.qty};
-                    line_items_array.push(temp_obj);
-                  });
-                }
-                console.log(dataClientCart);
-                const data = {
-                  payment_method: moyenPaiement,
-                  payment_method_title: moyenPaiement,
-                  set_paid: true,
-                  billing: {
-                    first_name: dataClientCart.prenom,
-                    last_name: dataClientCart.nom,
-                    address_1: dataClientCart.adresseFacturation,
-                    address_2: "",
-                    city: dataClientCart.villeFacturation,
-                    state: "",
-                    postcode: dataClientCart.codePostalFacturation,
-                    country: dataClientCart.pays,
-                    email: dataClientCart.email,
-                    phone: dataClientCart.phone
-                  },
-                  shipping: {
-                    first_name: dataClientCart.prenom,
-                    last_name: dataClientCart.nom,
-                    address_1: dataClientCart.adresseLivraison,
-                    address_2: "",
-                    city: dataClientCart.villeLivraison,
-                    state: "",
-                    postcode: dataClientCart.codePostalLivraison,
-                    country: dataClientCart.pays
-                  },
-                  line_items: line_items_array,
-                  shipping_lines: [
-                    {
-                      method_id: "flat_rate",
-                      method_title: "Flat Rate",
-                      total: dataClientCart.prixLivraison.toString()
-                    }
-                  ],
-                  meta_data: [
-                    {
-                      key: "Mondial Relay Parcel Shop ID",
-                      value: "FR-051322"
-                    }
-                  ]
-                };
+            try {
+              const { data: clientSecret } = await axios.post("/api/payment_intents", {
+                amount: parseInt(totalPrice2 * 100)
+              });
 
 
-                WooCommerce.post("orders", data)
+
+              const paymentMethodReq = await stripe.createPaymentMethod({
+                type: "card",
+                card: cardElement,
+                billing_details: billingDetails
+              });
+
+              console.log('payment', paymentMethodReq)
+              if (paymentMethodReq.error) {
+                setCheckoutError(paymentMethodReq.error.message);
+                setProcessingTo(false);
+                return;
+              }
+
+              const { error } = await stripe.confirmCardPayment(clientSecret, {
+                payment_method: paymentMethodReq.paymentMethod.id
+              });
+
+
+              console.log('error', error)
+              if (error) {
+                setCheckoutError(error.message);
+                setProcessingTo(false);
+                return;
+              }
+
+
+              let dataClientCart = JSON.parse(localStorage.getItem('livraison'));
+              let cartClientCommande = JSON.parse(localStorage.getItem('commande-cart'));
+
+              var line_items_array = [];
+              if (cartClientCommande && cartClientCommande.products) {
+                cartClientCommande.products.forEach(product => {
+                  var temp_obj = {product_id: product.productId, quantity: product.qty};
+                  line_items_array.push(temp_obj);
+                });
+              }
+              const data = {
+                payment_method: moyenPaiement,
+                payment_method_title: moyenPaiement,
+                set_paid: true,
+                billing: {
+                  first_name: dataClientCart.prenom,
+                  last_name: dataClientCart.nom,
+                  address_1: dataClientCart.adresseFacturation,
+                  address_2: "",
+                  city: dataClientCart.villeFacturation,
+                  state: "",
+                  postcode: dataClientCart.codePostalFacturation,
+                  country: dataClientCart.pays,
+                  email: dataClientCart.email,
+                  phone: dataClientCart.phone
+                },
+                shipping: {
+                  first_name: dataClientCart.prenom,
+                  last_name: dataClientCart.nom,
+                  address_1: dataClientCart.adresseLivraison,
+                  address_2: "",
+                  city: dataClientCart.villeLivraison,
+                  state: "",
+                  postcode: dataClientCart.codePostalLivraison,
+                  country: dataClientCart.pays
+                },
+                line_items: line_items_array,
+                shipping_lines: [
+                  {
+                    method_id: "flat_rate",
+                    method_title: "Flat Rate",
+                    total: dataClientCart.prixLivraison.toString()
+                  }
+                ],
+                meta_data: [
+                  {
+                    key: "Mondial Relay Parcel Shop ID",
+                    value: "FR-051322"
+                  }
+                ]
+              };
+              WooCommerce.post("orders", data)
                 .then((response) => {
                   console.log(response.data);
                   setProcessingTo(false)
@@ -594,39 +674,27 @@ const CheckoutFormStripe = ({
                   router.push('/remerciement').then(() => window.location.reload())
                 })
                 .catch((error) => {
-                  console.log(error.response.data);
                   setProcessingTo(false)
-                  localStorage.removeItem('woo-next-cart')
-                  localStorage.setItem('moyenPaiement', moyenPaiement);
-                  router.push('/remerciement').then(() => window.location.reload())
+                  console.log('err', error)
                 });
-
-              })
-
-
-
-            const cardElement = elements.getElement(CardElement);
-
-            const paymentMethodReq = await stripe.createPaymentMethod({
-              type: "card",
-              card: cardElement,
-              billing_details: billingDetails
-            });
-
-            const confirmedCardPayment = await stripe.confirmCardPayment(clientSecret, {
-              payment_method: paymentMethodReq.paymentMethod.id
-            })
+            } catch (err) {
+              console.log(err)
+              setCheckoutError(err.message);
+            }
 
 
-            console.log('wola', paymentMethodReq)
-            console.log('wola2', confirmedCardPayment)
+           /* if (stripeError) {
+              setStripeCheckoutError('Une erreur pendant le paiement est survenue !')
+              setProcessingTo(false)
+              console.log('front', stripeError)
+            }
+            */
 
-            if (paymentMethodReq.error) {
-               setCheckoutError(paymentMethodReq.error.message);
-               setProcessingTo(false);
-             }
-            console.log(checkoutError)
-          }}
+
+
+
+              }
+          }
         >
           {props => (
             <form onSubmit={(e) => {e.preventDefault()}}>
@@ -646,14 +714,14 @@ const CheckoutFormStripe = ({
                   <CardElementContainer>
                     <CardElement
                       options={cardElementOpts}
-                      onChange={props.handleChange('cardnumber')}
+                      onChange={handleCardDetailsChange}
                     />
                   </CardElementContainer>
                 </div>
               </Row>
               <Row>
                 {/* TIP always disable your submit button while processing payments */}
-                <button className={styles.payButton} type="submit" onClick={props.handleSubmit}>
+                <button className={styles.payButton} type="submit" onClick={props.handleSubmit} disabled={isProcessing || !stripe}>
                   Commandez
                 </button>
               </Row>
@@ -671,6 +739,64 @@ const CheckoutFormStripe = ({
         </div>
       ) : null}
 
+      {bancontactClicked && (
+        <Formik
+          initialValues={{
+          name: ''
+        }}
+          onSubmit={async values => {
+            if (!stripe || !elements) {
+              // Stripe.js has not yet loaded.
+              // Make sure to disable form submission until Stripe.js has loaded.
+              return;
+            }
+
+            // For brevity, this example is using uncontrolled components for
+            // the accountholder's name. In a real world app you will
+            // probably want to use controlled components.
+            // https://reactjs.org/docs/uncontrolled-components.html
+            // https://reactjs.org/docs/forms.html#controlled-components
+
+
+            const response = await axios.post("/api/payment_intents", {
+              amount: parseInt(totalPrice2 * 100)
+            });
+
+            const {error} = await stripe.confirmBancontactPayment(response.data, {
+              payment_method: {
+                billing_details: {
+                  name: values.name,
+                },
+              },
+              return_url: 'http://localhost:3000/thankyou',
+            });
+
+            if (error) {
+              // Show error to your customer.
+              console.log(error.message);
+            }
+          }}
+        >
+          {props => (
+            <div>
+              <label>
+                Nom
+                <input
+                  value={props.values.name}
+                  onChange={props.handleChange('name')}
+                  placeholder="Entrez votre nom"
+                  className={styles.inputName}
+                  required />
+              </label>
+
+              <button className={styles.payButton} type="submit" onClick={props.handleSubmit}>
+                Commandez
+              </button>
+            </div>
+          )}
+
+        </Formik>
+      )}
       <div className={styles.securePayment}><p>* Paiements 100% sûrs et sécurisés *</p></div>
     </div>
   );
