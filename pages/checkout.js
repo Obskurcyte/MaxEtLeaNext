@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import { makeStyles } from '@material-ui/core/styles';
 import {AppContext} from "../components/context/AppContext";
 import {CardElement} from '@stripe/react-stripe-js';
-import {Elements} from "@stripe/react-stripe-js";
 import CheckoutFormStripe from "../components/CheckoutFormStripe";
 import CartItem from "../components/CartItem";
 import {Spinner} from "react-bootstrap";
@@ -28,7 +27,10 @@ import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 import {PayPalScriptProvider} from "@paypal/react-paypal-js";
 import Slider from "react-slick";
 import { useRouter } from 'next/router';
+import {loadStripe} from "@stripe/stripe-js/pure";
+import {Elements} from '@stripe/react-stripe-js';
 
+const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
 function SimpleDialogPlayboard(props) {
   const { onClose, selectedValue, open } = props;
@@ -2042,6 +2044,7 @@ const CheckoutScreen = props => {
                         }
                       </Formik>
                     ):
+                      <Elements stripe={stripePromise}>
                       <div className="formData">
                         <CheckoutFormStripe
                           adress={adresseLivraison}
@@ -2061,7 +2064,8 @@ const CheckoutScreen = props => {
                           codePostalFacturation={codePostalFacturation}
                           phone={phone}
                         />
-                      </div>}
+                      </div>
+                      </Elements>}
 
                   </div>
                 </div>

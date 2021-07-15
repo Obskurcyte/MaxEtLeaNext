@@ -27,16 +27,13 @@ import React from "react";
 import { ApolloProvider } from '@apollo/client/react';
 import client from "../components/ApolloClient";
 import Head from 'next/head';
-import {Elements} from "@stripe/react-stripe-js";
-import {loadStripe} from "@stripe/stripe-js/pure";
+
 
 const rootReducer = combineReducers({
   product: productReducer,
   commande: commandeReducer,
   drapeau : drapeauReducer
 });
-
-const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
@@ -65,9 +62,7 @@ function MyApp({ Component, pageProps }) {
     <AppProvider>
       <ApolloProvider client={client}>
         <Provider store={store}>
-          <Elements stripe={stripePromise}>
           <Component {...pageProps} />
-          </Elements>
         </Provider>
       </ApolloProvider>
     </AppProvider>

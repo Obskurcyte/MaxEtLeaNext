@@ -23,6 +23,7 @@
   align-content: center;
   flex-direction: column;
 }
+
 .imgNavbar  {
   max-width: 100%;
   cursor: pointer;

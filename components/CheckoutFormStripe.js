@@ -535,7 +535,7 @@ return (
 
       {visaClicked && (
         <Formik
-          initialValues={{email: '', cardnumber: ''}}
+          initialValues={{email: ''}}
           onSubmit={async values => {
 
             const checkoutData = {
@@ -711,12 +711,10 @@ return (
               </Row>
               <Row className="rowCheckout">
                 <div className={styles.CardElementContainer}>
-                  <CardElementContainer>
                     <CardElement
                       options={cardElementOpts}
                       onChange={handleCardDetailsChange}
                     />
-                  </CardElementContainer>
                 </div>
               </Row>
               <Row>
