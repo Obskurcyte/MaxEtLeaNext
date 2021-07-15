@@ -10,13 +10,14 @@ import Link from 'next/link';
 import * as product from '../products';
 import {getDrapeau} from "../store/actions/drapeau";
 import {useDispatch, useSelector} from "react-redux";
-
+import {useRouter} from "next/router";
 
 const HeaderXylophone = (props) => {
 
   const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
   console.log(cart)
 
+  const router = useRouter();
   const products = product.products
   const [viewCart, setViewCart] = useState(false);
 
@@ -100,10 +101,6 @@ const HeaderXylophone = (props) => {
     localStorage.setItem('commande-cart', JSON.stringify(updatedCart));
     return updatedCart
   };
-
-
-
-
 
   /**
    * Get updated products array
@@ -272,7 +269,10 @@ const HeaderXylophone = (props) => {
             </div>
           </div>
 
-          <div className="ajouterPanier" onClick={handleAddToCart}>
+          <div className="ajouterPanier" onClick={() => {
+            handleAddToCart()
+            router.push('/thankyou')
+          }}>
             <Link href="#"><p className="ajouterPanierText">Ajouter au panier</p></Link>
           </div>
           <div className="accountShopping" onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>

@@ -38,6 +38,5 @@ export const products = [
     __typename: "SimpleProduct",
     image: "https://maxandlea.com/wp-content/uploads/2020/10/ezgif.com-gif-maker.png"
   }
-
 ]
 

@@ -148,6 +148,8 @@ const CheckoutScreen = props => {
 
   const router = useRouter();
 
+  const [goodCodePromo, setGoodCodePromo] = useState(false)
+
   var settingsSlider = {
     dots: true,
     arrows:true,
@@ -188,6 +190,7 @@ const CheckoutScreen = props => {
 
   const [codePromo, setCodePromo] = useState('')
   const [dataClient, setDataClient] = useState(null);
+  const [ebookImprime, setEbookImprime] = useState('');
 
   console.log('codePromo', codePromo)
   useEffect(() => {
@@ -195,11 +198,13 @@ const CheckoutScreen = props => {
       let cartData = localStorage.getItem('livraison');
       const trueData = JSON.parse(cartData);
       let codePromoData = localStorage.getItem('promoCode');
+      let ebookImprime = localStorage.getItem('ebookImprime');
+      setEbookImprime(ebookImprime)
       const promoCodeData = JSON.parse(codePromoData)
       setDataClient(trueData)
       setCodePromo(promoCodeData)
     }
-  }, []);
+  }, [goodCodePromo]);
 
 
   console.log(dataClient);
@@ -383,9 +388,6 @@ const CheckoutScreen = props => {
   };
 
 
-
-
-
   /**
    * Get updated products array
    *
@@ -476,9 +478,6 @@ const CheckoutScreen = props => {
     localStorage.setItem('commande-cart', JSON.stringify(updatedCart));
     return updatedCart
   };
-
-
-
 
 
   /**
@@ -831,7 +830,6 @@ const CheckoutScreen = props => {
   const [checkedEbookPlayboard, setCheckedEbookPlayboard] = useState(false);
   const [codePromoIncorrect, setCodePromoIncorrect] = useState(false);
   const [codePromoLoading, setCodePromoLoading] = useState(false);
-  const [goodCodePromo, setGoodCodePromo] = useState(false)
 
   //-------------------- LIVRAISON ----------------------------
 
@@ -1091,7 +1089,6 @@ const CheckoutScreen = props => {
         if(is_code){
           setCodePromoIncorrect(false)
           setGoodCodePromo(true)
-          window.location.reload()
         }
         else{
           setCodePromoIncorrect(true)
@@ -1187,7 +1184,7 @@ const CheckoutScreen = props => {
                           <div className="ebookContainer">
                             <div className="ebookInner">
                               <p>Ebook Playboard imprimé (9,99€)</p>
-                              <Checkbox checked={checkedEbookPlayboard}
+                              <Checkbox checked={ebookImprime ? true : checkedEbookPlayboard}
                                         onChange={(event) => {
                                           handleAddToCartEbookPlayboard();
                                         }} />

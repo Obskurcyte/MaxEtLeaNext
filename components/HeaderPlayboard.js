@@ -12,13 +12,155 @@ import {getDrapeau} from "../store/actions/drapeau";
 import {useDispatch, useSelector} from "react-redux";
 import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {useRouter} from "next/router";
+import Dialog from '@material-ui/core/Dialog';
+import Checkbox from "@material-ui/core/Checkbox";
 
 const HeaderPlayboard = (props) => {
+
+  const [checkedEbookPlayboard, setCheckedEbookPlayboard] = useState(false);
+  const [checkedEbookPlayboardEmail, setCheckedEbookPlayboardEmail] = useState(false);
+  const [checkedPlayboard, setCheckedPlayboard] = useState(false);
+
+  const updateCartEbookPlayboard = (existingCart, product, qtyToBeAdded, newQty = false) => {
+    const updatedProducts = getUpdatedProductsEbookPlayboard(existingCart.products, products[3], qtyToBeAdded, newQty);
+    if(updatedProducts == null) return null;
+    const addPrice = (total, item) => {
+
+      total.totalPrice = item.totalPrice;
+      total.qty += item.qty;
+      return total;
+    }
+
+    // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
+    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+
+    const updatedCart = {
+      products: updatedProducts,
+      totalProductCount: parseInt(total.qty),
+      totalProductsPrice: parseFloat(total.totalPrice)
+    }
+
+    localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart))
+    localStorage.setItem('commande-cart', JSON.stringify(updatedCart));
+    return updatedCart
+  };
+
+
+
+
+
+  /**
+   * Get updated products array
+   *
+   * @param existingProductsInCart
+   * @param product
+   * @param qtyToBeAdded
+   * @param newQty
+   * @returns {*}
+   */
+
+
+  const getUpdatedProductsEbookPlayboard = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[3].id);
+
+    if (-1 < productExistsIndex) {
+      let updatedProducts = existingProductsInCart;
+      let updatedProduct = updatedProducts[productExistsIndex];
+      if(updatedProduct.qty + qtyToBeAdded < 0)
+        return updatedProducts;
+      else if(updatedProduct.qty + qtyToBeAdded == 0){
+
+        const updatedCart = removeProduct(products[3].id);
+        if(updatedCart == null){
+          return null;
+        }
+        setCart(updatedCart);
+        return updatedCart.products;
+      }
+      updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
+      updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
+      console.log("TO SEE");
+      console.log(updatedProducts);
+      return updatedProducts;
+    } else {
+      let productPrice = parseFloat(product.price);
+      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+      existingProductsInCart.push(newProduct);
+      console.log("TO SEE");
+      console.log(existingProductsInCart);
+      return existingProductsInCart
+    }
+  };
+
+  const handleAddToCartEbookPlayboard = () => {
+    if (process.browser) {
+      let existingCart = localStorage.getItem('woo-next-cart');
+      let commandeCart = localStorage.getItem('commande-cart');
+      if (existingCart!=null) {
+        commandeCart = JSON.parse(commandeCart)
+        existingCart = JSON.parse(existingCart)
+        var updatedCart = "";
+        if(!checkedEbookPlayboard){
+          setCheckedEbookPlayboard(true);
+          updatedCart = updateCartEbookPlayboard(existingCart, products[3], 1);
+        }
+        else {
+          setCheckedEbookPlayboard(false);
+          updatedCart = updateCartEbookPlayboard(existingCart, products[3], -1);
+        }
+        setCart(updatedCart)
+        setCommandeCart(updatedCart)
+      } else {
+        if(!checkedPlayboard){
+          setCheckedEbookPlayboard(true);
+          const newCart = addFirstProduct(products[3]);
+          setCart(newCart)
+          setCommandeCart(newCart)
+        }
+        else setCheckedEbookPlayboard(false);
+      }
+    }
+  }
+
+  function SimpleDialog(props) {
+    const { onClose, selectedValue, open } = props;
+
+    const handleClose = () => {
+      onClose(selectedValue);
+    };
+
+
+    return (
+      <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+        <img src="https://maxandlea.com/wp-content/uploads/2020/10/ezgif.com-gif-maker.png" alt="" className="ebookPopupPhoto"/>
+        <div className="flex">
+          <p className="paragraphEbook">Je veux aussi mes ebooks imprimés (+9€)</p>
+          <Checkbox checked={checkedEbookPlayboard}
+                    onChange={(event) => {
+                      handleAddToCartEbookPlayboard()
+                      localStorage.setItem('ebookImprime', 'true')
+                      router.push('/checkout');
+                    }} />
+        </div>
+
+        <div className="flex">
+          <p className="paragraphEbook">Je veux uniquement mes ebooks par email (gratuit)</p>
+          <Checkbox checked={checkedEbookPlayboardEmail}
+                    onChange={(event) => {
+                      router.push('/checkout')
+                    }} />
+        </div>
+      </Dialog>
+    );
+  }
 
   console.log(product)
   const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
   console.log(cart)
   console.log(commandeCart)
+
+  const router = useRouter();
 
   const products = product.products
   const [viewCart, setViewCart] = useState(false);
@@ -104,9 +246,6 @@ const HeaderPlayboard = (props) => {
     localStorage.setItem('commande-cart', JSON.stringify(updatedCart));
     return updatedCart
   };
-
-
-
 
 
   /**
@@ -227,6 +366,17 @@ const HeaderPlayboard = (props) => {
 
   }
 
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClosePopup = (value) => {
+    setOpen(false);
+    handleAddToCart()
+    router.push('/checkout')
+  };
+
   return (
     <div className="stickyHeader">
       <div className="freeContainer">
@@ -275,8 +425,16 @@ const HeaderPlayboard = (props) => {
             </div>
           </div>
 
-          <div className="ajouterPanier" onClick={handleAddToCart}>
-            <Link href="#"><p className="ajouterPanierText">Ajouter au panier</p></Link>
+          <div className="ajouterPanier" onClick={() => {
+            handleClickOpen()
+           /* handleAddToCart()
+
+            router.push('/checkout')
+
+            */
+          }}>
+            <SimpleDialog open={open} onClose={handleClosePopup} />
+            <Link href="javascript:void(0)"><p className="ajouterPanierText">Ajouter au panier</p></Link>
           </div>
           <div className="accountShopping" onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
               <Link href="/cart">
