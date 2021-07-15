@@ -312,15 +312,30 @@
   border: none;
 }
 
+.shoppingCart {
+  font-size: 17px;
+  width: 20px;
+  color: black;
+}
+
+.productPrice {
+  width: 40%;
+  margin-top: 3.5%;
+}
+
 @media screen and (max-width: 900px){
+  .prixReduc{
+    height: 15px;
+  }
   .home, .productsCountContainer, .jouetName, .economie, .langue{
     display: none;
   }
   .navBar{
-    padding: 5px;
+    padding: 0px;
   }
   .imgContainer{
     width: 33%;
+    min-width: 60px;
   }
   .cartWrap img{
     width: 20px;
@@ -330,7 +345,7 @@
   }
   .accountShopping {
     text-align: right;
-    width: 100px;
+    width: 30px;
     margin-top: 0px;
   }
   .freeLivraison{
@@ -348,7 +363,7 @@
   .jouetPrix{
     font-size: 18px;
     margin-bottom: 0px;
-    margin-top: 10px;
+    margin-top: 22px;
     line-height: 1;
   }
   .prixJouet{
@@ -356,11 +371,9 @@
   }
   .ajouterPanier{
     padding: 5px;
-    margin-top: 25px;
-
   }
   .ajouterPanierText{
-    font-size: 14px;
+    font-size: 12px;
     margin: 0px !important;
   }
   .drapeauContainer{
@@ -373,16 +386,10 @@
     height: auto;
     margin: -6px auto 0px auto;
   }
-
-}
-
-.shoppingCart {
-  font-size: 17px;
-  width: 20px;
-  color: black;
-}
-
-.productPrice {
-  width: 40%;
-  margin-top: 3.5%;
+  .productPrice{
+    display: none;
+  }
+  .nav-link{
+    padding: 0px !important;
+  }
 }

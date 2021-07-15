@@ -230,39 +230,41 @@ const PlayBoardScreen = props => {
               crossorigin="anonymous"
               />
         </Head>
-        <div className="imgCouverture">
-          <div className="playboard-title-container">
-            <h1 className="playboard-title">LA PLAYBOARD</h1>
-          </div>
-          <div className="playboard-paragraph-container">
-            <p className="playboard-paragraph">{t("Playboard1")}</p>
-          </div>
-          <div className="video-container">
-            <ReactPlayer
-            url="https://play.maxandlea.com/wp-content/uploads/2020/09/MaxEtLea-GIF-FR-V4-600-1.mp4"
-            className="video-presentation"
-            playing={true}
-            muted
-            height="100%"
-            width="100%"
-            loop
-          />
-          </div>
-          <div className="voir-offre">
-            <Link href="#offre"><h3 className="voir-offre-title">{t("Playboard2")}</h3></Link>
+        <div className="container1000">
+          <div className="imgCouverture">
+            <div className="playboard-title-container">
+              <h1 className="playboard-title">La PlayBoard</h1>
+            </div>
+            <div className="playboard-paragraph-container">
+              <p className="playboard-paragraph">{t("Playboard1")}</p>
+            </div>
+            <div className="voir-offre">
+              <Link href="#offre"><h3 className="voir-offre-title">{t("Playboard2")}</h3></Link>
+            </div>
+            <div className="video-container">
+              <ReactPlayer
+              url="https://play.maxandlea.com/wp-content/uploads/2020/09/MaxEtLea-GIF-FR-V4-600-1.mp4"
+              className="video-presentation"
+              playing={true}
+              muted
+              height="100%"
+              width="100%"
+              loop
+            />
+            </div>
+            
           </div>
         </div>
-
-        <div className="pensee-container">
+        <div className="mainContainer pensee-container">
+        <div className="container1000">
           <div className="img-bebe-container">
             <img src={"/bebeIcone.png"} alt="" className="img-bebe"/>
           </div>
           <div className="pensee-paragraph-container">
             <p className="pensee-paragraph">{t("Playboard3")}</p>
           </div>
-        </div>
 
-        <div className="icone-container1">
+          <div className="icone-container1">
           <div className="row">
 
             <div className="col icone-mini-container">
@@ -300,16 +302,25 @@ const PlayBoardScreen = props => {
 
           </div>
         </div>
+        </div>
+        </div>
 
+        
+
+        <div className="container1000">
         <div className="image-recap-container">
           <img src={'/playboardIMG.webp'} alt="" className="image-recap"/>
         </div>
+        </div>
 
+        <div className="container1000">
         <div className="huitEnUnContainerText">
           <p className="huitEnUnBigText">8 en 1</p>
           <p className="huitEnUnText">L'outil d'éveil et d'apprentissage le plus complet du marché</p>
         </div>
+        </div>
 
+        <div className="container1000">
         <div className="containerIcones2">
           <div className="row">
 
@@ -369,92 +380,22 @@ const PlayBoardScreen = props => {
 
           </div>
         </div>
-
-        <div className="playboardBoisContainer">
-          <img src={'/playboardBois.png'} alt="" className="playboardBoisImg"/>
         </div>
-        <div className="fullwidth computer">
-          <div className="videoContainer">
-          <div className="video-container">
-            <ReactPlayer
+        
+        <div className="container1000 videoMidContainer">
+        <img src={'/playboardBois.png'} alt="" className="playboardBoisImg"/>
+        <ReactPlayer
                 url="https://play.maxandlea.com/wp-content/uploads/2020/09/Patchwork-V3-600.mp4"
                 width="100%"
                 height="480px"
                 className="video-presentation"
                 playing={true}
                 muted
-                height="100%"
-                width="100%"
                 loop
               />
-          </div>
-            <div className="robusteContainer row">
-              <div className="constructionRobuste col">
-                <div><p className="robusteTitle">ROBUSTE</p></div>
-                <div><p className="p1"><img src={'/picto1.svg'} alt="" className="pictos"/>Bois issu de forêts certifiées
-                  FSC® et de haute qualité.</p></div>
-                <div><p className="p2"><img src={'/picto2.svg'} alt="" className="pictos"/>Matériaux nobles &
-                  construction solide</p></div>
-                <div><p className="p3"><img src={'/picto1.svg'} alt="" className="pictos"/>Une fabrication soignée
-                  pour une durabilité maximale.</p></div>
-              </div>
-
-              <div className="finitionSoignees col">
-                <div><p className="finitionTitle">FINITIONS SOIGNEES</p></div>
-                <div><p className="p1"><img src={'/picto1.svg'} alt="" className="pictos"/>Des couleurs douces et
-                  chaleureuses étudiées pour
-                  apaiser l’enfant.</p></div>
-                <div><p className="p2"><img src={'/picto2.svg'} alt="" className="pictos"/>Angles biseautés et finitions soignées</p></div>
-                <div><p className="p3"><img src={'/picto1.svg'} alt="" className="pictos"/>Des textures douces et délicates
-                  pour une parfaite prise en main.</p></div>
-                <div><p className="p4"><img src={'/picto3.svg'} alt="" className="pictos"/>Des images travaillées pour faciliter
-                  la reconnaissance.</p></div>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <div className="fullwidth mobile">
-          <div className="videoContainer">
-          <div className="video-container">
-            <ReactPlayer
-                url="https://play.maxandlea.com/wp-content/uploads/2020/09/Patchwork-V3-600.mp4"
-                width="100%"
-                height="480px"
-                className="video-presentation"
-                playing={true}
-                muted
-                height="100%"
-                width="100%"
-                loop
-              />
-          </div>
-            <div className="robusteContainer row">
-              <div className="constructionRobuste col">
-                <div><p className="robusteTitle">CONSTRUCTION ROBUSTE EN BOIS</p></div>
-                <div><p className="p1">Bois issu de forêts certifiées
-                  FSC® et de haute qualité.</p></div>
-                <div><p className="p2">Matériaux nobles &
-                  construction solide</p></div>
-                <div><p className="p3">Une fabrication soignée
-                  pour une durabilité maximale.</p></div>
-              </div>
-
-              <div className="finitionSoignees col">
-                <div><p className="finitionTitle">FINITIONS SOIGNEES</p></div>
-                <div><p className="p1">Des couleurs douces et
-                  chaleureuses étudiées pour
-                  apaiser l’enfant.</p></div>
-                <div><p className="p2">Angles biseautés et finitions soignées</p></div>
-                <div><p className="p3">Des textures douces et délicates
-                  pour une parfaite prise en main.</p></div>
-                <div><p className="p4">Des images travaillées pour faciliter
-                  la reconnaissance.</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <div className="container1000">
         <div className="UnaSixContainer container">
           <h2 className="UnaSixTitle">DE <span> 1 </span> A <span> 6 </span> ANS</h2>
           <div className="UnaSixDescription">
@@ -463,7 +404,9 @@ const PlayBoardScreen = props => {
             son développement.</p>
           </div>
         </div>
+        </div>
 
+        <div className="container1000">
         <div className="imagesContainer container">
           <div className="row rowDevelopment">
             <div className="col">
@@ -593,7 +536,9 @@ const PlayBoardScreen = props => {
             </div>
           </div>
         </div>
+        </div>
 
+        <div className="container1000">
         <div className="apprentissage container">
             <h5 className="mb-5">Ce que les enfants ont appris
               avec la PlayBoard®</h5>
@@ -647,6 +592,7 @@ const PlayBoardScreen = props => {
             </div>
 
           </div>
+        </div>
         </div>
 
         {/*   <div className="apprentissagePlayboard container">
@@ -726,13 +672,15 @@ const PlayBoardScreen = props => {
           </div>
         </div> */}
 
+        <div className="container1000">
         <div className="recommendation">
           <h5 className="recommendation-title">Ils recommandent la Playboard®</h5>
           <Recommendation />
         </div>
+        </div>
 
-
-        <div className="playboardContainer" id="offre">
+        <div className="mainContainer playboardContainer">
+        <div className="container1000" id="offre">
           <div className="playboardSubContainer container">
             <div className="innerPlayboard">
             <div className="prixPlayboardContainer">
@@ -795,24 +743,33 @@ const PlayBoardScreen = props => {
             </div>
           </div>
         </div>
+        </div>
 
+        <div className="container1000">
         <div className="clientSatisfait">
           <h5>6867 clients déjà satisfaits</h5>
         </div>
+        </div>
 
+        <div className="container1000">
         <div>
           <AvisClients/>
         </div>
+        </div>
 
+        <div className="container1000">
         <div className="sourireContainer container">
           <div className="sourireTextContainer">
           <h5>LE SOURIRE DE VOS ENFANTS
             NOTRE PLUS BELLE RECOMPENSE</h5>
           </div>
         </div>
+        </div>
 
+        <div className="container1000">
         <div className="sourireEnfantImgContainer">
           <img src={'/sourireEnfant.webp'} alt="" className="sourireEnfant"/>
+        </div>
         </div>
 
 
@@ -824,6 +781,7 @@ const PlayBoardScreen = props => {
 
           <QualiteDansLesDetails />
 
+        <div className="container1000">
         <div className="faqContainer">
         <h5>QUESTIONS FRÉQUENTES</h5>
           <div className="row">
@@ -871,6 +829,7 @@ Pour le reste de l’Europe, nos délais de livraison sont de 5 à 7 jours ouvr�
                 </Collapsible>
             </div>
           </div>
+        </div>
         </div>
 
         <Footer/>

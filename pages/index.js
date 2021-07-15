@@ -26,7 +26,7 @@ const HomeScreen = () => {
         <title>Max And Lea - Accueil</title>
       </Head>
       <Header/>
-      <div className="baby-container">
+      <div className="baby-container container1000">
         <div className="head-title-container">
           <h1 className="head-title">{t("HomeScreen1")}<br/> {t("HomeScreen7")}</h1>
         </div>
@@ -146,11 +146,11 @@ const HomeScreen = () => {
 
       </div>
 
-      <div>
+      <div className="container1000">
         <Garanties/>
       </div>
 
-      <div>
+      <div className="container1000">
         <Engagement/>
       </div>
 
