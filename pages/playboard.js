@@ -540,7 +540,7 @@ const PlayBoardScreen = props => {
 
         <div className="container1000">
         <div className="apprentissage container">
-            <h5 className="mb-5">Ce que les enfants ont appris
+            <h5>Ce que les enfants ont appris
               avec la PlayBoard®</h5>
           <div className="flex w-100 enfantTableau2">
             <div className="enfantTableauContainer">
@@ -680,7 +680,8 @@ const PlayBoardScreen = props => {
         </div>
 
         <div className="mainContainer playboardContainer">
-        <div className="container1000" id="offre">
+        <span className="offreAnchor" id="offre"></span>
+        <div className="container1000">
           <div className="playboardSubContainer container">
             <div className="innerPlayboard">
             <div className="prixPlayboardContainer">

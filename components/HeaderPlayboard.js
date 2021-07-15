@@ -433,7 +433,6 @@ const HeaderPlayboard = (props) => {
 
             */
           }}>
-            <SimpleDialog open={open} onClose={handleClosePopup} />
             <Link href="javascript:void(0)"><p className="ajouterPanierText">Ajouter au panier</p></Link>
           </div>
           <div className="accountShopping" onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>

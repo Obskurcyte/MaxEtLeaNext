@@ -1184,14 +1184,7 @@ const CheckoutScreen = props => {
                             setCart={setCart}
                           />
                           <div className="ebookContainer">
-                            <div className="ebookInner">
-                              <p>Ebook Playboard imprimé (9,99€)</p>
-                              <Checkbox checked={ebookImprime ? true : checkedEbookPlayboard}
-                                        onChange={(event) => {
-                                          handleAddToCartEbookPlayboard();
-                                        }} />
-                            </div>
-                            <div className="ebookInner">
+                          <div className="ebookInner free">
                               <p>Ebook Par mail (gratuit)</p>
                               <Checkbox
                                 checked={true}
@@ -1201,6 +1194,13 @@ const CheckoutScreen = props => {
                                   handleAddToCartEbookPlayboard()
                                 }}
                               />
+                            </div>
+                            <div className="ebookInner paid">
+                              <p>Ebook Playboard imprimé (9,99€)</p>
+                              <Checkbox checked={ebookImprime ? true : checkedEbookPlayboard}
+                                        onChange={(event) => {
+                                          handleAddToCartEbookPlayboard();
+                                        }} />
                             </div>
                           </div>
 

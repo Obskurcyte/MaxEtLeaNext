@@ -8,7 +8,7 @@ const Engagement = () => {
   return (
     <React.Fragment>
     <div className={styles.engagementContainer}>
-      <h1 style={{textAlign: 'center'}} className="garanties-title">{t("Engagement.1")}</h1>
+      <h1 style={{textAlign: 'center'}} className={styles.garantiesTitle}>{t("Engagement.1")}</h1>
       <div >
         <img src={'/100.png'} alt="" className={styles.photo1}/>
       </div>

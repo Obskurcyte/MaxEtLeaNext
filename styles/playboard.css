@@ -1,8 +1,12 @@
+.slick-slider{
+  max-width: 90%;
+  margin: auto;
+}
+
 .imgCouverture {
   text-align: center;
   align-items: center;
   width: 100%;
-  height: 800px;
   position: relative;
   padding: 2% 2%;
 }
@@ -246,7 +250,10 @@
 }
 .imgDevelopment {
   width: 100%;
+  margin:5px auto 10px auto;
+  max-width: 250px;
   transition: transform .5s;
+  display:block
 }
 
 .imgDevelopment:hover {
@@ -735,7 +742,7 @@
 }
 
 .recommendationCol{
-  max-width: 600px !important;
+  max-width: 500px !important;
   text-align: center;
   margin: auto;
 }
@@ -773,8 +780,9 @@
 }
 
 .apprentissage h5, .faqContainer h5 {
-  font-size: 44px;
-  letter-spacing: 1px;
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
   color: #1bb0ca;
   font-family: "roboto", sans-serif;
   text-align: center;
@@ -831,21 +839,22 @@
 }
 
 .enfantTableau {
-  height: 100%;
   width: 100%;
   border-radius: 20px;
+  margin-top: 5%;
 }
 
 .recommendation-title {
-  font-size: 50px;
+  color: #757575;
+  font-family: "Roboto", Sans-serif;
+  font-size: 33px;
+  font-weight: 400;
   letter-spacing: 1px;
-  color: #648793;
-  font-family: "roboto", sans-serif;
   text-align: center;
 }
 
 .recommendation {
-  width: 100%;
+  width: 90%;
   max-width: 1200px;
   margin: 70px auto;
 }
@@ -858,11 +867,11 @@
 }
 
 .distributionP {
-  font-size: 24px;
-  line-height: 37px;
-  color: #f8596e;
-  font-weight: 600;
-  font-family: "Montserrat";
+  color: #757575;
+  font-family: "Roboto", Sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 1.2px;
   text-align: center;
 }
 
@@ -979,6 +988,12 @@
   font-weight: bold;
 }
 
+.offreAnchor{
+  position: absolute;
+  margin-top: -200px;
+  z-index: -1;
+}
+
 .imgTableau {
   width: 48%;
 }
@@ -1009,7 +1024,6 @@
 .prixPlayboardContainer {
   display: flex;
   justify-content: space-between;
-  width: 80%;
   margin: 0 auto;
 }
 
@@ -1120,23 +1134,25 @@
 }
 
 .clientSatisfait h5 {
-  font-size: 50px;
-  letter-spacing: 1px;
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
   color: #648793;
   font-family: "roboto", sans-serif;
   text-align: center;
 }
 
 .clientSatisfait {
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .sourireContainer h5 {
-  font-size: 50px;
-  letter-spacing: 1px;
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
   color: #f18916;
   width: 100%;
-  margin-bottom: 5%;
+  margin-bottom: 20px;
   font-family: "roboto", sans-serif;
   text-align: center;
 }
@@ -1234,7 +1250,7 @@
     width: 100%;
     max-width: 250px;
     top: auto;
-    margin: -15px auto;
+    margin: 0px auto 10px auto;
     left: 0;
   }
   .voir-offre-title{
@@ -1281,9 +1297,6 @@
   }
   .garconSouriantContainer{
     margin-bottom: 25px;
-  }
-  .imgCouverture{
-    height: 450px;
   }
   .playboardBoisContainer{
     margin: auto;
@@ -1360,6 +1373,9 @@
 }
 
 @media screen and (max-width: 650px) {
+  .video-presentation{
+    height: 300px !important;
+  }
   .ebooksContainer {
     display: none;
   }

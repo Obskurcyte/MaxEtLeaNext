@@ -1,3 +1,11 @@
+.garantiesTitle{
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: #648793;
+  text-align: center;
+}
+
 .fa-baby {
   color: #2EB9CC;
   margin-bottom: 7%;
@@ -63,13 +71,6 @@
 
 .fa-headphones-alt {
   color: darkgreen;
-}
-
-.garantiesTitle  {
-  color: #717171;
-  font-size: 38px;
-  font-weight: 550;
-  letter-spacing: 1.5px;
 }
 
 .garantiesUndertitle {

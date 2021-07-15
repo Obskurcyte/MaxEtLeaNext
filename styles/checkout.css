@@ -397,14 +397,28 @@ legend span {
   margin-top: 5%;
 }
 
+.ebookContainer{
+  justify-content: space-around;
+  display: flex;
+}
+
 .ebookInner {
   display: flex;
 }
 
 .ebookInner p {
   margin-bottom: 0!important;
-  margin-top: 1%;
 }
+
+.ebookInner span{
+  padding:0px;
+}
+
+.free p{
+  font-size: 13px;
+  color: #3f7284;
+}
+
 .auteur {
   font-size: 30px;
   letter-spacing: -3px;
@@ -818,7 +832,6 @@ legend span {
     display: flex!important;
   }
   .cart-valide {
-    margin-left: 25%;
     margin-bottom: 3%
   }
 }
@@ -888,9 +901,6 @@ legend span {
     width: 100% !important;
     margin-left: 0!important;
   }
-  .cart-valide {
-    margin-left: 20%;
-  }
   .hSiCVM {
     min-width: 20px!important;
     width: 20px!important;
@@ -923,9 +933,6 @@ legend span {
   .sousTotal, .hrPrix {
     width: 90%;
     margin-left: 5%;
-  }
-  .cart-valide {
-    margin-left: 17%;
   }
   .buttonAddPanier {
     font-size: 13px;
