@@ -1855,6 +1855,7 @@ const CheckoutScreen = props => {
                                 || pays === 'Uruguay'
                                 || pays === 'Vatican'
                                 || pays === 'Venezuela'
+                                || pays === 'Chile'
                                 || pays === 'Equateur') && (
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
@@ -2028,6 +2029,12 @@ const CheckoutScreen = props => {
 
                                 </div>
                               )}
+
+                              {(pays === '') && (
+                                    <label style={{textAlign:"center",width:"100%"}}>Veuillez choisir un pays de livraison</label>
+                              )}
+
+                              
 
 
                             </div>

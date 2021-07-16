@@ -14,16 +14,17 @@ const Equipe = () => {
       </Head>
       <Header />
       <div className="equipeContainer">
-        <img src={'/heroes.jpg'} alt=""/>
+        <div className="bgOverlay"></div>
         <h1 className="team">L'équipe Max Et Lea</h1>
       </div>
+      <div className="container1000">
       <div className="equipeDescriptionContainer">
         <p>Si vous recevez de superbes jouets Max & Lea, c’est que notre équipe se plie en 4 pour concevoir les plus beaux jouets possibles.
 
           Nous contrôlons que chaque jouet répond à toutes les normes Européennes et nous nous assurons de vous livrer très très vite partout où vous vous trouvez !</p>
         <p>Notre équipe est également hyper réactive et répondra à toutes vos questions très rapidement.</p>
 
-      <div className="container">
+      <div className="mainEquipeContainer">
         <div className="row">
           <div className="col">
             <div className="imgPresentationContainer">
@@ -266,6 +267,7 @@ const Equipe = () => {
 
 
 
+      </div>
       </div>
       </div>
 

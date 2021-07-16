@@ -690,7 +690,11 @@ const PlayBoardScreen = props => {
                 <p className="playboardRedPrice">29,90 €    <span className="reduction">(-40%, économisez 20€)</span></p>
               </div>
               <div>
-              <div onClick={handleAddToCart} className="ajouterPanierContainer">
+              <div onClick={() => {
+              handleAddToCart()
+              router.push('/checkout')
+            }}
+             className="ajouterPanierContainer">
                 <p>Ajouter au panier</p>
               </div>
               <p className="question" onClick={async () => {
@@ -773,14 +777,17 @@ const PlayBoardScreen = props => {
         </div>
         </div>
 
-
+        <div className="container1000">
           <Garanties/>
+        </div>
 
-
+        <div className="container1000">
           <Engagement/>
+        </div>
 
-
+        <div className="container1000">
           <QualiteDansLesDetails />
+        </div>
 
         <div className="container1000">
         <div className="faqContainer">

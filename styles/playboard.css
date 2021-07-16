@@ -1166,6 +1166,10 @@
   text-align: center;
 }
 
+.sourireEnfant{
+  max-width: 650px;
+}
+
 .sourireTextContainer {
   margin: 0 auto;
 

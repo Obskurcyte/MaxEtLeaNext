@@ -1,11 +1,9 @@
 .mentionsContainer {
-  transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
   background-color: #F5F5F5;
   padding: 3% 15%;
 }
 
 .mentionsTitle {
-  font-family: "D KButterfly Ball", sans-serif;
   text-align: center;
 }
 
@@ -15,7 +13,6 @@
 }
 .containerMentions {
   padding: 2% 15%;
-  font-family: "D KButterfly Ball", sans-serif;
   color: #7A7A7A;
 }
 

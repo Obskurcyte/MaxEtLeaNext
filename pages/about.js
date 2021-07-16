@@ -19,6 +19,7 @@ const About = () => {
         <h1 className="bienvenue-title">{t("Propos.1")}</h1>
       </div>
       <main>
+      <div className="container1000">
         <p className="Apropos-title">{t("Propos.2")}<span>{t("Propos.3")}</span></p>
         <div className="container-about">
           <img src="https://maxandlea.com/wp-content/uploads/2020/06/iStock-478587034-1.jpg" alt="" className="grande-photo"/>
@@ -67,6 +68,7 @@ const About = () => {
         </div>
         <div className="container-about">
           <img src="https://maxandlea.com/wp-content/uploads/2020/06/iStock-912734770-1.jpg" alt="" className="mega-photo"/>
+        </div>
         </div>
       </main>
       <Footer />

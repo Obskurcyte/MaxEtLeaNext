@@ -271,7 +271,7 @@ const HeaderXylophone = (props) => {
 
           <div className="ajouterPanier" onClick={() => {
             handleAddToCart()
-            router.push('/thankyou')
+            router.push('/checkout')
           }}>
             <Link href="#"><p className="ajouterPanierText">Ajouter au panier</p></Link>
           </div>

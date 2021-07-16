@@ -1,8 +1,8 @@
 .equipeDescriptionContainer {
   margin: 0 auto;
-  padding-right: 8%;
-  padding-left: 8%;
-  max-width: 80%;
+  padding-right: 10px;
+  padding-left: 10px;
+  max-width: 100%;
 }
 
 .equipeDescriptionContainer p, h5 {
@@ -25,17 +25,29 @@
   margin: auto;
 }
 
+.mainEquipeContainer{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
 .imgPresentationContainer img{
   border-radius: 50%;
   text-align: center;
   width: 100%;
-  margin-bottom: 20px;
+  max-width: 150px;
+  margin: 0px auto 20px auto;
+  display: block;
 }
 
 .equipeContainer {
   max-width: 100%;
+  padding: 100px 0px 150px 0px;
   position: relative;
-  margin-bottom: 4%;
+  background-image: url("https://maxandlea.fr/wp-content/uploads/2020/11/10802-scaled.jpg") ;
+  background-position: 0px -602px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 30px;
 }
 
 .equipeContainer img {
@@ -45,20 +57,25 @@
 
 .team {
   position: absolute;
-  bottom: 35%;
-  left: 37%;
+  width: 100%;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
 }
 
-
-@media screen and (max-width: 800px) {
-  .equipeDescriptionContainer {
-    max-width: 100%;
-  }
+.bgOverlay{
+  background-color: #000000;
+  opacity: 0.3;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
 }
 
-@media screen and (max-width: 550px) {
-  .equipeDescriptionContainer {
-    padding-left: 1%;
-    padding-right: 1%;
+@media (max-width: 767px){
+  .equipeContainer{
+    background-position: center center;
+    background-size: cover;
   }
 }

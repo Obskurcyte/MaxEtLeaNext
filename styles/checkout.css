@@ -781,10 +781,6 @@ legend span {
   .produitContainer {
     width: 95%;
   }
-  .cadeauContainerText {
-    font-size: 60px;
-    font-family: "Roboto", sans-serif;
-  }
   .addArticleTitle {
     font-size: 17px;
   }
@@ -843,6 +839,16 @@ legend span {
   .input-quantity {
     width: 30%;
   }
+  .cadeauContainerText {
+    font-size: 2em;
+    margin-top: 20px;
+  }
+  .checkout-sub-container{
+    padding-top: 60px;
+  }
+  .ebookContainer .free{
+    display: none;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -854,9 +860,6 @@ legend span {
   }
 }
 @media screen and (max-width: 480px) {
-  .cadeauContainerText {
-    font-size: 50px;
-  }
   .Recommande_recommandeTitle__1bDJl {
     font-size: 50px!important;
   }
@@ -879,9 +882,6 @@ legend span {
 
 
 @media screen and (max-width: 425px) {
-  .cadeauContainerText {
-    font-size: 50px;
-  }
   .tr-product {
     height: 60px;
   }

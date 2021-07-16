@@ -426,12 +426,12 @@ const HeaderPlayboard = (props) => {
           </div>
 
           <div className="ajouterPanier" onClick={() => {
-            handleClickOpen()
-           /* handleAddToCart()
+            //handleClickOpen()
+            handleAddToCart()
 
             router.push('/checkout')
 
-            */
+            
           }}>
             <Link href="javascript:void(0)"><p className="ajouterPanierText">Ajouter au panier</p></Link>
           </div>
