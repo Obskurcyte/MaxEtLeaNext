@@ -330,6 +330,7 @@ const CheckoutFormStripe = ({
   //##############   STRIPE #############//
 
   const [stripeCheckoutError, setStripeCheckoutError] = useState(null)
+
   const [ checkout, { data: checkoutResponse, loading: checkoutLoading, error: checkoutError1 } ] = useMutation( CHECKOUT_MUTATION, {
     variables: {
       input: checkoutData
@@ -394,7 +395,12 @@ const CheckoutFormStripe = ({
 
   const handleCardDetailsChange = ev => {
     console.log('ev', ev)
-    ev.error ? setCheckoutError(ev.error.message) : setCheckoutError();
+    ev.error ?
+      setCheckoutError(ev.error.message)
+
+       : setCheckoutError();
+
+    ev.error ? setProcessingTo(false) : ''
   };
 
 
@@ -577,11 +583,90 @@ return (
               }
             };
 
-            const cardElement = elements.getElement("card");
             setProcessingTo(true);
 
+            const {error, paymentMethod } = await stripe.createPaymentMethod({
+              type: 'card',
+              card: elements.getElement(CardElement)
+            })
 
-            try {
+
+            if (!error) {
+              const {id} = paymentMethod;
+
+              try {
+                const {dataStripe} = await axios.post('/api/charge', {
+                  id,
+                  amount : parseInt(totalPrice2 * 100)
+                })
+                console.log(dataStripe)
+                let dataClientCart = JSON.parse(localStorage.getItem('livraison'));
+                let cartClientCommande = JSON.parse(localStorage.getItem('commande-cart'));
+
+                var line_items_array = [];
+                if (cartClientCommande && cartClientCommande.products) {
+                  cartClientCommande.products.forEach(product => {
+                    var temp_obj = {product_id: product.productId, quantity: product.qty};
+                    line_items_array.push(temp_obj);
+                  });
+                }
+                const data = {
+                  payment_method: moyenPaiement,
+                  payment_method_title: moyenPaiement,
+                  set_paid: true,
+                  billing: {
+                    first_name: dataClientCart.prenom,
+                    last_name: dataClientCart.nom,
+                    address_1: dataClientCart.adresseFacturation,
+                    address_2: "",
+                    city: dataClientCart.villeFacturation,
+                    state: "",
+                    postcode: dataClientCart.codePostalFacturation,
+                    country: dataClientCart.pays,
+                    email: dataClientCart.email,
+                    phone: dataClientCart.phone
+                  },
+                  shipping: {
+                    first_name: dataClientCart.prenom,
+                    last_name: dataClientCart.nom,
+                    address_1: dataClientCart.adresseLivraison,
+                    address_2: "",
+                    city: dataClientCart.villeLivraison,
+                    state: "",
+                    postcode: dataClientCart.codePostalLivraison,
+                    country: dataClientCart.pays
+                  },
+                  line_items: line_items_array,
+                  shipping_lines: [
+                    {
+                      method_id: "flat_rate",
+                      method_title: "Flat Rate",
+                      total: dataClientCart.prixLivraison.toString()
+                    }
+                  ],
+                  meta_data: [
+                    {
+                      key: "Mondial Relay Parcel Shop ID",
+                      value: "FR-051322"
+                    }
+                  ]
+                };
+                WooCommerce.post("orders", data)
+                  .then((response) => {
+                    console.log(response.data);
+                    setProcessingTo(false)
+                    localStorage.removeItem('woo-next-cart')
+                    localStorage.setItem('moyenPaiement', moyenPaiement);
+                    router.push('/remerciement').then(() => window.location.reload())
+                  })
+              } catch (err) {
+                setProcessingTo(false)
+                console.log(err)
+              }
+            }
+
+
+            /*try {
               const { data: clientSecret } = await axios.post("/api/payment_intents", {
                 amount: parseInt(totalPrice2 * 100)
               });
