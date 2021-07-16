@@ -387,8 +387,6 @@ const CheckoutFormStripe = ({
   };
 
 
-
-
   const onSuccessfullCheckout = () => {
     router.push('/remerciement')
   }
