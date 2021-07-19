@@ -29,6 +29,7 @@ import Slider from "react-slick";
 import { useRouter } from 'next/router';
 import {loadStripe} from "@stripe/stripe-js/pure";
 import {Elements} from '@stripe/react-stripe-js';
+import SelectSearch,{ useSelect, fuzzySearch } from 'react-select-search-nextjs';
 
 const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
@@ -137,6 +138,26 @@ function SimpleDialogTour(props) {
   );
 }
 
+function SimpleDialogRelay(props) {
+  const { onClose, selectedValue, open } = props;
+
+  const handleClose = () => {
+    onClose(selectedValue);
+  };
+
+  const handleListItemClick = (value) => {
+    onClose(value);
+  };
+
+  return (
+    <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+      <div id="Zone_Widget">
+      </div>
+      <button class="buttonCodepromo" id="choice_relay">Choisir</button>
+    </Dialog>
+  );
+}
+
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -165,6 +186,7 @@ const CheckoutScreen = props => {
   const [openPlayboard, setOpenPlayboard] = React.useState(false);
   const [openXylo, setOpenXylo] = useState(false);
   const [openTour, setOpenTour] = useState(false);
+  const [openRelay, setOpenRelay] = useState(false);
 
   const handleClickOpenPlayboard = () => {
     setOpenPlayboard(true);
@@ -178,6 +200,10 @@ const CheckoutScreen = props => {
     setOpenTour(true);
   };
 
+  const handleClickOpenRelay = () => {
+    setOpenRelay(true);
+  };
+
   const handleClosePlayboard = (value) => {
     setOpenPlayboard(false);
   };
@@ -186,6 +212,9 @@ const CheckoutScreen = props => {
   };
   const handleCloseTour = (value) => {
     setOpenTour(false);
+  };
+  const handleCloseRelay = (value) => {
+    setOpenRelay(false);
   };
 
   const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
@@ -860,7 +889,6 @@ const CheckoutScreen = props => {
   const [checkedTour, setCheckedTour] = useState(false);
   const [checkedXylo, setCheckedXylo] = useState(false);
 
-
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
@@ -1122,12 +1150,8 @@ const CheckoutScreen = props => {
     fetchAffiliates();
   };
 
-
   const [mondialRelay, setMondialRelay] = useState(false);
 
-  console.log('mondial', mondialRelay)
-  console.log(checked2)
-  console.log(errorLivraison)
   return (
     <PayPalScriptProvider options= {{"client-id": process.env.PAYPAL_CLIENT_ID }}>
     <div className="checkout-main-container">
@@ -1596,28 +1620,16 @@ const CheckoutScreen = props => {
                               />
                               {props.errors.villeLivraison && props.touched.villeLivraison && <div style={{color: 'red'}}>{props.errors.villeLivraison}</div>}
 
-                              <TextField
-                                select
-                                value={props.values.pays}
-                                onChange={props.handleChange('pays')}
-                                label="Pays"
-                                helperText="Veuillez sélectionner un pays"
-                                defaultValue="France"
-                                className="inputMoyenDroit"
-                              >
-                                {props.errors.pays && props.touched.pays && <div style={{color: 'red'}}>Ce champ est requis</div>}
+                              <SelectSearch onChange={(val) => {
+                                props.handleChange('pays');
+                                setPays(val);
+                                setChecked2(false);
+                                setChecked1(false);
+                                setChecked3(false);
+                                props.setFieldValue('pays', val);
+                                }} options={countries.listCountries} name="countryTest" placeholder="Choisir Pays" search={true} filterOptions={ fuzzySearch }/>
 
-                                {countries.listCountries.map((option) => (
-                                  <MenuItem key={option.code} value={option.name} onClick={() => {
-                                    setPays(option.name)
-                                    setChecked2(false);
-                                    setChecked1(false);
-                                    setChecked3(false);
-                                  }}>
-                                    {option.name}
-                                  </MenuItem>
-                                ))}
-                              </TextField>
+                              {props.errors.pays && props.touched.pays && <div style={{color: 'red'}}>Ce champ est requis</div>}
                             </div>
 
                             <div className="checkboxContainer">
@@ -1682,6 +1694,8 @@ const CheckoutScreen = props => {
                               </div>
                             ) : ''}
 
+
+
                             <div className="inputContainer">
                               <TextField
                                 value={props.values.phone}
@@ -1695,7 +1709,7 @@ const CheckoutScreen = props => {
 
                             <div className="livraison">
                               <h4 className="livraisonTitle">Méthode d'expédition</h4>
-                              {(pays === 'France' || pays === 'Monaco') && (
+                              {(pays === 'FR' || pays === 'MC') && (
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
@@ -1757,7 +1771,7 @@ const CheckoutScreen = props => {
                                 )}
 
 
-                              {pays === 'Etats-Unis' && (
+                              {pays === 'US' && (
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
@@ -1779,7 +1793,7 @@ const CheckoutScreen = props => {
                               )}
 
 
-                              {(pays === 'Royaume-Uni (UK)') && (
+                              {(pays === 'RU') && (
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
@@ -1817,46 +1831,45 @@ const CheckoutScreen = props => {
 
 
 
-                              {(pays === 'Albanie'
-                                || pays === 'Algérie'
-                                || pays === 'Argentine'
-                                || pays === 'Bolivie'
-                                || pays === 'Bulgarie'
-                                || pays === 'Brésil'
-                                || pays === 'Canada'
-                                || pays === 'Chili'
-                                || pays === 'Chypre'
-                                || pays === 'Colombie'
-                                || pays === 'Costa Rica'
-                                || pays === 'Gibraltar'
-                                || pays === 'Guadeloupe'
-                                || pays === 'Guatemala'
-                                || pays === 'Guyane'
-                                || pays === 'Guyane Française'
-                                || pays === 'Israël'
-                                || pays === 'La Réunion'
-                                || pays === 'Liban'
-                                || pays === 'Malte'
-                                || pays === 'Maroc'
-                                || pays === 'Martinique'
-                                || pays === 'Mayotte'
-                                || pays === 'Mexique'
-                                || pays === 'Moldavie'
-                                || pays === 'Nouvelle-Calédonie'
-                                || pays === 'Panama'
-                                || pays === 'Paraguay'
-                                || pays === 'Puerto Rico'
-                                || pays === 'Pérou'
-                                || pays === 'Saint Pierre et Miquelon'
-                                || pays === 'Salvador'
-                                || pays === 'Terres Australes Françaises'
-                                || pays === 'Tunisie'
-                                || pays === 'Ukraine'
-                                || pays === 'Uruguay'
-                                || pays === 'Vatican'
-                                || pays === 'Venezuela'
-                                || pays === 'Chile'
-                                || pays === 'Equateur') && (
+                              {(pays === 'AL'
+                                || pays === 'DZ'
+                                || pays === 'AR'
+                                || pays === 'BO'
+                                || pays === 'BG'
+                                || pays === 'BR'
+                                || pays === 'CA'
+                                || pays === 'CL'
+                                || pays === 'CY'
+                                || pays === 'CO'
+                                || pays === 'CR'
+                                || pays === 'GI'
+                                || pays === 'GP'
+                                || pays === 'GT'
+                                || pays === 'GY'
+                                || pays === 'GF'
+                                || pays === 'ISR'
+                                || pays === 'LR'
+                                || pays === 'LB'
+                                || pays === 'MT'
+                                || pays === 'MA'
+                                || pays === 'MQ'
+                                || pays === 'YT'
+                                || pays === 'MX'
+                                || pays === 'MD'
+                                || pays === 'NC'
+                                || pays === 'PA'
+                                || pays === 'PY'
+                                || pays === 'PR'
+                                || pays === 'PO'
+                                || pays === 'PM'
+                                || pays === 'VC'
+                                || pays === 'TW'
+                                || pays === 'TJ'
+                                || pays === 'UA'
+                                || pays === 'UY'
+                                || pays === 'VU'
+                                || pays === 'VE'
+                                || pays === 'EQ') && (
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
@@ -1894,21 +1907,21 @@ const CheckoutScreen = props => {
 
 
 
-                              {(pays === 'Espagne'
-                                || pays === 'Allemagne'
-                                || pays === 'Andorre'
-                                || pays === 'Autriche'
-                                || pays === 'Belgique'
-                                || pays === 'Danemark'
-                                || pays === 'Hongrie'
-                                || pays === 'Irlande'
-                                || pays === 'Italie'
-                                || pays === 'Luxembourg'
-                                || pays === 'Liechtenstein'
-                                || pays === 'Pays-Bas'
-                                || pays === 'Pologne'
-                                || pays === 'Portugal'
-                                || pays === 'République Tchèque') && (
+                              {(pays === 'ES'
+                                || pays === 'DE'
+                                || pays === 'AD'
+                                || pays === 'AT'
+                                || pays === 'BE'
+                                || pays === 'DK'
+                                || pays === 'HU'
+                                || pays === 'IR'
+                                || pays === 'IT'
+                                || pays === 'LU'
+                                || pays === 'LI'
+                                || pays === 'PB'
+                                || pays === 'PL'
+                                || pays === 'PT'
+                                || pays === 'RT') && (
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
@@ -1946,9 +1959,9 @@ const CheckoutScreen = props => {
 
 
 
-                              {(pays === 'Croatie'
-                                || pays === 'Islande'
-                                || pays === 'Norvège') && (
+                              {(pays === 'HR'
+                                || pays === 'IS'
+                                || pays === 'NO') && (
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
@@ -1986,15 +1999,15 @@ const CheckoutScreen = props => {
 
 
 
-                              {(pays === 'Estonie'
-                                || pays === 'Finlande'
-                                || pays === 'Grèce'
-                                || pays === 'Lettonie'
-                                || pays === 'Lituanie'
-                                || pays === 'Roumanie'
-                                || pays === 'Slovaquie'
-                                || pays === 'Slovénie'
-                                || pays === 'Suède') && (
+                              {(pays === 'EE'
+                                || pays === 'FI'
+                                || pays === 'GR'
+                                || pays === 'LT'
+                                || pays === 'LIT'
+                                || pays === 'RO'
+                                || pays === 'SK'
+                                || pays === 'SI'
+                                || pays === 'SO') && (
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
@@ -2019,7 +2032,7 @@ const CheckoutScreen = props => {
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
                                     </div>
                                     <div className="livraisonChoice">
-                                      <p>Livraison en point Mondial Relay (3-5 jours)</p>
+                                      <p>Livraison express (3-5 jours)</p>
                                     </div>
                                     <div className="livraisonPrice">
                                       <p>19,99 €</p>
@@ -2040,7 +2053,14 @@ const CheckoutScreen = props => {
                             </div>
 
                             <input type="hidden" id="relay_value"></input>
-                              <div id="Zone_Widget" className={mondialRelay ? "display" : "displayNone"} />
+                              <div className={mondialRelay ? "display" : "displayNone"} >
+                                <label onClick={() => {
+                                  handleClickOpenRelay()
+                                }}>
+                                  Choisissez un point Relay
+                                </label>
+                                <SimpleDialogRelay open={openRelay} onClose={handleCloseRelay} />
+                              </div>
 
 
                             <Link href="#">

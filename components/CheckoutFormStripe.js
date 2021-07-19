@@ -63,7 +63,7 @@ function SimpleDialog(props) {
 
 
   return (
-    <Dialog aria-labelledby="simple-dialog-title" open={open}>
+    <Dialog aria-labelledby="simple-dialog-title" open={open} id="load-dialog">
       <img src={'/ml.gif'} alt=""/>
       <p style={{textAlign: 'center', color: 'white'}}>CHARGEMENT...</p>
     </Dialog>
