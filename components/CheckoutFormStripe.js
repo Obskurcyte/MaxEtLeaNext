@@ -14,7 +14,17 @@ import Head from "next/head";
 import {useDispatch} from "react-redux";
 import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 import GooglePayButton from "@google-pay/button-react";
-import ApplePay from "./ApplePay";
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Avatar from '@material-ui/core/Avatar';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemText from '@material-ui/core/ListItemText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
+import Typography from '@material-ui/core/Typography';
+import { blue } from '@material-ui/core/colors';
 
 const CHECKOUT_MUTATION = gql`
 mutation CHECKOUT_MUTATION( $input: CheckoutInput! ) {
@@ -42,6 +52,22 @@ const WooCommerce = new WooCommerceRestApi({
   consumerSecret: 'cs_a0272dea628e462d7288a10226cfa3e1f4ffcaff',
   version: 'wc/v3'
 });
+
+
+function SimpleDialog(props) {
+  const { onClose, selectedValue, open } = props;
+
+  const handleClose = () => {
+    onClose(selectedValue);
+  };
+
+
+  return (
+    <Dialog aria-labelledby="simple-dialog-title" open={open}>
+      <img src={'/ml.gif'} alt=""/>
+    </Dialog>
+  );
+}
 
 const createOrderWoo = async () => {
 
@@ -127,6 +153,8 @@ const CheckoutFormStripe = ({
   const [visaClicked, setVisaClicked] = useState(false);
   const [paypalClicked, setPaypalClicked] = useState(false);
   const [bancontactClicked, setBancontactClicked] = useState(false);
+
+
 
   const  [
     cart, setCart,
@@ -442,7 +470,18 @@ const CheckoutFormStripe = ({
   };
 
 
+///////////////----------------POPUP--------------//////////////////
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+
+  };
 return (
 
 
@@ -531,9 +570,9 @@ return (
         )}
       </div>
 
-      {isProcessing && <Spinner animation="border" role="status">
-        <span className="sr-only">Loading...</span>
-      </Spinner>}
+      {isProcessing &&  <SimpleDialog open={open} />
+
+     }
 
       {checkoutError && <p className="text-danger">{checkoutError}</p>}
 
@@ -582,7 +621,7 @@ return (
             };
 
             setProcessingTo(true);
-
+            setOpen(true)
             const {error, paymentMethod } = await stripe.createPaymentMethod({
               type: 'card',
               card: elements.getElement(CardElement)
@@ -592,13 +631,89 @@ return (
             if (!error) {
               const {id} = paymentMethod;
 
+              const handlePayment = () => {
+                let dataClientCart = JSON.parse(localStorage.getItem('livraison'));
+                let cartClientCommande = JSON.parse(localStorage.getItem('commande-cart'));
+
+                var line_items_array = [];
+                if (cartClientCommande && cartClientCommande.products) {
+                  cartClientCommande.products.forEach(product => {
+                    var temp_obj = {product_id: product.productId, quantity: product.qty};
+                    line_items_array.push(temp_obj);
+                  });
+                }
+
+                const data = {
+                  payment_method: moyenPaiement,
+                  payment_method_title: moyenPaiement,
+                  set_paid: true,
+                  billing: {
+                    first_name: dataClientCart.prenom,
+                    last_name: dataClientCart.nom,
+                    address_1: dataClientCart.adresseFacturation,
+                    address_2: "",
+                    city: dataClientCart.villeFacturation,
+                    state: "",
+                    postcode: dataClientCart.codePostalFacturation,
+                    country: dataClientCart.pays,
+                    email: dataClientCart.email,
+                    phone: dataClientCart.phone
+                  },
+                  shipping: {
+                    first_name: dataClientCart.prenom,
+                    last_name: dataClientCart.nom,
+                    address_1: dataClientCart.adresseLivraison,
+                    address_2: "",
+                    city: dataClientCart.villeLivraison,
+                    state: "",
+                    postcode: dataClientCart.codePostalLivraison,
+                    country: dataClientCart.pays
+                  },
+                  line_items: line_items_array,
+                  shipping_lines: [
+                    {
+                      method_id: "flat_rate",
+                      method_title: "Flat Rate",
+                      total: dataClientCart.prixLivraison.toString()
+                    }
+                  ],
+                  meta_data: [
+                    {
+                      key: "Mondial Relay Parcel Shop ID",
+                      value: "FR-051322"
+                    }
+                  ]
+                };
+                WooCommerce.post("orders", data)
+                  .then((response) => {
+                    console.log(response.data);
+                    setProcessingTo(false)
+                    localStorage.removeItem('woo-next-cart')
+                    localStorage.setItem('moyenPaiement', moyenPaiement);
+                    router.push('/remerciement').then(() => window.location.reload())
+                  })
+              }
+
               try {
-                const {dataStripe} = await axios.post('/api/charge', {
+                const response = await axios.post('/api/charge', {
                   id,
                   amount : parseInt(totalPrice2 * 100)
                 })
-                console.log(dataStripe)
-                let dataClientCart = JSON.parse(localStorage.getItem('livraison'));
+                console.log('dataStripe', response)
+
+               if (response.data.url) {
+                  stripe.handleCardAction(
+                    response.data.id
+                  ).then(handlePayment);
+                } else {
+                 handlePayment()
+               }
+
+
+
+
+
+               /* let dataClientCart = JSON.parse(localStorage.getItem('livraison'));
                 let cartClientCommande = JSON.parse(localStorage.getItem('commande-cart'));
 
                 var line_items_array = [];
@@ -657,6 +772,8 @@ return (
                     localStorage.setItem('moyenPaiement', moyenPaiement);
                     router.push('/remerciement').then(() => window.location.reload())
                   })
+
+                */
               } catch (err) {
                 setProcessingTo(false)
                 console.log(err)
