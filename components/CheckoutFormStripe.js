@@ -65,6 +65,7 @@ function SimpleDialog(props) {
   return (
     <Dialog aria-labelledby="simple-dialog-title" open={open}>
       <img src={'/ml.gif'} alt=""/>
+      <p style={{textAlign: 'center', color: 'white'}}>CHARGEMENT...</p>
     </Dialog>
   );
 }
@@ -570,6 +571,7 @@ return (
         )}
       </div>
 
+
       {isProcessing &&  <SimpleDialog open={open} />
 
      }
@@ -702,9 +704,17 @@ return (
                 console.log('dataStripe', response)
 
                if (response.data.url) {
-                  stripe.handleCardAction(
+                 stripe.handleCardAction(
                     response.data.id
-                  ).then(handlePayment);
+                  ).then(function(result) {
+                    console.log('result', result)
+                   if(result.paymentIntent) {
+                     handlePayment()
+                   } else {
+                     setCheckoutError('Une erreur est survenue')
+                     setProcessingTo(false)
+                   }
+                 });
                 } else {
                  handlePayment()
                }
