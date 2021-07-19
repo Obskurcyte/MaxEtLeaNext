@@ -422,6 +422,7 @@ const CheckoutFormStripe = ({
 
   const handleCardDetailsChange = ev => {
     console.log('ev', ev)
+    setCheckoutError(null)
     ev.error ?
       setCheckoutError(ev.error.message)
 
