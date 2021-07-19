@@ -999,6 +999,7 @@ legend span {
   text-overflow: ellipsis;
   line-height: 36px;
   -webkit-appearance: none;
+  margin-top: 0px !important;
 }
 
 .select-search__input::-webkit-search-decoration,
