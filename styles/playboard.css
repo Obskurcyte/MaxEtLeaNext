@@ -140,8 +140,9 @@
 }
 
 .reducImg {
+  padding-right: 15px;
+  padding-bottom: 15px;
   width: 100%;
-  height: 100%;
 }
 .img-couverture {
   width: 100%;
@@ -332,7 +333,7 @@
 
 .videoMidContainer{
   margin-top: 25px;
-  max-width: 750px;
+  max-width: 600px;
 }
 
 .computer .videoContainer .video-presentation{
@@ -776,6 +777,7 @@
   align-items: center;
   text-align: center;
   margin-top : 50px;
+  margin-bottom : 50px;
   position: relative;
 }
 
@@ -851,11 +853,11 @@
   font-weight: 400;
   letter-spacing: 1px;
   text-align: center;
+  margin-top: 30px;
 }
 
 .recommendation {
-  width: 90%;
-  max-width: 1200px;
+  width: 95%;
   margin: 70px auto;
 }
 
@@ -1147,18 +1149,18 @@
 }
 
 .sourireContainer h5 {
-  font-size: 35px;
+  font-size: 25px;
   font-weight: 400;
   letter-spacing: 0.5px;
   color: #f18916;
   width: 100%;
-  margin-bottom: 20px;
   font-family: "roboto", sans-serif;
   text-align: center;
+  margin-bottom: 0px;
 }
 
 .sourireContainer {
-  margin-top: 80px;
+  margin-top: 25px;
 }
 
 .sourireEnfantImgContainer {
