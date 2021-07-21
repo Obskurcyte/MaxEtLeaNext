@@ -11,6 +11,7 @@ import {AppContext} from "../components/context/AppContext";
 import Head from 'next/head';
 import Collapsible from 'react-collapsible';
 import Recommendation from "../components/Recommendation";
+import Recommande from "../components/Recommande";
 import {useTranslation} from "react-i18next";
 import { useTheme } from '@material-ui/core/styles';
 import {faChevronRight} from "@fortawesome/free-solid-svg-icons";
@@ -385,9 +386,9 @@ const PlayBoardScreen = props => {
         <div className="container1000 videoMidContainer">
         <img src={'/playboardBois.png'} alt="" className="playboardBoisImg"/>
         <ReactPlayer
-                url="https://play.maxandlea.com/wp-content/uploads/2020/09/Patchwork-V3-600.mp4"
+                url="https://play.maxandlea.com/wp-content/uploads/2020/09/Video2-MAXLEA-FR-SHORT-SHORT-V4-600.mp4"
                 width="100%"
-                height="480px"
+                height="390px"
                 className="video-presentation"
                 playing={true}
                 muted
@@ -673,13 +674,24 @@ const PlayBoardScreen = props => {
         </div> */}
 
         <div className="container1000">
-        <div className="recommendation">
-          <h5 className="recommendation-title">Ils recommandent la Playboard®</h5>
-          <Recommendation />
-        </div>
+          <div className="image-recap-container">
+            <img src={'/papafille.webp'} alt="" className="image-recap"/>
+          </div>
         </div>
 
-        <div className="mainContainer playboardContainer">
+        <div className="container1000">
+          <div className="clientSatisfait">
+            <h5>6867 clients déjà satisfaits</h5>
+          </div>
+        </div>
+
+        <div className="container1000">
+          <div>
+            <AvisClients/>
+          </div>
+        </div>
+
+      <div className="mainContainer playboardContainer">
         <span className="offreAnchor" id="offre"></span>
         <div className="container1000">
           <div className="playboardSubContainer container">
@@ -751,18 +763,6 @@ const PlayBoardScreen = props => {
         </div>
 
         <div className="container1000">
-        <div className="clientSatisfait">
-          <h5>6867 clients déjà satisfaits</h5>
-        </div>
-        </div>
-
-        <div className="container1000">
-        <div>
-          <AvisClients/>
-        </div>
-        </div>
-
-        <div className="container1000">
         <div className="sourireContainer container">
           <div className="sourireTextContainer">
           <h5>LE SOURIRE DE VOS ENFANTS
@@ -771,14 +771,37 @@ const PlayBoardScreen = props => {
         </div>
         </div>
 
-        <div className="container1000">
-        <div className="sourireEnfantImgContainer">
-          <img src={'/sourireEnfant.webp'} alt="" className="sourireEnfant"/>
+        <div className="container1000 videoMidContainer">
+        <ReactPlayer
+                url="https://play.maxandlea.com/wp-content/uploads/2020/09/Patchwork-V3-600.mp4"
+                width="100%"
+                height="390px"
+                className="video-presentation"
+                playing={true}
+                muted
+                loop
+              />
         </div>
+
+        <div className="container1000">
+        <div className="recommendation">
+          <Recommendation />
+        </div>
+        </div>
+
+        <div className="container1200">
+          <h5 className="recommendation-title">Ils recommandent la Playboard®</h5>
+            <Recommande />
         </div>
 
         <div className="container1000">
           <Garanties/>
+        </div>
+        
+        <div className="container1000">
+        <div className="sourireEnfantImgContainer">
+          <img src={'/sourireEnfant.webp'} alt="" className="sourireEnfant"/>
+        </div>
         </div>
 
         <div className="container1000">

@@ -10,7 +10,7 @@ const AvisClients = () => {
     dots: true,
     infinite: true,
     autoplay: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 2,
     slidesToScroll: 1,
     responsive: [
@@ -33,7 +33,13 @@ const AvisClients = () => {
                         <p className={styles.paysName}>France</p>
                         <img className={styles.paysFlag} src="https://maxandlea.com/wp-content/uploads/2020/06/france-flag-icon-16.png"></img>
                     </div>
-                    <img className={styles.stars} src="/5stars.png"></img>
+                    <div>
+                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    </div>
                     <p className={styles.avisDesc}>
                         Je suis très heureuse de mon achat. Mes 2 enfants jouent beaucoup avec leur PlayBoard et avec les autres jouets achetés sur Max & Lea. Livraison très rapide : 3 jours.
                     </p>
@@ -44,7 +50,13 @@ const AvisClients = () => {
                         <p className={styles.paysName}>France</p>
                         <img className={styles.paysFlag} src="https://maxandlea.com/wp-content/uploads/2020/06/france-flag-icon-16.png"></img>
                     </div>
-                    <img className={styles.stars} src="/5stars.png"></img>
+                    <div>
+                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    </div>
                     <p className={styles.avisDesc}>
                         Je suis très heureuse de mon achat. Mes 2 enfants jouent beaucoup avec leur PlayBoard et avec les autres jouets achetés sur Max & Lea. Livraison très rapide : 3 jours.
                     </p>
@@ -55,7 +67,13 @@ const AvisClients = () => {
                         <p className={styles.paysName}>France</p>
                         <img className={styles.paysFlag} src="https://maxandlea.com/wp-content/uploads/2020/06/france-flag-icon-16.png"></img>
                     </div>
-                    <img className={styles.stars} src="/5stars.png"></img>
+                    <div>
+                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    </div>
                     <p className={styles.avisDesc}>
                         Je suis très heureuse de mon achat. Mes 2 enfants jouent beaucoup avec leur PlayBoard et avec les autres jouets achetés sur Max & Lea. Livraison très rapide : 3 jours.
                     </p>
@@ -66,7 +84,13 @@ const AvisClients = () => {
                         <p className={styles.paysName}>France</p>
                         <img className={styles.paysFlag} src="https://maxandlea.com/wp-content/uploads/2020/06/france-flag-icon-16.png"></img>
                     </div>
-                    <img className={styles.stars} src="/5stars.png"></img>
+                    <div>
+                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    </div>
                     <p className={styles.avisDesc}>
                         Je suis très heureuse de mon achat. Mes 2 enfants jouent beaucoup avec leur PlayBoard et avec les autres jouets achetés sur Max & Lea. Livraison très rapide : 3 jours.
                     </p>
@@ -77,7 +101,13 @@ const AvisClients = () => {
                         <p className={styles.paysName}>France</p>
                         <img className={styles.paysFlag} src="https://maxandlea.com/wp-content/uploads/2020/06/france-flag-icon-16.png"></img>
                     </div>
-                    <img className={styles.stars} src="/5stars.png"></img>
+                    <div>
+                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    </div>
                     <p className={styles.avisDesc}>
                         Je suis très heureuse de mon achat. Mes 2 enfants jouent beaucoup avec leur PlayBoard et avec les autres jouets achetés sur Max & Lea. Livraison très rapide : 3 jours.
                     </p>
@@ -88,7 +118,13 @@ const AvisClients = () => {
                         <p className={styles.paysName}>France</p>
                         <img className={styles.paysFlag} src="https://maxandlea.com/wp-content/uploads/2020/06/france-flag-icon-16.png"></img>
                     </div>
-                    <img className={styles.stars} src="/5stars.png"></img>
+                    <div>
+                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    </div>
                     <p className={styles.avisDesc}>
                         Je suis très heureuse de mon achat. Mes 2 enfants jouent beaucoup avec leur PlayBoard et avec les autres jouets achetés sur Max & Lea. Livraison très rapide : 3 jours.
                     </p>
@@ -99,7 +135,13 @@ const AvisClients = () => {
                         <p className={styles.paysName}>France</p>
                         <img className={styles.paysFlag} src="https://maxandlea.com/wp-content/uploads/2020/06/france-flag-icon-16.png"></img>
                     </div>
-                    <img className={styles.stars} src="/5stars.png"></img>
+                    <div>
+                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    </div>
                     <p className={styles.avisDesc}>
                         Je suis très heureuse de mon achat. Mes 2 enfants jouent beaucoup avec leur PlayBoard et avec les autres jouets achetés sur Max & Lea. Livraison très rapide : 3 jours.
                     </p>

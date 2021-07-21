@@ -50,3 +50,16 @@ a {
 #load-dialog .MuiPaper-elevation24 {
   box-shadow: none!important;
 }
+
+.fa-star{
+  color: #f2b01e;
+}
+
+.mar-star{
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.mar-star-first{
+  margin-right: 2px;
+}
