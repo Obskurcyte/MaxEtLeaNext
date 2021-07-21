@@ -11,6 +11,8 @@ import * as product from '../products';
 import {getDrapeau} from "../store/actions/drapeau";
 import {useDispatch, useSelector} from "react-redux";
 import {useRouter} from "next/router";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
 
 const HeaderXylophone = (props) => {
 
@@ -227,17 +229,17 @@ const HeaderXylophone = (props) => {
         <h1 className="freeLivraison">Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
       </div>
 
-      <nav className="container">
+      <nav className="containerHeader">
         <div className="drapeauContainer">
           <p className="langue">{lang}</p>
           <img src={drapeau} alt="drapeau français" className="drapeauImg" onClick={handleClick}/>
         </div>
-        <Nav className="navBar">
-          <div className="imgContainer imgContainerjouet"><img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1536x567.png" alt="" className="imgNavbar"/></div>
-          <Link href="/" style={{marginTop: '5%'}}>
-            <img src={'/home.png'} alt="" style={{width: "3%", height: '3%'}} className="home"/>
-          </Link>
-
+        <Nav className="navBar container">
+          <div className="imgContainer">
+            <Link href="/">
+              <img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1536x567.png" alt="" className="imgNavbar"/>
+            </Link>
+          </div>
 
           <Menu
             id="simple-menu"
@@ -255,36 +257,44 @@ const HeaderXylophone = (props) => {
 
           <div className="jouet">
             <div className="prixJouet">
-              <p className="jouetName">XYLOPHONE</p>
-              <p className="jouetPrix">29,90€</p>
+              <p className="jouetName">LE XYLOPHONE</p>
+              <p className="jouetPrix">12,90€</p>
             </div>
 
             <div className="prixReduc">
               <div>
-                <p className="economie">(-40% vous économisez 20€)</p>
+                <p className="economie">(-40% vous économisez 7€)</p>
               </div>
               <div>
-                <p className="prixBarre">49,90€</p>
+                <p className="prixBarre">19,90€</p>
               </div>
             </div>
           </div>
 
           <div className="ajouterPanier" onClick={() => {
+            //handleClickOpen()
             handleAddToCart()
+
             router.push('/checkout')
+
+
           }}>
-            <Link href="#"><p className="ajouterPanierText">Ajouter au panier</p></Link>
+            <Link href="javascript:void(0)"><p className="ajouterPanierText">Ajouter au panier</p></Link>
           </div>
           <div className="accountShopping" onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
             <Link href="/cart">
               <Nav.Link>
 
                 <div className="cartWrap">
-                  {productCount && (<div className="productsCountContainer">
-                    <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{productCount}</span> : ''}</div>
-                  </div>)}
-                  <img src={'/shoppingcart.png'} alt="shopping cart" />
-                  {totalPrice1 ? <span className="totalPriceSpan">€{totalPrice1.toFixed(2)}</span> : ''}
+                  <div className="productsCountContainer">
+                    <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{productCount}</span> : <span className="productCountText">0</span>}</div>
+                  </div>
+                  <div className="flex">
+                    <div className='productPrice'>
+                      {totalPrice1 ? <span className="totalPriceSpan">{totalPrice1.toFixed(2)} €</span> : <span className="totalPriceSpan">0, 00 €</span>}
+                    </div>
+                    <FontAwesomeIcon icon={faShoppingBasket} className="shoppingCart"/>
+                  </div>
                 </div>
               </Nav.Link>
 

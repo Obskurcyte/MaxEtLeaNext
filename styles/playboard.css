@@ -1126,6 +1126,23 @@
   max-width: 400px;
 }
 
+.anneauxImg {
+  width: 35%;
+}
+.eveilImg {
+  width: 32%;
+}
+
+.childImg {
+  width: 26%;
+  color: #08a7e0!important;
+  margin-top: 0!important;
+  margin-bottom: 0!important;
+}
+
+.paletteImg {
+  width: 30%;
+}
 .addPanierContainer p {
   font-size: 35px;
   letter-spacing: -1px;

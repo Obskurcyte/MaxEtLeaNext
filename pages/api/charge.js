@@ -31,7 +31,6 @@ const generateResponse = (intent) => {
 
 export default async (req, res) =>  {
   const {id, amount} = req.body;
-
   try {
     const payment = await stripe.paymentIntents.create({
       amount,
@@ -41,21 +40,16 @@ export default async (req, res) =>  {
       confirm: true,
       confirmation_method: 'manual',
     })
-
     console.log(payment)
     return res.status(200).json({
       confirm: 'abc123',
       id: payment.client_secret,
       url: payment?.next_action?.use_stripe_sdk?.stripe_js
     })
-
-
-
   } catch (error) {
     console.log(error)
     return res.status(400).json({
       message: error.message
     })
   }
-
 }
