@@ -151,7 +151,7 @@ const CheckoutFormStripe = ({
 
   const [checkoutData, setCheckoutData] = useState({})
 
-  const [visaClicked, setVisaClicked] = useState(false);
+  const [visaClicked, setVisaClicked] = useState(true);
   const [paypalClicked, setPaypalClicked] = useState(false);
   const [bancontactClicked, setBancontactClicked] = useState(false);
 
@@ -549,14 +549,14 @@ return (
             setVisaClicked(true)
             setBancontactClicked(false)
           }}>
-            <img src={'/visa.png'} alt="" className={visaClicked ? styles.visaImgClicked : styles.visaImg}/>
+            <span>Credit Card</span><img src={'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAAAPFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQLyYwAAAAE3RSTlMAAQQHDg8QJjc/QFBVYYyRz9Ptw1HDpQAAAGRJREFUOMvllDcOgEAQA4cMJuP//5WGmj1BwUlMPdJamyBjqs0hIyxOoObwHNQr7R5bUS5bX2kJ/EtbFfDhsDLXbNugq5svNUkStFfbn2dLvNOkq2+o9tiagKIb7veob3J+lXAC6scp9D/ZXR4AAAAASUVORK5CYII='} alt="" className={styles.payImg}/>
           </div>
           <div className={paypalClicked ? styles.paypalContainerClicked : styles.paypalContainer} onClick={() => {
             setVisaClicked(false)
             setPaypalClicked(true)
             setBancontactClicked(false)
           }}>
-            <img src={'/paypal.png'} alt="" className={paypalClicked ? styles.paypalImgClicked : styles.paypalImg}/>
+            <span>PayPal</span><img src={'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAABQVBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACmBC6SAAAAanRSTlMAAQIDBAUGBwgJCgsMERITFBUXGBocHR4fICIjJSYqLC0uMjU2ODk6Oz0+QEVGR0lLTE5PVVZiZmdoaW1zdHd4fn+LjI6SlJWYmp2go6iytbe6vMDBw8rMztHX2tze4OTm6evt7/H3+fv9GxeFdwAAAVZJREFUGBmFwYlCElEYBeBzhwGhgQmN9sVSMaRosawUrFBza9HCNlqoLMDz/g8Qc+8MzPKD3wffY0b9216wkNRhwt8lxKUoaSDGpaiMqFsUdRC1QlkJEZuUVRHxhbIHCFMcYx5hDse4hLCrHCOdX8fIPco+oMzbGHpB2TL2+QNDBxT17BxJB4EuRWtokDwHX4aiT1aRA5fhK1HyK2+3OeDCt0hBayrdoicN31MmfKuo8z/paSPwmmF/Pu4+mlEzr2jUEejQqFhKWZZlF248+8rANHwpGk3sMOEAAZfGnGLCSQGBmzSKeSbcxdAKDfs642oY2aD2Gw8Z9d5FyGdqb9DkSP/dk7MIUzRW0aLWm81mLMQ5NCroU9uC5AqNUpbGMiQ1GpkLNK5B8pxaF1UaDiR71A5Rp3YC0ZnqHc9FvKV2hMmOqb3ERDaN+5godUzP9xxOoTyQ/AfW9kR6a/s4pAAAAABJRU5ErkJggg=='} alt="" className={styles.payImg}/>
           </div>
 
         </div>
@@ -909,29 +909,33 @@ return (
         >
           {props => (
             <form onSubmit={(e) => {e.preventDefault()}}>
-              <Row className="rowCheckout">
-                <input
-                  name="name"
-                  type="text"
-                  placeholder="Nom du porteur de la carte"
-                  required
-                  value={props.values.email}
-                  onChange={props.handleChange('email')}
-                  className={styles.inputName}
-                />
-              </Row>
-              <Row className="rowCheckout">
-                <div className={styles.CardElementContainer}>
-                    <CardElement
-                      options={cardElementOpts}
-                      onChange={handleCardDetailsChange}
-                    />
-                </div>
-              </Row>
+              <div className={styles.cardContainer}>
+                <span>Paiement sécurisé via Stripe.</span>
+                <div className={styles.cardIconsContainer}><img src="/visa.svg"/><img src="/mastercard.svg"/><img src="/amex.svg"/><img src="/logo-cb.jpg"/></div>
+                <Row className="rowCheckout">
+                  <input
+                    name="name"
+                    type="text"
+                    placeholder="Nom du porteur de la carte"
+                    required
+                    value={props.values.email}
+                    onChange={props.handleChange('email')}
+                    className={styles.inputName}
+                  />
+                </Row>
+                <Row className="rowCheckout">
+                  <div className={styles.CardElementContainer}>
+                      <CardElement
+                        options={cardElementOpts}
+                        onChange={handleCardDetailsChange}
+                      />
+                  </div>
+                </Row>
+              </div>
               <Row>
                 {/* TIP always disable your submit button while processing payments */}
                 <button className={styles.payButton} type="submit" onClick={props.handleSubmit} disabled={isProcessing || !stripe}>
-                  Commandez
+                  Commander
                 </button>
               </Row>
             </form>

@@ -29,10 +29,30 @@
   padding-right: 5%;
 }
 
+.livraisonInnerRow {
+  display: flex;
+  justify-content: space-between;
+}
+
 .codepromoContainer{
   display: flex;
   justify-content: space-around;
-  margin-top: 3%;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0px auto;
+  padding-top: 20px;
+  position: relative;
+}
+
+.codepromoContainer p{
+  margin: 0px;
+  position: absolute;
+  font-size: 13px;
+  top: 2px;
+}
+
+.inputPromo{
+  margin-bottom: 10px;
 }
 
 .articlesInPanier {
@@ -48,6 +68,12 @@ legend span {
   margin-top: 2%;
   color: #737373;
 }
+.livraisonChoice p{
+  margin-bottom: 0px;
+  margin-top: 8px;
+  font-weight: 400;
+}
+
 .livraisonPrice {
   color: #737373;
 }
@@ -71,6 +97,12 @@ legend span {
   background-color: #E72C59 !important;
   transition: all 0.2s !important;
   border-width: 0px !important;
+}
+
+.modal-know-more{
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
 }
 
 .livraisonPrice {
@@ -253,12 +285,14 @@ legend span {
   color: #6EC1E4;
   font-weight: 700;
   line-height: 1.4;
+  font-size: 22px;
 }
 
 .coordonneesDivLight .coordonneesNum{
   color: #D1D1D1;
   font-weight: 700;
   line-height: 1.4;
+  font-size: 22px;
 }
 
 .coordonneesDiv .coordonneesNum, .coordonneesDivLight .coordonneesNum,.coordonneesDiv .coordonneesSubTitle, .coordonneesDivLight .coordonneesSubTitle {
@@ -300,6 +334,10 @@ legend span {
   font-weight: 300;
   text-align: center;
   width: 100%;
+}
+
+.MuiInputLabel-outlined.MuiInputLabel-shrink{
+  transform: translate(14px, -2px) scale(0.75) !important;
 }
 
 .prixContainer {
@@ -617,6 +655,27 @@ legend span {
     font-family: "Roboto", sans-serif;
 }
 
+.spinner-border{
+  position: absolute;
+  top: 27px;
+  right: 10%;
+}
+
+.relay-container{
+  position: relative;
+  width: 690px;
+  max-width: 90vw;
+  text-align: center;
+}
+
+.relay-container .buttonCodepromo{
+  margin: 15px 0px;
+}
+
+div.MRW-Content>div:last-child {
+  display: none;
+}
+
 @media screen and (min-width: 2100px) {
   .carouselContainer {
     height: 400px
@@ -783,9 +842,6 @@ legend span {
   }
   .addArticleTitle {
     font-size: 17px;
-  }
-  .codepromoContainer {
-    flex-direction: row;
   }
   .buttonCodepromo {
     margin-top: 0;
@@ -1156,3 +1212,4 @@ legend span {
   text-align: center;
   color: #888;
 }
+

@@ -20,7 +20,10 @@
 }
 
 .constructionRobuste p {
-  color: #838383;
+  color: #5D5D5D;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 .constructionRobuste h5 {
   color: #838383;
