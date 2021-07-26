@@ -25,6 +25,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import Typography from '@material-ui/core/Typography';
 import { blue } from '@material-ui/core/colors';
+import { date } from "yup/lib/locale";
 
 const CHECKOUT_MUTATION = gql`
 mutation CHECKOUT_MUTATION( $input: CheckoutInput! ) {
@@ -68,65 +69,6 @@ function SimpleDialog(props) {
       <p style={{textAlign: 'center', color: 'white'}}>CHARGEMENT...</p>
     </Dialog>
   );
-}
-
-const createOrderWoo = async () => {
-
-  let dataClientCart = JSON.parse(localStorage.getItem('livraison'));
-  let cartClientCommande = JSON.parse(localStorage.getItem('commande-cart'));
-
-  var line_items_array = [];
-  if(cartClientCommande && cartClientCommande.products){
-    cartClientCommande.products.forEach( product => {
-      var temp_obj = {product_id: product.productId, quantity: product.qty};
-      line_items_array.push(temp_obj);
-    });
-  }
-
-  const data = {
-    payment_method: moyenPaiement,
-    payment_method_title: moyenPaiement,
-    set_paid: true,
-    billing: {
-      first_name: dataClientCart.prenom,
-      last_name: dataClientCart.nom,
-      address_1: dataClientCart.adresseFacturation,
-      address_2: "",
-      city: dataClientCart.villeFacturation,
-      state: "",
-      postcode: dataClientCart.codePostalFacturation,
-      country: dataClientCart.pays,
-      email: dataClientCart.email,
-      phone: dataClientCart.phone
-    },
-    shipping: {
-      first_name: dataClientCart.prenom,
-      last_name: dataClientCart.nom,
-      address_1: dataClientCart.adresseLivraison,
-      address_2: "",
-      city: dataClientCart.villeLivraison,
-      state: "",
-      postcode: dataClientCart.codePostalLivraison,
-      country: dataClientCart.pays
-    },
-    line_items: line_items_array,
-    shipping_lines: [
-      {
-        method_id: "flat_rate",
-        method_title: "Flat Rate",
-        total: dataClientCart.prixLivraison.toString()
-      }
-    ]
-  };
-
-
-  WooCommerce.post("orders", data)
-  .then((response) => {
-
-  })
-  .catch((error) => {
-    console.log(error.response.data);
-  });
 }
 
 const CheckoutFormStripe = ({
@@ -259,16 +201,21 @@ const CheckoutFormStripe = ({
           if (order.status === 'COMPLETED') {
             let dataClientCart = JSON.parse(localStorage.getItem('livraison'));
             let cartClientCommande = JSON.parse(localStorage.getItem('commande-cart'));
+            let relayID = localStorage.getItem('relay-id');
+            let relayAdresse = localStorage.getItem('relay-adresse');
+            let relayCP = localStorage.getItem('relay-cp');
+            let relayVille = localStorage.getItem('relay-ville');
+            let relayPays = localStorage.getItem('relay-pays');
 
             var line_items_array = [];
-            if(cartClientCommande && cartClientCommande.products){
-              cartClientCommande.products.forEach( product => {
+            if (cartClientCommande && cartClientCommande.products) {
+              cartClientCommande.products.forEach(product => {
                 var temp_obj = {product_id: product.productId, quantity: product.qty};
                 line_items_array.push(temp_obj);
               });
             }
 
-            const data = {
+            var data = {
               payment_method: moyenPaiement,
               payment_method_title: moyenPaiement,
               set_paid: true,
@@ -298,25 +245,43 @@ const CheckoutFormStripe = ({
               shipping_lines: [
                 {
                   method_id: "flat_rate",
-                  method_title: "Flat Rate",
+                  method_title: dataClientCart.titreLivraison,
                   total: dataClientCart.prixLivraison.toString()
                 }
               ]
             };
-
-            await router.push({
-              pathname: '/remerciement',
-            })
-
+            if(relayID != '' && dataClientCart.titreLivraison == 'Livraison en point Mondial Relay'){
+              data.meta_data = [
+                {
+                  key: "Mondial Relay Parcel Shop ID",
+                  value: relayID
+                },
+                {
+                  key: "user_lang",
+                  value: dataClientCart.userLang
+                }
+              ];
+              data.shipping.address_1 = relayAdresse;
+              data.shipping.city = relayVille;
+              data.shipping.postcode = relayCP;
+              data.shipping.country = relayPays;
+            }
+            else{
+              data.meta_data = [
+                {
+                  key: "user_lang",
+                  value: dataClientCart.userLang
+                }
+              ]
+            }
             WooCommerce.post("orders", data)
-            .then((response) => {
-              localStorage.removeItem('woo-next-cart')
-              localStorage.setItem('moyenPaiement', moyenPaiement);
-              window.location.reload()
-            })
-            .catch((error) => {
-              console.log(error.response.data);
-            });
+              .then((response) => {
+                console.log(response.data);
+                setProcessingTo(false)
+                localStorage.removeItem('woo-next-cart')
+                localStorage.setItem('moyenPaiement', moyenPaiement);
+                router.push('/remerciement').then(() => window.location.reload())
+              })
 
           }
         },
@@ -530,10 +495,89 @@ return (
             console.log('load payment data', paymentRequest);
           }}
           onPaymentAuthorized={paymentData => {
-            console.log('Payment Authorized Success', paymentData)
-            localStorage.removeItem('woo-next-cart')
-            localStorage.setItem('moyenPaiement', 'GooglePay');
-            router.push('/remerciement').then(() => window.location.reload())
+            let dataClientCart = JSON.parse(localStorage.getItem('livraison'));
+            let cartClientCommande = JSON.parse(localStorage.getItem('commande-cart'));
+            let relayID = localStorage.getItem('relay-id');
+            let relayAdresse = localStorage.getItem('relay-adresse');
+            let relayCP = localStorage.getItem('relay-cp');
+            let relayVille = localStorage.getItem('relay-ville');
+            let relayPays = localStorage.getItem('relay-pays');
+
+            var line_items_array = [];
+            if (cartClientCommande && cartClientCommande.products) {
+              cartClientCommande.products.forEach(product => {
+                var temp_obj = {product_id: product.productId, quantity: product.qty};
+                line_items_array.push(temp_obj);
+              });
+            }
+
+            var data = {
+              payment_method: moyenPaiement,
+              payment_method_title: moyenPaiement,
+              set_paid: true,
+              billing: {
+                first_name: dataClientCart.prenom,
+                last_name: dataClientCart.nom,
+                address_1: dataClientCart.adresseFacturation,
+                address_2: "",
+                city: dataClientCart.villeFacturation,
+                state: "",
+                postcode: dataClientCart.codePostalFacturation,
+                country: dataClientCart.pays,
+                email: dataClientCart.email,
+                phone: dataClientCart.phone
+              },
+              shipping: {
+                first_name: dataClientCart.prenom,
+                last_name: dataClientCart.nom,
+                address_1: dataClientCart.adresseLivraison,
+                address_2: "",
+                city: dataClientCart.villeLivraison,
+                state: "",
+                postcode: dataClientCart.codePostalLivraison,
+                country: dataClientCart.pays
+              },
+              line_items: line_items_array,
+              shipping_lines: [
+                {
+                  method_id: "flat_rate",
+                  method_title: dataClientCart.titreLivraison,
+                  total: dataClientCart.prixLivraison.toString()
+                }
+              ]
+            };
+            if(relayID != '' && dataClientCart.titreLivraison == 'Livraison en point Mondial Relay'){
+              data.meta_data = [
+                {
+                  key: "Mondial Relay Parcel Shop ID",
+                  value: relayID
+                },
+                {
+                  key: "user_lang",
+                  value: dataClientCart.userLang
+                }
+              ];
+              data.shipping.address_1 = relayAdresse;
+              data.shipping.city = relayVille;
+              data.shipping.postcode = relayCP;
+              data.shipping.country = relayPays;
+            }
+            else{
+              data.meta_data = [
+                {
+                  key: "user_lang",
+                  value: dataClientCart.userLang
+                }
+              ]
+            }
+            WooCommerce.post("orders", data)
+              .then((response) => {
+                console.log(response.data);
+                setProcessingTo(false)
+                localStorage.removeItem('woo-next-cart')
+                localStorage.setItem('moyenPaiement', moyenPaiement);
+                router.push('/remerciement').then(() => window.location.reload())
+              })
             return {transactionState: 'success'}
           }}
           existingPaymentMethodRequired="false"
@@ -637,6 +681,11 @@ return (
               const handlePayment = () => {
                 let dataClientCart = JSON.parse(localStorage.getItem('livraison'));
                 let cartClientCommande = JSON.parse(localStorage.getItem('commande-cart'));
+                let relayID = localStorage.getItem('relay-id');
+                let relayAdresse = localStorage.getItem('relay-adresse');
+                let relayCP = localStorage.getItem('relay-cp');
+                let relayVille = localStorage.getItem('relay-ville');
+                let relayPays = localStorage.getItem('relay-pays');
 
                 var line_items_array = [];
                 if (cartClientCommande && cartClientCommande.products) {
@@ -646,7 +695,7 @@ return (
                   });
                 }
 
-                const data = {
+                var data = {
                   payment_method: moyenPaiement,
                   payment_method_title: moyenPaiement,
                   set_paid: true,
@@ -676,17 +725,35 @@ return (
                   shipping_lines: [
                     {
                       method_id: "flat_rate",
-                      method_title: "Flat Rate",
+                      method_title: dataClientCart.titreLivraison,
                       total: dataClientCart.prixLivraison.toString()
-                    }
-                  ],
-                  meta_data: [
-                    {
-                      key: "Mondial Relay Parcel Shop ID",
-                      value: "FR-051322"
                     }
                   ]
                 };
+                if(relayID != '' && dataClientCart.titreLivraison == 'Livraison en point Mondial Relay'){
+                  data.meta_data = [
+                    {
+                      key: "Mondial Relay Parcel Shop ID",
+                      value: relayID
+                    },
+                    {
+                      key: "user_lang",
+                      value: dataClientCart.userLang
+                    }
+                  ]
+                  data.shipping.address_1 = relayAdresse;
+                  data.shipping.city = relayVille;
+                  data.shipping.postcode = relayCP;
+                  data.shipping.country = relayPays;
+                }
+                else{
+                  data.meta_data = [
+                    {
+                      key: "user_lang",
+                      value: dataClientCart.userLang
+                    }
+                  ]
+                }
                 WooCommerce.post("orders", data)
                   .then((response) => {
                     console.log(response.data);
