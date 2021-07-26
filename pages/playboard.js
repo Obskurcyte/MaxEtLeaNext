@@ -224,12 +224,7 @@ const PlayBoardScreen = props => {
             type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
-            <link
-              rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-              integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-              crossorigin="anonymous"
-              />
+            
         </Head>
         <div className="container1000">
           <div className="imgCouverture">

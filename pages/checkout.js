@@ -48,6 +48,7 @@ function SimpleDialogPlayboard(props) {
     <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
       <div>
         <img src={'/popup.png'} alt="" style={{maxWidth: '100%'}}/>
+        <Link href="/playboard"><p class="modal-know-more">En savoir plus</p></Link>
       </div>
     </Dialog>
   );
@@ -91,6 +92,7 @@ function SimpleDialogXylo(props) {
           </div>
 
         </div>
+        <Link href="/xylophone"><p class="modal-know-more">En savoir plus</p></Link>
       </div>
     </Dialog>
   );
@@ -133,6 +135,7 @@ function SimpleDialogTour(props) {
             <p><span className="fw-bold">100% Bois et 100% Ecologique</span></p>
           </div>
         </div>
+        <Link href="/tour"><p class="modal-know-more">En savoir plus</p></Link>
       </div>
     </Dialog>
   );
@@ -150,10 +153,16 @@ function SimpleDialogRelay(props) {
   };
 
   return (
-    <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-      <div id="Zone_Widget">
+    <Dialog onClose={handleClose} aria-labelledby="Points relay" open={open} maxWidth="md">
+      <div className="relay-container">
+        <div id="Zone_Widget">
+          Chargement...
+          <Spinner animation="border" role="status" >
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        </div>
+        <button class="buttonCodepromo" id="choice_relay" onClick={handleClose}>Choisir</button>
       </div>
-      <button class="buttonCodepromo" id="choice_relay">Choisir</button>
     </Dialog>
   );
 }
@@ -234,6 +243,12 @@ const CheckoutScreen = props => {
       const promoCodeData = JSON.parse(codePromoData)
       setDataClient(trueData)
       setCodePromo(promoCodeData)
+      if(trueData && trueData.pays){
+        setPays(trueData.pays);
+      }
+      console.log("pays")
+      console.log(trueData)
+      console.log(pays)
     }
   }, [goodCodePromo]);
 
@@ -873,6 +888,7 @@ const CheckoutScreen = props => {
   const [codePostalLivraison, setCodePostalLivraison] = useState('');
   const [adresseFacturation, setAdresseFacturation] = useState('');
   const [prixLivraison, setPrixLivraison] = useState(0);
+  const [titreLivraison, setTitreLivraison] = useState('')
   const [villeFacturation, setVilleFacturation] = useState('')
   const [codePostalFacturation, setCodePostalFacturation] = useState('')
   const [paysFacturation, setPaysFacturation] = useState('')
@@ -893,25 +909,28 @@ const CheckoutScreen = props => {
     setChecked(event.target.checked);
   };
 
-  const handleChange1 = (event, prix) => {
+  const handleChange1 = (event, prix, titre = "") => {
     setChecked1(!checked1);
     setChecked2(false);
     setChecked3(false);
-    setPrixLivraison(prix)
+    setPrixLivraison(prix);
+    setTitreLivraison(titre);
   };
 
-  const handleChange2 = (event, prix) => {
+  const handleChange2 = (event, prix, titre = "") => {
     setChecked2(!checked2);
     setChecked1(false);
     setChecked3(false);
-    setPrixLivraison(prix)
+    setPrixLivraison(prix);
+    setTitreLivraison(titre);
   }
 
-  const handleChange3 = (event, prix) => {
+  const handleChange3 = (event, prix, titre = "") => {
     setChecked3(!checked3);
     setChecked1(false);
     setChecked2(false);
-    setPrixLivraison(prix)
+    setPrixLivraison(prix);
+    setTitreLivraison(titre);
   }
 
 
@@ -942,13 +961,10 @@ const CheckoutScreen = props => {
     phone: Yup.string().required('Ce champ est requis'),
   });
 
-  console.log(dataClient)
   let dataClientEmail = ''
   if (dataClient && dataClient.email) {
     dataClientEmail = dataClient.email
   }
-
-  console.log(dataClient)
 
   const initialValues = {
     email: (dataClient && dataClient.email) ? dataClient.email : '',
@@ -957,7 +973,7 @@ const CheckoutScreen = props => {
     adresseLivraison: (dataClient && dataClient.adresseLivraison) ? dataClient.adresseLivraison : '',
     codePostalLivraison: (dataClient && dataClient.codePostalLivraison) ? dataClient.codePostalLivraison : '',
     villeLivraison: (dataClient && dataClient.villeLivraison) ? dataClient.villeLivraison : '',
-    pays: '',
+    pays: (dataClient && dataClient.pays) ? dataClient.pays : '',
     phone: (dataClient && dataClient.phone) ? dataClient.phone : '',
     adresseFacturation: (dataClient && dataClient.adresseFacturation) ? dataClient.adresseFacturation : '',
     codePostalFacturation: (dataClient && dataClient.codePostalFacturation) ? dataClient.codePostalFacturation : '',
@@ -968,7 +984,6 @@ const CheckoutScreen = props => {
 
   const classes = useStyles();
 
-  console.log(!checked1 && !checked2)
 
   let totalPrice1 = 0;
   let totalPrice2 = 0
@@ -1189,7 +1204,11 @@ const CheckoutScreen = props => {
 
           <div className="produitPaiementContainer">
             <div className="produitContainer">
-              <p className="cartTitle">VOTRE PANIER</p>
+              <div className='coordonneesDiv'>
+                <p className="coordonneesNum">1</p>
+                <p className="coordonneesTitle">PANIER</p>
+                <p className="coordonneesSubTitle">Vos Produits</p>
+              </div>
               {(!cart || cart.products.length === 0) && (
                 <h2>Vous n'avez pas d'articles dans votre panier</h2>
               )}
@@ -1219,7 +1238,7 @@ const CheckoutScreen = props => {
                                 }}
                               />
                             </div>
-                            <div className="ebookInner paid">
+                            <div className="ebookInner free">
                               <p>Ebook Playboard imprimé (9,99€)</p>
                               <Checkbox checked={ebookImprime ? true : checkedEbookPlayboard}
                                         onChange={(event) => {
@@ -1358,11 +1377,11 @@ const CheckoutScreen = props => {
 
               <div className="codepromoContainer">
                 <div>
-                  <input type="text" onChange={event => setpromoCode(event.target.value)} placeholder="Code promo" className="inputPromo"/>
                   {codePromoIncorrect ? <p style={{color: 'red'}}>Ce code est incorrect</p>: ''}
                   {goodCodePromo ? <p style={{color: 'green'}}>Votre code promo a été validé</p>: ''}
+                  <input type="text" onChange={event => setpromoCode(event.target.value)} placeholder="Code promo" className="inputPromo"/>
                 </div>
-                {codePromoLoading && <Spinner animation="border" role="status">
+                {codePromoLoading && <Spinner animation="border" role="status" >
                   <span className="sr-only">Loading...</span>
                 </Spinner>}
                 <button className="buttonCodepromo" onClick={() => {checkPromo()}}>Valider votre code promo</button>
@@ -1477,14 +1496,14 @@ const CheckoutScreen = props => {
                   <div className="prixText">
                     <a href="javascript:void(0);" onClick={() => setGoPaiement(false)} style={{width:'50%'}}>
                       <div className={!goPaiement ? 'coordonneesDiv' : 'coordonneesDivLight'}>
-                        <p className="coordonneesNum">1</p>
+                        <p className="coordonneesNum">2</p>
                         <p className="coordonneesTitle">LIVRAISON</p>
                         <p className="coordonneesSubTitle">Où l'expédier ?</p>
                       </div>
                     </a>
                     <a href="javascript:void(0);" style={{width:'50%'}}>
                       <div className={goPaiement ? 'coordonneesDiv' : 'coordonneesDivLight'}>
-                        <p className="coordonneesNum">2</p>
+                        <p className="coordonneesNum">3</p>
                         <p className="coordonneesTitle">PAIEMENT</p>
                         <p className="coordonneesSubTitle">Confirmez votre commande</p>
                       </div>
@@ -1513,6 +1532,7 @@ const CheckoutScreen = props => {
                               phone : values.phone,
                               pays: values.pays,
                               prixLivraison,
+                              titreLivraison,
                               adresseLivraison : values.adresseLivraison,
                               codePostalLivraison : values.codePostalLivraison,
                               total : totalPrice2,
@@ -1530,6 +1550,7 @@ const CheckoutScreen = props => {
                               prenom : values.prenom,
                               phone : values.phone,
                               prixLivraison,
+                              titreLivraison,
                               adresseLivraison : values.adresseLivraison,
                               codePostalLivraison : values.codePostalLivraison,
                               total : totalPrice2.toFixed(2),
@@ -1627,7 +1648,7 @@ const CheckoutScreen = props => {
                                 setChecked1(false);
                                 setChecked3(false);
                                 props.setFieldValue('pays', val);
-                                }} options={countries.listCountries} name="countryTest" placeholder="Choisir Pays" search={true} filterOptions={ fuzzySearch }/>
+                                }} options={countries.listCountries} value={props.values.pays} id="pays" name="country" placeholder="Choisir Pays" search={true} filterOptions={ fuzzySearch }/>
 
                               {props.errors.pays && props.touched.pays && <div style={{color: 'red'}}>Ce champ est requis</div>}
                             </div>
@@ -1713,35 +1734,18 @@ const CheckoutScreen = props => {
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
-                                      <Checkbox
+                                      <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <Checkbox
                                         checked={checked1}
                                         onChange={() => {
-                                          handleChange1(event, 4.99)
+                                          handleChange1(event, 4.99,"Livraison standard")
                                           setMondialRelay(false)
                                         }}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                    </div>
-                                    <div className="livraisonChoice">
-                                      <p>Livraison standard (3-5 jours)</p>
-                                    </div>
-                                    <div className="livraisonPrice">
-                                      <p>4,99 €</p>
-                                    </div>
-                                  </div>
-
-                                  <div className="livraisonRow">
-                                    <div className="checkboxLivraisonContainer">
-                                      <Checkbox
-                                        id="relay_check"
-                                        checked={checked2}
-                                        onChange={() => {
-                                          handleChange2(event, 4.99)
-                                          setMondialRelay(true)
-                                        }}
-                                        inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                    </div>
-                                    <div className="livraisonChoice">
-                                      <p>Livraison en point Mondial Relay (2-4 jours)</p>
+                                        <p>Livraison standard (3-5 jours)</p>
+                                        </div>
+                                        </label>
                                     </div>
                                     <div className="livraisonPrice">
                                       <p>4,99 €</p>
@@ -1750,16 +1754,40 @@ const CheckoutScreen = props => {
 
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <Checkbox
+                                          id="relay_check"
+                                          checked={checked2}
+                                          onChange={() => {
+                                            handleChange2(event, 4.99,"Livraison en point Mondial Relay")
+                                            setMondialRelay(true)
+                                          }}
+                                          inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                                          <p>Livraison en point Mondial Relay (2-4 jours)</p>
+                                          </div>
+                                      </label>
+                                    </div>
+                                    <div className="livraisonPrice">
+                                      <p>4,99 €</p>
+                                    </div>
+                                  </div>
+
+                                  <div className="livraisonRow">
+                                    <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
                                       <Checkbox
                                         checked={checked3}
                                         onChange={() => {
-                                          handleChange3(event, 6.99)
+                                          handleChange3(event, 6.99,"Livraison express")
                                           setMondialRelay(false)
                                         }}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                    </div>
-                                    <div className="livraisonChoice">
-                                      <p>Livraison express (2-3 jours)</p>
+                                          <p>Livraison express (2-3 jours)</p>
+                                          </div>
+                                      </label>
+                                      
                                     </div>
                                     <div className="livraisonPrice">
                                       <p>6,99 €</p>
@@ -1775,13 +1803,16 @@ const CheckoutScreen = props => {
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
                                       <Checkbox
                                         checked={checked1}
                                         onChange={() => handleChange3(event, 19.99)}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                    </div>
-                                    <div className="livraisonChoice">
-                                      <p>Livraison Amérique (8-10 jours)</p>
+                                          <p>Livraison Amérique (8-10 jours)</p>
+                                          </div>
+                                      </label>
+                                      
                                     </div>
                                     <div className="livraisonPrice">
                                       <p>19,99 €</p>
@@ -1797,13 +1828,16 @@ const CheckoutScreen = props => {
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
                                       <Checkbox
                                         checked={checked1}
-                                        onChange={() => handleChange1(event, 6.99)}
+                                        onChange={() => handleChange1(event, 6.99,"Livraison standard")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                    </div>
-                                    <div className="livraisonChoice">
-                                      <p>Livraison standard UK (5-7 jours)</p>
+                                          <p>Livraison standard UK (5-7 jours)</p>
+                                          </div>
+                                      </label>
+                                      
                                     </div>
                                     <div className="livraisonPrice">
                                       <p>6,99 €</p>
@@ -1812,13 +1846,15 @@ const CheckoutScreen = props => {
 
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
                                       <Checkbox
                                         checked={checked2}
-                                        onChange={() => handleChange2(event, 9.99)}
+                                        onChange={() => handleChange2(event, 9.99,"Livraison express")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                    </div>
-                                    <div className="livraisonChoice">
-                                      <p>Livraison Express UK (2-4 jours)</p>
+                                          <p>Livraison Express UK (2-4 jours)</p>
+                                          </div>
+                                      </label>
                                     </div>
                                     <div className="livraisonPrice">
                                       <p>9,99 €</p>
@@ -1873,13 +1909,15 @@ const CheckoutScreen = props => {
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
                                       <Checkbox
                                         checked={checked1}
-                                        onChange={() => handleChange1(event, 47.99)}
+                                        onChange={() => handleChange1(event, 47.99,"Livraison standard")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                    </div>
-                                    <div className="livraisonChoice">
-                                      <p>Livraison monde (8-10 jours)</p>
+                                          <p>Livraison monde (8-10 jours)</p>
+                                          </div>
+                                      </label>
                                     </div>
                                     <div className="livraisonPrice">
                                       <p>47,99 €</p>
@@ -1888,13 +1926,15 @@ const CheckoutScreen = props => {
 
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
                                       <Checkbox
                                         checked={checked2}
-                                        onChange={() => handleChange2(event, 54.99)}
+                                        onChange={() => handleChange2(event, 54.99,"Livraison express")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                    </div>
-                                    <div className="livraisonChoice">
-                                      <p>Livraison Express Monde (6-8 jours)</p>
+                                          <p>Livraison Express Monde (6-8 jours)</p>
+                                          </div>
+                                      </label>
                                     </div>
                                     <div className="livraisonPrice">
                                       <p>54,99 €</p>
@@ -1925,13 +1965,15 @@ const CheckoutScreen = props => {
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
                                       <Checkbox
                                         checked={checked1}
-                                        onChange={() => handleChange1(event, 9.99)}
+                                        onChange={() => handleChange1(event, 9.99,"Livraison standard")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                    </div>
-                                    <div className="livraisonChoice">
-                                      <p>Livraison Standard (5-7 jours)</p>
+                                          <p>Livraison Standard (5-7 jours)</p>
+                                          </div>
+                                      </label>
                                     </div>
                                     <div className="livraisonPrice">
                                       <p>9,99 €</p>
@@ -1940,13 +1982,15 @@ const CheckoutScreen = props => {
 
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
                                       <Checkbox
                                         checked={checked2}
-                                        onChange={() => handleChange2(event, 12.99)}
+                                        onChange={() => handleChange2(event, 12.99,"Livraison express")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                    </div>
-                                    <div className="livraisonChoice">
-                                      <p>Livraison Express (3-5 jours)</p>
+                                          <p>Livraison Express (3-5 jours)</p>
+                                          </div>
+                                      </label>
                                     </div>
                                     <div className="livraisonPrice">
                                       <p>12,99 €</p>
@@ -1965,13 +2009,15 @@ const CheckoutScreen = props => {
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
                                       <Checkbox
                                         checked={checked1}
-                                        onChange={() => handleChange1(event, 24.99)}
+                                        onChange={() => handleChange1(event, 24.99,"Livraison standard")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                    </div>
-                                    <div className="livraisonChoice">
-                                      <p>Livraison standard (6-8 jours)</p>
+                                          <p>Livraison standard (6-8 jours)</p>
+                                          </div>
+                                      </label>
                                     </div>
                                     <div className="livraisonPrice">
                                       <p>24,99 €</p>
@@ -1980,13 +2026,15 @@ const CheckoutScreen = props => {
 
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
                                       <Checkbox
                                         checked={checked2}
-                                        onChange={() => handleChange2(event, 29.99)}
+                                        onChange={() => handleChange2(event, 29.99,"Livraison express")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                    </div>
-                                    <div className="livraisonChoice">
-                                      <p>Livraison Express (4-6 jours)</p>
+                                          <p>Livraison Express (4-6 jours)</p>
+                                          </div>
+                                      </label>
                                     </div>
                                     <div className="livraisonPrice">
                                       <p>29,99 €</p>
@@ -2011,13 +2059,15 @@ const CheckoutScreen = props => {
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
                                       <Checkbox
                                         checked={checked1}
-                                        onChange={() => handleChange1(event, 14.99)}
+                                        onChange={() => handleChange1(event, 14.99,"Livraison standard")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                    </div>
-                                    <div className="livraisonChoice">
-                                      <p>Livraison standard (5-7 jours)</p>
+                                          <p>Livraison standard (5-7 jours)</p>
+                                          </div>
+                                      </label>
                                     </div>
                                     <div className="livraisonPrice">
                                       <p>14,99 €</p>
@@ -2026,13 +2076,15 @@ const CheckoutScreen = props => {
 
                                   <div className="livraisonRow">
                                     <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
                                       <Checkbox
                                         checked={checked2}
-                                        onChange={() => handleChange2(event, 19.99)}
+                                        onChange={() => handleChange2(event, 19.99,"Livraison express")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                    </div>
-                                    <div className="livraisonChoice">
-                                      <p>Livraison express (3-5 jours)</p>
+                                          <p>Livraison express (3-5 jours)</p>
+                                          </div>
+                                      </label>
                                     </div>
                                     <div className="livraisonPrice">
                                       <p>19,99 €</p>
@@ -2054,7 +2106,7 @@ const CheckoutScreen = props => {
 
                             <input type="hidden" id="relay_value"></input>
                               <div className={mondialRelay ? "display" : "displayNone"} >
-                                <label onClick={() => {
+                                <label id="relay_text" onClick={() => {
                                   handleClickOpenRelay()
                                 }}>
                                   Choisissez un point Relay
