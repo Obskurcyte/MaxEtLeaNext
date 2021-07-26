@@ -13,12 +13,25 @@
   text-align: center;
 }
 
+.slider-container img {
+  max-height: 400px;
+  width: 100%;
+}
+
+
+.icone-mini-container span{
+  font-weight: bold;
+  font-size: 20px;
+}
 .increase-button {
   width: 33%;
   height: 100%;
   border: 1px solid #e4e4e4;
 }
 
+.xyloPara {
+  font-size: 17px !important
+}
 .decrease-button {
   width: 33%;
   height: 100%;
