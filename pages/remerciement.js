@@ -16,7 +16,7 @@ const Remerciement = (props) => {
     consumerKey: 'ck_9e4d330373ed9a52a684ec88434271aa37652603',
     consumerSecret: 'cs_a0272dea628e462d7288a10226cfa3e1f4ffcaff',
     version: 'wc/v3'
-  }); 
+  });
 
   useEffect(() => {
     if ( process.browser) {
@@ -79,7 +79,7 @@ const Remerciement = (props) => {
           }
         ]
       };
-     
+
 
       WooCommerce.post("orders", data)
       .then((response) => {
@@ -131,14 +131,14 @@ const Remerciement = (props) => {
                         {item.name}  x  {item.qty}
                       </td>
                       <td key={ item.productId } className="textLeft">
-                        {item.totalPrice} €
+                        {(item.totalPrice)} €
                       </td>
                     </tr>
                   ) )
                 ) }
                 <tr className="bg-gray-200">
                   <td className="woo-next-checkout-total font-normal text-xl textLeft tdInner">Sous-total</td>
-                  <td className="woo-next-checkout-total font-bold text-xl textLeft">{dataClient.sousTotal} €</td>
+                  <td className="woo-next-checkout-total font-bold text-xl textLeft">{dataClient.sousTotal.toFixed(2)} €</td>
                 </tr>
                 <tr className="bg-gray-200">
                   <td className="woo-next-checkout-total font-normal text-xl textLeft tdInner">Expedition</td>

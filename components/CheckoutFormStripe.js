@@ -378,7 +378,7 @@ const CheckoutFormStripe = ({
   const stripe = useStripe();
   const elements = useElements();
 
-  const [checkoutError, setCheckoutError] = useState('')
+  const [checkoutError, setCheckoutError] = useState(null)
 
   const CardElementContainer = styled.div`
   height: 40px;
@@ -934,7 +934,7 @@ return (
               </div>
               <Row>
                 {/* TIP always disable your submit button while processing payments */}
-                <button className={styles.payButton} type="submit" onClick={props.handleSubmit} disabled={isProcessing || !stripe}>
+                <button className={styles.payButton} type="submit" onClick={props.handleSubmit} disabled={!!checkoutError}>
                   Commander
                 </button>
               </Row>

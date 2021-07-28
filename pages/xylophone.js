@@ -219,13 +219,16 @@ const XylophoneScreen = props => {
           <div className="slider-container video-container">
             <Slider {...settings}>
               <div>
-                <img src={'/xylophoneImg.jpg'} alt=""/>
+                <img src={'/xylo1.jpg'} alt=""/>
               </div>
               <div>
-                <img src={'/xylophoneImg.jpg'} alt=""/>
+                <img src={'/xylo2.jpg'} alt=""/>
               </div>
               <div>
-                <img src={'/xylophoneImg.jpg'} alt=""/>
+                <img src={'/xylo3.jpg'} alt=""/>
+              </div>
+              <div>
+                <img src={'/xylo4.jpg'} alt=""/>
               </div>
             </Slider>
           </div>

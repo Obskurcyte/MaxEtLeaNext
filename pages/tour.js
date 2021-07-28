@@ -240,13 +240,22 @@ const TourScreen = props => {
           <div className="slider-container video-container">
             <Slider {...settings}>
               <div>
-                <img src={'/xylophoneImg.jpg'} alt=""/>
+                <img src={'/tour1.jpg'} alt=""/>
               </div>
               <div>
-                <img src={'/xylophoneImg.jpg'} alt=""/>
+                <img src={'/tour2.jpg'} alt=""/>
               </div>
               <div>
-                <img src={'/xylophoneImg.jpg'} alt=""/>
+                <img src={'/tour3.jpg'} alt=""/>
+              </div>
+              <div>
+                <img src={'/tour4.jpg'} alt=""/>
+              </div>
+              <div>
+                <img src={'/tour5.jpg'} alt=""/>
+              </div>
+              <div>
+                <img src={'/tour6.jpg'} alt=""/>
               </div>
             </Slider>
           </div>
