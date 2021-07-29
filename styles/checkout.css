@@ -668,6 +668,10 @@ legend span {
   text-align: center;
 }
 
+.MR-Widget{
+  min-height: 75vh;
+}
+
 .relay-container .buttonCodepromo{
   margin: 15px 0px;
 }

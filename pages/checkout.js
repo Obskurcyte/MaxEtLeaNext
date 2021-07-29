@@ -30,6 +30,7 @@ import { useRouter } from 'next/router';
 import {loadStripe} from "@stripe/stripe-js/pure";
 import {Elements} from '@stripe/react-stripe-js';
 import SelectSearch,{ useSelect, fuzzySearch } from 'react-select-search-nextjs';
+import i18next from "i18next";
 
 const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
@@ -1533,6 +1534,7 @@ const CheckoutScreen = props => {
                               pays: values.pays,
                               prixLivraison,
                               titreLivraison,
+                              userLang: i18next.language,
                               adresseLivraison : values.adresseLivraison,
                               codePostalLivraison : values.codePostalLivraison,
                               total : totalPrice2,
@@ -1551,6 +1553,7 @@ const CheckoutScreen = props => {
                               phone : values.phone,
                               prixLivraison,
                               titreLivraison,
+                              userLang: i18next.language,
                               adresseLivraison : values.adresseLivraison,
                               codePostalLivraison : values.codePostalLivraison,
                               total : totalPrice2.toFixed(2),
@@ -1762,6 +1765,7 @@ const CheckoutScreen = props => {
                                           onChange={() => {
                                             handleChange2(event, 4.99,"Livraison en point Mondial Relay")
                                             setMondialRelay(true)
+                                            handleClickOpenRelay()
                                           }}
                                           inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
                                           <p>Livraison en point Mondial Relay (2-4 jours)</p>
