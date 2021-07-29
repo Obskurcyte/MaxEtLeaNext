@@ -22,20 +22,20 @@ const About = () => {
       <div className="container1000">
         <p className="Apropos-title">{t("Propos.2")}<span>{t("Propos.3")}</span></p>
         <div className="container-about">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/06/iStock-478587034-1.jpg" alt="" className="grande-photo"/>
+          <img src={'/internet10.webp'} alt="" className="grande-photo"/>
           <div className="paragraphs">
             <div className="paragraph1">
               <p>
-                <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_1-1.svg" alt="" className="petite-photo1"/>
+                <img src={'/internet4.svg'} alt="" className="petite-photo1"/>
                 Max & Lea
                 <span>{t("Propos.4")}</span>{t("Propos.5")}</p>
             </div>
             <div className="paragraph2">
-              <p>              <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_3t.svg" alt="" className="petite-photo2"/>
+              <p>              <img src={'/internet11.svg'} alt="" className="petite-photo2"/>
                  {t("Propos.6")}</p>
             </div>
             <div className="paragraph3">
-              <p>              <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_2t.svg" alt="" className="petite-photo3"/>
+              <p>              <img src={'/internet7.webp'} alt="" className="petite-photo3"/>
                 {t("Propos.7")}<span>{t("Propos.8")}</span>{t("Propos.9")}</p>
             </div>
           </div>
@@ -52,7 +52,7 @@ const About = () => {
             </div>
           </div>
           <div>
-            <img src="https://maxandlea.com/wp-content/uploads/2020/06/iStock-623688768-1.jpg" alt="" className="moyenne-photo"/>
+            <img src={'/internet11.webp'} alt="" className="moyenne-photo"/>
           </div>
         </div>
         <div className="card-citation container-about">
@@ -67,7 +67,7 @@ const About = () => {
           <Link className="container" href="/equipe"><p className="equipe-button">{t("Propos.20")}</p></Link>
         </div>
         <div className="container-about">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/06/iStock-912734770-1.jpg" alt="" className="mega-photo"/>
+          <img src={'/internet12.webp'} alt="" className="mega-photo"/>
         </div>
         </div>
       </main>

@@ -224,7 +224,7 @@ const PlayBoardScreen = props => {
             type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
-            
+
         </Head>
         <div className="container1000">
           <div className="imgCouverture">
@@ -248,7 +248,7 @@ const PlayBoardScreen = props => {
               loop
             />
             </div>
-            
+
           </div>
         </div>
         <div className="mainContainer pensee-container">
@@ -301,7 +301,7 @@ const PlayBoardScreen = props => {
         </div>
         </div>
 
-        
+
 
         <div className="container1000">
         <div className="image-recap-container">
@@ -377,7 +377,7 @@ const PlayBoardScreen = props => {
           </div>
         </div>
         </div>
-        
+
         <div className="container1000 videoMidContainer">
         <img src={'/playboardBois.png'} alt="" className="playboardBoisImg"/>
         <ReactPlayer
@@ -408,7 +408,7 @@ const PlayBoardScreen = props => {
             <div className="col">
               <div className="photoDescriptionContainer">
                 <div className="imgDevelopmentContainer">
-                  <img src="https://play.maxandlea.com/wp-content/uploads/2020/10/Be%CC%81be%CC%81Mouvements-MaxAndLea-2.jpg" alt="bebe qui s'amuse" className="imgDevelopment"/>
+                  <img src={'/internet1.webp'} alt="bebe qui s'amuse" className="imgDevelopment"/>
                 </div>
                 <div className="listeDevelopment">
                   <p className="developmentTitle" style={{color: '#02B3C8'}}>Pour les 1-2 ans</p>
@@ -439,7 +439,7 @@ const PlayBoardScreen = props => {
             <div className="col">
               <div className="photoDescriptionContainer">
                 <div className="imgDevelopmentContainer">
-                  <img src="https://play.maxandlea.com/wp-content/uploads/2020/10/Be%CC%81be%CC%812ans-1862x2048.jpg" alt="bebe qui s'amuse" className="imgDevelopment"/>
+                  <img src={'/internet2.webp'} alt="bebe qui s'amuse" className="imgDevelopment"/>
                 </div>
                 <div className="listeDevelopment">
                   <p className="developmentTitle" style={{color: '#31A73A'}}>Pour les 2-3 ans</p>
@@ -472,7 +472,7 @@ const PlayBoardScreen = props => {
             <div className="col">
               <div className="photoDescriptionContainer reverse">
                 <div className="imgDevelopmentContainer">
-                  <img src="https://play.maxandlea.com/wp-content/uploads/2020/10/FilletteSouriante-802x1024.jpg" alt="bebe qui s'amuse" className="imgDevelopment"/>
+                  <img src={'/internet3.webp'} alt="bebe qui s'amuse" className="imgDevelopment"/>
                 </div>
                 <div className="listeDevelopment">
                   <p className="developmentTitle" style={{color: '#F28D2A'}}>Pour les 3-4 ans</p>
@@ -714,15 +714,15 @@ const PlayBoardScreen = props => {
             <div className="ebooksContainer">
               <p className="ebookTitle">3 ebooks GRATUITS avec votre commande : </p>
               <div className="ebook">
-                <img src="https://play.maxandlea.com/wp-content/uploads/2020/05/dot_1-1.svg" alt="" />
+                <img src={'/internet4.svg'} alt="" />
                 <p>1 guide d'activités pour enfants</p>
               </div>
               <div className="ebook">
-                <img src="https://play.maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt="" />
+                <img src={'/internet5.svg'} alt="" />
                 <p>1 livre de contes</p>
               </div>
               <div className="ebook">
-                <img src="https://play.maxandlea.com/wp-content/uploads/2020/05/dot_3t.svg" alt="" />
+                <img src={'/internet6.svg'} alt="" />
                 <p>1 cahier de coloriage</p>
               </div>
             </div>
@@ -730,13 +730,13 @@ const PlayBoardScreen = props => {
             <div className="sacRangement">
               <p className="ebookTitle">1 sac de rangement OFFERT :</p>
               <div className="ebookOffertText">
-                <img src="https://play.maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-copie-6.png" alt=""/>
+                <img src={'/internet7.webp'} alt=""/>
                 <p>Conçu pour ranger les pièces de la Playboard</p>
               </div>
             </div>
 
             <div className="playboardImgContainer" onClick={() => setOpen(true)}>
-              <img src="https://play.maxandlea.com/wp-content/uploads/2020/05/fr2.png" alt="" className="reducImg"/>
+              <img src={'/internet8.webp'} alt="" className="reducImg"/>
             </div>
 
             <Dialog
@@ -792,7 +792,7 @@ const PlayBoardScreen = props => {
         <div className="container1000">
           <Garanties/>
         </div>
-        
+
         <div className="container1000">
         <div className="sourireEnfantImgContainer">
           <img src={'/sourireEnfant.webp'} alt="" className="sourireEnfant"/>
@@ -841,7 +841,7 @@ const PlayBoardScreen = props => {
                 </Collapsible>
                 <Collapsible trigger={faqHeader6}>
                   <p>
-                   La PlayBoard est envoyée depuis notre entrepôt situé à Evreux (France <img src="https://maxandlea.com/wp-content/uploads/2020/06/france-flag-icon-16.png"/>).
+                   La PlayBoard est envoyée depuis notre entrepôt situé à Evreux (France <img src={'/internet9.webp'}/>).
 Pour une livraison en France (y compris Monaco) nos délais sont de 3 à 5 jours ouvrés (livraison Standard à domicile ou en Point Mondial Relay), et 2 à 3 jours ouvrés en livraison Express.
 
 Pour le reste de l’Europe, nos délais de livraison sont de 5 à 7 jours ouvrés en livraison Standard et 3 à 5 jours en livraison Express.

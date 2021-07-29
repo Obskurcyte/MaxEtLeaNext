@@ -157,6 +157,7 @@ const CheckoutFormStripe = ({
 
 
 
+  console.log(pays)
   const  [
     cart, setCart,
     commandeCart, setCommandeCart,
@@ -561,7 +562,7 @@ return (
 
         </div>
 
-        {pays === 'Belgique' && (
+        {pays === 'BE' && (
           <div className={bancontactClicked ? styles.banContactContainerClicked : styles.banContactContainer} onClick={() => {
             setVisaClicked(false)
             setPaypalClicked(false)

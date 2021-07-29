@@ -33,7 +33,7 @@ const Footer = () => {
       <div className="container">
         <div className="footer-subcontainer">
           <div className="col-8 col-md-3 order-4 order-md-1 flex-column d-flex">
-          <Link href="/"><img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1024x378.png" alt="" className="img-footer"/></Link>
+          <Link href="/"><img src={'/logogrand.webp'} alt="" className="img-footer"/></Link>
             <span className="copyright">Copyright © 2021 | Max And Lea</span>
             <div className="icons-social">
               <a href="https://www.facebook.com/MaxandleaToys/" target="_blank"><FontAwesomeIcon icon={faFacebookSquare} className="iconFacebook"/></a>

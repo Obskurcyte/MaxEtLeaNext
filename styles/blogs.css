@@ -47,7 +47,7 @@
   background-color: #E72C59!important;
   border-radius:  5px 5px 5px 5px!important;
   border-width: 0px!important;
-  width: 25% !important;
+  width: 35% !important;
 }
 
 .math-description {
@@ -113,13 +113,16 @@
 
 @media screen and (max-width: 1400px){
   .read-more-button {
-    width: 35% !important;
+    width: 45% !important;
   }
 }
 
 @media screen and (max-width: 1000px){
   .grandContainer {
     display: none;
+  }
+  .math-image {
+    height: unset;
   }
   .big-container {
     display: none;
@@ -134,13 +137,71 @@
     padding: 5% 2%;
   }
   .card-list-container {
-    height: 600px;
+    height: 850px;
+    margin-top: 5%;
+  }
+  .card-title {
+    margin-bottom: 3% !important;
+  }
+  .card-text {
+    margin-bottom: 3%;
   }
   .container {
     max-width: 1000px!important;
   }
   .rowBlog > * {
     width: 50% !important;
+  }
+}
+
+@media screen and (max-width: 900px){
+  .card-list-container {
+    height: 800px;
+  }
+}
+
+@media screen and (max-width: 800px){
+  .card-list-container {
+    height: 700px;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .card-list-container {
+    height: 650px;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .card-list-container {
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .card-list-container {
+    height: 550px;
+  }
+  .card-text {
+    margin-bottom: 8%;
+  }
+}
+
+@media screen and (max-width: 400px){
+  .card-list-container {
+    height: 500px;
+  }
+  .card-text {
+    margin-bottom: 8%;
+  }
+}
+
+@media screen and (max-width: 350px){
+  .card-list-container {
+    height: 470px;
+  }
+  .card-text {
+    margin-bottom: 8%;
   }
 }
 

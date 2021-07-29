@@ -28,7 +28,7 @@ const Equipe = () => {
         <div className="row">
           <div className="col">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/11/pc.jpg" alt=""/>
+              <img src={'/PC.jpg'} alt=""/>
             </div>
             <div>
               <h5>Pierre-Charles <br/> FOSANELLI</h5> <br/>
@@ -44,7 +44,7 @@ const Equipe = () => {
 
           <div className="col">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/11/ludo-300x297.png" alt=""/>
+              <img src={'/Ludo.png'} alt=""/>
             </div>
             <div>
               <h5>Ludovic <br/> CHARTOUNI</h5> <br/>
@@ -61,7 +61,7 @@ const Equipe = () => {
 
           <div className="col">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/11/profil-300x300.jpg" alt=""/>
+              <img src={'/theo.jpg'} alt=""/>
             </div>
             <div>
               <h5>Théodore <br/> D'AVRAY</h5> <br/>
@@ -77,7 +77,7 @@ const Equipe = () => {
 
           <div className="col">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/11/sandrine.jpg" alt=""/>
+              <img src={'/sandrine.jpg'} alt=""/>
             </div>
             <div>
               <h5>Sandrine <br/> BERTINETTI</h5> <br/>
@@ -94,7 +94,7 @@ const Equipe = () => {
         <div className="row">
           <div className="col colequipe">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/11/kristhel.jpg" alt=""/>
+              <img src={'/kristel.jpg'} alt=""/>
             </div>
             <div>
               <h5>Kristhel <br/> ASNAR-GALLOIS</h5> <br/>
@@ -109,7 +109,7 @@ const Equipe = () => {
 
           <div className="col colequipe">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/11/xavier.jpg" alt=""/>
+              <img src={'/xavier.jpg'} alt=""/>
             </div>
             <div>
               <h5>Xavier <br/> CARRASCO</h5> <br/>
@@ -125,7 +125,7 @@ const Equipe = () => {
 
           <div className="col colequipe">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/11/stephane.jpg" alt=""/>
+              <img src={'/stephane.jpg'} alt=""/>
             </div>
             <div>
               <h5>Stephane <br/> COUNDOURIS</h5> <br/>
@@ -140,7 +140,7 @@ const Equipe = () => {
 
           <div className="col colequipe">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/11/Alexandre-2-300x290.jpg" alt=""/>
+              <img src={'/alexandre.jpg'} alt=""/>
             </div>
             <div>
               <h5>Alexandre <br/> LOONES</h5> <br/>
@@ -157,7 +157,7 @@ const Equipe = () => {
         <div className="row">
           <div className="col colequipe">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/11/sandy-300x300.jpg" alt=""/>
+              <img src={'/sandy.jpg'} alt=""/>
             </div>
             <div>
               <h5>Sandy <br/> EUDELINE</h5> <br/>
@@ -172,7 +172,7 @@ const Equipe = () => {
 
           <div className="col colequipe">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/11/delphine-300x278.jpg" alt=""/>
+              <img src={'/delphine.jpg'} alt=""/>
             </div>
             <div>
               <h5>Delphine <br/> ESPOSITO</h5> <br/>
@@ -187,7 +187,7 @@ const Equipe = () => {
 
           <div className="col colequipe">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/11/carla.png" alt=""/>
+              <img src={'/carla.png'} alt=""/>
             </div>
             <div>
               <h5>Carla <br/> GOMEZ</h5> <br/>
@@ -202,7 +202,7 @@ const Equipe = () => {
 
           <div className="col colequipe">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2021/02/hadrien-300x300.jpg" alt=""/>
+              <img src={'/hadrien.jpg'} alt=""/>
             </div>
             <div>
               <h5>Hadrien <br/> JAUBERT</h5> <br/>
@@ -219,7 +219,7 @@ const Equipe = () => {
         <div className="row">
           <div className="col colequipe">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2021/02/nora-300x300.jpg" alt=""/>
+              <img src={'/nora.jpg'} alt=""/>
             </div>
             <div>
               <h5>Nora <br/> CHELABI</h5> <br/>
@@ -235,7 +235,7 @@ const Equipe = () => {
 
           <div className="col colequipe">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2021/02/Shana-300x300.jpg" alt=""/>
+              <img src={'/shana.jpg'} alt=""/>
             </div>
             <div>
               <h5>Shana <br/> CUBRILOVIC</h5> <br/>
@@ -250,7 +250,7 @@ const Equipe = () => {
 
           <div className="col colequipe">
             <div className="imgPresentationContainer">
-              <img src="https://maxandlea.com/wp-content/uploads/2021/02/Friederike-300x300.jpg" alt=""/>
+              <img src={'/fried.jpg'} alt=""/>
             </div>
             <div>
               <h5>Friederike <br/> KRIEGER</h5> <br/>

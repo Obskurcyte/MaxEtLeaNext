@@ -1259,7 +1259,8 @@
   }
   .playboard-title-container, .pensee-paragraph-container, .img-bebe-container{
     width: 100%;
-    max-width: 300px;
+    max-width: 380px;
+
   }
   .playboard-paragraph, .pensee-paragraph,.apprendreContainer p{
     font-size: 20px;

@@ -113,7 +113,7 @@ const Remerciement = (props) => {
           <div className="commandeRecueContainer">
             <h5 id="titre-remerciement">Merci. Votre commande a été reçue</h5>
             <div className="imgLogoContainer">
-              <img src='https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1536x567.png' alt=""/>
+              <img src={'/logogrand.webp'} alt=""/>
             </div>
             <div className="commandeRecap">
               <h5>Détails de la commande</h5>

@@ -13,6 +13,10 @@
   margin: auto;
 }
 
+.drapeauImg {
+  width: 20px!important;
+}
+
 .imgContainer {
   width: 20%;
   min-width: 200px;
