@@ -147,7 +147,6 @@ const CheckoutFormStripe = ({
         if(localStorage.getItem('ref').toLowerCase()==aff.user.user_login.toLowerCase()){
           aff_id = aff.affiliate_id;
           aff_rate = aff.rate;
-          console.log(aff)
         }
       });
       if(aff_id != 0){
@@ -164,10 +163,10 @@ const CheckoutFormStripe = ({
           }
         })
         const newRef = await ref.json();
-        console.log(newRef);
         localStorage.removeItem('ref');
       }
     }
+    setProcessingTo(false)
     router.push('/remerciement').then(() => window.location.reload())
   }
   
@@ -320,7 +319,6 @@ const CheckoutFormStripe = ({
             WooCommerce.post("orders", data)
               .then((response) => {
                 console.log(response.data);
-                setProcessingTo(false)
                 localStorage.removeItem('woo-next-cart')
                 localStorage.setItem('moyenPaiement', moyenPaiement);
                 createReference();
@@ -616,7 +614,6 @@ return (
             WooCommerce.post("orders", data)
               .then((response) => {
                 console.log(response.data);
-                setProcessingTo(false)
                 localStorage.removeItem('woo-next-cart')
                 localStorage.setItem('moyenPaiement', moyenPaiement);
                 createReference();
@@ -801,7 +798,6 @@ return (
                 WooCommerce.post("orders", data)
                   .then((response) => {
                     console.log(response.data);
-                    setProcessingTo(false)
                     localStorage.removeItem('woo-next-cart')
                     localStorage.setItem('moyenPaiement', moyenPaiement);
                     createReference();
