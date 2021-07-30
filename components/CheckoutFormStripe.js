@@ -229,7 +229,7 @@ const CheckoutFormStripe = ({
                 description: 'articles',
                 amount: {
                   currency: "EUR",
-                  value: totalPrice2
+                  value: totalPrice2.toFixed(2)
                 }
               }
             ]
