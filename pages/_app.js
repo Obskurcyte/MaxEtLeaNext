@@ -39,41 +39,41 @@ const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 
 function MyApp({ Component, pageProps }) {
+  const delay = ms => new Promise(res => setTimeout(res, ms));
   useEffect(() => {
     const createVisit = async () => {
-      setTimeout(function () {
-        console.log("IN USEEFFECT");
-        if(localStorage.getItem('ref') != null){
-          console.log("ref");
-          var encoded = window.btoa("51c3be50ab9c71d50de81306ddb8590a:bdf2b2c8119512ea65c31d49d96c7e92");
-          var res = await fetch(`https://maxandlea.fr/wp-json/affwp/v1/affiliates?user=1`, {
-              //method: 'POST',
-              headers: {
-                'Authorization': "Basic "+encoded
-              }
-            })
-          var newData = await res.json();
-          console.log(newData)
-          var aff_id = 0;
-          newData.forEach( aff => {
-            if(localStorage.getItem('ref').toLowerCase()==aff.user.user_login.toLowerCase()){
-              aff_id = aff.affiliate_id;
+      console.log("IN USEEFFECT");
+      await delay(3000);
+      if(localStorage.getItem('ref') != null){
+        console.log("ref");
+        var encoded = window.btoa("51c3be50ab9c71d50de81306ddb8590a:bdf2b2c8119512ea65c31d49d96c7e92");
+        var res = await fetch(`https://maxandlea.fr/wp-json/affwp/v1/affiliates?user=1`, {
+            //method: 'POST',
+            headers: {
+              'Authorization': "Basic "+encoded
             }
-          });
-          if(aff_id != 0){
-            var linkRefCreate = `https://maxandlea.fr/wp-json/affwp/v1/visits?affiliate_id=`+aff_id+`&url=https%3A%2F%2Fmax-et-lea-next.vercel.app`;
-            var visit = await fetch( linkRefCreate, {
-              method: 'PUT',
-              headers: {
-                'Authorization': "Basic "+encoded
-              }
-            })
-            var visitData = await visit.json();
-            localStorage.setItem("visitId",visitData.visit_id)
-            console.log(visitData)
+          })
+        var newData = await res.json();
+        console.log(newData)
+        var aff_id = 0;
+        newData.forEach( aff => {
+          if(localStorage.getItem('ref').toLowerCase()==aff.user.user_login.toLowerCase()){
+            aff_id = aff.affiliate_id;
           }
+        });
+        if(aff_id != 0){
+          var linkRefCreate = `https://maxandlea.fr/wp-json/affwp/v1/visits?affiliate_id=`+aff_id+`&url=https%3A%2F%2Fmax-et-lea-next.vercel.app`;
+          var visit = await fetch( linkRefCreate, {
+            method: 'PUT',
+            headers: {
+              'Authorization': "Basic "+encoded
+            }
+          })
+          var visitData = await visit.json();
+          localStorage.setItem("visitId",visitData.visit_id)
+          console.log(visitData)
         }
-      }, 3000);
+      }
     }
     createVisit();
   }, []);
