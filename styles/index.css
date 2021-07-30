@@ -38,32 +38,19 @@ body {
 
 .img-card {
   position: relative;
-  bottom: 25%;
-  max-width: 350px;
-  left: 12%;
-  transition: transform .4s;
+  display: block;
+  margin: auto;
+  max-width: 450px;
+  width:98%;
+  transition: transform .7s;
 }
 
-.card-jouet-title {
-  font-size: 26px;
-  letter-spacing: 1px;
-  line-height: 74px;
-  color: #ffffff;
-  font-family: "Roboto", sans-serif;
-}
-
-.card-jouet a{
-  margin-top:-30px;
-}
-.card-jouet a:hover {
-  text-decoration: none;
-}
 .card-jouet {
   width: 45%;
-  padding: 2%;
   max-height: 210px;
   margin-bottom: 50px;
   border-radius: 2px;
+  border:none !important;
 }
 
 .satisfactions {
@@ -72,7 +59,7 @@ body {
 }
 
 .card-jouet:hover .img-card {
-  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1.02);
 }
 
 .playboard {
@@ -565,9 +552,6 @@ body {
   .description-title {
     padding: 1% 20%;
   }
-  .img-card {
-    width: 120%;
-  }
 }
 
 @media screen and (max-width: 1435px){
@@ -652,17 +636,11 @@ body {
   .card-jouet-title {
     font-size: 20px;
   }
-  .img-card {
-    max-width: 300px;
-  }
 }
 
 @media screen and (max-width: 900px){
   .products-container {
     padding: 0!important;
-  }
-  .img-card {
-    left: 22%;
   }
   .head-title {
     font-size: 45px;
@@ -679,17 +657,11 @@ body {
   .satisfactions {
     flex-direction: column;
   }
-  .img-card {
-    max-width: 250px;
-  }
 }
 
 @media screen and (max-width: 769px) {
   .drapeau-container {
     left: 44%;
-  }
-  .img-card {
-    bottom: 12%;
   }
   .img-container {
     margin-top: 4%;
@@ -703,9 +675,6 @@ body {
   }
   .account-shopping {
     width: 20%;
-  }
-  .img-card {
-    max-width: 210px;
   }
 }
 
@@ -733,12 +702,6 @@ body {
   .card-jouet-title {
     font-size: 26px;
   }
-  .img-card {
-    width: 100%;
-    left: 30%;
-    margin-top: -70px;
-    max-width: 350px;
-  }
   .card-jouet {
     width: 100%;
   }
@@ -752,17 +715,10 @@ body {
   .description-title {
     padding : 0
   }
-  .img-card {
-    max-width: 250px;
-  }
 }
 
 
 @media screen and (max-width: 525px){
-
-  .img-card {
-    left: 15%;
-  }
   .card-jouet-title {
     font-size: 20px;
   }

@@ -39,26 +39,20 @@ const HomeScreen = () => {
           <div className="row-card-home">
 
 
-            <Card className="card-jouet playboard">
+            <Card className="card-jouet">
               <Link href="/playboard">
                 <a>
-                <p className="card-jouet-title" color="textSecondary" >
-                  PLAYBOARD
-                </p>
-                <img src={'/playboard.png'} alt="" className="img-card"/>
+                <img src={'/SITE-Icone-PLAYBOARD-min.jpg'} alt="" className="img-card"/>
                 </a>
               </Link>
             </Card>
 
 
 
-            <Card className="card-jouet tour">
+            <Card className="card-jouet">
               <Link href="/tour">
-                <a>
-                <p className="card-jouet-title" color="textSecondary">
-                  {t("HomeScreen3")}
-                </p>
-                <img src={'/tour.png'} alt="" className="img-card"/>
+              <a>
+                <img src={'/SITE-Icone-TOWER-min.jpg'} alt="" className="img-card"/>
                 </a>
               </Link>
 
@@ -67,13 +61,10 @@ const HomeScreen = () => {
 
           <div className="row-card-home">
 
-            <Card className="card-jouet xylophone">
+            <Card className="card-jouet">
               <Link href="/xylophone">
-                <a>
-                <p className="card-jouet-title" color="textSecondary">
-                  {t("HomeScreen4")}
-                </p>
-                <img alt="" className="img-card" src={'/xylophonecard.png'}/>
+              <a>
+                <img src={'/SITE-Icone-XYLO2-min.jpg'} alt="" className="img-card"/>
                 </a>
               </Link>
             </Card>

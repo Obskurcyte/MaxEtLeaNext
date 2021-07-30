@@ -49,7 +49,7 @@ function SimpleDialogPlayboard(props) {
     <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
       <div>
         <img src={'/popup.png'} alt="" style={{maxWidth: '100%'}}/>
-        <Link href="/playboard"><p class="modal-know-more">En savoir plus</p></Link>
+        <a href="/playboard" target="_blank"><p class="modal-know-more">En savoir plus</p></a>
       </div>
     </Dialog>
   );
@@ -93,7 +93,7 @@ function SimpleDialogXylo(props) {
           </div>
 
         </div>
-        <Link href="/xylophone"><p class="modal-know-more">En savoir plus</p></Link>
+        <a href="/xylophone" target="_blank"><p class="modal-know-more">En savoir plus</p></a>
       </div>
     </Dialog>
   );
@@ -136,7 +136,7 @@ function SimpleDialogTour(props) {
             <p><span className="fw-bold">100% Bois et 100% Ecologique</span></p>
           </div>
         </div>
-        <Link href="/tour"><p class="modal-know-more">En savoir plus</p></Link>
+        <a href="/tour" target="_blank"><p class="modal-know-more">En savoir plus</p></a>
       </div>
     </Dialog>
   );
@@ -1390,19 +1390,15 @@ const CheckoutScreen = props => {
 
               <div className="addOtherArticlesPanier">
                 {qtyTotale === 1 && (
-                  <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 10% sur tout votre panier !</h5>
+                  <h5 className="addArticleTitle">Ajouter +1 article et bénéficiez de -10% sur TOUT votre panier !</h5>
                 )}
 
                 {qtyTotale === 2 && (
-                  <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 15% sur tout votre panier !</h5>
+                  <h5 className="addArticleTitle">Ajouter +1 article et bénéficiez de -15% sur TOUT votre panier !</h5>
                 )}
 
-                {qtyTotale === 3 && (
-                  <h5 className="addArticleTitle">Ajouter un article et bénéficiez de 20% sur tout votre panier !</h5>
-                )}
-
-                {qtyTotale >= 4 && (
-                  <h5 className="addArticleTitle">Ajouter un article !</h5>
+                {qtyTotale >= 3 && (
+                  <h5 className="addArticleTitle">Ajouter +1 article et bénéficiez de -20% sur TOUT votre panier !</h5>
                 )}
                 <Slider {...settingsSlider}>
                   <div className="innerArticleContainer">

@@ -178,7 +178,7 @@ const CardHoverItem = ({item}) => {
               <p className={styles.itemName}>{item.name}</p>
               <div className="quantityContainer flex justify-content-between w-100">
                 <p>{productCount} x {item.price}</p>
-                <td className="croix ml-4"><button className="button-supp" onClick={(e) => handleRemoveProduct(e, item.productId)}>x</button></td>
+                <td className="croix ml-4"><div className="croix itemsuppr" onClick={(e) => handleRemoveProduct(e, item.productId)}><i class="far fa-times-circle"></i></div></td>
               </div>
             </div>
           <hr/>
