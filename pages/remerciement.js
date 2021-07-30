@@ -30,67 +30,6 @@ const Remerciement = (props) => {
       setMoyenPaiement(moyenPaiement)
       console.log(dataClient)
     }
-
-    const createOrderWoo = async () => {
-
-      let dataClientCart = JSON.parse(localStorage.getItem('livraison'));
-      let cartClientCommande = JSON.parse(localStorage.getItem('commande-cart'));
-
-      var line_items_array = [];
-      if(cartClientCommande && cartClientCommande.products){
-        cartClientCommande.products.forEach( product => {
-          var temp_obj = {product_id: product.productId, quantity: product.qty};
-          line_items_array.push(temp_obj);
-        });
-      }
-      console.log(dataClientCart);
-      const data = {
-        payment_method: moyenPaiement,
-        payment_method_title: moyenPaiement,
-        set_paid: true,
-        billing: {
-          first_name: dataClientCart.prenom,
-          last_name: dataClientCart.nom,
-          address_1: dataClientCart.adresseFacturation,
-          address_2: "",
-          city: dataClientCart.villeFacturation,
-          state: "",
-          postcode: dataClientCart.codePostalFacturation,
-          country: dataClientCart.pays,
-          email: dataClientCart.email,
-          phone: dataClientCart.phone
-        },
-        shipping: {
-          first_name: dataClientCart.prenom,
-          last_name: dataClientCart.nom,
-          address_1: dataClientCart.adresseLivraison,
-          address_2: "",
-          city: dataClientCart.villeLivraison,
-          state: "",
-          postcode: dataClientCart.codePostalLivraison,
-          country: dataClientCart.pays
-        },
-        line_items: line_items_array,
-        shipping_lines: [
-          {
-            method_id: "flat_rate",
-            method_title: "Flat Rate",
-            total: dataClientCart.prixLivraison.toString()
-          }
-        ]
-      };
-
-
-      WooCommerce.post("orders", data)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-      });
-    }
-
-    /*createOrderWoo();*/
   }, []);
 
   return (

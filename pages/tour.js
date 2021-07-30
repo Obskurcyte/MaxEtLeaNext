@@ -237,7 +237,7 @@ const TourScreen = props => {
           <div className="voir-offre" onClick={handleAddToCart}>
             <Link href="javascript:void(0)"><h3 className="voir-offre-title">Ajouter au panier</h3></Link>
           </div>
-          <div className="slider-container video-container">
+          <div className="slider-container">
             <Slider {...settings}>
               <div>
                 <img src={'/tour1.jpg'} alt=""/>
