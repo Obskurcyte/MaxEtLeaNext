@@ -16,7 +16,7 @@ const Recommendation = () => {
 
   return (
     <div className="row">
-      <div className="col recommendationCol">
+      <div className="col recommendationCol distributeurs">
         <p className="distributionP">Ils distribuent la PlayBoard®</p>
         <Slider {...settingsRecommandations}>
           <div>
@@ -38,7 +38,7 @@ const Recommendation = () => {
           </div>
         </Slider>
       </div>
-      <div className="col recommendationCol">
+      <div className="col recommendationCol clients">
         <p className="distributionP">Nos clients nous font confiance</p>
         <Slider {...settingsRecommandations}>
           <div>

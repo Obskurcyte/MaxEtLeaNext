@@ -39,20 +39,20 @@ const HomeScreen = () => {
           <div className="row-card-home">
 
 
-            <Card className="card-jouet">
+            <Card className="card-jouet card-playboard">
               <Link href="/playboard">
                 <a>
-                <img src={'/SITE-Icone-PLAYBOARD-min.jpg'} alt="" className="img-card"/>
+                <img src={'/playboard-top.webp'} alt="" className="img-card"/>
                 </a>
               </Link>
             </Card>
 
 
 
-            <Card className="card-jouet">
+            <Card className="card-jouet card-tour">
               <Link href="/tour">
               <a>
-                <img src={'/SITE-Icone-TOWER-min.jpg'} alt="" className="img-card"/>
+                <img src={'/tour-top.webp'} alt="" className="img-card"/>
                 </a>
               </Link>
 
@@ -61,10 +61,10 @@ const HomeScreen = () => {
 
           <div className="row-card-home">
 
-            <Card className="card-jouet">
+            <Card className="card-jouet card-xylo">
               <Link href="/xylophone">
               <a>
-                <img src={'/SITE-Icone-XYLO2-min.jpg'} alt="" className="img-card"/>
+                <img src={'/xylo-top.webp'} alt="" className="img-card"/>
                 </a>
               </Link>
             </Card>

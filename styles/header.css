@@ -257,10 +257,10 @@
 }
 
 .ajouterPanier {
-  border-radius: 5px;
+  border-radius: 7px;
   background-color: #e72c59;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding: 5px 25px 5px 25px;
+  box-shadow:  rgba(0, 0, 0, 0.3) 0px 0px 10px 0px;
   text-align: center;
   margin-top: 10px;
   cursor: pointer;

@@ -39,10 +39,25 @@ body {
 .img-card {
   position: relative;
   display: block;
-  margin: auto;
-  max-width: 450px;
-  width:98%;
   transition: transform .7s;
+}
+
+.card-playboard .img-card{
+  margin: 20px auto 0px auto;
+  max-width: 370px;
+  width:85%;
+}
+
+.card-tour .img-card{
+  margin: 10px 5px 0px auto;
+  max-width: 420px;
+  width:92%;
+}
+
+.card-xylo .img-card{
+  margin: 10px 5px 0px auto;
+  max-width: 390px;
+  width:90%;
 }
 
 .card-jouet {
@@ -53,13 +68,28 @@ body {
   border:none !important;
 }
 
+.card-playboard{
+  background: url(/SITE-Icone-PLAYBOARD.jpg) no-repeat center top;
+  background-size: contain;
+}
+
+.card-tour{
+  background: url(/SITE-Icone-TOWER.jpg) no-repeat center top;
+  background-size: contain;
+}
+
+.card-xylo{
+  background: url(/SITE-Icone-XYLO2.webp) no-repeat center top;
+  background-size: contain;
+}
+
 .satisfactions {
   max-width: 1400px;
   margin: auto;
 }
 
 .card-jouet:hover .img-card {
-  transform: scale(1.02);
+  transform: scale(1.05);
 }
 
 .playboard {

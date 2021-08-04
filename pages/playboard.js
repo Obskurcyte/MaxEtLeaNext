@@ -43,6 +43,17 @@ const faqHeader8 = React.createElement('div', {className: 'faqHeaderContainer' }
 
 const PlayBoardScreen = props => {
 
+  const [clientCount, setclientCount] = useState([])
+  const changeClientCount = async() => {
+    const res = await fetch(`https://maxandlea.fr/wp-json/wp/v2/posts/9815`)
+    const newData = await res.json();
+    setclientCount(newData.title.rendered);
+  };
+
+  useEffect(() => {
+    changeClientCount();
+  })
+
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -98,6 +109,8 @@ const PlayBoardScreen = props => {
     console.log('newCart', newCart)
     return newCart
   };
+
+  
 
   const createNewProduct = (product, productPrice, qty) => {
     return {
@@ -226,7 +239,7 @@ const PlayBoardScreen = props => {
           />
 
         </Head>
-        <div className="container1000">
+        <div className="container1200">
           <div className="imgCouverture">
             <div className="playboard-title-container">
               <h1 className="playboard-title">La PlayBoard</h1>
@@ -323,7 +336,7 @@ const PlayBoardScreen = props => {
             <div className="col miniIconeContainer2">
               <img src={'/calcul.png'} alt=""/>
               <h5>CALCUL</h5>
-              <p>Les signes et les nombres lui permettront de réaliser différents calculs simples et d'évoluer vers des calculs plus complexes</p>
+              <p>Les <span>signes</span> et les <span>nombres</span> lui permettront de réaliser différents <span>calculs simples</span> et d'<span>évoluer</span> vers des <span>calculs plus complexes</span></p>
             </div>
 
 
@@ -336,13 +349,13 @@ const PlayBoardScreen = props => {
 
             <div className="col miniIconeContainer2">
               <img src={'/degrade.png'} alt=""/>
-              <h5>DEGRADES DE COULEUR</h5>
+              <h5>DÉGRADÉS DE COULEUR</h5>
               <p>Découvrir les contrastes et les dégradés de couleurs pour développer sa sensibilité visuelle et artistique.</p>
             </div>
 
             <div className="col miniIconeContainer2">
               <img src={'/eveil.png'} alt=""/>
-              <h5>EVEIL</h5>
+              <h5>ÉVEIL</h5>
               <p>Votre enfant prendra plaisir à jouer des heures entières avec sa PlayBoard et développera sa créativité.</p>
             </div>
 
@@ -669,14 +682,14 @@ const PlayBoardScreen = props => {
         </div> */}
 
         <div className="container1000">
-          <div className="image-recap-container">
+          <div className="image-papa-container">
             <img src={'/papafille.webp'} alt="" className="image-recap"/>
           </div>
         </div>
 
         <div className="container1000">
           <div className="clientSatisfait">
-            <h5>6867 clients déjà satisfaits</h5>
+            <h5>{clientCount} clients déjà satisfaits</h5>
           </div>
         </div>
 
@@ -790,7 +803,7 @@ const PlayBoardScreen = props => {
         </div>
 
         <div className="container1000">
-          <Garanties/>
+          <Engagement/>
         </div>
 
         <div className="container1000">
@@ -799,8 +812,10 @@ const PlayBoardScreen = props => {
         </div>
         </div>
 
-        <div className="container1000">
-          <Engagement/>
+        <div className="mainContainer garantiesContainer">
+          <div className="container1000">
+            <Garanties/>
+          </div>
         </div>
 
         <div className="container1000">

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './Footer.module.css';
 import {useTranslation} from "react-i18next";
 import {faFacebookSquare} from "@fortawesome/free-brands-svg-icons";
-import {faInstagramSquare} from "@fortawesome/free-brands-svg-icons";
+import {faInstagram} from "@fortawesome/free-brands-svg-icons";
 import {faYoutubeSquare} from "@fortawesome/free-brands-svg-icons";
 import Link from 'next/link';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -37,7 +37,7 @@ const Footer = () => {
             <span className="copyright">Copyright © 2021 | Max And Lea</span>
             <div className="icons-social">
               <a href="https://www.facebook.com/MaxandleaToys/" target="_blank"><FontAwesomeIcon icon={faFacebookSquare} className="iconFacebook"/></a>
-              <a href="https://www.instagram.com/max.and.lea/" target="_blank"><FontAwesomeIcon icon={faInstagramSquare} className="iconInstagram" href=""/></a>
+              <a href="https://www.instagram.com/max.and.lea/" target="_blank" style={{marginTop: '2px'}}><FontAwesomeIcon icon={faInstagram} className="iconInstagram" href=""/></a>
               <a href="https://www.youtube.com/channel/UCHaUOBoknhDUyNExyux9yvg/featured" target="_blank"><FontAwesomeIcon icon={faYoutubeSquare} className="iconYoutube"/></a>
             </div>
           </div>
