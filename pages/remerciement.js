@@ -18,6 +18,8 @@ const Remerciement = (props) => {
     version: 'wc/v3'
   });
 
+  
+
   useEffect(() => {
     if ( process.browser) {
       let cartData = localStorage.getItem('livraison');
@@ -41,12 +43,10 @@ const Remerciement = (props) => {
       {dataClient ? (
         <div className="remerciementContainer">
           <div className="imgRemerciementContainer">
-            <img src={'/remerciement.webp'} className='imgRemerciement' alt="wola"/>
+            <div class="merci-bg-overlay"></div>
             <div className="remerciementParagraph">
               <p>MERCI <br/> NOUS AVONS BIEN REÇU <br/>VOTRE COMMANDE</p>
             </div>
-
-
           </div>
 
           <div className="commandeRecueContainer">
@@ -138,9 +138,6 @@ const Remerciement = (props) => {
             </div>
           </div>
 
-          <div className="white">
-
-          </div>
         </div>
       ) : ''}
 

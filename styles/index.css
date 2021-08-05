@@ -552,10 +552,18 @@ body {
   padding-top: 2%;
 }
 
-/*media queries*/
+.cookiesBtn{
+  display: flex;
+}
 
+.cookiesBtn p{
+  margin: 3px 10px 0px 10px;
+}
 
-
+.cookiesBtn img{
+ width: 30px;
+ height: fit-content;
+}
 
 
 @media screen and (min-width: 1500px){

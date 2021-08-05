@@ -1507,7 +1507,7 @@ const CheckoutScreen = props => {
                     </a>
                   </div>
 
-                  <div className="content">
+                  <div className="checkoutContent">
                     {!goPaiement ? (
                       <Formik
                         initialValues={initialValues}
@@ -1566,20 +1566,7 @@ const CheckoutScreen = props => {
                       >
                         {props => (
                           <form className={classes.root} noValidate autoComplete="off">
-                            <div>
-                              <TextField
-                                required
-                                value={props.values.email}
-                                onChange={props.handleChange('email')}
-                                id="email"
-                                label="Email"
-                                variant="outlined"
-                                onFocus={() => setFirstStep(true)}
-                                className="bigInput"
-                              />
-                            </div>
-                            {props.errors.email && props.touched.email && <div style={{color: 'red'}}>{props.errors.email}</div>}
-
+                            <div className="checkout-form">
                             <div className="inputContainer">
                               <TextField
                                 required
@@ -1604,43 +1591,22 @@ const CheckoutScreen = props => {
                               {props.errors.nom && props.touched.nom && <div style={{color: 'red'}}>{props.errors.nom}</div>}
 
                             </div>
-                            <div className="inputContainer">
+                            <div>
                               <TextField
                                 required
-                                value={props.values.adresseLivraison}
-                                onChange={props.handleChange('adresseLivraison')}
-                                id="adresse"
-                                label="Numéro et nom de rue"
+                                value={props.values.email}
+                                onChange={props.handleChange('email')}
+                                id="email"
+                                label="Email"
                                 variant="outlined"
-                                className="inputMoyenGauche"
+                                onFocus={() => setFirstStep(true)}
+                                className="bigInput"
                               />
-                              {props.errors.adresseLivraison && props.touched.adresseLivraison && <div style={{color: 'red'}}>{props.errors.adresseLivraison}</div>}
-
-                              <TextField
-                                required
-                                value={props.values.codePostalLivraison}
-                                onChange={props.handleChange('codePostalLivraison')}
-                                id="postalcode"
-                                label="Code postal"
-                                variant="outlined"
-                                className="inputMoyenDroit"
-                              />
-                              {props.errors.codePostalLivraison && props.touched.codePostalLivraison && <div style={{color: 'red'}}>{props.errors.codePostalLivraison}</div>}
-
                             </div>
-                            <div className="inputContainer">
-                              <TextField
-                                id="ville"
-                                required
-                                value={props.values.villeLivraison}
-                                onChange={props.handleChange('villeLivraison')}
-                                label="Ville"
-                                variant="outlined"
-                                className="inputMoyenGauche"
-                              />
-                              {props.errors.villeLivraison && props.touched.villeLivraison && <div style={{color: 'red'}}>{props.errors.villeLivraison}</div>}
+                            {props.errors.email && props.touched.email && <div style={{color: 'red'}}>{props.errors.email}</div>}
 
-                              <SelectSearch onChange={(val) => {
+                            <div>
+                            <SelectSearch onChange={(val) => {
                                 props.handleChange('pays');
                                 setPays(val);
                                 setChecked2(false);
@@ -1648,8 +1614,46 @@ const CheckoutScreen = props => {
                                 setChecked3(false);
                                 props.setFieldValue('pays', val);
                                 }} options={countries.listCountries} value={props.values.pays} id="pays" name="country" placeholder="Choisir Pays" search={true} filterOptions={ fuzzySearch }/>
-
+                            </div>
                               {props.errors.pays && props.touched.pays && <div style={{color: 'red'}}>Ce champ est requis</div>}
+
+                            
+                            <div>
+                              <TextField
+                                required
+                                value={props.values.adresseLivraison}
+                                onChange={props.handleChange('adresseLivraison')}
+                                id="adresse"
+                                label="Numéro et nom de rue"
+                                variant="outlined"
+                                className="bigInput"
+                              />
+                              {props.errors.adresseLivraison && props.touched.adresseLivraison && <div style={{color: 'red'}}>{props.errors.adresseLivraison}</div>}
+                            </div>
+                            <div>
+                              <TextField
+                                required
+                                value={props.values.codePostalLivraison}
+                                onChange={props.handleChange('codePostalLivraison')}
+                                id="postalcode"
+                                label="Code postal"
+                                variant="outlined"
+                                className="bigInput"
+                              />
+                              {props.errors.codePostalLivraison && props.touched.codePostalLivraison && <div style={{color: 'red'}}>{props.errors.codePostalLivraison}</div>}
+                            </div>
+
+                            <div>
+                              <TextField
+                                id="ville"
+                                required
+                                value={props.values.villeLivraison}
+                                onChange={props.handleChange('villeLivraison')}
+                                label="Ville"
+                                variant="outlined"
+                                className="bigInput"
+                              />
+                              {props.errors.villeLivraison && props.touched.villeLivraison && <div style={{color: 'red'}}>{props.errors.villeLivraison}</div>}
                             </div>
 
                             <div className="checkboxContainer">
@@ -1703,12 +1707,12 @@ const CheckoutScreen = props => {
                                     defaultValue="France"
                                     className="inputMoyenDroit"
                                   >
-                                    {/* {countries.map((option) => (
+                                    { countries.listCountries.map((option) => (
                                   <MenuItem key={option.code} value={option.name}>
                                     {option.name}
                                   </MenuItem>
                                 ))}
-                                */}
+                                
                                   </TextField>
                                 </div>
                               </div>
@@ -2118,6 +2122,7 @@ const CheckoutScreen = props => {
                             <Link href="#">
                               <button className="cart-valide" type="submit" onClick={props.handleSubmit}>PASSER À L'ÉTAPE SUIVANTE →</button>
                             </Link>
+                            </div>
                           </form>
                         )
                         }

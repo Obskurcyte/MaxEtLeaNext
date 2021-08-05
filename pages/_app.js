@@ -27,6 +27,8 @@ import React, {useEffect} from "react";
 import { ApolloProvider } from '@apollo/client/react';
 import client from "../components/ApolloClient";
 import Head from 'next/head';
+import CookieConsent from "react-cookie-consent";
+import CookiesBtn from "../components/CookiesBtn";
 
 
 const rootReducer = combineReducers({
@@ -42,7 +44,6 @@ function MyApp({ Component, pageProps }) {
   const delay = ms => new Promise(res => setTimeout(res, ms));
   useEffect(() => {
     const createVisit = async () => {
-      console.log("IN USEEFFECT");
       await delay(3000);
       if(localStorage.getItem('ref') != null){
         console.log("ref");
@@ -112,12 +113,21 @@ function MyApp({ Component, pageProps }) {
     <noscript dangerouslySetInnerHTML={{__html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KV59DL8" height="0" width="0" style="display:none;visibility:hidden;"></iframe>`}} />
 
     <AppProvider>
-      <ApolloProvider client={client}>
         <Provider store={store}>
           <Component {...pageProps} />
         </Provider>
-      </ApolloProvider>
     </AppProvider>
+
+    <CookieConsent
+      location="bottom"
+      buttonText={<CookiesBtn/>}
+      cookieName="maxcookies"
+      style={{ background: "#e72c59" }}
+      buttonStyle={{ background: "#00b2cc",color: "#fff" }}
+      expires={150}
+    >
+      Notre site utilise des cookies pour vous offrir une meilleur expérience utilisateur
+    </CookieConsent>
   </React.Fragment>
 
   )
