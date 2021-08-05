@@ -14,17 +14,16 @@ import {useRouter} from "next/router";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
 
-const HeaderXylophone = (props) => {
+const HeaderKako = (props) => {
 
+  console.log(product)
   const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
   console.log(cart)
 
-  const router = useRouter();
+  const router = useRouter()
   const products = product.products
   const [viewCart, setViewCart] = useState(false);
 
-
-  // const [cart, setCart] = useContext(AppContext);
 
 
   let valueCount = 1;
@@ -79,7 +78,7 @@ const HeaderXylophone = (props) => {
 
 
   const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProducts(existingCart.products, products[0], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProducts(existingCart.products, products[1], qtyToBeAdded, newQty);
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -104,6 +103,10 @@ const HeaderXylophone = (props) => {
     return updatedCart
   };
 
+
+
+
+
   /**
    * Get updated products array
    *
@@ -116,7 +119,7 @@ const HeaderXylophone = (props) => {
 
 
   const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, products[0].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[1].id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -156,11 +159,11 @@ const HeaderXylophone = (props) => {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
-        const updatedCart = updateCart(existingCart, products[0], qtyToBeAdded);
+        const updatedCart = updateCart(existingCart, products[1], qtyToBeAdded);
         setCart(updatedCart)
         setCommandeCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[0]);
+        const newCart = addFirstProduct(products[1]);
         setCart(newCart)
         setCommandeCart(newCart)
       }
@@ -200,10 +203,10 @@ const HeaderXylophone = (props) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const drapeau = useSelector(state => state.drapeau.drapeau)
 
-  console.log(open)
+
   const handleClose = (lang) => {
     i18n.changeLanguage(lang).then(() => setAnchorEl(null))
     if (lang === 'fr') {
@@ -257,17 +260,8 @@ const HeaderXylophone = (props) => {
 
           <div className="jouet">
             <div className="prixJouet">
-              <p className="jouetName">LE XYLOPHONE</p>
+              <p className="jouetName">Livre Kako</p>
               <p className="jouetPrix">12,90€</p>
-            </div>
-
-            <div className="prixReduc">
-              <div>
-                <p className="economie">(-40% vous économisez 7€)</p>
-              </div>
-              <div>
-                <p className="prixBarre">19,90€</p>
-              </div>
             </div>
           </div>
 
@@ -307,4 +301,4 @@ const HeaderXylophone = (props) => {
   )
 }
 
-export default HeaderXylophone;
+export default HeaderKako;

@@ -50,7 +50,6 @@
   display: flex;
   flex-direction: column;
   width: 200px;
-  margin-top: 20px;
 }
 
 .accountIcon {
@@ -204,7 +203,6 @@
 .prixJouet {
   display: flex;
   justify-content: space-around;
-  margin-top: 25px;
 }
 
 .jouet {
@@ -335,7 +333,22 @@
   margin-top: 3.5%;
 }
 
+.linksContainer a{
+  color:  #54595f !important;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 20px;
+  text-transform: uppercase;
+}
+
+.linksContainer a:hover{
+  color:  #08a7e0 !important;
+}
+
 @media screen and (max-width: 900px){
+  .linksContainer{
+    display:none;
+  }
   .prixReduc{
     height: 15px;
   }

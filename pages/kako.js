@@ -11,7 +11,7 @@ import * as product from "../products";
 import {AppContext} from "../components/context/AppContext";
 import {faDotCircle} from "@fortawesome/free-solid-svg-icons";
 import Head from 'next/head'
-import HeaderTour from "../components/HeaderTour";
+import HeaderKako from "../components/HeaderKako";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronRight, faGrinStars} from "@fortawesome/free-solid-svg-icons";
 import Recommendation from "../components/Recommendation";
@@ -20,10 +20,10 @@ import DialogContent from "@material-ui/core/DialogContent";
 import QualiteDansLesDetails from "../components/QualiteDansLesDetails";
 import Collapsible from "react-collapsible";
 import {useTranslation} from "react-i18next";
-import CountClients from "../components/CountClients";
 import ItemsCarousel from "react-items-carousel";
 import {set} from "react-ga";
 import Slider from "react-slick";
+import CountClients from "../components/CountClients";
 import styles from "../components/AvisClients.module.css";
 import TourQualite from "../components/TourQualite";
 
@@ -86,7 +86,7 @@ const TourScreen = props => {
 
 
   const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProducts(existingCart.products, products[1], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProducts(existingCart.products, products[4], qtyToBeAdded, newQty);
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -126,7 +126,7 @@ const TourScreen = props => {
 
 
   const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, products[1].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[4].id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -164,10 +164,10 @@ const TourScreen = props => {
       if (existingCart!=null) {
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
-        const updatedCart = updateCart(existingCart, products[1], qtyToBeAdded);
+        const updatedCart = updateCart(existingCart, products[4], qtyToBeAdded);
         setCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[1]);
+        const newCart = addFirstProduct(products[4]);
         setCart(newCart)
       }
     }
@@ -212,7 +212,7 @@ const TourScreen = props => {
   return (
     <div>
       <Head>
-        <title>Max And Lea - Tour Arc En Ciel</title>
+        <title>Max And Lea - Livre Kako</title>
         <link
           rel="stylesheet"
           type="text/css"
@@ -225,15 +225,15 @@ const TourScreen = props => {
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
       </Head>
-      <HeaderTour />
+      <HeaderKako />
 
       <div className="container1000">
         <div className="imgCouverture">
           <div className="playboard-title-container">
-            <h1 className="playboard-title">La Tour Arc En Ciel</h1>
+            <h1 className="playboard-title">Livre Kako</h1>
           </div>
           <div className="playboard-paragraph-container">
-            <p className="playboard-paragraph">{t("Playboard1")}</p>
+            <p className="playboard-paragraph">Livre avec 8 histoires</p>
           </div>
           <div className="voir-offre" onClick={handleAddToCart}>
             <Link href="javascript:void(0)"><h3 className="voir-offre-title">Ajouter au panier</h3></Link>
@@ -241,22 +241,7 @@ const TourScreen = props => {
           <div className="slider-container">
             <Slider {...settings}>
               <div>
-                <img src={'/tour1.jpg'} alt=""/>
-              </div>
-              <div>
-                <img src={'/tour2.jpg'} alt=""/>
-              </div>
-              <div>
-                <img src={'/tour3.jpg'} alt=""/>
-              </div>
-              <div>
-                <img src={'/tour4.jpg'} alt=""/>
-              </div>
-              <div>
-                <img src={'/tour5.jpg'} alt=""/>
-              </div>
-              <div>
-                <img src={'/tour6.jpg'} alt=""/>
+                <img src={'/kako.png'} alt=""/>
               </div>
             </Slider>
           </div>
@@ -269,96 +254,46 @@ const TourScreen = props => {
             <img src={"/bebeIcone.png"} alt="" className="img-bebe"/>
           </div>
           <div className="pensee-paragraph-container">
-            <p className="pensee-paragraph">Un jouet ludique qui aide au développement psychomoteur de l'enfant</p>
+            <p className="pensee-paragraph">Suivez l'histoire de Kako le petit Koala au travers de 8 Contes</p>
           </div>
 
           <div className="icone-container1">
             <div className="row">
-
               <div className="col icone-mini-container">
                 <img src={'/creativite.png'} alt=""/>
-                <p className="xyloPara"><span>Améliorer son habilité</span><br/>Avec ses cercles de différentes tailles votre enfant s'amusera à les empiler et travaillera ainsi sa coordination et sa gestuelle</p>
+                <p className="xyloPara"><span>Kako glisse sur la girafe</span></p>
               </div>
-
               <div className="col icone-mini-container">
                 <img src={'/habilite.png'} alt=""/>
-                <p className="xyloPara"><span>Travailler sa motricité </span><br/>Des exercices d'empilage de différentes tailles couplés aux couleurs aideront votre petit à améliorer sa motricité fine et ses réflexes oeil-main</p>
+                <p className="xyloPara"><span>Kako encourage son ami le Kangourou</span></p>
               </div>
-
               <div className="col icone-mini-container">
                 <img src={'/motricite.png'} alt=""/>
-                <p className="xyloPara"><span>Développer sa Créativité</span><br/>D'innombrables façons de jouer lui permettront d'affiner sa curiosité et renforcer sa créativité</p>
+                <p className="xyloPara"><span>Kako vole sur le dos d’un Hibou</span></p>
+              </div>
+              <div className="col icone-mini-container">
+                <img src={'/motricite.png'} alt=""/>
+                <p className="xyloPara"><span>Kako joue avec son ami le panda</span></p>
               </div>
             </div>
-
             <div className="row">
-
               <div className="col icone-mini-container">
-                <img src={'/concentration.png'} alt=""/>
-                <p className="xyloPara"><span>Aiguiser sa concentration</span><br/>Votre enfant jouera des heures à empiler et inverser l'ordre des cercles et des couleurs, et sans s'en rendre compte améliorera grandement sa concentration</p>
+                <img src={'/creativite.png'} alt=""/>
+                <p className="xyloPara"><span>Kako rencontre un lion</span></p>
               </div>
-
               <div className="col icone-mini-container">
-                <img src={'/apprendre.png'} alt=""/>
-                <p className="xyloPara"><span>Apprendre en jouant</span><br/>Il n'y a pas d'apprentissage sans plaisir. La tour Arc-en-ciel a donc été pensée pour jouer et s'amusant. L'apprentissage devient donc un jeu !</p>
+                <img src={'/habilite.png'} alt=""/>
+                <p className="xyloPara"><span>Kako piqué par Jojo le hérisson</span></p>
               </div>
-
               <div className="col icone-mini-container">
-                <img src={'/autonomie.png'} alt=""/>
-                <p className="xyloPara"><span>Développer l'autonomie</span><br/>En apprenant à jouer seul et en construisant ses propres scénarios, votre petit améliorera son autonomie, sa concentration et sa créativité.</p>
+                <img src={'/motricite.png'} alt=""/>
+                <p className="xyloPara"><span>Kako sur le dos d’un Dauphin</span></p>
               </div>
-
+              <div className="col icone-mini-container">
+                <img src={'/motricite.png'} alt=""/>
+                <p className="xyloPara"><span>Kako rencontre une Grenouille</span></p>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div className="container1000">
-        <div className="image-recap-container">
-          <img src={'/tourArc.jpg'} alt="" className="image-recap"/>
-        </div>
-      </div>
-
-      <div className="container1000">
-        <div className="huitEnUnContainerText">
-          <p className="huitEnUnBigText">4 en 1</p>
-          <p className="huitEnUnText">L'outil d'éveil et d'apprentissage le plus complet du marché</p>
-        </div>
-      </div>
-
-
-      <div className="container1000">
-        <div className="containerIcones2">
-          <div className="row">
-
-            <div className="col miniIconeContainer2">
-              <FontAwesomeIcon icon={faDotCircle} color="#35A936" className="anneauxImg"/>
-              <h5>ANNEAUX</h5>
-              <p>Des formes simples à empiler pour travailler sa motricité et apprendre à organiser</p>
-            </div>
-
-
-            <div className="col miniIconeContainer2">
-              <img src={'/couleur.png'} alt=""/>
-              <h5>COULEURS</h5>
-              <p>Affiner sa mémoire des couleurs et développer ses aptitudes visuelles et mentales</p>
-            </div>
-
-
-            <div className="col miniIconeContainer2">
-              <img src={'/degrade.png'} alt=""/>
-              <h5>COORDINATION</h5>
-              <p>Empiler différentes formes géométriques pour travailler la coordination et la motricité</p>
-            </div>
-
-            <div className="col miniIconeContainer2">
-              <FontAwesomeIcon icon={faGrinStars} color="#E72C59" className="eveilImg"/>
-              <h5>EVEIL</h5>
-              <p>Votre enfant prendra plaisir à jouer des heures entières et développera son imagination et sa créativité</p>
-            </div>
-
           </div>
         </div>
       </div>
@@ -379,10 +314,6 @@ const TourScreen = props => {
 
       <div className="container1000">
         <Engagement/>
-      </div>
-
-      <div className="container1000">
-        <TourQualite />
       </div>
 
       <Footer/>

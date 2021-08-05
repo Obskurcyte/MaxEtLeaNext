@@ -210,13 +210,13 @@ const HeaderTour = (props) => {
   const handleClose = (lang) => {
     i18n.changeLanguage(lang).then(() => setAnchorEl(null))
     if (lang === 'fr') {
-      dispatch(getDrapeau('https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png'))
+      dispatch(getDrapeau('/flagfr.png'))
     } if (lang === 'en') {
-      dispatch(getDrapeau('https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png'))
+      dispatch(getDrapeau('/flagen.png'))
     } if (lang === 'es') {
-      dispatch(getDrapeau('https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png'))
+      dispatch(getDrapeau('/flages.png'))
     } if (lang === 'al') {
-      dispatch(getDrapeau('https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/langfr-225px-Flag_of_Germany.svg.png'))
+      dispatch(getDrapeau('/flagal.png'))
     }
   };
 
@@ -240,7 +240,7 @@ const HeaderTour = (props) => {
         <Nav className="navBar container">
           <div className="imgContainer">
             <Link href="/">
-              <img src="https://maxandlea.com/wp-content/uploads/2020/05/Logo-Max-et-Lea_Plan-de-travail-1-1536x567.png" alt="" className="imgNavbar"/>
+            <img src={'/logogrand.webp'} alt="" className="imgNavbar"/>
             </Link>
           </div>
 
@@ -251,10 +251,10 @@ const HeaderTour = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={() => handleClose('en')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png" alt=""/></MenuItem>
-            <MenuItem onClick={() => handleClose('es')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png" alt=""/></MenuItem>
-            <MenuItem onClick={() => handleClose('al')}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/langfr-225px-Flag_of_Germany.svg.png" className="drapeauAllemand" alt=""/></MenuItem>
-            <MenuItem onClick={() => handleClose('fr')}><img src="https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png" alt=""/></MenuItem>
+            <MenuItem onClick={() => handleClose('en')}><img src={'/flagen.png'} alt=""/></MenuItem>
+            <MenuItem onClick={() => handleClose('es')}><img src={'/flages.png'} alt=""/></MenuItem>
+            <MenuItem onClick={() => handleClose('al')}><img src={'/flagal.png'} className="drapeauAllemand" alt=""/></MenuItem>
+            <MenuItem onClick={() => handleClose('fr')}><img src={'/flagfr.png'} alt=""/></MenuItem>
 
           </Menu>
 

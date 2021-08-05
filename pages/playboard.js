@@ -12,6 +12,7 @@ import Head from 'next/head';
 import Collapsible from 'react-collapsible';
 import Recommendation from "../components/Recommendation";
 import Recommande from "../components/Recommande";
+import CountClients from "../components/CountClients";
 import {useTranslation} from "react-i18next";
 import { useTheme } from '@material-ui/core/styles';
 import {faChevronRight} from "@fortawesome/free-solid-svg-icons";
@@ -42,17 +43,6 @@ const faqHeader8 = React.createElement('div', {className: 'faqHeaderContainer' }
 
 
 const PlayBoardScreen = props => {
-
-  const [clientCount, setclientCount] = useState([])
-  const changeClientCount = async() => {
-    const res = await fetch(`https://maxandlea.fr/wp-json/wp/v2/posts/9815`)
-    const newData = await res.json();
-    setclientCount(newData.title.rendered);
-  };
-
-  useEffect(() => {
-    changeClientCount();
-  })
 
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
@@ -688,9 +678,7 @@ const PlayBoardScreen = props => {
         </div>
 
         <div className="container1000">
-          <div className="clientSatisfait">
-            <h5>{clientCount} clients déjà satisfaits</h5>
-          </div>
+          <CountClients/>
         </div>
 
         <div className="container1000">

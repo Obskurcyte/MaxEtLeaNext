@@ -7,7 +7,7 @@ export const products = [
     priceAugmente: "21.90",
     slug: "xylophone",
     __typename: "SimpleProduct",
-    image: "https://maxandlea.com/wp-content/uploads/2020/07/XYLOPHONE-TABS-compress.jpg"
+    image: "/xylo-top.webp"
   },
   {
     description: null,
@@ -17,7 +17,7 @@ export const products = [
     priceAugmente: "19.90",
     slug: "tour-arc-en-ciel",
     __typename: "SimpleProduct",
-    image: "https://maxandlea.com/wp-content/uploads/2020/06/tour-carre.png"
+    image: "/tour-top.webp"
   },
   {
     description: null,
@@ -27,7 +27,7 @@ export const products = [
     priceAugmente: "49.90",
     slug: "play-board",
     __typename: "SimpleProduct",
-    image: "https://maxandlea.com/wp-content/uploads/2020/10/VueProduit-Tablette-MaxAndLea-2-min.png"
+    image: "/playboard-top.webp"
   },
   {
     description: null,
@@ -36,7 +36,16 @@ export const products = [
     price: "9.90",
     slug: "ebook-playboard",
     __typename: "SimpleProduct",
-    image: "https://maxandlea.com/wp-content/uploads/2020/10/ezgif.com-gif-maker.png"
+    image: "/kako.png"
+  },
+  {
+    description: null,
+    id: "xdghfgjhfgjh",
+    name: "Livre Kako",
+    price: "12.90",
+    slug: "livre-kako",
+    __typename: "SimpleProduct",
+    image: "/kako.png"
   }
 ]
 

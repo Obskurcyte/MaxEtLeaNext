@@ -69,68 +69,30 @@ const HomeScreen = () => {
               </Link>
             </Card>
 
-
-            {/*
-            <Card className="card-jouet bidule">
-              <Link href="/playboard">
-                <a>
-                <p className="card-jouet-title" color="textSecondary">
-                  BIDULE
-                </p>
-                <img alt="" className="img-card" src={'/playboard.png'}/>
-                </a>
-              </Link>
-            </Card>
-
-
           </div>
+
+        </div>
+
+      </div>
+
+      <div className="baby-container container1000">
+        <div className="head-title-container">
+          <h1 className="head-title">Nos Histoires</h1>
+        </div>
+        <div>
+          <p className="description-title">Retrouvez tous nos livres</p>
+        </div>
+
+        <div className="grid-container">
 
           <div className="row-card-home">
-
-
-            <Card className="card-jouet bidule2">
-              <Link href="/playboard">
+            <Card className="card-jouet card-kako">
+              <Link href="/kako">
                 <a>
-                <p className="card-jouet-title" color="textSecondary">
-                  BIDULE 2
-                </p>
-                <img alt="" className="img-card" src={'/playboard.png'}/>
+                <img src={'/kako.png'} alt="" className="img-card"/>
                 </a>
               </Link>
             </Card>
-
-
-            <Card className="card-jouet bidule3">
-
-              <Link href="/playboard">
-                <a>
-                <p className="card-jouet-title" color="textSecondary">
-                  TOUR ARC EN CIEL
-                </p>
-                <img alt="" className="img-card" src={'/playboard.png'}/>
-                </a>
-              </Link>
-            </Card>
-
-
-          </div>
-
-          <div className="row-card-home-special">
-
-
-            <Card className="card-jouet bidule4">
-              <Link href="/playboard">
-                <a>
-                <p className="card-jouet-title" color="textSecondary">
-                  BIDULE 4
-                </p>
-                <img  alt="" className="img-card" src={'/playboard.png'}/>
-                </a>
-              </Link>
-            </Card>
-
-          */}
-
           </div>
 
         </div>

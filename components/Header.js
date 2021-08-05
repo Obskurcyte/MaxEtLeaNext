@@ -55,9 +55,9 @@ const Header = (props) => {
     } if (lang === 'en') {
       dispatch(getDrapeau('/flagen.png'))
     } if (lang === 'es') {
-      dispatch(getDrapeau('flages.png'))
+      dispatch(getDrapeau('/flages.png'))
     } if (lang === 'al') {
-      dispatch(getDrapeau('flagal.png'))
+      dispatch(getDrapeau('/flagal.png'))
     }
   };
 
@@ -80,6 +80,13 @@ const Header = (props) => {
               <Link href="/">
                 <img src={'/logogrand.webp'} alt="" className="imgNavbar"/>
               </Link>
+            </div>
+
+            <div className="linksContainer">
+              <Link href="/">Home</Link>
+              <Link href="/about">{t("Footer.1")}</Link>
+              <Link href="/contact">{t("Footer.4")}</Link>
+              <Link href="/blogs">{t("Footer.3")}</Link>
             </div>
 
             <Menu

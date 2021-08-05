@@ -17,6 +17,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import QualiteDansLesDetails from "../components/QualiteDansLesDetails";
 import Collapsible from "react-collapsible";
 import {useTranslation} from "react-i18next";
+import CountClients from "../components/CountClients";
 import HeaderTour from "../components/HeaderTour";
 import XylophoneQualite from "../components/XylophoneQualite";
 import Slider from "react-slick";
@@ -335,9 +336,7 @@ const XylophoneScreen = props => {
       </div>
 
       <div className="container1000">
-        <div className="clientSatisfait">
-          <h5>6867 clients déjà satisfaits</h5>
-        </div>
+        <CountClients/>
       </div>
 
       <div className="container1000">

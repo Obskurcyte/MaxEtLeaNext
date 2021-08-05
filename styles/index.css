@@ -60,6 +60,12 @@ body {
   width:90%;
 }
 
+.card-kako .img-card{
+  margin: 0px auto 0px auto;
+  max-width: 390px;
+  width:90%;
+}
+
 .card-jouet {
   width: 45%;
   max-height: 210px;
@@ -80,6 +86,11 @@ body {
 
 .card-xylo{
   background: url(/SITE-Icone-XYLO2.webp) no-repeat center top;
+  background-size: contain;
+}
+
+.card-kako{
+  background: url(/SITE-Icone-KAKO.webp) no-repeat center top;
   background-size: contain;
 }
 
