@@ -38,32 +38,60 @@ body {
 
 .img-card {
   position: relative;
-  bottom: 25%;
-  max-width: 350px;
-  left: 12%;
-  transition: transform .4s;
+  display: block;
+  transition: transform .7s;
 }
 
-.card-jouet-title {
-  font-size: 26px;
-  letter-spacing: 1px;
-  line-height: 74px;
-  color: #ffffff;
-  font-family: "Roboto", sans-serif;
+.card-playboard .img-card{
+  margin: 20px auto 0px auto;
+  max-width: 370px;
+  width:85%;
 }
 
-.card-jouet a{
-  margin-top:-30px;
+.card-tour .img-card{
+  margin: 10px 5px 0px auto;
+  max-width: 420px;
+  width:92%;
 }
-.card-jouet a:hover {
-  text-decoration: none;
+
+.card-xylo .img-card{
+  margin: 10px 5px 0px auto;
+  max-width: 390px;
+  width:90%;
 }
+
+.card-kako .img-card{
+  margin: 0px auto 0px auto;
+  max-width: 390px;
+  width:90%;
+}
+
 .card-jouet {
   width: 45%;
-  padding: 2%;
   max-height: 210px;
   margin-bottom: 50px;
   border-radius: 2px;
+  border:none !important;
+}
+
+.card-playboard{
+  background: url(/SITE-Icone-PLAYBOARD.jpg) no-repeat center top;
+  background-size: contain;
+}
+
+.card-tour{
+  background: url(/SITE-Icone-TOWER.jpg) no-repeat center top;
+  background-size: contain;
+}
+
+.card-xylo{
+  background: url(/SITE-Icone-XYLO2.webp) no-repeat center top;
+  background-size: contain;
+}
+
+.card-kako{
+  background: url(/SITE-Icone-KAKO.webp) no-repeat center top;
+  background-size: contain;
 }
 
 .satisfactions {
@@ -72,7 +100,7 @@ body {
 }
 
 .card-jouet:hover .img-card {
-  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1.05);
 }
 
 .playboard {
@@ -524,10 +552,18 @@ body {
   padding-top: 2%;
 }
 
-/*media queries*/
+.cookiesBtn{
+  display: flex;
+}
 
+.cookiesBtn p{
+  margin: 3px 10px 0px 10px;
+}
 
-
+.cookiesBtn img{
+ width: 30px;
+ height: fit-content;
+}
 
 
 @media screen and (min-width: 1500px){
@@ -564,9 +600,6 @@ body {
   }
   .description-title {
     padding: 1% 20%;
-  }
-  .img-card {
-    width: 120%;
   }
 }
 
@@ -652,17 +685,11 @@ body {
   .card-jouet-title {
     font-size: 20px;
   }
-  .img-card {
-    max-width: 300px;
-  }
 }
 
 @media screen and (max-width: 900px){
   .products-container {
     padding: 0!important;
-  }
-  .img-card {
-    left: 22%;
   }
   .head-title {
     font-size: 45px;
@@ -679,17 +706,11 @@ body {
   .satisfactions {
     flex-direction: column;
   }
-  .img-card {
-    max-width: 250px;
-  }
 }
 
 @media screen and (max-width: 769px) {
   .drapeau-container {
     left: 44%;
-  }
-  .img-card {
-    bottom: 12%;
   }
   .img-container {
     margin-top: 4%;
@@ -703,9 +724,6 @@ body {
   }
   .account-shopping {
     width: 20%;
-  }
-  .img-card {
-    max-width: 210px;
   }
 }
 
@@ -733,12 +751,6 @@ body {
   .card-jouet-title {
     font-size: 26px;
   }
-  .img-card {
-    width: 100%;
-    left: 30%;
-    margin-top: -70px;
-    max-width: 350px;
-  }
   .card-jouet {
     width: 100%;
   }
@@ -752,17 +764,10 @@ body {
   .description-title {
     padding : 0
   }
-  .img-card {
-    max-width: 250px;
-  }
 }
 
 
 @media screen and (max-width: 525px){
-
-  .img-card {
-    left: 15%;
-  }
   .card-jouet-title {
     font-size: 20px;
   }

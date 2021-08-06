@@ -12,7 +12,7 @@ const Engagement = () => {
       <div >
         <img src={'/100.png'} alt="" className={styles.photo1}/>
       </div>
-      <div className="row" style={{maxWidth: '1200px', margin: '20px auto'}}>
+      <div className="row" style={{maxWidth: '1200px', margin: '35px auto'}}>
         <div className="col" style={{minWidth: '170px'}}>
           <div>
             <img src={'/childcare.png'} alt="" className={styles.imageGaranties}/>

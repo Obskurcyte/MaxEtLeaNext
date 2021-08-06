@@ -20,6 +20,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import QualiteDansLesDetails from "../components/QualiteDansLesDetails";
 import Collapsible from "react-collapsible";
 import {useTranslation} from "react-i18next";
+import CountClients from "../components/CountClients";
 import ItemsCarousel from "react-items-carousel";
 import {set} from "react-ga";
 import Slider from "react-slick";
@@ -237,7 +238,7 @@ const TourScreen = props => {
           <div className="voir-offre" onClick={handleAddToCart}>
             <Link href="javascript:void(0)"><h3 className="voir-offre-title">Ajouter au panier</h3></Link>
           </div>
-          <div className="slider-container video-container">
+          <div className="slider-container">
             <Slider {...settings}>
               <div>
                 <img src={'/tour1.jpg'} alt=""/>
@@ -363,9 +364,7 @@ const TourScreen = props => {
       </div>
 
       <div className="container1000">
-        <div className="clientSatisfait">
-          <h5>6867 clients déjà satisfaits</h5>
-        </div>
+        <CountClients/>
       </div>
 
       <div className="container1000">

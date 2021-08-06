@@ -194,7 +194,7 @@ const CartItem = ({item}) => {
     <div key={item.productId} className="tr-product" id={"list_"+item.productId}>
       <div className="innerContainerCart">
         <span onClick={(event) => handleRemoveProduct(event, item.productId)}>
-          <div className="croix itemsuppr"><button className="button-supp">x</button></div>
+          <div className="croix itemsuppr"><i class="far fa-times-circle"></i></div>
         </span>
 
         <div className="imgContainerCart">

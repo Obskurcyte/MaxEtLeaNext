@@ -37,7 +37,7 @@ const Garanties = () => {
             <img src={'/delivering.png'} alt="livraison" className={styles.imageGaranties}/>
           </div>
           <h3 className={styles.garantiesUndertitle}>{t("Garanties8")}</h3>
-          <p className={styles.garantiesParagraph}>{t("Garanties9")}</p>
+          <p className={styles.garantiesParagraph}>{t("Garanties9a")}<img src={'/internet9.webp'}/>{t("Garanties9b")}</p>
         </div>
         </div>
       </div>

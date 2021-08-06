@@ -14,7 +14,7 @@ const TourQualite = () => {
           <h5>“Encourager le tri des formes,l'organisation et la logique”</h5>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Découvrir<span className="fw-bold">les couleurs</span> et jouer avec</p>
+            <p>Découvrir <span className="fw-bold">les couleurs</span> et jouer avec</p>
           </div>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>

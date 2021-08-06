@@ -20,6 +20,8 @@
 .livraisonListContainer{
   border: 1px solid #ddd;
   border-radius: 4px;
+  font-size: 14.25px;
+  background-color: #fff;
 }
 
 .livraisonRow {
@@ -118,7 +120,7 @@ legend span {
 }
 
 .MuiFormControl-root {
-  margin: 2% !important;
+  margin: 3px !important;
 }
 
 .sliderImgContainer {
@@ -137,6 +139,10 @@ legend span {
 
 .bigInput label, .inputMoyenGauche label, .inputMoyenDroit label {
   color: #6EC1E4;
+}
+
+.bigInput, .inputMoyenGauche, .inputMoyenDroit {
+  background-color: #fff;
 }
 
 .bigInput {
@@ -240,8 +246,8 @@ legend span {
   margin: 0% auto
 }
 
-.content {
-  margin-top: 5%;
+.checkoutContent {
+  padding-top: 20px;
   position: relative;
   padding-right: 10px;
   padding-left: 10px;
@@ -257,8 +263,7 @@ legend span {
 
 .produitPaiementContainer {
   display: flex;
-  padding: 0 2%;
-  margin-top: 5%;
+  margin-top: 20px;
 }
 
 .prixText {
@@ -273,6 +278,7 @@ legend span {
 .coordonneesDiv {
   border-bottom: 5px solid;
   border-color: #6EC1E4;
+  background-color: #fff;
 }
 
 .coordonneesDivLight {
@@ -337,11 +343,20 @@ legend span {
 }
 
 .MuiInputLabel-outlined.MuiInputLabel-shrink{
-  transform: translate(14px, -2px) scale(0.75) !important;
+  transform: translate(14px, 8px) scale(0.75) !important;
+}
+
+.PrivateNotchedOutline-root-6{
+  top: 0px !important;
+}
+
+.MuiOutlinedInput-input{
+  padding: 26.5px 14px 10.5px 14px !important;
 }
 
 .prixContainer {
   width: 50%;
+  background-color: #f5f5f5;
 }
 
 .separationImg {
@@ -645,7 +660,7 @@ legend span {
 
 .separationCheckout{
   width:7px;
-  background-color: #EDEDED;
+  background-color: #f5f5f5;
 }
 
 .cartTitle{
@@ -676,8 +691,23 @@ legend span {
   margin: 15px 0px;
 }
 
+.itemsuppr .fa-times-circle{
+  font-size: 20px;
+  color:#d4d4d4;
+  cursor: pointer;
+}
+
 div.MRW-Content>div:last-child {
   display: none;
+}
+
+.slick-next::before, .slick-prev::before{
+  color: #d4d4d4 !important;
+}
+
+.checkout-form{
+  max-width: 400px;
+  margin: auto;
 }
 
 @media screen and (min-width: 2100px) {
@@ -1010,8 +1040,8 @@ div.MRW-Content>div:last-child {
  * Main wrapper
  */
  .select-search {
-  width: 50%;
-  margin: 1% 0 2% 2%;
+  width: 100%;
+  margin: 3px 0;
   position: relative;
   box-sizing: border-box;
 }
@@ -1044,7 +1074,7 @@ div.MRW-Content>div:last-child {
 * Input
 */
 .select-search__input {
-  padding: 30px 14px;
+  padding: 27.5px 14px;
   display: block;
   height: 36px;
   width: 100%;
