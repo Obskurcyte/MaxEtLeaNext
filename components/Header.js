@@ -44,8 +44,18 @@ const Header = (props) => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  /*useEffect(() => {
+    window.addEventListener("click", (event){
+      var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
+    });
+  });*/
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseOutside = () => {
+    i18n.changeLanguage(lang).then(() => setAnchorEl(null))
   };
 
   const handleClose = (lang) => {
@@ -94,7 +104,7 @@ const Header = (props) => {
               anchorEl={anchorEl}
               keepMounted
               open={Boolean(anchorEl)}
-              onClose={handleClose}
+              onClose={handleCloseOutside}
             >
               <MenuItem onClick={() => handleClose('en')}><img src={'/flagen.png'} alt=""/></MenuItem>
               <MenuItem onClick={() => handleClose('es')}><img src={'/flages.png'} alt=""/></MenuItem>

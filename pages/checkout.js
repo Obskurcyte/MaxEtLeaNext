@@ -358,9 +358,11 @@ const CheckoutScreen = props => {
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
       return updatedProducts;
     } else {
-      let productPrice = parseFloat(product.price);
-      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
-      existingProductsInCart.push(newProduct);
+      if(qtyToBeAdded > 0){
+        let productPrice = parseFloat(product.price);
+        const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+        existingProductsInCart.push(newProduct);
+      }
       return existingProductsInCart
     }
   };
@@ -462,9 +464,11 @@ const CheckoutScreen = props => {
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
       return updatedProducts;
     } else {
-      let productPrice = parseFloat(product.price);
-      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
-      existingProductsInCart.push(newProduct);
+      if(qtyToBeAdded > 0){
+        let productPrice = parseFloat(product.price);
+        const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+        existingProductsInCart.push(newProduct);
+      }
       return existingProductsInCart
     }
   };
@@ -554,9 +558,11 @@ const CheckoutScreen = props => {
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
       return updatedProducts;
     } else {
-      let productPrice = parseFloat(product.price);
-      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
-      existingProductsInCart.push(newProduct);
+      if(qtyToBeAdded > 0){
+        let productPrice = parseFloat(product.price);
+        const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+        existingProductsInCart.push(newProduct);
+      }
       return existingProductsInCart
     }
   };
@@ -652,9 +658,11 @@ const CheckoutScreen = props => {
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
       return updatedProducts;
     } else {
-      let productPrice = parseFloat(product.price);
-      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
-      existingProductsInCart.push(newProduct);
+      if(qtyToBeAdded > 0){
+        let productPrice = parseFloat(product.price);
+        const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+        existingProductsInCart.push(newProduct);
+      }
       return existingProductsInCart
     }
   };
@@ -717,9 +725,11 @@ const CheckoutScreen = props => {
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
       return updatedProducts;
     } else {
-      let productPrice = parseFloat(product.price);
-      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
-      existingProductsInCart.push(newProduct);
+      if(qtyToBeAdded > 0){
+        let productPrice = parseFloat(product.price);
+        const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+        existingProductsInCart.push(newProduct);
+      }
       return existingProductsInCart
     }
   };
@@ -783,7 +793,7 @@ const CheckoutScreen = props => {
    */
 
 
-  const getUpdatedProductsEbookTour = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+  /*const getUpdatedProductsEbookTour = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
     const productExistsIndex = isProductInCart(existingProductsInCart, products[7].id);
 
     if (-1 < productExistsIndex) {
@@ -799,7 +809,7 @@ const CheckoutScreen = props => {
       existingProductsInCart.push(newProduct);
       return existingProductsInCart
     }
-  };
+  };*/
 
 
 
@@ -861,7 +871,7 @@ const CheckoutScreen = props => {
     }
   }
 
-  const [checkedEbookPlayboard, setCheckedEbookPlayboard] = useState(false);
+
   const [codePromoIncorrect, setCodePromoIncorrect] = useState(false);
   const [codePromoLoading, setCodePromoLoading] = useState(false);
 
@@ -892,6 +902,24 @@ const CheckoutScreen = props => {
   const [checkedPlayboard, setCheckedPlayboard] = useState(false);
   const [checkedTour, setCheckedTour] = useState(false);
   const [checkedXylo, setCheckedXylo] = useState(false);
+  const [checkedEbookPlayboard, setCheckedEbookPlayboard] = useState(false);
+
+  useEffect(() => {
+    let existingCart = localStorage.getItem('woo-next-cart');
+    existingCart = JSON.parse(existingCart)
+    if(existingCart != null && isProductInCart(existingCart.products, products[0].id) > -1){
+      setCheckedXylo(true);
+    }
+    if(existingCart != null && isProductInCart(existingCart.products, products[1].id) > -1){
+      setCheckedTour(true);
+    }
+    if(existingCart != null && isProductInCart(existingCart.products, products[2].id) > -1){
+      setCheckedPlayboard(true);
+    }
+    if(existingCart != null && isProductInCart(existingCart.products, products[3].id) > -1){
+      setCheckedEbookPlayboard(true);
+    }
+  }, []);
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
@@ -1169,7 +1197,19 @@ const CheckoutScreen = props => {
   let totalPrice3 = totalPrice1 - discountPanier
   const reducCodePromo = totalPrice3 * (1/codePromo?.amount)
 
-  const totalDiscount = parseFloat(codePromo?.amount) + parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
+  var totalDiscount = 0;
+  if(codePromo?.amount)
+    totalDiscount += parseFloat(codePromo?.amount);
+  if(tourReducPrice)
+    totalDiscount += parseFloat(tourReducPrice);
+  if(xyloReducPrice)
+    totalDiscount += parseFloat(xyloReducPrice);
+  if(playboardReducPrice)
+    totalDiscount += parseFloat(playboardReducPrice);
+  if(discountPanier)
+    totalDiscount += parseFloat(discountPanier);
+  if(reducCodePromo)
+    totalDiscount += parseFloat(reducCodePromo);
 
   return (
     <PayPalScriptProvider options= {{"client-id": process.env.PAYPAL_CLIENT_ID }}>
@@ -1335,11 +1375,12 @@ const CheckoutScreen = props => {
                       </div>
                     )}
                   </div>
-
+                  {(totalDiscount) != 0 &&
                   <div className="prix-reduc-container">
                       <p className="sousTotalText2">Total discount</p>
                       <p className="itemTotalPrice2">{totalDiscount.toFixed(2)} €</p>
                   </div>
+                  }
 
                   <div>
 
@@ -1442,7 +1483,7 @@ const CheckoutScreen = props => {
                   <div className="innerArticleContainer">
                     <div className="innerArticleTop">
                       <label className="labelArticleTop">
-                        <Checkbox style={{display:'inlineBlock'}} onChange={() => {
+                        <Checkbox style={{display:'inlineBlock'}} checked={checkedXylo} onChange={() => {
                           handleAddToCartXylo()
                         }}></Checkbox>
                         <span className="innerArticleTitle">Ajouter le Xylophone !</span>
@@ -1466,7 +1507,7 @@ const CheckoutScreen = props => {
                   <div className="innerArticleContainer">
                     <div className="innerArticleTop">
                       <label className="labelArticleTop">
-                        <Checkbox style={{display:'inlineBlock'}} onChange={() => {
+                        <Checkbox style={{display:'inlineBlock'}} checked={checkedTour} onChange={() => {
                           handleAddToCartTour()
                         }}></Checkbox>
                         <span className="innerArticleTitle">Ajouter la Tour Arc en Ciel !</span>

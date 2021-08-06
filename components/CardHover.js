@@ -290,7 +290,19 @@ const CardHover = () => {
 
   const reducCodePromo = totalPrice1 * (1/codePromo?.amount)
 
-  const totalDiscount = parseFloat(codePromo?.amount) + parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
+  var totalDiscount = 0;
+  if(codePromo?.amount)
+    totalDiscount += parseFloat(codePromo?.amount);
+  if(tourReducPrice)
+    totalDiscount += parseFloat(tourReducPrice);
+  if(xyloReducPrice)
+    totalDiscount += parseFloat(xyloReducPrice);
+  if(playboardReducPrice)
+    totalDiscount += parseFloat(playboardReducPrice);
+  if(discountPanier)
+    totalDiscount += parseFloat(discountPanier);
+  if(reducCodePromo)
+    totalDiscount += parseFloat(reducCodePromo);
 
 
 
@@ -310,11 +322,13 @@ const CardHover = () => {
         ) : <p>Vous n'avez pas d'articles dans votre panier</p>
       }
 
-
-      <div className="prix-container">
+      {(totalDiscount) != 0 &&
+        <div className="prix-container">
         <p className={styles.subtotal}>Total Discount : {totalDiscount.toFixed(2)} €</p>
         <hr/>
       </div>
+      }
+      
 
       <div className="prix-container">
         <p className={styles.subtotal}>Sous-total : {totalPrice1.toFixed(2)} €</p>

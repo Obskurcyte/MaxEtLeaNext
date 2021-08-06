@@ -24,8 +24,6 @@ import commandeReducer from "../store/reducers/commandes";
 import {AppProvider} from "../components/context/AppContext";
 import drapeauReducer from "../store/reducers/drapeau";
 import React, {useEffect} from "react";
-import { ApolloProvider } from '@apollo/client/react';
-import client from "../components/ApolloClient";
 import Head from 'next/head';
 import CookieConsent from "react-cookie-consent";
 import CookiesBtn from "../components/CookiesBtn";

@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+/*import { gql } from '@apollo/client';
 import client from "../../components/ApolloClient";
 
 export const GET_COUPONS = "COUPONS_QUERY";
@@ -38,7 +38,7 @@ query GetAllCoupons {
       }
     }
   }
-*/
+
 
   export async function getCoupons() {
     const data = await client.query({
