@@ -233,7 +233,6 @@ const CheckoutScreen = props => {
   const [dataClient, setDataClient] = useState(null);
   const [ebookImprime, setEbookImprime] = useState('');
 
-  console.log('codePromo', codePromo)
   useEffect(() => {
     if ( process.browser) {
       let cartData = localStorage.getItem('livraison');
@@ -247,9 +246,6 @@ const CheckoutScreen = props => {
       if(trueData && trueData.pays){
         setPays(trueData.pays);
       }
-      console.log("pays")
-      console.log(trueData)
-      console.log(pays)
     }
   }, [goodCodePromo]);
 
@@ -278,7 +274,7 @@ const CheckoutScreen = props => {
     let productPrice = getFloatVal(product.price)
     let oldPrice = getFloatVal(product.priceAugmente)
 
-    console.log('oldPrice', oldPrice)
+
     let newCart = {
       products: [],
       totalProductCount: 1,
@@ -293,7 +289,7 @@ const CheckoutScreen = props => {
   };
 
   const createNewProduct = (product, productPrice, qty) => {
-    console.log(product)
+
     return {
       productId: product.id,
       oldPrice: product.priceAugmente,
@@ -654,15 +650,11 @@ const CheckoutScreen = props => {
       }
       updatedProduct.qty = (newQty) ? parseInt(newQty) : parseInt(updatedProduct.qty + qtyToBeAdded)
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
-      console.log("TO SEE");
-      console.log(updatedProducts);
       return updatedProducts;
     } else {
       let productPrice = parseFloat(product.price);
       const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
       existingProductsInCart.push(newProduct);
-      console.log("TO SEE");
-      console.log(existingProductsInCart);
       return existingProductsInCart
     }
   };
@@ -824,14 +816,10 @@ const CheckoutScreen = props => {
     const productExistIndex = isProductInCart(existingCart.products, productId);
 
     if (-1 < productExistIndex) {
-      console.log("IS SUPPOSED TO REMOVE "+productId)
+
       const productToBeRemoved = existingCart.products[productExistIndex];
       const qtyTBeRemovedFromTotal = productToBeRemoved.qty;
       const priceToBeDeductedFromTotal = productToBeRemoved.totalPrice;
-
-      console.log(productToBeRemoved)
-      console.log(qtyTBeRemovedFromTotal)
-      console.log(priceToBeDeductedFromTotal)
 
       let updatedCart = existingCart
       /*if(productExistIndex == 0){
@@ -840,9 +828,6 @@ const CheckoutScreen = props => {
       else*/ updatedCart.products.splice(productExistIndex, 1);
       updatedCart.totalProductCount = updatedCart.totalProductCount - qtyTBeRemovedFromTotal;
       updatedCart.totalProductsPrice = updatedCart.totalProductsPrice - priceToBeDeductedFromTotal;
-
-      console.log(updatedCart)
-
 
       localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
       return updatedCart
@@ -998,6 +983,7 @@ const CheckoutScreen = props => {
     }
   }
 
+
   let playboardReducPrice = 0
   let playboardInCart = []
   if (cart) {
@@ -1018,7 +1004,7 @@ const CheckoutScreen = props => {
     })
     if (tour.length !== 0) {
       tourInCart = tour
-      tourReducPrice = tour[0].qty * 20
+      tourReducPrice = tour[0].qty * 7
     }
   }
 
@@ -1045,7 +1031,12 @@ const CheckoutScreen = props => {
     }
   }
 
-  console.log('ebookIncart', ebookInCart)
+  //On enlève les ebooks de la qty totale
+  if (ebookInCart.length!==0) {
+    qtyTotale = qtyTotale - ebookInCart.length
+  }
+
+  console.log(ebookInCart)
 
   if (qtyTotale === 2) {
     totalPrice1 = totalPrice1 * 0.90
@@ -1059,10 +1050,10 @@ const CheckoutScreen = props => {
     totalPrice1 = totalPrice1 * 0.80
   }
 
+  let totalPrice3;
   if (codePromo && codePromo.amount) {
     totalPrice1 = totalPrice1 * 0.90
   }
-  console.log('ebook checked', checkedEbookPlayboard)
 
   const [firstStep, setFirstStep] = useState(false);
 
@@ -1129,7 +1120,6 @@ const CheckoutScreen = props => {
               if(meta.key === "affwp_discount_affiliate"){
                 //localStorage.setItem('ref',meta.value);
                 aff_id = meta.value;
-                console.log(aff_id);
               }
             });
           }
@@ -1159,17 +1149,26 @@ const CheckoutScreen = props => {
       .catch((error) => {
         console.log(error.response.data);
       });
-
-
-    //return setData(newData.results);
   };
 
-  console.log(cart)
   const checkPromo = (event) => {
     fetchAffiliates();
   };
 
   const [mondialRelay, setMondialRelay] = useState(false);
+
+  let discountPanier;
+  if (qtyTotale === 2) {
+    discountPanier = (totalPrice1 * 0.10).toFixed(2)
+  } else if (qtyTotale === 3) {
+    discountPanier = (totalPrice1 * 0.15).toFixed(2)
+  } else if (qtyTotale >= 4) {
+    discountPanier = (totalPrice1 * 0.20).toFixed(2)
+  }
+
+  const reducCodePromo = totalPrice1 * (1/codePromo?.amount)
+
+  const totalDiscount = parseFloat(codePromo?.amount) + parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
 
   return (
     <PayPalScriptProvider options= {{"client-id": process.env.PAYPAL_CLIENT_ID }}>
@@ -1336,6 +1335,11 @@ const CheckoutScreen = props => {
                     )}
                   </div>
 
+                  <div className="prix-reduc-container">
+                      <p className="sousTotalText2">Total discount</p>
+                      <p className="itemTotalPrice2">{totalDiscount.toFixed(2)} €</p>
+                  </div>
+
                   <div>
 
                   </div>
@@ -1347,13 +1351,13 @@ const CheckoutScreen = props => {
 
                 {(cart && cart.products.length) && (
                   <div className="sousTotal">
+
                     <div>
                       <div className="prix-reduc-container">
                         <p className="sousTotalText2">Sous-total</p>
                         <p className="itemTotalPrice2">{totalPrice1.toFixed(2)} €</p>
                       </div>
                     </div>
-
                     <div>
                       {prixLivraison !== 0 && (
                         <div className="prix-reduc-container">

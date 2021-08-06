@@ -2,12 +2,17 @@ import React, {useContext, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import * as productAction from "../store/actions/product";
 import {AppContext} from "./context/AppContext";
-
+import * as products from '../products'
 
 
 const CartItem = ({item}) => {
 
   const [cart, setCart] = useContext(AppContext)
+
+  console.log('item', item)
+
+
+
 
   const dispatch = useDispatch();
   const product = useSelector(state => state.product);
@@ -16,7 +21,7 @@ const CartItem = ({item}) => {
     dispatch(productAction.getProducts())
   }, [dispatch])
 
-  const productArray = product.products;
+
 
   // const [cart, setCart] = useContext(AppContext);
 

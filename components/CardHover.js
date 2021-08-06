@@ -1,11 +1,10 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import styles from './CardHover.module.css'
 import {AppContext} from "./context/AppContext";
 import Link from 'next/link';
 
 
 const CardHoverItem = ({item}) => {
-
   const [cart, setCart] = useContext(AppContext);
   console.log('cart', cart)
 
@@ -168,6 +167,7 @@ const CardHoverItem = ({item}) => {
 
 
 
+
   return (
     <React.Fragment>
         <div className={styles.innerContainer}>
@@ -192,13 +192,107 @@ const CardHoverItem = ({item}) => {
 const CardHover = () => {
 
   const [cart, setCart] = useContext(AppContext);
+  const [codePromo, setCodePromo] = useState('')
+
+
+  useEffect(() => {
+    if ( process.browser) {
+      let cartData = localStorage.getItem('livraison');
+      const trueData = JSON.parse(cartData);
+      let codePromoData = localStorage.getItem('promoCode');
+      let ebookImprime = localStorage.getItem('ebookImprime');
+      const promoCodeData = JSON.parse(codePromoData)
+      setCodePromo(promoCodeData)
+    }
+  }, [codePromo]);
 
   let totalPrice1 = 0;
+  let qtyTotale = 0
   if (cart) {
     for (let data in cart.products) {
       totalPrice1 += parseFloat(cart.products[data].totalPrice)
+      qtyTotale += parseFloat(cart.products[data].qty)
     }
   }
+
+  let playboardReducPrice = 0
+  let playboardInCart = []
+  if (cart) {
+    const playboard = cart.products.filter(obj => {
+      return obj.productId === '3163'
+    })
+    if (playboard.length !== 0) {
+      playboardInCart = playboard
+      playboardReducPrice = playboard[0].qty * 20
+    }
+  }
+
+  let tourReducPrice = 0
+  let tourInCart = []
+  if (cart) {
+    const tour = cart.products.filter(obj => {
+      return obj.productId === '4527'
+    })
+    if (tour.length !== 0) {
+      tourInCart = tour
+      tourReducPrice = tour[0].qty * 7
+    }
+  }
+
+
+  let xyloReducPrice = 0
+  let xyloInCart = []
+  if (cart) {
+    const xylo = cart.products.filter(obj => {
+      return obj.productId === '4535'
+    })
+    if (xylo.length !== 0) {
+      xyloInCart = xylo
+      xyloReducPrice = xylo[0].qty * 9
+    }
+  }
+
+  let ebookInCart = []
+  if (cart) {
+    const ebook = cart.products.filter(obj => {
+      return obj.productId === 'hdkfhdhfdjjJ'
+    })
+    if (ebook.length !== 0) {
+      ebookInCart = ebook
+    }
+  }
+
+  if (qtyTotale === 2) {
+    totalPrice1 = totalPrice1 * 0.90
+  }
+
+  if (qtyTotale >= 3) {
+    totalPrice1 = totalPrice1 * 0.85
+  }
+
+  if (qtyTotale >= 4) {
+    totalPrice1 = totalPrice1 * 0.80
+  }
+
+  if (codePromo && codePromo.amount) {
+    totalPrice1 = totalPrice1 * 0.90
+  }
+
+  let discountPanier;
+
+  if (qtyTotale === 2) {
+    discountPanier = (totalPrice1 * 0.10).toFixed(2)
+  } else if (qtyTotale === 3) {
+    discountPanier = (totalPrice1 * 0.15).toFixed(2)
+  } else if (qtyTotale >= 4) {
+    discountPanier = (totalPrice1 * 0.20).toFixed(2)
+  }
+
+  const reducCodePromo = totalPrice1 * (1/codePromo?.amount)
+
+  const totalDiscount = parseFloat(codePromo?.amount) + parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
+
+
 
 
 
@@ -215,6 +309,13 @@ const CardHover = () => {
           )
         ) : <p>Vous n'avez pas d'articles dans votre panier</p>
       }
+
+
+      <div className="prix-container">
+        <p className={styles.subtotal}>Total Discount : {totalDiscount.toFixed(2)} €</p>
+        <hr/>
+      </div>
+
       <div className="prix-container">
         <p className={styles.subtotal}>Sous-total : {totalPrice1.toFixed(2)} €</p>
         <hr/>
