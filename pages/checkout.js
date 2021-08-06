@@ -1050,7 +1050,7 @@ const CheckoutScreen = props => {
     totalPrice1 = totalPrice1 * 0.80
   }
 
-  let totalPrice3;
+
   if (codePromo && codePromo.amount) {
     totalPrice1 = totalPrice1 * 0.90
   }
@@ -1166,7 +1166,8 @@ const CheckoutScreen = props => {
     discountPanier = (totalPrice1 * 0.20).toFixed(2)
   }
 
-  const reducCodePromo = totalPrice1 * (1/codePromo?.amount)
+  let totalPrice3 = totalPrice1 - discountPanier
+  const reducCodePromo = totalPrice3 * (1/codePromo?.amount)
 
   const totalDiscount = parseFloat(codePromo?.amount) + parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
 
