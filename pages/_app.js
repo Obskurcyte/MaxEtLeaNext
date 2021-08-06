@@ -55,12 +55,12 @@ function MyApp({ Component, pageProps }) {
   integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
   crossOrigin="anonymous"/>
 
-      <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>  
-        
-      <script type="text/javascript" src="//unpkg.com/leaflet/dist/leaflet.js"></script>  
-      <link rel="stylesheet" type="text/css" href="//unpkg.com/leaflet/dist/leaflet.css" />  
-        
-      <script type="text/javascript" src="https://widget.mondialrelay.com/parcelshop-picker/jquery.plugin.mondialrelay.parcelshoppicker.min.js"></script>  
+      <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+      <script type="text/javascript" src="//unpkg.com/leaflet/dist/leaflet.js"></script>
+      <link rel="stylesheet" type="text/css" href="//unpkg.com/leaflet/dist/leaflet.css" />
+
+      <script type="text/javascript" src="https://widget.mondialrelay.com/parcelshop-picker/jquery.plugin.mondialrelay.parcelshoppicker.min.js"></script>
 
       <link
               rel="stylesheet"
@@ -70,7 +70,6 @@ function MyApp({ Component, pageProps }) {
               />
           </Head>
     <noscript dangerouslySetInnerHTML={{__html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KV59DL8" height="0" width="0" style="display:none;visibility:hidden;"></iframe>`}} />
-
     <AppProvider>
       <ApolloProvider client={client}>
         <Provider store={store}>

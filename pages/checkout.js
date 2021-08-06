@@ -254,7 +254,7 @@ const CheckoutScreen = props => {
   }, [goodCodePromo]);
 
 
-  console.log(dataClient);
+
 
   const [donneesClient, setdonneesClient] = useState({})
 
@@ -276,7 +276,9 @@ const CheckoutScreen = props => {
 
   const addFirstProduct = (product) => {
     let productPrice = getFloatVal(product.price)
+    let oldPrice = getFloatVal(product.priceAugmente)
 
+    console.log('oldPrice', oldPrice)
     let newCart = {
       products: [],
       totalProductCount: 1,
@@ -288,12 +290,13 @@ const CheckoutScreen = props => {
     localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
     localStorage.setItem('commande-cart', JSON.stringify(newCart))
     return newCart
-
   };
 
   const createNewProduct = (product, productPrice, qty) => {
+    console.log(product)
     return {
       productId: product.id,
+      oldPrice: product.priceAugmente,
       name: product.name,
       price: productPrice,
       qty: qty,
@@ -307,7 +310,6 @@ const CheckoutScreen = props => {
     const updatedProducts = getUpdatedProductsTour(existingCart.products, products[1], qtyToBeAdded, newQty);
     if(updatedProducts == null) return null;
     const addPrice = (total, item) => {
-
       total.totalPrice = item.totalPrice;
       total.qty += item.qty;
       return total;
@@ -1029,7 +1031,7 @@ const CheckoutScreen = props => {
     })
     if (xylo.length !== 0) {
       xyloInCart = xylo
-      xyloReducPrice = xylo[0].qty * 20
+      xyloReducPrice = xylo[0].qty * 9
     }
   }
 
@@ -1162,6 +1164,7 @@ const CheckoutScreen = props => {
     //return setData(newData.results);
   };
 
+  console.log(cart)
   const checkPromo = (event) => {
     fetchAffiliates();
   };
@@ -1194,7 +1197,7 @@ const CheckoutScreen = props => {
       <Header />
       <div className="checkout-sub-container">
         <div className="cadeauContainer">
-          <h2 className="cadeauContainerText">ÉMERVEILLEZ VOTRE ENFANT !​</h2>
+          <h2 className="cadeauContainerText">ÉMERVEILLEZ VOTRE ENFANT !</h2>
         </div>
 
         <div>
@@ -1218,6 +1221,7 @@ const CheckoutScreen = props => {
                   {
                     cart && cart.products.length && (
                       cart.products.map((item) => {
+                        console.log(item)
                         return(
                         item.productId == 3163 ? (
                         <>

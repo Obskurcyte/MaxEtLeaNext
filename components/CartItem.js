@@ -7,8 +7,6 @@ import {AppContext} from "./context/AppContext";
 
 const CartItem = ({item}) => {
 
-
-
   const [cart, setCart] = useContext(AppContext)
 
   const dispatch = useDispatch();
@@ -19,8 +17,6 @@ const CartItem = ({item}) => {
   }, [dispatch])
 
   const productArray = product.products;
-
-
 
   // const [cart, setCart] = useContext(AppContext);
 
