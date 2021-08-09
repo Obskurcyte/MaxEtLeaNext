@@ -44,7 +44,6 @@ function MyApp({ Component, pageProps }) {
     const createVisit = async () => {
       await delay(3000);
       if(localStorage.getItem('ref') != null){
-        console.log("ref");
         var encoded = window.btoa("51c3be50ab9c71d50de81306ddb8590a:bdf2b2c8119512ea65c31d49d96c7e92");
         var res = await fetch(`https://maxandlea.fr/wp-json/affwp/v1/affiliates?user=1`, {
             //method: 'POST',
@@ -53,7 +52,6 @@ function MyApp({ Component, pageProps }) {
             }
           })
         var newData = await res.json();
-        console.log(newData)
         var aff_id = 0;
         newData.forEach( aff => {
           if(localStorage.getItem('ref').toLowerCase()==aff.user.user_login.toLowerCase()){
@@ -70,7 +68,6 @@ function MyApp({ Component, pageProps }) {
           })
           var visitData = await visit.json();
           localStorage.setItem("visitId",visitData.visit_id)
-          console.log(visitData)
         }
       }
     }

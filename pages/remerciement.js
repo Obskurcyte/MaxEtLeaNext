@@ -30,7 +30,6 @@ const Remerciement = (props) => {
       setDataClient(trueData)
       setCartCommande(trueCartData)
       setMoyenPaiement(moyenPaiement)
-      console.log(dataClient)
     }
   }, []);
 

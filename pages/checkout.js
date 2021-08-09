@@ -1064,7 +1064,6 @@ const CheckoutScreen = props => {
     qtyTotale = qtyTotale - ebookInCart.length
   }
 
-  console.log(ebookInCart)
 
   if (qtyTotale === 2) {
     totalPrice1 = totalPrice1 * 0.90
@@ -1261,7 +1260,6 @@ const CheckoutScreen = props => {
                   {
                     cart && cart.products.length && (
                       cart.products.map((item) => {
-                        console.log(item)
                         return(
                         item.productId == 3163 ? (
                         <>
