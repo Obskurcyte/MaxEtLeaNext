@@ -1158,6 +1158,7 @@ const CheckoutScreen = props => {
   console.log(sumPanier)
   const totalDiscount = parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
 
+  totalPrice2 = totalPrice1 + prixLivraison
   return (
     <PayPalScriptProvider options= {{"client-id": process.env.PAYPAL_CLIENT_ID }}>
     <div className="checkout-main-container">
