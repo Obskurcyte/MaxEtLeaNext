@@ -12,10 +12,7 @@ import Head from 'next/head'
 
 const HomeScreen = () => {
 
-  console.log(products.products)
-
   const [ cart, setCart ] = useContext( AppContext );
-  console.log('cart', cart)
 
   const { t, i18n } = useTranslation();
 

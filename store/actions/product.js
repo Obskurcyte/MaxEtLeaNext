@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+/*import gql from "graphql-tag";
 import client from "../../components/ApolloClient";
 
 export const GET_PRODUCTS = "GET_PRODUCTS";

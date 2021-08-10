@@ -3,7 +3,7 @@ export const products = [
     description: null,
     id: "4535",
     name: "Xylophone",
-    price: "12.90",
+    price: "17.90",
     priceAugmente: "21.90",
     slug: "xylophone",
     __typename: "SimpleProduct",
@@ -13,7 +13,7 @@ export const products = [
     description: null,
     id: "4527",
     name: "Tour Arc en ciel",
-    price: "12.90",
+    price: "14.90",
     priceAugmente: "19.90",
     slug: "tour-arc-en-ciel",
     __typename: "SimpleProduct",
@@ -46,6 +46,26 @@ export const products = [
     slug: "livre-kako",
     __typename: "SimpleProduct",
     image: "/kako.png"
+  },
+  {
+    description: null,
+    id: "4535",
+    name: "Xylophone",
+    price: "12.90",
+    priceAugmente: "21.90",
+    slug: "xylophone",
+    __typename: "SimpleProduct",
+    image: "/xylo-top.webp"
+  },
+  {
+    description: null,
+    id: "4527",
+    name: "Tour Arc en ciel",
+    price: "9.90",
+    priceAugmente: "19.90",
+    slug: "tour-arc-en-ciel",
+    __typename: "SimpleProduct",
+    image: "/tour-top.webp"
   }
 ]
 

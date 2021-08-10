@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 const CardHoverItem = ({item}) => {
   const [cart, setCart] = useContext(AppContext);
+  console.log('cart', cart)
 
   const getFloatVal = (string) => {
     let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
@@ -44,6 +45,9 @@ const CardHoverItem = ({item}) => {
 
       total.totalPrice += item.totalPrice;
       total.qty += item.qty;
+      console.log('total', total)
+      console.log('item', item)
+      console.log(total)
       return total;
     }
 
@@ -60,7 +64,7 @@ const CardHoverItem = ({item}) => {
     return updatedCart
   };
 
-
+  console.log(cart)
 
   /**
    * Get updated products array
@@ -103,12 +107,13 @@ const CardHoverItem = ({item}) => {
 
 
 
+  console.log('item', item)
   const [productCount, setProductCount] = useState(item.qty);
 
   const handleQtyChange = (event) => {
     if (process.browser) {
       const newQty = event.target.value
-
+      console.log('new Qty', newQty)
       setProductCount(newQty)
 
       let existingCart = localStorage.getItem('woo-next-cart');
@@ -125,7 +130,9 @@ const CardHoverItem = ({item}) => {
 
     let existingCart = localStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart);
+    console.log('existing', existingCart)
 
+    console.log('existing products' ,existingCart.products.length)
     if (1 === existingCart.products.length) {
       localStorage.removeItem('woo-next-cart')
       return null;
@@ -133,6 +140,9 @@ const CardHoverItem = ({item}) => {
 
     const productExistIndex = isProductInCart(existingCart.products, productId);
 
+    console.log('product exist index', productExistIndex)
+
+    console.log('product', existingCart.products)
     if (-1 < productExistIndex) {
       const productToBeRemoved = existingCart.products[productExistIndex];
       const qtyTBeRemovedFromTotal = productToBeRemoved.qty;
@@ -196,11 +206,11 @@ const CardHover = () => {
     }
   }, [codePromo]);
 
-  let sumPanier = 0;
+  let totalPrice1 = 0;
   let qtyTotale = 0
   if (cart) {
     for (let data in cart.products) {
-      sumPanier += parseFloat(cart.products[data].totalPrice)
+      totalPrice1 += parseFloat(cart.products[data].totalPrice)
       qtyTotale += parseFloat(cart.products[data].qty)
     }
   }
@@ -252,28 +262,38 @@ const CardHover = () => {
     }
   }
 
-  if (ebookInCart.length!==0) {
-    qtyTotale = qtyTotale - ebookInCart.length
+  if (qtyTotale === 2) {
+    totalPrice1 = totalPrice1 * 0.90
+  }
+
+  if (qtyTotale >= 3) {
+    totalPrice1 = totalPrice1 * 0.85
+  }
+
+  if (qtyTotale >= 4) {
+    totalPrice1 = totalPrice1 * 0.80
+  }
+
+  if (codePromo && codePromo.amount) {
+    totalPrice1 = totalPrice1 * 0.90
   }
 
   let discountPanier;
 
   if (qtyTotale === 2) {
-    discountPanier = (sumPanier * 0.10).toFixed(2)
+    discountPanier = (totalPrice1 * 0.10).toFixed(2)
   } else if (qtyTotale === 3) {
-    discountPanier = (sumPanier * 0.15).toFixed(2)
+    discountPanier = (totalPrice1 * 0.15).toFixed(2)
   } else if (qtyTotale >= 4) {
-    discountPanier = (sumPanier * 0.20).toFixed(2)
+    discountPanier = (totalPrice1 * 0.20).toFixed(2)
   }
 
-  let totalPriceIntermediaire = sumPanier - discountPanier
-  const reducCodePromo = totalPriceIntermediaire * (1/codePromo?.amount)
+  const reducCodePromo = totalPrice1 * (1/codePromo?.amount)
 
-  let totalPrice1 = sumPanier - discountPanier - reducCodePromo
+  const totalDiscount = parseFloat(codePromo?.amount) + parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
 
-  console.log('discountPanier', discountPanier)
 
-  const totalDiscount = parseFloat(reducCodePromo) + parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
+
 
 
   return (
@@ -289,6 +309,7 @@ const CardHover = () => {
           )
         ) : <p>Vous n'avez pas d'articles dans votre panier</p>
       }
+
 
       <div className="prix-container">
         <p className={styles.subtotal}>Total Discount : {totalDiscount.toFixed(2)} €</p>

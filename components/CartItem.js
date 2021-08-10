@@ -17,9 +17,9 @@ const CartItem = ({item}) => {
   const dispatch = useDispatch();
   const product = useSelector(state => state.product);
 
-  useEffect(() => {
+  /*useEffect(() => {
     dispatch(productAction.getProducts())
-  }, [dispatch])
+  }, [dispatch])*/
 
 
 

@@ -973,16 +973,15 @@ const CheckoutScreen = props => {
   const classes = useStyles();
 
 
-  let sumPanier = 0;
+  let totalPrice1 = 0;
   let totalPrice2 = 0
   let qtyTotale = 0
   if (cart) {
     for (let data in cart.products) {
-      sumPanier += parseFloat(cart.products[data].totalPrice)
+      totalPrice1 += parseFloat(cart.products[data].totalPrice)
       qtyTotale += parseFloat(cart.products[data].qty)
     }
   }
-
 
 
   let playboardReducPrice = 0
@@ -1037,10 +1036,24 @@ const CheckoutScreen = props => {
     qtyTotale = qtyTotale - ebookInCart.length
   }
 
+  console.log(ebookInCart)
+
+  if (qtyTotale === 2) {
+    totalPrice1 = totalPrice1 * 0.90
+  }
+
+  if (qtyTotale >= 3) {
+    totalPrice1 = totalPrice1 * 0.85
+  }
+
+  if (qtyTotale >= 4) {
+    totalPrice1 = totalPrice1 * 0.80
+  }
 
 
-
-
+  if (codePromo && codePromo.amount) {
+    totalPrice1 = totalPrice1 * 0.90
+  }
 
   const [firstStep, setFirstStep] = useState(false);
 
@@ -1050,7 +1063,7 @@ const CheckoutScreen = props => {
   const [errorLivraison, setErrorLivraison] = useState(false)
 
 
-
+  totalPrice2 = totalPrice1 + prixLivraison
 
   //------AFFILIATE AND COUPON CODES-----//
 
@@ -1083,10 +1096,10 @@ const CheckoutScreen = props => {
         }
       })
       const newRef = await ref.json();
-
+      console.log(newRef);
     }*/
     //const coupons = await getCoupons();
-
+    //console.log(coupons);
     var aff_id = 0;
     var is_code = false;
     const WooCommerce = new WooCommerceRestApi({
@@ -1146,23 +1159,17 @@ const CheckoutScreen = props => {
 
   let discountPanier;
   if (qtyTotale === 2) {
-    discountPanier = (sumPanier * 0.10).toFixed(2)
+    discountPanier = (totalPrice1 * 0.10).toFixed(2)
   } else if (qtyTotale === 3) {
-    discountPanier = (sumPanier * 0.15).toFixed(2)
+    discountPanier = (totalPrice1 * 0.15).toFixed(2)
   } else if (qtyTotale >= 4) {
-    discountPanier = (sumPanier * 0.20).toFixed(2)
+    discountPanier = (totalPrice1 * 0.20).toFixed(2)
   }
 
+  let totalPrice3 = totalPrice1 - discountPanier
+  const reducCodePromo = totalPrice3 * (1/codePromo?.amount)
 
-  let totalPriceIntermediaire = sumPanier - discountPanier
-  const reducCodePromo = totalPriceIntermediaire * (1/codePromo?.amount)
-
-  let totalPrice1 = sumPanier - discountPanier - reducCodePromo
-  totalPrice2 = totalPrice1 + prixLivraison
-
-  console.log('discountPanier', discountPanier)
-  console.log('total', totalPrice1)
-  const totalDiscount = parseFloat(reducCodePromo) + parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
+  const totalDiscount = parseFloat(codePromo?.amount) + parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
 
   return (
     <PayPalScriptProvider options= {{"client-id": process.env.PAYPAL_CLIENT_ID }}>
@@ -1214,6 +1221,7 @@ const CheckoutScreen = props => {
                   {
                     cart && cart.products.length && (
                       cart.products.map((item) => {
+                        console.log(item)
                         return(
                         item.productId == 3163 ? (
                         <>
@@ -1295,7 +1303,7 @@ const CheckoutScreen = props => {
                     {qtyTotale === 2 && (
                       <div className="prix-reduc-container">
                         <p className="sousTotalText">Discount Panier (2 articles) 10%</p>
-                        <p className="itemTotalPrice">{discountPanier} €</p>
+                        <p className="itemTotalPrice">{(totalPrice1 * 0.10).toFixed(2)} €</p>
                       </div>
                     )}
                   </div>
@@ -1304,7 +1312,7 @@ const CheckoutScreen = props => {
                     {qtyTotale === 3 && (
                       <div className="prix-reduc-container">
                         <p className="sousTotalText">Discount Panier (3 articles) 15%</p>
-                        <p className="itemTotalPrice">{discountPanier} €</p>
+                        <p className="itemTotalPrice">{(totalPrice1 * 0.15).toFixed(2)} €</p>
                       </div>
                     )}
                   </div>
@@ -1313,7 +1321,7 @@ const CheckoutScreen = props => {
                     {qtyTotale >= 4 && (
                       <div className="prix-reduc-container">
                         <p className="sousTotalText">Discount Panier (4 articles et plus) 20%</p>
-                        <p className="itemTotalPrice">{discountPanier} €</p>
+                        <p className="itemTotalPrice">{(totalPrice1 * 0.20).toFixed(2)} €</p>
                       </div>
                     )}
                   </div>
@@ -1323,7 +1331,7 @@ const CheckoutScreen = props => {
                     {(codePromo && codePromo.amount) && (
                       <div className="prix-reduc-container">
                         <p className="sousTotalText">Code Promo</p>
-                        <p className="itemTotalPrice">{codePromo.amount} % {reducCodePromo} €</p>
+                        <p className="itemTotalPrice">{codePromo.amount} %</p>
                       </div>
                     )}
                   </div>

@@ -364,7 +364,7 @@ const CheckoutFormStripe = ({
 
   //##############   STRIPE #############//
 
-  const [stripeCheckoutError, setStripeCheckoutError] = useState(null)
+  /*const [stripeCheckoutError, setStripeCheckoutError] = useState(null)
 
   const [ checkout, { data: checkoutResponse, loading: checkoutLoading, error: checkoutError1 } ] = useMutation( CHECKOUT_MUTATION, {
     variables: {
@@ -379,7 +379,7 @@ const CheckoutFormStripe = ({
         setRequestError( error.graphQLErrors[ 0 ].message );
       }
     }
-  } );
+  } );*/
 
   const stripe = useStripe();
   const elements = useElements();

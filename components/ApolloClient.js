@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+/*import fetch from "node-fetch";
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import {createHttpLink} from "apollo-link-http";
 import clientConfig from "../client-config";
@@ -9,7 +9,7 @@ import clientConfig from "../client-config";
     fetch: fetch
   }),
   cache: new InMemoryCache()
-});*/
+});
 
 const client = new ApolloClient({
   ssrMode: typeof window === "undefined", // set to true for SSR
@@ -19,4 +19,4 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export default client
+export default client*/
