@@ -206,14 +206,16 @@ const CardHover = () => {
     }
   }, [codePromo]);
 
-  let totalPrice1 = 0;
+  let sumPanier = 0;
   let qtyTotale = 0
   if (cart) {
     for (let data in cart.products) {
-      totalPrice1 += parseFloat(cart.products[data].totalPrice)
+      sumPanier += parseFloat(cart.products[data].totalPrice)
       qtyTotale += parseFloat(cart.products[data].qty)
     }
   }
+
+
 
   let playboardReducPrice = 0
   let playboardInCart = []
@@ -262,35 +264,28 @@ const CardHover = () => {
     }
   }
 
+  //On enlève les ebooks de la qty totale
+  if (ebookInCart.length!==0) {
+    qtyTotale = qtyTotale - ebookInCart.length
+  }
+
+  let discountPanier = 0;
   if (qtyTotale === 2) {
-    totalPrice1 = totalPrice1 * 0.90
-  }
-
-  if (qtyTotale >= 3) {
-    totalPrice1 = totalPrice1 * 0.85
-  }
-
-  if (qtyTotale >= 4) {
-    totalPrice1 = totalPrice1 * 0.80
-  }
-
-  if (codePromo && codePromo.amount) {
-    totalPrice1 = totalPrice1 * 0.90
-  }
-
-  let discountPanier;
-
-  if (qtyTotale === 2) {
-    discountPanier = (totalPrice1 * 0.10).toFixed(2)
+    discountPanier = (sumPanier * 0.10).toFixed(2)
   } else if (qtyTotale === 3) {
-    discountPanier = (totalPrice1 * 0.15).toFixed(2)
+    discountPanier = (sumPanier * 0.15).toFixed(2)
   } else if (qtyTotale >= 4) {
-    discountPanier = (totalPrice1 * 0.20).toFixed(2)
+    discountPanier = (sumPanier * 0.20).toFixed(2)
   }
 
-  const reducCodePromo = totalPrice1 * (1/codePromo?.amount)
 
-  const totalDiscount = parseFloat(codePromo?.amount) + parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
+  let totalPriceIntermediaire = sumPanier - discountPanier
+  const reducCodePromo = totalPriceIntermediaire * (1/codePromo?.amount)
+
+  let totalPrice1 = sumPanier - discountPanier - reducCodePromo
+
+  console.log(codePromo?.amount)
+  const totalDiscount = parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
 
 
 

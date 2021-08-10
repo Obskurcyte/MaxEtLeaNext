@@ -248,7 +248,7 @@ const HeaderXylophone = (props) => {
     qtyTotale = qtyTotale - ebookInCart.length
   }
 
-  let discountPanier;
+  let discountPanier = 0;
   if (qtyTotale === 2) {
     discountPanier = (sumPanier * 0.10).toFixed(2)
   } else if (qtyTotale === 3) {
@@ -256,7 +256,6 @@ const HeaderXylophone = (props) => {
   } else if (qtyTotale >= 4) {
     discountPanier = (sumPanier * 0.20).toFixed(2)
   }
-
 
   let totalPriceIntermediaire = sumPanier - discountPanier
   const reducCodePromo = totalPriceIntermediaire * (1/codePromo?.amount)

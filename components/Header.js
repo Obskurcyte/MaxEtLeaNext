@@ -97,7 +97,7 @@ const Header = (props) => {
     qtyTotale = qtyTotale - ebookInCart.length
   }
 
-  let discountPanier;
+  let discountPanier = 0;
   if (qtyTotale === 2) {
     discountPanier = (sumPanier * 0.10).toFixed(2)
   } else if (qtyTotale === 3) {
@@ -112,6 +112,11 @@ const Header = (props) => {
 
   let totalPrice1 = sumPanier - discountPanier - reducCodePromo
 
+  console.log("total", totalPrice1)
+  console.log('sum', sumPanier)
+  console.log('discount', discountPanier)
+  console.log('reduc', reducCodePromo)
+  console.log('inter', totalPriceIntermediaire)
   let user = '';
 
   useEffect(() => {

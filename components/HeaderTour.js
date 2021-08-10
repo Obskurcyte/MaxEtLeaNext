@@ -251,7 +251,7 @@ const HeaderTour = (props) => {
     qtyTotale = qtyTotale - ebookInCart.length
   }
 
-  let discountPanier;
+  let discountPanier = 0;
   if (qtyTotale === 2) {
     discountPanier = (sumPanier * 0.10).toFixed(2)
   } else if (qtyTotale === 3) {
