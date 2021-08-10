@@ -316,13 +316,94 @@ const HeaderPlayboard = (props) => {
   const drapeau = useSelector(state => state.drapeau.drapeau)
   const lang = i18next.language;
   console.log('cart', cart);
-  let totalPrice1 = 0;
+  const [codePromo, setCodePromo] = useState('')
+  useEffect(() => {
+    if ( process.browser) {
+      let cartData = localStorage.getItem('livraison');
+      const trueData = JSON.parse(cartData);
+      let codePromoData = localStorage.getItem('promoCode');
+      const promoCodeData = JSON.parse(codePromoData)
+      setCodePromo(promoCodeData)
+    }
+  }, []);
+  let sumPanier = 0;
+  let totalPrice2 = 0
+  let qtyTotale = 0
   if (cart) {
     for (let data in cart.products) {
-      totalPrice1 += parseFloat(cart.products[data].totalPrice)
+      sumPanier += parseFloat(cart.products[data].totalPrice)
+      qtyTotale += parseFloat(cart.products[data].qty)
     }
   }
-  console.log(totalPrice1)
+
+
+
+  let playboardReducPrice = 0
+  let playboardInCart = []
+  if (cart) {
+    const playboard = cart.products.filter(obj => {
+      return obj.productId === '3163'
+    })
+    if (playboard.length !== 0) {
+      playboardInCart = playboard
+      playboardReducPrice = playboard[0].qty * 20
+    }
+  }
+
+  let tourReducPrice = 0
+  let tourInCart = []
+  if (cart) {
+    const tour = cart.products.filter(obj => {
+      return obj.productId === '4527'
+    })
+    if (tour.length !== 0) {
+      tourInCart = tour
+      tourReducPrice = tour[0].qty * 7
+    }
+  }
+
+
+  let xyloReducPrice = 0
+  let xyloInCart = []
+  if (cart) {
+    const xylo = cart.products.filter(obj => {
+      return obj.productId === '4535'
+    })
+    if (xylo.length !== 0) {
+      xyloInCart = xylo
+      xyloReducPrice = xylo[0].qty * 9
+    }
+  }
+
+  let ebookInCart = []
+  if (cart) {
+    const ebook = cart.products.filter(obj => {
+      return obj.productId === 'hdkfhdhfdjjJ'
+    })
+    if (ebook.length !== 0) {
+      ebookInCart = ebook
+    }
+  }
+
+  //On enlève les ebooks de la qty totale
+  if (ebookInCart.length!==0) {
+    qtyTotale = qtyTotale - ebookInCart.length
+  }
+
+  let discountPanier;
+  if (qtyTotale === 2) {
+    discountPanier = (sumPanier * 0.10).toFixed(2)
+  } else if (qtyTotale === 3) {
+    discountPanier = (sumPanier * 0.15).toFixed(2)
+  } else if (qtyTotale >= 4) {
+    discountPanier = (sumPanier * 0.20).toFixed(2)
+  }
+
+
+  let totalPriceIntermediaire = sumPanier - discountPanier
+  const reducCodePromo = totalPriceIntermediaire * (1/codePromo?.amount)
+
+  let totalPrice1 = sumPanier - discountPanier - reducCodePromo
   let user = '';
 
   useEffect(() => {
