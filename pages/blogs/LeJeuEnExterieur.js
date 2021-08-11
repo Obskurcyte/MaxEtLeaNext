@@ -185,7 +185,7 @@ const LeJeuEnExterieur = () => {
         <h4>{t("LeJeuEnExterieur.7")}</h4>
 
         <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_1-1.svg" alt="" className='titre-img'/>
+          <img src="/triangle.svg" alt="" className='titre-img'/>
           <h5>{t("LeJeuEnExterieur.8")}</h5>
         </div>
         <div className="conseildescription">
@@ -193,7 +193,7 @@ const LeJeuEnExterieur = () => {
         </div>
 
         <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_3t.svg" alt="" className='titre-img'/>
+          <img src="/carre.svg" alt="" className='titre-img'/>
           <h5>{t("LeJeuEnExterieur.11")}</h5>
         </div>
         <div className="conseildescription">
@@ -201,7 +201,7 @@ const LeJeuEnExterieur = () => {
         </div>
 
         <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_2t.svg" alt="" className='titre-img'/>
+          <img src="/etoile.svg" alt="" className='titre-img'/>
           <h5>{t("LeJeuEnExterieur.13")}</h5>
         </div>
         <div className="conseildescription">
@@ -209,7 +209,7 @@ const LeJeuEnExterieur = () => {
         </div>
 
         <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt="" className='titre-img'/>
+          <img src="/cercle.svg" alt="" className='titre-img'/>
           <h5>{t("LeJeuEnExterieur.15")}</h5>
         </div>
         <div className="conseildescription">
@@ -228,7 +228,7 @@ const LeJeuEnExterieur = () => {
             <Row className="row-card">
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/child-fun-family-3046494.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/family-kids-baby.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">Concilier travail et éducation</Card.Title>
                     <Link href='/blogs/ConcilierTravailEtEducation'>
@@ -257,7 +257,7 @@ const LeJeuEnExterieur = () => {
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/327490-P9JVOQ-930-1.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/enfantEcran.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">Les enfants et les écrans</Card.Title>
                     <Link href='/blogs/LesEnfantsEtLesEcrans'>

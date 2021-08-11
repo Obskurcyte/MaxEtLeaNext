@@ -87,6 +87,13 @@
   height: 60%;
 }
 
+.jouets-bois-img{
+  display: block;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
 .enfants-souriant-blog3 {
   height: 50%;
   margin-top: 10%;

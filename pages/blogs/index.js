@@ -26,7 +26,7 @@ const BlogScreen = props => {
               </Link>
             </div>
             <div className="math-image-container">
-              <img  src={'https://maxandlea.com/wp-content/uploads/2021/04/boys-children-path-5630669.jpg'} alt="" className="blog-big-image"/>
+              <img  src={'/boys-children.webp'} alt="" className="blog-big-image"/>
             </div>
           </div>
           </Container>
@@ -35,7 +35,7 @@ const BlogScreen = props => {
             <Row className="row-card">
                   <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                     <Card className="card-list-container">
-                      <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/06/IMG_4681-scaled.jpg'} variant="top" className="math-image" />
+                      <Card.Img src={'/toy.webp'} variant="top" className="math-image" />
                       <Card.Body className="card-body">
                         <Card.Title className="card-title">{t("Blogs.3")}</Card.Title>
                         <Card.Text className="card-text">
@@ -50,7 +50,7 @@ const BlogScreen = props => {
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/11/Playboard-Angelique-Kosinski.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/Playboard-Angelique-Kosinski.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">{t("Blogs.5")}</Card.Title>
                     <Card.Text className="card-text">
@@ -65,7 +65,7 @@ const BlogScreen = props => {
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/327490-P9JVOQ-930-1.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/girl-ipad.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">{t("Blogs.7")}</Card.Title>
                     <Card.Text className="card-text">
@@ -83,7 +83,7 @@ const BlogScreen = props => {
               <Row className="row-card">
                 <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                   <Card className="card-list-container">
-                    <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/child-fun-family-3046494.jpg'} variant="top" className="math-image" />
+                    <Card.Img src={'/child-fun-family.webp'} variant="top" className="math-image" />
                     <Card.Body className="card-body">
                       <Card.Title className="card-title">{t("Blogs.9")}</Card.Title>
                       <Card.Text className="card-text">
@@ -98,7 +98,7 @@ const BlogScreen = props => {
 
                 <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                   <Card className="card-list-container">
-                    <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/father-53e5d44a48_1280.jpg'} variant="top" className="math-image" />
+                    <Card.Img src={'/father.webp'} variant="top" className="math-image" />
                     <Card.Body className="card-body">
                       <Card.Title className="card-title">{t("Blogs.11")}</Card.Title>
                       <Card.Text className="card-text">
@@ -113,7 +113,7 @@ const BlogScreen = props => {
 
                 <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                   <Card className="card-list-container">
-                    <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/family-kids-baby-457235.jpg'} variant="top" className="math-image" />
+                    <Card.Img src={'/family-kids-baby.webp'} variant="top" className="math-image" />
                     <Card.Body className="card-body">
                       <Card.Title className="card-title">{t("Blogs.13")}</Card.Title>
                       <Card.Text className="card-text">
@@ -131,7 +131,7 @@ const BlogScreen = props => {
               <Row className="row-card">
                 <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                   <Card className="card-list-container">
-                    <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/child-wooden-blocks-2293839.jpg'} variant="top" className="math-image" />
+                    <Card.Img src={'/child-wooden-blocks.webp'} variant="top" className="math-image" />
                     <Card.Body className="card-body">
                       <Card.Title className="card-title">{t("Blogs.15")}</Card.Title>
                       <Card.Text className="card-text">
@@ -152,7 +152,7 @@ const BlogScreen = props => {
             <Row className="row-card">
               <Col lg={true} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2021/04/boys-children-path-5630669.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/boys-children.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">{t("Blogs.0")}</Card.Title>
                     <Card.Text className="card-text">
@@ -167,7 +167,7 @@ const BlogScreen = props => {
 
               <Col lg={true} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/06/IMG_4681-scaled.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/toy.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">{t("Blogs.3")}</Card.Title>
                     <Card.Text className="card-text">
@@ -183,7 +183,7 @@ const BlogScreen = props => {
             <Row>
               <Col lg={true} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/11/Playboard-Angelique-Kosinski.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/Playboard-Angelique-Kosinski.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">{t("Blogs.5")}</Card.Title>
                     <Card.Text className="card-text">
@@ -198,7 +198,7 @@ const BlogScreen = props => {
 
               <Col lg={true} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/327490-P9JVOQ-930-1.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/girl-ipad.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">{t("Blogs.7")}</Card.Title>
                     <Card.Text className="card-text">
@@ -216,7 +216,7 @@ const BlogScreen = props => {
             <Row className="row-card">
               <Col lg={true} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/child-fun-family-3046494.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/child-fun-family.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">{t("Blogs.9")}</Card.Title>
                     <Card.Text className="card-text">
@@ -231,7 +231,7 @@ const BlogScreen = props => {
 
               <Col lg={true} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/father-53e5d44a48_1280.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/father.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">{t("Blogs.11")}</Card.Title>
                     <Card.Text className="card-text">
@@ -248,7 +248,7 @@ const BlogScreen = props => {
             <Row>
               <Col lg={true} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/family-kids-baby-457235.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/family-kids-baby.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">{t("Blogs.13")}</Card.Title>
                     <Card.Text className="card-text">
@@ -263,7 +263,7 @@ const BlogScreen = props => {
 
               <Col lg={true} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/child-wooden-blocks-2293839.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/child-wooden-blocks.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">{t("Blogs.15")}</Card.Title>
                     <Card.Text className="card-text">

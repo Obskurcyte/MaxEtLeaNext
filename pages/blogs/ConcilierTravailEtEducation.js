@@ -148,7 +148,7 @@ const ConcilierTravailEtEducation = () => {
       </Head>
       <Header />
       <div className="img-blog-container">
-        <img src={'https://maxandlea.com/wp-content/uploads/2020/05/child-fun-family-3046494.jpg'} className="img-blog" alt={'mathématiques'}/>
+        <img src={'/child-fun-family-bg.webp'} className="img-blog" alt={'mathématiques'}/>
       </div>
 
       <div className="date-container">
@@ -172,7 +172,7 @@ const ConcilierTravailEtEducation = () => {
           </p>
         </div>
 
-          <img src={'https://maxandlea.com/wp-content/uploads/2020/05/baby-child-field-1851485.jpg'} alt="" className="enfants-souriant-blog"/>
+          <img src={'/baby-child-field.webp'} alt="" className="enfants-souriant-blog"/>
       </div>
 
       <div className="encadrement">
@@ -192,7 +192,7 @@ const ConcilierTravailEtEducation = () => {
         <h4>{t("ConcilierTravailEtEducation.11")}</h4>
 
         <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_1-1.svg" alt="" className='titre-img'/>
+          <img src="/triangle.svg" alt="" className='titre-img'/>
           <h5>{t("ConcilierTravailEtEducation.12")}</h5>
         </div>
         <div className="conseildescription">
@@ -200,7 +200,7 @@ const ConcilierTravailEtEducation = () => {
         </div>
 
         <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_3t.svg" alt="" className='titre-img'/>
+          <img src="/carre.svg" alt="" className='titre-img'/>
           <h5>{t("ConcilierTravailEtEducation.14")}</h5>
         </div>
         <div className="conseildescription">
@@ -208,7 +208,7 @@ const ConcilierTravailEtEducation = () => {
         </div>
 
         <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_2t.svg" alt="" className='titre-img'/>
+          <img src="/etoile.svg" alt="" className='titre-img'/>
           <h5>{t("ConcilierTravailEtEducation.16")}</h5>
         </div>
         <div className="conseildescription">
@@ -216,7 +216,7 @@ const ConcilierTravailEtEducation = () => {
         </div>
 
         <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt="" className='titre-img'/>
+          <img src="/cercle.svg" alt="" className='titre-img'/>
           <h5>{t("ConcilierTravailEtEducation.18")}</h5>
         </div>
         <div className="conseildescription">
@@ -224,7 +224,7 @@ const ConcilierTravailEtEducation = () => {
         </div>
 
         <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_1-1.svg" alt="" className='titre-img'/>
+          <img src="/triangle.svg" alt="" className='titre-img'/>
           <h5>{t("ConcilierTravailEtEducation.20")}</h5>
         </div>
         <div className="conseildescription">
@@ -233,16 +233,12 @@ const ConcilierTravailEtEducation = () => {
         </div>
 
         <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_3t.svg" alt="" className='titre-img'/>
+          <img src="/carre.svg" alt="" className='titre-img'/>
           <h5>{t("ConcilierTravailEtEducation.24")}</h5>
         </div>
         <div className="conseildescription">
           <p>{t("ConcilierTravailEtEducation.25")}</p>
         </div>
-      </div>
-
-      <div className="img-blog2-container">
-        <img src={'/handschildren.jpg'} alt="" className="img-blog2"/>
       </div>
 
       {lang === 'fr' && (
@@ -252,7 +248,7 @@ const ConcilierTravailEtEducation = () => {
             <Row className="row-card">
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/child-wooden-blocks-2293839.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/child-wooden-blocks.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">Pourquoi choisir des jouets en bois ?</Card.Title>
                     <Link href='/blogs/PourquoiChoisirDesJouetsEnBois'>
@@ -281,7 +277,7 @@ const ConcilierTravailEtEducation = () => {
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/11/Playboard-Angelique-Kosinski.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/Playboard-Angelique-Kosinski.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">Pourquoi les enfants jouent ?</Card.Title>
                     <Link href='/blogs/PourquoiLesEnfantsJouent'>

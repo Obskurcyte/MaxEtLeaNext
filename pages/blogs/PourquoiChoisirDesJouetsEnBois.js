@@ -150,7 +150,7 @@ const PourquoiChoisirDesJouetsEnBois = () => {
       </Head>
       <Header />
       <div className="img-blog-container">
-        <img src={'/handschildren.jpg'} className="img-blog" alt={'jeu extérieur'}/>
+        <img src={'/child-wooden-blocks-bg.webp'} className="img-blog" alt={'jeu extérieur'}/>
       </div>
 
       <div className="date-container">
@@ -180,7 +180,7 @@ const PourquoiChoisirDesJouetsEnBois = () => {
         </div>
 
 
-          <img src={'https://maxandlea.com/wp-content/uploads/2020/05/wood-toy-png-6.png'} alt="" className="enfants-souriant-blog5"/>
+          <img src={'/wood-toys.webp'} alt="" className="jouets-bois-img"/>
 
       </div>
 
@@ -200,7 +200,7 @@ const PourquoiChoisirDesJouetsEnBois = () => {
         <h4>{t("PourquoiChoisirDesJouetsEnBois.23")}</h4>
 
         <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_1-1.svg" alt="" className='titre-img'/>
+          <img src="/triangle.svg" alt="" className='titre-img'/>
           <h5>{t("PourquoiChoisirDesJouetsEnBois.24")}</h5>
         </div>
         <div className="conseildescription">
@@ -208,7 +208,7 @@ const PourquoiChoisirDesJouetsEnBois = () => {
         </div>
 
         <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_3t.svg" alt="" className='titre-img'/>
+          <img src="/carre.svg" alt="" className='titre-img'/>
           <h5>{t("PourquoiChoisirDesJouetsEnBois.26")}</h5>
         </div>
         <div className="conseildescription">
@@ -216,7 +216,7 @@ const PourquoiChoisirDesJouetsEnBois = () => {
         </div>
 
         <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_2t.svg" alt="" className='titre-img'/>
+          <img src="/etoile.svg" alt="" className='titre-img'/>
           <h5>{t("PourquoiChoisirDesJouetsEnBois.28")}</h5>
         </div>
         <div className="conseildescription">
@@ -224,7 +224,7 @@ const PourquoiChoisirDesJouetsEnBois = () => {
         </div>
 
         <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt="" className='titre-img'/>
+          <img src="/cercle.svg" alt="" className='titre-img'/>
           <h5>{t("PourquoiChoisirDesJouetsEnBois.30")}</h5>
         </div>
         <div className="conseildescription">
@@ -233,7 +233,7 @@ const PourquoiChoisirDesJouetsEnBois = () => {
       </div>
 
       <div className="img-blog2-container">
-        <img src={'/handschildren.jpg'} alt="" className="img-blog2"/>
+        <img src={'/toddler-building-block-pull.webp'} alt="" className="img-blog2"/>
       </div>
 
       {lang === 'fr' && (
@@ -243,7 +243,7 @@ const PourquoiChoisirDesJouetsEnBois = () => {
             <Row className="row-card">
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/father-53e5d44a48_1280.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/father.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">Aide moi à faire seul</Card.Title>
                     <Link href='/blogs/AideMoiAFaireSeul'>
@@ -272,7 +272,7 @@ const PourquoiChoisirDesJouetsEnBois = () => {
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2021/04/boys-children-path-5630669.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/boys-children.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">Le jeu en extérieur</Card.Title>
                     <Link href='/blogs/LeJeuEnExterieur'>
