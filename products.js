@@ -49,7 +49,7 @@ export const products = [
   },
   {
     description: null,
-    id: "4535",
+    id: "9697",
     name: "Xylophone",
     price: "12.90",
     priceAugmente: "21.90",
@@ -59,7 +59,7 @@ export const products = [
   },
   {
     description: null,
-    id: "4527",
+    id: "9692",
     name: "Tour Arc en ciel",
     price: "9.90",
     priceAugmente: "19.90",

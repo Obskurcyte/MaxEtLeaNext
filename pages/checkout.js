@@ -246,6 +246,8 @@ const CheckoutScreen = props => {
       if(trueData && trueData.pays){
         setPays(trueData.pays);
       }
+
+      changeCartProductsExtraDiscounts();
     }
   }, [goodCodePromo]);
 
@@ -263,6 +265,61 @@ const CheckoutScreen = props => {
   ]
 
   //---------------------AJOUTER PANIER-----------------------//
+
+  const changeCartProductsExtraDiscounts = () =>{
+    let existingCart = localStorage.getItem('woo-next-cart');
+    existingCart = JSON.parse(existingCart);
+    if(existingCart != null){
+      const playboardExistsIndex = isProductInCart(existingCart.products, products[2].id);
+      if (-1 < playboardExistsIndex) {
+        const xyloExistsIndex = isProductInCart(existingCart.products, products[0].id);
+        const tourExistsIndex = isProductInCart(existingCart.products, products[1].id);
+        if(-1 < xyloExistsIndex){
+          const qtyXylo = existingCart.products[xyloExistsIndex].qty;
+          const updatedCart = removeProduct(products[0].id);
+          const newProduct = createNewProduct(products[5], products[5].price, qtyXylo)
+          updatedCart.products.push(newProduct);
+          setCart(updatedCart)
+          setCommandeCart(updatedCart)
+          localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+          localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
+        }
+        if(-1 < tourExistsIndex){
+          const qtyTour = existingCart.products[tourExistsIndex].qty;
+          const updatedCart = removeProduct(products[1].id);
+          const newProduct = createNewProduct(products[6], products[6].price, qtyTour)
+          updatedCart.products.push(newProduct);
+          setCart(updatedCart)
+          setCommandeCart(updatedCart)
+          localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+          localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
+        }
+      }else{
+        const disXyloExistsIndex = isProductInCart(existingCart.products, products[5].id);
+        const distourExistsIndex = isProductInCart(existingCart.products, products[6].id);
+        if(-1 < disXyloExistsIndex){
+          const qtyXylo = existingCart.products[disXyloExistsIndex].qty;
+          const updatedCart = removeProduct(products[5].id);
+          const newProduct = createNewProduct(products[0], products[0].price, qtyXylo)
+          updatedCart.products.push(newProduct);
+          setCart(updatedCart)
+          setCommandeCart(updatedCart)
+          localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+          localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
+        }
+        if(-1 < distourExistsIndex){
+          const qtyTour = existingCart.products[distourExistsIndex].qty;
+          const updatedCart = removeProduct(products[6].id);
+          const newProduct = createNewProduct(products[1], products[1].price, qtyTour)
+          updatedCart.products.push(newProduct);
+          setCart(updatedCart)
+          setCommandeCart(updatedCart)
+          localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+          localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
+        }
+      }
+    }
+  }
 
 
   const getFloatVal = (string) => {
@@ -303,7 +360,7 @@ const CheckoutScreen = props => {
 
 
   const updateCartTour = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProductsTour(existingCart.products, products[1], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProductsTour(existingCart.products, product, qtyToBeAdded, newQty);
     if(updatedProducts == null) return null;
     const addPrice = (total, item) => {
       total.totalPrice = item.totalPrice;
@@ -341,7 +398,7 @@ const CheckoutScreen = props => {
 
 
   const getUpdatedProductsTour = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, products[1].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart, product.id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -349,7 +406,7 @@ const CheckoutScreen = props => {
       if(updatedProduct.qty + qtyToBeAdded < 0)
         return updatedProducts;
       else if(updatedProduct.qty + qtyToBeAdded == 0){
-        const updatedCart = removeProduct(products[1].id);
+        const updatedCart = removeProduct(product.id);
         if(updatedCart == null) return null;
         setCart(updatedCart);
         return updatedCart.products;
@@ -358,9 +415,11 @@ const CheckoutScreen = props => {
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
       return updatedProducts;
     } else {
-      let productPrice = parseFloat(product.price);
-      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
-      existingProductsInCart.push(newProduct);
+      if(qtyToBeAdded > 0){
+        let productPrice = parseFloat(product.price);
+        const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+        existingProductsInCart.push(newProduct);
+      }
       return existingProductsInCart
     }
   };
@@ -392,7 +451,11 @@ const CheckoutScreen = props => {
         }
         else {
           setCheckedTour(false);
-          updatedCart = updateCartTour(existingCart, products[1], -1);
+          const playboardExistsIndex = isProductInCart(existingCart.products, products[2].id);
+          if (-1 < playboardExistsIndex) {//Si playboard, on retire la seconde version de la tour
+            updatedCart = updateCartTour(existingCart, products[6], -1);
+          }
+          else updatedCart = updateCartTour(existingCart, products[1], -1);
         }
         setCart(updatedCart)
         setCommandeCart(updatedCart)
@@ -405,11 +468,12 @@ const CheckoutScreen = props => {
         }
         else setCheckedTour(false);
       }
+      changeCartProductsExtraDiscounts();
     }
   }
 
   const updateCartXylo = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProductsXylo(existingCart.products, products[0], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProductsXylo(existingCart.products, product, qtyToBeAdded, newQty);
     if(updatedProducts == null) return null;
     const addPrice = (total, item) => {
 
@@ -445,7 +509,7 @@ const CheckoutScreen = props => {
 
 
   const getUpdatedProductsXylo = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, products[0].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart, product.id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -453,7 +517,7 @@ const CheckoutScreen = props => {
       if(updatedProduct.qty + qtyToBeAdded < 0)
         return updatedProducts;
       else if(updatedProduct.qty + qtyToBeAdded == 0){
-        const updatedCart = removeProduct(products[0].id);
+        const updatedCart = removeProduct(product.id);
         if(updatedCart == null) return null;
         setCart(updatedCart);
         return updatedCart.products;
@@ -462,9 +526,11 @@ const CheckoutScreen = props => {
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
       return updatedProducts;
     } else {
-      let productPrice = parseFloat(product.price);
-      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
-      existingProductsInCart.push(newProduct);
+      if(qtyToBeAdded > 0){
+        let productPrice = parseFloat(product.price);
+        const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+        existingProductsInCart.push(newProduct);
+      }
       return existingProductsInCart
     }
   };
@@ -484,7 +550,11 @@ const CheckoutScreen = props => {
         }
         else {
           setCheckedXylo(false);
-          updatedCart = updateCartXylo(existingCart, products[0], -1);
+          const playboardExistsIndex = isProductInCart(existingCart.products, products[2].id);
+          if (-1 < playboardExistsIndex) {//Si playboard, on retire la seconde version de la tour
+            updatedCart = updateCartXylo(existingCart, products[5], -1);
+          }
+          else updatedCart = updateCartXylo(existingCart, products[0], -1);
         }
         setCart(updatedCart)
         setCommandeCart(updatedCart)
@@ -497,6 +567,7 @@ const CheckoutScreen = props => {
         }
         else setCheckedXylo(false);
       }
+      changeCartProductsExtraDiscounts();
     }
   }
 
@@ -554,9 +625,11 @@ const CheckoutScreen = props => {
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
       return updatedProducts;
     } else {
-      let productPrice = parseFloat(product.price);
-      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
-      existingProductsInCart.push(newProduct);
+      if(qtyToBeAdded > 0){
+        let productPrice = parseFloat(product.price);
+        const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+        existingProductsInCart.push(newProduct);
+      }
       return existingProductsInCart
     }
   };
@@ -589,6 +662,7 @@ const CheckoutScreen = props => {
         }
         else setCheckedPlayboard(false);
       }
+      changeCartProductsExtraDiscounts();
     }
   }
 
@@ -652,9 +726,11 @@ const CheckoutScreen = props => {
       updatedProduct.totalPrice = parseFloat(updatedProduct.price * updatedProduct.qty).toFixed(2);
       return updatedProducts;
     } else {
-      let productPrice = parseFloat(product.price);
-      const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
-      existingProductsInCart.push(newProduct);
+      if(qtyToBeAdded > 0){
+        let productPrice = parseFloat(product.price);
+        const newProduct = createNewProduct(product, productPrice, qtyToBeAdded)
+        existingProductsInCart.push(newProduct);
+      }
       return existingProductsInCart
     }
   };
@@ -687,6 +763,7 @@ const CheckoutScreen = props => {
         }
         else setCheckedEbookPlayboard(false);
       }
+      changeCartProductsExtraDiscounts();
     }
   }
 
@@ -861,9 +938,7 @@ const CheckoutScreen = props => {
     }
   }
 
-  const [checkedEbookPlayboard, setCheckedEbookPlayboard] = useState(false);
-  const [codePromoIncorrect, setCodePromoIncorrect] = useState(false);
-  const [codePromoLoading, setCodePromoLoading] = useState(false);
+
 
   //-------------------- LIVRAISON ----------------------------
 
@@ -892,6 +967,26 @@ const CheckoutScreen = props => {
   const [checkedPlayboard, setCheckedPlayboard] = useState(false);
   const [checkedTour, setCheckedTour] = useState(false);
   const [checkedXylo, setCheckedXylo] = useState(false);
+  const [checkedEbookPlayboard, setCheckedEbookPlayboard] = useState(false);
+  const [codePromoIncorrect, setCodePromoIncorrect] = useState(false);
+  const [codePromoLoading, setCodePromoLoading] = useState(false);
+
+  useEffect(() => {
+    let existingCart = localStorage.getItem('woo-next-cart');
+    existingCart = JSON.parse(existingCart)
+    if(existingCart != null && (isProductInCart(existingCart.products, products[0].id) > -1 || isProductInCart(existingCart.products, products[5].id) > -1)){
+      setCheckedXylo(true);
+    }
+    if(existingCart != null && (isProductInCart(existingCart.products, products[1].id) > -1 || isProductInCart(existingCart.products, products[6].id) > -1)){
+      setCheckedTour(true);
+    }
+    if(existingCart != null && isProductInCart(existingCart.products, products[2].id) > -1){
+      setCheckedPlayboard(true);
+    }
+    if(existingCart != null && isProductInCart(existingCart.products, products[3].id) > -1){
+      setCheckedEbookPlayboard(true);
+    }
+  }, []);
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
@@ -1055,35 +1150,6 @@ const CheckoutScreen = props => {
 
   const fetchAffiliates = async () => {
     const encoded = window.btoa("51c3be50ab9c71d50de81306ddb8590a:bdf2b2c8119512ea65c31d49d96c7e92")
-    ///wp-json/affwp/v1/affiliates
-    ///wp-json/affwp/v1/referrals?user_name=theo&amount=15&status=unpaid
-
-    /*const res = await fetch(`https://maxandlea.fr/wp-json/affwp/v1/affiliates?user=1`, {
-        //method: 'POST',
-        headers: {
-          'Authorization': "Basic "+encoded
-        }
-      })
-    const newData = await res.json();
-    var aff_id = 0;
-    newData.forEach( aff => {
-      if(localStorage.getItem('ref').toLowerCase()==aff.user.user_login.toLowerCase()){
-        aff_id = aff.affiliate_id;
-      }
-    });
-    if(aff_id != 0){
-      const linkRefCreate = `https://maxandlea.fr/wp-json/affwp/v1/referrals?affiliate_id=`+aff_id+`&amount=`+totalPrice2.toFixed(2)+`&status=unpaid`;
-      const ref = await fetch( linkRefCreate, {
-        method: 'POST',
-        headers: {
-          'Authorization': "Basic "+encoded
-        }
-      })
-      const newRef = await ref.json();
-      console.log(newRef);
-    }*/
-    //const coupons = await getCoupons();
-    //console.log(coupons);
     var aff_id = 0;
     var is_code = false;
     const WooCommerce = new WooCommerceRestApi({

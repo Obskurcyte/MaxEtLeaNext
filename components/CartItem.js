@@ -2,14 +2,65 @@ import React, {useContext, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import * as productAction from "../store/actions/product";
 import {AppContext} from "./context/AppContext";
-import * as products from '../products'
+import * as productFile from "../products";
 
 
 const CartItem = ({item}) => {
 
   const [cart, setCart] = useContext(AppContext)
 
-  console.log('item', item)
+  const products = productFile.products
+
+  const changeCartProductsExtraDiscounts = () =>{
+    let existingCart = localStorage.getItem('woo-next-cart');
+    existingCart = JSON.parse(existingCart);
+    if(existingCart != null){
+      const playboardExistsIndex = isProductInCart(existingCart.products, products[2].id);
+      if (-1 < playboardExistsIndex) {
+        const xyloExistsIndex = isProductInCart(existingCart.products, products[0].id);
+        const tourExistsIndex = isProductInCart(existingCart.products, products[1].id);
+        if(-1 < xyloExistsIndex){
+          const qtyXylo = existingCart.products[xyloExistsIndex].qty;
+          const updatedCart = removeProduct(products[0].id);
+          const newProduct = createNewProduct(products[5], products[5].price, qtyXylo)
+          updatedCart.products.push(newProduct);
+          setCart(updatedCart)
+          localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+          localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
+        }
+        if(-1 < tourExistsIndex){
+          const qtyTour = existingCart.products[tourExistsIndex].qty;
+          const updatedCart = removeProduct(products[1].id);
+          const newProduct = createNewProduct(products[6], products[6].price, qtyTour)
+          updatedCart.products.push(newProduct);
+          setCart(updatedCart)
+          localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+          localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
+        }
+      }else{
+        const disXyloExistsIndex = isProductInCart(existingCart.products, products[5].id);
+        const distourExistsIndex = isProductInCart(existingCart.products, products[6].id);
+        if(-1 < disXyloExistsIndex){
+          const qtyXylo = existingCart.products[disXyloExistsIndex].qty;
+          const updatedCart = removeProduct(products[5].id);
+          const newProduct = createNewProduct(products[0], products[0].price, qtyXylo)
+          updatedCart.products.push(newProduct);
+          setCart(updatedCart)
+          localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+          localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
+        }
+        if(-1 < distourExistsIndex){
+          const qtyTour = existingCart.products[distourExistsIndex].qty;
+          const updatedCart = removeProduct(products[6].id);
+          const newProduct = createNewProduct(products[1], products[1].price, qtyTour)
+          updatedCart.products.push(newProduct);
+          setCart(updatedCart)
+          localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+          localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
+        }
+      }
+    }
+  }
 
 
 
@@ -192,6 +243,7 @@ const CartItem = ({item}) => {
   const handleRemoveProduct = (event, productId) => {
     const updatedCart = removeProduct(productId);
     setCart(updatedCart)
+    changeCartProductsExtraDiscounts();
   }
 
 
