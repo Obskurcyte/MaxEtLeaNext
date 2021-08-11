@@ -42,7 +42,14 @@ const CartItem = ({item}) => {
         const distourExistsIndex = isProductInCart(existingCart.products, products[6].id);
         if(-1 < disXyloExistsIndex){
           const qtyXylo = existingCart.products[disXyloExistsIndex].qty;
-          const updatedCart = removeProduct(products[5].id);
+          let updatedCart = removeProduct(products[5].id);
+          if(updatedCart == null){
+            updatedCart = {
+              products: [],
+              totalProductCount: 1,
+              totalProductsPrice: products[0].price
+            }
+          }
           const newProduct = createNewProduct(products[0], products[0].price, qtyXylo)
           updatedCart.products.push(newProduct);
           setCart(updatedCart)
@@ -51,7 +58,14 @@ const CartItem = ({item}) => {
         }
         if(-1 < distourExistsIndex){
           const qtyTour = existingCart.products[distourExistsIndex].qty;
-          const updatedCart = removeProduct(products[6].id);
+          let updatedCart = removeProduct(products[6].id);
+          if(updatedCart == null){
+            updatedCart = {
+              products: [],
+              totalProductCount: 1,
+              totalProductsPrice: products[1].price
+            }
+          }
           const newProduct = createNewProduct(products[1], products[1].price, qtyTour)
           updatedCart.products.push(newProduct);
           setCart(updatedCart)
@@ -130,10 +144,12 @@ const CartItem = ({item}) => {
 
   const createNewProduct = (product, productPrice, qty) => {
     return {
-      productId: product.productId,
+      productId: product.id,
+      oldPrice: product.priceAugmente,
       name: product.name,
       price: productPrice,
       qty: qty,
+      image: product.image,
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };
