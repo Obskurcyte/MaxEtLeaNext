@@ -2,9 +2,11 @@ import React, {useContext, useEffect, useState} from 'react';
 import styles from './CardHover.module.css'
 import {AppContext} from "./context/AppContext";
 import Link from 'next/link';
+import * as product from "../products";
 
 
 const CardHoverItem = ({item}) => {
+
   const [cart, setCart] = useContext(AppContext);
   console.log('cart', cart)
 
@@ -194,6 +196,8 @@ const CardHover = () => {
   const [cart, setCart] = useContext(AppContext);
   const [codePromo, setCodePromo] = useState('')
 
+  const products = product.products
+
 
   useEffect(() => {
     if ( process.browser) {
@@ -215,8 +219,6 @@ const CardHover = () => {
     }
   }
 
-
-
   let playboardReducPrice = 0
   let playboardInCart = []
   if (cart) {
@@ -225,7 +227,7 @@ const CardHover = () => {
     })
     if (playboard.length !== 0) {
       playboardInCart = playboard
-      playboardReducPrice = playboard[0].qty * 20
+      playboardReducPrice = Number((playboard[0].qty * (products[2].priceAugmente - products[2].price)).toFixed(2))
     }
   }
 
@@ -237,7 +239,19 @@ const CardHover = () => {
     })
     if (tour.length !== 0) {
       tourInCart = tour
-      tourReducPrice = tour[0].qty * 7
+      tourReducPrice = Number((tour[0].qty * (products[1].priceAugmente - products[1].price)).toFixed(2))
+    }
+  }
+
+  let disTourReducPrice = 0
+  let disTourInCart = []
+  if (cart) {
+    const tour = cart.products.filter(obj => {
+      return obj.productId === '9692'
+    })
+    if (tour.length !== 0) {
+      disTourInCart = tour
+      disTourReducPrice = Number((tour[0].qty * (products[6].priceAugmente - products[6].price)).toFixed(2))
     }
   }
 
@@ -250,7 +264,19 @@ const CardHover = () => {
     })
     if (xylo.length !== 0) {
       xyloInCart = xylo
-      xyloReducPrice = xylo[0].qty * 9
+      xyloReducPrice = Number((xylo[0].qty * (products[0].priceAugmente - products[0].price)).toFixed(2))
+    }
+  }
+
+  let disXyloReducPrice = 0
+  let disXyloInCart = []
+  if (cart) {
+    const xylo = cart.products.filter(obj => {
+      return obj.productId === '9697'
+    })
+    if (xylo.length !== 0) {
+      disXyloInCart = xylo
+      disXyloReducPrice = Number((xylo[0].qty * (products[5].priceAugmente - products[5].price)).toFixed(2))
     }
   }
 
@@ -285,10 +311,7 @@ const CardHover = () => {
   let totalPrice1 = sumPanier - discountPanier - reducCodePromo
 
   console.log(codePromo?.amount)
-  const totalDiscount = parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
-
-
-
+  const totalDiscount = parseFloat(disXyloReducPrice) + parseFloat(disTourReducPrice) + parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
 
 
   return (

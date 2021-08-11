@@ -1101,7 +1101,7 @@ const CheckoutScreen = props => {
     })
     if (playboard.length !== 0) {
       playboardInCart = playboard
-      playboardReducPrice = playboard[0].qty * 20
+      playboardReducPrice = Number((playboard[0].qty * (products[2].priceAugmente - products[2].price)).toFixed(2))
     }
   }
 
@@ -1113,7 +1113,19 @@ const CheckoutScreen = props => {
     })
     if (tour.length !== 0) {
       tourInCart = tour
-      tourReducPrice = tour[0].qty * 7
+      tourReducPrice = Number((tour[0].qty * (products[1].priceAugmente - products[1].price)).toFixed(2))
+    }
+  }
+
+  let disTourReducPrice = 0
+  let disTourInCart = []
+  if (cart) {
+    const tour = cart.products.filter(obj => {
+      return obj.productId === '9692'
+    })
+    if (tour.length !== 0) {
+      disTourInCart = tour
+      disTourReducPrice = Number((tour[0].qty * (products[6].priceAugmente - products[6].price)).toFixed(2))
     }
   }
 
@@ -1126,7 +1138,19 @@ const CheckoutScreen = props => {
     })
     if (xylo.length !== 0) {
       xyloInCart = xylo
-      xyloReducPrice = xylo[0].qty * 9
+      xyloReducPrice = Number((xylo[0].qty * (products[0].priceAugmente - products[0].price)).toFixed(2))
+    }
+  }
+
+  let disXyloReducPrice = 0
+  let disXyloInCart = []
+  if (cart) {
+    const xylo = cart.products.filter(obj => {
+      return obj.productId === '9697'
+    })
+    if (xylo.length !== 0) {
+      disXyloInCart = xylo
+      disXyloReducPrice = Number((xylo[0].qty * (products[5].priceAugmente - products[5].price)).toFixed(2))
     }
   }
 
@@ -1236,7 +1260,7 @@ const CheckoutScreen = props => {
   let totalPrice1 = sumPanier - discountPanier - reducCodePromo
 
   console.log(sumPanier)
-  const totalDiscount = parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
+  const totalDiscount = parseFloat(disXyloReducPrice) + parseFloat(disTourReducPrice) + parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
 
   totalPrice2 = totalPrice1 + prixLivraison
   return (
@@ -1359,10 +1383,28 @@ const CheckoutScreen = props => {
                   </div>
 
                   <div>
+                    {disXyloInCart.length !== 0 && (
+                      <div className="prix-reduc-container">
+                        <p className="sousTotalText">Discount Xylophone avec PlayBoard</p>
+                        <p className="itemTotalPrice">{disXyloReducPrice} €</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div>
                     {tourInCart.length !== 0 && (
                       <div className="prix-reduc-container">
                         <p className="sousTotalText">Discount Tour</p>
                         <p className="itemTotalPrice">{tourReducPrice} €</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div>
+                    {disTourInCart.length !== 0 && (
+                      <div className="prix-reduc-container">
+                        <p className="sousTotalText">Discount Tour avec PlayBoard</p>
+                        <p className="itemTotalPrice">{disTourReducPrice} €</p>
                       </div>
                     )}
                   </div>
@@ -1518,7 +1560,7 @@ const CheckoutScreen = props => {
                         <strike className="innerArticleStrike">{products[0].priceAugmente} €</strike>
                         <span className="innerArticlePrice">{products[0].price} €</span>
                         <br></br>
-                        <span className="innerArticleReduction">(-41% economisez {Math.round(products[0].priceAugmente - products[0].price)} €)</span>
+                        <span className="innerArticleReduction">Seulement {products[5].price}€ avec l’achat de la PlayBoard</span>
                         </label>
                     </div>
                     <div className="innerArticleBottom" onClick={() => {
@@ -1542,7 +1584,7 @@ const CheckoutScreen = props => {
                         <strike className="innerArticleStrike">{products[1].priceAugmente} €</strike>
                         <span className="innerArticlePrice">{products[1].price} €</span>
                         <br></br>
-                        <span className="innerArticleReduction">(-41% economisez {Math.round(products[1].priceAugmente - products[1].price)} €)</span>
+                        <span className="innerArticleReduction">Seulement {products[6].price}€ avec l’achat de la PlayBoard</span>
                         </label>
                     </div>
                     <div className="innerArticleBottom" onClick={() => {
