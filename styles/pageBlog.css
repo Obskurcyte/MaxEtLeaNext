@@ -2,6 +2,16 @@
   text-align: justify;
 }
 
+.jeuContainer .container1000 a{
+  font-size: 1rem;
+  color: #0990ea !important;
+  font-family: roboto, sans-serif;
+}
+
+.jeuContainer .container1000 p{
+  font-family: roboto, sans-serif;
+}
+
 .travail-education-top{
   background-image: url("/child-fun-family.webp");
   background-position: center center;
@@ -46,6 +56,13 @@
 .jouets-bois-top{
   background-image: url("/child-wooden-blocks-bg.webp");
   background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.musique-top{
+  background-image: url("/baby-guitar-rock.jpg");
+  background-position: center -200px;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -361,6 +378,9 @@
     height: 200px;
   }
   .enfant-ecran-top{
+    background-position: center center;
+  }
+  .musique-top{
     background-position: center center;
   }
   .textPsy {

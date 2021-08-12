@@ -1,24 +1,23 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import Header from "../../components/Header";
-import { faCalendar } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {Card, Col, Container, Row} from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import Link from "next/link";
 import Footer from "../../components/Footer";
-import {AppContext} from "../../components/context/AppContext";
+import { AppContext } from "../../components/context/AppContext";
 import * as product from "../../products";
 import i18next from "i18next";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-const PourquoiChoisirDesJouetsEnBois = () => {
+const MusiquesEtJeunesEnfants = () => {
 
   const router = useRouter();
 
   const [cart, setCart] = useContext(AppContext);
   const products = product.products
-
 
   const lang = i18next.language;
 
@@ -26,7 +25,7 @@ const PourquoiChoisirDesJouetsEnBois = () => {
 
   const getFloatVal = (string) => {
     let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
-    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)): '';
+    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)) : '';
   };
 
   const addFirstProduct = (product) => {
@@ -58,7 +57,7 @@ const PourquoiChoisirDesJouetsEnBois = () => {
 
 
   const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProducts(existingCart.products, products[2], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProducts(existingCart.products, products[0], qtyToBeAdded, newQty);
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -70,7 +69,7 @@ const PourquoiChoisirDesJouetsEnBois = () => {
     }
 
     // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
-    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+    let total = updatedProducts.reduce(addPrice, { totalPrice: 0, qty: 0 })
 
     const updatedCart = {
       products: updatedProducts,
@@ -97,8 +96,8 @@ const PourquoiChoisirDesJouetsEnBois = () => {
    */
 
 
-  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, products[2].id);
+  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty = false) => {
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[0].id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -133,122 +132,127 @@ const PourquoiChoisirDesJouetsEnBois = () => {
       let existingCart = localStorage.getItem('woo-next-cart');
       console.log('clicked')
       console.log('existingCart', existingCart)
-      if (existingCart!=null) {
+      if (existingCart != null) {
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
-        const updatedCart = updateCart(existingCart, products[2], qtyToBeAdded);
+        const updatedCart = updateCart(existingCart, products[0], qtyToBeAdded);
         setCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[2]);
+        const newCart = addFirstProduct(products[0]);
         setCart(newCart)
       }
     }
   }
 
-
   return (
     <div className='jeuContainer'>
       <Head>
-        <title>Max And Lea - Blog - {t("PourquoiChoisirDesJouetsEnBois.1")}</title>
+        <title>Max And Lea - Blog - {t("MusiqueJeunes.1")}</title>
       </Head>
       <Header />
-      <div className="img-blog-container jouets-bois-top">
+      <div className="img-blog-container musique-top">
       </div>
 
       <div className="container1000">
         <div className="date-container">
-          <FontAwesomeIcon icon={faCalendar} className="calendar"/>
-          <p className="date-text">{t("PourquoiChoisirDesJouetsEnBois.0")}</p>
+          <FontAwesomeIcon icon={faCalendar} className="calendar" />
+          <p className="date-text">{t("MusiqueJeunes.0")}</p>
         </div>
 
-        <h1 style={{textAlign: 'center'}}>{t("PourquoiChoisirDesJouetsEnBois.1")}</h1>
-        <hr/>
+        <h1 style={{ textAlign: 'center' }}>{t("MusiqueJeunes.1")}</h1>
+        <hr />
         <div className="introduction">
-          <p>{t("PourquoiChoisirDesJouetsEnBois.2")}</p>
+          <p>{t("MusiqueJeunes.2")}</p>
         </div>
-        <hr/>
+        <hr />
 
         <div className="row">
-          <div className="col-sm-8">
-            <p>
+          <div className="col-sm-6">
+            <p>{t("MusiqueJeunes.3")}
+
               <ul>
-                <li>{t("PourquoiChoisirDesJouetsEnBois.3")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.4")}</span>{t("PourquoiChoisirDesJouetsEnBois.5")}<a
-                  href="https://www.pefc-france.org/" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>PEFC</a>{t("PourquoiChoisirDesJouetsEnBois.6")}<a href="https://fr.fsc.org/fr-fr" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>FSC</a>{t("PourquoiChoisirDesJouetsEnBois.7")}</li>
-                <li>{t("PourquoiChoisirDesJouetsEnBois.8")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.9")}</span>{t("PourquoiChoisirDesJouetsEnBois.10")}</li>
-                <li>{t("PourquoiChoisirDesJouetsEnBois.11")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.12")}</span>{t("PourquoiChoisirDesJouetsEnBois.13")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.14")}</span>{t("PourquoiChoisirDesJouetsEnBois.15")}</li>
-                <li>{t("PourquoiChoisirDesJouetsEnBois.16")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.17")}</span>{t("PourquoiChoisirDesJouetsEnBois.18")}</li>
+                <li><span style={{ fontWeight: 'bold' }}>{t("MusiqueJeunes.4")}</span><br></br>{t("MusiqueJeunes.5")}</li>
+                <li><span style={{ fontWeight: 'bold' }}>{t("MusiqueJeunes.6")}</span><br></br>{t("MusiqueJeunes.7")}</li>
+                <li><span style={{ fontWeight: 'bold' }}>{t("MusiqueJeunes.8")}</span><br></br>{t("MusiqueJeunes.9")}</li>
+                <li><span style={{ fontWeight: 'bold' }}>{t("MusiqueJeunes.10")}</span><br></br>{t("MusiqueJeunes.11")}</li>
+                <li><span style={{ fontWeight: 'bold' }}>{t("MusiqueJeunes.12")}</span><br></br>{t("MusiqueJeunes.13")}</li>
               </ul>
             </p>
           </div>
-          <div className="col-sm-4">
-            <img src={'/wood-toys.webp'} alt="" className="jouets-bois-img"/>
+          <div className="col-sm-6">
+            <img src={'/saxophone-child.webp'} alt="" className="enfants-souriant-blog" />
           </div>
-
         </div>
 
         <div className="description-blog">
-          <p>{t("PourquoiChoisirDesJouetsEnBois.19")}
-            <br/>
-            {t("PourquoiChoisirDesJouetsEnBois.20")}
-            <br/>
-            {t("PourquoiChoisirDesJouetsEnBois.21")}
-            <br/>
-            {t("PourquoiChoisirDesJouetsEnBois.22")}</p>
+          <p>{t("MusiqueJeunes.14")}<a href="https://www.harmony-project.org/" target="_blank">Harmony Project </a>{t("MusiqueJeunes.15")}</p>
         </div>
 
-        <hr/>
+        <div className="img-blog2-container">
+          <img src={'/music-bebe.webp'} alt="" className="img-blog2" />
+        </div>
 
         <div className="conseilMaxEtLea">
-          <h4>{t("PourquoiChoisirDesJouetsEnBois.23")}</h4>
+          <h4>{t("MusiqueJeunes.16")}</h4>
 
           <div className="conseilTitre">
-            <img src="/triangle.svg" alt="" className='titre-img'/>
-            <h5>{t("PourquoiChoisirDesJouetsEnBois.24")}</h5>
+            <img src="/triangle.svg" alt="" className='titre-img' />
+            <h5>{t("MusiqueJeunes.17")}</h5>
           </div>
           <div className="conseildescription">
-            <p>{t("PourquoiChoisirDesJouetsEnBois.25")}</p>
-          </div>
-
-          <div className="conseilTitre">
-            <img src="/carre.svg" alt="" className='titre-img'/>
-            <h5>{t("PourquoiChoisirDesJouetsEnBois.26")}</h5>
-          </div>
-          <div className="conseildescription">
-            <p>{t("PourquoiChoisirDesJouetsEnBois.27")}</p>
+            <p>{t("MusiqueJeunes.18")}</p>
           </div>
 
           <div className="conseilTitre">
-            <img src="/etoile.svg" alt="" className='titre-img'/>
-            <h5>{t("PourquoiChoisirDesJouetsEnBois.28")}</h5>
+            <img src="/carre.svg" alt="" className='titre-img' />
+            <h5>{t("MusiqueJeunes.19")}</h5>
           </div>
           <div className="conseildescription">
-            <p>{t("PourquoiChoisirDesJouetsEnBois.29")}</p>
+            <p>{t("MusiqueJeunes.20")}</p>
           </div>
 
           <div className="conseilTitre">
-            <img src="/cercle.svg" alt="" className='titre-img'/>
-            <h5>{t("PourquoiChoisirDesJouetsEnBois.30")}</h5>
+            <img src="/etoile.svg" alt="" className='titre-img' />
+            <h5>{t("MusiqueJeunes.21")}</h5>
           </div>
           <div className="conseildescription">
-            <p>{t("PourquoiChoisirDesJouetsEnBois.31")}</p>
+            <p>{t("MusiqueJeunes.22")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/cercle.svg" alt="" className='titre-img' />
+            <h5>{t("MusiqueJeunes.23")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("MusiqueJeunes.24")}<a href="/xylophone"> {t("MusiqueJeunes.25")} </a>{t("MusiqueJeunes.26")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/triangle.svg" alt="" className='titre-img' />
+            <h5>{t("MusiqueJeunes.27")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("MusiqueJeunes.28")}</p>
           </div>
         </div>
 
         <div className="img-blog2-container">
-          <img src={'/toddler-building-block-pull.webp'} alt="" className="img-blog2"/>
+          <img src={'/xylo-Facing.webp'} alt="" className="img-blog2" />
         </div>
       </div>
 
-        <div className="aimez-aussi">
+        <div className="aimez-aussi" style={{marginTop:"0px"}}>
           <h2>{t("Blogs.19")}</h2>
           <Container>
             <Row className="row-card">
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'/father.webp'} variant="top" className="math-image" />
+                  <Link href='/blogs/PourquoiLesEnfantsJouent'>
+                    <Card.Img src={'/Playboard-Angelique-Kosinski.webp'} variant="top" className="math-image" />
+                  </Link>
                   <Card.Body className="card-body">
-                    <Card.Title className="card-title">{t("Blogs.11")}</Card.Title>
-                    <Link href='/blogs/AideMoiAFaireSeul'>
+                    <Card.Title className="card-title">{t("Blogs.5")}</Card.Title>
+                    <Link href='/blogs/PourquoiLesEnfantsJouent'>
                       <a className="read-more-button" >{t("Blogs.2")}</a>
                     </Link>
                   </Card.Body>
@@ -256,33 +260,35 @@ const PourquoiChoisirDesJouetsEnBois = () => {
               </Col>
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
-              <Card className="card-list-container">
-                <Link href='/playboard'>
-                  <Card.Img src={products[2].image} variant="top" className="math-image" />
-                </Link>
-                <Card.Body className="card-body">
-                  <Card.Title className="card-title card-no-margin">{t("products.playboard")}<br />
-                    <div className='playboard-card'>
-                      <p className='prix-playboard-card-cross'>{products[2].priceAugmente}</p>
-                      <p className='prix-playboard-card-true'>{products[2].price}</p>
-                    </div>
-                  </Card.Title>
-                  <div onClick={() => {
+                <Card className="card-list-container">
+                  <Link href='/playboard'>
+                    <Card.Img src={products[0].image} variant="top" className="math-image" />
+                  </Link>
+                  <Card.Body className="card-body">
+                    <Card.Title className="card-title card-no-margin">{t("products.xylo")}<br/>
+                      <div className='playboard-card'>
+                        <p className='prix-playboard-card-cross'>{products[0].priceAugmente}</p>
+                        <p className='prix-playboard-card-true'>{products[0].price}</p>
+                      </div>
+                    </Card.Title>
+                    <div onClick={() => {
                     handleAddToCart()
                     router.push('/checkout')
                   }}>
-                    <a className="read-more-button">{t("products.cart")}</a>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
+                      <a className="read-more-button">{t("products.cart")}</a>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'/baby-guitar-rock.jpg'} variant="top" className="math-image" />
+                  <Link href='/blogs/ConcilierTravailEtEducation'>
+                    <Card.Img src={'/child-fun-family.webp'} variant="top" className="math-image" />
+                  </Link>
                   <Card.Body className="card-body">
-                    <Card.Title className="card-title">{t("Blogs.17")}</Card.Title>
-                    <Link href='/blogs/MusiqueEtJeunesEnfants'>
+                    <Card.Title className="card-title">{t("Blogs.9")}</Card.Title>
+                    <Link href='/blogs/ConcilierTravailEtEducation'>
                       <a className="read-more-button" >{t("Blogs.2")}</a>
                     </Link>
                   </Card.Body>
@@ -294,8 +300,9 @@ const PourquoiChoisirDesJouetsEnBois = () => {
         </div>
 
       <Footer />
+
     </div>
   );
 };
 
-export default PourquoiChoisirDesJouetsEnBois;
+export default MusiquesEtJeunesEnfants;

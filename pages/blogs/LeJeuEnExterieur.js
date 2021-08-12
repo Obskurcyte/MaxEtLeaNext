@@ -144,7 +144,7 @@ const LeJeuEnExterieur = () => {
     <div className='jeuContainer'>
       
       <Head>
-        <title>Max And Lea - Blog - Le jeu en Extérieur</title>
+        <title>Max And Lea - Blog - {t("LeJeuEnExterieur.1")}</title>
       </Head>
       <Header />
       
@@ -224,9 +224,8 @@ const LeJeuEnExterieur = () => {
       </div>
 
       </div>
-      {lang === 'fr' && (
         <div className="aimez-aussi">
-          <h2>Vous pouriez aimer aussi</h2>
+          <h2>{t("Blogs.19")}</h2>
           <Container>
             <Row className="row-card">
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
@@ -235,35 +234,35 @@ const LeJeuEnExterieur = () => {
                     <Card.Img src={'/family-kids-baby.webp'} variant="top" className="math-image" />
                   </Link>
                   <Card.Body className="card-body">
-                    <Card.Title className="card-title">Concilier travail et éducation</Card.Title>
+                    <Card.Title className="card-title">{t("Blogs.9")}</Card.Title>
                     <Link href='/blogs/ConcilierTravailEtEducation'>
-                      <a className="read-more-button" >Lire plus</a>
+                      <a className="read-more-button" >{t("Blogs.2")}</a>
                     </Link>
                   </Card.Body>
                 </Card>
               </Col>
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
-                <Card className="card-list-container">
-                  <Link href='/playboard'>
-                    <Card.Img src={'/playboardGood.webp'} variant="top" className="math-image" />
-                  </Link>
-                  <Card.Body className="card-body">
-                    <Card.Title className="card-title card-no-margin">La PlayBoard<br/>
-                      <div className='playboard-card'>
-                        <p className='prix-playboard-card-cross'>49,90€</p>
-                        <p className='prix-playboard-card-true'>29,90€</p>
-                      </div>
-                    </Card.Title>
-                    <div onClick={() => {
+              <Card className="card-list-container">
+                <Link href='/playboard'>
+                  <Card.Img src={products[2].image} variant="top" className="math-image" />
+                </Link>
+                <Card.Body className="card-body">
+                  <Card.Title className="card-title card-no-margin">{t("products.playboard")}<br />
+                    <div className='playboard-card'>
+                      <p className='prix-playboard-card-cross'>{products[2].priceAugmente}</p>
+                      <p className='prix-playboard-card-true'>{products[2].price}</p>
+                    </div>
+                  </Card.Title>
+                  <div onClick={() => {
                     handleAddToCart()
                     router.push('/checkout')
                   }}>
-                      <a className="read-more-button">Ajouter au panier</a>
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Col>
+                    <a className="read-more-button">{t("products.cart")}</a>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
@@ -271,9 +270,9 @@ const LeJeuEnExterieur = () => {
                     <Card.Img src={'/enfantEcran.webp'} variant="top" className="math-image" />
                   </Link>
                   <Card.Body className="card-body">
-                    <Card.Title className="card-title">Les enfants et les écrans</Card.Title>
+                    <Card.Title className="card-title">{t("Blogs.7")}</Card.Title>
                     <Link href='/blogs/LesEnfantsEtLesEcrans'>
-                      <a className="read-more-button" >Lire plus</a>
+                      <a className="read-more-button" >{t("Blogs.2")}</a>
                     </Link>
                   </Card.Body>
                 </Card>
@@ -282,8 +281,6 @@ const LeJeuEnExterieur = () => {
             </Row>
           </Container>
         </div>
-      )}
-      
 
       <Footer />
     </div>

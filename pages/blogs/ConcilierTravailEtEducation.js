@@ -10,8 +10,11 @@ import * as product from "../../products";
 import i18next from "i18next";
 import {useTranslation} from "react-i18next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 const ConcilierTravailEtEducation = () => {
+
+  const router = useRouter();
 
   const [cart, setCart] = useContext(AppContext);
   const products = product.products
@@ -144,7 +147,7 @@ const ConcilierTravailEtEducation = () => {
   return (
     <div className='jeuContainer'>
       <Head>
-        <title>Max And Lea - Blog - Concilier travail et éducation</title>
+        <title>Max And Lea - Blog - {t("ConcilierTravailEtEducation.1")}</title>
       </Head>
       <Header />
       <div className="img-blog-container travail-education-top"></div>
@@ -243,45 +246,50 @@ const ConcilierTravailEtEducation = () => {
 
       {lang === 'fr' && (
         <div className="aimez-aussi">
-          <h2>Vous pourriez aimer aussi</h2>
+          <h2>{t("Blogs.19")}</h2>
           <Container>
             <Row className="row-card">
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
                   <Card.Img src={'/child-wooden-blocks.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
-                    <Card.Title className="card-title">Pourquoi choisir des jouets en bois ?</Card.Title>
+                    <Card.Title className="card-title">{t("Blogs.15")}</Card.Title>
                     <Link href='/blogs/PourquoiChoisirDesJouetsEnBois'>
-                      <a className="read-more-button" >Lire plus</a>
+                      <a className="read-more-button" >{t("Blogs.2")}</a>
                     </Link>
                   </Card.Body>
                 </Card>
               </Col>
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
-                <Card className="card-list-container">
-                  <Card.Img src={'/playboardGood.webp'} variant="top" className="math-image" />
-                  <Card.Body className="card-body">
-                    <Card.Title className="card-title card-no-margin">La PlayBoard<br/>
-                      <div className='playboard-card'>
-                        <p className='prix-playboard-card-cross'>49,90€</p>
-                        <p className='prix-playboard-card-true'>29,90€</p>
-                      </div>
-                    </Card.Title>
-                    <Link href="javascript:void(0);">
-                      <a className="read-more-button" onClick={handleAddToCart}>Ajouter au panier</a>
-                    </Link>
-                  </Card.Body>
-                </Card>
-              </Col>
+              <Card className="card-list-container">
+                <Link href='/playboard'>
+                  <Card.Img src={products[2].image} variant="top" className="math-image" />
+                </Link>
+                <Card.Body className="card-body">
+                  <Card.Title className="card-title card-no-margin">{t("products.playboard")}<br />
+                    <div className='playboard-card'>
+                      <p className='prix-playboard-card-cross'>{products[2].priceAugmente}</p>
+                      <p className='prix-playboard-card-true'>{products[2].price}</p>
+                    </div>
+                  </Card.Title>
+                  <div onClick={() => {
+                    handleAddToCart()
+                    router.push('/checkout')
+                  }}>
+                    <a className="read-more-button">{t("products.cart")}</a>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
                   <Card.Img src={'/Playboard-Angelique-Kosinski.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
-                    <Card.Title className="card-title">Pourquoi les enfants jouent ?</Card.Title>
+                    <Card.Title className="card-title">{t("Blogs.5")}</Card.Title>
                     <Link href='/blogs/PourquoiLesEnfantsJouent'>
-                      <a className="read-more-button" >Lire plus</a>
+                      <a className="read-more-button" >{t("Blogs.2")}</a>
                     </Link>
                   </Card.Body>
                 </Card>
