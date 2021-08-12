@@ -1,18 +1,18 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Nav } from 'react-bootstrap';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useTranslation } from 'react-i18next';
-import {AppContext} from "./context/AppContext";
+import { AppContext } from "./context/AppContext";
 import i18next from "i18next";
 import CardHover from "./CardHover";
 import Link from 'next/link';
 import * as product from '../products';
-import {getDrapeau} from "../store/actions/drapeau";
-import {useDispatch, useSelector} from "react-redux";
-import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
+import { getDrapeau } from "../store/actions/drapeau";
+import { useDispatch, useSelector } from "react-redux";
+import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import Dialog from '@material-ui/core/Dialog';
 import Checkbox from "@material-ui/core/Checkbox";
 
@@ -24,7 +24,7 @@ const HeaderPlayboard = (props) => {
 
   const updateCartEbookPlayboard = (existingCart, product, qtyToBeAdded, newQty = false) => {
     const updatedProducts = getUpdatedProductsEbookPlayboard(existingCart.products, products[3], qtyToBeAdded, newQty);
-    if(updatedProducts == null) return null;
+    if (updatedProducts == null) return null;
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -33,7 +33,7 @@ const HeaderPlayboard = (props) => {
     }
 
     // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
-    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+    let total = updatedProducts.reduce(addPrice, { totalPrice: 0, qty: 0 })
 
     const updatedCart = {
       products: updatedProducts,
@@ -61,18 +61,18 @@ const HeaderPlayboard = (props) => {
    */
 
 
-  const getUpdatedProductsEbookPlayboard = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+  const getUpdatedProductsEbookPlayboard = (existingProductsInCart, product, qtyToBeAdded, newQty = false) => {
     const productExistsIndex = isProductInCart(existingProductsInCart, products[3].id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
       let updatedProduct = updatedProducts[productExistsIndex];
-      if(updatedProduct.qty + qtyToBeAdded < 0)
+      if (updatedProduct.qty + qtyToBeAdded < 0)
         return updatedProducts;
-      else if(updatedProduct.qty + qtyToBeAdded == 0){
+      else if (updatedProduct.qty + qtyToBeAdded == 0) {
 
         const updatedCart = removeProduct(products[3].id);
-        if(updatedCart == null){
+        if (updatedCart == null) {
           return null;
         }
         setCart(updatedCart);
@@ -93,11 +93,11 @@ const HeaderPlayboard = (props) => {
     if (process.browser) {
       let existingCart = localStorage.getItem('woo-next-cart');
       let commandeCart = localStorage.getItem('commande-cart');
-      if (existingCart!=null) {
+      if (existingCart != null) {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
         var updatedCart = "";
-        if(!checkedEbookPlayboard){
+        if (!checkedEbookPlayboard) {
           setCheckedEbookPlayboard(true);
           updatedCart = updateCartEbookPlayboard(existingCart, products[3], 1);
         }
@@ -108,7 +108,7 @@ const HeaderPlayboard = (props) => {
         setCart(updatedCart)
         setCommandeCart(updatedCart)
       } else {
-        if(!checkedPlayboard){
+        if (!checkedPlayboard) {
           setCheckedEbookPlayboard(true);
           const newCart = addFirstProduct(products[3]);
           setCart(newCart)
@@ -129,23 +129,23 @@ const HeaderPlayboard = (props) => {
 
     return (
       <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-        <img src="https://maxandlea.com/wp-content/uploads/2020/10/ezgif.com-gif-maker.png" alt="" className="ebookPopupPhoto"/>
+        <img src="https://maxandlea.com/wp-content/uploads/2020/10/ezgif.com-gif-maker.png" alt="" className="ebookPopupPhoto" />
         <div className="flex">
           <p className="paragraphEbook">Je veux aussi mes ebooks imprimés (+9€)</p>
           <Checkbox checked={checkedEbookPlayboard}
-                    onChange={(event) => {
-                      handleAddToCartEbookPlayboard()
-                      localStorage.setItem('ebookImprime', 'true')
-                      router.push('/checkout');
-                    }} />
+            onChange={(event) => {
+              handleAddToCartEbookPlayboard()
+              localStorage.setItem('ebookImprime', 'true')
+              router.push('/checkout');
+            }} />
         </div>
 
         <div className="flex">
           <p className="paragraphEbook">Je veux uniquement mes ebooks par email (gratuit)</p>
           <Checkbox checked={checkedEbookPlayboardEmail}
-                    onChange={(event) => {
-                      router.push('/checkout')
-                    }} />
+            onChange={(event) => {
+              router.push('/checkout')
+            }} />
         </div>
       </Dialog>
     );
@@ -168,7 +168,7 @@ const HeaderPlayboard = (props) => {
   let valueCount = 1;
 
   const onIncreaseClick = () => {
-    valueCount ++;
+    valueCount++;
     document.querySelector('.change-quantity').value = valueCount;
   }
 
@@ -176,14 +176,14 @@ const HeaderPlayboard = (props) => {
     if (valueCount === 1) {
       return;
     } else {
-      valueCount --;
+      valueCount--;
       document.querySelector('.change-quantity').value = valueCount;
     }
   }
 
   const getFloatVal = (string) => {
     let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
-    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)): '';
+    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)) : '';
   };
 
   const addFirstProduct = (product) => {
@@ -230,7 +230,7 @@ const HeaderPlayboard = (props) => {
     }
 
     // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
-    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+    let total = updatedProducts.reduce(addPrice, { totalPrice: 0, qty: 0 })
 
     const updatedCart = {
       products: updatedProducts,
@@ -255,7 +255,7 @@ const HeaderPlayboard = (props) => {
    */
 
 
-  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty = false) => {
     const productExistsIndex = isProductInCart(existingProductsInCart, products[2].id);
 
     if (-1 < productExistsIndex) {
@@ -292,7 +292,7 @@ const HeaderPlayboard = (props) => {
       let commandeCart = localStorage.getItem('commande-cart');
       console.log('clicked')
       console.log('existingCart', existingCart)
-      if (existingCart!=null) {
+      if (existingCart != null) {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
@@ -318,7 +318,7 @@ const HeaderPlayboard = (props) => {
   console.log('cart', cart);
   const [codePromo, setCodePromo] = useState('')
   useEffect(() => {
-    if ( process.browser) {
+    if (process.browser) {
       let cartData = localStorage.getItem('livraison');
       const trueData = JSON.parse(cartData);
       let codePromoData = localStorage.getItem('promoCode');
@@ -386,7 +386,7 @@ const HeaderPlayboard = (props) => {
   }
 
   //On enlève les ebooks de la qty totale
-  if (ebookInCart.length!==0) {
+  if (ebookInCart.length !== 0) {
     qtyTotale = qtyTotale - ebookInCart.length
   }
 
@@ -401,7 +401,7 @@ const HeaderPlayboard = (props) => {
 
 
   let totalPriceIntermediaire = sumPanier - discountPanier
-  const reducCodePromo = totalPriceIntermediaire * (1/codePromo?.amount)
+  const reducCodePromo = totalPriceIntermediaire * (1 / codePromo?.amount)
 
   let totalPrice1 = sumPanier - discountPanier - reducCodePromo
   let user = '';
@@ -414,7 +414,7 @@ const HeaderPlayboard = (props) => {
 
 
   const productCount = (null !== cart && Object.keys(cart).length) ? cart.totalProductCount : '';
-  const totalPrice = (null !== cart && Object.keys(cart).length) ? cart.totalProductsPrice: '';
+  const totalPrice = (null !== cart && Object.keys(cart).length) ? cart.totalProductsPrice : '';
 
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -463,14 +463,16 @@ const HeaderPlayboard = (props) => {
       <nav className="containerHeader">
         <div className="drapeauContainer">
           <p className="langue">{lang}</p>
-          <img src={drapeau} alt="drapeau français" className="drapeauImg" onClick={handleClick}/>
+          <img src={drapeau} alt="drapeau français" className="drapeauImg" onClick={handleClick} />
         </div>
         <Nav className="navBar container">
-        <div className="imgContainer">
-              <Link href="/">
-               <img src={'/logogrand.webp'} alt="" className="imgNavbar"/>
-              </Link>
-            </div>
+          <div className="imgContainer">
+            <Link href="/">
+              <a href="/">
+                <img src={'/logogrand.webp'} alt="" className="imgNavbar" />
+              </a>
+            </Link>
+          </div>
 
           <Menu
             id="simple-menu"
@@ -479,10 +481,10 @@ const HeaderPlayboard = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={() => handleClose('en')}><img src={'/flagen.png'} alt=""/></MenuItem>
-            <MenuItem onClick={() => handleClose('es')}><img src={'/flages.png'} alt=""/></MenuItem>
-            <MenuItem onClick={() => handleClose('al')}><img src={'/flagal.png'} className="drapeauAllemand" alt=""/></MenuItem>
-            <MenuItem onClick={() => handleClose('fr')}><img src={'/flagfr.png'} alt=""/></MenuItem>
+            <MenuItem onClick={() => handleClose('en')}><img src={'/flagen.png'} alt="" /></MenuItem>
+            <MenuItem onClick={() => handleClose('es')}><img src={'/flages.png'} alt="" /></MenuItem>
+            <MenuItem onClick={() => handleClose('al')}><img src={'/flagal.png'} className="drapeauAllemand" alt="" /></MenuItem>
+            <MenuItem onClick={() => handleClose('fr')}><img src={'/flagfr.png'} alt="" /></MenuItem>
 
           </Menu>
 
@@ -494,10 +496,10 @@ const HeaderPlayboard = (props) => {
 
             <div className="prixReduc">
               <div>
-              <p className="economie">(-40% vous économisez 20€)</p>
+                <p className="economie">(-40% vous économisez 20€)</p>
               </div>
               <div>
-              <p className="prixBarre">49,90€</p>
+                <p className="prixBarre">49,90€</p>
               </div>
             </div>
           </div>
@@ -508,30 +510,30 @@ const HeaderPlayboard = (props) => {
 
             router.push('/checkout')
 
-            
+
           }}>
             <Link href="javascript:void(0)"><p className="ajouterPanierText">Ajouter au panier</p></Link>
           </div>
           <div className="accountShopping" onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-              <Link href="/cart">
-                <Nav.Link>
+            <Link href="/cart">
+              <Nav.Link>
 
-                  <div className="cartWrap">
-                    <div className="productsCountContainer">
-                      <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{productCount}</span> : <span className="productCountText">0</span>}</div>
-                    </div>
-                    <div className="flex">
-                      <div className='productPrice'>
-                      {totalPrice1 ? <span className="totalPriceSpan">{totalPrice1.toFixed(2)} €</span> : <span className="totalPriceSpan">0, 00 €</span>}
-                      </div>
-                      <FontAwesomeIcon icon={faShoppingBasket} className="shoppingCart"/>
-                    </div>
+                <div className="cartWrap">
+                  <div className="productsCountContainer">
+                    <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{productCount}</span> : <span className="productCountText">0</span>}</div>
                   </div>
-                </Nav.Link>
+                  <div className="flex">
+                    <div className='productPrice'>
+                      {totalPrice1 ? <span className="totalPriceSpan">{totalPrice1.toFixed(2)} €</span> : <span className="totalPriceSpan">0, 00 €</span>}
+                    </div>
+                    <FontAwesomeIcon icon={faShoppingBasket} className="shoppingCart" />
+                  </div>
+                </div>
+              </Nav.Link>
 
-              </Link>
-              {open && renderCart()}
-            </div>
+            </Link>
+            {open && renderCart()}
+          </div>
         </Nav>
       </nav>
     </div>

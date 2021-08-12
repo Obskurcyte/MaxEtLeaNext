@@ -143,90 +143,92 @@ const AideMoiAFaireSeul = () => {
   return (
     <div className='jeuContainer'>
       <Head>
-        <title>Max And Lea - Blog-Aide-moi à faire seul</title>
+        <title>Max And Lea - Blog - Aide-moi à faire seul</title>
       </Head>
       <Header />
-      <div className="img-blog-container">
-        <img src={'https://maxandlea.com/wp-content/uploads/2020/05/father-53e5d44a48_1280.jpg'} className="img-blog" alt={'mathématiques'}/>
+      <div className="img-blog-container aide-moi-top">
       </div>
 
-      <div className="date-container">
-        <FontAwesomeIcon icon={faCalendar} className="calendar"/>
-        <p className="date-text">{t("AideMoiAFaireSeul.0")}</p>
-      </div>
-
-      <h1 style={{textAlign: 'center'}}>{t("AideMoiAFaireSeul.1")}</h1>
-      <hr/>
-      <div className="introduction">
-        <p>{t("AideMoiAFaireSeul.4")}</p>
-      </div>
-      <hr/>
-
-      <div className="paragraph-blog1">
-        <div className="paragraph1-text">
-          <p>{t("AideMoiAFaireSeul.2")}<a href="https://fr.wikipedia.org/wiki/Maria_Montessori" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>Maria Montessori</a>{t("AideMoiAFaireSeul.3")}</p>
+      <div className="container1000">
+        <div className="date-container">
+          <FontAwesomeIcon icon={faCalendar} className="calendar"/>
+          <p className="date-text">{t("AideMoiAFaireSeul.0")}</p>
         </div>
 
-          <img src={'https://maxandlea.com/wp-content/uploads/2020/05/family-baby-crawling-1237701.jpg'} alt="" className="enfants-souriant-blog"/>
-      </div>
-
-      <div className="encadrement">
-        <p><span className="grosseLettre">{t("AideMoiAFaireSeul.5")}</span>{t("AideMoiAFaireSeul.6")}</p>
-
-      </div>
-
-      <div className="description-blog">
-        <p>{t("AideMoiAFaireSeul.7")}</p>
-      </div>
-
-      <hr/>
-
-      <div className="conseilMaxEtLea">
-        <h4>{t("AideMoiAFaireSeul.8")}</h4>
-
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_1-1.svg" alt="" className='titre-img'/>
-          <h5>{t("AideMoiAFaireSeul.9")}</h5>
+        <h1 style={{textAlign: 'center'}}>{t("AideMoiAFaireSeul.1")}</h1>
+        <hr/>
+        <div className="introduction">
+          <p>{t("AideMoiAFaireSeul.4")}</p>
         </div>
-        <div className="conseildescription">
-          <p>{t("AideMoiAFaireSeul.10")}</p>
+        <hr/>
+
+        <div className="row">
+          <div className="col-sm-6">
+            <p>{t("AideMoiAFaireSeul.2")}<a href="https://fr.wikipedia.org/wiki/Maria_Montessori" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>Maria Montessori</a>{t("AideMoiAFaireSeul.3")}</p>
+          </div>
+          <div className="col-sm-6">
+            <img src={'/family-baby-crawling.webp'} alt="" className="enfants-souriant-blog"/>
+          </div>
         </div>
 
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_3t.svg" alt="" className='titre-img'/>
-          <h5>{t("AideMoiAFaireSeul.11")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("AideMoiAFaireSeul.12")}</p>
+        <div className="encadrement">
+          <p><span className="grosseLettre">{t("AideMoiAFaireSeul.5")}</span>{t("AideMoiAFaireSeul.6")}</p>
+
         </div>
 
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_2t.svg" alt="" className='titre-img'/>
-          <h5>{t("AideMoiAFaireSeul.13")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("AideMoiAFaireSeul.14")}</p>
+        <div className="description-blog">
+          <p>{t("AideMoiAFaireSeul.7")}</p>
         </div>
 
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt="" className='titre-img'/>
-          <h5>{t("AideMoiAFaireSeul.15")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("AideMoiAFaireSeul.16")}</p>
+        <hr/>
+
+        <div className="conseilMaxEtLea">
+          <h4>{t("AideMoiAFaireSeul.8")}</h4>
+
+          <div className="conseilTitre">
+            <img src="/triangle.svg" alt="" className='titre-img'/>
+            <h5>{t("AideMoiAFaireSeul.9")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("AideMoiAFaireSeul.10")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/carre.svg" alt="" className='titre-img'/>
+            <h5>{t("AideMoiAFaireSeul.11")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("AideMoiAFaireSeul.12")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/etoile.svg" alt="" className='titre-img'/>
+            <h5>{t("AideMoiAFaireSeul.13")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("AideMoiAFaireSeul.14")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/cercle.svg" alt="" className='titre-img'/>
+            <h5>{t("AideMoiAFaireSeul.15")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("AideMoiAFaireSeul.16")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/triangle.svg" alt="" className='titre-img'/>
+            <h5>{t("AideMoiAFaireSeul.17")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("AideMoiAFaireSeul.18")}</p>
+          </div>
         </div>
 
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_3t.svg" alt="" className='titre-img'/>
-          <h5>{t("AideMoiAFaireSeul.17")}</h5>
+        <div className="img-blog2-container">
+          <img src={'/jenga.webp'} alt="" className="img-blog2"/>
         </div>
-        <div className="conseildescription">
-          <p>{t("AideMoiAFaireSeul.18")}</p>
-        </div>
-      </div>
-
-      <div className="img-blog2-container">
-        <img src={'/handschildren.jpg'} alt="" className="img-blog2"/>
       </div>
 
 

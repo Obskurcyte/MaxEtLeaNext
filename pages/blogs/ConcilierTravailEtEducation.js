@@ -144,100 +144,100 @@ const ConcilierTravailEtEducation = () => {
   return (
     <div className='jeuContainer'>
       <Head>
-        <title>Max And Lea - Blog-Concilier travail et éducation</title>
+        <title>Max And Lea - Blog - Concilier travail et éducation</title>
       </Head>
       <Header />
-      <div className="img-blog-container">
-        <img src={'/child-fun-family-bg.webp'} className="img-blog" alt={'mathématiques'}/>
-      </div>
-
-      <div className="date-container">
-        <FontAwesomeIcon icon={faCalendar} className="calendar"/>
-        <p className="date-text">{t("ConcilierTravailEtEducation.0")}</p>
-      </div>
-
-      <h1 style={{textAlign: 'center'}}>{t("ConcilierTravailEtEducation.1")}</h1>
-      <hr/>
-      <div className="introduction">
-        <p>{t("ConcilierTravailEtEducation.2")}</p>
-      </div>
-      <hr/>
-
-      <div className="paragraph-blog1">
-        <div className="paragraph1-text">
-          <p>{t("ConcilierTravailEtEducation.3")}<a href="https://www.filliozat.net/" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>Isabelle Filliozat</a> , {t("ConcilierTravailEtEducation.4")} <a
-            href="https://www.amazon.fr/Maman-veux-pas-travailles-professionnelle/dp/2844545882/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3KBT6HOGVTAQI&dchild=1&keywords=maman+je+ne+veux+pas+que+tu+travailles&qid=1595598334&s=books&sprefix=maman+je+ne+veux+pas+que+tu+travaill%2Cstripbooks%2C147&sr=1-1" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>« Maman je ne veux pas que tu travailles »</a>
-
-            {t("ConcilierTravailEtEducation.6")}
-          </p>
+      <div className="img-blog-container travail-education-top"></div>
+      <div className="container1000">
+        <div className="date-container">
+          <FontAwesomeIcon icon={faCalendar} className="calendar"/>
+          <p className="date-text">{t("ConcilierTravailEtEducation.0")}</p>
         </div>
 
-          <img src={'/baby-child-field.webp'} alt="" className="enfants-souriant-blog"/>
-      </div>
-
-      <div className="encadrement">
-        <p><span className="grosseLettre">{t("ConcilierTravailEtEducation.7")}</span>{t("ConcilierTravailEtEducation.8")} « <a
-          href="https://www.amazon.fr/pas-parent-parfait-Psy-Sant%C3%A9-ebook/dp/B005OJB4UM/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2BFOKHVWS3XQZ&dchild=1&keywords=il+n%27y+a+pas+de+parents+parfaits&qid=1595598392&s=books&sprefix=il+n%27y+a+pas+de+parent%2Cstripbooks%2C146&sr=1-1" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>Il n’y a pas de parent parfait</a> » {t("ConcilierTravailEtEducation.10")}</p>
-      </div>
-
-
-
-      <div className="img-blog2-container">
-        <img src={'/handschildren.jpg'} alt="" className="img-blog2"/>
-      </div>
-
-      <hr/>
-
-      <div className="conseilMaxEtLea">
-        <h4>{t("ConcilierTravailEtEducation.11")}</h4>
-
-        <div className="conseilTitre">
-          <img src="/triangle.svg" alt="" className='titre-img'/>
-          <h5>{t("ConcilierTravailEtEducation.12")}</h5>
+        <h1 style={{textAlign: 'center'}}>{t("ConcilierTravailEtEducation.1")}</h1>
+        <hr/>
+        <div className="introduction">
+          <p>{t("ConcilierTravailEtEducation.2")}</p>
         </div>
-        <div className="conseildescription">
-          <p>{t("ConcilierTravailEtEducation.13")}</p>
+        <hr/>
+
+        <div className="row">
+          <div className="col-sm-6">
+            <p>{t("ConcilierTravailEtEducation.3")}<a href="https://www.filliozat.net/" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>Isabelle Filliozat</a> , {t("ConcilierTravailEtEducation.4")} <a
+              href="https://www.amazon.fr/Maman-veux-pas-travailles-professionnelle/dp/2844545882/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3KBT6HOGVTAQI&dchild=1&keywords=maman+je+ne+veux+pas+que+tu+travailles&qid=1595598334&s=books&sprefix=maman+je+ne+veux+pas+que+tu+travaill%2Cstripbooks%2C147&sr=1-1" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>« Maman je ne veux pas que tu travailles »</a>
+
+              {t("ConcilierTravailEtEducation.6")}
+            </p>
+          </div>
+          <div className="col-sm-6">
+            <img src={'/baby-child-field.webp'} alt="" className="enfants-souriant-blog"/>
+            </div>
         </div>
 
-        <div className="conseilTitre">
-          <img src="/carre.svg" alt="" className='titre-img'/>
-          <h5>{t("ConcilierTravailEtEducation.14")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("ConcilierTravailEtEducation.15")}</p>
+        <div className="encadrement">
+          <p><span className="grosseLettre">{t("ConcilierTravailEtEducation.7")}</span>{t("ConcilierTravailEtEducation.8")} « <a
+            href="https://www.amazon.fr/pas-parent-parfait-Psy-Sant%C3%A9-ebook/dp/B005OJB4UM/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2BFOKHVWS3XQZ&dchild=1&keywords=il+n%27y+a+pas+de+parents+parfaits&qid=1595598392&s=books&sprefix=il+n%27y+a+pas+de+parent%2Cstripbooks%2C146&sr=1-1" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>Il n’y a pas de parent parfait</a> » {t("ConcilierTravailEtEducation.10")}</p>
         </div>
 
-        <div className="conseilTitre">
-          <img src="/etoile.svg" alt="" className='titre-img'/>
-          <h5>{t("ConcilierTravailEtEducation.16")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("ConcilierTravailEtEducation.17")}</p>
+
+
+        <div className="img-blog2-container">
+          <img src={'/girl-mother-daughter.webp'} alt="" className="img-blog2"/>
         </div>
 
-        <div className="conseilTitre">
-          <img src="/cercle.svg" alt="" className='titre-img'/>
-          <h5>{t("ConcilierTravailEtEducation.18")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("ConcilierTravailEtEducation.19")}</p>
-        </div>
+        <hr/>
 
-        <div className="conseilTitre">
-          <img src="/triangle.svg" alt="" className='titre-img'/>
-          <h5>{t("ConcilierTravailEtEducation.20")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("ConcilierTravailEtEducation.21")}<a
-            href="/blogs/LesEnfantsEtLesEcrans" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>{t("ConcilierTravailEtEducation.22")}</a>{t("ConcilierTravailEtEducation.23")}</p>
-        </div>
+        <div className="conseilMaxEtLea">
+          <h4>{t("ConcilierTravailEtEducation.11")}</h4>
 
-        <div className="conseilTitre">
-          <img src="/carre.svg" alt="" className='titre-img'/>
-          <h5>{t("ConcilierTravailEtEducation.24")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("ConcilierTravailEtEducation.25")}</p>
+          <div className="conseilTitre">
+            <img src="/triangle.svg" alt="" className='titre-img'/>
+            <h5>{t("ConcilierTravailEtEducation.12")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("ConcilierTravailEtEducation.13")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/carre.svg" alt="" className='titre-img'/>
+            <h5>{t("ConcilierTravailEtEducation.14")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("ConcilierTravailEtEducation.15")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/etoile.svg" alt="" className='titre-img'/>
+            <h5>{t("ConcilierTravailEtEducation.16")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("ConcilierTravailEtEducation.17")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/cercle.svg" alt="" className='titre-img'/>
+            <h5>{t("ConcilierTravailEtEducation.18")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("ConcilierTravailEtEducation.19")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/triangle.svg" alt="" className='titre-img'/>
+            <h5>{t("ConcilierTravailEtEducation.20")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("ConcilierTravailEtEducation.21")}<a
+              href="/blogs/LesEnfantsEtLesEcrans" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>{t("ConcilierTravailEtEducation.22")}</a>{t("ConcilierTravailEtEducation.23")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/carre.svg" alt="" className='titre-img'/>
+            <h5>{t("ConcilierTravailEtEducation.24")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("ConcilierTravailEtEducation.25")}</p>
+          </div>
         </div>
       </div>
 

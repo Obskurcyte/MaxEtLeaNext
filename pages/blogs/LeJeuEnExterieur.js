@@ -10,8 +10,11 @@ import * as product from "../../products";
 import i18next from "i18next";
 import {useTranslation} from "react-i18next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 const LeJeuEnExterieur = () => {
+
+  const router = useRouter();
 
   const [cart, setCart] = useContext(AppContext);
   const products = product.products
@@ -22,7 +25,7 @@ const LeJeuEnExterieur = () => {
 
   const getFloatVal = (string) => {
     let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
-    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)): '';
+    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)) : '';
   };
 
   const addFirstProduct = (product) => {
@@ -37,10 +40,10 @@ const LeJeuEnExterieur = () => {
     const newProduct = createNewProduct(product, productPrice, 1)
     newCart.products.push(newProduct);
     localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
-    console.log('newCart', newCart)
     return newCart
-
   };
+
+
 
   const createNewProduct = (product, productPrice, qty) => {
     return {
@@ -48,6 +51,7 @@ const LeJeuEnExterieur = () => {
       name: product.name,
       price: productPrice,
       qty: qty,
+      image: product.image,
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };
@@ -59,14 +63,11 @@ const LeJeuEnExterieur = () => {
 
       total.totalPrice = item.totalPrice;
       total.qty += item.qty;
-      console.log('total', total)
-      console.log('item', item)
-      console.log(total)
       return total;
     }
 
     // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
-    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+    let total = updatedProducts.reduce(addPrice, { totalPrice: 0, qty: 0 })
 
     const updatedCart = {
       products: updatedProducts,
@@ -93,7 +94,7 @@ const LeJeuEnExterieur = () => {
    */
 
 
-  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty = false) => {
     const productExistsIndex = isProductInCart(existingProductsInCart, products[2].id);
 
     if (-1 < productExistsIndex) {
@@ -127,9 +128,7 @@ const LeJeuEnExterieur = () => {
   const handleAddToCart = () => {
     if (process.browser) {
       let existingCart = localStorage.getItem('woo-next-cart');
-      console.log('clicked')
-      console.log('existingCart', existingCart)
-      if (existingCart!=null) {
+      if (existingCart != null) {
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
         const updatedCart = updateCart(existingCart, products[2], qtyToBeAdded);
@@ -143,13 +142,15 @@ const LeJeuEnExterieur = () => {
 
   return (
     <div className='jeuContainer'>
+      
       <Head>
-        <title>Max And Lea - Blog-Le jeu en Extérieur</title>
+        <title>Max And Lea - Blog - Le jeu en Extérieur</title>
       </Head>
       <Header />
-      <div className="img-blog-container">
-        <img src={'/handschildren.jpg'} className="img-blog" alt={'jeu extérieur'}/>
+      
+      <div className="img-blog-container jeu-exterieur-top">
       </div>
+      <div className="container1000">
 
       <div className="date-container">
         <FontAwesomeIcon icon={faCalendar} className="calendar"/>
@@ -163,13 +164,14 @@ const LeJeuEnExterieur = () => {
       </div>
       <hr/>
 
-      <div className="paragraph-blog1">
-        <div className="paragraph1-text">
+      <div className="row">
+        <div className="col-sm-8">
           <p>{t("LeJeuEnExterieur.3")}</p>
           <p>{t("LeJeuEnExterieur.4")}</p>
         </div>
-
+        <div className="col-sm-4">
           <img src={'/enfantBlog.jpg'} alt="" className="enfants-souriant-blog"/>
+        </div>
       </div>
 
       <div className="description-blog">
@@ -178,7 +180,7 @@ const LeJeuEnExterieur = () => {
       </div>
 
       <div className="img-blog2-container">
-        <img src={'/handschildren.jpg'} alt="" className="img-blog2"/>
+        <img src={'/girl-playing-leaves.webp'} alt="" className="img-blog2"/>
       </div>
 
       <div className="conseilMaxEtLea">
@@ -218,9 +220,10 @@ const LeJeuEnExterieur = () => {
       </div>
 
       <div className="img-blog2-container">
-        <img src={'/handschildren.jpg'} alt="" className="img-blog2"/>
+        <img src={'/boy-playing-leaves.webp'} alt="" className="img-blog2"/>
       </div>
 
+      </div>
       {lang === 'fr' && (
         <div className="aimez-aussi">
           <h2>Vous pouriez aimer aussi</h2>
@@ -228,7 +231,9 @@ const LeJeuEnExterieur = () => {
             <Row className="row-card">
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'/family-kids-baby.webp'} variant="top" className="math-image" />
+                  <Link href='/blogs/ConcilierTravailEtEducation'>
+                    <Card.Img src={'/family-kids-baby.webp'} variant="top" className="math-image" />
+                  </Link>
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">Concilier travail et éducation</Card.Title>
                     <Link href='/blogs/ConcilierTravailEtEducation'>
@@ -240,7 +245,9 @@ const LeJeuEnExterieur = () => {
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'/playboardGood.webp'} variant="top" className="math-image" />
+                  <Link href='/playboard'>
+                    <Card.Img src={'/playboardGood.webp'} variant="top" className="math-image" />
+                  </Link>
                   <Card.Body className="card-body">
                     <Card.Title className="card-title card-no-margin">La PlayBoard<br/>
                       <div className='playboard-card'>
@@ -248,16 +255,21 @@ const LeJeuEnExterieur = () => {
                         <p className='prix-playboard-card-true'>29,90€</p>
                       </div>
                     </Card.Title>
-                    <Link href="javascript:void(0);">
+                    <div onClick={() => {
+                    handleAddToCart()
+                    router.push('/checkout')
+                  }}>
                       <a className="read-more-button">Ajouter au panier</a>
-                    </Link>
+                    </div>
                   </Card.Body>
                 </Card>
               </Col>
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'/enfantEcran.webp'} variant="top" className="math-image" />
+                  <Link href='/blogs/LesEnfantsEtLesEcrans'>
+                    <Card.Img src={'/enfantEcran.webp'} variant="top" className="math-image" />
+                  </Link>
                   <Card.Body className="card-body">
                     <Card.Title className="card-title">Les enfants et les écrans</Card.Title>
                     <Link href='/blogs/LesEnfantsEtLesEcrans'>
@@ -271,6 +283,7 @@ const LeJeuEnExterieur = () => {
           </Container>
         </div>
       )}
+      
 
       <Footer />
     </div>

@@ -240,7 +240,9 @@ const HeaderKako = (props) => {
         <Nav className="navBar container">
           <div className="imgContainer">
             <Link href="/">
-            <img src={'/logogrand.webp'} alt="" className="imgNavbar"/>
+            <a href="/">
+                <img src={'/logogrand.webp'} alt="" className="imgNavbar" />
+              </a>
             </Link>
           </div>
 

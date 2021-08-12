@@ -144,103 +144,104 @@ const EducationPositive = () => {
   return (
     <div className='jeuContainer'>
       <Head>
-        <title>Max And Lea - Blog-Education positive</title>
+        <title>Max And Lea - Blog - Education positive</title>
       </Head>
       <Header />
-      <div className="img-blog-container">
-        <img src={'https://maxandlea.com/wp-content/uploads/2020/05/family-kids-baby-457235.jpg'} className="img-blog" alt={'mathématiques'}/>
+      <div className="img-blog-container educ-positive-top">
       </div>
-
-      <div className="date-container">
-        <FontAwesomeIcon icon={faCalendar} className="calendar"/>
-        <p className="date-text">{t("EducationPositive.0")}</p>
-      </div>
-
-      <h1 style={{textAlign: 'center'}}>{t("EducationPositive.1")}</h1>
-      <hr/>
-      <div className="introduction">
-        <p>{t("EducationPositive.2")}</p>
-      </div>
-      <hr/>
-
-      <div className="paragraph-blog2">
-        <div className="paragraph1-text">
-          <p>{t("EducationPositive.3")}</p>
-          <p>{t("EducationPositive.4")}<a
-            href="https://fr.wikipedia.org/wiki/Marshall_Rosenberg" style={{fontFamily: 'Roboto, sans-serif', fontSize: 'inherit'}}>Marshall Rosenberg. </a>{t("EducationPositive.5")}</p>
-          <p>{t("EducationPositive.6")}
-
-            <ul>
-              <li><span style={{fontWeight: 'bold'}}>{t("EducationPositive.7")}</span>{t("EducationPositive.8")}</li>
-              <li><span style={{fontWeight: 'bold'}}>{t("EducationPositive.9")}</span>{t("EducationPositive.10")}</li>
-              <li><span style={{fontWeight: 'bold'}}>{t("EducationPositive.11")}</span>{t("EducationPositive.12")}</li>
-              <li><span style={{fontWeight: 'bold'}}>{t("EducationPositive.13")}</span>{t("EducationPositive.14")}</li>
-            </ul>
-          </p>
+      <div className="container1000">
+        <div className="date-container">
+          <FontAwesomeIcon icon={faCalendar} className="calendar"/>
+          <p className="date-text">{t("EducationPositive.0")}</p>
         </div>
 
-          <img src={'https://maxandlea.com/wp-content/uploads/2020/06/pay-wood-one-3208068-777x1024.jpg'} alt="" className="enfants-souriant-blog4"/>
-      </div>
-
-      <hr/>
-
-
-      <div className="img-blog2-container">
-        <img src={'/handschildren.jpg'} alt="" className="img-blog2"/>
-      </div>
-
-
-      <div className="conseilMaxEtLea">
-        <h4>{t("EducationPositive.15")}</h4>
-
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_1-1.svg" alt="" className='titre-img'/>
-          <h5>{t("EducationPositive.16")}</h5>
+        <h1 style={{textAlign: 'center'}}>{t("EducationPositive.1")}</h1>
+        <hr/>
+        <div className="introduction">
+          <p>{t("EducationPositive.2")}</p>
         </div>
-        <div className="conseildescription">
-          <p>{t("EducationPositive.17")}</p>
-        </div>
+        <hr/>
 
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_3t.svg" alt="" className='titre-img'/>
-          <h5>{t("EducationPositive.18")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("EducationPositive.19")}</p>
+        <div className="row">
+        <div className="col-sm-6">
+            <p>{t("EducationPositive.3")}</p>
+            <p>{t("EducationPositive.4")}<a
+              href="https://fr.wikipedia.org/wiki/Marshall_Rosenberg" style={{fontFamily: 'Roboto, sans-serif', fontSize: 'inherit'}}>Marshall Rosenberg. </a>{t("EducationPositive.5")}</p>
+            <p>{t("EducationPositive.6")}
+
+              <ul>
+                <li><span style={{fontWeight: 'bold'}}>{t("EducationPositive.7")}</span>{t("EducationPositive.8")}</li>
+                <li><span style={{fontWeight: 'bold'}}>{t("EducationPositive.9")}</span>{t("EducationPositive.10")}</li>
+                <li><span style={{fontWeight: 'bold'}}>{t("EducationPositive.11")}</span>{t("EducationPositive.12")}</li>
+                <li><span style={{fontWeight: 'bold'}}>{t("EducationPositive.13")}</span>{t("EducationPositive.14")}</li>
+              </ul>
+            </p>
+          </div>
+          <div className="col-sm-6">
+            <img src={'/family-kids-mother-with-children.jpg'} alt="" className="enfants-souriant-blog"/>
+          </div>
         </div>
 
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_2t.svg" alt="" className='titre-img'/>
-          <h5>{t("EducationPositive.20")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p> {t("EducationPositive.21")}</p>
+        <hr/>
+
+
+        <div className="img-blog2-container">
+          <img src={'/family-baby-mom.webp'} alt="" className="img-blog2"/>
         </div>
 
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt="" className='titre-img'/>
-          <h5>{t("EducationPositive.22")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("EducationPositive.23")}</p>
+
+        <div className="conseilMaxEtLea">
+          <h4>{t("EducationPositive.15")}</h4>
+
+          <div className="conseilTitre">
+            <img src="/triangle.svg" alt="" className='titre-img'/>
+            <h5>{t("EducationPositive.16")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("EducationPositive.17")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/carre.svg" alt="" className='titre-img'/>
+            <h5>{t("EducationPositive.18")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("EducationPositive.19")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/etoile.svg" alt="" className='titre-img'/>
+            <h5>{t("EducationPositive.20")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p> {t("EducationPositive.21")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/cercle.svg" alt="" className='titre-img'/>
+            <h5>{t("EducationPositive.22")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("EducationPositive.23")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/triangle.svg" alt="" className='titre-img'/>
+            <h5>{t("EducationPositive.24")}</h5>
+          </div>
+          <div className="conseildescription">
+            {t("EducationPositive.25")}
+            <p>« <a href="http://amzn.to/2CKnZuw" style={{fontFamily: 'Roboto, sans-serif', fontSize: 'inherit'}}>Cool Parents make happy kids</a> » {t("EducationPositive.26")}</p>
+            <p>« <a href="https://www.amazon.fr/Jai-tout-essay%C3%A9-Isabelle-Filliozat/dp/250113544X/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=j%27ai+tout+essay%C3%A9&qid=1595595217&s=books&sr=1-1" style={{fontFamily: 'Roboto, sans-serif', fontSize: 'inherit'}}>J’ai tout essayé</a> » {t("EducationPositive.27")}</p>
+            <p>« <a href="https://www.amazon.fr/discipline-positive-Jane-Nelson/dp/2501141318/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3DXEB19QYDTKY&dchild=1&keywords=la+discipline+positive&qid=1595595252&s=books&sprefix=la+discipline+%2Cstripbooks%2C149&sr=1-1" style={{fontFamily: 'Roboto, sans-serif', fontSize: 'inherit'}}>La discipline positive</a> » {t("EducationPositive.28")}</p>
+            <p>{t("EducationPositive.29")}</p>
+          </div>
+
         </div>
 
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt="" className='titre-img'/>
-          <h5>{t("EducationPositive.24")}</h5>
+        <div className="img-blog2-container">
+          <img src={'/woman-man-child.webp'} alt="" className="img-blog2"/>
         </div>
-        <div className="conseildescription">
-          {t("EducationPositive.25")}
-          <p>« <a href="http://amzn.to/2CKnZuw" style={{fontFamily: 'Roboto, sans-serif', fontSize: 'inherit'}}>Cool Parents make happy kids</a> » {t("EducationPositive.26")}</p>
-          <p>« <a href="https://www.amazon.fr/Jai-tout-essay%C3%A9-Isabelle-Filliozat/dp/250113544X/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=j%27ai+tout+essay%C3%A9&qid=1595595217&s=books&sr=1-1" style={{fontFamily: 'Roboto, sans-serif', fontSize: 'inherit'}}>J’ai tout essayé</a> » {t("EducationPositive.27")}</p>
-          <p>« <a href="https://www.amazon.fr/discipline-positive-Jane-Nelson/dp/2501141318/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3DXEB19QYDTKY&dchild=1&keywords=la+discipline+positive&qid=1595595252&s=books&sprefix=la+discipline+%2Cstripbooks%2C149&sr=1-1" style={{fontFamily: 'Roboto, sans-serif', fontSize: 'inherit'}}>La discipline positive</a> » {t("EducationPositive.28")}</p>
-          <p>{t("EducationPositive.29")}</p>
-        </div>
-
-      </div>
-
-      <div className="img-blog2-container">
-        <img src={'/handschildren.jpg'} alt="" className="img-blog2"/>
       </div>
 
 

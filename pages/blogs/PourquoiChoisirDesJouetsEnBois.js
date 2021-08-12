@@ -146,94 +146,94 @@ const PourquoiChoisirDesJouetsEnBois = () => {
   return (
     <div className='jeuContainer'>
       <Head>
-        <title>Max And Lea - Blog-Pourquoi choisir des jouets en bois</title>
+        <title>Max And Lea - Blog - Pourquoi choisir des jouets en bois</title>
       </Head>
       <Header />
-      <div className="img-blog-container">
-        <img src={'/child-wooden-blocks-bg.webp'} className="img-blog" alt={'jeu extérieur'}/>
+      <div className="img-blog-container jouets-bois-top">
       </div>
 
-      <div className="date-container">
-        <FontAwesomeIcon icon={faCalendar} className="calendar"/>
-        <p className="date-text">{t("PourquoiChoisirDesJouetsEnBois.0")}</p>
-      </div>
+      <div className="container1000">
+        <div className="date-container">
+          <FontAwesomeIcon icon={faCalendar} className="calendar"/>
+          <p className="date-text">{t("PourquoiChoisirDesJouetsEnBois.0")}</p>
+        </div>
 
-      <h1 style={{textAlign: 'center'}}>{t("PourquoiChoisirDesJouetsEnBois.1")}</h1>
-      <hr/>
-      <div className="introduction">
-        <p>{t("PourquoiChoisirDesJouetsEnBois.2")}</p>
-      </div>
-      <hr/>
+        <h1 style={{textAlign: 'center'}}>{t("PourquoiChoisirDesJouetsEnBois.1")}</h1>
+        <hr/>
+        <div className="introduction">
+          <p>{t("PourquoiChoisirDesJouetsEnBois.2")}</p>
+        </div>
+        <hr/>
 
-      <div className="paragraph-blog3">
-        <div className="paragraph1-text">
-          <p>
-            <ul>
-              <li>{t("PourquoiChoisirDesJouetsEnBois.3")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.4")}</span>{t("PourquoiChoisirDesJouetsEnBois.5")}<a
-                href="https://www.pefc-france.org/" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>PEFC</a>{t("PourquoiChoisirDesJouetsEnBois.6")}<a href="https://fr.fsc.org/fr-fr" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>FSC</a>{t("PourquoiChoisirDesJouetsEnBois.7")}</li>
-              <li>{t("PourquoiChoisirDesJouetsEnBois.8")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.9")}</span>{t("PourquoiChoisirDesJouetsEnBois.10")}</li>
-              <li>{t("PourquoiChoisirDesJouetsEnBois.11")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.12")}</span>{t("PourquoiChoisirDesJouetsEnBois.13")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.14")}</span>{t("PourquoiChoisirDesJouetsEnBois.15")}</li>
-              <li>{t("PourquoiChoisirDesJouetsEnBois.16")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.17")}</span>{t("PourquoiChoisirDesJouetsEnBois.18")}</li>
-            </ul>
-          </p>
+        <div className="row">
+          <div className="col-sm-8">
+            <p>
+              <ul>
+                <li>{t("PourquoiChoisirDesJouetsEnBois.3")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.4")}</span>{t("PourquoiChoisirDesJouetsEnBois.5")}<a
+                  href="https://www.pefc-france.org/" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>PEFC</a>{t("PourquoiChoisirDesJouetsEnBois.6")}<a href="https://fr.fsc.org/fr-fr" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>FSC</a>{t("PourquoiChoisirDesJouetsEnBois.7")}</li>
+                <li>{t("PourquoiChoisirDesJouetsEnBois.8")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.9")}</span>{t("PourquoiChoisirDesJouetsEnBois.10")}</li>
+                <li>{t("PourquoiChoisirDesJouetsEnBois.11")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.12")}</span>{t("PourquoiChoisirDesJouetsEnBois.13")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.14")}</span>{t("PourquoiChoisirDesJouetsEnBois.15")}</li>
+                <li>{t("PourquoiChoisirDesJouetsEnBois.16")}<span style={{fontWeight: 'bold'}}>{t("PourquoiChoisirDesJouetsEnBois.17")}</span>{t("PourquoiChoisirDesJouetsEnBois.18")}</li>
+              </ul>
+            </p>
+          </div>
+          <div className="col-sm-4">
+            <img src={'/wood-toys.webp'} alt="" className="jouets-bois-img"/>
+          </div>
 
         </div>
 
-
-          <img src={'/wood-toys.webp'} alt="" className="jouets-bois-img"/>
-
-      </div>
-
-      <div className="description-blog">
-        <p>{t("PourquoiChoisirDesJouetsEnBois.19")}
-          <br/>
-          {t("PourquoiChoisirDesJouetsEnBois.20")}
-          <br/>
-          {t("PourquoiChoisirDesJouetsEnBois.21")}
-          <br/>
-          {t("PourquoiChoisirDesJouetsEnBois.22")}</p>
-      </div>
-
-      <hr/>
-
-      <div className="conseilMaxEtLea">
-        <h4>{t("PourquoiChoisirDesJouetsEnBois.23")}</h4>
-
-        <div className="conseilTitre">
-          <img src="/triangle.svg" alt="" className='titre-img'/>
-          <h5>{t("PourquoiChoisirDesJouetsEnBois.24")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("PourquoiChoisirDesJouetsEnBois.25")}</p>
+        <div className="description-blog">
+          <p>{t("PourquoiChoisirDesJouetsEnBois.19")}
+            <br/>
+            {t("PourquoiChoisirDesJouetsEnBois.20")}
+            <br/>
+            {t("PourquoiChoisirDesJouetsEnBois.21")}
+            <br/>
+            {t("PourquoiChoisirDesJouetsEnBois.22")}</p>
         </div>
 
-        <div className="conseilTitre">
-          <img src="/carre.svg" alt="" className='titre-img'/>
-          <h5>{t("PourquoiChoisirDesJouetsEnBois.26")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("PourquoiChoisirDesJouetsEnBois.27")}</p>
+        <hr/>
+
+        <div className="conseilMaxEtLea">
+          <h4>{t("PourquoiChoisirDesJouetsEnBois.23")}</h4>
+
+          <div className="conseilTitre">
+            <img src="/triangle.svg" alt="" className='titre-img'/>
+            <h5>{t("PourquoiChoisirDesJouetsEnBois.24")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("PourquoiChoisirDesJouetsEnBois.25")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/carre.svg" alt="" className='titre-img'/>
+            <h5>{t("PourquoiChoisirDesJouetsEnBois.26")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("PourquoiChoisirDesJouetsEnBois.27")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/etoile.svg" alt="" className='titre-img'/>
+            <h5>{t("PourquoiChoisirDesJouetsEnBois.28")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("PourquoiChoisirDesJouetsEnBois.29")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/cercle.svg" alt="" className='titre-img'/>
+            <h5>{t("PourquoiChoisirDesJouetsEnBois.30")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("PourquoiChoisirDesJouetsEnBois.31")}</p>
+          </div>
         </div>
 
-        <div className="conseilTitre">
-          <img src="/etoile.svg" alt="" className='titre-img'/>
-          <h5>{t("PourquoiChoisirDesJouetsEnBois.28")}</h5>
+        <div className="img-blog2-container">
+          <img src={'/toddler-building-block-pull.webp'} alt="" className="img-blog2"/>
         </div>
-        <div className="conseildescription">
-          <p>{t("PourquoiChoisirDesJouetsEnBois.29")}</p>
-        </div>
-
-        <div className="conseilTitre">
-          <img src="/cercle.svg" alt="" className='titre-img'/>
-          <h5>{t("PourquoiChoisirDesJouetsEnBois.30")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("PourquoiChoisirDesJouetsEnBois.31")}</p>
-        </div>
-      </div>
-
-      <div className="img-blog2-container">
-        <img src={'/toddler-building-block-pull.webp'} alt="" className="img-blog2"/>
       </div>
 
       {lang === 'fr' && (

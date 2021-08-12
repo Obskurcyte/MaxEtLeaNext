@@ -144,50 +144,54 @@ const PourquoiLesEnfantsJouent = () => {
   return (
     <div className='jeuContainer'>
       <Head>
-        <title>Max And Lea - Blog-Pourquoi les enfants jouent</title>
+        <title>Max And Lea - Blog - Pourquoi les enfants jouent</title>
       </Head>
       <Header />
-      <div className="img-blog-container">
-        <img src={'/playboardBlog.jpg'} className="img-blog" alt={'mathématiques'}/>
+      <div>
+        <img src={'/pano.jpg'} className="img-blog" alt={'mathématiques'}/>
       </div>
 
-      <div className="date-container">
-        <FontAwesomeIcon icon={faCalendar} className="calendar"/>
-        <p className="date-text">{t("PourquoiLesEnfantsJouent.0")}</p>
-      </div>
-
-      <h1 style={{textAlign: 'center'}}>{t("PourquoiLesEnfantsJouent.1")}</h1>
-      <hr/>
-      <div className="introduction">
-        <p>{t("PourquoiLesEnfantsJouent.2")}</p>
-      </div>
-      <hr/>
-
-      <div className="paragraph-blog1">
-        <div className="paragraph1-text">
-          <p>{t("PourquoiLesEnfantsJouent.3")}</p>
-          <p>{t("PourquoiLesEnfantsJouent.4")}</p>
-          <p>{t("PourquoiLesEnfantsJouent.5")}</p>
+      <div className="container1000">
+        <div className="date-container">
+          <FontAwesomeIcon icon={faCalendar} className="calendar"/>
+          <p className="date-text">{t("PourquoiLesEnfantsJouent.0")}</p>
         </div>
 
-          <img src={'https://maxandlea.com/wp-content/uploads/2020/11/IMG_4278-768x1152.jpg'} alt="" className="enfants-souriant-blog"/>
-      </div>
-
-      <div className="description-blog">
-        <p>{t("PourquoiLesEnfantsJouent.6")}</p>
-        <p>{t("PourquoiLesEnfantsJouent.7")}</p>
-        <p>{t("PourquoiLesEnfantsJouent.8")}</p>
-        <p>{t("PourquoiLesEnfantsJouent.9")}</p>
-        <p>{t("PourquoiLesEnfantsJouent.10")}</p>
-      </div>
-
-      <div className="commentContainer">
-        <div className="textPsy">
-          <p>Angélique Kosinski</p>
-          <p>{t("PourquoiLesEnfantsJouent.11")}</p>
-          <p>{t("PourquoiLesEnfantsJouent.12")}</p>
+        <h1 style={{textAlign: 'center'}}>{t("PourquoiLesEnfantsJouent.1")}</h1>
+        <hr/>
+        <div className="introduction">
+          <p>{t("PourquoiLesEnfantsJouent.2")}</p>
         </div>
-          <img src={"https://maxandlea.com/wp-content/uploads/2020/11/Angelique.jpg"} alt="" className="imgPsy"/>
+        <hr/>
+
+        <div className="row">
+          <div className="col-sm-8">
+            <p>{t("PourquoiLesEnfantsJouent.3")}</p>
+            <p>{t("PourquoiLesEnfantsJouent.4")}</p>
+            <p>{t("PourquoiLesEnfantsJouent.5")}</p>
+          </div>
+          <div className="col-sm-4">
+            <img src={'/joue-img.jpg'} alt="" className="enfants-souriant-blog"/>
+          </div>
+        </div>
+
+        <div className="description-blog">
+          <p>{t("PourquoiLesEnfantsJouent.6")}</p>
+          <p>{t("PourquoiLesEnfantsJouent.7")}</p>
+          <p>{t("PourquoiLesEnfantsJouent.8")}</p>
+          <p>{t("PourquoiLesEnfantsJouent.9")}</p>
+          <p>{t("PourquoiLesEnfantsJouent.10")}</p>
+        </div>
+
+        <div className="commentContainer">
+          <div className="textPsy">
+            <p>Angélique Kosinski</p>
+            <p>{t("PourquoiLesEnfantsJouent.11")}</p>
+            <p>{t("PourquoiLesEnfantsJouent.12")}</p>
+            <a href="https://www.instagram.com/unepsyaparis/" style={{fontSize:"1rem",color:"#00b2cc"}}>@unepsyaparis</a>
+          </div>
+            <img src={"https://maxandlea.com/wp-content/uploads/2020/11/Angelique.jpg"} alt="" className="imgPsy"/>
+        </div>
       </div>
 
       {lang === 'fr' && (
