@@ -5,27 +5,17 @@ import Link from 'next/link';
 import Footer from "../components/Footer";
 import Engagement from "../components/Engagement";
 import Garanties from "../components/GarantiesMaxEtLea";
-import HeaderPlayboard from "../components/HeaderPlayboard";
 import AvisClients from "../components/AvisClients";
 import * as product from "../products";
 import { AppContext } from "../components/context/AppContext";
-import { faDotCircle } from "@fortawesome/free-solid-svg-icons";
 import Head from 'next/head'
 import HeaderKako from "../components/HeaderKako";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight, faGrinStars } from "@fortawesome/free-solid-svg-icons";
-import Recommendation from "../components/Recommendation";
-import Dialog from "@material-ui/core/Dialog";
-import DialogContent from "@material-ui/core/DialogContent";
-import QualiteDansLesDetails from "../components/QualiteDansLesDetails";
 import Collapsible from "react-collapsible";
 import { useTranslation } from "react-i18next";
-import ItemsCarousel from "react-items-carousel";
 import { set } from "react-ga";
 import Slider from "react-slick";
 import CountClients from "../components/CountClients";
-import styles from "../components/AvisClients.module.css";
-import TourQualite from "../components/TourQualite";
+import { useRouter } from "next/router";
 
 const icon = React.createElement('i', { className: 'far fa-question-circle' }, "");
 const title1 = React.createElement('p', {}, "La PlayBoard s'abime-t-elle avec le temps ?");
@@ -46,10 +36,12 @@ const title8 = React.createElement('p', {}, "J’ai une question ou une remarque
 const faqHeader8 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title8]);
 
 
-const TourScreen = props => {
+const KakoScreen = props => {
 
   const [cart, setCart] = useContext(AppContext);
   const products = product.products
+
+  const router = useRouter();
 
   const getFloatVal = (string) => {
     let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
@@ -227,15 +219,15 @@ const TourScreen = props => {
             <h1 className="playboard-title">Livre Kako</h1>
           </div>
           <div className="playboard-paragraph-container">
-            <p className="playboard-paragraph">Livre avec 8 histoires</p>
+            <p className="playboard-paragraph">Suivez l'histoire de Kako le petit Koala au travers de 8 Contes</p>
           </div>
-          <div className="voir-offre" onClick={handleAddToCart}>
-            <Link href="javascript:void(0)"><h3 className="voir-offre-title">Ajouter au panier</h3></Link>
+          <div className="voir-offre">
+            <Link href="#offre"><h3 className="voir-offre-title">{t("Playboard2")}</h3></Link>
           </div>
           <div className="slider-container">
             <Slider {...settings}>
               <div>
-                <img src={'/kako.png'} alt="" />
+                <img src={'/MaxAndLea-Livre-Kako-Face.webp'} alt="" />
               </div>
             </Slider>
           </div>
@@ -248,49 +240,18 @@ const TourScreen = props => {
             <img src={"/bebeIcone.png"} alt="" className="img-bebe" />
           </div>
           <div className="pensee-paragraph-container">
-            <p className="pensee-paragraph">Suivez l'histoire de Kako le petit Koala au travers de 8 Contes</p>
-          </div>
-
-          <div className="icone-container1">
-            <div className="row">
-              <div className="col icone-mini-container">
-                <img src={'/creativite.png'} alt="" />
-                <p className="xyloPara"><span>Kako glisse sur la girafe</span></p>
-              </div>
-              <div className="col icone-mini-container">
-                <img src={'/habilite.png'} alt="" />
-                <p className="xyloPara"><span>Kako encourage son ami le Kangourou</span></p>
-              </div>
-              <div className="col icone-mini-container">
-                <img src={'/motricite.png'} alt="" />
-                <p className="xyloPara"><span>Kako vole sur le dos d’un Hibou</span></p>
-              </div>
-              <div className="col icone-mini-container">
-                <img src={'/motricite.png'} alt="" />
-                <p className="xyloPara"><span>Kako joue avec son ami le panda</span></p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col icone-mini-container">
-                <img src={'/creativite.png'} alt="" />
-                <p className="xyloPara"><span>Kako rencontre un lion</span></p>
-              </div>
-              <div className="col icone-mini-container">
-                <img src={'/habilite.png'} alt="" />
-                <p className="xyloPara"><span>Kako piqué par Jojo le hérisson</span></p>
-              </div>
-              <div className="col icone-mini-container">
-                <img src={'/motricite.png'} alt="" />
-                <p className="xyloPara"><span>Kako sur le dos d’un Dauphin</span></p>
-              </div>
-              <div className="col icone-mini-container">
-                <img src={'/motricite.png'} alt="" />
-                <p className="xyloPara"><span>Kako rencontre une Grenouille</span></p>
-              </div>
-            </div>
+            <p className="pensee-paragraph">De superbes contes téléchargeables et accessibles sur vos tablettes, telephones et supports numériques.</p>
+            <p className="pensee-paragraph">114 pages illustrées pour les enfants de 1 à 4 ans.</p>
           </div>
         </div>
       </div>
+
+      <div className="container1000">
+        <div className="image-recap-container">
+          <img src={'/kako-pano.jpg'} alt="" className="image-recap" />
+        </div>
+      </div>
+
 
       <div className="container1000">
         <CountClients />
@@ -302,14 +263,51 @@ const TourScreen = props => {
         </div>
       </div>
 
-      <div className="mainContainer garantiesContainer">
+      <div className="mainContainer playboardContainer">
+        <span className="offreAnchor" id="offre"></span>
         <div className="container1000">
-          <Garanties />
+          <div className="playboardSubContainer container">
+            <div className="innerPlayboard">
+              <div className="prixPlayboardContainer">
+                <div className="productPrix">
+                  <p className="productRedPrice" style={{ textAlign: "center" }}>{products[4].price}€</p>
+                  <div className="ajouterPanier" onClick={() => {
+                    handleAddToCart()
+                    router.push('/checkout')
+                  }}>
+                    <Link href="javascript:void(0)"><p className="ajouterPanierText">Ajouter au panier</p></Link>
+                  </div>
+                  <p className="question" onClick={async () => {
+                    await router.push('/contact')
+                  }}>Une question ? Contactez-nous</p>
+                  <p>
+                    ✅ Kako glisse sur la girafe 🦒<br></br>
+                    ✅ Kako encourage son ami le Kangourou 🦘<br></br>
+                    ✅ Kako vole sur le dos d’un Hibou 🦉<br></br>
+                    ✅ Kako joue avec son ami le panda 🐼<br></br>
+                    ✅ Kako rencontre un lion 🦁<br></br>
+                    ✅ Kako piqué par Jojo le hérisson 🦔<br></br>
+                    ✅ Kako sur le dos d’un Dauphin 🐬<br></br>
+                    ✅ Kako rencontre une Grenouille 🐸<br></br>
+                  </p>
+                </div>
+                <div className="productImgContainer">
+                  <img src={'/MaxAndLea-Livre-Kako-Ouvert.webp'} alt="" className="reducImg" style={{ maxHeight: "405px;" }} />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div className="container1000">
         <Engagement />
+      </div>
+
+      <div className="mainContainer garantiesContainer">
+        <div className="container1000">
+          <Garanties />
+        </div>
       </div>
 
       <div className="container1000">
@@ -368,4 +366,4 @@ const TourScreen = props => {
   )
 };
 
-export default TourScreen;
+export default KakoScreen;

@@ -78,7 +78,7 @@ const HeaderKako = (props) => {
 
 
   const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
-    const updatedProducts = getUpdatedProducts(existingCart.products, products[1], qtyToBeAdded, newQty);
+    const updatedProducts = getUpdatedProducts(existingCart.products, products[4], qtyToBeAdded, newQty);
     const addPrice = (total, item) => {
 
       total.totalPrice = item.totalPrice;
@@ -119,7 +119,7 @@ const HeaderKako = (props) => {
 
 
   const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
-    const productExistsIndex = isProductInCart(existingProductsInCart, products[1].id);
+    const productExistsIndex = isProductInCart(existingProductsInCart, products[4].id);
 
     if (-1 < productExistsIndex) {
       let updatedProducts = existingProductsInCart;
@@ -159,11 +159,11 @@ const HeaderKako = (props) => {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
-        const updatedCart = updateCart(existingCart, products[1], qtyToBeAdded);
+        const updatedCart = updateCart(existingCart, products[4], qtyToBeAdded);
         setCart(updatedCart)
         setCommandeCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[1]);
+        const newCart = addFirstProduct(products[4]);
         setCart(newCart)
         setCommandeCart(newCart)
       }
