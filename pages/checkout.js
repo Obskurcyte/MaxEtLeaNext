@@ -1063,19 +1063,22 @@ const CheckoutScreen = props => {
     dataClientEmail = dataClient.email
   }
 
-  const initialValues = {
-    email: (dataClient && dataClient.email) ? dataClient.email : '',
-    prenom: (dataClient && dataClient.prenom) ? dataClient.prenom : '',
-    nom: (dataClient && dataClient.nom) ? dataClient.nom : '',
-    adresseLivraison: (dataClient && dataClient.adresseLivraison) ? dataClient.adresseLivraison : '',
-    codePostalLivraison: (dataClient && dataClient.codePostalLivraison) ? dataClient.codePostalLivraison : '',
-    villeLivraison: (dataClient && dataClient.villeLivraison) ? dataClient.villeLivraison : '',
-    pays: (dataClient && dataClient.pays) ? dataClient.pays : '',
-    phone: (dataClient && dataClient.phone) ? dataClient.phone : '',
-    adresseFacturation: (dataClient && dataClient.adresseFacturation) ? dataClient.adresseFacturation : '',
-    codePostalFacturation: (dataClient && dataClient.codePostalFacturation) ? dataClient.codePostalFacturation : '',
-    villeFacturation: (dataClient && dataClient.villeFacturation) ? dataClient.villeFacturation : ''
-  }
+
+  const getInitialValues = (event) => {
+    return {
+      email: (dataClient && dataClient.email) ? dataClient.email : '',
+      prenom: (dataClient && dataClient.prenom) ? dataClient.prenom : '',
+      nom: (dataClient && dataClient.nom) ? dataClient.nom : '',
+      adresseLivraison: (dataClient && dataClient.adresseLivraison) ? dataClient.adresseLivraison : '',
+      codePostalLivraison: (dataClient && dataClient.codePostalLivraison) ? dataClient.codePostalLivraison : '',
+      villeLivraison: (dataClient && dataClient.villeLivraison) ? dataClient.villeLivraison : '',
+      pays: (dataClient && dataClient.pays) ? dataClient.pays : '',
+      phone: (dataClient && dataClient.phone) ? dataClient.phone : '',
+      adresseFacturation: (dataClient && dataClient.adresseFacturation) ? dataClient.adresseFacturation : '',
+      codePostalFacturation: (dataClient && dataClient.codePostalFacturation) ? dataClient.codePostalFacturation : '',
+      villeFacturation: (dataClient && dataClient.villeFacturation) ? dataClient.villeFacturation : ''
+    }
+  };
 
 
 
@@ -1630,7 +1633,7 @@ const CheckoutScreen = props => {
               {cart ?
                 <div>
                   <div className="prixText">
-                    <a href="javascript:void(0);" onClick={() => setGoPaiement(false)} style={{width:'50%'}}>
+                    <a href="javascript:void(0);" onClick={() => router.reload(window.location.pathname)} style={{width:'50%'}}>
                       <div className={!goPaiement ? 'coordonneesDiv' : 'coordonneesDivLight'}>
                         <p className="coordonneesNum">2</p>
                         <p className="coordonneesTitle">LIVRAISON</p>
@@ -1649,10 +1652,10 @@ const CheckoutScreen = props => {
                   <div className="checkoutContent">
                     {!goPaiement ? (
                       <Formik
-                        initialValues={initialValues}
+                        initialValues={getInitialValues()}
                         enableReinitialize={true}
                         validationSchema={livraisonSchema}
-                        onSubmit={values => {
+                        onSubmit={async (values, actions) => {
 
 
                           let donnesClient = {}
@@ -1695,6 +1698,8 @@ const CheckoutScreen = props => {
                               sousTotal : totalPrice1
                             }
                           }
+                          actions.setFieldValue("email", values.email);
+                          actions.setSubmitting(false);
                           if (!checked1 && !checked2 && !checked3) {
                             setErrorLivraison(true)
                           } else {
@@ -1755,6 +1760,7 @@ const CheckoutScreen = props => {
                                 }} options={countries.listCountries} value={props.values.pays} id="pays" name="country" placeholder="Choisir Pays" search={true} filterOptions={ fuzzySearch }/>
                             </div>
                               {props.errors.pays && props.touched.pays && <div style={{color: 'red'}}>Ce champ est requis</div>}
+                              <input type="hidden" id="pays_holder" value={props.values.pays} />
 
                             
                             <div>
