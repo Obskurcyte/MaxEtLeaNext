@@ -1254,13 +1254,33 @@ const CheckoutScreen = props => {
     discountPanier = (sumPanier * 0.20).toFixed(2)
   }
 
-  let totalIntermediaire = sumPanier - discountPanier
+  let totalIntermediaire = sumPanier
+  if(discountPanier)
+    totalIntermediaire -= discountPanier;
+
   const reducCodePromo = totalIntermediaire * (1/codePromo?.amount)
 
-  let totalPrice1 = sumPanier - discountPanier - reducCodePromo
+  let totalPrice1 = sumPanier
+  if(discountPanier)
+    totalPrice1 -= discountPanier;
+  if(reducCodePromo)
+    totalPrice1 -= reducCodePromo;
 
-  console.log(sumPanier)
-  const totalDiscount = parseFloat(disXyloReducPrice) + parseFloat(disTourReducPrice) + parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
+    var totalDiscount = 0;
+  if(disTourReducPrice)
+    totalDiscount += parseFloat(disTourReducPrice);
+  if(disXyloReducPrice)
+   totalDiscount += parseFloat(disXyloReducPrice);
+  if(tourReducPrice)
+    totalDiscount += parseFloat(tourReducPrice);
+  if(xyloReducPrice)
+    totalDiscount += parseFloat(xyloReducPrice);
+  if(playboardReducPrice)
+    totalDiscount += parseFloat(playboardReducPrice);
+  if(discountPanier)
+    totalDiscount += parseFloat(discountPanier);
+  if(reducCodePromo)
+    totalDiscount += parseFloat(reducCodePromo);
 
   totalPrice2 = totalPrice1 + prixLivraison
   return (
@@ -2237,6 +2257,7 @@ const CheckoutScreen = props => {
                                 <SimpleDialogRelay open={openRelay} onClose={handleCloseRelay} />
                               </div>
 
+                            
 
                             <Link href="#">
                               <button className="cart-valide" type="submit" onClick={props.handleSubmit}>PASSER À L'ÉTAPE SUIVANTE →</button>

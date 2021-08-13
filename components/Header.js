@@ -107,16 +107,18 @@ const Header = (props) => {
   }
 
 
-  let totalPriceIntermediaire = sumPanier - discountPanier
-  const reducCodePromo = totalPriceIntermediaire * (1 / codePromo?.amount)
+  let totalIntermediaire = sumPanier
+  if(discountPanier)
+    totalIntermediaire -= discountPanier;
 
-  let totalPrice1 = sumPanier - discountPanier - reducCodePromo
+  const reducCodePromo = totalIntermediaire * (1/codePromo?.amount)
 
-  console.log("total", totalPrice1)
-  console.log('sum', sumPanier)
-  console.log('discount', discountPanier)
-  console.log('reduc', reducCodePromo)
-  console.log('inter', totalPriceIntermediaire)
+  let totalPrice1 = sumPanier
+  if(discountPanier)
+    totalPrice1 -= discountPanier;
+  if(reducCodePromo)
+    totalPrice1 -= reducCodePromo;
+
   let user = '';
 
   let numberOfProducts = 0;

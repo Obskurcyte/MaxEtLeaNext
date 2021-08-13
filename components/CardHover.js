@@ -305,14 +305,33 @@ const CardHover = () => {
   }
 
 
-  let totalPriceIntermediaire = sumPanier - discountPanier
-  const reducCodePromo = totalPriceIntermediaire * (1/codePromo?.amount)
+  let totalIntermediaire = sumPanier
+  if(discountPanier)
+    totalIntermediaire -= discountPanier;
 
-  let totalPrice1 = sumPanier - discountPanier - reducCodePromo
+  const reducCodePromo = totalIntermediaire * (1/codePromo?.amount)
 
-  console.log(codePromo?.amount)
-  const totalDiscount = parseFloat(disXyloReducPrice) + parseFloat(disTourReducPrice) + parseFloat(tourReducPrice) + parseFloat(xyloReducPrice) + parseFloat(playboardReducPrice) + parseFloat(discountPanier) + parseFloat(reducCodePromo)
+  let totalPrice1 = sumPanier
+  if(discountPanier)
+    totalPrice1 -= discountPanier;
+  if(reducCodePromo)
+    totalPrice1 -= reducCodePromo;
 
+    var totalDiscount = 0;
+  if(disTourReducPrice)
+    totalDiscount += parseFloat(disTourReducPrice);
+  if(disXyloReducPrice)
+   totalDiscount += parseFloat(disXyloReducPrice);
+  if(tourReducPrice)
+    totalDiscount += parseFloat(tourReducPrice);
+  if(xyloReducPrice)
+    totalDiscount += parseFloat(xyloReducPrice);
+  if(playboardReducPrice)
+    totalDiscount += parseFloat(playboardReducPrice);
+  if(discountPanier)
+    totalDiscount += parseFloat(discountPanier);
+  if(reducCodePromo)
+    totalDiscount += parseFloat(reducCodePromo);
 
   return (
     <div className={styles.hoverContainer}>
