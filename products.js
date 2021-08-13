@@ -31,7 +31,7 @@ export const products = [
   },
   {
     description: null,
-    id: "hdkfhdhfdjjJ",
+    id: "17014",
     name: "Ebook Playboard",
     price: "9.90",
     slug: "ebook-playboard",
@@ -40,7 +40,7 @@ export const products = [
   },
   {
     description: null,
-    id: "xdghfgjhfgjh",
+    id: "17011",
     name: "Livre Kako",
     price: "12.90",
     slug: "livre-kako",
