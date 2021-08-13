@@ -69,6 +69,7 @@ const HeaderXylophone = (props) => {
   const createNewProduct = (product, productPrice, qty) => {
     return {
       productId: product.id,
+      oldPrice: product.priceAugmente,
       name: product.name,
       price: productPrice,
       qty: qty,

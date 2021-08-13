@@ -6,6 +6,12 @@
   margin-top: 50%;
 }
 
+.itemPrixBarre {
+  color: lightgrey;
+  margin-right: 3%;
+  text-decoration: line-through;
+}
+
 .input-card {
   display: flex;
   height: 50px;

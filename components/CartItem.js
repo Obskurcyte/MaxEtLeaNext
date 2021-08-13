@@ -11,6 +11,7 @@ const CartItem = ({item}) => {
 
   const products = productFile.products
 
+  console.log('item', item)
   const changeCartProductsExtraDiscounts = () =>{
     let existingCart = localStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart);
@@ -76,9 +77,6 @@ const CartItem = ({item}) => {
     }
   }
 
-
-
-
   const dispatch = useDispatch();
   const product = useSelector(state => state.product);
 
@@ -91,7 +89,6 @@ const CartItem = ({item}) => {
   // const [cart, setCart] = useContext(AppContext);
 
   const [productCount, setProductCount] = useState(item.qty);
-
 
   const onIncreaseClick = () => {
     
@@ -118,8 +115,6 @@ const CartItem = ({item}) => {
       document.querySelector('.change-quantity').value = productCount;
     }
   }
-
-
 
   const getFloatVal = (string) => {
     let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
@@ -154,7 +149,6 @@ const CartItem = ({item}) => {
     }
   };
 
-
   const updateCart = (existingCart, product, qtyToBeAdded, newQty = false) => {
     const updatedProducts = getUpdatedProducts(existingCart.products, product, qtyToBeAdded, newQty);
     const addPrice = (total, item) => {
@@ -176,8 +170,6 @@ const CartItem = ({item}) => {
     localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart))
     return updatedCart
   };
-
-
 
   /**
    * Get updated products array
@@ -262,7 +254,6 @@ const CartItem = ({item}) => {
     changeCartProductsExtraDiscounts();
   }
 
-
   return (
     <div key={item.productId} className="tr-product" id={"list_"+item.productId}>
       <div className="innerContainerCart">
@@ -275,7 +266,8 @@ const CartItem = ({item}) => {
         </div>
 
         <div className="prixDescriptionContainer">
-          <div>
+          <div className='flex'>
+            <p className="itemPrixBarre">{item.oldPrice ? `${item.oldPrice} EUR` : ''}</p>
             <p className="itemPrix">{item.totalPrice} EUR</p>
           </div>
           <div className="nameAndQty">
