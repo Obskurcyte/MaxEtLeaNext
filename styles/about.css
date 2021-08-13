@@ -27,9 +27,8 @@ main {
 }
 
 .grande-photo {
-  width: 45%;
-  height: 45%;
-  margin-right: 3%;
+  width: 100%;
+  max-width: 450px;
 }
 
 .container-about {
@@ -217,9 +216,6 @@ main {
   .container-photo {
     flex-direction: column-reverse;
   }
-  .grande-photo {
-    width: 100%;
-  }
   .paragraphs2 {
     max-width: 100%;
   }
@@ -228,9 +224,6 @@ main {
   }
   .paragraphs2 p {
     text-align: center;
-  }
-  .paragraph1 {
-    height: 250px;
   }
 }
 

@@ -21,9 +21,11 @@ const About = () => {
       <main>
       <div className="container1000">
         <p className="Apropos-title">{t("Propos.2")}<span>{t("Propos.3")}</span></p>
-        <div className="container-about">
-          <img src={'/internet10.webp'} alt="" className="grande-photo"/>
-          <div className="paragraphs">
+        <div className="row">
+          <div className="col-sm-6">
+            <img src={'/internet10.webp'} alt="" className="grande-photo"/>
+          </div>
+          <div className="col-sm-6">
             <div className="paragraph1">
               <p>
                 <img src={'/internet4.svg'} alt="" className="petite-photo1"/>
@@ -40,8 +42,9 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="container-about container-photo">
-          <div className="paragraphs2">
+        <br></br>
+        <div className="row">
+          <div className="col-sm-6">
             <div className="paragraph4">
               <p>              <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt="" className="petite-photo4"/>
                 {t("Propos.10")}<span>{t("Propos.11")}</span>{t("Propos.12")}</p>
@@ -51,7 +54,7 @@ const About = () => {
                 {t("Propos.13")}<span>{t("Propos.14")}</span>{t("Propos.15")}<span>{t("Propos.16")}</span></p>
             </div>
           </div>
-          <div>
+          <div className="col-sm-6">
             <img src={'/internet11.webp'} alt="" className="moyenne-photo"/>
           </div>
         </div>
