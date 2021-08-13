@@ -1,17 +1,20 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import Header from "../../components/Header";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCalendar} from "@fortawesome/free-solid-svg-icons";
-import {Card, Col, Container, Row} from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import Link from "next/link";
 import Footer from "../../components/Footer";
-import {AppContext} from "../../components/context/AppContext";
+import { AppContext } from "../../components/context/AppContext";
 import * as product from "../../products";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 const AideMoiAFaireSeul = () => {
+
+  const router = useRouter();
 
   const [cart, setCart] = useContext(AppContext);
   const products = product.products
@@ -21,7 +24,7 @@ const AideMoiAFaireSeul = () => {
 
   const getFloatVal = (string) => {
     let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
-    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)): '';
+    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)) : '';
   };
 
   const addFirstProduct = (product) => {
@@ -65,7 +68,7 @@ const AideMoiAFaireSeul = () => {
     }
 
     // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
-    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+    let total = updatedProducts.reduce(addPrice, { totalPrice: 0, qty: 0 })
 
     const updatedCart = {
       products: updatedProducts,
@@ -92,7 +95,7 @@ const AideMoiAFaireSeul = () => {
    */
 
 
-  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty = false) => {
     const productExistsIndex = isProductInCart(existingProductsInCart, products[2].id);
 
     if (-1 < productExistsIndex) {
@@ -128,7 +131,7 @@ const AideMoiAFaireSeul = () => {
       let existingCart = localStorage.getItem('woo-next-cart');
       console.log('clicked')
       console.log('existingCart', existingCart)
-      if (existingCart!=null) {
+      if (existingCart != null) {
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
         const updatedCart = updateCart(existingCart, products[2], qtyToBeAdded);
@@ -143,142 +146,147 @@ const AideMoiAFaireSeul = () => {
   return (
     <div className='jeuContainer'>
       <Head>
-        <title>Max And Lea - Blog-Aide-moi à faire seul</title>
+        <title>Max And Lea - Blog - {t("AideMoiAFaireSeul.1")}</title>
       </Head>
       <Header />
-      <div className="img-blog-container">
-        <img src={'https://maxandlea.com/wp-content/uploads/2020/05/father-53e5d44a48_1280.jpg'} className="img-blog" alt={'mathématiques'}/>
+      <div className="img-blog-container aide-moi-top">
       </div>
 
-      <div className="date-container">
-        <FontAwesomeIcon icon={faCalendar} className="calendar"/>
-        <p className="date-text">{t("AideMoiAFaireSeul.0")}</p>
+      <div className="container1000">
+        <div className="date-container">
+          <FontAwesomeIcon icon={faCalendar} className="calendar" />
+          <p className="date-text">{t("AideMoiAFaireSeul.0")}</p>
+        </div>
+
+        <h1 style={{ textAlign: 'center' }}>{t("AideMoiAFaireSeul.1")}</h1>
+        <hr />
+        <div className="introduction">
+          <p>{t("AideMoiAFaireSeul.4")}</p>
+        </div>
+        <hr />
+
+        <div className="row">
+          <div className="col-sm-6">
+            <p>{t("AideMoiAFaireSeul.2")}<a href="https://fr.wikipedia.org/wiki/Maria_Montessori" style={{ fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit' }}>Maria Montessori</a>{t("AideMoiAFaireSeul.3")}</p>
+          </div>
+          <div className="col-sm-6">
+            <img src={'/family-baby-crawling.webp'} alt="" className="enfants-souriant-blog" />
+          </div>
+        </div>
+
+        <div className="encadrement">
+          <p><span className="grosseLettre">{t("AideMoiAFaireSeul.5")}</span>{t("AideMoiAFaireSeul.6")}</p>
+
+        </div>
+
+        <div className="description-blog">
+          <p>{t("AideMoiAFaireSeul.7")}</p>
+        </div>
+
+        <hr />
+
+        <div className="conseilMaxEtLea">
+          <h4>{t("AideMoiAFaireSeul.8")}</h4>
+
+          <div className="conseilTitre">
+            <img src="/triangle.svg" alt="" className='titre-img' />
+            <h5>{t("AideMoiAFaireSeul.9")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("AideMoiAFaireSeul.10")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/carre.svg" alt="" className='titre-img' />
+            <h5>{t("AideMoiAFaireSeul.11")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("AideMoiAFaireSeul.12")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/etoile.svg" alt="" className='titre-img' />
+            <h5>{t("AideMoiAFaireSeul.13")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("AideMoiAFaireSeul.14")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/cercle.svg" alt="" className='titre-img' />
+            <h5>{t("AideMoiAFaireSeul.15")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("AideMoiAFaireSeul.16")}</p>
+          </div>
+
+          <div className="conseilTitre">
+            <img src="/triangle.svg" alt="" className='titre-img' />
+            <h5>{t("AideMoiAFaireSeul.17")}</h5>
+          </div>
+          <div className="conseildescription">
+            <p>{t("AideMoiAFaireSeul.18")}</p>
+          </div>
+        </div>
+
+        <div className="img-blog2-container">
+          <img src={'/jenga.webp'} alt="" className="img-blog2" />
+        </div>
       </div>
 
-      <h1 style={{textAlign: 'center'}}>{t("AideMoiAFaireSeul.1")}</h1>
-      <hr/>
-      <div className="introduction">
-        <p>{t("AideMoiAFaireSeul.4")}</p>
+
+      <div className="aimez-aussi">
+        <h2>{t("Blogs.19")}</h2>
+        <Container>
+          <Row className="row-card">
+            <Col sm={4} md={4} lg={4} xl={4} className="col-card">
+              <Card className="card-list-container">
+                <Card.Img src={'/child-fun-family.webp'} variant="top" className="math-image" />
+                <Card.Body className="card-body">
+                  <Card.Title className="card-title">{t("Blogs.11")}</Card.Title>
+                  <Link href='/blogs/MathematiquesEtJeunesEnfants'>
+                    <a className="read-more-button" >{t("Blogs.2")}</a>
+                  </Link>
+                </Card.Body>
+              </Card>
+            </Col>
+
+            <Col sm={4} md={4} lg={4} xl={4} className="col-card">
+              <Card className="card-list-container">
+                <Link href='/playboard'>
+                  <Card.Img src={products[2].image} variant="top" className="math-image" />
+                </Link>
+                <Card.Body className="card-body">
+                  <Card.Title className="card-title card-no-margin">{t("products.playboard")}<br />
+                    <div className='playboard-card'>
+                      <p className='prix-playboard-card-cross'>{products[2].priceAugmente}</p>
+                      <p className='prix-playboard-card-true'>{products[2].price}</p>
+                    </div>
+                  </Card.Title>
+                  <div onClick={() => {
+                    handleAddToCart()
+                    router.push('/checkout')
+                  }}>
+                    <a className="read-more-button">{t("products.cart")}</a>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+
+            <Col sm={4} md={4} lg={4} xl={4} className="col-card">
+              <Card className="card-list-container">
+                <Card.Img src={'/family-kids-baby.webp'} variant="top" className="math-image" />
+                <Card.Body className="card-body">
+                  <Card.Title className="card-title">{t("Blogs.13")}</Card.Title>
+                  <Link href='/blog-math'>
+                    <a className="read-more-button" >{t("Blogs.2")}</a>
+                  </Link>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       </div>
-      <hr/>
-
-      <div className="paragraph-blog1">
-        <div className="paragraph1-text">
-          <p>{t("AideMoiAFaireSeul.2")}<a href="https://fr.wikipedia.org/wiki/Maria_Montessori" style={{fontFamily: 'Roboto, sans-serif ', fontSize: 'inherit'}}>Maria Montessori</a>{t("AideMoiAFaireSeul.3")}</p>
-        </div>
-
-          <img src={'https://maxandlea.com/wp-content/uploads/2020/05/family-baby-crawling-1237701.jpg'} alt="" className="enfants-souriant-blog"/>
-      </div>
-
-      <div className="encadrement">
-        <p><span className="grosseLettre">{t("AideMoiAFaireSeul.5")}</span>{t("AideMoiAFaireSeul.6")}</p>
-
-      </div>
-
-      <div className="description-blog">
-        <p>{t("AideMoiAFaireSeul.7")}</p>
-      </div>
-
-      <hr/>
-
-      <div className="conseilMaxEtLea">
-        <h4>{t("AideMoiAFaireSeul.8")}</h4>
-
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_1-1.svg" alt="" className='titre-img'/>
-          <h5>{t("AideMoiAFaireSeul.9")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("AideMoiAFaireSeul.10")}</p>
-        </div>
-
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_3t.svg" alt="" className='titre-img'/>
-          <h5>{t("AideMoiAFaireSeul.11")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("AideMoiAFaireSeul.12")}</p>
-        </div>
-
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_2t.svg" alt="" className='titre-img'/>
-          <h5>{t("AideMoiAFaireSeul.13")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("AideMoiAFaireSeul.14")}</p>
-        </div>
-
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt="" className='titre-img'/>
-          <h5>{t("AideMoiAFaireSeul.15")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("AideMoiAFaireSeul.16")}</p>
-        </div>
-
-        <div className="conseilTitre">
-          <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_3t.svg" alt="" className='titre-img'/>
-          <h5>{t("AideMoiAFaireSeul.17")}</h5>
-        </div>
-        <div className="conseildescription">
-          <p>{t("AideMoiAFaireSeul.18")}</p>
-        </div>
-      </div>
-
-      <div className="img-blog2-container">
-        <img src={'/handschildren.jpg'} alt="" className="img-blog2"/>
-      </div>
-
-
-      {lang === 'fr' && (
-        <div className="aimez-aussi">
-          <h2>{t("AideMoiAFaireSeul.19")}</h2>
-          <Container>
-            <Row className="row-card">
-              <Col sm={4} md={4} lg={4} xl={4} className="col-card">
-                <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/child-fun-family-3046494.jpg'} variant="top" className="math-image" />
-                  <Card.Body className="card-body">
-                    <Card.Title className="card-title">{t("AideMoiAFaireSeul.20")}</Card.Title>
-                    <Link href='/blogs/MathematiquesEtJeunesEnfants'>
-                      <a className="read-more-button" >{t("AideMoiAFaireSeul.21")}</a>
-                    </Link>
-                  </Card.Body>
-                </Card>
-              </Col>
-
-              <Col sm={4} md={4} lg={4} xl={4} className="col-card">
-                <Card className="card-list-container">
-                  <Card.Img src={'/playboardGood.webp'} variant="top" className="math-image" />
-                  <Card.Body className="card-body">
-                    <Card.Title className="card-title card-no-margin">{t("AideMoiAFaireSeul.22")}<br/>
-                      <div className='playboard-card'>
-                        <p className='prix-playboard-card-cross'>49,90€</p>
-                        <p className='prix-playboard-card-true'>29,90€</p>
-                      </div>
-                    </Card.Title>
-                    <Link href="javascript:void(0);">
-                      <a className="read-more-button" onClick={handleAddToCart}>{t("AideMoiAFaireSeul.23")}</a>
-                    </Link>
-                  </Card.Body>
-                </Card>
-              </Col>
-
-              <Col sm={4} md={4} lg={4} xl={4} className="col-card">
-                <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2020/05/family-kids-baby-457235.jpg'} variant="top" className="math-image" />
-                  <Card.Body className="card-body">
-                    <Card.Title className="card-title">Education positive</Card.Title>
-                    <Link href='/blog-math'>
-                      <a className="read-more-button" >Lire plus</a>
-                    </Link>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-      )}
 
 
 

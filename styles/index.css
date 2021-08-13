@@ -12,6 +12,7 @@ body {
 .container1000{
   max-width: 1000px;
   margin: auto;
+  padding: 0px 5px 0px 5px;
 }
 
 .container1200{

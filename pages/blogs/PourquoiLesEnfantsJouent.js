@@ -10,8 +10,11 @@ import * as product from "../../products";
 import i18next from "i18next";
 import {useTranslation} from "react-i18next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 const PourquoiLesEnfantsJouent = () => {
+
+  const router = useRouter();
 
   const [cart, setCart] = useContext(AppContext);
   const products = product.products;
@@ -144,94 +147,102 @@ const PourquoiLesEnfantsJouent = () => {
   return (
     <div className='jeuContainer'>
       <Head>
-        <title>Max And Lea - Blog-Pourquoi les enfants jouent</title>
+        <title>Max And Lea - Blog - {t("PourquoiLesEnfantsJouent.1")}</title>
       </Head>
       <Header />
-      <div className="img-blog-container">
-        <img src={'/playboardBlog.jpg'} className="img-blog" alt={'mathématiques'}/>
+      <div>
+        <img src={'/pano.jpg'} className="img-blog" alt={'mathématiques'}/>
       </div>
 
-      <div className="date-container">
-        <FontAwesomeIcon icon={faCalendar} className="calendar"/>
-        <p className="date-text">{t("PourquoiLesEnfantsJouent.0")}</p>
-      </div>
-
-      <h1 style={{textAlign: 'center'}}>{t("PourquoiLesEnfantsJouent.1")}</h1>
-      <hr/>
-      <div className="introduction">
-        <p>{t("PourquoiLesEnfantsJouent.2")}</p>
-      </div>
-      <hr/>
-
-      <div className="paragraph-blog1">
-        <div className="paragraph1-text">
-          <p>{t("PourquoiLesEnfantsJouent.3")}</p>
-          <p>{t("PourquoiLesEnfantsJouent.4")}</p>
-          <p>{t("PourquoiLesEnfantsJouent.5")}</p>
+      <div className="container1000">
+        <div className="date-container">
+          <FontAwesomeIcon icon={faCalendar} className="calendar"/>
+          <p className="date-text">{t("PourquoiLesEnfantsJouent.0")}</p>
         </div>
 
-          <img src={'https://maxandlea.com/wp-content/uploads/2020/11/IMG_4278-768x1152.jpg'} alt="" className="enfants-souriant-blog"/>
-      </div>
-
-      <div className="description-blog">
-        <p>{t("PourquoiLesEnfantsJouent.6")}</p>
-        <p>{t("PourquoiLesEnfantsJouent.7")}</p>
-        <p>{t("PourquoiLesEnfantsJouent.8")}</p>
-        <p>{t("PourquoiLesEnfantsJouent.9")}</p>
-        <p>{t("PourquoiLesEnfantsJouent.10")}</p>
-      </div>
-
-      <div className="commentContainer">
-        <div className="textPsy">
-          <p>Angélique Kosinski</p>
-          <p>{t("PourquoiLesEnfantsJouent.11")}</p>
-          <p>{t("PourquoiLesEnfantsJouent.12")}</p>
+        <h1 style={{textAlign: 'center'}}>{t("PourquoiLesEnfantsJouent.1")}</h1>
+        <hr/>
+        <div className="introduction">
+          <p>{t("PourquoiLesEnfantsJouent.2")}</p>
         </div>
-          <img src={"https://maxandlea.com/wp-content/uploads/2020/11/Angelique.jpg"} alt="" className="imgPsy"/>
+        <hr/>
+
+        <div className="row">
+          <div className="col-sm-8">
+            <p>{t("PourquoiLesEnfantsJouent.3")}</p>
+            <p>{t("PourquoiLesEnfantsJouent.4")}</p>
+            <p>{t("PourquoiLesEnfantsJouent.5")}</p>
+          </div>
+          <div className="col-sm-4">
+            <img src={'/joue-img.jpg'} alt="" className="enfants-souriant-blog"/>
+          </div>
+        </div>
+
+        <div className="description-blog">
+          <p>{t("PourquoiLesEnfantsJouent.6")}</p>
+          <p>{t("PourquoiLesEnfantsJouent.7")}</p>
+          <p>{t("PourquoiLesEnfantsJouent.8")}</p>
+          <p>{t("PourquoiLesEnfantsJouent.9")}</p>
+          <p>{t("PourquoiLesEnfantsJouent.10")}</p>
+        </div>
+
+        <div className="commentContainer">
+          <div className="textPsy">
+            <p>Angélique Kosinski</p>
+            <p>{t("PourquoiLesEnfantsJouent.11")}</p>
+            <p>{t("PourquoiLesEnfantsJouent.12")}</p>
+            <a href="https://www.instagram.com/unepsyaparis/" style={{fontSize:"1rem",color:"#00b2cc"}}>@unepsyaparis</a>
+          </div>
+            <img src={"https://maxandlea.com/wp-content/uploads/2020/11/Angelique.jpg"} alt="" className="imgPsy"/>
+        </div>
       </div>
 
-      {lang === 'fr' && (
         <div className="aimez-aussi">
-          <h2>Vous pourriez aimer aussi</h2>
+          <h2>{t("Blogs.19")}</h2>
           <Container>
             <Row className="row-card">
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Card.Img src={'https://maxandlea.com/wp-content/uploads/2021/04/boys-children-path-5630669.jpg'} variant="top" className="math-image" />
+                  <Card.Img src={'/boys-children.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
-                    <Card.Title className="card-title">Le jeu en extérieur</Card.Title>
+                    <Card.Title className="card-title">{t("Blogs.0")}</Card.Title>
                     <Link href='/blogs/LeJeuEnExterieur'>
-                      <a className="read-more-button" >Lire plus</a>
+                      <a className="read-more-button" >{t("Blogs.2")}</a>
                     </Link>
                   </Card.Body>
                 </Card>
               </Col>
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
-                <Card className="card-list-container">
-                  <Card.Img src={'/playboardGood.webp'} variant="top" className="math-image" />
-                  <Card.Body className="card-body">
-                    <Card.Title className="card-title card-no-margin">La PlayBoard<br/>
-                      <div className='playboard-card'>
-                        <p className='prix-playboard-card-cross'>49,90€</p>
-                        <p className='prix-playboard-card-true'>29,90€</p>
-                      </div>
-                    </Card.Title>
-                    <Link href="javascript:void(0);">
-                      <a className="read-more-button" onClick={handleAddToCart}>Ajouter au panier</a>
-                    </Link>
-                  </Card.Body>
-                </Card>
-              </Col>
+              <Card className="card-list-container">
+                <Link href='/playboard'>
+                  <Card.Img src={products[2].image} variant="top" className="math-image" />
+                </Link>
+                <Card.Body className="card-body">
+                  <Card.Title className="card-title card-no-margin">{t("products.playboard")}<br />
+                    <div className='playboard-card'>
+                      <p className='prix-playboard-card-cross'>{products[2].priceAugmente}</p>
+                      <p className='prix-playboard-card-true'>{products[2].price}</p>
+                    </div>
+                  </Card.Title>
+                  <div onClick={() => {
+                    handleAddToCart()
+                    router.push('/checkout')
+                  }}>
+                    <a className="read-more-button">{t("products.cart")}</a>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
 
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
                   <Card.Img src={'/educationPositive.webp'} variant="top" className="math-image" />
                   <Card.Body className="card-body">
-                    <Card.Title className="card-title">Education positive</Card.Title>
+                    <Card.Title className="card-title">{t("Blogs.13")}</Card.Title>
                     <Link href='/blogs/EducationPositive'>
-                      <a className="read-more-button" >Lire plus</a>
+                      <a className="read-more-button" >{t("Blogs.2")}</a>
                     </Link>
                   </Card.Body>
                 </Card>
@@ -240,7 +251,6 @@ const PourquoiLesEnfantsJouent = () => {
             </Row>
           </Container>
         </div>
-      )}
 
 
       <Footer />

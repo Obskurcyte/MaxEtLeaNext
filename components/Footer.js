@@ -32,8 +32,10 @@ const Footer = () => {
     <footer className="footer-container">
       <div className="container">
         <div className="footer-subcontainer">
-          <div className="col-8 col-md-3 order-4 order-md-1 flex-column d-flex">
-          <Link href="/"><img src={'/logogrand.webp'} alt="" className="img-footer"/></Link>
+        <div class="container">
+        <div class="row">
+          <div className="col-8 col-md-3 order-5 order-md-1 flex-column d-flex">
+          <Link href="/"><a href="/"><img src={'/logogrand.webp'} alt="" className="img-footer"/></a></Link>
             <span className="copyright">Copyright © 2021 | Max And Lea</span>
             <div className="icons-social">
               <a href="https://www.facebook.com/MaxandleaToys/" target="_blank"><FontAwesomeIcon icon={faFacebookSquare} className="iconFacebook"/></a>
@@ -41,17 +43,25 @@ const Footer = () => {
               <a href="https://www.youtube.com/channel/UCHaUOBoknhDUyNExyux9yvg/featured" target="_blank"><FontAwesomeIcon icon={faYoutubeSquare} className="iconYoutube"/></a>
             </div>
           </div>
-          <div className="col-6 col-md-3 order-1 order-md-2 my-auto flex-column d-flex">
+          <div className="col-6 col-md-3 order-2 order-md-2 my-auto flex-column d-flex phone-none">
             <Link href="/about">{t("Footer.1")}</Link>
             <Link href="/equipe">{t("Footer.2")}</Link>
             <Link href="/blogs">{t("Footer.3")}</Link>
           </div>
-          <div className="col-6 col-md-3 order-2 order-md-3 my-auto flex-column d-flex">
+          <div className="col-6 col-md-3 order-3 order-md-3 my-auto flex-column d-flex phone-none">
             <Link href="/contact">{t("Footer.4")}</Link>
             <Link href="/mentionsLegales">{t("Footer.5")}</Link>
             <Link href="/CGV">{t("Footer.6")}</Link>
           </div>
-          <div className="col-8 col-md-3 order-3 order-md-4 my-auto flex-column d-flex" >
+          <div className="col-6 col-md-3 order-1 order-md-3 my-auto flex-column d-flex phone-50 phone-only">
+            <Link href="/about">{t("Footer.1")}</Link>
+            <Link href="/equipe">{t("Footer.2")}</Link>
+            <Link href="/blogs">{t("Footer.3")}</Link>
+            <Link href="/contact">{t("Footer.4")}</Link>
+            <Link href="/mentionsLegales">{t("Footer.5")}</Link>
+            <Link href="/CGV">{t("Footer.6")}</Link>
+          </div>
+          <div className="col-8 col-md-3 order-4 order-md-4 my-auto flex-column d-flex phone-50" >
             <div style={{display: "flex", marginBottom: '10%', flexDirection: 'column', justifyContent: "space-around"}} >
               <img src={'/forest.webp'} alt="" className="img-footer" onClick={() => setOpen(true)}/>
 
@@ -119,6 +129,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
+      </div>
+      </div>
       </div>
     </footer>
     </React.Fragment>
