@@ -119,6 +119,15 @@ const Header = (props) => {
   console.log('inter', totalPriceIntermediaire)
   let user = '';
 
+  let numberOfProducts = 0;
+  if (cart) {
+    for (let data in cart.products) {
+      console.log(cart.products[data].qty)
+      numberOfProducts += parseInt(cart.products[data].qty)
+    }
+  }
+
+
   useEffect(() => {
     if (localStorage.getItem('userName')) {
       user = localStorage.getItem('userName');
@@ -127,7 +136,7 @@ const Header = (props) => {
 
   const drapeau = useSelector(state => state.drapeau.drapeau)
 
-  const productCount = (null !== cart && Object.keys(cart).length) ? cart.totalProductCount : '';
+  const productCount = (null !== cart && Object.keys(cart).length) ? cart.products.length : '';
 
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -208,7 +217,7 @@ const Header = (props) => {
 
                 <div className="cartWrap">
                   <div className="productsCountContainer">
-                    <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{productCount}</span> : <span className="productCountText">0</span>}</div>
+                    <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{numberOfProducts}</span> : <span className="productCountText">0</span>}</div>
                   </div>
                   <div className="flex">
                     <div className='productPrice'>

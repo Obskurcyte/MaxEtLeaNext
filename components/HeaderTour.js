@@ -268,6 +268,15 @@ const HeaderTour = (props) => {
   let totalPrice1 = sumPanier - discountPanier - reducCodePromo
   let user = '';
 
+
+  let numberOfProducts = 0;
+  if (cart) {
+    for (let data in cart.products) {
+      console.log(cart.products[data].qty)
+      numberOfProducts += parseInt(cart.products[data].qty)
+    }
+  }
+
   useEffect(() => {
     if (localStorage.getItem('userName')) {
       user = localStorage.getItem('userName');
@@ -374,7 +383,7 @@ const HeaderTour = (props) => {
 
                 <div className="cartWrap">
                   <div className="productsCountContainer">
-                    <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{productCount}</span> : <span className="productCountText">0</span>}</div>
+                    <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{numberOfProducts}</span> : <span className="productCountText">0</span>}</div>
                   </div>
                   <div className="flex">
                     <div className='productPrice'>
