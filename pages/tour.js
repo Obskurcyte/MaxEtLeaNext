@@ -228,7 +228,7 @@ const TourScreen = props => {
       <div className="container1000">
         <div className="imgCouverture">
           <div className="playboard-title-container">
-            <h1 className="playboard-title">La Tour Arc En Ciel</h1>
+            <h1 className="playboard-title">{t("Tour.1")}</h1>
           </div>
           <div className="playboard-paragraph-container">
             <p className="playboard-paragraph">{t("Playboard1")}</p>
@@ -267,7 +267,7 @@ const TourScreen = props => {
             <img src={"/bebeIcone.png"} alt="" className="img-bebe" />
           </div>
           <div className="pensee-paragraph-container">
-            <p className="pensee-paragraph">Un jouet ludique qui aide au développement psychomoteur de l'enfant</p>
+            <p className="pensee-paragraph">{t("Tour.2")}</p>
           </div>
 
           <div className="icone-container1">
@@ -275,17 +275,17 @@ const TourScreen = props => {
 
               <div className="col icone-mini-container">
                 <img src={'/creativite.png'} alt="" />
-                <p className="xyloPara"><span>Améliorer son habilité</span><br />Avec ses cercles de différentes tailles votre enfant s'amusera à les empiler et travaillera ainsi sa coordination et sa gestuelle</p>
+                <p className="xyloPara"><span>{t("Tour.3")}</span><br />{t("Tour.4")}</p>
               </div>
 
               <div className="col icone-mini-container">
                 <img src={'/habilite.png'} alt="" />
-                <p className="xyloPara"><span>Travailler sa motricité </span><br />Des exercices d'empilage de différentes tailles couplés aux couleurs aideront votre petit à améliorer sa motricité fine et ses réflexes oeil-main</p>
+                <p className="xyloPara"><span>{t("Tour.5")}</span><br />{t("Tour.6")}</p>
               </div>
 
               <div className="col icone-mini-container">
                 <img src={'/motricite.png'} alt="" />
-                <p className="xyloPara"><span>Développer sa Créativité</span><br />D'innombrables façons de jouer lui permettront d'affiner sa curiosité et renforcer sa créativité</p>
+                <p className="xyloPara"><span>{t("Tour.7")}</span><br />{t("Tour.8")}</p>
               </div>
             </div>
 
@@ -293,17 +293,17 @@ const TourScreen = props => {
 
               <div className="col icone-mini-container">
                 <img src={'/concentration.png'} alt="" />
-                <p className="xyloPara"><span>Aiguiser sa concentration</span><br />Votre enfant jouera des heures à empiler et inverser l'ordre des cercles et des couleurs, et sans s'en rendre compte améliorera grandement sa concentration</p>
+                <p className="xyloPara"><span>{t("Tour.9")}</span><br />{t("Tour.10")}</p>
               </div>
 
               <div className="col icone-mini-container">
                 <img src={'/apprendre.png'} alt="" />
-                <p className="xyloPara"><span>Apprendre en jouant</span><br />Il n'y a pas d'apprentissage sans plaisir. La tour Arc-en-ciel a donc été pensée pour jouer et s'amusant. L'apprentissage devient donc un jeu !</p>
+                <p className="xyloPara"><span>{t("Tour.11")}</span><br />{t("Tour.12")}</p>
               </div>
 
               <div className="col icone-mini-container">
                 <img src={'/autonomie.png'} alt="" />
-                <p className="xyloPara"><span>Développer l'autonomie</span><br />En apprenant à jouer seul et en construisant ses propres scénarios, votre petit améliorera son autonomie, sa concentration et sa créativité.</p>
+                <p className="xyloPara"><span>{t("Tour.13")}</span><br />{t("Tour.14")}</p>
               </div>
 
             </div>
@@ -321,8 +321,8 @@ const TourScreen = props => {
 
       <div className="container1000">
         <div className="huitEnUnContainerText">
-          <p className="huitEnUnBigText">4 en 1</p>
-          <p className="huitEnUnText">L'outil d'éveil et d'apprentissage le plus complet du marché</p>
+          <p className="huitEnUnBigText">{t("Tour.15")}</p>
+          <p className="huitEnUnText">{t("Tour.16")}</p>
         </div>
       </div>
 
@@ -333,28 +333,28 @@ const TourScreen = props => {
 
             <div className="col miniIconeContainer2">
               <FontAwesomeIcon icon={faDotCircle} color="#35A936" className="anneauxImg" />
-              <h5>ANNEAUX</h5>
-              <p>Des formes simples à empiler pour travailler sa motricité et apprendre à organiser</p>
+              <h5>{t("Tour.17")}</h5>
+              <p>{t("Tour.18")}</p>
             </div>
 
 
             <div className="col miniIconeContainer2">
               <img src={'/couleur.png'} alt="" />
-              <h5>COULEURS</h5>
-              <p>Affiner sa mémoire des couleurs et développer ses aptitudes visuelles et mentales</p>
+              <h5>{t("Tour.19")}</h5>
+              <p>{t("Tour.20")}</p>
             </div>
 
 
             <div className="col miniIconeContainer2">
               <img src={'/degrade.png'} alt="" />
-              <h5>COORDINATION</h5>
-              <p>Empiler différentes formes géométriques pour travailler la coordination et la motricité</p>
+              <h5>{t("Tour.21")}</h5>
+              <p>{t("Tour.22")}</p>
             </div>
 
             <div className="col miniIconeContainer2">
               <FontAwesomeIcon icon={faGrinStars} color="#E72C59" className="eveilImg" />
-              <h5>EVEIL</h5>
-              <p>Votre enfant prendra plaisir à jouer des heures entières et développera son imagination et sa créativité</p>
+              <h5>{t("Tour.23")}</h5>
+              <p>{t("Tour.24")}</p>
             </div>
 
           </div>
@@ -380,16 +380,16 @@ const TourScreen = props => {
                 <div className="productPrix">
                   <p className="priceFalse">19,90 €</p>
                   <p className="productRedPrice">14,90 €</p>
-                  <p className="sub-offer">Seulement 9.90€ avec l’achat de la <Link href="/playboard">PlayBoard</Link></p>
+                  <p className="sub-offer">{t("Tour.25")}<Link href="/playboard">PlayBoard</Link></p>
                   <div className="ajouterPanier" onClick={() => {
                     handleAddToCart()
                     router.push('/checkout')
                   }}>
-                    <Link href="javascript:void(0)"><p className="ajouterPanierText">Ajouter au panier</p></Link>
+                    <Link href="javascript:void(0)"><p className="ajouterPanierText">{t("Playboard101")}</p></Link>
                   </div>
                   <p className="question" onClick={async () => {
                     await router.push('/contact')
-                  }}>Une question ? Contactez-nous</p>
+                  }}>{t("Playboard102")}</p>
                 </div>
                 <div className="productImgContainer">
                   <img src={'/tour-top.webp'} alt="" className="reducImg" />
@@ -416,49 +416,40 @@ const TourScreen = props => {
 
       <div className="container1000">
         <div className="faqContainer">
-          <h5>QUESTIONS FRÉQUENTES</h5>
+          <h5>{t("Playboard111")}</h5>
           <div className="row">
             <div className="col">
               <Collapsible trigger={faqHeader1}>
-                <p>
-                  La PlayBoard est conçue à base de hêtre, un bois solide et résistant. L’ensemble de ses pièces sont parfaitement peintes, ce qui leur donne une durée de vie de plusieurs dizaines d’années en restant intactes.
-                </p>
+                <p>{t("Playboard112")}</p>
               </Collapsible>
               <Collapsible trigger={faqHeader2}>
-                <p>
-                  La PlayBoard est certifiée CE à partir de 12 mois. Les études montrent qu’à partir de 7 mois le jeune enfant commence à prendre des jouets dans ses mains et dès 10 mois sa motricité fine se développe. Il peut donc commencer à jouer avec sa tablette très tôt. Nous recommandons toujours qu’un adulte surveille le jeune enfant pendant qu’il joue pour éviter tout risque.
-                </p>
+                <p>{t("Playboard113")}</p>
               </Collapsible>
               <Collapsible trigger={faqHeader3}>
-                <p>
-                  Nous recommandons la PlayBoard jusqu’à 6 ans, mais il n’est pas rare de voir des enfants de plus de 6 ans continuer à l’utiliser car elle leur sert à apprendre le calcul.
-                </p>
+                <p>{t("Playboard114")}</p>
               </Collapsible>
               <Collapsible trigger={faqHeader4}>
-                <p>
-                  Lors de l’achat de votre PlayBoard, un e-mail contenant les liens pour télécharger vos E-books vous est automatiquement envoyé par e-mail. Cet email est peut parfois se retrouver dans vos spams. Si vous ne le trouvez pas, n’hésitez pas à nous contacter à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">notre formulaire</a>, nous vous le renverrons avec plaisir.
+                <p>{t("Playboard115")}
+                  <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>
+                  {t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1152")}</a>{t("Playboard1153")}
                 </p>
               </Collapsible>
             </div>
             <div className="col">
               <Collapsible trigger={faqHeader5}>
-                <p>
-                  Le sac de rangement est inséré dans l’emballage de votre PlayBoard, vous le découvrirez donc lors de la reception de votre commande.
-                </p>
+                <p>{t("Playboard116")}</p>
               </Collapsible>
               <Collapsible trigger={faqHeader6}>
                 <p>
-                  La PlayBoard est envoyée depuis notre entrepôt situé à Evreux (France <img src={'/internet9.webp'} />).
-                  Pour une livraison en France (y compris Monaco) nos délais sont de 3 à 5 jours ouvrés (livraison Standard à domicile ou en Point Mondial Relay), et 2 à 3 jours ouvrés en livraison Express.
-
-                  Pour le reste de l’Europe, nos délais de livraison sont de 5 à 7 jours ouvrés en livraison Standard et 3 à 5 jours en livraison Express.
+                  {t("Playboard117")}<img src={'/internet9.webp'} />).
+                  {t("Playboard1171")}
                 </p>
               </Collapsible>
               <Collapsible trigger={faqHeader7}>
-                <p>Max &amp; Lea livre toute l’Europe (y compris Suisse et Royaume Uni), les Etats Unis et le Canada. En dehors de ces zones géographiques nous vous invitons à nous contacter directement par email à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via le <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">formulaire de contact</a>.</p>
+                <p>{t("Playboard118")}<a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>{t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1152")}</a>.</p>
               </Collapsible>
               <Collapsible trigger={faqHeader8}>
-                <p>Notre service client est à votre écoute du Lundi au Samedi de 9h à 19h heure Française. Nous nous ferons un plaisir de vous répondre très rapidement (Notre délais moyen de réponse est de 45 minutes). Nous sommes joignable par email à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via le <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">formulaire de contact</a>.</p>
+                <p>{t("Playboard119")}<a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>{t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1153")}</a>.</p>
               </Collapsible>
             </div>
           </div>

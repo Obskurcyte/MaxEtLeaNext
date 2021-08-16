@@ -7,6 +7,7 @@ import Head from "next/head";
 
 const Equipe = () => {
 
+
   return (
     <div>
       <Head>

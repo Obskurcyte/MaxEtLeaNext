@@ -197,14 +197,6 @@ const PlayBoardScreen = props => {
   }
 
 
-
-
-
-
-
-
-
-
   return (
     <div>
       <HeaderPlayboard />
@@ -308,8 +300,8 @@ const PlayBoardScreen = props => {
 
       <div className="container1000">
         <div className="huitEnUnContainerText">
-          <p className="huitEnUnBigText">8 en 1</p>
-          <p className="huitEnUnText">L'outil d'éveil et d'apprentissage le plus complet du marché</p>
+          <p className="huitEnUnBigText">{t("Playboard16")}</p>
+          <p className="huitEnUnText">{t("Playboard17")}</p>
         </div>
       </div>
 
@@ -319,28 +311,28 @@ const PlayBoardScreen = props => {
 
             <div className="col miniIconeContainer2">
               <img src={'/calcul.png'} alt="" />
-              <h5>CALCUL</h5>
-              <p>Les <span>signes</span> et les <span>nombres</span> lui permettront de réaliser différents <span>calculs simples</span> et d'<span>évoluer</span> vers des <span>calculs plus complexes</span></p>
+              <h5>{t("Playboard18")}</h5>
+              <p>{t("Playboard19")}<span>{t("Playboard20")}</span>{t("Playboard21")}<span>{t("Playboard22")}</span>{t("Playboard23")}<span>{t("Playboard24")}</span>{t("Playboard25")}<span>{t("Playboard26")}</span>{t("Playboard27")}<span>{t("Playboard28")}</span></p>
             </div>
 
 
             <div className="col miniIconeContainer2">
               <img src={'/couleur.png'} alt="" />
-              <h5>COULEURS</h5>
-              <p>L'outil idéal pour la mémoire des couleurs, pour les découvrir et les reconnaitre. Aide à développer ses aptitudes visuelles et mentales</p>
+              <h5>{t("Playboard29")}</h5>
+              <p>{t("Playboard30")}</p>
             </div>
 
 
             <div className="col miniIconeContainer2">
               <img src={'/degrade.png'} alt="" />
-              <h5>DÉGRADÉS DE COULEUR</h5>
-              <p>Découvrir les contrastes et les dégradés de couleurs pour développer sa sensibilité visuelle et artistique.</p>
+              <h5>{t("Playboard31")}</h5>
+              <p>{t("Playboard32")}</p>
             </div>
 
             <div className="col miniIconeContainer2">
               <img src={'/eveil.png'} alt="" />
-              <h5>ÉVEIL</h5>
-              <p>Votre enfant prendra plaisir à jouer des heures entières avec sa PlayBoard et développera sa créativité.</p>
+              <h5>{t("Playboard33")}</h5>
+              <p>{t("Playboard34")}</p>
             </div>
 
           </div>
@@ -349,28 +341,27 @@ const PlayBoardScreen = props => {
 
             <div className="col miniIconeContainer2">
               <img src={'/animaux.png'} alt="" />
-              <h5>ANIMAUX</h5>
-              <p>Il découvrira les animaux grâce à des représentations mignonnes et réalistes et apprendra à les associer avec leur alimentation.</p>
+              <h5>{t("Playboard35")}</h5>
+              <p>{t("Playboard36")}</p>
             </div>
 
             <div className="col miniIconeContainer2">
               <img src={'/formes.png'} alt="" />
-              <h5>FORMES</h5>
-              <p>Plus de 20 formes géométriques simples et complexes pour un maximum de plaisir et travailler sa motricité fine.</p>
+              <h5>{t("Playboard37")}</h5>
+              <p>{t("Playboard38")}</p>
             </div>
 
             <div className="col miniIconeContainer2">
               <img src={'/coordination.png'} alt="" />
-              <h5>COORDINATION</h5>
-              <p>Empiler différentes formes géométriques pour travailler sa coordination et son habileté.</p>
+              <h5>{t("Playboard39")}</h5>
+              <p>{t("Playboard40")}</p>
             </div>
 
             <div className="col miniIconeContainer2">
               <img src={'/nombres.png'} alt="" />
-              <h5>NOMBRE</h5>
-              <p>A force de jouer avec les chiffres, leur maîtrise devient naturelle et instinctive. Ce qui favorise sa mémoire des chiffres.</p>
+              <h5>{t("Playboard41")}</h5>
+              <p>{t("Playboard42")}</p>
             </div>
-
           </div>
         </div>
       </div>
@@ -390,11 +381,9 @@ const PlayBoardScreen = props => {
 
       <div className="container1000">
         <div className="UnaSixContainer container">
-          <h2 className="UnaSixTitle">DE <span> 1 </span> A <span> 6 </span> ANS</h2>
+          <h2 className="UnaSixTitle">{t("Playboard43")}<span>{t("Playboard44")}</span>{t("Playboard45")}<span>{t("Playboard46")}</span>{t("Playboard47")}</h2>
           <div className="UnaSixDescription">
-            <p className="">La <span>Playboard®</span> accompagne votre
-              enfant à chaque étape de
-              son développement.</p>
+            <p className="">{t("Playboard48")}<span>{t("Playboard49")}®</span>{t("Playboard50")}</p>
           </div>
         </div>
       </div>
@@ -408,26 +397,26 @@ const PlayBoardScreen = props => {
                   <img src={'/bebeBrasTendu.webp'} alt="bebe qui s'amuse" className="imgDevelopment" />
                 </div>
                 <div className="listeDevelopment">
-                  <p className="developmentTitle" style={{ color: '#02B3C8' }}>Pour les 1-2 ans</p>
+                  <p className="developmentTitle" style={{ color: '#02B3C8' }}>{t("Playboard51")}</p>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#02B3C8' }} />
-                    <p>Il travaille son <span>habilité</span></p>
+                    <p>{t("Playboard52")}<span>{t("Playboard53")}</span></p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#02B3C8' }} />
-                    <p>Il découvre les <span>formes</span></p>
+                    <p>{t("Playboard54")}<span>{t("Playboard55")}</span></p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#02B3C8' }} />
-                    <p>Il assimile les <span>couleurs</span></p>
+                    <p>{t("Playboard56")}<span>{t("Playboard57")}</span></p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#02B3C8' }} />
-                    <p>Il reconnait les <span>animaux</span></p>
+                    <p>{t("Playboard58")}<span>{t("Playboard59")}</span></p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#02B3C8' }} />
-                    <p>Il améliore sa <span>coordination oeil-main</span></p>
+                    <p>{t("Playboard60")}<span>{t("Playboard61")}</span></p>
                   </div>
                 </div>
               </div>
@@ -439,26 +428,26 @@ const PlayBoardScreen = props => {
                   <img src={'/bebeDeuxAns.webp'} alt="bebe deux ans" className="imgDevelopment" />
                 </div>
                 <div className="listeDevelopment">
-                  <p className="developmentTitle" style={{ color: '#31A73A' }}>Pour les 2-3 ans</p>
+                  <p className="developmentTitle" style={{ color: '#31A73A' }}>{t("Playboard611")}</p>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#31A73A' }} />
-                    <p>Il affine sa <span>motricité</span></p>
+                    <p>{t("Playboard62")}<span>{t("Playboard63")}</span></p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#31A73A' }} />
-                    <p>Il s'exerce à empiler <span>les anneaux et les formes</span> </p>
+                    <p>{t("Playboard64")}<span>{t("Playboard65")}</span> </p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#31A73A' }} />
-                    <p>Il distingue les <span>nuances de couleur</span></p>
+                    <p>{t("Playboard66")}<span>{t("Playboard67")}</span></p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#31A73A' }} />
-                    <p>Il s'habitue à <span>compter sur ses doigts</span></p>
+                    <p>{t("Playboard68")}<span>{t("Playboard69")}</span></p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#31A73A' }} />
-                    <p>Il apprend à <span>compter jusqu'à cinq</span></p>
+                    <p>{t("Playboard70")}<span>{t("Playboard71")}</span></p>
                   </div>
                 </div>
               </div>
@@ -472,26 +461,26 @@ const PlayBoardScreen = props => {
                   <img src={'/FilletteSouriante.webp'} alt="Fillette souriante" className="imgDevelopment" />
                 </div>
                 <div className="listeDevelopment">
-                  <p className="developmentTitle" style={{ color: '#F28D2A' }}>Pour les 3-4 ans</p>
+                  <p className="developmentTitle" style={{ color: '#F28D2A' }}>{t("Playboard711")}</p>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#F28D2A' }} />
-                    <p>Il développe son <span>autonomie</span></p>
+                    <p>{t("Playboard72")}<span>{t("Playboard73")}</span></p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#F28D2A' }} />
-                    <p>Il fait travailler son <span>imagination</span></p>
+                    <p>{t("Playboard74")}<span>{t("Playboard75")}</span></p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#F28D2A' }} />
-                    <p>Il apprend à <span>compter jusqu'à 10</span></p>
+                    <p>{t("Playboard76")}<span>{t("Playboard77")}</span></p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#F28D2A' }} />
-                    <p>Il découvre les <span>calculs simples</span></p>
+                    <p>{t("Playboard78")}<span>{t("Playboard79")}</span></p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: '#F28D2A' }} />
-                    <p>Il relie les <span>animaux à leur alimentation</span></p>
+                    <p>{t("Playboard80")}<span>{t("Playboard81")}</span></p>
                   </div>
                 </div>
               </div>
@@ -503,26 +492,26 @@ const PlayBoardScreen = props => {
                   <img src={'/garcon-assis.webp'} alt="Garcon assis" className="imgDevelopment" />
                 </div>
                 <div className="listeDevelopment">
-                  <p className="developmentTitle" style={{ color: 'rgba(191, 20, 180, 0.7686274509803922)' }}>Pour les 4-6 ans</p>
+                  <p className="developmentTitle" style={{ color: 'rgba(191, 20, 180, 0.7686274509803922)' }}>{t("Playboard811")}</p>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: 'rgba(191, 20, 180, 0.7686274509803922)' }} />
-                    <p>Il améliore sa <span>concentration</span></p>
+                    <p>{t("Playboard82")}<span>{t("Playboard83")}</span></p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: 'rgba(191, 20, 180, 0.7686274509803922)' }} />
-                    <p>Il joue avec la tablette et prend <span>plaisir à apprendre</span> </p>
+                    <p>{t("Playboard84")}<span>{t("Playboard85")}</span> </p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: 'rgba(191, 20, 180, 0.7686274509803922)' }} />
-                    <p>Il <span>progresse en calcul</span></p>
+                    <p>{t("Playboard86")}<span>{t("Playboard87")}</span></p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: 'rgba(191, 20, 180, 0.7686274509803922)' }} />
-                    <p>Il apprend à <span>partager et à enseigner à plus petit que lui</span></p>
+                    <p>{t("Playboard88")}<span>{t("Playboard89")}</span></p>
                   </div>
                   <div className="innerItemList">
                     <FontAwesomeIcon icon={faChevronRight} className="iconDevelopment" style={{ color: 'rgba(191, 20, 180, 0.7686274509803922)' }} />
-                    <p>Il apprend à <span>organiser son espace</span></p>
+                    <p>{t("Playboard90")}<span>{t("Playboard91")}</span></p>
                   </div>
                 </div>
               </div>
@@ -533,51 +522,50 @@ const PlayBoardScreen = props => {
 
       <div className="container1000">
         <div className="apprentissage container">
-          <h5>Ce que les enfants ont appris
-            avec la PlayBoard®</h5>
+          <h5>{t("Playboard92")}</h5>
           <div className="flex w-100 enfantTableau2">
             <div className="enfantTableauContainer">
               <img src={'/garconTableau.png'} alt="" className="enfantTableau" />
             </div>
             <div className="barreProgression">
               <div className="mb-2">
-                <p style={{ color: "#e72c59" }}>Reconnaître les couleurs</p>
+                <p style={{ color: "#e72c59" }}>{t("Playboard93")}</p>
                 <div className="rectangleContainer">
                   <img src={'/redP.webp'} alt="" className="rectangle" />
                 </div>
               </div>
               <div className="mb-2">
-                <p style={{ color: "#e59131" }}>Maîtriser les dégradés</p>
+                <p style={{ color: "#e59131" }}>{t("Playboard94")}</p>
                 <div className="rectangleContainer">
                   <img src={'/orangeP.webp'} alt="" className="rectangle" />
                 </div>
               </div>
               <div className="mb-2">
-                <p style={{ color: "#efcb03" }}>Emboiter les formes</p>
+                <p style={{ color: "#efcb03" }}>{t("Playboard95")}</p>
                 <div className="rectangleContainer">
                   <img src={'/yellowP.webp'} alt="" className="rectangle" />
                 </div>
               </div>
               <div className="mb-2">
-                <p style={{ color: "#4cb155" }}>Apprendre à compter</p>
+                <p style={{ color: "#4cb155" }}>{t("Playboard96")}</p>
                 <div className="rectangleContainer">
                   <img src={'/greenP.webp'} alt="" className="rectangle" />
                 </div>
               </div>
               <div className="mb-2">
-                <p style={{ color: "#22b9ca" }}>Reconnaitre les animaux</p>
+                <p style={{ color: "#22b9ca" }}>{t("Playboard97")}</p>
                 <div className="rectangleContainer">
                   <img src={'/blueP.webp'} alt="" className="rectangle" />
                 </div>
               </div>
               <div className="mb-2">
-                <p style={{ color: "#e7456c" }}>Débuter en calcul</p>
+                <p style={{ color: "#e7456c" }}>{t("Playboard98")}</p>
                 <div className="rectangleContainer">
                   <img src={'/pinkP.webp'} alt="" className="rectangle" />
                 </div>
               </div>
               <div className="mb-2">
-                <p style={{ color: "#c436bc" }}>Plaisir de jouer</p>
+                <p style={{ color: "#c436bc" }}>{t("Playboard99")}</p>
                 <div className="rectangleContainer">
                   <img src={'/purpleP.webp'} alt="" className="rectangle" />
                 </div>
@@ -587,83 +575,6 @@ const PlayBoardScreen = props => {
           </div>
         </div>
       </div>
-
-      {/*   <div className="apprentissagePlayboard container">
-          <h5 className="apprentissageTitle">Ce que les enfants ont appris avec la PlayBoard</h5>
-          <div className="imageApprentissageContainer">
-            <img src={'/enfantTableau.jpg'} alt="" className="imgTableau"/>
-            <div className="progressContainer">
-              <p className="apprentissagePara">Reconnaitre les couleurs</p>
-              <div id='progress1' ref={bar1}>
-
-                <div id="bar1">
-                    <p className="progressBarText2">98%</p>
-                </div>
-                {/*<img src={'/redProgress.png'} alt="" className="progress"/>
-              </div>
-              <div>
-                <p className="apprentissagePara">Maitriser les dégradés</p>
-                <div id='progress2' ref={bar2}>
-
-                  <div id="bar2">
-                    <p className="progressBarText2">97%</p>
-                  </div>
-                  {/*<img src={'/redProgress.png'} alt="" className="progress"/>
-                </div>
-              </div>
-              <div>
-                <p className="apprentissagePara">Emboiter les formes</p>
-                <div id='progress3' ref={bar3}>
-
-                  <div id="bar3">
-                    <p className="progressBarText2">96%</p>
-                  </div>
-                  {/*<img src={'/redProgress.png'} alt="" className="progress"/>
-                </div>
-              </div>
-              <div>
-                <p className="apprentissagePara">Apprendre à compter</p>
-                <div id='progress4' ref={bar4}>
-
-                  <div id="bar4">
-                    <p className="progressBarText2">98%</p>
-                  </div>
-                  {/*<img src={'/redProgress.png'} alt="" className="progress"/>
-                </div>
-              </div>
-              <div>
-                <p className="apprentissagePara">Reconnaitre les animaux</p>
-                <div id='progress5' ref={bar5}>
-
-                  <div id="bar5">
-                    <p className="progressBarText2">90%</p>
-                  </div>
-                  {/*<img src={'/redProgress.png'} alt="" className="progress"/>
-                </div>
-              </div>
-              <div>
-                <p className="apprentissagePara">Débuter en calcul</p>
-                <div id='progress6' ref={bar6}>
-
-                  <div id="bar6">
-                    <p className="progressBarText2">92%</p>
-                  </div>
-                  {/*<img src={'/redProgress.png'} alt="" className="progress"/>
-                </div>
-              </div>
-              <div>
-                <p className="apprentissagePara">Plaisir de jouer</p>
-                <div id='progress7' ref={bar7}>
-
-                  <div id="bar7">
-                    <p className="progressBarText2">100%</p>
-                  </div>
-                  {/*<img src={'/redProgress.png'} alt="" className="progress"/>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
 
       <div className="container1000">
         <div className="image-papa-container">
@@ -689,7 +600,7 @@ const PlayBoardScreen = props => {
               <div className="prixPlayboardContainer">
                 <div className="playboardPrix">
                   <p className="priceFalse">49,90 €</p>
-                  <p className="playboardRedPrice">29,90 €    <span className="reduction">(-40%, économisez 20€)</span></p>
+                  <p className="playboardRedPrice">29,90 €    <span className="reduction">{t("Playboard100")}</span></p>
                 </div>
                 <div>
                   <div onClick={() => {
@@ -697,36 +608,36 @@ const PlayBoardScreen = props => {
                     router.push('/checkout')
                   }}
                     className="ajouterPanierContainer">
-                    <p>Ajouter au panier</p>
+                    <p>{t("Playboard101")}</p>
                   </div>
                   <p className="question" onClick={async () => {
                     await router.push('/contact')
-                  }}>Une question ? Contactez-nous</p>
+                  }}>{t("Playboard102")}</p>
                 </div>
               </div>
 
 
               <div className="ebooksContainer">
-                <p className="ebookTitle">3 ebooks GRATUITS avec votre commande : </p>
+                <p className="ebookTitle">{t("Playboard103")}</p>
                 <div className="ebook">
                   <img src={'/internet4.svg'} alt="" />
-                  <p>1 guide d'activités pour enfants</p>
+                  <p>{t("Playboard104")}</p>
                 </div>
                 <div className="ebook">
                   <img src={'/internet5.svg'} alt="" />
-                  <p>1 livre de contes</p>
+                  <p>{t("Playboard105")}</p>
                 </div>
                 <div className="ebook">
                   <img src={'/internet6.svg'} alt="" />
-                  <p>1 cahier de coloriage</p>
+                  <p>{t("Playboard106")}</p>
                 </div>
               </div>
 
               <div className="sacRangement">
-                <p className="ebookTitle">1 sac de rangement OFFERT :</p>
+                <p className="ebookTitle">{t("Playboard107")}</p>
                 <div className="ebookOffertText">
                   <img src={'/internet7.webp'} alt="" />
-                  <p>Conçu pour ranger les pièces de la Playboard</p>
+                  <p>{t("Playboard108")}</p>
                 </div>
               </div>
 
@@ -755,8 +666,7 @@ const PlayBoardScreen = props => {
       <div className="container1000">
         <div className="sourireContainer container">
           <div className="sourireTextContainer">
-            <h5>LE SOURIRE DE VOS ENFANTS
-              NOTRE PLUS BELLE RECOMPENSE</h5>
+            <h5>{t("Playboard109")}</h5>
           </div>
         </div>
       </div>
@@ -780,7 +690,7 @@ const PlayBoardScreen = props => {
       </div>
 
       <div className="container1200">
-        <h5 className="recommendation-title">Ils recommandent la Playboard®</h5>
+        <h5 className="recommendation-title">{t("Playboard110")}</h5>
         <Recommande />
       </div>
 
@@ -806,55 +716,45 @@ const PlayBoardScreen = props => {
 
       <div className="container1000">
         <div className="faqContainer">
-          <h5>QUESTIONS FRÉQUENTES</h5>
+          <h5>{t("Playboard111")}</h5>
           <div className="row">
             <div className="col">
               <Collapsible trigger={faqHeader1}>
-                <p>
-                  La PlayBoard est conçue à base de hêtre, un bois solide et résistant. L’ensemble de ses pièces sont parfaitement peintes, ce qui leur donne une durée de vie de plusieurs dizaines d’années en restant intactes.
-                </p>
+                <p>{t("Playboard112")}</p>
               </Collapsible>
               <Collapsible trigger={faqHeader2}>
-                <p>
-                  La PlayBoard est certifiée CE à partir de 12 mois. Les études montrent qu’à partir de 7 mois le jeune enfant commence à prendre des jouets dans ses mains et dès 10 mois sa motricité fine se développe. Il peut donc commencer à jouer avec sa tablette très tôt. Nous recommandons toujours qu’un adulte surveille le jeune enfant pendant qu’il joue pour éviter tout risque.
-                </p>
+                <p>{t("Playboard113")}</p>
               </Collapsible>
               <Collapsible trigger={faqHeader3}>
-                <p>
-                  Nous recommandons la PlayBoard jusqu’à 6 ans, mais il n’est pas rare de voir des enfants de plus de 6 ans continuer à l’utiliser car elle leur sert à apprendre le calcul.
-                </p>
+                <p>{t("Playboard114")}</p>
               </Collapsible>
               <Collapsible trigger={faqHeader4}>
-                <p>
-                  Lors de l’achat de votre PlayBoard, un e-mail contenant les liens pour télécharger vos E-books vous est automatiquement envoyé par e-mail. Cet email est peut parfois se retrouver dans vos spams. Si vous ne le trouvez pas, n’hésitez pas à nous contacter à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">notre formulaire</a>, nous vous le renverrons avec plaisir.
+                <p>{t("Playboard115")}
+                  <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>
+                  {t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1152")}</a>{t("Playboard1153")}
                 </p>
               </Collapsible>
             </div>
             <div className="col">
               <Collapsible trigger={faqHeader5}>
-                <p>
-                  Le sac de rangement est inséré dans l’emballage de votre PlayBoard, vous le découvrirez donc lors de la reception de votre commande.
-                </p>
+                <p>{t("Playboard116")}</p>
               </Collapsible>
               <Collapsible trigger={faqHeader6}>
                 <p>
-                  La PlayBoard est envoyée depuis notre entrepôt situé à Evreux (France <img src={'/internet9.webp'} />).
-                  Pour une livraison en France (y compris Monaco) nos délais sont de 3 à 5 jours ouvrés (livraison Standard à domicile ou en Point Mondial Relay), et 2 à 3 jours ouvrés en livraison Express.
-
-                  Pour le reste de l’Europe, nos délais de livraison sont de 5 à 7 jours ouvrés en livraison Standard et 3 à 5 jours en livraison Express.
+                  {t("Playboard117")}<img src={'/internet9.webp'} />).
+                  {t("Playboard1171")}
                 </p>
               </Collapsible>
               <Collapsible trigger={faqHeader7}>
-                <p>Max &amp; Lea livre toute l’Europe (y compris Suisse et Royaume Uni), les Etats Unis et le Canada. En dehors de ces zones géographiques nous vous invitons à nous contacter directement par email à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via le <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">formulaire de contact</a>.</p>
+                <p>{t("Playboard118")}<a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>{t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1152")}</a>.</p>
               </Collapsible>
               <Collapsible trigger={faqHeader8}>
-                <p>Notre service client est à votre écoute du Lundi au Samedi de 9h à 19h heure Française. Nous nous ferons un plaisir de vous répondre très rapidement (Notre délais moyen de réponse est de 45 minutes). Nous sommes joignable par email à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via le <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">formulaire de contact</a>.</p>
+                <p>{t("Playboard119")}<a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>{t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1153")}</a>.</p>
               </Collapsible>
             </div>
           </div>
         </div>
       </div>
-
       <Footer />
     </div>
   )

@@ -2,60 +2,64 @@ import React from 'react';
 import styles from './XylophoneQualite.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
+import {useTranslation} from "react-i18next";
 
 const XylophoneQualite = () => {
+
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="container my-5 wola" id={styles.qualite}>
-      <h1 className={styles.title}>Le Xylophone : <br/>Le jouet Musical préféré des 1 à 6 ans</h1>
+      <h1 className={styles.title}>{t("Xylo.26")}<br/>{t("Xylo.27")}</h1>
       <div className={styles.firstRow}>
         <img src={'/qualiteXylo1.jpg'} alt=""/>
         <div className={styles.constructionRobuste}>
-          <h5>“La musique est fondamentale pour la croissance du jeune enfant. Elle aide notamment au développement du cerveau”</h5>
+          <h5>{t("Xylo.28")}</h5>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Il cultive son <span className="fw-bold">intérêt pour la musique</span></p>
+            <p>{t("Xylo.29")}<span className="fw-bold">{t("Xylo.30")}</span></p>
           </div>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Il <span className="fw-bold">découvre ses premières notes</span> musicales</p>
+            <p>{t("Xylo.31")}<span className="fw-bold">{t("Xylo.32")}</span>{t("Xylo.33")}</p>
           </div>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Il développe sa <span className="fw-bold">capacité auditive</span> et son <span className="fw-bold">sens du rythme</span></p>
+            <p>{t("Xylo.34")}<span className="fw-bold">{t("Xylo.35")}</span>{t("Xylo.36")}<span className="fw-bold">{t("Xylo.37")}</span></p>
           </div>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Fabriqué avec des matériaux <span className="fw-bold">écologiques</span> et <span className="fw-bold">naturels</span></p>
+            <p>{t("Xylo.38")}<span className="fw-bold">{t("Xylo.39")}</span>{t("Xylo.40")}<span className="fw-bold">{t("Xylo.41")}</span></p>
           </div>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p><span className="fw-bold">8 tonalités différentes</span></p>
+            <p><span className="fw-bold">{t("Xylo.42")}</span></p>
           </div>
         </div>
       </div>
 
       <div className={styles.secondRow}>
         <div className={styles.constructionRobuste}>
-          <h5 className={styles.finitions}>"Favoriser les vrais instruments de musique permet des sons de meilleure qualité et inspire le talent des enfants"</h5>
+          <h5 className={styles.finitions}>{t("Xylo.43")}</h5>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Il apprend à <span className="fw-bold">reproduire des sons</span> et des musiques simples et <span className="fw-bold">améliore sa concentration</span></p>
+            <p>{t("Xylo.44")}<span className="fw-bold">{t("Xylo.45")}</span>{t("Xylo.46")}<span className="fw-bold">{t("Xylo.47")}</span></p>
           </div>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Les baguettes sont <span className="fw-bold">adaptées à la taille de sa main</span> pour une prise en main facilitée</p>
+            <p>{t("Xylo.48")}<span className="fw-bold">{t("Xylo.49")}</span>{t("Xylo.50")}</p>
           </div>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Un <span className="fw-bold">jouet durable</span> - Bon pour la nature et bon pour vos enfants</p>
+            <p>{t("Xylo.51")}<span className="fw-bold">{t("Xylo.52")}</span>{t("Xylo.53")}</p>
           </div>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Le Xylophone est LE <span className="fw-bold">jouet d'éveil musical</span> préféré des tout-petits</p>
+            <p>{t("Xylo.54")}<span className="fw-bold">{t("Xylo.55")}</span>{t("Xylo.56")}</p>
           </div>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Développe la <span className="fw-bold">créativité </span>et le <span className="fw-bold">talent</span> des jeunes enfants</p>
+            <p>{t("Xylo.57")}<span className="fw-bold">{t("Xylo.58")}</span>{t("Xylo.59")}<span className="fw-bold">{t("Xylo.60")}</span>{t("Xylo.61")}</p>
           </div>
         </div>
         <img src={'/qualiteXylo2.jpg'} alt=""/>
