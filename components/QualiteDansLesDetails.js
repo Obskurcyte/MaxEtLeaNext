@@ -2,8 +2,12 @@ import React from 'react';
 import styles from './Qualite.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
+import {useTranslation} from "react-i18next";
 
 const QualiteDansLesDetails = () => {
+
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="container my-5 wola" id={styles.qualite}>
       <h1 className={styles.title}>LA QUALITE EST DANS LES DETAILS</h1>

@@ -7,7 +7,6 @@ import {Card} from 'react-bootstrap'
 import {useTranslation} from "react-i18next";
 import {AppContext} from "../components/context/AppContext";
 import Link from "next/link";
-import * as products from '../products';
 import Head from 'next/head'
 
 const HomeScreen = () => {

@@ -31,6 +31,7 @@ import {loadStripe} from "@stripe/stripe-js/pure";
 import {Elements} from '@stripe/react-stripe-js';
 import SelectSearch,{ useSelect, fuzzySearch } from 'react-select-search-nextjs';
 import i18next from "i18next";
+import {useTranslation} from "react-i18next";
 
 const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
@@ -1285,7 +1286,10 @@ const CheckoutScreen = props => {
   if(reducCodePromo)
     totalDiscount += parseFloat(reducCodePromo);
 
-  totalPrice2 = totalPrice1 + prixLivraison
+  totalPrice2 = totalPrice1 + prixLivraison;
+
+  const { t, i18n } = useTranslation();
+
   return (
     <PayPalScriptProvider options= {{"client-id": process.env.PAYPAL_CLIENT_ID }}>
     <div className="checkout-main-container">
@@ -1312,7 +1316,7 @@ const CheckoutScreen = props => {
       <Header />
       <div className="checkout-sub-container">
         <div className="cadeauContainer">
-          <h2 className="cadeauContainerText">ÉMERVEILLEZ VOTRE ENFANT !</h2>
+          <h2 className="cadeauContainerText">{t("Checkout.1")}</h2>
         </div>
 
         <div>
@@ -1325,11 +1329,11 @@ const CheckoutScreen = props => {
             <div className="produitContainer">
               <div className='coordonneesDiv'>
                 <p className="coordonneesNum">1</p>
-                <p className="coordonneesTitle">PANIER</p>
-                <p className="coordonneesSubTitle">Vos Produits</p>
+                <p className="coordonneesTitle">{t("Checkout.2")}</p>
+                <p className="coordonneesSubTitle">{t("Checkout.3")}</p>
               </div>
               {(!cart || cart.products.length === 0) && (
-                <h2>Vous n'avez pas d'articles dans votre panier</h2>
+                <h2>{t("Checkout.4")}</h2>
               )}
               <div className="productContainer">
                 <div>
@@ -1348,7 +1352,7 @@ const CheckoutScreen = props => {
                           />
                           <div className="ebookContainer">
                           <div className="ebookInner free">
-                              <p>Ebook Par mail (gratuit)</p>
+                              <p>{t("Checkout.5")}</p>
                               <Checkbox
                                 checked={true}
                                 disabled
@@ -1359,7 +1363,7 @@ const CheckoutScreen = props => {
                               />
                             </div>
                             <div className="ebookInner free">
-                              <p>Ebook Playboard imprimé (9,99€)</p>
+                              <p>{t("Checkout.6")}</p>
                               <Checkbox checked={ebookImprime ? true : checkedEbookPlayboard}
                                         onChange={(event) => {
                                           handleAddToCartEbookPlayboard();
@@ -1390,7 +1394,7 @@ const CheckoutScreen = props => {
                   <div>
                     {playboardInCart.length !== 0 && (
                       <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount PlayBoard</p>
+                        <p className="sousTotalText">{t("Checkout.7")}</p>
                         <p className="itemTotalPrice">{playboardReducPrice} €</p>
                       </div>
                     )}
@@ -1399,7 +1403,7 @@ const CheckoutScreen = props => {
                   <div>
                     {xyloInCart.length !== 0 && (
                       <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount Xylophone</p>
+                        <p className="sousTotalText">{t("Checkout.8")}</p>
                         <p className="itemTotalPrice">{xyloReducPrice} €</p>
                       </div>
                     )}
@@ -1408,7 +1412,7 @@ const CheckoutScreen = props => {
                   <div>
                     {disXyloInCart.length !== 0 && (
                       <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount Xylophone avec PlayBoard</p>
+                        <p className="sousTotalText">{t("Checkout.9")}</p>
                         <p className="itemTotalPrice">{disXyloReducPrice} €</p>
                       </div>
                     )}
@@ -1417,7 +1421,7 @@ const CheckoutScreen = props => {
                   <div>
                     {tourInCart.length !== 0 && (
                       <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount Tour</p>
+                        <p className="sousTotalText">{t("Checkout.10")}</p>
                         <p className="itemTotalPrice">{tourReducPrice} €</p>
                       </div>
                     )}
@@ -1426,7 +1430,7 @@ const CheckoutScreen = props => {
                   <div>
                     {disTourInCart.length !== 0 && (
                       <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount Tour avec PlayBoard</p>
+                        <p className="sousTotalText">{t("Checkout.11")}</p>
                         <p className="itemTotalPrice">{disTourReducPrice} €</p>
                       </div>
                     )}
@@ -1435,7 +1439,7 @@ const CheckoutScreen = props => {
                   <div>
                     {qtyTotale === 2 && (
                       <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount Panier (2 articles) 10%</p>
+                        <p className="sousTotalText">{t("Checkout.12")}</p>
                         <p className="itemTotalPrice">{discountPanier} €</p>
                       </div>
                     )}
@@ -1444,7 +1448,7 @@ const CheckoutScreen = props => {
                   <div>
                     {qtyTotale === 3 && (
                       <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount Panier (3 articles) 15%</p>
+                        <p className="sousTotalText">{t("Checkout.13")}</p>
                         <p className="itemTotalPrice">{discountPanier} €</p>
                       </div>
                     )}
@@ -1453,7 +1457,7 @@ const CheckoutScreen = props => {
                   <div>
                     {qtyTotale >= 4 && (
                       <div className="prix-reduc-container">
-                        <p className="sousTotalText">Discount Panier (4 articles et plus) 20%</p>
+                        <p className="sousTotalText">{t("Checkout.14")}</p>
                         <p className="itemTotalPrice">{discountPanier} €</p>
                       </div>
                     )}
@@ -1463,14 +1467,14 @@ const CheckoutScreen = props => {
                   <div>
                     {(codePromo && codePromo.amount) && (
                       <div className="prix-reduc-container">
-                        <p className="sousTotalText">Code Promo</p>
+                        <p className="sousTotalText">{t("Checkout.15")}</p>
                         <p className="itemTotalPrice">{codePromo.amount} %</p>
                       </div>
                     )}
                   </div>
 
                   <div className="prix-reduc-container">
-                      <p className="sousTotalText2">Total discount</p>
+                      <p className="sousTotalText2">{t("Checkout.16")}</p>
                       <p className="itemTotalPrice2">{totalDiscount.toFixed(2)} €</p>
                   </div>
 
@@ -1488,14 +1492,14 @@ const CheckoutScreen = props => {
 
                     <div>
                       <div className="prix-reduc-container">
-                        <p className="sousTotalText2">Sous-total</p>
+                        <p className="sousTotalText2">{t("Checkout.17")}</p>
                         <p className="itemTotalPrice2">{totalPrice1.toFixed(2)} €</p>
                       </div>
                     </div>
                     <div>
                       {prixLivraison !== 0 && (
                         <div className="prix-reduc-container">
-                          <p className="sousTotalText2">Prix livraison</p>
+                          <p className="sousTotalText2">{t("Checkout.18")}</p>
                           <p className="itemTotalPrice2">{prixLivraison} €</p>
                         </div>
                       )}
@@ -1504,7 +1508,7 @@ const CheckoutScreen = props => {
                     <hr/>
                     <div>
                       <div className="prix-reduc-container">
-                        <p className="sousTotalText2" style={{fontWeight: 'bold'}}>Total</p>
+                        <p className="sousTotalText2" style={{fontWeight: 'bold'}}>{t("Checkout.19")}</p>
                         <p className="itemTotalPrice2" style={{fontWeight: 'bold'}}>{totalPrice2.toFixed(2)} €</p>
                       </div>
                     </div>
@@ -1520,27 +1524,27 @@ const CheckoutScreen = props => {
 
               <div className="codepromoContainer">
                 <div>
-                  {codePromoIncorrect ? <p style={{color: 'red'}}>Ce code est incorrect</p>: ''}
-                  {goodCodePromo ? <p style={{color: 'green'}}>Votre code promo a été validé</p>: ''}
+                  {codePromoIncorrect ? <p style={{color: 'red'}}>{t("Checkout.20")}</p>: ''}
+                  {goodCodePromo ? <p style={{color: 'green'}}>{t("Checkout.21")}</p>: ''}
                   <input type="text" onChange={event => setpromoCode(event.target.value)} placeholder="Code promo" className="inputPromo"/>
                 </div>
                 {codePromoLoading && <Spinner animation="border" role="status" >
-                  <span className="sr-only">Loading...</span>
+                  <span className="sr-only">{t("Checkout.22")}</span>
                 </Spinner>}
-                <button className="buttonCodepromo" onClick={() => {checkPromo()}}>Valider votre code promo</button>
+                <button className="buttonCodepromo" onClick={() => {checkPromo()}}>{t("Checkout.23")}</button>
               </div>
 
               <div className="addOtherArticlesPanier">
                 {qtyTotale === 1 && (
-                  <h5 className="addArticleTitle">Ajouter +1 article et bénéficiez de -10% sur TOUT votre panier !</h5>
+                  <h5 className="addArticleTitle">{t("Checkout.24")}</h5>
                 )}
 
                 {qtyTotale === 2 && (
-                  <h5 className="addArticleTitle">Ajouter +1 article et bénéficiez de -15% sur TOUT votre panier !</h5>
+                  <h5 className="addArticleTitle">{t("Checkout.25")}</h5>
                 )}
 
                 {qtyTotale >= 3 && (
-                  <h5 className="addArticleTitle">Ajouter +1 article et bénéficiez de -20% sur TOUT votre panier !</h5>
+                  <h5 className="addArticleTitle">{t("Checkout.26")}</h5>
                 )}
                 <Slider {...settingsSlider}>
                   <div className="innerArticleContainer">
@@ -1554,12 +1558,12 @@ const CheckoutScreen = props => {
                         onChange={(event) => {
                           handleAddToCartPlayboard()
                         }}></Checkbox>
-                        <span className="innerArticleTitle">Ajouter la Playboard !</span>
+                        <span className="innerArticleTitle">{t("Checkout.27")}</span>
                         <br></br>
                         <strike className="innerArticleStrike">{products[2].priceAugmente} €</strike>
                         <span className="innerArticlePrice">{products[2].price} €</span>
                         <br></br>
-                        <span className="innerArticleReduction">(-41% economisez {products[2].priceAugmente - products[2].price} €)</span>
+                        <span className="innerArticleReduction">({t("Checkout.28")} {products[2].priceAugmente - products[2].price} €)</span>
                         </label>
                     </div>
                     <div className="innerArticleBottom" onClick={() => {
@@ -1578,12 +1582,12 @@ const CheckoutScreen = props => {
                         <Checkbox style={{display:'inlineBlock'}} onChange={() => {
                           handleAddToCartXylo()
                         }}></Checkbox>
-                        <span className="innerArticleTitle">Ajouter le Xylophone !</span>
+                        <span className="innerArticleTitle">{t("Checkout.29")}</span>
                         <br></br>
                         <strike className="innerArticleStrike">{products[0].priceAugmente} €</strike>
                         <span className="innerArticlePrice">{products[0].price} €</span>
                         <br></br>
-                        <span className="innerArticleReduction">Seulement {products[5].price}€ avec l’achat de la PlayBoard</span>
+                        <span className="innerArticleReduction">{t("Checkout.30")} {products[5].price}€ {t("Checkout.31")}</span>
                         </label>
                     </div>
                     <div className="innerArticleBottom" onClick={() => {
@@ -1602,12 +1606,12 @@ const CheckoutScreen = props => {
                         <Checkbox style={{display:'inlineBlock'}} onChange={() => {
                           handleAddToCartTour()
                         }}></Checkbox>
-                        <span className="innerArticleTitle">Ajouter la Tour Arc en Ciel !</span>
+                        <span className="innerArticleTitle">{t("Checkout.32")}</span>
                         <br></br>
                         <strike className="innerArticleStrike">{products[1].priceAugmente} €</strike>
                         <span className="innerArticlePrice">{products[1].price} €</span>
                         <br></br>
-                        <span className="innerArticleReduction">Seulement {products[6].price}€ avec l’achat de la PlayBoard</span>
+                        <span className="innerArticleReduction">{t("Checkout.30")} {products[6].price}€ {t("Checkout.31")}</span>
                         </label>
                     </div>
                     <div className="innerArticleBottom" onClick={() => {
@@ -1636,15 +1640,15 @@ const CheckoutScreen = props => {
                     <a href="javascript:void(0);" onClick={() => router.reload(window.location.pathname)} style={{width:'50%'}}>
                       <div className={!goPaiement ? 'coordonneesDiv' : 'coordonneesDivLight'}>
                         <p className="coordonneesNum">2</p>
-                        <p className="coordonneesTitle">LIVRAISON</p>
-                        <p className="coordonneesSubTitle">Où l'expédier ?</p>
+                        <p className="coordonneesTitle">{t("Checkout.33")}</p>
+                        <p className="coordonneesSubTitle">{t("Checkout.34")}</p>
                       </div>
                     </a>
                     <a href="javascript:void(0);" style={{width:'50%'}}>
                       <div className={goPaiement ? 'coordonneesDiv' : 'coordonneesDivLight'}>
                         <p className="coordonneesNum">3</p>
-                        <p className="coordonneesTitle">PAIEMENT</p>
-                        <p className="coordonneesSubTitle">Confirmez votre commande</p>
+                        <p className="coordonneesTitle">{t("Checkout.35")}</p>
+                        <p className="coordonneesSubTitle">{t("Checkout.36")}</p>
                       </div>
                     </a>
                   </div>
@@ -1759,7 +1763,7 @@ const CheckoutScreen = props => {
                                 props.setFieldValue('pays', val);
                                 }} options={countries.listCountries} value={props.values.pays} id="pays" name="country" placeholder="Choisir Pays" search={true} filterOptions={ fuzzySearch }/>
                             </div>
-                              {props.errors.pays && props.touched.pays && <div style={{color: 'red'}}>Ce champ est requis</div>}
+                              {props.errors.pays && props.touched.pays && <div style={{color: 'red'}}>{t("Checkout.37")}</div>}
                               <input type="hidden" id="pays_holder" value={props.values.pays} />
 
                             
@@ -1807,7 +1811,7 @@ const CheckoutScreen = props => {
                                 onChange={handleChange}
                                 inputProps={{ 'aria-label': 'primary checkbox' }}
                               />
-                              <p className="paragraphFacturation">Utiliser une adresse de facturation différente</p>
+                              <p className="paragraphFacturation">{t("Checkout.38")}</p>
                             </div>
 
                             {checked ? (
@@ -1877,7 +1881,7 @@ const CheckoutScreen = props => {
                             </div>
 
                             <div className="livraison">
-                              <h4 className="livraisonTitle">Méthode d'expédition</h4>
+                              <h4 className="livraisonTitle">{t("Checkout.39")}</h4>
                               {(pays === 'FR' || pays === 'MC') && (
                                 <div className="livraisonListContainer">
                                   <div className="livraisonRow">
@@ -1891,7 +1895,7 @@ const CheckoutScreen = props => {
                                           setMondialRelay(false)
                                         }}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                        <p>Livraison standard (3-5 jours)</p>
+                                        <p>{t("Checkout.40")}</p>
                                         </div>
                                         </label>
                                     </div>
@@ -1913,7 +1917,7 @@ const CheckoutScreen = props => {
                                             handleClickOpenRelay()
                                           }}
                                           inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                          <p>Livraison en point Mondial Relay (2-4 jours)</p>
+                                          <p>{t("Checkout.41")}</p>
                                           </div>
                                       </label>
                                     </div>
@@ -1933,7 +1937,7 @@ const CheckoutScreen = props => {
                                           setMondialRelay(false)
                                         }}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                          <p>Livraison express (2-3 jours)</p>
+                                          <p>{t("Checkout.42")}</p>
                                           </div>
                                       </label>
                                       
@@ -1942,7 +1946,7 @@ const CheckoutScreen = props => {
                                       <p>6,99 €</p>
                                     </div>
                                   </div>
-                                  {errorLivraison ? <p className='text-danger'>Veuillez remplir ce champ</p> : ''}
+                                  {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
                                 </div>
 
                                 )}
@@ -1958,7 +1962,7 @@ const CheckoutScreen = props => {
                                         checked={checked1}
                                         onChange={() => handleChange3(event, 19.99)}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                          <p>Livraison Amérique (8-10 jours)</p>
+                                          <p>{t("Checkout.44")}</p>
                                           </div>
                                       </label>
                                       
@@ -1966,7 +1970,7 @@ const CheckoutScreen = props => {
                                     <div className="livraisonPrice">
                                       <p>19,99 €</p>
                                     </div>
-                                    {errorLivraison ? <p className='text-danger'>Veuillez remplir ce champ</p> : ''}
+                                    {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
 
                                   </div>
                                 </div>
@@ -1983,7 +1987,7 @@ const CheckoutScreen = props => {
                                         checked={checked1}
                                         onChange={() => handleChange1(event, 6.99,"Livraison standard")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                          <p>Livraison standard UK (5-7 jours)</p>
+                                          <p>{t("Checkout.46")}</p>
                                           </div>
                                       </label>
                                       
@@ -2001,7 +2005,7 @@ const CheckoutScreen = props => {
                                         checked={checked2}
                                         onChange={() => handleChange2(event, 9.99,"Livraison express")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                          <p>Livraison Express UK (2-4 jours)</p>
+                                          <p>{t("Checkout.47")}</p>
                                           </div>
                                       </label>
                                     </div>
@@ -2009,7 +2013,7 @@ const CheckoutScreen = props => {
                                       <p>9,99 €</p>
                                     </div>
                                   </div>
-                                  {errorLivraison ? <p className='text-danger'>Veuillez remplir ce champ</p> : ''}
+                                  {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
 
                                 </div>
                               )}
@@ -2064,7 +2068,7 @@ const CheckoutScreen = props => {
                                         checked={checked1}
                                         onChange={() => handleChange1(event, 47.99,"Livraison standard")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                          <p>Livraison monde (8-10 jours)</p>
+                                          <p>{t("Checkout.48")}</p>
                                           </div>
                                       </label>
                                     </div>
@@ -2081,7 +2085,7 @@ const CheckoutScreen = props => {
                                         checked={checked2}
                                         onChange={() => handleChange2(event, 54.99,"Livraison express")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                          <p>Livraison Express Monde (6-8 jours)</p>
+                                          <p>{t("Checkout.49")}</p>
                                           </div>
                                       </label>
                                     </div>
@@ -2089,7 +2093,7 @@ const CheckoutScreen = props => {
                                       <p>54,99 €</p>
                                     </div>
                                   </div>
-                                  {errorLivraison ? <p className='text-danger'>Veuillez remplir ce champ</p> : ''}
+                                  {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
 
                                 </div>
                               )}
@@ -2120,7 +2124,7 @@ const CheckoutScreen = props => {
                                         checked={checked1}
                                         onChange={() => handleChange1(event, 9.99,"Livraison standard")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                          <p>Livraison Standard (5-7 jours)</p>
+                                          <p>{t("Checkout.50")}</p>
                                           </div>
                                       </label>
                                     </div>
@@ -2137,7 +2141,7 @@ const CheckoutScreen = props => {
                                         checked={checked2}
                                         onChange={() => handleChange2(event, 12.99,"Livraison express")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                          <p>Livraison Express (3-5 jours)</p>
+                                          <p>{t("Checkout.51")}</p>
                                           </div>
                                       </label>
                                     </div>
@@ -2145,7 +2149,7 @@ const CheckoutScreen = props => {
                                       <p>12,99 €</p>
                                     </div>
                                   </div>
-                                  {errorLivraison ? <p className='text-danger'>Veuillez remplir ce champ</p> : ''}
+                                  {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
 
                                 </div>
                               )}
@@ -2164,7 +2168,7 @@ const CheckoutScreen = props => {
                                         checked={checked1}
                                         onChange={() => handleChange1(event, 24.99,"Livraison standard")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                          <p>Livraison standard (6-8 jours)</p>
+                                          <p>{t("Checkout.52")}</p>
                                           </div>
                                       </label>
                                     </div>
@@ -2181,7 +2185,7 @@ const CheckoutScreen = props => {
                                         checked={checked2}
                                         onChange={() => handleChange2(event, 29.99,"Livraison express")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                          <p>Livraison Express (4-6 jours)</p>
+                                          <p>{t("Checkout.53")}</p>
                                           </div>
                                       </label>
                                     </div>
@@ -2189,7 +2193,7 @@ const CheckoutScreen = props => {
                                       <p>29,99 €</p>
                                     </div>
                                   </div>
-                                  {errorLivraison ? <p className='text-danger'>Veuillez remplir ce champ</p> : ''}
+                                  {errorLivraison ? <p className='text-danger'>{t("Checkout.53")}</p> : ''}
 
                                 </div>
                               )}
@@ -2214,7 +2218,7 @@ const CheckoutScreen = props => {
                                         checked={checked1}
                                         onChange={() => handleChange1(event, 14.99,"Livraison standard")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                          <p>Livraison standard (5-7 jours)</p>
+                                          <p>{t("Checkout.50")}</p>
                                           </div>
                                       </label>
                                     </div>
@@ -2231,7 +2235,7 @@ const CheckoutScreen = props => {
                                         checked={checked2}
                                         onChange={() => handleChange2(event, 19.99,"Livraison express")}
                                         inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                          <p>Livraison express (3-5 jours)</p>
+                                          <p>{t("Checkout.51")}</p>
                                           </div>
                                       </label>
                                     </div>
@@ -2239,13 +2243,13 @@ const CheckoutScreen = props => {
                                       <p>19,99 €</p>
                                     </div>
                                   </div>
-                                  {errorLivraison ? <p className='text-danger'>Veuillez remplir ce champ</p> : ''}
+                                  {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
 
                                 </div>
                               )}
 
                               {(pays === '') && (
-                                    <label style={{textAlign:"center",width:"100%"}}>Veuillez choisir un pays de livraison</label>
+                                    <label style={{textAlign:"center",width:"100%"}}>{t("Checkout.54")}</label>
                               )}
 
                               
@@ -2258,7 +2262,7 @@ const CheckoutScreen = props => {
                                 <label id="relay_text" onClick={() => {
                                   handleClickOpenRelay()
                                 }}>
-                                  Choisissez un point Relay
+                                  {t("Checkout.55")}
                                 </label>
                                 <SimpleDialogRelay open={openRelay} onClose={handleCloseRelay} />
                               </div>
@@ -2266,7 +2270,7 @@ const CheckoutScreen = props => {
                             
 
                             <Link href="#">
-                              <button className="cart-valide" type="submit" onClick={props.handleSubmit}>PASSER À L'ÉTAPE SUIVANTE →</button>
+                              <button className="cart-valide" type="submit" onClick={props.handleSubmit}>{t("Checkout.56")}</button>
                             </Link>
                             </div>
                           </form>
@@ -2299,7 +2303,7 @@ const CheckoutScreen = props => {
 
                   </div>
                 </div>
-                : <p className="articlesInPanier">Veuillez ajouter des articles dans votre panier !</p>}
+                : <p className="articlesInPanier">{t("Checkout.57")}</p>}
 
             </div>
 
@@ -2307,7 +2311,7 @@ const CheckoutScreen = props => {
         </div>
 
         <div className="recommendation">
-          <h5 className="recommendation-title">Ils recommandent la Playboard®</h5>
+          <h5 className="recommendation-title">{t("Checkout.58")}</h5>
           <Recommande />
         </div>
         <div>
