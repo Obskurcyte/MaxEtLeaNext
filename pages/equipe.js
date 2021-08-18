@@ -1,276 +1,274 @@
 import React from 'react';
 import Header from "../components/Header";
-import {Card, Row, Col, Container} from "react-bootstrap";
+import { Card, Row, Col, Container } from "react-bootstrap";
 import Footer from "../components/Footer";
+import {useTranslation} from "react-i18next";
 import Head from "next/head";
 
 
 const Equipe = () => {
 
+  const { t, i18n } = useTranslation();
 
   return (
     <div>
       <Head>
-        <title>Max And Lea - Equipe</title>
+        <title>Max And Lea - {t("Equipe.title")}</title>
       </Head>
       <Header />
-      <div className="equipeContainer">
-        <div className="bgOverlay"></div>
-        <h1 className="team">L'équipe Max Et Lea</h1>
-      </div>
-      <div className="container1000">
-      <div className="equipeDescriptionContainer">
-        <p>Si vous recevez de superbes jouets Max & Lea, c’est que notre équipe se plie en 4 pour concevoir les plus beaux jouets possibles.
+      <div className="page-supercontainer">
+        <div className="equipeContainer">
+          <div className="bgOverlay"></div>
+          <h1 className="team">{t("Equipe.1")}</h1>
+        </div>
+        <div className="container1000">
+          <div className="equipeDescriptionContainer">
+            <p>{t("Equipe.2")}</p>
+            <p>{t("Equipe.3")}</p>
 
-          Nous contrôlons que chaque jouet répond à toutes les normes Européennes et nous nous assurons de vous livrer très très vite partout où vous vous trouvez !</p>
-        <p>Notre équipe est également hyper réactive et répondra à toutes vos questions très rapidement.</p>
+            <div className="mainEquipeContainer">
+              <div className="row">
+                <div className="col">
+                  <div className="imgPresentationContainer">
+                    <img src={'/PC.jpg'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Pierre-Charles <br /> FOSANELLI</h5>
+                    <p>{t("Equipe.4")}</p>
+                  </div>
+                  <hr />
 
-      <div className="mainEquipeContainer">
-        <div className="row">
-          <div className="col">
-            <div className="imgPresentationContainer">
-              <img src={'/PC.jpg'} alt=""/>
-            </div>
-            <div>
-              <h5>Pierre-Charles <br/> FOSANELLI</h5> <br/>
-              <p>CEO et co-fondateur</p>
-            </div>
-            <hr/>
+                  <div>
+                    <p>{t("Equipe.5")}</p>
+                  </div>
+                </div>
 
-            <div>
-              <p>Pierre-Charles s’occupe des réseaux sociaux, de la clientèle et des partenariats.
-                Il gère également les opérations logistiques et s’assure que vos colis arrivent le plus vite possible !</p>
-            </div>
-          </div>
+                <div className="col">
+                  <div className="imgPresentationContainer">
+                    <img src={'/Ludo.png'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Ludovic <br /> CHARTOUNI</h5>
+                    <p>{t("Equipe.6")}</p>
+                  </div>
+                  <hr />
 
-          <div className="col">
-            <div className="imgPresentationContainer">
-              <img src={'/Ludo.png'} alt=""/>
-            </div>
-            <div>
-              <h5>Ludovic <br/> CHARTOUNI</h5> <br/>
-              <p>COO et co-fondateur</p>
-            </div>
-            <hr/>
+                  <div>
+                    <p>{t("Equipe.7")}</p>
+                  </div>
 
-            <div>
-              <p>Ludovic coordonne les opérations de développement informatique.
-                Il développe et dessine avec sa femme les nouveaux jouets, les ebooks et travaille sur le développement commercial de Max & Lea.</p>
-            </div>
+                </div>
 
-          </div>
+                <div className="col">
+                  <div className="imgPresentationContainer">
+                    <img src={'/theo.jpg'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Théodore <br /> D'AVRAY</h5>  
+                    <p>{t("Equipe.8")}</p>
+                  </div>
+                  <hr />
 
-          <div className="col">
-            <div className="imgPresentationContainer">
-              <img src={'/theo.jpg'} alt=""/>
-            </div>
-            <div>
-              <h5>Théodore <br/> D'AVRAY</h5> <br/>
-              <p>CTO & Développements</p>
-            </div>
-            <hr/>
+                  <div>
+                    <p>{t("Equipe.9")}</p>
+                  </div>
+                </div>
 
-            <div>
-              <p>Théodore passe ses journées (et ses nuits) à améliorer le site Max & Lea.
-                Il veille en permanence à ce que l’expérience utilisateur soit optimale.</p>
-            </div>
-          </div>
+                <div className="col">
+                  <div className="imgPresentationContainer">
+                    <img src={'/sandrine.jpg'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Sandrine <br /> BERTINETTI</h5>  
+                    <p>{t("Equipe.10")}</p>
+                  </div>
+                  <hr />
 
-          <div className="col">
-            <div className="imgPresentationContainer">
-              <img src={'/sandrine.jpg'} alt=""/>
-            </div>
-            <div>
-              <h5>Sandrine <br/> BERTINETTI</h5> <br/>
-              <p>Conceptrice 3D</p>
-            </div>
-            <hr/>
+                  <div>
+                    <p>{t("Equipe.11")}</p>
+                  </div>
+                </div>
+              </div>
 
-            <div>
-              <p>Sandrine travaille sur la conception de nos jouets et prépare tous nos modèles en 3D avant leur fabrication.</p>
+              <div className="row">
+                <div className="col colequipe">
+                  <div className="imgPresentationContainer">
+                    <img src={'/kristel.jpg'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Kristhel <br /> ASNAR-GALLOIS</h5>  
+                    <p>{t("Equipe.12")}</p>
+                  </div>
+                  <hr />
+
+                  <div>
+                    <p>{t("Equipe.13")}</p>
+                  </div>
+                </div>
+
+                <div className="col colequipe">
+                  <div className="imgPresentationContainer">
+                    <img src={'/xavier.jpg'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Xavier <br /> CARRASCO</h5>  
+                    <p>{t("Equipe.14")}</p>
+                  </div>
+                  <hr />
+
+                  <div>
+                    <p>{t("Equipe.15")}</p>
+                  </div>
+                </div>
+
+                <div className="col colequipe">
+                  <div className="imgPresentationContainer">
+                    <img src={'/stephane.jpg'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Stephane <br /> COUNDOURIS</h5>  
+                    <p>{t("Equipe.16")}</p>
+                  </div>
+                  <hr />
+
+                  <div>
+                    <p>{t("Equipe.17")}</p>
+                  </div>
+                </div>
+
+                <div className="col colequipe">
+                  <div className="imgPresentationContainer">
+                    <img src={'/alexandre.jpg'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Alexandre <br /> LOONES</h5>  
+                    <p>{t("Equipe.18")}</p>
+                  </div>
+                  <hr />
+
+                  <div>
+                    <p>{t("Equipe.19")}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col colequipe">
+                  <div className="imgPresentationContainer">
+                    <img src={'/sandy.jpg'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Sandy <br /> EUDELINE</h5>  
+                    <p>{t("Equipe.20")}</p>
+                  </div>
+                  <hr />
+
+                  <div>
+                    <p>{t("Equipe.21")}</p>
+                  </div>
+                </div>
+
+                <div className="col colequipe">
+                  <div className="imgPresentationContainer">
+                    <img src={'/delphine.jpg'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Delphine <br /> ESPOSITO</h5>  
+                    <p>{t("Equipe.22")}</p>
+                  </div>
+                  <hr />
+
+                  <div>
+                    <p>{t("Equipe.23")}</p>
+                  </div>
+                </div>
+
+                <div className="col colequipe">
+                  <div className="imgPresentationContainer">
+                    <img src={'/carla.png'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Carla <br /> GOMEZ</h5>  
+                    <p>{t("Equipe.24")}</p>
+                  </div>
+                  <hr />
+
+                  <div>
+                    <p>{t("Equipe.25")}</p>
+                  </div>
+                </div>
+
+                <div className="col colequipe">
+                  <div className="imgPresentationContainer">
+                    <img src={'/hadrien.jpg'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Hadrien <br /> JAUBERT</h5>  
+                    <p>{t("Equipe.26")}</p>
+                  </div>
+                  <hr />
+
+                  <div>
+                    <p>{t("Equipe.27")}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col colequipe">
+                  <div className="imgPresentationContainer">
+                    <img src={'/nora.jpg'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Nora <br /> CHELABI</h5>  
+                    <p>{t("Equipe.28")}</p>
+                  </div>
+                  <hr />
+
+                  <div>
+                    <p>{t("Equipe.29")}</p>
+                  </div>
+                </div>
+
+                <div className="col colequipe">
+                  <div className="imgPresentationContainer">
+                    <img src={'/shana.jpg'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Shana <br /> CUBRILOVIC</h5>  
+                    <p>{t("Equipe.30")}</p>
+                  </div>
+                  <hr />
+
+                  <div>
+                    <p>{t("Equipe.31")}</p>
+                  </div>
+                </div>
+
+                <div className="col colequipe">
+                  <div className="imgPresentationContainer">
+                    <img src={'/fried.jpg'} alt="" />
+                  </div>
+                  <div>
+                    <h5>Friederike <br /> KRIEGER</h5>  
+                    <p>{t("Equipe.32")}</p>
+                  </div>
+                  <hr />
+
+                  <div>
+                    <p>{t("Equipe.33")}</p>
+                  </div>
+                </div>
+
+              </div>
+
+
+
             </div>
           </div>
         </div>
-
-        <div className="row">
-          <div className="col colequipe">
-            <div className="imgPresentationContainer">
-              <img src={'/kristel.jpg'} alt=""/>
-            </div>
-            <div>
-              <h5>Kristhel <br/> ASNAR-GALLOIS</h5> <br/>
-              <p>Traductice Anglais/Espagnol</p>
-            </div>
-            <hr/>
-
-            <div>
-              <p>Kristhel s’assure que chaque phrase est parfaitement traduite en Anglais et Espagnol.</p>
-            </div>
-          </div>
-
-          <div className="col colequipe">
-            <div className="imgPresentationContainer">
-              <img src={'/xavier.jpg'} alt=""/>
-            </div>
-            <div>
-              <h5>Xavier <br/> CARRASCO</h5> <br/>
-              <p>Graphiste & Designer</p>
-            </div>
-            <hr/>
-
-            <div>
-              <p>Xavier prépare les Design et Graphismes de Max & Lea.
-                Il s’assure aussi de la meilleure expérience utilisateur du site.</p>
-            </div>
-          </div>
-
-          <div className="col colequipe">
-            <div className="imgPresentationContainer">
-              <img src={'/stephane.jpg'} alt=""/>
-            </div>
-            <div>
-              <h5>Stephane <br/> COUNDOURIS</h5> <br/>
-              <p>Responsable Normes & certifications</p>
-            </div>
-            <hr/>
-
-            <div>
-              <p>Stephane s’assure que nos jouets répondent à toutes les Normes. Rien ne lui échappe !</p>
-            </div>
-          </div>
-
-          <div className="col colequipe">
-            <div className="imgPresentationContainer">
-              <img src={'/alexandre.jpg'} alt=""/>
-            </div>
-            <div>
-              <h5>Alexandre <br/> LOONES</h5> <br/>
-              <p>Film & Montage Vidéos</p>
-            </div>
-            <hr/>
-
-            <div>
-              <p>Alexandre s’occupe avec beaucoup d’amour et d’attention des réalisation et des montages de chaque vidéo Max & Lea.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col colequipe">
-            <div className="imgPresentationContainer">
-              <img src={'/sandy.jpg'} alt=""/>
-            </div>
-            <div>
-              <h5>Sandy <br/> EUDELINE</h5> <br/>
-              <p>Service Juridique</p>
-            </div>
-            <hr/>
-
-            <div>
-              <p>Sandy s’assure de toute la gestion Juridique et Administrative de Max & Lea.</p>
-            </div>
-          </div>
-
-          <div className="col colequipe">
-            <div className="imgPresentationContainer">
-              <img src={'/delphine.jpg'} alt=""/>
-            </div>
-            <div>
-              <h5>Delphine <br/> ESPOSITO</h5> <br/>
-              <p>Service client</p>
-            </div>
-            <hr/>
-
-            <div>
-              <p>Delphine prend soin de chacun de nos clients et s’assure que les commandes et les livraisons se passent parfaitement.</p>
-            </div>
-          </div>
-
-          <div className="col colequipe">
-            <div className="imgPresentationContainer">
-              <img src={'/carla.png'} alt=""/>
-            </div>
-            <div>
-              <h5>Carla <br/> GOMEZ</h5> <br/>
-              <p>Dessinatrice & Illustratrice</p>
-            </div>
-            <hr/>
-
-            <div>
-              <p>Carla nous fait tous nos jolis dessins, nos ebooks et nos belles illustrations.</p>
-            </div>
-          </div>
-
-          <div className="col colequipe">
-            <div className="imgPresentationContainer">
-              <img src={'/hadrien.jpg'} alt=""/>
-            </div>
-            <div>
-              <h5>Hadrien <br/> JAUBERT</h5> <br/>
-              <p>Développement informatique</p>
-            </div>
-            <hr/>
-
-            <div>
-              <p>Hadrien travail en binôme avec Theodore et assure les développements de Max & Lea.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col colequipe">
-            <div className="imgPresentationContainer">
-              <img src={'/nora.jpg'} alt=""/>
-            </div>
-            <div>
-              <h5>Nora <br/> CHELABI</h5> <br/>
-              <p>Contrôle de gestion</p>
-            </div>
-            <hr/>
-
-            <div>
-              <p>Nora est notre Excel Expert !
-                C’est elle qui se charge de réaliser tous nos tableaux d’analyse et de contrôle de gestion.</p>
-            </div>
-          </div>
-
-          <div className="col colequipe">
-            <div className="imgPresentationContainer">
-              <img src={'/shana.jpg'} alt=""/>
-            </div>
-            <div>
-              <h5>Shana <br/> CUBRILOVIC</h5> <br/>
-              <p>Traductrice & Correctrice Allemand</p>
-            </div>
-            <hr/>
-
-            <div>
-              <p>Shana assure toutes les traductions Allemand de nos jouets et des futurs jouets Max & Lea.</p>
-            </div>
-          </div>
-
-          <div className="col colequipe">
-            <div className="imgPresentationContainer">
-              <img src={'/fried.jpg'} alt=""/>
-            </div>
-            <div>
-              <h5>Friederike <br/> KRIEGER</h5> <br/>
-              <p>Traductrice & Correctrice Allemand</p>
-            </div>
-            <hr/>
-
-            <div>
-              <p>En binôme avec Shana, Friederike assure la relecture et la correction de tous nos pages en Allemand.</p>
-            </div>
-          </div>
-
-        </div>
-
-
-
       </div>
-      </div>
-      </div>
+
 
       <Footer />
     </div>

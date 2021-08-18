@@ -63,7 +63,7 @@ const Footer = () => {
           </div>
           <div className="col-8 col-md-3 order-4 order-md-4 my-auto flex-column d-flex phone-50" >
             <div style={{display: "flex", marginBottom: '10%', flexDirection: 'column', justifyContent: "space-around"}} >
-              <img src={'/forest.webp'} alt="" className="img-footer" onClick={() => setOpen(true)}/>
+              <img src={t("Forest.img")} alt="" className="img-footer" onClick={() => setOpen(true)}/>
 
               <Dialog
                 fullScreen={fullScreen}
@@ -73,18 +73,18 @@ const Footer = () => {
               >
                 <DialogContent>
                   <div className="arbresDialogContainer">
-                    <h5>257 arbres</h5>
-                    <p>Plantés par Max & Léa dans la forêt de Monchique (Portugal)</p>
+                    <h5>257 {t("Forest.1")}</h5>
+                    <p>{t("Forest.2")}( {t("avis.portugal")} <img src="/portugal-flag.webp"></img> )</p>
                     <hr />
-                      <p>Bénéfices pour l'environnement :</p>
+                      <p>{t("Forest.3")}</p>
                     <div className="beneficesContainer">
                       <div className="arbresRow">
                             <div>
                             <img src="https://maxandlea.com/wp-content/uploads/elementor/thumbs/carte-benefices-nuage-1-ox6w2acn9kffruv4ypghfx20j15d0wwotvc9kp1fuc.png" alt=""/>
                             </div>
                         <div>
-                          <h5>CLIMAT</h5>
-                          <p><span style={{color: '#91BB1F'}}>38</span> tonnes de CO2 stockées</p>
+                          <h5>{t("Forest.4")}</h5>
+                          <p><span style={{color: '#91BB1F'}}>38</span> {t("Forest.5")}</p>
                         </div>
                       </div>
 
@@ -93,8 +93,8 @@ const Footer = () => {
                           <img src="https://maxandlea.com/wp-content/uploads/elementor/thumbs/carte-benefices-bird-1-ox6w2d65u2jaqor1i8od5eceb6rgo07vu9aq0ix9c8.png" alt=""/>
                         </div>
                         <div>
-                          <h5>BIODIVERSITE</h5>
-                          <p><span style={{color: '#91BB1F'}}>771</span> abris pour animaux crées</p>
+                          <h5>{t("Forest.6")}</h5>
+                          <p><span style={{color: '#91BB1F'}}>771</span> {t("Forest.7")}</p>
                         </div>
                       </div>
 
@@ -103,8 +103,8 @@ const Footer = () => {
                           <img src="https://maxandlea.com/wp-content/uploads/elementor/thumbs/carte-benefices-coeur-1-ox6w2f1u7qlvdwob79hmadvbhyi73efciiloz2uh1q.png" alt=""/>
                         </div>
                         <div>
-                          <h5>SANTE</h5>
-                          <p><span style={{color: '#91BB1F'}}>1028</span> mois d'oxygène générés</p>
+                          <h5>{t("Forest.8")}</h5>
+                          <p><span style={{color: '#91BB1F'}}>1028</span> {t("Forest.9")}</p>
                         </div>
                       </div>
 
@@ -113,13 +113,13 @@ const Footer = () => {
                           <img src="https://maxandlea.com/wp-content/uploads/elementor/thumbs/carte-benefices-hand-1-ox6w2fzoekn5pimy1rw8uvms3cdkb3j2un96gct2ta.jpg" alt=""/>
                         </div>
                         <div>
-                          <h5>EMPLOI</h5>
-                          <p><span style={{color: '#91BB1F'}}>257</span> theures de travail créées</p>
+                          <h5>{t("Forest.10")}</h5>
+                          <p><span style={{color: '#91BB1F'}}>257</span> {t("Forest.11")}</p>
                         </div>
                       </div>
 
-                      <p style={{textAlign: 'center', fontSize: '12px'}}>C'est grâce à vous !</p>
-                      <a href="https://www.reforestaction.com/en/max-lea" target="_blank" className="seePage"><p>Voir notre page</p></a>
+                      <p style={{textAlign: 'center', fontSize: '12px'}}>{t("Forest.12")}</p>
+                      <a href="https://www.reforestaction.com/en/max-lea" target="_blank" className="seePage"><p>{t("Forest.13")}</p></a>
                     </div>
                     <button className="arbresButtonClose" onClick={() => handleClose()}>x</button>
                   </div>

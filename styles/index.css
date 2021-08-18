@@ -9,6 +9,13 @@ body {
   align-items: center;
 }
 
+.page-supercontainer{
+  background-image: url(/background.webp);
+  background-repeat: repeat;
+  background-position: center center;
+  box-shadow: inset 5000px 0 0 0 rgb(255 255 255 / 85%);
+}
+
 .container1000{
   max-width: 1000px;
   margin: auto;

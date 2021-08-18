@@ -2,49 +2,51 @@ import React from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Head from "next/head";
+import { useTranslation } from "react-i18next";
 
 const MentionsLegales = () => {
+
+  const { t, i18n } = useTranslation();
 
   return (
     <div>
       <Head>
-        <title>Max And Lea - Mentions Légales</title>
+        <title>Max And Lea - {t("Mentions.title")}</title>
       </Head>
       <Header />
-      <div className="mentionsContainer">
-        <h1 className="mentionsTitle">Mentions légales - Max & Léa</h1>
-      </div>
+      <div className="page-supercontainer">
+        <div className="mentionsContainer">
+          <h1 className="mentionsTitle">{t("Mentions.title")} - Max & Léa</h1>
+        </div>
 
-      <div className="containerMentions">
-        <p>Le site internet <a href="/" id="sitelink">www.maxandlea.com</a> est géré par la société MAX AND LEA ci-après définie :</p>
+        <div className="containerMentions container1000">
+          <p>{t("Mentions.1")} <a href="/" id="sitelink">www.maxandlea.com</a> {t("Mentions.2")}</p>
 
-        <h5>SAS MAX AND LEA, <br/></h5>
-        <p>Société par actions simplifiée au capital de 20.000 €,<br/>
+          <h5>SAS MAX AND LEA, <br /></h5>
+          <p>{t("Mentions.3")}<br />
 
-          11 RUE DE LOURMEL, 75015 PARIS, PARIS, FRANCE <br/>
+            {t("Mentions.4")} <br />
 
-          Immatriculée au Registre du Commerce et des Sociétés de Paris sous le numéro 884 297 243, <br/>
+            {t("Mentions.5")} <br />
 
-          Représentée par son président en la personne de Monsieur Pierre-Charles FOSANELLI. <br/>
+            {t("Mentions.6")} <br />
 
-          E-mail : <a href="mailto:contact@maxandlea.com" id="sitelink">contact@maxandlea.com</a><br/>
+            {t("Mentions.7")} <a href="mailto:contact@maxandlea.com" id="sitelink">contact@maxandlea.com</a><br />
 
-          N° TVA Intracommunautaire : FR38884297243 <br/>
+            {t("Mentions.8")}<br />
 
-          Directeur de publication : Ludovic CHARTOUNI <br/>
+            {t("Mentions.9")} <br />
 
-          Direction informatique : Theodore D’Avray</p>
+            {t("Mentions.10")}</p>
 
-        <h5>Hébergement</h5>
-        <p>Le Site est hébergé par la SiteGround Hosting Ltd., wwwsiteground.com : <br/>
+          <h5>{t("Mentions.11")}</h5>
+          <p>{t("Mentions.12")}, <a href="vercel.com" id="sitelink">www.vercel.com</a> <br />
 
-          SiteGround Hosting Ltd. <br/>
+            {t("Mentions.13")} <br />
 
-          3rd Floor 11-12 St. James’s Square, <br/>
-
-          London, SW1Y 4LB, <br/>
-
-          United Kingdom</p>
+            {t("Mentions.14")} <br />
+          </p>
+        </div>
       </div>
 
       <Footer />

@@ -15,7 +15,11 @@
 }
 
 main {
-  padding: 5% 15%
+  background-image: url(/background.webp);
+  background-repeat: repeat;
+  background-position: center center;
+  box-shadow: inset 5000px 0 0 0 rgb(255 255 255 / 85%);
+  padding: 15px 5px;
 }
 
 .paragraphs p {
@@ -71,32 +75,27 @@ span {
 
 .petite-photo1 {
   width: 35px;
-  margin-bottom: 43%;
   float: left;
 }
 
 .petite-photo2 {
   width: 35px;
-  margin-bottom: 10%;
   float: left;
 }
 
 
 .petite-photo3 {
   width: 35px;
-  margin-bottom: 37%;
   float: left;
 }
 
 .petite-photo4 {
   width: 35px;
-  margin-bottom: 28%;
   float: left;
 }
 
 .petite-photo5 {
   width: 35px;
-  margin-bottom: 16%;
   float: left;
 }
 

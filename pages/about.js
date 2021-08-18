@@ -12,7 +12,7 @@ const About = () => {
   return (
     <div>
       <Head>
-        <title>Max And Lea - A propos</title>
+        <title>Max And Lea - {t("Propos.title")}</title>
       </Head>
       <Header />
       <div className="bienvenue">

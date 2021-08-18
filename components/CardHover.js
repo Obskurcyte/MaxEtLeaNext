@@ -358,9 +358,11 @@ const CardHover = () => {
         <hr/>
       </div>
       <Link href="/checkout">
-        <div className={styles.buttonsContainer}>
-         <p className={styles.linkPopper} id="linkCart">Commander</p>
-        </div>
+        <a>
+          <div className={styles.buttonsContainer}>
+          <p className={styles.linkPopper} id="linkCart">Commander</p>
+          </div>
+        </a>
       </Link>
     </div>
   )

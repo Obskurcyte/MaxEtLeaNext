@@ -7,6 +7,13 @@
 
 .equipeDescriptionContainer p, h5 {
   text-align: center;
+  margin: 0px !important;
+}
+
+.equipeDescriptionContainer h5 {
+  font-size: 24px;
+  font-weight: 700;
+  color:  #333333;
 }
 
 .colequipe {
@@ -17,8 +24,9 @@
   width: 15%;
   text-align: center;
   margin-left: 40%;
-  color: black;
-  height: 3px
+  height: 2px !important;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .imgPresentationContainer {
   width: 200px;
@@ -28,6 +36,10 @@
 .mainEquipeContainer{
   margin-top: 40px;
   margin-bottom: 40px;
+}
+
+.mainEquipeContainer .row{
+  margin-bottom: 20px;
 }
 
 .imgPresentationContainer img{

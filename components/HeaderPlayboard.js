@@ -466,7 +466,7 @@ const HeaderPlayboard = (props) => {
   return (
     <div className="stickyHeader">
       <div className="freeContainer">
-        <h1 className="freeLivraison">Livraison GRATUITE en Europe (3-5 jours) à partir de 30€ d'achat</h1>
+        <h1 className="freeLivraison">{t("BandeauLivraison")}</h1>
       </div>
 
       <nav className="containerHeader">
