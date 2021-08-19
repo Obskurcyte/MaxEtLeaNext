@@ -228,7 +228,7 @@ const PlayBoardScreen = props => {
           </div>
           <div className="video-container">
             <ReactPlayer
-              url="https://play.maxandlea.com/wp-content/uploads/2020/09/MaxEtLea-GIF-FR-V4-600-1.mp4"
+              url={t("PlayboardVideo1")}
               className="video-presentation"
               playing={true}
               muted

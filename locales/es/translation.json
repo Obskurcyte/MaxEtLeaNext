@@ -148,7 +148,7 @@
   "Playboard99" : "El placer de jugar",
   "Playboard100" : "(-40%, ahorra 20€)",
   "Playboard101" : "Añadir al carrito",
-  "Playboard102" : "",
+  "Playboard102" : "¿una pregunta? contáctenos",
   "Playboard103" : "3 ebooks GRATIS con su pedido: ",
   "Playboard104" : "1 Guía de Actividades para Niños",
   "Playboard105" : "1 Libro de Cuentos",
@@ -170,6 +170,7 @@
   "Playboard1171": "Las entregas en Francia (incluido Mónaco) toman de 3 a 5 días hábiles (entrega estándar a domicilio o en un punto de Mondial Relay), y de 2 a 3 días hábiles para entrega exprés. Para el resto de Europa, nuestros plazos de entrega son de 5 a 7 días laborables para envíos estándar y de 3 a 5 días para envíos Express. Pour le reste de l’Europe, nos délais de livraison sont de 5 à 7 jours ouvrés en livraison Standard et 3 à 5 jours en livraison Express.",
   "Playboard118" : "Max & Lea realiza envíos a toda Europa (incluyendo Suiza y Reino Unido), EE. UU. Y Canadá. Fuera de estas zonas geográficas, lo invitamos a contactarnos directamente por correo electrónico a",
   "Playboard119" : "Nuestro servicio de atención al cliente está a su disposición de Lunes a Sábado de 9 a.m a 7 p.m, hora francesa. Responderemos a sus preguntas con mucho gusto lo más rápido posible (El tiempo promedio para responder a sus preguntas es de 45 minutos). Puede comunicarse con nosotros por correo electrónico a",
+  "PlayboardVideo1" : "/MaxEtLea-GIF-ES-V4.mp4",
 
   "Client" : "clientes ya satisfechos",
 
@@ -305,8 +306,8 @@
     "2": "CARRITO",
     "3": " Tus productos",
     "4": " No tienes articulos en tu carrito",
-    "5": "Libro electrónico por correo (gratis)",
-    "6": "Libro electrónico impreso de Playboard (9,99 €)",
+    "5": "Ebook por correo (gratis)",
+    "6": "Ebook impreso de Playboard (9,99 €)",
     "7": "Discount PlayBoard",
     "8": "Discount Xylophone",
     "9": "Discount Xylophone con PlayBoard",
