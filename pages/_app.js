@@ -96,7 +96,7 @@ function MyApp({ Component, pageProps }) {
       <script type="text/javascript" src="//unpkg.com/leaflet/dist/leaflet.js"></script>
       <link rel="stylesheet" type="text/css" href="//unpkg.com/leaflet/dist/leaflet.css" />
 
-      <script type="text/javascript" src="https://widget.mondialrelay.com/parcelshop-picker/jquery.plugin.mondialrelay.parcelshoppicker.min.js"></script>
+      <script type="text/javascript" src="https://widget.mondialrelay.com/parcelshop-picker/jquery.plugin.mondialrelay.parcelshoppicker.min.js" async></script>
 
       <link
               rel="stylesheet"

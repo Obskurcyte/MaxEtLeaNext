@@ -186,6 +186,7 @@
   "Playboard118" : "Max & Lea delivers all over Europe (including Switzerland and the United Kingdom), USA and Canada. If you live outside of these geographical regions, we invite you to contact us directly by email to ",
   "Playboard119" : "Our customer service is available from Monday to Saturday from 9 a.m to 7 p.m French time. We will be glad to answer your questions as quickly as possible (the average time to answer your questions is 45 minutes). You can contact us by email at",
   "PlayboardVideo1" : "/MaxEtLea-GIF-EN-V4.mp4",
+  "PlayboardVideo2" : "/MAXLEA-EN-SHORT.mp4",
 
 
   "Client" : "already satisfied customers",
@@ -194,6 +195,29 @@
     "1": "They distribute the PlayBoard®",
     "2": "Opinions",
     "3": "Our clients trust us"
+  },
+
+  "Recommande": {
+    "1": "I'm a dad​",
+    "2": "Blogger and Dad",
+    "3": "« With its pretty different tones, the PlayBoard is great to learn the colors, numbers, shapes and more. »",
+    "4": "Maman Plume",
+    "5": "Blogger and Mom",
+    "6": "« My opinion as a mom: I love the PlayBoard. It is a complete toy, it has 8 different fun games in one. Your baby will love it and mothers too! »",
+    "7": "Dr. Julia AOUN",
+    "8": "Pediatrician and Mother",
+    "9": "« The PlayBoard is a very complete educational, fun and eco friendly toy, it can be used by very young kids as well as older ones. This toy helps the child develop his fine motor skills and his coordination with a principle that I recommend: zero screens and zero plastic. »",
+    "10": "Angélique KOSINSKI-CIMELIERE",
+    "11": "Psychologist",
+    "12": "& Psychomotor therapist",
+    "13": "Early childhood specialist",
+    "14": "« The PlayBoard from Max & Lea is the ideal tool for stimulating cognitive functions in children. »",
+    "15": "The little Babadins",
+    "16": "Network of 80 small nurseries in France",
+    "17": "« A great toy to promote the stimulation of the little ones and the older ones. »",
+    "18": "Julia Kobus",
+    "19": "Blogger and Mom",
+    "20": "« I really like the PlayBoard. It is an ideal 8 in 1 toy for ages 1 to 6: with this toy they can learn how to make calculations, the colors, different shades, animals, shapes, coordination, numbers and they will be stimulated. »"
   },
 
   "Tour": {
@@ -407,9 +431,9 @@
     "14": "for",
     "15": "maximum durability",
     "16": "NEAT FINISHES",
-    "17": "Soft",
+    "17": "Soft ",
     "18": "",
-    "19": "and",
+    "19": "and ",
     "20": "warm colours",
     "21": " designed to ",
     "22": "soothe the child",

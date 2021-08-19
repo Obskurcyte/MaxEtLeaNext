@@ -369,7 +369,7 @@ const PlayBoardScreen = props => {
       <div className="container1000 videoMidContainer">
         <img src={'/playboardBois.png'} alt="" className="playboardBoisImg" />
         <ReactPlayer
-          url="https://play.maxandlea.com/wp-content/uploads/2020/09/Video2-MAXLEA-FR-SHORT-SHORT-V4-600.mp4"
+          url={t("PlayboardVideo2")}
           width="100%"
           height="390px"
           className="video-presentation"
@@ -673,7 +673,7 @@ const PlayBoardScreen = props => {
 
       <div className="container1000 videoMidContainer">
         <ReactPlayer
-          url="https://play.maxandlea.com/wp-content/uploads/2020/09/Patchwork-V3-600.mp4"
+          url="/Patchwork.mp4"
           width="100%"
           height="390px"
           className="video-presentation"

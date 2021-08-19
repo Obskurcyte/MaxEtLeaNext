@@ -187,6 +187,7 @@
   "Playboard118" : "Max &amp; Lea livre toute l’Europe (y compris Suisse et Royaume Uni), les Etats Unis et le Canada. En dehors de ces zones géographiques nous vous invitons à nous contacter directement par email à",
   "Playboard119" : "Notre service client est à votre écoute du Lundi au Samedi de 9h à 19h heure Française. Nous nous ferons un plaisir de vous répondre très rapidement (Notre délais moyen de réponse est de 45 minutes). Nous sommes joignable par email à",
   "PlayboardVideo1" : "/MaxEtLea-GIF-FR-V4.mp4",
+  "PlayboardVideo2" : "/MAXLEA-FR-SHORT.mp4",
 
 
   "Client" : "clients déjà satisfaits",
@@ -195,6 +196,29 @@
     "1": "Ils distribuent la PlayBoard®",
     "2": "Avis",
     "3": "Nos clients nous font confiance"
+  },
+
+  "Recommande": {
+    "1": "Je suis Papa​",
+    "2": "Blogueur et Papa",
+    "3": "« Avec ses jolis dégradés de couleurs, la PlayBoard est idéale pour découvrir les couleurs, les chiffres, les formes et bien d’autres jeux d’éveil. »",
+    "4": "Maman Plume",
+    "5": "Blogueuse et Maman",
+    "6": "« Mon avis de Maman : Un gros coup de coeur pour la PlayBoard. Un jeu super complet, qui à lui seul, contient 8 jeux ludiques.Bébé adore et Maman aussi ! »",
+    "7": "Dr. Julia AOUN",
+    "8": "Pediatre et Maman",
+    "9": "« La PlayBoard est un jouet éducatif, ludique et écologique très complet qui commence du plus jeune âge jusqu’aux plus grands. Ce jouet permet le développement de la motricité fine et de la coordination avec un principe que je recommande : zéro-écran et zero-plastique. »",
+    "10": "Angélique KOSINSKI-CIMELIERE",
+    "11": "Psychologue",
+    "12": "& Psychomotricienne",
+    "13": "Spécialiste de la petite enfance",
+    "14": "« La PlayBoard de Max & Lea est l’outil idéal pour stimuler les fonctions cognitives de l’enfant. »",
+    "15": "Les ptits Babadins",
+    "16": "Réseau de 80 micro-crèches en France",
+    "17": "« Un superbe jouet pour favoriser l’éveil des tous petits et des plus grands. »",
+    "18": "Julia Kobus",
+    "19": "Blogueuse et Maman",
+    "20": "« J’aime beaucoup la PlayBoard. C’est un jouet 8 en 1 idéal de 1 à 6 ans : calcul, couleurs, dégradés de couleur, éveil, animaux, formes, coordination et nombre. »"
   },
 
   "Tour": {
