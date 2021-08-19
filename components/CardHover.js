@@ -3,6 +3,7 @@ import styles from './CardHover.module.css'
 import {AppContext} from "./context/AppContext";
 import Link from 'next/link';
 import * as product from "../products";
+import {useTranslation} from "react-i18next";
 
 
 const CardHoverItem = ({item}) => {
@@ -199,6 +200,8 @@ const CardHover = () => {
   const products = product.products
 
 
+  const { t, i18n } = useTranslation();
+
   useEffect(() => {
     if ( process.browser) {
       let cartData = localStorage.getItem('livraison');
@@ -344,23 +347,23 @@ const CardHover = () => {
               />
             )
           )
-        ) : <p>Vous n'avez pas d'articles dans votre panier</p>
+        ) : <p>{t('Checkout.4')}</p>
       }
 
 
       <div className="prix-container">
-        <p className={styles.subtotal}>Total Discount : {totalDiscount.toFixed(2)} €</p>
+        <p className={styles.subtotal}>{t('Checkout.16')} : {totalDiscount.toFixed(2)} €</p>
         <hr/>
       </div>
 
       <div className="prix-container">
-        <p className={styles.subtotal}>Sous-total : {totalPrice1.toFixed(2)} €</p>
+        <p className={styles.subtotal}>{t('Checkout.17')} : {totalPrice1.toFixed(2)} €</p>
         <hr/>
       </div>
       <Link href="/checkout">
         <a>
           <div className={styles.buttonsContainer}>
-          <p className={styles.linkPopper} id="linkCart">Commander</p>
+          <p className={styles.linkPopper} id="linkCart">{t('Form.3')}</p>
           </div>
         </a>
       </Link>

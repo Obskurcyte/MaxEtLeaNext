@@ -10,44 +10,44 @@ const QualiteDansLesDetails = () => {
 
   return (
     <div className="container my-5 wola" id={styles.qualite}>
-      <h1 className={styles.title}>LA QUALITE EST DANS LES DETAILS</h1>
+      <h1 className={styles.title}>{t("Qualite.1")}</h1>
       <div className={styles.firstRow}>
         <img src={'/qualite.jpg'} alt=""/>
         <div className={styles.constructionRobuste}>
-          <h5>CONSTRUCTION ROBUSTE EN BOIS</h5>
+          <h5>{t("Qualite.2")}</h5>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Bois issu de <span className="fw-bold">forêts certifiées FSC®</span> et de <span className="fw-bold">haute qualité</span> </p>
+            <p>{t("Qualite.3")}<span className="fw-bold">{t("Qualite.4")}</span>{t("Qualite.5")}<span className="fw-bold">{t("Qualite.6")}</span> </p>
           </div>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p><span className="fw-bold">Matériaux nobles</span> et <span className="fw-bold">construction solide</span> </p>
+            <p><span className="fw-bold">{t("Qualite.7")}</span>{t("Qualite.8")}<span className="fw-bold">{t("Qualite.9")}</span> </p>
           </div>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Un <span className="fw-bold">travail minutieux</span> et une <span className="fw-bold">fabrication soignée</span> pour une <span className="fw-bold">durabilité maximale</span> </p>
+            <p>{t("Qualite.10")}<span className="fw-bold">{t("Qualite.11")}</span>{t("Qualite.12")}<span className="fw-bold">{t("Qualite.13")}</span>{t("Qualite.14")}<span className="fw-bold">{t("Qualite.15")}</span> </p>
           </div>
         </div>
       </div>
 
       <div className={styles.secondRow}>
         <div className={styles.constructionRobuste}>
-          <h5 className={styles.finitions}>Finitions soignées</h5>
+          <h5 className={styles.finitions}>{t("Qualite.16")}</h5>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Des <span className="fw-bold">couleurs douces</span> et <span className="fw-bold">chaleureuses</span> étudiées pour <span className="fw-bold">apaiser l'enfant</span> </p>
+            <p>{t("Qualite.17")}<span className="fw-bold">{t("Qualite.18")}</span>{t("Qualite.19")}<span className="fw-bold">{t("Qualite.20")}</span>{t("Qualite.21")}<span className="fw-bold">{t("Qualite.22")}</span> </p>
           </div>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p><span className="fw-bold">Angles biseautés</span> et <span className="fw-bold">finitions soignées</span> </p>
+            <p><span className="fw-bold">{t("Qualite.23")}</span>{t("Qualite.24")}<span className="fw-bold">{t("Qualite.25")}</span> </p>
           </div>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Des <span className="fw-bold">textures douces</span> et <span className="fw-bold">délicates</span> pour une <span className="fw-bold">parfaite prise en main</span> </p>
+            <p>{t("Qualite.26")}<span className="fw-bold">{t("Qualite.27")}</span>{t("Qualite.28")}<span className="fw-bold">{t("Qualite.29")}</span>{t("Qualite.30")}<span className="fw-bold">{t("Qualite.31")}</span> </p>
           </div>
           <div className={styles.list}>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
-            <p>Des <span className="fw-bold">images travaillées</span> pour <span className="fw-bold">faciliter la reconnaissance</span></p>
+            <p>{t("Qualite.32")}<span className="fw-bold">{t("Qualite.33")}</span>{t("Qualite.34")}<span className="fw-bold">{t("Qualite.35")}</span></p>
           </div>
         </div>
         <img src={'/qualite2.jpg'} alt=""/>

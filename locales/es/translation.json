@@ -92,7 +92,7 @@
   "Playboard46" : " 6 ",
   "Playboard47" : " ANOS",
   "Playboard48" : "La ",
-  "Playboard49" : "Playboard®",
+  "Playboard49" : "Playboard",
   "Playboard50" : " ACOMPAÑA A SU HIJO A CADA PASO DE SU DESARROLLO",
   "Playboard51" : "Para 1-2 años",
   "Playboard52" : "Está trabajando en sus ",
@@ -170,6 +170,14 @@
   "Playboard1171": "Las entregas en Francia (incluido Mónaco) toman de 3 a 5 días hábiles (entrega estándar a domicilio o en un punto de Mondial Relay), y de 2 a 3 días hábiles para entrega exprés. Para el resto de Europa, nuestros plazos de entrega son de 5 a 7 días laborables para envíos estándar y de 3 a 5 días para envíos Express. Pour le reste de l’Europe, nos délais de livraison sont de 5 à 7 jours ouvrés en livraison Standard et 3 à 5 jours en livraison Express.",
   "Playboard118" : "Max & Lea realiza envíos a toda Europa (incluyendo Suiza y Reino Unido), EE. UU. Y Canadá. Fuera de estas zonas geográficas, lo invitamos a contactarnos directamente por correo electrónico a",
   "Playboard119" : "Nuestro servicio de atención al cliente está a su disposición de Lunes a Sábado de 9 a.m a 7 p.m, hora francesa. Responderemos a sus preguntas con mucho gusto lo más rápido posible (El tiempo promedio para responder a sus preguntas es de 45 minutos). Puede comunicarse con nosotros por correo electrónico a",
+
+  "Client" : "clientes ya satisfechos",
+
+  "Recommendation": {
+    "1": "Distribuyen el PlayBoard®",
+    "2": "Opinión",
+    "3": "Nuestros clientes confían en nosotros"
+  },
 
   "Tour": {
     "1": "La Torre Arco Iris",
@@ -299,7 +307,7 @@
     "4": " No tienes articulos en tu carrito",
     "5": "Libro electrónico por correo (gratis)",
     "6": "Libro electrónico impreso de Playboard (9,99 €)",
-      "7": "Discount PlayBoard",
+    "7": "Discount PlayBoard",
     "8": "Discount Xylophone",
     "9": "Discount Xylophone con PlayBoard",
     "10": "Discount Tour",
@@ -361,6 +369,53 @@
     "66": "",
     "67": "",
     "68": ""
+  },
+
+  "Form": {
+    "1": "Pago seguro a través de Stripe.",
+    "2": "Nombre del titular de la tarjeta",
+    "3": "Orden",
+    "4": "Nombre",
+    "5": "Introduzca su nombre",
+    "6": "Pagos 100% seguros y protegidos"
+  },
+
+  "Qualite": {
+    "1": "LA CALIDAD ESTÁ EN LOS DETALLES",
+    "2": "DISEÑO DE MADERA RESISTENTE",
+    "3": "Madera ",
+    "4": "certificada FSC®",
+    "5": " de bosques de ",
+    "6": "alta calidad",
+    "7": "Materiales nobles",
+    "8": " y ",
+    "9": "construcción sólida",
+    "10": "",
+    "11": "Fabricación meticulosa",
+    "12": "",
+    "13": "",
+    "14": "para una",
+    "15": "máxima durabilidad",
+    "16": "ACABADOS PERFECTOS",
+    "17": "",
+    "18": "Colores suaves",
+    "19": " y ",
+    "20": "cálidos",
+    "21": " diseñados para ",
+    "22": "calmar al niño",
+    "23": "Esquinas redondeadas",
+    "24": " y ",
+    "25": "acabados limpios",
+    "26": "",
+    "27": "Texturas suaves",
+    "28": " y ",
+    "29": "delicadas",
+    "30": " para un ",
+    "31": "agarre perfecto",
+    "32": "",
+    "33": "Imágenes detalladas",
+    "34": " para ",
+    "35": "facilitar el reconocimiento"
   },
 
   "HomeScreen1": "DESCUBRIR, MARAVILLARSE",

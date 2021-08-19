@@ -107,7 +107,7 @@
   "Playboard46" : " 6 ",
   "Playboard47" : " YEARS OLD",
   "Playboard48" : "The ",
-  "Playboard49" : "Playboard®",
+  "Playboard49" : "Playboard",
   "Playboard50" : " ACCOMPANIES YOUR CHILD AT EACH STAGE OF HIS DEVELOPMENT",
   "Playboard51" : "For 1-2 years old",
   "Playboard52" : "He will enhance his ",
@@ -186,6 +186,14 @@
   "Playboard118" : "Max & Lea delivers all over Europe (including Switzerland and the United Kingdom), USA and Canada. If you live outside of these geographical regions, we invite you to contact us directly by email to ",
   "Playboard119" : "Our customer service is available from Monday to Saturday from 9 a.m to 7 p.m French time. We will be glad to answer your questions as quickly as possible (the average time to answer your questions is 45 minutes). You can contact us by email at",
 
+
+  "Client" : "already satisfied customers",
+
+  "Recommendation": {
+    "1": "They distribute the PlayBoard®",
+    "2": "Opinions",
+    "3": "Our clients trust us"
+  },
 
   "Tour": {
     "1": "The Rainbow Tower",
@@ -379,6 +387,53 @@
     "66": "",
     "67": "",
     "68": ""
+  },
+
+  "Qualite": {
+    "1": "THE QUALITY IS IN THE DETAILS",
+    "2": "RESISTANT WOODEN DESIGN",
+    "3": "FSC®-certified wood ",
+    "4": "from high quality forests",
+    "5": "",
+    "6": "",
+    "7": "Noble materials",
+    "8": " and ",
+    "9": "solid construction",
+    "10": "Meticulous manufacturing",
+    "11": "",
+    "12": "",
+    "13": "",
+    "14": "for",
+    "15": "maximum durability",
+    "16": "NEAT FINISHES",
+    "17": "Soft",
+    "18": "",
+    "19": "and",
+    "20": "warm colours",
+    "21": " designed to ",
+    "22": "soothe the child",
+    "23": "Rounded corners",
+    "24": " and ",
+    "25": "neat finishes",
+    "26": "Soft",
+    "27": "",
+    "28": " and ",
+    "29": "delicate textures",
+    "30": " for a ",
+    "31": "perfect grip",
+    "32": "",
+    "33": "Detailed images",
+    "34": " to ",
+    "35": "facilitate recognition"
+  },
+
+  "Form": {
+    "1": "Secure payment via Stripe.",
+    "2": "Name of card holder",
+    "3": "Order",
+    "4": "Name",
+    "5": "Enter your name",
+    "6": "100% safe and secure payments"
   },
 
   "Propos": {

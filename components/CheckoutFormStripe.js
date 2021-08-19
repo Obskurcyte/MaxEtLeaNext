@@ -26,6 +26,7 @@ import Dialog from '@material-ui/core/Dialog';
 import Typography from '@material-ui/core/Typography';
 import { blue } from '@material-ui/core/colors';
 import { date } from "yup/lib/locale";
+import {useTranslation} from "react-i18next";
 
 const CHECKOUT_MUTATION = gql`
 mutation CHECKOUT_MUTATION( $input: CheckoutInput! ) {
@@ -98,6 +99,7 @@ const CheckoutFormStripe = ({
 
 
 
+  const { t, i18n } = useTranslation();
   console.log(pays)
   const  [
     cart, setCart,
@@ -1018,13 +1020,13 @@ return (
           {props => (
             <form onSubmit={(e) => {e.preventDefault()}}>
               <div className={styles.cardContainer}>
-                <span>Paiement sécurisé via Stripe.</span>
+                <span>{t("Form.1")}</span>
                 <div className={styles.cardIconsContainer}><img src="/visa.svg"/><img src="/mastercard.svg"/><img src="/amex.svg"/><img src="/logo-cb.jpg"/></div>
                 <Row className="rowCheckout">
                   <input
                     name="name"
                     type="text"
-                    placeholder="Nom du porteur de la carte"
+                    placeholder={t("Form.2")}
                     required
                     value={props.values.email}
                     onChange={props.handleChange('email')}
@@ -1043,7 +1045,7 @@ return (
               <Row>
                 {/* TIP always disable your submit button while processing payments */}
                 <button className={styles.payButton} type="submit" onClick={props.handleSubmit} disabled={!!checkoutError}>
-                  Commander
+                  {t("Form.3")}
                 </button>
               </Row>
             </form>
@@ -1101,24 +1103,24 @@ return (
           {props => (
             <div>
               <label>
-                Nom
+                {t("Form.4")}
                 <input
                   value={props.values.name}
                   onChange={props.handleChange('name')}
-                  placeholder="Entrez votre nom"
+                  placeholder={t("Form.5")}
                   className={styles.inputName}
                   required />
               </label>
 
               <button className={styles.payButton} type="submit" onClick={props.handleSubmit}>
-                Commandez
+                {t("Form.3")}
               </button>
             </div>
           )}
 
         </Formik>
       )}
-      <div className={styles.securePayment}><p>* Paiements 100% sûrs et sécurisés *</p></div>
+      <div className={styles.securePayment}><p>* {t("Form.6")} *</p></div>
     </div>
   );
 };

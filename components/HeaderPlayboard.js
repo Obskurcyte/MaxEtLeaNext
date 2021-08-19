@@ -463,6 +463,7 @@ const HeaderPlayboard = (props) => {
     router.push('/checkout')
   };
 
+
   return (
     <div className="stickyHeader">
       <div className="freeContainer">
@@ -505,7 +506,7 @@ const HeaderPlayboard = (props) => {
 
             <div className="prixReduc">
               <div>
-                <p className="economie">(-40% vous économisez 20€)</p>
+                <p className="economie">{t("Playboard100")}</p>
               </div>
               <div>
                 <p className="prixBarre">49,90€</p>
@@ -521,7 +522,7 @@ const HeaderPlayboard = (props) => {
 
 
           }}>
-            <Link href="javascript:void(0)"><p className="ajouterPanierText">Ajouter au panier</p></Link>
+            <Link href="javascript:void(0)"><p className="ajouterPanierText">{t("Playboard101")}</p></Link>
           </div>
           <div className="accountShopping" onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
             <Link href="/cart">

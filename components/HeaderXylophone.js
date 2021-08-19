@@ -348,13 +348,13 @@ const HeaderXylophone = (props) => {
 
           <div className="jouet">
             <div className="prixJouet">
-              <p className="jouetName">LE XYLOPHONE</p>
+              <p className="jouetName">{t("Xylo.1")}</p>
               <p className="jouetPrix">12,90€</p>
             </div>
 
             <div className="prixReduc">
               <div>
-                <p className="economie">(-40% vous économisez 7€)</p>
+                <p className="economie">{t("Playboard100")}</p>
               </div>
               <div>
                 <p className="prixBarre">19,90€</p>
@@ -370,7 +370,7 @@ const HeaderXylophone = (props) => {
 
 
           }}>
-            <Link href="javascript:void(0)"><p className="ajouterPanierText">Ajouter au panier</p></Link>
+            <Link href="javascript:void(0)"><p className="ajouterPanierText">{t("Playboard101")}</p></Link>
           </div>
           <div className="accountShopping" onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
             <Link href="/cart">

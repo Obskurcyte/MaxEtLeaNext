@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {useTranslation} from "react-i18next";
 
 const CountClients = () => {
 
@@ -13,9 +14,10 @@ const CountClients = () => {
     changeClientCount();
   })
 
+  const { t, i18n } = useTranslation();
   return (
     <div className="clientSatisfait">
-      <h5>{clientCount} clients déjà satisfaits</h5>
+      <h5>{clientCount} {t('Client')}</h5>
     </div>
   );
 };

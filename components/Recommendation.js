@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from "react-slick";
+import {useTranslation} from "react-i18next";
 
 const Recommendation = () => {
 
@@ -14,18 +15,19 @@ const Recommendation = () => {
     autoplaySpeed: 3000,
   };
 
+  const { t, i18n } = useTranslation();
   return (
     <div className="row">
       <div className="col recommendationCol distributeurs">
-        <p className="distributionP">Ils distribuent la PlayBoard®</p>
+        <p className="distributionP">{t("Recommendation.1")}</p>
         <Slider {...settingsRecommandations}>
           <div>
             <img src={'/amazon-prime.webp'} alt=""/>
-            <p>Avis : <b>4.9</b>/5</p>
+            <p>{t("Recommendation.2")} : <b>4.9</b>/5</p>
           </div>
           <div>
             <img src={'/etsy.webp'} alt=""/>
-            <p>Avis : <b>4.9</b>/5</p>
+            <p>{t("Recommendation.2")} : <b>4.9</b>/5</p>
           </div>
           <div>
             <img src={'/apesanteur.webp'} alt=""/>
@@ -39,18 +41,18 @@ const Recommendation = () => {
         </Slider>
       </div>
       <div className="col recommendationCol clients">
-        <p className="distributionP">Nos clients nous font confiance</p>
+        <p className="distributionP">{t("Recommendation.3")}</p>
         <Slider {...settingsRecommandations}>
           <div>
             <a target="_blank" href='https://fr.trustpilot.com/review/maxandlea.com'>
               <img src={'/trustpilot.webp'} alt=""/>
-              <p>Avis : <b>4.9</b>/5</p>
+              <p>{t("Recommendation.2")} : <b>4.9</b>/5</p>
             </a>
           </div>
           <div>
             <a target="_blank" href='https://www.google.com/search?biw=2559&bih=1222&ei=MdKIX5WlLsvIaNvaq6AF&q=Max+%26+Lea+review&oq=Max+%26+Lea+review&gs_lcp=CgZwc3ktYWIQAzIICAAQBxAFEB5QxThYxThgvjtoAnAAeACAAWSIAWSSAQMwLjGYAQCgAQGqAQdnd3Mtd2l6wAEB&sclient=psy-ab&ved=0ahUKEwjVgb_K17fsAhVLJBoKHVvtClQQ4dUDCA0&uact=5'>
               <img src={'/Google-Reviews.webp'} alt=""/>
-              <p>Avis : <b>4.9</b>/5</p>
+              <p>{t("Recommendation.2")} : <b>4.9</b>/5</p>
             </a>
           </div>
         </Slider>
