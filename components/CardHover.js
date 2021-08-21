@@ -9,7 +9,6 @@ import {useTranslation} from "react-i18next";
 const CardHoverItem = ({item}) => {
 
   const [cart, setCart] = useContext(AppContext);
-  console.log('cart', cart)
 
   const getFloatVal = (string) => {
     let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
@@ -48,9 +47,6 @@ const CardHoverItem = ({item}) => {
 
       total.totalPrice += item.totalPrice;
       total.qty += item.qty;
-      console.log('total', total)
-      console.log('item', item)
-      console.log(total)
       return total;
     }
 
@@ -67,7 +63,6 @@ const CardHoverItem = ({item}) => {
     return updatedCart
   };
 
-  console.log(cart)
 
   /**
    * Get updated products array
@@ -110,13 +105,11 @@ const CardHoverItem = ({item}) => {
 
 
 
-  console.log('item', item)
   const [productCount, setProductCount] = useState(item.qty);
 
   const handleQtyChange = (event) => {
     if (process.browser) {
       const newQty = event.target.value
-      console.log('new Qty', newQty)
       setProductCount(newQty)
 
       let existingCart = localStorage.getItem('woo-next-cart');
@@ -133,19 +126,13 @@ const CardHoverItem = ({item}) => {
 
     let existingCart = localStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart);
-    console.log('existing', existingCart)
-
-    console.log('existing products' ,existingCart.products.length)
     if (1 === existingCart.products.length) {
       localStorage.removeItem('woo-next-cart')
       return null;
     }
 
     const productExistIndex = isProductInCart(existingCart.products, productId);
-
-    console.log('product exist index', productExistIndex)
-
-    console.log('product', existingCart.products)
+    
     if (-1 < productExistIndex) {
       const productToBeRemoved = existingCart.products[productExistIndex];
       const qtyTBeRemovedFromTotal = productToBeRemoved.qty;
@@ -181,7 +168,7 @@ const CardHoverItem = ({item}) => {
               <p className={styles.itemName}>{item.name}</p>
               <div className="quantityContainer flex justify-content-between w-100">
                 <p>{productCount} x {item.price}</p>
-                <td className="croix ml-4"><div className="croix itemsuppr" onClick={(e) => handleRemoveProduct(e, item.productId)}><i class="far fa-times-circle"></i></div></td>
+                <td className="croix ml-4"><div className="croix itemsuppr" onClick={(e) => handleRemoveProduct(e, item.productId)}><i className="far fa-times-circle"></i></div></td>
               </div>
             </div>
           <hr/>

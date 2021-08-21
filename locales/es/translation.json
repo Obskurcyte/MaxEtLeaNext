@@ -5,11 +5,14 @@
   "NavBar4": "CONTACT",
   "NavBar5": "BLOG",
 
+  "loading": "Cargar...",
+
   "products":{
     "xylo" : "Xilófono",
     "tour" : "Torre Arco Iris",
     "playboard" : "Playboard",
-    "cart": "Añadir al carrito"
+    "cart": "Añadir al carrito",
+    "savoir": "Leer más"
   },
 
   "Garanties1": "GARANTÍAS DE MAX & LEA",
@@ -366,7 +369,7 @@
     "38": "Utilice una dirección de facturación diferente",
     "39": " Método de envío",
     "40": "Entrega estándar (3-5 días)",
-    "41": "Entrega al punto de retransmisión de Mondial (2-4 días)",
+    "41": "Entrega Mondial Relay (2-4 días)",
     "42": "Entrega urgente (2-3 días)",
     "43": "Por favor complete este campo",
     "44": "Entrega a América (8-10 días)",
@@ -384,16 +387,46 @@
     "56": "IR AL SIGUIENTE PASO →",
     "57": "¡Agregue artículos a su carrito de compras!",
     "58": "Recomiendan el Playboard®",
-    "59": "",
-    "60": "",
-    "61": "",
-    "62": "",
-    "63": "",
-    "64": "",
-    "65": "",
-    "66": "",
-    "67": "",
-    "68": ""
+    "fields":{
+      "prenom" : "Apellido",
+      "nom" : "Nombre",
+      "email" : "E-mail",
+      "pays" : "País",
+      "rue" : "Calle y número",
+      "cp" : "Código postal",
+      "ville" : "Localidad / Ciudad",
+      "tel" : "Teléfono (opcional)",
+      "fac" : "Usar una dirección de facturación diferente"
+    },
+    "popUpImg": "/popupES.webp",
+    "popUpXylo": {
+      "1": "Descubre",
+      "2": "sus primeras notas musicales",
+      "3": "Está desarrollando su",
+      "4": "capacidad auditiva",
+      "5": "y su audición",
+      "6": "Ayuda al desarrollo",
+      "7": "psicomotor",
+      "8": "y el",
+      "9": "despertar cognitivo",
+      "10": "8 tonos diferentes",
+      "11": "para un máximo de sonido y",
+      "12": "disfrute",
+      "13": "7 partituras musicales OFRECIDAS",
+      "14": "con tu Xilófono"
+    },
+    "popUpTour": {
+      "1": "Desarrolla su",
+      "2": "sentido de la organización",
+      "3": "y la",
+      "4": "disposición",
+      "5": "Apilar",
+      "6": "las grandes piezas de color",
+      "7": "Reorganizar",
+      "8": "los colores y los gradientes",
+      "9": "Aprende jugando",
+      "10": "100% de Madera y 100% Ecológico"
+    }
   },
 
   "Form": {
@@ -403,6 +436,20 @@
     "4": "Nombre",
     "5": "Introduzca su nombre",
     "6": "Pagos 100% seguros y protegidos"
+  },
+
+  "Remerciement": {
+    "title": "¡Gracias!",
+    "1": "GRACIAS POR RECIBIR SU PEDIDO",
+    "2": "Gracias. Su pedido ha sido recibido",
+    "3": "Detalles del pedido",
+    "4": "Producto",
+    "5": "Total",
+    "6": "Subtotal",
+    "7": "Método de envío",
+    "8": "Medios de pago",
+    "9": "Dirección de la factura",
+    "10": "Dirección de entrega"
   },
 
   "Qualite": {
@@ -448,13 +495,8 @@
   "HomeScreen2": "Juguetes Naturales, Eco-Responsables y perfectos para niños de 1 a 6 años",
   "HomeScreen3": "TORRE ARCO IRIS",
   "HomeScreen4": "XILOFONO",
-  "HomeScreen5": "",
-  "HomeScreen6": "",
-  "HomeScreen8": "",
-  "HomeScreen9": "",
-  "HomeScreen10": "",
-  "HomeScreen11": "",
-  "HomeScreen12": "",
+  "HomeScreen5": "NUESTRAS HISTORIAS",
+  "HomeScreen6": "Encuentre todos nuestros libros",
 
   "Propos": {
     "title": "Quienes Somos",
@@ -552,6 +594,64 @@
     "12": "El sitio está alojado por Vercel Inc. ",
     "13": "Vercel Inc.",
     "14": "San Francisco, California, United States"
+  },
+
+  "CGV": {
+    "title": "CONDICIONES GENERALES DE VENTA",
+    "1": "ARTÍCULO 1 – Ámbito de aplicación",
+    "2": "Las presentes Condiciones Generales de Venta se aplican, sin restricción ni reserva, a todas las ventas realizadas a través del sitio web de MAX AND LEA (“el Vendedor”), por cualquier consumidor y comprador no profesional (“los Clientes o el Cliente”), que desee adquirir los productos ofrecidos a la venta por el vendedor (“los Productos”) en el sitio web www.maxandlea.com. Especifican las condiciones de pedido, pago, entrega y gestión de las devoluciones de los productos pedidos por cualquier cliente. Estas condiciones generales de venta pueden complementarse con condiciones especiales, expuestas en el sitio web, antes de cualquier transacción con el cliente. Estas Condiciones Generales de Venta se aplican con exclusión de todas las demás condiciones, y en particular las aplicables a las ventas en tienda o a otros medios de distribución y comercialización. Son accesibles en todo momento en el sitio web www.maxandlea.com y prevalecerán, en su caso, sobre cualquier otra versión o cualquier otro documento contradictorio. Las presentes condiciones generales de venta podrán ser modificadas posteriormente, la versión aplicable a la compra del cliente es la vigente en el sitio web en la fecha del pedido.",
+    "3": "ARTÍCULO 2 – Productos ofrecidos a la venta",
+    "4": "Los productos expuestos a la venta en el sitio web están presentes en el sitio web www.maxandlea.com . Las principales características de los productos y, en particular, las especificaciones, ilustraciones y dimensiones o capacidad de los productos se indican en el sitio web www.maxandlea.com. El cliente debe leer estas características cuidadosamente antes de hacer un pedido. La elección y compra de un producto es responsabilidad exclusiva del cliente. Las fotografías e imágenes expuestas en el sitio web www.maxandlea.com no son contractuales y no comprometen la responsabilidad del Vendedor. El cliente debe referirse a la descripción de cada producto para conocer sus características, sus particularidades esenciales y sus plazos de entrega. En caso de suministro continuo o periódico de un bien, la duración mínima del contrato propuesto. La información contractual se presenta en francés y debe ser confirmada a más tardar en el momento en que el Cliente valide el pedido. En el caso de un pedido a entregar fuera de Francia metropolitana, el cliente será el importador del o de los Productos en cuestión. Para todos los productos enviados fuera de la Unión Europea y de los departamentos y territorios franceses de ultramar, el precio se calculará neto y sin impuestos automáticamente en la factura. Podrán pagarse derechos de aduana, otros impuestos locales, derechos de importación o impuestos estatales, que correrán a cargo y bajo la responsabilidad exclusiva del cliente.",
+    "5": "ARTÍCULO 3 – Periodo de validez del Producto ofrecido",
+    "6": "Los productos que se ofrecen están sujetos a la disponibilidad de existencias, tal como se especifica en el momento de hacer el pedido.",
+    "7": "ARTÍCULO 4 – Datos de contacto del vendedor",
+    "8": "Los datos de contacto del vendedor son los siguientes: MAX AND LEA Sociedad anónima simplificada con un capital social de 20.000 € Oficina central: 11 Rue de Lourmel – 75015 PARIS – FRANCIA RCS de PARÍS: 884 297 243 Correo electrónico: contact@maxandlea.com De conformidad con la Ley de Protección de Datos de 6 de enero de 1978, reforzada y completada por el RGPD (Reglamento General de Protección de Datos) que entró en vigor el 25 de mayo de 2018, el cliente tiene derecho a acceder, rectificar, oponerse, suprimir o transferir todos sus datos personales en cualquier momento, enviando un correo electrónico en el que especifique su identidad, a la dirección del Vendedor, mencionada anteriormente. La validación del pedido por parte del cliente implica la aceptación plena y sin excepciones ni reservas de las presentes Condiciones Generales de Venta. El cliente reconoce tener la capacidad necesaria para adquirir y comprar los productos ofrecidos en el sitio web www.maxandlea.com.",
+    "9": "ARTÍCULO 5 – Órdenes",
+    "10": "5-1. Hacer un pedido",
+    "11": "El cliente puede seleccionar los productos que desea pedir en el sitio web www.maxandlea.com, de acuerdo con los siguientes términos y condiciones, puede elegir entre dos opciones de pago:",
+    "12": "Pago por Paypal :",
+    "13": "el cliente selecciona los productos que desea pedir en el “carrito” donde puede modificarlo si lo necesita (cantidades, referencias…), debe verificar la dirección de entrega o rellenar una nueva. A continuación, se calculará el coste de envío y se presentará al comprador. Entonces, el cliente elegirá el método de pago de su elección: “Pago por Paypal”. El cliente será remitido a la página web www.paypal.com para rellenar sus datos de pago o conectarse a su cuenta Paypal y completar la transacción. Se supone que el cliente ha leído previamente estas condiciones de venta y las acepta sin reservas. Entonces tendrá que hacer clic en “confirmar mi pedido” en la página de Paypal y será redirigido a una página de confirmación. Esta última confirmación significa la aceptación definitiva del contrato. Una vez validado, el cliente recibirá un correo electrónico de confirmación, confirmando el registro de su pedido. Tan pronto como se reciba el pago, el pedido será procesado y el cliente será informado por correo electrónico. La empresa “MAX AND LEA” enviará los productos en un plazo de 2 días laborables a partir de la recepción del pago correspondiente al pedido, en función de las disponibilidades.",
+    "14": "Pago seguro con tarjeta de crédito :",
+    "15": "el comprador selecciona los productos que desea pedir y los pone en su “carrito”, luego hace las modificaciones necesarias (cantidades, referencias…), verifica la dirección de entrega o introduce una nueva. A continuación, se calculan los gastos de envío y se presentan al comprador. Se le invitará a verificar toda la información, (se supone que el cliente ha leído estas condiciones de venta y las acepta sin reservas). Entonces podrá proceder a confirmar su pedido haciendo clic en el botón “Confirmar mi pedido”. Los pagos con tarjeta de crédito se realizan a través de STRIPE. Tan pronto como el pago del cliente es validado por nuestro banco, el pago es irrevocable. En caso de uso fraudulento de la tarjeta, el comprador puede exigir la cancelación del pago con tarjeta, las sumas pagadas serán entonces devueltas o reembolsadas a la tarjeta de crédito. La responsabilidad del titular de la tarjeta de crédito no se verá comprometida si se demuestra que el pago en cuestión se ha realizado de forma fraudulenta, a distancia, sin uso físico de la tarjeta de crédito. Para obtener el reembolso de la transacción fraudulenta y de los eventuales gastos bancarios que la misma haya podido generar, el titular de la tarjeta deberá enviar una objeción por escrito a su banco en un plazo de 70 días a partir de la transacción, o de 120 días si el contrato que lo vincula con el banco lo permite. Las cantidades debidas serán reembolsadas por el banco en un plazo máximo de un mes a partir de la recepción de la objeción escrita enviada por el titular de la tarjeta. No se podrán cobrar al titular de la tarjeta los gastos que se deriven de la restitución de la suma. El cliente tiene la posibilidad de verificar los detalles de su pedido, su precio total y de corregir cualquier error eventual antes de confirmar su aceptación. Es responsabilidad del cliente verificar la exactitud del pedido e informar o corregir inmediatamente cualquier error. Al validar el pedido, se supone que el cliente ha leído y aceptado las presentes condiciones generales de venta. La venta es definitiva sólo cuando el cliente ha recibido un correo electrónico de confirmación de la aceptación del pedido del vendedor, que debe ser enviado sin demora y después de que el vendedor haya recibido el precio total. Todo pedido realizado, validado por el cliente y confirmado por el vendedor, en las condiciones y modalidades aquí descritas, en el sitio web www.maxandlea.com, representa la formación de un contrato celebrado a distancia entre el cliente y el vendedor. A menos que se demuestre lo contrario, los datos guardados en el sistema informático del vendedor son la prueba de cualquier transacción concluida con el cliente. El vendedor se reserva el derecho de cancelar o rechazar cualquier pedido de un cliente con el que haya habido un problema previo en el pago de un pedido anterior. El cliente podrá seguir el progreso de su pedido en el sitio web www.maxandlea.com.",
+    "16": "5-2 . Modificación del pedido",
+    "17": "Une fois confirmée et acceptée par le Vendeur, dans les conditions ci-dessus décrites, la commande n’est pas modifiable",
+    "18": "5-3 . Cancelación del pedido",
+    "19": "Una vez confirmado y aceptado por el vendedor, en las condiciones descritas anteriormente, el pedido no puede ser anulado, salvo en caso de ejercicio del derecho de retractación o de fuerza mayor.",
+    "20": "ARTÍCULO 6 – Precios",
+    "21": "Los productos se ofrecen a los precios que figuran en el sitio web www.maxandlea.com, en el momento en que el vendedor hace el pedido. Los precios están expresados en Euros incluyendo todos los impuestos. Estos precios tienen en cuenta las posibles reducciones que pueda conceder el vendedor en el sitio web www.maxandlea.com. Estos precios son fijos y no revisables durante su período de validez, tal como se indica en el sitio web www.maxandlea.com. El vendedor se reserva el derecho de modificar los precios en cualquier momento, fuera de su período de validez. No incluyen los gastos de envío, manipulación, transporte y entrega, que se cobran aparte, en las condiciones indicadas en el sitio web www.maxandlea.com y calculados antes de realizar el pedido. Si el cliente solicita un modo de envío más rápido o más caro que el modo de envío estándar, los gastos de envío adicionales, tal como se presentarán en el momento de la validación del pedido por parte del cliente, serán completamente a su cargo. El pago solicitado al cliente corresponde al importe total de la compra, incluidos estos gastos. El vendedor podrá entonces proporcionar una factura y entregársela al cliente, a petición de éste, después de la entrega.",
+    "22": "ARTÍCULO 7 – Condiciones de pago",
+    "23": "El precio debe pagarse inmediatamente, en su totalidad, el día en que el cliente hace el pedido a través de un método de pago seguro, de acuerdo con los siguientes términos y condiciones:",
+    "24": "Con tarjeta de crédito: Tarjeta de crédito, Visa, MasterCard, American Express, otras tarjetas de crédito.",
+    "25": "Por PayPal.",
+    "26": "El pago con tarjeta de crédito es irreversible, excepto en caso de uso fraudulento de la tarjeta. En este caso, el cliente puede solicitar la cancelación del pago y la devolución del importe correspondiente que fue cargado en su tarjeta de crédito. Los datos de pago se intercambian de forma encriptada gracias al protocolo SSL. Además, el vendedor se reserva el derecho, en caso de incumplimiento de las condiciones de pago mencionadas anteriormente, de suspender o anular la entrega del pedido en curso realizado por el cliente. No se podrá cobrar al cliente ningún coste adicional, superior a los costes fijados por el vendedor para la utilización de un medio de pago.",
+    "27": "ARTÍCULO 8 – Entrega",
+    "28": "Las entregas se realizan en la dirección indicada en el formulario de pedido, que sólo puede estar dentro de la zona geográfica especificada. El Cliente es responsable de la veracidad de la información proporcionada para la entrega. Los pedidos son entregados por La Poste o cualquier otro proveedor de servicios, el servicio de entrega es rastreado y entregado sin firma. Los retrasos en el envío se dan a título informativo; si superan los treinta días a partir del pedido, se puede rescindir el contrato de venta y reembolsar al cliente. El producto será entregado en el domicilio del cliente por el cartero. En caso de ausencia del cliente, éste recibirá del cartero un aviso de entrega que le permitirá recuperar los productos pedidos en la oficina de correos más cercana, punto de relevo, en el plazo indicado por los servicios postales. Los riesgos relacionados con el transporte corren a cargo del cliente desde el momento en que los artículos salen de los locales de la empresa “MAX AND LEA”. El cliente debe verificar, en presencia del empleado del servicio postal o del repartidor, el estado del embalaje de la mercancía y del contenido en el momento de la entrega. En caso de daños durante el transporte, todas las reclamaciones deben dirigirse al transportista en un plazo de tres días a partir de la entrega. La entrega consiste en la transferencia al cliente de la posesión o el control del producto. Los productos solicitados se entregarán de una sola vez en una sola entrega, salvo en casos particulares o en caso de indisponibilidad de uno o más productos. El vendedor se compromete a hacer todo lo posible para entregar los productos pedidos por el cliente en los plazos mencionados. Sin embargo, estos plazos se dan a título informativo. Si los productos pedidos no han sido entregados dentro de los 30 días siguientes a la fecha de entrega indicativa, por cualquier motivo que no sea un impedimento importante o por culpa del cliente, la venta podrá ser anulada a petición escrita del cliente en las condiciones previstas en los artículos L 216-2 L 216-3 L241-4 del Código del Consumo francés. Las sumas pagadas por el cliente le serán devueltas a más tardar en el plazo de catorce días a partir de la fecha de la rescisión del contrato, excepto cualquier compensación o deducción. En caso de no conformidad del producto entregado, el vendedor – se compromete a encontrar una solución o a reembolsar al cliente, a la recepción del producto entregado, cuyos gastos de envío serán reembolsados por el vendedor dentro del límite de 5 euros, como se indica en el artículo – “Responsabilidades del vendedor – Garantía”. El vendedor asume los riesgos de transporte y debe reembolsar al cliente en caso de cualquier daño causado durante el transporte. El producto dañado debe ser devuelto al vendedor dentro de las 48 horas siguientes a la reclamación, que a su vez debe hacerse dentro de los 3 días siguientes a la fecha de entrega.",
+    "29": "ARTÍCULO 9 – Transferencia de propiedad ",
+    "30": "La transferencia de la propiedad de los productos del vendedor se hará tras la aceptación del pedido por parte del vendedor, con el acuerdo de las partes sobre el artículo y el precio, independientemente de la fecha de pago o de entrega.",
+    "31": "ARTÍCULO 10 – Derecho de retractación",
+    "32": "Según las disposiciones legales vigentes, el cliente dispone de un plazo de catorce días a partir de la recepción del producto para ejercer su derecho de retractación frente al vendedor, sin tener que justificar sus motivos ni pagar ninguna penalización, ni solicitar un cambio o un reembolso. Siempre que los productos se devuelvan en su embalaje original y en perfecto estado en un plazo de catorce días (14 días como máximo a partir de la notificación de la decisión de desistimiento) a partir del anuncio de la decisión de desistimiento del cliente al vendedor. El producto debe ser devuelto en su estado original y completo (embalaje, accesorios, instrucciones, etc.) para que pueda volver a ponerse a la venta, acompañado de la factura de compra. No se aceptarán productos dañados, sucios o incompletos. El derecho de retractación puede ejercerse enviando un correo electrónico a la siguiente dirección contact@maxandlea.com, (o cualquier otra declaración, libre de ambigüedad, que exprese su voluntad de retractación). En estos casos, el vendedor enviará inmediatamente al cliente un acuse de recibo en un soporte duradero. Si el cliente ejerce el derecho de desistimiento dentro del plazo mencionado, solo se reembolsa el precio de los Productos adquiridos; Los gastos de envío y devolución quedan a cargo del Cliente. El reembolso se efectuará en un plazo de 14 días a partir de la fecha en que se notifique al vendedor la decisión de desistir.",
+    "33": "ARTÍCULO 11 – Responsabilidad del vendedor – Garantía",
+    "34": "Los productos que se venden en el sitio web www.maxandlea.com se ajustan a la normativa vigente en Europa y son de uso no profesional. Los productos suministrados por el vendedor se benefician:",
+    "35": "La garantía legal de conformidad, para los productos defectuosos, rotos o dañados o que no correspondan al pedido.",
+    "36": "La garantía legal sobre los defectos latentes resultantes de un defecto de material, diseño o fabricación de los productos suministrados que los haga impropios para su uso,",
+    "37": "Sin ningún pago adicional, independientemente del derecho de retiro, de conformidad con las disposiciones legales. En las condiciones y según los términos que se enumeran a continuación y se definen en las Condiciones Generales de Venta (Garantía de Conformidad / Garantía de Defectos Latentes). Se recuerda que, en virtud de la garantía legal de conformidad, el cliente dispone de un plazo de 2 años a partir de la fecha de entrega del producto para tomar medidas contra el vendedor. Puede elegir entre la reparación o la sustitución del producto pedido, bajo las condiciones de coste establecidas en el artículo L 217-9 del Código del Consumo francés. Exento de aportar la prueba de la existencia de la falta de conformidad del producto en los veinticuatro meses siguientes a la entrega del mismo. La garantía legal de conformidad se aplica independientemente de cualquier garantía comercial que pueda cubrir el producto. El cliente puede decidir aplicar la garantía sobre los defectos latentes según lo dispuesto en el artículo 1641 del Código Civil. En ese caso, puede elegir entre la terminación de la venta o una reducción del precio de venta como se establece en el artículo 1644 del Código Civil. Para ejercer sus derechos, el cliente debe informar al vendedor, por escrito, de la no conformidad de los productos en un plazo máximo de 7 días a partir de la entrega de los productos o del descubrimiento de los defectos en el plazo mencionado. Deberá devolver o traer de vuelta al almacén los productos defectuosos en el estado en que fueron recibidos con todos sus elementos (accesorios, embalaje, instrucciones, etc.). A continuación, el vendedor reembolsará, sustituirá o reparará los productos o las piezas no conformes o defectuosas en garantía. Los gastos de envío serán reembolsados sobre la base del precio facturado y los gastos de devolución serán reembolsados previa presentación de los documentos justificativos. El reembolso de los productos no conformes o defectuosos se efectuará en el plazo más breve posible y a más tardar 15 días después de que el vendedor haya reconocido la falta de conformidad o el defecto latente. El reembolso se efectuará mediante el abono de la cantidad pagada en la cuenta bancaria del cliente, por transferencia SEPA o por PayPal. El vendedor no será responsable en los siguientes casos:",
+    "38": "Incumplimiento de la legislación del país al que se entregan los productos, que corresponde al cliente verificar,",
+    "39": "En caso de mal uso, uso con fines profesionales, negligencia o falta de mantenimiento por parte del cliente, así como en caso de desgaste normal del producto, accidentes o fuerza mayor.",
+    "40": "La garantía del vendedor se limita, en cualquier caso, a la sustitución o reembolso de los productos no conformes o defectuosos.",
+    "41": "ARTÍCULO 12 – Protección de datos personales",
+    "42": "En aplicación de la ley 78-17 del 6 de enero de 1978 modificada por la ley n°2018-493 del 20 de junio de 2018, se recuerda que los datos personales solicitados al cliente son necesarios para el tratamiento de su pedido y la creación de facturas, en particular. Estos datos podrán ser comunicados a cualquier socio del vendedor encargado de la ejecución, el tratamiento, la gestión y el pago de los pedidos. El tratamiento de la información comunicada a través de la página web www.maxandlea.com cumple con los requisitos legales en materia de protección de datos personales, el sistema utilizado garantiza una óptima protección de dichos datos. El cliente dispone, de acuerdo con la normativa nacional y europea vigente, del derecho permanente de acceso, modificación, rectificación, oposición a la portabilidad y limitación del tratamiento de los datos que le conciernen. Este derecho puede ejercerse en las condiciones y según las modalidades definidas en el sitio web www.maxandlea.com.",
+    "43": "ARTÍCULO 13 – Propiedad intelectual",
+    "44": "El contenido del sitio web www.maxandlea.com es propiedad del vendedor y sus socios y está protegido por las leyes francesas e internacionales relativas a la propiedad intelectual. Cualquier reproducción total o parcial de su contenido está estrictamente prohibida y puede constituir un delito de falsificación.",
+    "45": "ARTÍCULO 14 – Circunstancias imprevistas",
+    "46": "En caso de cambio de circunstancias debido a acontecimientos imprevistos durante la celebración del contrato, según lo dispuesto en el artículo 1195 del Código Civil. La parte que no haya aceptado asumir un riesgo que implique un coste adicional, podrá solicitar una renegociación del contrato a su contraparte.",
+    "47": "ARTÍCULO 15 – Fuerza mayor",
+    "48": "Las partes no podrán ser consideradas responsables si la no ejecución o el retraso en la ejecución de cualquiera de sus obligaciones, tal como se describe en el presente documento, es consecuencia de un caso de fuerza mayor, tal como se establece en el artículo 1218 del Código Civil.",
+    "49": "ARTÍCULO 16 – Ley aplicable – Idioma",
+    "50": "Las presentes condiciones generales de venta y las transacciones detalladas se rigen por la ley francesa. Están escritas originalmente en francés. En caso de que se traduzcan a uno o más idiomas, sólo el texto francés prevalecerá en caso de litigio.",
+    "51": "ARTÍCULO 17 – Litigios",
+    "52": "Los litigios relativos a la validez, la interpretación, la ejecución, la rescisión, las consecuencias de las presentes condiciones generales de venta, que puedan resultar de cualquier compra o venta realizada en aplicación de dichas condiciones, que no puedan resolverse amistosamente entre el vendedor y el cliente, se someterán a la jurisdicción de los tribunales del Tribunal de Apelación de París. Se informa al cliente de que podrá en todo caso recurrir a la mediación convencional, en particular con la Comisión de la mediación de la consommation (C. consom. art. L 612-1) o con cualquier organismo de mediación sectorial, cuyas referencias se encuentran en el sitio web www.maxandlea.com, o cualquier otro método alternativo de solución de controversias (conciliación, por ejemplo) en caso de litigio. El cliente que se dé cuenta de que se ha infringido la normativa general de protección de datos personales podrá ceder una asociación o un organismo como los mencionados en la sección IV del artículo 43 ter de la Ley de protección de datos de 1978. Para obtener una indemnización del responsable o subcontratista encargado del tratamiento de los datos, por conducto de un tribunal civil o administrativo o ante la Comisión Nacional de Protección de Datos y Libertades.",
+    "53": "ARTÍCULO 18 – Información precontractual – Aceptación del cliente",
+    "54": "El hecho de que una persona física (o jurídica) haga un pedido en los sitios web www.maxandlea.com implica la plena adhesión y aceptación de las presentes condiciones generales de venta y su obligación de pagar los productos pedidos, lo que reconoce expresamente el cliente, que renuncia, en particular, a recurrir a cualquier documento contradictorio que no sea oponible al vendedor 884. 297 243"
   },
 
   "AideMoiAFaireSeul": {

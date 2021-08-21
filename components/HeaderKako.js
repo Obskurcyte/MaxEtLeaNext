@@ -16,9 +16,7 @@ import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
 
 const HeaderKako = (props) => {
 
-  console.log(product)
   const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
-  console.log(cart)
 
   const router = useRouter()
   const products = product.products
@@ -60,7 +58,6 @@ const HeaderKako = (props) => {
     newCart.products.push(newProduct);
     localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
     localStorage.setItem('commande-cart', JSON.stringify(newCart))
-    console.log('newCart', newCart)
     return newCart
 
   };
@@ -83,9 +80,6 @@ const HeaderKako = (props) => {
 
       total.totalPrice = item.totalPrice;
       total.qty += item.qty;
-      console.log('total', total)
-      console.log('item', item)
-      console.log(total)
       return total;
     }
 
@@ -153,8 +147,6 @@ const HeaderKako = (props) => {
     if (process.browser) {
       let existingCart = localStorage.getItem('woo-next-cart');
       let commandeCart = localStorage.getItem('commande-cart');
-      console.log('clicked')
-      console.log('existingCart', existingCart)
       if (existingCart!=null) {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
@@ -176,14 +168,12 @@ const HeaderKako = (props) => {
   const [open, setOpen] = useState(false);
 
   const lang = i18next.language;
-  console.log('cart', cart);
   let totalPrice1 = 0;
   if (cart) {
     for (let data in cart.products) {
       totalPrice1 += parseFloat(cart.products[data].totalPrice)
     }
   }
-  console.log(totalPrice1)
   let user = '';
 
   useEffect(() => {

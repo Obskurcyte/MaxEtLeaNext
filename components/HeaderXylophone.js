@@ -17,7 +17,6 @@ import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 const HeaderXylophone = (props) => {
 
   const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
-  console.log(cart)
 
   const router = useRouter();
   const products = product.products
@@ -61,7 +60,6 @@ const HeaderXylophone = (props) => {
     newCart.products.push(newProduct);
     localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
     localStorage.setItem('commande-cart', JSON.stringify(newCart))
-    console.log('newCart', newCart)
     return newCart
 
   };
@@ -85,9 +83,6 @@ const HeaderXylophone = (props) => {
 
       total.totalPrice = item.totalPrice;
       total.qty += item.qty;
-      console.log('total', total)
-      console.log('item', item)
-      console.log(total)
       return total;
     }
 
@@ -151,8 +146,6 @@ const HeaderXylophone = (props) => {
     if (process.browser) {
       let existingCart = localStorage.getItem('woo-next-cart');
       let commandeCart = localStorage.getItem('commande-cart');
-      console.log('clicked')
-      console.log('existingCart', existingCart)
       if (existingCart != null) {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
@@ -174,7 +167,6 @@ const HeaderXylophone = (props) => {
   const [open, setOpen] = useState(false);
 
   const lang = i18next.language;
-  console.log('cart', cart);
   const [codePromo, setCodePromo] = useState('')
   useEffect(() => {
     if (process.browser) {
@@ -267,7 +259,6 @@ const HeaderXylophone = (props) => {
   let numberOfProducts = 0;
   if (cart) {
     for (let data in cart.products) {
-      console.log(cart.products[data].qty)
       numberOfProducts += parseInt(cart.products[data].qty)
     }
   }
@@ -292,7 +283,6 @@ const HeaderXylophone = (props) => {
   const dispatch = useDispatch()
   const drapeau = useSelector(state => state.drapeau.drapeau)
 
-  console.log(open)
   const handleClose = (lang) => {
     i18n.changeLanguage(lang).then(() => setAnchorEl(null))
     if (lang === 'fr') {

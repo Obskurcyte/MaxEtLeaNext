@@ -73,10 +73,10 @@ const HomeScreen = () => {
 
       <div className="baby-container container1000">
         <div className="head-title-container">
-          <h1 className="head-title">Nos Histoires</h1>
+          <h1 className="head-title">{t("HomeScreen5")}</h1>
         </div>
         <div>
-          <p className="description-title">Retrouvez tous nos livres</p>
+          <p className="description-title">{t("HomeScreen6")}</p>
         </div>
 
         <div className="grid-container">

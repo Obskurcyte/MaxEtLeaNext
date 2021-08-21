@@ -3,9 +3,12 @@ import Header from "../components/Header";
 import Head from "next/head";
 import Footer from "../components/Footer";
 import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
+import {useTranslation} from "react-i18next";
 
 
 const Remerciement = (props) => {
+
+  const { t, i18n } = useTranslation();
 
   const [dataClient, setDataClient] = useState(null);
   const [cartCommande, setCartCommande] = useState(null);
@@ -36,7 +39,7 @@ const Remerciement = (props) => {
   return (
     <div>
       <Head>
-        <title>Max And Lea - Remerciement</title>
+        <title>Max And Lea - {t("Remerciement.title")}</title>
       </Head>
       <Header />
       {dataClient ? (
@@ -44,22 +47,22 @@ const Remerciement = (props) => {
           <div className="imgRemerciementContainer">
             <div class="merci-bg-overlay"></div>
             <div className="remerciementParagraph">
-              <p>MERCI <br/> NOUS AVONS BIEN REÇU <br/>VOTRE COMMANDE</p>
+              <p>{t("Remerciement.1")}</p>
             </div>
           </div>
 
           <div className="commandeRecueContainer">
-            <h5 id="titre-remerciement">Merci. Votre commande a été reçue</h5>
+            <h5 id="titre-remerciement">{t("Remerciement.2")}</h5>
             <div className="imgLogoContainer">
               <img src={'/logogrand.webp'} alt=""/>
             </div>
             <div className="commandeRecap">
-              <h5>Détails de la commande</h5>
+              <h5>{t("Remerciement.3")}</h5>
               <table className=" table table-hover w-full mb-10 striped bordered hover">
                 <thead>
                 <tr className="woo-next-cart-head-container text-left">
-                  <th className="woo-next-cart-heading-el" scope="col">Produit</th>
-                  <th className="woo-next-cart-heading-el" scope="col">Total</th>
+                  <th className="woo-next-cart-heading-el" scope="col">{t("Remerciement.4")}</th>
+                  <th className="woo-next-cart-heading-el" scope="col">{t("Remerciement.5")}</th>
                 </tr>
 
                 { (cartCommande && cartCommande.products) && (
@@ -75,19 +78,19 @@ const Remerciement = (props) => {
                   ) )
                 ) }
                 <tr className="bg-gray-200">
-                  <td className="woo-next-checkout-total font-normal text-xl textLeft tdInner">Sous-total</td>
+                  <td className="woo-next-checkout-total font-normal text-xl textLeft tdInner">{t("Remerciement.6")}</td>
                   <td className="woo-next-checkout-total font-bold text-xl textLeft">{dataClient.sousTotal.toFixed(2)} €</td>
                 </tr>
                 <tr className="bg-gray-200">
-                  <td className="woo-next-checkout-total font-normal text-xl textLeft tdInner">Expedition</td>
+                  <td className="woo-next-checkout-total font-normal text-xl textLeft tdInner">{t("Remerciement.7")}</td>
                   <td className="woo-next-checkout-total font-bold text-xl textLeft">{dataClient.prixLivraison} €</td>
                 </tr>
                 <tr className="bg-gray-200">
-                  <td className="woo-next-checkout-total font-normal text-xl textLeft tdInner">Moyen de Paiement</td>
+                  <td className="woo-next-checkout-total font-normal text-xl textLeft tdInner">{t("Remerciement.8")}</td>
                   <td className="woo-next-checkout-total font-bold text-xl textLeft">{moyenPaiement}</td>
                 </tr>
                 <tr className="bg-gray-200">
-                  <td className="woo-next-checkout-total font-normal text-xl textLeft tdInner">Total</td>
+                  <td className="woo-next-checkout-total font-normal text-xl textLeft tdInner">{t("Remerciement.5")}</td>
                   <td className="woo-next-checkout-total font-bold text-xl textLeft">{dataClient.total} €</td>
                 </tr>
 
@@ -101,7 +104,7 @@ const Remerciement = (props) => {
                 <table className=" table table-hover w-full mb-10 striped bordered hover">
                   <thead>
                   <tr className="woo-next-cart-head-container text-left">
-                    <th className="woo-next-cart-heading-el" scope="col">Adresse de facturation</th>
+                    <th className="woo-next-cart-heading-el" scope="col">{t("Remerciement.9")}</th>
                   </tr>
                   </thead>
                   <tr className="bg-gray-200">
@@ -121,7 +124,7 @@ const Remerciement = (props) => {
                 <table className=" table table-hover w-full mb-10 striped bordered hover">
                   <thead>
                   <tr className="woo-next-cart-head-container text-left">
-                    <th className="woo-next-cart-heading-el" scope="col">Adresse de livraison</th>
+                    <th className="woo-next-cart-heading-el" scope="col">{t("Remerciement.10")}</th>
                   </tr>
                   </thead>
                   <tr className="bg-gray-200">

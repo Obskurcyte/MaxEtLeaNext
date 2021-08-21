@@ -151,10 +151,7 @@ const HeaderPlayboard = (props) => {
     );
   }
 
-  console.log(product)
   const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
-  console.log(cart)
-  console.log(commandeCart)
 
   const router = useRouter();
 
@@ -199,7 +196,6 @@ const HeaderPlayboard = (props) => {
     newCart.products.push(newProduct);
     localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
     localStorage.setItem('commande-cart', JSON.stringify(newCart))
-    console.log('newCart', newCart)
     return newCart
 
   };
@@ -224,9 +220,6 @@ const HeaderPlayboard = (props) => {
 
       total.totalPrice = item.totalPrice;
       total.qty += item.qty;
-      console.log('total', total)
-      console.log('item', item)
-      console.log(total)
       return total;
     }
 
@@ -291,8 +284,6 @@ const HeaderPlayboard = (props) => {
     if (process.browser) {
       let existingCart = localStorage.getItem('woo-next-cart');
       let commandeCart = localStorage.getItem('commande-cart');
-      console.log('clicked')
-      console.log('existingCart', existingCart)
       if (existingCart != null) {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
@@ -316,7 +307,6 @@ const HeaderPlayboard = (props) => {
   const dispatch = useDispatch();
   const drapeau = useSelector(state => state.drapeau.drapeau)
   const lang = i18next.language;
-  console.log('cart', cart);
   const [codePromo, setCodePromo] = useState('')
   useEffect(() => {
     if (process.browser) {
@@ -410,7 +400,6 @@ const HeaderPlayboard = (props) => {
   let numberOfProducts = 0;
   if (cart) {
     for (let data in cart.products) {
-      console.log(cart.products[data].qty)
       numberOfProducts += parseInt(cart.products[data].qty)
     }
   }

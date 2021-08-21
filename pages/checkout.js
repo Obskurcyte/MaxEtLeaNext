@@ -36,6 +36,7 @@ import {useTranslation} from "react-i18next";
 const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
 function SimpleDialogPlayboard(props) {
+  const { t, i18n } = useTranslation();
   const { onClose, selectedValue, open } = props;
 
   const handleClose = () => {
@@ -49,14 +50,15 @@ function SimpleDialogPlayboard(props) {
   return (
     <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
       <div>
-        <img src={'/popup.png'} alt="" style={{maxWidth: '100%'}}/>
-        <a href="/playboard" target="_blank"><p class="modal-know-more">En savoir plus</p></a>
+        <img src={t("Checkout.popUpImg")} alt="" style={{maxWidth: '100%'}}/>
+        <a href="/playboard" target="_blank"><p className="modal-know-more">{t("products.savoir")}</p></a>
       </div>
     </Dialog>
   );
 }
 
 function SimpleDialogXylo(props) {
+  const { t, i18n } = useTranslation();
   const { onClose, selectedValue, open } = props;
 
   const handleClose = () => {
@@ -74,33 +76,34 @@ function SimpleDialogXylo(props) {
         <div>
           <div className="flex iconContainer">
             <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
-            <p>Il découvre <span className="fw-bold">ses premières notes musicales</span></p>
+            <p>{t("Checkout.popUpXylo.1")} <span className="fw-bold">{t("Checkout.popUpXylo.2")}</span></p>
           </div>
           <div className="flex iconContainer">
             <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
-            <p>Il développe sa <span className="fw-bold">capacité auditive</span> et son ouïe</p>
+            <p>{t("Checkout.popUpXylo.3")} <span className="fw-bold">{t("Checkout.popUpXylo.4")}</span> {t("Checkout.popUpXylo.5")}</p>
           </div>
           <div className="flex iconContainer">
             <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
-            <p>Une aide au développement <span className="fw-bold">psycho-moteur</span> et à <span className="fw-bold">l'éveil</span> </p>
+            <p>{t("Checkout.popUpXylo.6")} <span className="fw-bold">{t("Checkout.popUpXylo.7")}</span> {t("Checkout.popUpXylo.8")} <span className="fw-bold">{t("Checkout.popUpXylo.9")}</span> </p>
           </div>
           <div className="flex iconContainer">
             <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
-            <p><span className="fw-bold">8 tonalités différentes</span>pour un maximum de sons et de <span className="fw-bold">plaisirs</span></p>
+            <p><span className="fw-bold">{t("Checkout.popUpXylo.10")} </span>{t("Checkout.popUpXylo.11")} <span className="fw-bold">{t("Checkout.popUpXylo.12")}</span></p>
           </div>
           <div className="flex iconContainer">
             <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
-            <p><span className="fw-bold">7 partitions musicales OFFERTES</span> avec votre xylophone</p>
+            <p><span className="fw-bold">{t("Checkout.popUpXylo.13")}</span> {t("Checkout.popUpXylo.14")}</p>
           </div>
 
         </div>
-        <a href="/xylophone" target="_blank"><p class="modal-know-more">En savoir plus</p></a>
+        <a href="/xylophone" target="_blank"><p className="modal-know-more">{t("products.savoir")}</p></a>
       </div>
     </Dialog>
   );
 }
 
 function SimpleDialogTour(props) {
+  const { t, i18n } = useTranslation();
   const { onClose, selectedValue, open } = props;
 
   const handleClose = () => {
@@ -118,32 +121,33 @@ function SimpleDialogTour(props) {
         <div>
           <div className="flex iconContainer">
             <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
-            <p>Développer son sens de <span className="fw-bold">l'organisation</span> et de <span className="fw-bold">l'agencement</span></p>
+            <p>{t("Checkout.popUpTour.1")} <span className="fw-bold">{t("Checkout.popUpTour.2")}</span> {t("Checkout.popUpTour.3")} <span className="fw-bold">{t("Checkout.popUpTour.4")}</span></p>
           </div>
           <div className="flex iconContainer">
             <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
-            <p><span className="fw-bold">Empiler</span> les grosses pièces de couleur</p>
+            <p><span className="fw-bold">{t("Checkout.popUpTour.5")}</span> {t("Checkout.popUpTour.6")}</p>
           </div>
           <div className="flex iconContainer">
             <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
-            <p><span className="fw-bold">Réorganiser</span> les couleurs et les dégradés</p>
+            <p><span className="fw-bold">{t("Checkout.popUpTour.7")}</span> {t("Checkout.popUpTour.8")}</p>
+          </div>
+          <div className="flex iconContainer">+
+            <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
+            <p><span className="fw-bold">{t("Checkout.popUpTour.9")}</span></p>
           </div>
           <div className="flex iconContainer">
             <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
-            <p><span className="fw-bold">Apprendre en jouant</span></p>
-          </div>
-          <div className="flex iconContainer">
-            <FontAwesomeIcon icon={faCheck} className='checkIcon'/>
-            <p><span className="fw-bold">100% Bois et 100% Ecologique</span></p>
+            <p><span className="fw-bold">{t("Checkout.popUpTour.10")}</span></p>
           </div>
         </div>
-        <a href="/tour" target="_blank"><p class="modal-know-more">En savoir plus</p></a>
+        <a href="/tour" target="_blank"><p className="modal-know-more">{t("products.savoir")}</p></a>
       </div>
     </Dialog>
   );
 }
 
 function SimpleDialogRelay(props) {
+  const { t, i18n } = useTranslation();
   const { onClose, selectedValue, open } = props;
 
   const handleClose = () => {
@@ -158,12 +162,12 @@ function SimpleDialogRelay(props) {
     <Dialog onClose={handleClose} aria-labelledby="Points relay" open={open} maxWidth="md">
       <div className="relay-container">
         <div id="Zone_Widget">
-          Chargement...
+        {t("loading")}
           <Spinner animation="border" role="status" >
-            <span className="sr-only">Loading...</span>
+            <span className="sr-only">{t("loading")}</span>
           </Spinner>
         </div>
-        <button class="buttonCodepromo" id="choice_relay" onClick={handleClose}>Choisir</button>
+        <button className="buttonCodepromo" id="choice_relay" onClick={handleClose}>Choisir</button>
       </div>
     </Dialog>
   );
@@ -356,7 +360,7 @@ const CheckoutScreen = props => {
     const newProduct = createNewProduct(product, productPrice, 1)
     newCart.products.push(newProduct);
     localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
-    localStorage.setItem('commande-cart', JSON.stringify(newCart))
+    localStorage.setItem('commande-cart', JSON.stringify(newCart));
     return newCart
   };
 
@@ -1173,8 +1177,6 @@ const CheckoutScreen = props => {
     qtyTotale = qtyTotale - ebookInCart.length
   }
 
-  console.log(ebookInCart)
-
 
   const [firstStep, setFirstStep] = useState(false);
 
@@ -1340,7 +1342,6 @@ const CheckoutScreen = props => {
                   {
                     cart && cart.products.length && (
                       cart.products.map((item) => {
-                        console.log(item)
                         return(
                         item.productId == 3163 ? (
                         <>
@@ -1721,7 +1722,7 @@ const CheckoutScreen = props => {
                                 value={props.values.prenom}
                                 onChange={props.handleChange('prenom')}
                                 id="prenom"
-                                label="Prénom"
+                                label={t("Checkout.fields.prenom")}
                                 variant="outlined"
                                 className="inputMoyenGauche"
                               />
@@ -1732,7 +1733,7 @@ const CheckoutScreen = props => {
                                 value={props.values.nom}
                                 onChange={props.handleChange('nom')}
                                 required
-                                label="Nom"
+                                label={t("Checkout.fields.nom")}
                                 variant="outlined"
                                 className="inputMoyenDroit"
                               />
@@ -1745,7 +1746,7 @@ const CheckoutScreen = props => {
                                 value={props.values.email}
                                 onChange={props.handleChange('email')}
                                 id="email"
-                                label="Email"
+                                label={t("Checkout.fields.email")}
                                 variant="outlined"
                                 onFocus={() => setFirstStep(true)}
                                 className="bigInput"
@@ -1761,7 +1762,7 @@ const CheckoutScreen = props => {
                                 setChecked1(false);
                                 setChecked3(false);
                                 props.setFieldValue('pays', val);
-                                }} options={countries.listCountries} value={props.values.pays} id="pays" name="country" placeholder="Choisir Pays" search={true} filterOptions={ fuzzySearch }/>
+                                }} options={countries.listCountries} value={props.values.pays} id="pays" name="country" placeholder={t("Checkout.fields.pays")} search={true} filterOptions={ fuzzySearch }/>
                             </div>
                               {props.errors.pays && props.touched.pays && <div style={{color: 'red'}}>{t("Checkout.37")}</div>}
                               <input type="hidden" id="pays_holder" value={props.values.pays} />
@@ -1773,7 +1774,7 @@ const CheckoutScreen = props => {
                                 value={props.values.adresseLivraison}
                                 onChange={props.handleChange('adresseLivraison')}
                                 id="adresse"
-                                label="Numéro et nom de rue"
+                                label={t("Checkout.fields.rue")}
                                 variant="outlined"
                                 className="bigInput"
                               />
@@ -1785,7 +1786,7 @@ const CheckoutScreen = props => {
                                 value={props.values.codePostalLivraison}
                                 onChange={props.handleChange('codePostalLivraison')}
                                 id="postalcode"
-                                label="Code postal"
+                                label={t("Checkout.fields.cp")}
                                 variant="outlined"
                                 className="bigInput"
                               />
@@ -1798,7 +1799,7 @@ const CheckoutScreen = props => {
                                 required
                                 value={props.values.villeLivraison}
                                 onChange={props.handleChange('villeLivraison')}
-                                label="Ville"
+                                label={t("Checkout.fields.ville")}
                                 variant="outlined"
                                 className="bigInput"
                               />
@@ -1811,7 +1812,7 @@ const CheckoutScreen = props => {
                                 onChange={handleChange}
                                 inputProps={{ 'aria-label': 'primary checkbox' }}
                               />
-                              <p className="paragraphFacturation">{t("Checkout.38")}</p>
+                              <p className="paragraphFacturation">{t("Checkout.fields.fac")}</p>
                             </div>
 
                             {checked ? (
@@ -1822,7 +1823,7 @@ const CheckoutScreen = props => {
                                     value={props.values.adresseFacturation}
                                     onChange={props.handleChange('adresseFacturation')}
                                     id="outlined-error"
-                                    label="Numéro et nom de rue"
+                                    label={t("Checkout.fields.rue")}
                                     variant="outlined"
                                     className="inputMoyenGauche"
                                   />
@@ -1831,7 +1832,7 @@ const CheckoutScreen = props => {
                                     value={props.values.villeFacturation}
                                     onChange={props.handleChange('villeFacturation')}
                                     id="outlined-error"
-                                    label="Ville"
+                                    label={t("Checkout.fields.ville")}
                                     variant="outlined"
                                     className="inputMoyenDroit"
                                   />
@@ -1843,7 +1844,7 @@ const CheckoutScreen = props => {
                                     value={props.values.codePostalFacturation}
                                     onChange={props.handleChange('codePostalFacturation')}
                                     id="outlined-error"
-                                    label="Code Postal"
+                                    label={t("Checkout.fields.cp")}
                                     variant="outlined"
                                     className="inputMoyenGauche"
                                   />
@@ -1851,7 +1852,7 @@ const CheckoutScreen = props => {
                                     select
                                     value={props.values.paysFacturation}
                                     onChange={props.handleChange('paysFacturation')}
-                                    label="Select"
+                                    label={t("Checkout.fields.pays")}
                                     helperText="Veuillez sélectionner un pays"
                                     defaultValue="France"
                                     className="inputMoyenDroit"
@@ -1874,7 +1875,7 @@ const CheckoutScreen = props => {
                                 value={props.values.phone}
                                 onChange={props.handleChange('phone')}
                                 id="phone"
-                                label="Numéro de téléphone (facultatif)"
+                                label={t("Checkout.fields.tel")}
                                 variant="outlined"
                                 className="bigInput"
                               />

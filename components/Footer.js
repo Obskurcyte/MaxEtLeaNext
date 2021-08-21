@@ -23,7 +23,6 @@ const Footer = () => {
     setOpen(false);
   };
 
-  console.log(open)
 
   const { t, i18n } = useTranslation();
 
@@ -32,8 +31,8 @@ const Footer = () => {
     <footer className="footer-container">
       <div className="container">
         <div className="footer-subcontainer">
-        <div class="container">
-        <div class="row">
+        <div className="container">
+        <div className="row">
           <div className="col-8 col-md-3 order-5 order-md-1 flex-column d-flex">
           <Link href="/"><a href="/"><img src={'/logogrand.webp'} alt="" className="img-footer"/></a></Link>
             <span className="copyright">Copyright © 2021 | Max And Lea</span>

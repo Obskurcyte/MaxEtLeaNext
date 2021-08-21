@@ -11,7 +11,6 @@ const CartItem = ({item}) => {
 
   const products = productFile.products
 
-  console.log('item', item)
   const changeCartProductsExtraDiscounts = () =>{
     let existingCart = localStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart);
@@ -134,6 +133,7 @@ const CartItem = ({item}) => {
     const newProduct = createNewProduct(product, productPrice, 1)
     newCart.products.push(newProduct);
     localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
+    localStorage.setItem('commande-cart', JSON.stringify(newCart));
     return newCart
   };
 
@@ -168,6 +168,7 @@ const CartItem = ({item}) => {
     }
 
     localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart))
+    localStorage.setItem('commande-cart', JSON.stringify(updatedCart));
     return updatedCart
   };
 
@@ -242,6 +243,7 @@ const CartItem = ({item}) => {
 
 
       localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+      localStorage.setItem('commande-cart', JSON.stringify(updatedCart));
       return updatedCart
     } else {
       return existingCart;
@@ -258,7 +260,7 @@ const CartItem = ({item}) => {
     <div key={item.productId} className="tr-product" id={"list_"+item.productId}>
       <div className="innerContainerCart">
         <span onClick={(event) => handleRemoveProduct(event, item.productId)}>
-          <div className="croix itemsuppr"><i class="far fa-times-circle"></i></div>
+          <div className="croix itemsuppr"><i className="far fa-times-circle"></i></div>
         </span>
 
         <div className="imgContainerCart">
