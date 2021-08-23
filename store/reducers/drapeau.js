@@ -1,7 +1,7 @@
 import {GET_DRAPEAU} from "../actions/drapeau";
 
 const initialState = {
-  drapeau : 'https://maxandlea.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.png'
+  drapeau : '/flagfr.png'
 }
 
 

@@ -229,7 +229,7 @@ const HeaderXylophone = (props) => {
   let ebookInCart = []
   if (cart) {
     const ebook = cart.products.filter(obj => {
-      return obj.productId === 'hdkfhdhfdjjJ'
+      return obj.productId === '17014'
     })
     if (ebook.length !== 0) {
       ebookInCart = ebook
@@ -264,10 +264,15 @@ const HeaderXylophone = (props) => {
   }
 
   useEffect(() => {
-    if (localStorage.getItem('userName')) {
-      user = localStorage.getItem('userName');
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const setLangFromStorage = async () => {
+      await delay(50);
+      if (localStorage.getItem('lang')) {
+        handleClose(localStorage.getItem('lang'))
+      }
     }
-  })
+    setLangFromStorage()
+  }, []);
 
 
   const productCount = (null !== cart && Object.keys(cart).length) ? cart.totalProductCount : '';
@@ -284,6 +289,7 @@ const HeaderXylophone = (props) => {
   const drapeau = useSelector(state => state.drapeau.drapeau)
 
   const handleClose = (lang) => {
+    localStorage.setItem('lang',lang)
     i18n.changeLanguage(lang).then(() => setAnchorEl(null))
     if (lang === 'fr') {
       dispatch(getDrapeau('/flagfr.png'))

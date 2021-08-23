@@ -8,6 +8,21 @@ const AvisClients = () => {
 
   const { t, i18n } = useTranslation();
 
+  /*useEffect(() => {
+    if (localStorage.getItem('lang')) {
+        i18n.changeLanguage(localStorage.getItem('lang')).then(() => setAnchorEl(null))
+        if (localStorage.getItem('lang') === 'fr') {
+          dispatch(getDrapeau('/flagfr.png'))
+        } if (localStorage.getItem('lang') === 'en') {
+          dispatch(getDrapeau('/flagen.png'))
+        } if (localStorage.getItem('lang') === 'es') {
+          dispatch(getDrapeau('/flages.png'))
+        } if (localStorage.getItem('lang') === 'al') {
+          dispatch(getDrapeau('/flagal.png'))
+        }
+    }
+  }, []);*/
+
   var settings = {
     dots: true,
     infinite: true,
@@ -36,11 +51,11 @@ const AvisClients = () => {
                         <img className={styles.paysFlag} src='/internet9.webp'></img>
                     </div>
                     <div>
-                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
                     </div>
                     <p className={styles.avisDesc}>
                     {t("avis.1")}
@@ -53,11 +68,11 @@ const AvisClients = () => {
                         <img className={styles.paysFlag} src="/ireland-flag.webp"></img>
                     </div>
                     <div>
-                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
                     </div>
                     <p className={styles.avisDesc}>
                     {t("avis.2")}
@@ -70,11 +85,11 @@ const AvisClients = () => {
                         <img className={styles.paysFlag} src="/uk-flag.webp"></img>
                     </div>
                     <div>
-                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
                     </div>
                     <p className={styles.avisDesc}>
                     {t("avis.3")}
@@ -87,11 +102,11 @@ const AvisClients = () => {
                         <img className={styles.paysFlag} src="/internet9.webp"></img>
                     </div>
                     <div>
-                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
                     </div>
                     <p className={styles.avisDesc}>
                     {t("avis.4")}
@@ -104,11 +119,11 @@ const AvisClients = () => {
                         <img className={styles.paysFlag} src="/suisse-flag.webp"></img>
                     </div>
                     <div>
-                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
                     </div>
                     <p className={styles.avisDesc}>
                     {t("avis.5")}
@@ -121,11 +136,11 @@ const AvisClients = () => {
                         <img className={styles.paysFlag} src="/internet9.webp"></img>
                     </div>
                     <div>
-                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
                     </div>
                     <p className={styles.avisDesc}>
                     {t("avis.6")}
@@ -138,11 +153,11 @@ const AvisClients = () => {
                         <img className={styles.paysFlag} src="/belgium-flag.webp"></img>
                     </div>
                     <div>
-                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
                     </div>
                     <p className={styles.avisDesc}>
                     {t("avis.7")}
@@ -155,11 +170,11 @@ const AvisClients = () => {
                         <img className={styles.paysFlag} src="/italy-flag.webp"></img>
                     </div>
                     <div>
-                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
                     </div>
                     <p className={styles.avisDesc}>
                     {t("avis.8")}
@@ -172,11 +187,11 @@ const AvisClients = () => {
                         <img className={styles.paysFlag} src="/portugal-flag.webp"></img>
                     </div>
                     <div>
-                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
                     </div>
                     <p className={styles.avisDesc}>
                     {t("avis.9")}
@@ -189,11 +204,11 @@ const AvisClients = () => {
                         <img className={styles.paysFlag} src="/internet9.webp"></img>
                     </div>
                     <div>
-                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
                     </div>
                     <p className={styles.avisDesc}>
                     {t("avis.10")}
@@ -206,11 +221,11 @@ const AvisClients = () => {
                         <img className={styles.paysFlag} src="/italy-flag.webp"></img>
                     </div>
                     <div>
-                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
                     </div>
                     <p className={styles.avisDesc}>
                     {t("avis.11")}
@@ -223,11 +238,11 @@ const AvisClients = () => {
                         <img className={styles.paysFlag} src="/spain-flag.webp"></img>
                     </div>
                     <div>
-                    <i class="fa fa-star mar-star-first" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
-                    <i class="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star-first" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
+                    <i className="fa fa-star mar-star" aria-hidden="true"></i>
                     </div>
                     <p className={styles.avisDesc}>
                     {t("avis.12")}

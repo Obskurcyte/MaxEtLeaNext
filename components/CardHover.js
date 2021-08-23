@@ -273,7 +273,7 @@ const CardHover = () => {
   let ebookInCart = []
   if (cart) {
     const ebook = cart.products.filter(obj => {
-      return obj.productId === 'hdkfhdhfdjjJ'
+      return obj.productId === '17014'
     })
     if (ebook.length !== 0) {
       ebookInCart = ebook

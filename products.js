@@ -45,7 +45,7 @@ export const products = [
     price: "12.90",
     slug: "livre-kako",
     __typename: "SimpleProduct",
-    image: "/kako.png"
+    image: "/MaxAndLea-Livre-Kako-Ouvert.webp"
   },
   {
     description: null,

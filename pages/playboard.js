@@ -23,23 +23,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import QualiteDansLesDetails from "../components/QualiteDansLesDetails";
 
-const icon = React.createElement('i', { className: 'far fa-question-circle' }, "");
-const title1 = React.createElement('p', {}, "La PlayBoard s'abime-t-elle avec le temps ?");
-const faqHeader1 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title1]);
-const title2 = React.createElement('p', {}, "A partir de quel âge mon enfant peut-il commencer à jouer avec ?");
-const faqHeader2 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title2]);
-const title3 = React.createElement('p', {}, "Jusqu'à quel âge la PlayBoard est-elle recommandée ?");
-const faqHeader3 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title3]);
-const title4 = React.createElement('p', {}, "Je n’ai pas reçu mes E-Books OFFERTS avec ma commande ? ");
-const faqHeader4 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title4]);
-const title5 = React.createElement('p', {}, "Comment récupérer mon sac de rangement OFFERT ?");
-const faqHeader5 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title5]);
-const title6 = React.createElement('p', {}, "En combien de temps vais-je recevoir ma PlayBoard ?");
-const faqHeader6 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title6]);
-const title7 = React.createElement('p', {}, "Si je vis hors Europe, comment puis-je acquérir la PlayBoard ?");
-const faqHeader7 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title7]);
-const title8 = React.createElement('p', {}, "J’ai une question ou une remarque ?");
-const faqHeader8 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title8]);
+
 
 
 const PlayBoardScreen = props => {
@@ -47,6 +31,26 @@ const PlayBoardScreen = props => {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const { t, i18n } = useTranslation();
+
+  const icon = React.createElement('i', { className: 'far fa-question-circle' }, "");
+  const title1 = React.createElement('p', {}, t("FAQtitle1"));
+  const faqHeader1 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title1]);
+  const title2 = React.createElement('p', {}, t("FAQtitle2"));
+  const faqHeader2 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title2]);
+  const title3 = React.createElement('p', {}, t("FAQtitle3"));
+  const faqHeader3 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title3]);
+  const title4 = React.createElement('p', {}, t("FAQtitle4"));
+  const faqHeader4 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title4]);
+  const title5 = React.createElement('p', {}, t("FAQtitle5"));
+  const faqHeader5 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title5]);
+  const title6 = React.createElement('p', {}, t("FAQtitle6"));
+  const faqHeader6 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title6]);
+  const title7 = React.createElement('p', {}, t("FAQtitle7"));
+  const faqHeader7 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title7]);
+  const title8 = React.createElement('p', {}, t("FAQtitle8"));
+  const faqHeader8 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title8]);
 
   const router = useRouter();
 
@@ -61,7 +65,7 @@ const PlayBoardScreen = props => {
   });
 
 
-  const { t, i18n } = useTranslation();
+
 
   var settings = {
     dots: true,

@@ -227,7 +227,13 @@ const KakoScreen = props => {
           <div className="slider-container">
             <Slider {...settings}>
               <div>
-                <img src={'/MaxAndLea-Livre-Kako-Face.webp'} alt="" />
+                <img src={'/kako-seul.webp'} alt="" />
+              </div>
+              <div>
+                <img src={'/MaxAndLea-Livre-Kako-Ouvert-1.webp'} alt="" />
+              </div>
+              <div>
+                <img src={'/MaxAndLea-Livre-Kako-Ouvert-2.webp'} alt="" />
               </div>
             </Slider>
           </div>
@@ -240,7 +246,7 @@ const KakoScreen = props => {
             <img src={"/bebeIcone.png"} alt="" className="img-bebe" />
           </div>
           <div className="pensee-paragraph-container">
-            <p className="pensee-paragraph">De superbes contes téléchargeables et accessibles sur vos tablettes, telephones et supports numériques.</p>
+            <p className="pensee-paragraph">De superbes contes en Version Papier + Téléchargeables</p>
             <p className="pensee-paragraph">114 pages illustrées pour les enfants de 1 à 4 ans.</p>
           </div>
         </div>
