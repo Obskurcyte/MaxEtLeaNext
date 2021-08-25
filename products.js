@@ -7,7 +7,7 @@ export const products = [
     priceAugmente: "21.90",
     slug: "xylophone",
     __typename: "SimpleProduct",
-    image: "/xylo-top.webp"
+    image: "/Xylo-OmbrageSansFond.webp"
   },
   {
     description: null,
@@ -27,7 +27,7 @@ export const products = [
     priceAugmente: "49.90",
     slug: "play-board",
     __typename: "SimpleProduct",
-    image: "/playboard-top.webp"
+    image: "/PLAYBOARD-ombresSansFond.webp"
   },
   {
     description: null,
@@ -55,7 +55,7 @@ export const products = [
     priceAugmente: "21.90",
     slug: "xylophone",
     __typename: "SimpleProduct",
-    image: "/xylo-top.webp"
+    image: "/Xylo-OmbrageSansFond.webp"
   },
   {
     description: null,

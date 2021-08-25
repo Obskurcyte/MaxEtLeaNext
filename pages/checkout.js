@@ -472,9 +472,13 @@ const CheckoutScreen = props => {
           setCheckedTour(false);
           const playboardExistsIndex = isProductInCart(existingCart.products, products[2].id);
           if (-1 < playboardExistsIndex) {//Si playboard, on retire la seconde version de la tour
-            updatedCart = updateCartTour(existingCart, products[6], -1);
+            updatedCart = removeProduct(products[6].id);
+            //updatedCart = updateCartTour(existingCart, products[6], -1);
           }
-          else updatedCart = updateCartTour(existingCart, products[1], -1);
+          else {
+            updatedCart = removeProduct(products[1].id);
+            //updatedCart = updateCartTour(existingCart, products[1], -1);
+          }
         }
         setCart(updatedCart)
         setCommandeCart(updatedCart)
@@ -570,10 +574,14 @@ const CheckoutScreen = props => {
         else {
           setCheckedXylo(false);
           const playboardExistsIndex = isProductInCart(existingCart.products, products[2].id);
-          if (-1 < playboardExistsIndex) {//Si playboard, on retire la seconde version de la tour
-            updatedCart = updateCartXylo(existingCart, products[5], -1);
+          if (-1 < playboardExistsIndex) {//Si playboard, on retire la seconde version du xylo
+            updatedCart = removeProduct(products[5].id);
+            //updatedCart = updateCartXylo(existingCart, products[5], -1);
           }
-          else updatedCart = updateCartXylo(existingCart, products[0], -1);
+          else {
+            updatedCart = removeProduct(products[0].id);
+            //updatedCart = updateCartXylo(existingCart, products[0], -1);
+          }
         }
         setCart(updatedCart)
         setCommandeCart(updatedCart)
@@ -668,7 +676,8 @@ const CheckoutScreen = props => {
         }
         else {
           setCheckedPlayboard(false);
-          updatedCart = updateCartPlayboard(existingCart, products[2], -1);
+          updatedCart = removeProduct(products[2].id);
+          //updatedCart = updateCartPlayboard(existingCart, products[2], -1);
         }
         setCart(updatedCart)
         setCommandeCart(updatedCart)
@@ -769,7 +778,8 @@ const CheckoutScreen = props => {
         }
         else {
           setCheckedEbookPlayboard(false);
-          updatedCart = updateCartEbookPlayboard(existingCart, products[3], -1);
+          updatedCart = removeProduct(products[3].id);
+          //updatedCart = updateCartEbookPlayboard(existingCart, products[3], -1);
         }
         setCart(updatedCart)
         setCommandeCart(updatedCart)
@@ -993,7 +1003,7 @@ const CheckoutScreen = props => {
   useEffect(() => {
     let existingCart = localStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart)
-    if (existingCart != null && (isProductInCart(existingCart.products, products[0].id) > -1 || isProductInCart(existingCart.products, products[5].id) > -1)) {
+    if (existingCart != null && ((isProductInCart(existingCart.products, products[0].id) > -1) || (isProductInCart(existingCart.products, products[5].id) > -1))) {
       setCheckedXylo(true);
     }
     if (existingCart != null && (isProductInCart(existingCart.products, products[1].id) > -1 || isProductInCart(existingCart.products, products[6].id) > -1)) {
@@ -1039,14 +1049,6 @@ const CheckoutScreen = props => {
   const [checked, setChecked] = React.useState(false);
 
 
-  const items = [
-    { id: 1, title: 'dhhdndndjznjznndzjdzndjznjdzjdnzdz  dzndzd zidzjd zdijzjdzi d zdjzjidzj d zjzdz dz djzjd zd' },
-    { id: 2, title: 'dhhdndndjznjznndzjdzndjznjdzjdnzdz  dzndzd zidzjd zdijzjdzi d zdjzjidzj d zjzdz dz djzjd zd' },
-    { id: 3, title: 'dhhdndndjznjznndzjdzndjznjdzjdnzdz  dzndzd zidzjd zdijzjdzi d zdjzjidzj d zjzdz dz djzjd zd' },
-    { id: 4, title: 'dhhdndndjznjznndzjdzndjznjdzjdnzdz  dzndzd zidzjd zdijzjdzi d zdjzjidzj d zjzdz dz djzjd zd' },
-    { id: 5, title: 'dhhdndndjznjznndzjdzndjznjdzjdnzdz  dzndzd zidzjd zdijzjdzi d zdjzjidzj d zjzdz dz djzjd zd' }
-  ]
-
   //----------------FORMULAIRE DE LIVRAISON ------------------//
 
 
@@ -1091,12 +1093,20 @@ const CheckoutScreen = props => {
 
 
   let sumPanier = 0;
+  let totalBeforeDiscount = 0;
+  let oldPrice = 0;
+  let qtyProduct = 0;
   let totalPrice2 = 0
   let qtyTotale = 0
   if (cart) {
     for (let data in cart.products) {
       sumPanier += parseFloat(cart.products[data].totalPrice)
-      qtyTotale += parseFloat(cart.products[data].qty)
+      qtyProduct = parseFloat(cart.products[data].qty)
+      qtyTotale += qtyProduct
+      if(parseFloat(cart.products[data].oldPrice))
+        oldPrice = parseFloat(cart.products[data].oldPrice)
+      else oldPrice = parseFloat(cart.products[data].totalPrice)
+      totalBeforeDiscount += oldPrice * qtyProduct
     }
   }
 
@@ -1168,13 +1178,13 @@ const CheckoutScreen = props => {
       return obj.productId === '17014'
     })
     if (ebook.length !== 0) {
-      ebookInCart = ebook
+      ebookInCart = ebook[0].qty
     }
   }
 
   //On enlève les ebooks de la qty totale
-  if (ebookInCart.length !== 0) {
-    qtyTotale = qtyTotale - ebookInCart.length
+  if (ebookInCart > 0) {
+    qtyTotale = qtyTotale - ebookInCart
   }
 
 
@@ -1393,6 +1403,13 @@ const CheckoutScreen = props => {
                   <div className="sousTotal">
 
                     <div>
+                      <div className="prix-reduc-container">
+                        <p className="sousTotalText2">{t("Checkout.totalAvantDiscount")}</p>
+                        <p className="itemTotalPrice2">{totalBeforeDiscount.toFixed(2)} €</p>
+                      </div>
+                    </div>
+
+                    <div>
                       {playboardInCart.length !== 0 && (
                         <div className="prix-reduc-container">
                           <p className="sousTotalText">{t("Checkout.7")}</p>
@@ -1475,8 +1492,8 @@ const CheckoutScreen = props => {
                     </div>
 
                     <div className="prix-reduc-container">
-                      <p className="sousTotalText2">{t("Checkout.16")}</p>
-                      <p className="itemTotalPrice2">{totalDiscount.toFixed(2)} €</p>
+                      <p className="totalDiscountText">{t("Checkout.16")}</p>
+                      <p className="totalDiscountPrice">{totalDiscount.toFixed(2)} €</p>
                     </div>
 
                     <div>
@@ -1571,7 +1588,7 @@ const CheckoutScreen = props => {
                         <div onClick={() => {
                           handleClickOpenPlayboard()
                         }}>
-                          <img src="/playboard.png" alt="playboard" className="articleImg" />
+                          <img src="/PLAYBOARD-ombresSansFond.webp" alt="playboard" className="articleImg" />
                         </div>
                         <Link href="/playboard"><a target="_blank"><p className="modal-know-more">{t("products.savoir")}</p></a></Link>
                       </div>
@@ -1585,7 +1602,7 @@ const CheckoutScreen = props => {
                         <label className="labelArticleTop">
                           <Checkbox style={{ display: 'inlineBlock' }} onChange={() => {
                             handleAddToCartXylo()
-                          }}></Checkbox>
+                          }} checked={checkedXylo}></Checkbox>
                           <span className="innerArticleTitle">{t("Checkout.29")}</span>
                           <br></br>
                           <strike className="innerArticleStrike">{products[0].priceAugmente} €</strike>
@@ -1598,7 +1615,7 @@ const CheckoutScreen = props => {
                         <div onClick={() => {
                           handleClickOpenXylo()
                         }}>
-                          <img src="/xylophonecard.png" alt="playboard" className="articleImg" />
+                          <img src="/Xylo-OmbrageSansFond.webp" alt="playboard" className="articleImg" />
                         </div>
                         <a href="/xylophone" target="_blank"><p className="modal-know-more">{t("products.savoir")}</p></a>
 
@@ -1612,7 +1629,7 @@ const CheckoutScreen = props => {
                         <label className="labelArticleTop">
                           <Checkbox style={{ display: 'inlineBlock' }} onChange={() => {
                             handleAddToCartTour()
-                          }}></Checkbox>
+                          }} checked={checkedTour}></Checkbox>
                           <span className="innerArticleTitle">{t("Checkout.32")}</span>
                           <br></br>
                           <strike className="innerArticleStrike">{products[1].priceAugmente} €</strike>
@@ -1762,7 +1779,8 @@ const CheckoutScreen = props => {
                                 </div>
                                 {props.errors.email && props.touched.email && <div style={{ color: 'red' }}>{props.errors.email}</div>}
 
-                                <div>
+                                <div className="MuiFormControl-root MuiTextField-root bigInput">
+                                <label style={{zIndex:"2"}} className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required" data-shrink="true" for="pays" id="pays-label">{t("Checkout.fields.pays")}<span aria-hidden="true" class="MuiFormLabel-asterisk MuiInputLabel-asterisk"> *</span></label>
                                   <SelectSearch onChange={(val) => {
                                     props.handleChange('pays');
                                     setPays(val);
@@ -1812,6 +1830,17 @@ const CheckoutScreen = props => {
                                     className="bigInput"
                                   />
                                   {props.errors.villeLivraison && props.touched.villeLivraison && <div style={{ color: 'red' }}>{props.errors.villeLivraison}</div>}
+                                </div>
+
+                                <div className="inputContainer">
+                                  <TextField
+                                    value={props.values.phone}
+                                    onChange={props.handleChange('phone')}
+                                    id="phone"
+                                    label={t("Checkout.fields.tel")}
+                                    variant="outlined"
+                                    className="bigInput"
+                                  />
                                 </div>
 
                                 <div className="checkboxContainer">
@@ -1878,16 +1907,7 @@ const CheckoutScreen = props => {
 
 
 
-                                <div className="inputContainer">
-                                  <TextField
-                                    value={props.values.phone}
-                                    onChange={props.handleChange('phone')}
-                                    id="phone"
-                                    label={t("Checkout.fields.tel")}
-                                    variant="outlined"
-                                    className="bigInput"
-                                  />
-                                </div>
+                                
 
                                 <div className="livraison">
                                   <h4 className="livraisonTitle">{t("Checkout.39")}</h4>

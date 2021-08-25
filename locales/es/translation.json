@@ -392,6 +392,7 @@
     "56": "IR AL SIGUIENTE PASO →",
     "57": "¡Agregue artículos a su carrito de compras!",
     "58": "Recomiendan el Playboard®",
+    "totalAvantDiscount": "Total antes del descuento",
     "fields":{
       "prenom" : "Apellido",
       "nom" : "Nombre",

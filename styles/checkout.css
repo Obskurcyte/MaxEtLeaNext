@@ -103,8 +103,20 @@ legend span {
 
 .modal-know-more{
   width: 100%;
+  margin: 10px auto;
   text-align: center;
   cursor: pointer;
+  color: #ffffff!important;
+  padding: 5px 10px 5px 10px;
+  background-color: #E72C59;
+  border-radius: 5px 5px 5px 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 400;
+  -webkit-box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 50%);
+  box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 50%);
 }
 
 .livraisonPrice {
@@ -1040,7 +1052,6 @@ div.MRW-Content>div:last-child {
  */
  .select-search {
   width: 100%;
-  margin: 3px 0;
   position: relative;
   box-sizing: border-box;
 }
@@ -1073,7 +1084,7 @@ div.MRW-Content>div:last-child {
 * Input
 */
 .select-search__input {
-  padding: 27.5px 14px;
+  padding: 32.5px 14px 22.5px 14px;
   display: block;
   height: 36px;
   width: 100%;
@@ -1082,8 +1093,6 @@ div.MRW-Content>div:last-child {
   border-radius: 4px;
   color: rgba(0, 0, 0, 0.87);
   outline: none;
-  font-family: 'Noto Sans', sans-serif;
-  font-size: 14px;
   text-align: left;
   text-overflow: ellipsis;
   line-height: 36px;

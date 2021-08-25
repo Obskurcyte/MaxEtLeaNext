@@ -405,6 +405,7 @@
     "56": "PASSER À L'ÉTAPE SUIVANTE →",
     "57": "Veuillez ajouter des articles dans votre panier !",
     "58": "Ils recommandent la Playboard®",
+    "totalAvantDiscount": "Total avant discount",
     "fields":{
       "prenom" : "Prénom",
       "nom" : "Nom",

@@ -38,7 +38,7 @@ const HomeScreen = () => {
             <Card className="card-jouet card-playboard">
               <Link href="/playboard">
                 <a>
-                <img src={'/playboard-top.webp'} alt="" className="img-card"/>
+                <img src={'/PLAYBOARD-ombresSansFond.webp'} alt="" className="img-card"/>
                 </a>
               </Link>
             </Card>
@@ -60,7 +60,7 @@ const HomeScreen = () => {
             <Card className="card-jouet card-xylo">
               <Link href="/xylophone">
               <a>
-                <img src={'/xylo-top.webp'} alt="" className="img-card"/>
+                <img src={'/Xylo-OmbrageSansFond.webp'} alt="" className="img-card"/>
                 </a>
               </Link>
             </Card>

@@ -251,7 +251,9 @@ const HeaderXylophone = (props) => {
   }
 
   let totalPriceIntermediaire = sumPanier - discountPanier
-  const reducCodePromo = totalPriceIntermediaire * (1 / codePromo?.amount)
+  let reducCodePromo = 0;
+  if(codePromo?.amount)
+    reducCodePromo = totalPriceIntermediaire * (1 / codePromo?.amount)
 
   let totalPrice1 = sumPanier - discountPanier - reducCodePromo
   let user = '';

@@ -406,6 +406,7 @@
     "56": "GO TO THE NEXT STEP →",
     "57": "Please add items to your shopping cart!",
     "58": "They recommend the Playboard®",
+    "totalAvantDiscount": "Total before discount",
     "fields":{
       "prenom" : "First name",
       "nom" : "Surname",
