@@ -1,9 +1,4 @@
 {
-  "NavBar1": "HOME",
-  "NavBar2": "SHOP",
-  "NavBar3": "QUIENES SOMOS",
-  "NavBar4": "CONTACT",
-  "NavBar5": "BLOG",
 
   "loading": "Cargar...",
 
@@ -47,6 +42,7 @@
     "6": "CGV"
   },
 
+  "PlayboardTitle" : "La Playboard",
   "Playboard1" : "La más completa herramienta de aprendizaje y desarrollo temprano para niños de 1 a 6 años.",
   "Playboard2" : "Ver producto",
   "Playboard3" : "Pensada para cada etapa del desarrollo psicomotor de los niños",
@@ -72,7 +68,7 @@
   "Playboard23" : " le permitirán empezar a aprender a hacer diferentes ",
   "Playboard24" : "cálculos simples",
   "Playboard25" : " y",
-  "Playboard26" : "evolucionar",
+  "Playboard26" : " evolucionar",
   "Playboard27" : " hacia otros ",
   "Playboard28" : "más complejos",
   "Playboard29" : "COLORES",
@@ -183,6 +179,7 @@
   "FAQtitle6" : "¿En cuánto tiempo recibiré mi PlayBoard?",
   "FAQtitle7" : "¿Cómo puedo adquirir el PlayBoard? Si no vivo en Europa",
   "FAQtitle8" : "¿Tiene una pregunta o comentario?",
+  "PlayboardImgOffre" : "/es2.webp",
 
   "Client" : "clientes ya satisfechos",
 

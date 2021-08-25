@@ -57,8 +57,16 @@
 .arbresRow {
   width: 80%;
   margin: 0 auto;
-  justify-content: space-between;
 }
+
+.arbresRow img{
+  margin-right: 10px;
+}
+
+.arbresRow h5{
+  text-align: left;
+}
+
 .seePage {
   color: #91BB1F !important;
   text-align: center;

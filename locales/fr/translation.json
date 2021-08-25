@@ -1,9 +1,4 @@
 {
-  "NavBar1": "ACCUEIL",
-  "NavBar2": "SHOP",
-  "NavBar3": "A PROPOS",
-  "NavBar4": "CONTACT",
-  "NavBar5": "BLOG",
 
   "loading": "Chargement...",
 
@@ -58,6 +53,7 @@
     "6": "CGV"
   },
 
+  "PlayboardTitle" : "La Playboard",
   "Playboard1" : "Le jouet le plus complet pour stimuler l’éveil et la motricité fine des enfants. ",
   "Playboard2" : "Voir notre offre",
   "Playboard3" : "Pensée pour chaque étape du développement psychomoteur de l'enfant",
@@ -194,6 +190,7 @@
   "FAQtitle6" : "En combien de temps vais-je recevoir ma PlayBoard ?",
   "FAQtitle7" : "Si je vis hors Europe, comment puis-je acquérir la PlayBoard ?",
   "FAQtitle8" : "J’ai une question ou une remarque ?",
+  "PlayboardImgOffre" : "/internet8.webp",
 
 
   "Client" : "clients déjà satisfaits",

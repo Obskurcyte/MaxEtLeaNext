@@ -222,7 +222,7 @@ const PlayBoardScreen = props => {
       <div className="container1200">
         <div className="imgCouverture">
           <div className="playboard-title-container">
-            <h1 className="playboard-title">La PlayBoard</h1>
+            <h1 className="playboard-title">{t("PlayboardTitle")}</h1>
           </div>
           <div className="playboard-paragraph-container">
             <p className="playboard-paragraph">{t("Playboard1")}</p>
@@ -276,7 +276,7 @@ const PlayBoardScreen = props => {
 
               <div className="col icone-mini-container">
                 <img src={'/concentration.png'} alt="" />
-                <p>{t("Playboard1O")}<br />{t("Playboard11")}</p>
+                <p>{t("Playboard10")}<br />{t("Playboard11")}</p>
               </div>
 
               <div className="col icone-mini-container">
@@ -646,7 +646,7 @@ const PlayBoardScreen = props => {
               </div>
 
               <div className="playboardImgContainer" onClick={() => setOpen(true)}>
-                <img src={'/internet8.webp'} alt="" className="reducImg" />
+                <img src={t("PlayboardImgOffre")} alt="" className="reducImg" />
               </div>
 
               <Dialog
@@ -657,7 +657,7 @@ const PlayBoardScreen = props => {
               >
                 <DialogContent>
                   <div>
-                    <img src={'/popup.png'} alt="" style={{ maxWidth: '100%' }} />
+                    <img src={t("Checkout.popUpImg")} alt="" style={{ maxWidth: '100%' }} />
                     <button className="buttonPopupClose" onClick={() => setOpen(false)}>x</button>
                   </div>
                 </DialogContent>

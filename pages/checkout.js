@@ -131,7 +131,7 @@ function SimpleDialogTour(props) {
             <FontAwesomeIcon icon={faCheck} className='checkIcon' />
             <p><span className="fw-bold">{t("Checkout.popUpTour.7")}</span> {t("Checkout.popUpTour.8")}</p>
           </div>
-          <div className="flex iconContainer">+
+          <div className="flex iconContainer">
             <FontAwesomeIcon icon={faCheck} className='checkIcon' />
             <p><span className="fw-bold">{t("Checkout.popUpTour.9")}</span></p>
           </div>

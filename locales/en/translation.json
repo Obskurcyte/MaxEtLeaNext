@@ -1,9 +1,4 @@
 {
-  "NavBar1": "HOME",
-  "NavBar2": "SHOP",
-  "NavBar3": "ABOUT",
-  "NavBar4": "CONTACT",
-  "NavBar5": "BLOG",
 
   "loading": "Loading...",
 
@@ -57,6 +52,7 @@
   "HomeScreen5": "OUR STORIES",
   "HomeScreen6": "See all our books",
 
+  "PlayboardTitle" : "The Playboard",
   "Playboard1" : "The perfect toy to help children develop their motor skills and their coordination.",
   "Playboard2" : "See our offer",
   "Playboard3" : "Designed for each stage of the child's psychomotor development",
@@ -76,13 +72,13 @@
   "Playboard17" : "The most complete educational and stimulating tool on the market",
   "Playboard18" : "CALCULATIONS",
   "Playboard19" : "",
-  "Playboard20" : "Signs",
+  "Playboard20" : "Signs ",
   "Playboard21" : "and",
-  "Playboard22" : "numbers",
+  "Playboard22" : " numbers",
   "Playboard23" : " will allow him to start learning how to make different ",
   "Playboard24" : "simple calculations",
   "Playboard25" : " and",
-  "Playboard26" : "evolve",
+  "Playboard26" : " evolve",
   "Playboard27" : " towards ",
   "Playboard28" : "more complex ones",
   "Playboard29" : "COLOURS",
@@ -193,6 +189,8 @@
   "FAQtitle6" : "When will I receive my PlayBoard?",
   "FAQtitle7" : "How can I get a PlayBoard? If I live outside of Europe",
   "FAQtitle8" : "Do you have a question or a remark?",
+  "PlayboardImgOffre" : "/en2.webp",
+
 
 
   "Client" : "already satisfied customers",
