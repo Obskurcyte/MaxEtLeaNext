@@ -139,6 +139,16 @@
   font-size: 20px;
 }
 
+.add-to-cart-container{
+  display: flex;
+  max-width: 250px;
+  margin: auto;
+}
+
+.add-to-cart-container .input-quantity{
+  margin-top: 15px;
+}
+
 .reducImg {
   padding-right: 15px;
   padding-bottom: 15px;
@@ -152,7 +162,8 @@
   text-align: center;
   cursor: pointer;
   z-index: 2;
-  margin-bottom: 5%
+  margin-bottom: 5%;
+  margin-top: 10px;
 }
 .playboard-title-container {
   text-align: center;
@@ -222,6 +233,7 @@
   font-size: 16px;
   letter-spacing: 0.5px;
   text-align: justify;
+  font-weight: 400;
 }
 
 .listeDevelopment {
@@ -229,6 +241,10 @@
   flex-direction: column;
   margin-left: 5%;
   font-size: 1.2rem;
+}
+
+.Collapsible .is-open .fa-question-circle{
+  font-weight: 900;
 }
 
 

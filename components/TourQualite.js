@@ -13,7 +13,7 @@ const TourQualite = () => {
     <div className="container my-5 wola" id={styles.qualite}>
       <h1 className={styles.title}>{t("Tour.26")}<br/>{t("Tour.27")}</h1>
       <div className={styles.firstRow}>
-        <img src={'/tourQualite1.webp'} alt=""/>
+        <img src={'/tourQualite1.webp'} className={styles.imgQualite} alt=""/>
         <div className={styles.constructionRobuste}>
           <h5>{t("Tour.28")}</h5>
           <div className={styles.list}>
@@ -63,7 +63,7 @@ const TourQualite = () => {
             <p>{t("Tour.55")}<span className="fw-bold">{t("Tour.56")}</span></p>
           </div>
         </div>
-        <img src={'/tourQualite2.webp'} alt=""/>
+        <img src={'/tourQualite2.webp'} className={styles.imgQualite} alt=""/>
       </div>
 
     </div>

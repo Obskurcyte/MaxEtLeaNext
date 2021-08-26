@@ -286,6 +286,7 @@ const HeaderTour = (props) => {
 
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const drapeau = useSelector(state => state.drapeau.drapeau)
 
   const dispatch = useDispatch();
   const handleClick = (event) => {

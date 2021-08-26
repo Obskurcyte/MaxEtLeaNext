@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import ReactPlayer from 'react-player'
 import Link from 'next/link';
 import Footer from "../components/Footer";
@@ -23,29 +23,30 @@ import XylophoneQualite from "../components/XylophoneQualite";
 import Slider from "react-slick";
 import { useRouter } from "next/router";
 
-
-const icon = React.createElement('i', { className: 'far fa-question-circle' }, "");
-const title1 = React.createElement('p', {}, "La PlayBoard s'abime-t-elle avec le temps ?");
-const faqHeader1 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title1]);
-const title2 = React.createElement('p', {}, "A partir de quel âge mon enfant peut-il commencer à jouer avec ?");
-const faqHeader2 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title2]);
-const title3 = React.createElement('p', {}, "Jusqu'à quel âge la PlayBoard est-elle recommandée ?");
-const faqHeader3 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title3]);
-const title4 = React.createElement('p', {}, "Je n’ai pas reçu mes E-Books OFFERTS avec ma commande ? ");
-const faqHeader4 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title4]);
-const title5 = React.createElement('p', {}, "Comment récupérer mon sac de rangement OFFERT ?");
-const faqHeader5 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title5]);
-const title6 = React.createElement('p', {}, "En combien de temps vais-je recevoir ma PlayBoard ?");
-const faqHeader6 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title6]);
-const title7 = React.createElement('p', {}, "Si je vis hors Europe, comment puis-je acquérir la PlayBoard ?");
-const faqHeader7 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title7]);
-const title8 = React.createElement('p', {}, "J’ai une question ou une remarque ?");
-const faqHeader8 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title8]);
-
 const XylophoneScreen = props => {
 
   const [cart, setCart] = useContext(AppContext);
   const products = product.products
+
+  const { t, i18n } = useTranslation();
+
+  const icon = React.createElement('i', { className: 'far fa-question-circle' }, "");
+  const title1 = React.createElement('p', {}, t("FAQtitle1"));
+  const faqHeader1 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title1]);
+  const title2 = React.createElement('p', {}, t("FAQtitle2"));
+  const faqHeader2 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title2]);
+  const title3 = React.createElement('p', {}, t("FAQtitle3"));
+  const faqHeader3 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title3]);
+  const title4 = React.createElement('p', {}, t("FAQtitle4"));
+  const faqHeader4 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title4]);
+  const title5 = React.createElement('p', {}, t("FAQtitle5"));
+  const faqHeader5 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title5]);
+  const title6 = React.createElement('p', {}, t("FAQtitle6"));
+  const faqHeader6 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title6]);
+  const title7 = React.createElement('p', {}, t("FAQtitle7"));
+  const faqHeader7 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title7]);
+  const title8 = React.createElement('p', {}, t("FAQtitle8"));
+  const faqHeader8 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title8]);
 
   const router = useRouter();
 
@@ -156,7 +157,7 @@ const XylophoneScreen = props => {
       let existingCart = localStorage.getItem('woo-next-cart');
       if (existingCart != null) {
         existingCart = JSON.parse(existingCart)
-        const qtyToBeAdded = 1
+        const qtyToBeAdded = productCount
         const updatedCart = updateCart(existingCart, products[0], qtyToBeAdded);
         setCart(updatedCart)
       } else {
@@ -166,7 +167,20 @@ const XylophoneScreen = props => {
     }
   }
 
-  const { t, i18n } = useTranslation();
+  const [productCount, setProductCount] = useState(1);
+
+  const onIncreaseClick = () => {
+    setProductCount(productCount + 1);
+  }
+
+  const onDecreaseClick = () => {
+    if (productCount === 1) {
+      return;
+    } else {
+      setProductCount(productCount - 1);
+    }
+  }
+
 
   var settings = {
     dots: false,
@@ -189,7 +203,7 @@ const XylophoneScreen = props => {
   return (
     <div>
       <Head>
-        <title>Max And Lea - Xylophone</title>
+        <title>Max And Lea - {t("Xylo.1")}</title>
         <link
           rel="stylesheet"
           type="text/css"
@@ -203,232 +217,252 @@ const XylophoneScreen = props => {
         />
       </Head>
       <HeaderXylophone />
-
-      <div className="container1000">
-        <div className="imgCouverture">
-          <div className="playboard-title-container">
-            <h1 className="playboard-title">{t("Xylo.1")}</h1>
-          </div>
-          <div className="playboard-paragraph-container">
-            <p className="playboard-paragraph">{t("Playboard1")}</p>
-          </div>
-          <div className="voir-offre">
-            <Link href="#offre"><h3 className="voir-offre-title">{t("Playboard2")}</h3></Link>
-          </div>
-          <div className="slider-container">
-            <Slider {...settings}>
-              <div>
-                <img src={'/xylo1.jpg'} alt="" />
-              </div>
-              <div>
-                <img src={'/xylo2.jpg'} alt="" />
-              </div>
-              <div>
-                <img src={'/xylo3.jpg'} alt="" />
-              </div>
-              <div>
-                <img src={'/xylo4.jpg'} alt="" />
-              </div>
-            </Slider>
-          </div>
-
-        </div>
-      </div>
-      <div className="mainContainer pensee-container">
+      <div className="page-supercontainer">
         <div className="container1000">
-          <div className="img-bebe-container">
-            <img src={"/bebeIcone.png"} alt="" className="img-bebe" />
-          </div>
-          <div className="pensee-paragraph-container">
-            <p className="pensee-paragraph">{t("Xylo.2")}</p>
-          </div>
+          <div className="imgCouverture">
+            <div className="playboard-title-container">
+              <h1 className="playboard-title">{t("Xylo.1")}</h1>
+            </div>
+            <div className="playboard-paragraph-container">
+              <p className="playboard-paragraph">{t("Xylo.subtitle.1")}</p>
+            </div>
+            <div className="voir-offre">
+              <Link href="#offre"><h3 className="voir-offre-title">{t("Playboard2")}</h3></Link>
+            </div>
+            <div className="slider-container">
+              <Slider {...settings}>
+                <div>
+                  <img src={'/xylo1.jpg'} alt="" />
+                </div>
+                <div>
+                  <img src={'/xylo2.jpg'} alt="" />
+                </div>
+                <div>
+                  <img src={'/xylo3.jpg'} alt="" />
+                </div>
+                <div>
+                  <img src={'/xylo4.jpg'} alt="" />
+                </div>
+              </Slider>
+            </div>
 
-          <div className="icone-container1">
+          </div>
+        </div>
+        <div className="mainContainer pensee-container">
+          <div className="container1000">
+            <div className="img-bebe-container">
+              <img src={"/bebeIcone.png"} alt="" className="img-bebe" />
+            </div>
+            <div className="pensee-paragraph-container">
+              <p className="pensee-paragraph">{t("Xylo.2")}</p>
+            </div>
+
+            <div className="icone-container1">
+              <div className="row">
+
+                <div className="col icone-mini-container">
+
+                  <img src={'/habilite.png'} alt="" />
+                  <p className="xyloPara"><span>{t("Xylo.3")}</span><br />{t("Xylo.4")}</p>
+                </div>
+
+                <div className="col icone-mini-container">
+                  <img src={'/motricite.png'} alt="" />
+                  <p className="xyloPara"><span>{t("Xylo.5")}</span><br />{t("Xylo.6")}</p>
+                </div>
+
+                <div className="col icone-mini-container">
+
+                  <img src={'/creativite.png'} alt="" />
+                  <p className="xyloPara"><span>{t("Xylo.7")}</span><br />{t("Xylo.8")}</p>
+                </div>
+              </div>
+
+              <div className="row">
+
+                <div className="col icone-mini-container">
+                  <img src={'/concentration.png'} alt="" />
+                  <p className="xyloPara"><span>{t("Xylo.9")}</span><br />{t("Xylo.10")}</p>
+                </div>
+
+                <div className="col icone-mini-container">
+                  <img src={'/apprendre.png'} alt="" />
+                  <p className="xyloPara"><span>{t("Xylo.11")}</span><br />{t("Xylo.12")}</p>
+                </div>
+
+                <div className="col icone-mini-container">
+                  <img src={'/autonomie.png'} alt="" />
+                  <p className="xyloPara"><span>{t("Xylo.13")}</span><br />{t("Xylo.14")}</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="container1000">
+          <div className="card-citation container-about" style={{ marginTop: "25px", marginBottom: "0px" }}>
+            <div style={{ display: 'flex', marginBottom: '5%' }}>
+              <i className="fas fa-quote-left" style={{ marginRight: "25px" }} />
+              <p>{t("Xylo.quote")}</p>
+            </div>
+            <p className="signature" style={{ marginLeft: "25px" }}>
+              Max & Lea</p>
+          </div>
+        </div>
+
+
+        <div className="container1000">
+          <div className="image-recap-container">
+            <img src={'/xylophoneImg.jpg'} alt="" className="image-recap" />
+          </div>
+        </div>
+
+        <div className="container1000">
+          <div className="huitEnUnContainerText">
+            <p className="huitEnUnBigText">{t("Tour.15")}</p>
+            <p className="huitEnUnText">{t("Tour.16")}</p>
+          </div>
+        </div>
+
+
+        <div className="container1000">
+          <div className="containerIcones2">
             <div className="row">
 
-              <div className="col icone-mini-container">
-                <img src={'/creativite.png'} alt="" />
-                <p className="xyloPara"><span>{t("Xylo.3")}</span><br />{t("Xylo.4")}</p>
+              <div className="col miniIconeContainer2">
+                <FontAwesomeIcon icon={faMusic} color="#E72C59" className="anneauxImg" />
+                <h5>{t("Xylo.17")}</h5>
+                <p>{t("Xylo.18")}<span>{t("Xylo.18a")}</span>{t("Xylo.18b")}<span>{t("Xylo.18c")}</span>{t("Xylo.18d")}<span>{t("Xylo.18e")}</span>{t("Xylo.18f")}<span>{t("Xylo.18g")}</span></p>
               </div>
 
-              <div className="col icone-mini-container">
-                <img src={'/habilite.png'} alt="" />
-                <p className="xyloPara"><span>{t("Xylo.5")}</span><br />{t("Xylo.6")}</p>
+
+              <div className="col miniIconeContainer2">
+                <FontAwesomeIcon icon={faChild} color="lightblue" className="childImg" />
+                <h5>{t("Xylo.19")}</h5>
+                <p>{t("Xylo.20")}<span>{t("Xylo.20a")}</span>{t("Xylo.20b")}<span>{t("Xylo.20c")}</span>{t("Xylo.20d")}<span>{t("Xylo.20e")}</span>{t("Xylo.20f")}</p>
               </div>
 
-              <div className="col icone-mini-container">
-                <img src={'/motricite.png'} alt="" />
-                <p className="xyloPara"><span>{t("Xylo.7")}</span><br />{t("Xylo.8")}</p>
-              </div>
-            </div>
 
-            <div className="row">
-
-              <div className="col icone-mini-container">
-                <img src={'/concentration.png'} alt="" />
-                <p className="xyloPara"><span>{t("Xylo.9")}</span><br />{t("Xylo.10")}</p>
+              <div className="col miniIconeContainer2">
+                <FontAwesomeIcon icon={faPalette} color="#CE51C6" className="paletteImg" />
+                <h5>{t("Xylo.21")}</h5>
+                <p>{t("Xylo.22")}</p>
               </div>
 
-              <div className="col icone-mini-container">
-                <img src={'/apprendre.png'} alt="" />
-                <p className="xyloPara"><span>{t("Xylo.11")}</span><br />{t("Xylo.12")}</p>
-              </div>
-
-              <div className="col icone-mini-container">
-                <img src={'/autonomie.png'} alt="" />
-                <p className="xyloPara"><span>{t("Xylo.13")}</span><br />{t("Xylo.14")}</p>
+              <div className="col miniIconeContainer2">
+                <FontAwesomeIcon icon={faGrinStars} color="#F28D2A" className="eveilImg" />
+                <h5>{t("Xylo.23")}</h5>
+                <p>{t("Xylo.24")}</p>
               </div>
 
             </div>
           </div>
         </div>
-      </div>
 
-
-      <div className="container1000">
-        <div className="image-recap-container">
-          <img src={'/xylophoneImg.jpg'} alt="" className="image-recap" />
-        </div>
-      </div>
-
-      <div className="container1000">
-        <div className="huitEnUnContainerText">
-          <p className="huitEnUnBigText">{t("Tour.15")}</p>
-          <p className="huitEnUnText">{t("Tour.16")}</p>
-        </div>
-      </div>
-
-
-      <div className="container1000">
-        <div className="containerIcones2">
-          <div className="row">
-
-            <div className="col miniIconeContainer2">
-              <FontAwesomeIcon icon={faMusic} color="#E72C59" className="anneauxImg" />
-              <h5>{t("Xylo.17")}</h5>
-              <p>{t("Xylo.18")}</p>
-            </div>
-
-
-            <div className="col miniIconeContainer2">
-              <FontAwesomeIcon icon={faChild} color="lightblue" className="childImg" />
-              <h5>{t("Xylo.19")}</h5>
-              <p>{t("Xylo.20")}</p>
-            </div>
-
-
-            <div className="col miniIconeContainer2">
-              <FontAwesomeIcon icon={faPalette} color="#CE51C6" className="paletteImg" />
-              <h5>{t("Xylo.21")}</h5>
-              <p>{t("Xylo.22")}</p>
-            </div>
-
-            <div className="col miniIconeContainer2">
-              <FontAwesomeIcon icon={faGrinStars} color="#F28D2A" className="eveilImg" />
-              <h5>{t("Xylo.23")}</h5>
-              <p>{t("Xylo.24")}</p>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <div className="container1000">
-        <CountClients />
-      </div>
-
-      <div className="container1000">
-        <div>
-          <AvisClients />
-        </div>
-      </div>
-
-      <div className="mainContainer playboardContainer">
-        <span className="offreAnchor" id="offre"></span>
         <div className="container1000">
-          <div className="playboardSubContainer container">
-            <div className="innerPlayboard">
-              <div className="prixPlayboardContainer">
-                <div className="productPrix">
-                  <p className="priceFalse">21,90 €</p>
-                  <p className="productRedPrice">17,90 €</p>
-                  <p className="sub-offer">{t("Xylo.25")}<Link href="/playboard">PlayBoard</Link></p>
-                  <div className="ajouterPanier" onClick={() => {
-                    handleAddToCart()
-                    router.push('/checkout')
-                  }}>
-                    <Link href="javascript:void(0)"><p className="ajouterPanierText">{t("Playboard101")}</p></Link>
+          <CountClients />
+        </div>
+
+        <div className="container1000">
+          <div>
+            <AvisClients />
+          </div>
+        </div>
+
+        <div className="mainContainer playboardContainer">
+          <span className="offreAnchor" id="offre"></span>
+          <div className="container1000">
+            <div className="playboardSubContainer container">
+              <div className="innerPlayboard">
+                <div className="prixPlayboardContainer">
+                  <div className="productPrix">
+                    <p className="priceFalse">21,90 €</p>
+                    <p className="productRedPrice">17,90 €  <span className="reduction">{t("Tour.reduc")}</span></p>
+                    <p className="sub-offer">{t("Xylo.25")}<Link href="/playboard">PlayBoard</Link></p>
+                    <div className="add-to-cart-container">
+                      <div className="input-quantity">
+                        <button className="decrease-button" onClick={onDecreaseClick}>-</button>
+                        <input type="text" className="change-quantity" value={productCount} />
+                        <button className="increase-button" style={{ color: "#e72c59" }} onClick={onIncreaseClick}>+</button>
+                      </div>
+                      <div className="ajouterPanier" onClick={() => {
+                        handleAddToCart()
+                        router.push('/checkout')
+                      }}>
+                        <Link href="javascript:void(0)"><p className="ajouterPanierText">{t("Playboard101")}</p></Link>
+                      </div>
+                    </div>
+                    <p className="question" onClick={async () => {
+                      await router.push('/contact')
+                    }}>{t("Playboard102")}</p>
                   </div>
-                  <p className="question" onClick={async () => {
-                    await router.push('/contact')
-                  }}>{t("Playboard102")}</p>
-                </div>
-                <div className="productImgContainer">
-                  <img src={'/xylo-top.webp'} alt="" className="reducImg" />
+                  <div className="productImgContainer">
+                    <img src={'/xylo-top.webp'} alt="" className="reducImg" />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="container1000">
-        <Engagement />
-      </div>
-
-      <div className="mainContainer garantiesContainer">
         <div className="container1000">
-          <Garanties />
+          <Engagement />
         </div>
-      </div>
+
+        <div className="mainContainer garantiesContainer">
+          <div className="container1000">
+            <Garanties />
+          </div>
+        </div>
 
 
-      <div className="container1000">
-        <XylophoneQualite />
-      </div>
+        <div className="container1000">
+          <XylophoneQualite />
+        </div>
 
-      <div className="container1000">
-        <div className="faqContainer">
-          <h5>{t("Playboard111")}</h5>
-          <div className="row">
-            <div className="col">
-              <Collapsible trigger={faqHeader1}>
-                <p>{t("Playboard112")}</p>
-              </Collapsible>
-              <Collapsible trigger={faqHeader2}>
-                <p>{t("Playboard113")}</p>
-              </Collapsible>
-              <Collapsible trigger={faqHeader3}>
-                <p>{t("Playboard114")}</p>
-              </Collapsible>
-              <Collapsible trigger={faqHeader4}>
-                <p>{t("Playboard115")}
-                  <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>
-                  {t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1152")}</a>{t("Playboard1153")}
-                </p>
-              </Collapsible>
-            </div>
-            <div className="col">
-              <Collapsible trigger={faqHeader5}>
-                <p>{t("Playboard116")}</p>
-              </Collapsible>
-              <Collapsible trigger={faqHeader6}>
-                <p>
-                  {t("Playboard117")}<img src={'/internet9.webp'} />).
-                  {t("Playboard1171")}
-                </p>
-              </Collapsible>
-              <Collapsible trigger={faqHeader7}>
-                <p>{t("Playboard118")}<a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>{t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1152")}</a>.</p>
-              </Collapsible>
-              <Collapsible trigger={faqHeader8}>
-                <p>{t("Playboard119")}<a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>{t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1153")}</a>.</p>
-              </Collapsible>
+        <div className="container1000">
+          <div className="faqContainer">
+            <h5>{t("Playboard111")}</h5>
+            <div className="row">
+              <div className="col">
+                <Collapsible trigger={faqHeader1}>
+                  <p>{t("Playboard112")}</p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader2}>
+                  <p>{t("Playboard113")}</p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader3}>
+                  <p>{t("Playboard114")}</p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader4}>
+                  <p>{t("Playboard115")}
+                    <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>
+                    {t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1152")}</a>{t("Playboard1153")}
+                  </p>
+                </Collapsible>
+              </div>
+              <div className="col">
+                <Collapsible trigger={faqHeader5}>
+                  <p>{t("Playboard116")}</p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader6}>
+                  <p>
+                    {t("Playboard117")}<img src={'/internet9.webp'} />).
+                    {t("Playboard1171")}
+                  </p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader7}>
+                  <p>{t("Playboard118")}<a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>{t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1152")}</a>.</p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader8}>
+                  <p>{t("Playboard119")}<a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>{t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1153")}</a>.</p>
+                </Collapsible>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
       <Footer />
     </div>
   )

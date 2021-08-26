@@ -149,13 +149,27 @@ const KakoScreen = props => {
       let existingCart = localStorage.getItem('woo-next-cart');
       if (existingCart != null) {
         existingCart = JSON.parse(existingCart)
-        const qtyToBeAdded = 1
+        const qtyToBeAdded = productCount
         const updatedCart = updateCart(existingCart, products[4], qtyToBeAdded);
         setCart(updatedCart)
       } else {
         const newCart = addFirstProduct(products[4]);
         setCart(newCart)
       }
+    }
+  }
+
+  const [productCount, setProductCount] = useState(1);
+
+  const onIncreaseClick = () => {
+    setProductCount(productCount + 1);
+  }
+
+  const onDecreaseClick = () => {
+    if (productCount === 1) {
+      return;
+    } else {
+      setProductCount(productCount - 1);
     }
   }
 
@@ -212,161 +226,168 @@ const KakoScreen = props => {
         />
       </Head>
       <HeaderKako />
-
-      <div className="container1000">
-        <div className="imgCouverture">
-          <div className="playboard-title-container">
-            <h1 className="playboard-title">Livre Kako</h1>
-          </div>
-          <div className="playboard-paragraph-container">
-            <p className="playboard-paragraph">Suivez l'histoire de Kako le petit Koala au travers de 8 Contes</p>
-          </div>
-          <div className="voir-offre">
-            <Link href="#offre"><h3 className="voir-offre-title">{t("Playboard2")}</h3></Link>
-          </div>
-          <div className="slider-container">
-            <Slider {...settings}>
-              <div>
-                <img src={'/kako-seul.webp'} alt="" />
-              </div>
-              <div>
-                <img src={'/MaxAndLea-Livre-Kako-Ouvert-1.webp'} alt="" />
-              </div>
-              <div>
-                <img src={'/MaxAndLea-Livre-Kako-Ouvert-2.webp'} alt="" />
-              </div>
-            </Slider>
-          </div>
-
-        </div>
-      </div>
-      <div className="mainContainer pensee-container">
+      <div className="page-supercontainer">
         <div className="container1000">
-          <div className="img-bebe-container">
-            <img src={"/bebeIcone.png"} alt="" className="img-bebe" />
+          <div className="imgCouverture">
+            <div className="playboard-title-container">
+              <h1 className="playboard-title">Livre Kako</h1>
+            </div>
+            <div className="playboard-paragraph-container">
+              <p className="playboard-paragraph">Suivez l'histoire de Kako le petit Koala au travers de 8 Contes</p>
+            </div>
+            <div className="voir-offre">
+              <Link href="#offre"><h3 className="voir-offre-title">{t("Playboard2")}</h3></Link>
+            </div>
+            <div className="slider-container">
+              <Slider {...settings}>
+                <div>
+                  <img src={'/kako-seul.webp'} alt="" />
+                </div>
+                <div>
+                  <img src={'/MaxAndLea-Livre-Kako-Ouvert-1.webp'} alt="" />
+                </div>
+                <div>
+                  <img src={'/MaxAndLea-Livre-Kako-Ouvert-2.webp'} alt="" />
+                </div>
+              </Slider>
+            </div>
+
           </div>
-          <div className="pensee-paragraph-container">
-            <p className="pensee-paragraph">De superbes contes en Version Papier + Téléchargeables</p>
-            <p className="pensee-paragraph">114 pages illustrées pour les enfants de 1 à 4 ans.</p>
+        </div>
+        <div className="mainContainer pensee-container">
+          <div className="container1000">
+            <div className="img-bebe-container">
+              <img src={"/bebeIcone.png"} alt="" className="img-bebe" />
+            </div>
+            <div className="pensee-paragraph-container">
+              <p className="pensee-paragraph">De superbes contes en Version Papier + Téléchargeables</p>
+              <p className="pensee-paragraph">114 pages illustrées pour les enfants de 1 à 4 ans.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="container1000">
-        <div className="image-recap-container">
-          <img src={'/kako-pano.jpg'} alt="" className="image-recap" />
-        </div>
-      </div>
-
-
-      <div className="container1000">
-        <CountClients />
-      </div>
-
-      <div className="container1000">
-        <div>
-          <AvisClients />
-        </div>
-      </div>
-
-      <div className="mainContainer playboardContainer">
-        <span className="offreAnchor" id="offre"></span>
         <div className="container1000">
-          <div className="playboardSubContainer container">
-            <div className="innerPlayboard">
-              <div className="prixPlayboardContainer">
-                <div className="productPrix">
-                  <p className="productRedPrice" style={{ textAlign: "center" }}>{products[4].price}€</p>
-                  <div className="ajouterPanier" onClick={() => {
-                    handleAddToCart()
-                    router.push('/checkout')
-                  }}>
-                    <Link href="javascript:void(0)"><p className="ajouterPanierText">Ajouter au panier</p></Link>
+          <div className="image-recap-container">
+            <img src={'/kako-pano.jpg'} alt="" className="image-recap" />
+          </div>
+        </div>
+
+
+        <div className="container1000">
+          <CountClients />
+        </div>
+
+        <div className="container1000">
+          <div>
+            <AvisClients />
+          </div>
+        </div>
+
+        <div className="mainContainer playboardContainer">
+          <span className="offreAnchor" id="offre"></span>
+          <div className="container1000">
+            <div className="playboardSubContainer container">
+              <div className="innerPlayboard">
+                <div className="prixPlayboardContainer">
+                  <div className="productPrix">
+                    <p className="productRedPrice" style={{ textAlign: "center" }}>{products[4].price}€</p>
+                    <div className="add-to-cart-container">
+                      <div className="input-quantity">
+                        <button className="decrease-button" onClick={onDecreaseClick}>-</button>
+                        <input type="text" className="change-quantity" value={productCount} />
+                        <button className="increase-button" style={{ color: "#e72c59" }} onClick={onIncreaseClick}>+</button>
+                      </div>
+                      <div className="ajouterPanier" onClick={() => {
+                        handleAddToCart()
+                        router.push('/checkout')
+                      }}>
+                        <Link href="javascript:void(0)"><p className="ajouterPanierText">{t("Playboard101")}</p></Link>
+                      </div>
+                    </div>
+                    <p className="question" onClick={async () => {
+                      await router.push('/contact')
+                    }}>Une question ? Contactez-nous</p>
+                    <p>
+                      ✅ Kako glisse sur la girafe 🦒<br></br>
+                      ✅ Kako encourage son ami le Kangourou 🦘<br></br>
+                      ✅ Kako vole sur le dos d’un Hibou 🦉<br></br>
+                      ✅ Kako joue avec son ami le panda 🐼<br></br>
+                      ✅ Kako rencontre un lion 🦁<br></br>
+                      ✅ Kako piqué par Jojo le hérisson 🦔<br></br>
+                      ✅ Kako sur le dos d’un Dauphin 🐬<br></br>
+                      ✅ Kako rencontre une Grenouille 🐸<br></br>
+                    </p>
                   </div>
-                  <p className="question" onClick={async () => {
-                    await router.push('/contact')
-                  }}>Une question ? Contactez-nous</p>
-                  <p>
-                    ✅ Kako glisse sur la girafe 🦒<br></br>
-                    ✅ Kako encourage son ami le Kangourou 🦘<br></br>
-                    ✅ Kako vole sur le dos d’un Hibou 🦉<br></br>
-                    ✅ Kako joue avec son ami le panda 🐼<br></br>
-                    ✅ Kako rencontre un lion 🦁<br></br>
-                    ✅ Kako piqué par Jojo le hérisson 🦔<br></br>
-                    ✅ Kako sur le dos d’un Dauphin 🐬<br></br>
-                    ✅ Kako rencontre une Grenouille 🐸<br></br>
-                  </p>
-                </div>
-                <div className="productImgContainer">
-                  <img src={'/MaxAndLea-Livre-Kako-Ouvert.webp'} alt="" className="reducImg" style={{ maxHeight: "405px;" }} />
+                  <div className="productImgContainer">
+                    <img src={'/MaxAndLea-Livre-Kako-Ouvert.webp'} alt="" className="reducImg" style={{ maxHeight: "405px;" }} />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="container1000">
-        <Engagement />
-      </div>
-
-      <div className="mainContainer garantiesContainer">
         <div className="container1000">
-          <Garanties />
+          <Engagement />
         </div>
-      </div>
 
-      <div className="container1000">
-        <div className="faqContainer">
-          <h5>QUESTIONS FRÉQUENTES</h5>
-          <div className="row">
-            <div className="col">
-              <Collapsible trigger={faqHeader1}>
-                <p>
-                  La PlayBoard est conçue à base de hêtre, un bois solide et résistant. L’ensemble de ses pièces sont parfaitement peintes, ce qui leur donne une durée de vie de plusieurs dizaines d’années en restant intactes.
-                </p>
-              </Collapsible>
-              <Collapsible trigger={faqHeader2}>
-                <p>
-                  La PlayBoard est certifiée CE à partir de 12 mois. Les études montrent qu’à partir de 7 mois le jeune enfant commence à prendre des jouets dans ses mains et dès 10 mois sa motricité fine se développe. Il peut donc commencer à jouer avec sa tablette très tôt. Nous recommandons toujours qu’un adulte surveille le jeune enfant pendant qu’il joue pour éviter tout risque.
-                </p>
-              </Collapsible>
-              <Collapsible trigger={faqHeader3}>
-                <p>
-                  Nous recommandons la PlayBoard jusqu’à 6 ans, mais il n’est pas rare de voir des enfants de plus de 6 ans continuer à l’utiliser car elle leur sert à apprendre le calcul.
-                </p>
-              </Collapsible>
-              <Collapsible trigger={faqHeader4}>
-                <p>
-                  Lors de l’achat de votre PlayBoard, un e-mail contenant les liens pour télécharger vos E-books vous est automatiquement envoyé par e-mail. Cet email est peut parfois se retrouver dans vos spams. Si vous ne le trouvez pas, n’hésitez pas à nous contacter à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">notre formulaire</a>, nous vous le renverrons avec plaisir.
-                </p>
-              </Collapsible>
-            </div>
-            <div className="col">
-              <Collapsible trigger={faqHeader5}>
-                <p>
-                  Le sac de rangement est inséré dans l’emballage de votre PlayBoard, vous le découvrirez donc lors de la reception de votre commande.
-                </p>
-              </Collapsible>
-              <Collapsible trigger={faqHeader6}>
-                <p>
-                  La PlayBoard est envoyée depuis notre entrepôt situé à Evreux (France <img src={'/internet9.webp'} />).
-                  Pour une livraison en France (y compris Monaco) nos délais sont de 3 à 5 jours ouvrés (livraison Standard à domicile ou en Point Mondial Relay), et 2 à 3 jours ouvrés en livraison Express.
+        <div className="mainContainer garantiesContainer">
+          <div className="container1000">
+            <Garanties />
+          </div>
+        </div>
 
-                  Pour le reste de l’Europe, nos délais de livraison sont de 5 à 7 jours ouvrés en livraison Standard et 3 à 5 jours en livraison Express.
-                </p>
-              </Collapsible>
-              <Collapsible trigger={faqHeader7}>
-                <p>Max &amp; Lea livre toute l’Europe (y compris Suisse et Royaume Uni), les Etats Unis et le Canada. En dehors de ces zones géographiques nous vous invitons à nous contacter directement par email à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via le <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">formulaire de contact</a>.</p>
-              </Collapsible>
-              <Collapsible trigger={faqHeader8}>
-                <p>Notre service client est à votre écoute du Lundi au Samedi de 9h à 19h heure Française. Nous nous ferons un plaisir de vous répondre très rapidement (Notre délais moyen de réponse est de 45 minutes). Nous sommes joignable par email à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via le <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">formulaire de contact</a>.</p>
-              </Collapsible>
+        <div className="container1000">
+          <div className="faqContainer">
+            <h5>QUESTIONS FRÉQUENTES</h5>
+            <div className="row">
+              <div className="col">
+                <Collapsible trigger={faqHeader1}>
+                  <p>
+                    La PlayBoard est conçue à base de hêtre, un bois solide et résistant. L’ensemble de ses pièces sont parfaitement peintes, ce qui leur donne une durée de vie de plusieurs dizaines d’années en restant intactes.
+                  </p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader2}>
+                  <p>
+                    La PlayBoard est certifiée CE à partir de 12 mois. Les études montrent qu’à partir de 7 mois le jeune enfant commence à prendre des jouets dans ses mains et dès 10 mois sa motricité fine se développe. Il peut donc commencer à jouer avec sa tablette très tôt. Nous recommandons toujours qu’un adulte surveille le jeune enfant pendant qu’il joue pour éviter tout risque.
+                  </p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader3}>
+                  <p>
+                    Nous recommandons la PlayBoard jusqu’à 6 ans, mais il n’est pas rare de voir des enfants de plus de 6 ans continuer à l’utiliser car elle leur sert à apprendre le calcul.
+                  </p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader4}>
+                  <p>
+                    Lors de l’achat de votre PlayBoard, un e-mail contenant les liens pour télécharger vos E-books vous est automatiquement envoyé par e-mail. Cet email est peut parfois se retrouver dans vos spams. Si vous ne le trouvez pas, n’hésitez pas à nous contacter à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">notre formulaire</a>, nous vous le renverrons avec plaisir.
+                  </p>
+                </Collapsible>
+              </div>
+              <div className="col">
+                <Collapsible trigger={faqHeader5}>
+                  <p>
+                    Le sac de rangement est inséré dans l’emballage de votre PlayBoard, vous le découvrirez donc lors de la reception de votre commande.
+                  </p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader6}>
+                  <p>
+                    La PlayBoard est envoyée depuis notre entrepôt situé à Evreux (France <img src={'/internet9.webp'} />).
+                    Pour une livraison en France (y compris Monaco) nos délais sont de 3 à 5 jours ouvrés (livraison Standard à domicile ou en Point Mondial Relay), et 2 à 3 jours ouvrés en livraison Express.
+
+                    Pour le reste de l’Europe, nos délais de livraison sont de 5 à 7 jours ouvrés en livraison Standard et 3 à 5 jours en livraison Express.
+                  </p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader7}>
+                  <p>Max &amp; Lea livre toute l’Europe (y compris Suisse et Royaume Uni), les Etats Unis et le Canada. En dehors de ces zones géographiques nous vous invitons à nous contacter directement par email à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via le <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">formulaire de contact</a>.</p>
+                </Collapsible>
+                <Collapsible trigger={faqHeader8}>
+                  <p>Notre service client est à votre écoute du Lundi au Samedi de 9h à 19h heure Française. Nous nous ferons un plaisir de vous répondre très rapidement (Notre délais moyen de réponse est de 45 minutes). Nous sommes joignable par email à <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a> ou via le <a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">formulaire de contact</a>.</p>
+                </Collapsible>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
       <Footer />
     </div>
   )

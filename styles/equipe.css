@@ -5,7 +5,7 @@
   max-width: 100%;
 }
 
-.equipeDescriptionContainer p, h5 {
+.equipeDescriptionContainer p, .equipeDescriptionContainer h5 {
   text-align: center;
   margin: 0px !important;
 }

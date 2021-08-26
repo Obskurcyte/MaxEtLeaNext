@@ -9,10 +9,10 @@ const QualiteDansLesDetails = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <div className="container my-5 wola" id={styles.qualite}>
+    <div className="container my-5" id={styles.qualite}>
       <h1 className={styles.title}>{t("Qualite.1")}</h1>
       <div className={styles.firstRow}>
-        <img src={'/qualite.jpg'} alt=""/>
+        <img className={styles.imgQualite} src={'/qualite.jpg'} alt=""/>
         <div className={styles.constructionRobuste}>
           <h5>{t("Qualite.2")}</h5>
           <div className={styles.list}>
@@ -50,7 +50,7 @@ const QualiteDansLesDetails = () => {
             <p>{t("Qualite.32")}<span className="fw-bold">{t("Qualite.33")}</span>{t("Qualite.34")}<span className="fw-bold">{t("Qualite.35")}</span></p>
           </div>
         </div>
-        <img src={'/qualite2.jpg'} alt=""/>
+        <img src={'/qualite2.jpg'} className={styles.imgQualite} alt=""/>
       </div>
 
     </div>
