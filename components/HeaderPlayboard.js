@@ -426,6 +426,9 @@ const HeaderPlayboard = (props) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const handleCloseOutside = () => {
+    i18n.changeLanguage(lang).then(() => setAnchorEl(null))
+  };
 
   const handleClose = (lang) => {
     localStorage.setItem('lang',lang)
@@ -484,7 +487,7 @@ const HeaderPlayboard = (props) => {
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
-            onClose={handleClose}
+            onClose={handleCloseOutside}
           >
             <MenuItem onClick={() => handleClose('en')}><img src={'/flagen.png'} alt="" /></MenuItem>
             <MenuItem onClick={() => handleClose('es')}><img src={'/flages.png'} alt="" /></MenuItem>

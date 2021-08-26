@@ -258,17 +258,17 @@ const PlayBoardScreen = props => {
 
               <div className="col icone-mini-container">
                 <img src={'/creativite.png'} alt="" />
-                <p>{t("Playboard4")}<br />{t("Playboard5")}</p>
+                <p>{t("Playboard4")}<br /><span>{t("Playboard5")}</span></p>
               </div>
 
               <div className="col icone-mini-container">
                 <img src={'/habilite.png'} alt="" />
-                <p>{t("Playboard6")} <br />{t("Playboard7")}</p>
+                <p>{t("Playboard6")} <br /><span>{t("Playboard7")}</span></p>
               </div>
 
               <div className="col icone-mini-container">
                 <img src={'/motricite.png'} alt="" />
-                <p>{t("Playboard8")}<br />{t("Playboard9")}</p>
+                <p>{t("Playboard8")}<br /><span>{t("Playboard9")}</span></p>
               </div>
             </div>
 
@@ -276,17 +276,17 @@ const PlayBoardScreen = props => {
 
               <div className="col icone-mini-container">
                 <img src={'/concentration.png'} alt="" />
-                <p>{t("Playboard10")}<br />{t("Playboard11")}</p>
+                <p>{t("Playboard10")}<br /><span>{t("Playboard11")}</span></p>
               </div>
 
               <div className="col icone-mini-container">
                 <img src={'/apprendre.png'} alt="" />
-                <p>{t("Playboard12")}<br />{t("Playboard13")}</p>
+                <p>{t("Playboard12")}<br /><span>{t("Playboard13")}</span></p>
               </div>
 
               <div className="col icone-mini-container">
                 <img src={'/autonomie.png'} alt="" />
-                <p>{t("Playboard14")}<br />{t("Playboard15")}</p>
+                <p>{t("Playboard14")}<br /><span>{t("Playboard15")}</span></p>
               </div>
 
             </div>
@@ -323,20 +323,20 @@ const PlayBoardScreen = props => {
             <div className="col miniIconeContainer2">
               <img src={'/couleur.png'} alt="" />
               <h5>{t("Playboard29")}</h5>
-              <p>{t("Playboard30")}</p>
+              <p>{t("Playboard30")} <span>{t("Playboard30.1")}</span>{t("Playboard30.2")} <span>{t("Playboard30.3")}</span> {t("Playboard30.4")} <span>{t("Playboard30.5")}</span>{t("Playboard30.6")} <span>{t("Playboard30.7")}</span></p>
             </div>
 
 
             <div className="col miniIconeContainer2">
               <img src={'/degrade.png'} alt="" />
               <h5>{t("Playboard31")}</h5>
-              <p>{t("Playboard32")}</p>
+              <p>{t("Playboard32")}<span>{t("Playboard32.1")}</span>{t("Playboard32.2")}<span>{t("Playboard32.3")}</span>{t("Playboard32.4")}<span>{t("Playboard32.5")}</span>{t("Playboard32.4")}<span>{t("Playboard32.7")}</span></p>
             </div>
 
             <div className="col miniIconeContainer2">
               <img src={'/eveil.png'} alt="" />
               <h5>{t("Playboard33")}</h5>
-              <p>{t("Playboard34")}</p>
+              <p>{t("Playboard34")}<span>{t("Playboard34.1")}</span>{t("Playboard34.2")}<span>{t("Playboard34.3")}</span></p>
             </div>
 
           </div>
@@ -346,25 +346,25 @@ const PlayBoardScreen = props => {
             <div className="col miniIconeContainer2">
               <img src={'/animaux.png'} alt="" />
               <h5>{t("Playboard35")}</h5>
-              <p>{t("Playboard36")}</p>
+              <p>{t("Playboard36")}<span>{t("Playboard36.1")}</span>{t("Playboard36.2")}<span>{t("Playboard36.3")}</span>{t("Playboard36.4")}<span>{t("Playboard36.5")}</span>{t("Playboard36.6")}<span>{t("Playboard36.7")}</span></p>
             </div>
 
             <div className="col miniIconeContainer2">
               <img src={'/formes.png'} alt="" />
               <h5>{t("Playboard37")}</h5>
-              <p>{t("Playboard38")}</p>
+              <p>{t("Playboard38")}<span>{t("Playboard38.1")}</span>{t("Playboard38.2")}<span>{t("Playboard38.3")}</span>{t("Playboard38.4")}<span>{t("Playboard38.5")}</span></p>
             </div>
 
             <div className="col miniIconeContainer2">
               <img src={'/coordination.png'} alt="" />
               <h5>{t("Playboard39")}</h5>
-              <p>{t("Playboard40")}</p>
+              <p>{t("Playboard40")}<span>{t("Playboard40.1")}</span>{t("Playboard40.2")}<span>{t("Playboard40.3")}</span>{t("Playboard40.4")}<span>{t("Playboard40.5")}</span></p>
             </div>
 
             <div className="col miniIconeContainer2">
               <img src={'/nombres.png'} alt="" />
               <h5>{t("Playboard41")}</h5>
-              <p>{t("Playboard42")}</p>
+              <p>{t("Playboard42")}<span>{t("Playboard42.1")}</span>{t("Playboard42.2")}<span>{t("Playboard42.3")}</span>{t("Playboard42.4")}<span>{t("Playboard42.5")}</span>{t("Playboard42.6")}<span>{t("Playboard42.7")}</span></p>
             </div>
           </div>
         </div>

@@ -22,7 +22,9 @@
 .footer-container a{
   color : #020101 !important;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .footer-container a:hover{
@@ -33,6 +35,11 @@
   color: #91BB1F;
   font-size: 35px;
 }
+
+.arbresDialogContainer .beneficesContainer h5{
+  color : #3f3f3f;
+}
+
 .copyright {
   color: #6EC1E4;
   font-size: 12px;
@@ -56,7 +63,7 @@
 }
 .arbresRow {
   width: 80%;
-  margin: 0 auto;
+  margin: 0px auto 15px auto;
 }
 
 .arbresRow img{

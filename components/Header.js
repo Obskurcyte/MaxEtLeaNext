@@ -195,7 +195,7 @@ const Header = (props) => {
           <div className="linksContainer">
             <Link href="/">Home</Link>
             <Link href="/about">{t("Footer.1")}</Link>
-            <Link href="/contact">{t("Footer.4")}</Link>
+            <Link href="/contact">{t("Footer.contact")}</Link>
             <Link href="/blogs">{t("Footer.3")}</Link>
           </div>
 

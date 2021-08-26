@@ -335,6 +335,10 @@
   margin-top: 3.5%;
 }
 
+.linksContainer{
+  padding-top: 5px;
+}
+
 .linksContainer a{
   color:  #54595f !important;
   font-size: 14px;

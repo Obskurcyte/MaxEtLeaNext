@@ -287,13 +287,14 @@ const HeaderKako = (props) => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  const dispatch = useDispatch();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const dispatch = useDispatch();
-  const drapeau = useSelector(state => state.drapeau.drapeau)
-
+  const handleCloseOutside = () => {
+    i18n.changeLanguage(lang).then(() => setAnchorEl(null))
+  };
 
   const handleClose = (lang) => {
     localStorage.setItem('lang',lang)
@@ -340,7 +341,7 @@ const HeaderKako = (props) => {
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
-            onClose={handleClose}
+            onClose={handleCloseOutside}
           >
             <MenuItem onClick={() => handleClose('en')}><img src={'/flagen.png'} alt=""/></MenuItem>
             <MenuItem onClick={() => handleClose('es')}><img src={'/flages.png'} alt=""/></MenuItem>

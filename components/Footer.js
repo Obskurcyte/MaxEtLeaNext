@@ -75,7 +75,7 @@ const Footer = () => {
                     <h5>257 {t("Forest.1")}</h5>
                     <p>{t("Forest.2")}( {t("avis.portugal")} <img src="/portugal-flag.webp"></img> )</p>
                     <hr />
-                      <p>{t("Forest.3")}</p>
+                      <p style={{textAlign: 'center'}}>{t("Forest.3")}</p>
                     <div className="beneficesContainer">
                       <div className="arbresRow">
                             <div>
@@ -117,7 +117,7 @@ const Footer = () => {
                         </div>
                       </div>
 
-                      <p style={{textAlign: 'center', fontSize: '12px'}}>{t("Forest.12")}</p>
+                      <p style={{textAlign: 'center', fontSize: '12px',margin:'0px'}}>{t("Forest.12")}</p>
                       <a href="https://www.reforestaction.com/en/max-lea" target="_blank" className="seePage"><p>{t("Forest.13")}</p></a>
                     </div>
                     <button className="arbresButtonClose" onClick={() => handleClose()}>x</button>
