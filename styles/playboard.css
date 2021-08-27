@@ -141,12 +141,13 @@
 
 .add-to-cart-container{
   display: flex;
-  max-width: 250px;
+  max-width: 290px;
   margin: auto;
 }
 
 .add-to-cart-container .input-quantity{
   margin-top: 15px;
+  margin-right: 15px;
 }
 
 .reducImg {
