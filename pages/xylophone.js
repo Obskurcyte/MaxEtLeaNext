@@ -31,22 +31,14 @@ const XylophoneScreen = props => {
   const { t, i18n } = useTranslation();
 
   const icon = React.createElement('i', { className: 'far fa-question-circle' }, "");
-  const title1 = React.createElement('p', {}, t("FAQtitle1"));
+  const title1 = React.createElement('p', {}, t("Xylo.FAQtitle1"));
   const faqHeader1 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title1]);
-  const title2 = React.createElement('p', {}, t("FAQtitle2"));
+  const title2 = React.createElement('p', {}, t("Xylo.FAQtitle2"));
   const faqHeader2 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title2]);
-  const title3 = React.createElement('p', {}, t("FAQtitle3"));
+  const title3 = React.createElement('p', {}, t("Xylo.FAQtitle3"));
   const faqHeader3 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title3]);
-  const title4 = React.createElement('p', {}, t("FAQtitle4"));
+  const title4 = React.createElement('p', {}, t("Xylo.FAQtitle4"));
   const faqHeader4 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title4]);
-  const title5 = React.createElement('p', {}, t("FAQtitle5"));
-  const faqHeader5 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title5]);
-  const title6 = React.createElement('p', {}, t("FAQtitle6"));
-  const faqHeader6 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title6]);
-  const title7 = React.createElement('p', {}, t("FAQtitle7"));
-  const faqHeader7 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title7]);
-  const title8 = React.createElement('p', {}, t("FAQtitle8"));
-  const faqHeader8 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title8]);
 
   const router = useRouter();
 
@@ -347,13 +339,13 @@ const XylophoneScreen = props => {
               <div className="col miniIconeContainer2">
                 <FontAwesomeIcon icon={faPalette} color="#CE51C6" className="paletteImg" />
                 <h5>{t("Xylo.21")}</h5>
-                <p>{t("Xylo.22")}</p>
+                <p>{t("Xylo.22")}<span>{t("Xylo.22a")}</span>{t("Xylo.22b")}<span>{t("Xylo.22c")}</span>{t("Xylo.22d")}<span>{t("Xylo.22e")}</span></p>
               </div>
 
               <div className="col miniIconeContainer2">
                 <FontAwesomeIcon icon={faGrinStars} color="#F28D2A" className="eveilImg" />
                 <h5>{t("Xylo.23")}</h5>
-                <p>{t("Xylo.24")}</p>
+                <p>{t("Xylo.24")}<span>{t("Xylo.24a")}</span>{t("Xylo.24b")}<span>{t("Xylo.24c")}</span></p>
               </div>
 
             </div>
@@ -427,36 +419,21 @@ const XylophoneScreen = props => {
             <div className="row">
               <div className="col">
                 <Collapsible trigger={faqHeader1}>
-                  <p>{t("Playboard112")}</p>
+                  <p>{t("Xylo.FAQanswer1")}</p>
                 </Collapsible>
                 <Collapsible trigger={faqHeader2}>
-                  <p>{t("Playboard113")}</p>
-                </Collapsible>
-                <Collapsible trigger={faqHeader3}>
-                  <p>{t("Playboard114")}</p>
-                </Collapsible>
-                <Collapsible trigger={faqHeader4}>
-                  <p>{t("Playboard115")}
-                    <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>
-                    {t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1152")}</a>{t("Playboard1153")}
-                  </p>
+                  <p>{t("Xylo.FAQanswer2")}</p>
                 </Collapsible>
               </div>
               <div className="col">
-                <Collapsible trigger={faqHeader5}>
-                  <p>{t("Playboard116")}</p>
+                <Collapsible trigger={faqHeader3}>
+                  <p>{t("Xylo.FAQanswer3a")}<a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>{t("Xylo.FAQanswer3b")}<a href="/contact/" target="_blank" rel="noopener">{t("Xylo.FAQanswer3c")}</a></p>
                 </Collapsible>
-                <Collapsible trigger={faqHeader6}>
-                  <p>
-                    {t("Playboard117")}<img src={'/internet9.webp'} />).
-                    {t("Playboard1171")}
+                <Collapsible trigger={faqHeader4}>
+                  <p>{t("Xylo.FAQanswer4a")}
+                    <a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>
+                    {t("Xylo.FAQanswer4b")}<a href="/contact/" target="_blank" rel="noopener">{t("Xylo.FAQanswer4c")}</a>{t("Xylo.FAQanswer4d")}
                   </p>
-                </Collapsible>
-                <Collapsible trigger={faqHeader7}>
-                  <p>{t("Playboard118")}<a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>{t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1152")}</a>.</p>
-                </Collapsible>
-                <Collapsible trigger={faqHeader8}>
-                  <p>{t("Playboard119")}<a href="mailto:contact@maxandlea.com">contact@maxandlea.com</a>{t("Playboard1151")}<a href="https://maxandlea.com/fr/contact/" target="_blank" rel="noopener">{t("Playboard1153")}</a>.</p>
                 </Collapsible>
               </div>
             </div>

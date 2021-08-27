@@ -45,14 +45,6 @@ const TourScreen = props => {
   const faqHeader3 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title3]);
   const title4 = React.createElement('p', {}, t("Tour.FAQtitle4"));
   const faqHeader4 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title4]);
-  const title5 = React.createElement('p', {}, t("Tour.FAQtitle5"));
-  const faqHeader5 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title5]);
-  const title6 = React.createElement('p', {}, t("Tour.FAQtitle6"));
-  const faqHeader6 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title6]);
-  const title7 = React.createElement('p', {}, t("Tour.FAQtitle7"));
-  const faqHeader7 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title7]);
-  const title8 = React.createElement('p', {}, t("Tour.FAQtitle8"));
-  const faqHeader8 = React.createElement('div', { className: 'faqHeaderContainer' }, [icon, title8]);
 
   const router = useRouter();
 

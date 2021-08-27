@@ -1,25 +1,25 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import React, { useContext, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import * as productAction from "../store/actions/product";
-import {AppContext} from "./context/AppContext";
+import { AppContext } from "./context/AppContext";
 import * as productFile from "../products";
 
 
-const CartItem = ({item}) => {
+const CartItem = ({ item }) => {
 
   const [cart, setCart] = useContext(AppContext)
 
   const products = productFile.products
 
-  const changeCartProductsExtraDiscounts = () =>{
+  const changeCartProductsExtraDiscounts = () => {
     let existingCart = localStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart);
-    if(existingCart != null){
+    if (existingCart != null) {
       const playboardExistsIndex = isProductInCart(existingCart.products, products[2].id);
       if (-1 < playboardExistsIndex) {
         const xyloExistsIndex = isProductInCart(existingCart.products, products[0].id);
         const tourExistsIndex = isProductInCart(existingCart.products, products[1].id);
-        if(-1 < xyloExistsIndex){
+        if (-1 < xyloExistsIndex) {
           const qtyXylo = existingCart.products[xyloExistsIndex].qty;
           const updatedCart = removeProduct(products[0].id);
           const newProduct = createNewProduct(products[5], products[5].price, qtyXylo)
@@ -28,7 +28,7 @@ const CartItem = ({item}) => {
           localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
           localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
         }
-        if(-1 < tourExistsIndex){
+        if (-1 < tourExistsIndex) {
           const qtyTour = existingCart.products[tourExistsIndex].qty;
           const updatedCart = removeProduct(products[1].id);
           const newProduct = createNewProduct(products[6], products[6].price, qtyTour)
@@ -37,13 +37,13 @@ const CartItem = ({item}) => {
           localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
           localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
         }
-      }else{
+      } else {
         const disXyloExistsIndex = isProductInCart(existingCart.products, products[5].id);
         const distourExistsIndex = isProductInCart(existingCart.products, products[6].id);
-        if(-1 < disXyloExistsIndex){
+        if (-1 < disXyloExistsIndex) {
           const qtyXylo = existingCart.products[disXyloExistsIndex].qty;
           let updatedCart = removeProduct(products[5].id);
-          if(updatedCart == null){
+          if (updatedCart == null) {
             updatedCart = {
               products: [],
               totalProductCount: 1,
@@ -56,10 +56,10 @@ const CartItem = ({item}) => {
           localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
           localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
         }
-        if(-1 < distourExistsIndex){
+        if (-1 < distourExistsIndex) {
           const qtyTour = existingCart.products[distourExistsIndex].qty;
           let updatedCart = removeProduct(products[6].id);
-          if(updatedCart == null){
+          if (updatedCart == null) {
             updatedCart = {
               products: [],
               totalProductCount: 1,
@@ -90,7 +90,7 @@ const CartItem = ({item}) => {
   const [productCount, setProductCount] = useState(item.qty);
 
   const onIncreaseClick = () => {
-    
+
     let existingCart = localStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart);
 
@@ -104,11 +104,11 @@ const CartItem = ({item}) => {
     if (productCount === 1) {
       return;
     } else {
-      
+
       let existingCart = localStorage.getItem('woo-next-cart');
       existingCart = JSON.parse(existingCart);
 
-      const updatedCart = updateCart(existingCart, item, false, productCount -1)
+      const updatedCart = updateCart(existingCart, item, false, productCount - 1)
       setProductCount(productCount - 1);
       setCart(updatedCart)
       document.querySelector('.change-quantity').value = productCount;
@@ -117,7 +117,7 @@ const CartItem = ({item}) => {
 
   const getFloatVal = (string) => {
     let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
-    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)): '';
+    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)) : '';
   };
 
   const addFirstProduct = (product) => {
@@ -159,7 +159,7 @@ const CartItem = ({item}) => {
     }
 
     // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
-    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+    let total = updatedProducts.reduce(addPrice, { totalPrice: 0, qty: 0 })
 
     const updatedCart = {
       products: updatedProducts,
@@ -181,7 +181,7 @@ const CartItem = ({item}) => {
    * @param newQty
    * @returns {*}
    */
-  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty = false) => {
     const productExistsIndex = isProductInCart(existingProductsInCart, product.productId);
 
     if (-1 < productExistsIndex) {
@@ -213,7 +213,7 @@ const CartItem = ({item}) => {
 
 
 
-    const removeProduct = (productId) => {
+  const removeProduct = (productId) => {
 
     let existingCart = localStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart);
@@ -257,35 +257,36 @@ const CartItem = ({item}) => {
   }
 
   return (
-    <div key={item.productId} className="tr-product" id={"list_"+item.productId}>
+    <div key={item.productId} className="tr-product" id={"list_" + item.productId}>
       <div className="innerContainerCart">
         <span onClick={(event) => handleRemoveProduct(event, item.productId)}>
           <div className="croix itemsuppr"><i className="far fa-times-circle"></i></div>
         </span>
 
         <div className="imgContainerCart">
-          <img src={item.image} className="cart-image" alt=""/>
+          <img src={item.image} className="cart-image" alt="" />
         </div>
 
         <div className="prixDescriptionContainer">
-          <div className='flex'>
-            <p className="itemPrixBarre">{item.oldPrice ? `${item.oldPrice} EUR` : ''}</p>
-            <p className="itemPrix">{item.totalPrice} EUR</p>
-          </div>
-          <div className="nameAndQty">
+
           <div className="descriptionProduit">
             <p className="descriptionProduitText">{item.name}</p>
           </div>
-          <div className="input-quantity">
-            <button className="decrease-button" onClick={onDecreaseClick} target={item.productId}>-</button>
-              <input type="text" className="change-quantity" value={productCount}/>
-            <button className="increase-button" style={{color: "#e72c59"}} onClick={onIncreaseClick} target={item.productId}>+</button>
-          </div>
+          <div className="nameAndQty">
+            <div className="input-quantity">
+              <button className="decrease-button" onClick={onDecreaseClick} target={item.productId}>-</button>
+              <input type="text" className="change-quantity" value={productCount} />
+              <button className="increase-button" style={{ color: "#e72c59" }} onClick={onIncreaseClick} target={item.productId}>+</button>
+            </div>
+            <div>
+              <p className="itemPrixBarre">{item.oldPrice ? `${parseFloat(item.oldPrice).toFixed(2)} €` : ''}</p>
+              <p className="itemPrix">{parseFloat(item.totalPrice).toFixed(2)} €</p>
+            </div>
           </div>
         </div>
 
       </div>
-      <hr/>
+      
     </div>
   )
 }

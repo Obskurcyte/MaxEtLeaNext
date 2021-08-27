@@ -32,6 +32,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import SelectSearch, { useSelect, fuzzySearch } from 'react-select-search-nextjs';
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+import Collapsible from "react-collapsible";
 
 const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
@@ -1103,7 +1104,7 @@ const CheckoutScreen = props => {
       sumPanier += parseFloat(cart.products[data].totalPrice)
       qtyProduct = parseFloat(cart.products[data].qty)
       qtyTotale += qtyProduct
-      if(parseFloat(cart.products[data].oldPrice))
+      if (parseFloat(cart.products[data].oldPrice))
         oldPrice = parseFloat(cart.products[data].oldPrice)
       else oldPrice = parseFloat(cart.products[data].totalPrice)
       totalBeforeDiscount += oldPrice * qtyProduct
@@ -1341,8 +1342,10 @@ const CheckoutScreen = props => {
               <div className="produitContainer">
                 <div className='coordonneesDiv'>
                   <p className="coordonneesNum">1</p>
-                  <p className="coordonneesTitle">{t("Checkout.2")}</p>
-                  <p className="coordonneesSubTitle">{t("Checkout.3")}</p>
+                  <div>
+                    <p className="coordonneesTitle">{t("Checkout.2")}</p>
+                    <p className="coordonneesSubTitle">{t("Checkout.3")}</p>
+                  </div>
                 </div>
                 {(!cart || cart.products.length === 0) && (
                   <h2>{t("Checkout.4")}</h2>
@@ -1363,7 +1366,6 @@ const CheckoutScreen = props => {
                                   />
                                   <div className="ebookContainer">
                                     <div className="ebookInner free">
-                                      <p>{t("Checkout.5")}</p>
                                       <Checkbox
                                         checked={true}
                                         disabled
@@ -1372,24 +1374,28 @@ const CheckoutScreen = props => {
                                           handleAddToCartEbookPlayboard()
                                         }}
                                       />
+                                      <p>{t("Checkout.5")}</p>
                                     </div>
                                     <div className="ebookInner free">
-                                      <p>{t("Checkout.6")}</p>
                                       <Checkbox checked={ebookImprime ? true : checkedEbookPlayboard}
                                         onChange={(event) => {
                                           handleAddToCartEbookPlayboard();
                                         }} />
+                                        <p>{t("Checkout.6")}</p>
                                     </div>
                                   </div>
-
+                                  <hr />
                                 </div>
                               </>
                             ) : (
-                              <CartItem
-                                key={item.productId}
-                                item={item}
-                                setCart={setCart}
-                              />
+                              <div>
+                                <CartItem
+                                  key={item.productId}
+                                  item={item}
+                                  setCart={setCart}
+                                />
+                                <hr />
+                              </div>
                             )
                           )
                         }
@@ -1580,8 +1586,9 @@ const CheckoutScreen = props => {
                           <br></br>
                           <strike className="innerArticleStrike">{products[2].priceAugmente} €</strike>
                           <span className="innerArticlePrice">{products[2].price} €</span>
-                          <br></br>
-                          <span className="innerArticleReduction">({t("Checkout.28")} {products[2].priceAugmente - products[2].price} €)</span>
+                          <p className="innerArticleReductionContainer">
+                            <span className="innerArticleReduction">({t("Checkout.28")} {products[2].priceAugmente - products[2].price} €)</span>
+                          </p>
                         </label>
                       </div>
                       <div className="innerArticleBottom" >
@@ -1608,7 +1615,9 @@ const CheckoutScreen = props => {
                           <strike className="innerArticleStrike">{products[0].priceAugmente} €</strike>
                           <span className="innerArticlePrice">{products[0].price} €</span>
                           <br></br>
+                          <p className="innerArticleReductionContainer">
                           <span className="innerArticleReduction">{t("Checkout.30")} {products[5].price}€ {t("Checkout.31")}</span>
+                          </p>
                         </label>
                       </div>
                       <div className="innerArticleBottom">
@@ -1635,7 +1644,9 @@ const CheckoutScreen = props => {
                           <strike className="innerArticleStrike">{products[1].priceAugmente} €</strike>
                           <span className="innerArticlePrice">{products[1].price} €</span>
                           <br></br>
-                          <span className="innerArticleReduction">{t("Checkout.30")} {products[6].price}€ {t("Checkout.31")}</span>
+                          <p className="innerArticleReductionContainer">
+                            <span className="innerArticleReduction">{t("Checkout.30")} {products[6].price}€ {t("Checkout.31")}</span>
+                          </p>
                         </label>
                       </div>
                       <div className="innerArticleBottom" >
@@ -1666,15 +1677,19 @@ const CheckoutScreen = props => {
                       <a href="javascript:void(0);" onClick={() => router.reload(window.location.pathname)} style={{ width: '50%' }}>
                         <div className={!goPaiement ? 'coordonneesDiv' : 'coordonneesDivLight'}>
                           <p className="coordonneesNum">2</p>
-                          <p className="coordonneesTitle">{t("Checkout.33")}</p>
-                          <p className="coordonneesSubTitle">{t("Checkout.34")}</p>
+                          <div>
+                            <p className="coordonneesTitle">{t("Checkout.33")}</p>
+                            <p className="coordonneesSubTitle">{t("Checkout.34")}</p>
+                          </div>
                         </div>
                       </a>
                       <a href="javascript:void(0);" style={{ width: '50%' }}>
                         <div className={goPaiement ? 'coordonneesDiv' : 'coordonneesDivLight'}>
                           <p className="coordonneesNum">3</p>
-                          <p className="coordonneesTitle">{t("Checkout.35")}</p>
-                          <p className="coordonneesSubTitle">{t("Checkout.36")}</p>
+                          <div>
+                            <p className="coordonneesTitle">{t("Checkout.35")}</p>
+                            <p className="coordonneesSubTitle">{t("Checkout.36")}</p>
+                          </div>
                         </div>
                       </a>
                     </div>
@@ -1780,7 +1795,7 @@ const CheckoutScreen = props => {
                                 {props.errors.email && props.touched.email && <div style={{ color: 'red' }}>{props.errors.email}</div>}
 
                                 <div className="MuiFormControl-root MuiTextField-root bigInput">
-                                <label style={{zIndex:"2"}} className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required" data-shrink="true" for="pays" id="pays-label">{t("Checkout.fields.pays")}<span aria-hidden="true" class="MuiFormLabel-asterisk MuiInputLabel-asterisk"> *</span></label>
+                                  <label style={{ zIndex: "2" }} className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required" data-shrink="true" for="pays" id="pays-label">{t("Checkout.fields.pays")}<span aria-hidden="true" class="MuiFormLabel-asterisk MuiInputLabel-asterisk"> *</span></label>
                                   <SelectSearch onChange={(val) => {
                                     props.handleChange('pays');
                                     setPays(val);
@@ -1907,7 +1922,7 @@ const CheckoutScreen = props => {
 
 
 
-                                
+
 
                                 <div className="livraison">
                                   <h4 className="livraisonTitle">{t("Checkout.39")}</h4>
