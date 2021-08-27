@@ -38,8 +38,7 @@ const Footer = () => {
             <span className="copyright">Copyright © 2021 | Max And Lea</span>
             <div className="icons-social">
               <a href="https://www.facebook.com/MaxandleaToys/" target="_blank"><FontAwesomeIcon icon={faFacebookSquare} className="iconFacebook"/></a>
-              <a href="https://www.instagram.com/max.and.lea/" target="_blank" style={{marginTop: '2px'}}><FontAwesomeIcon icon={faInstagram} className="iconInstagram" href=""/></a>
-              <a href="https://www.youtube.com/channel/UCHaUOBoknhDUyNExyux9yvg/featured" target="_blank"><FontAwesomeIcon icon={faYoutubeSquare} className="iconYoutube"/></a>
+              <a href="https://www.instagram.com/max.and.lea/" target="_blank" style={{marginTop: '7px'}}><FontAwesomeIcon icon={faInstagram} className="iconInstagram" href=""/></a>
             </div>
           </div>
           <div className="col-6 col-md-3 order-2 order-md-2 my-auto flex-column d-flex phone-none">
