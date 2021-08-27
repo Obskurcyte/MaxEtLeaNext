@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState, useRef } from 'react';
 import Header from "../components/Header";
 import { makeStyles } from '@material-ui/core/styles';
 import { AppContext } from "../components/context/AppContext";
@@ -33,6 +33,7 @@ import SelectSearch, { useSelect, fuzzySearch } from 'react-select-search-nextjs
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import Collapsible from "react-collapsible";
+import * as Scroll from 'react-scroll';
 
 const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
 
@@ -280,6 +281,7 @@ const CheckoutScreen = props => {
       if (-1 < playboardExistsIndex) {
         const xyloExistsIndex = isProductInCart(existingCart.products, products[0].id);
         const tourExistsIndex = isProductInCart(existingCart.products, products[1].id);
+        const kakoExistsIndex = isProductInCart(existingCart.products, products[4].id);
         if (-1 < xyloExistsIndex) {
           const qtyXylo = existingCart.products[xyloExistsIndex].qty;
           const updatedCart = removeProduct(products[0].id);
@@ -300,9 +302,20 @@ const CheckoutScreen = props => {
           localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
           localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
         }
+        if (-1 < kakoExistsIndex) {
+          const qtyKako = existingCart.products[kakoExistsIndex].qty;
+          const updatedCart = removeProduct(products[4].id);
+          const newProduct = createNewProduct(products[7], products[7].price, qtyKako)
+          updatedCart.products.push(newProduct);
+          setCart(updatedCart)
+          setCommandeCart(updatedCart)
+          localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+          localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
+        }
       } else {
         const disXyloExistsIndex = isProductInCart(existingCart.products, products[5].id);
         const distourExistsIndex = isProductInCart(existingCart.products, products[6].id);
+        const disKakoExistsIndex = isProductInCart(existingCart.products, products[7].id);
         if (-1 < disXyloExistsIndex) {
           const qtyXylo = existingCart.products[disXyloExistsIndex].qty;
           let updatedCart = removeProduct(products[5].id);
@@ -331,6 +344,23 @@ const CheckoutScreen = props => {
             }
           }
           const newProduct = createNewProduct(products[1], products[1].price, qtyTour)
+          updatedCart.products.push(newProduct);
+          setCart(updatedCart)
+          setCommandeCart(updatedCart)
+          localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+          localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
+        }
+        if (-1 < disKakoExistsIndex) {
+          const qtyKako = existingCart.products[disKakoExistsIndex].qty;
+          let updatedCart = removeProduct(products[7].id);
+          if (updatedCart == null) {
+            updatedCart = {
+              products: [],
+              totalProductCount: 1,
+              totalProductsPrice: products[4].price
+            }
+          }
+          const newProduct = createNewProduct(products[4], products[4].price, qtyKako)
           updatedCart.products.push(newProduct);
           setCart(updatedCart)
           setCommandeCart(updatedCart)
@@ -1183,6 +1213,18 @@ const CheckoutScreen = props => {
     }
   }
 
+  let disKakoReducPrice = 0
+  let disKakoInCart = []
+  if (cart) {
+    const kako = cart.products.filter(obj => {
+      return obj.productId === '17693'
+    })
+    if (kako.length !== 0) {
+      disKakoInCart = kako
+      disKakoReducPrice = Number((kako[0].qty * (products[7].priceAugmente - products[7].price)).toFixed(2))
+    }
+  }
+
   //On enlève les ebooks de la qty totale
   if (ebookInCart > 0) {
     qtyTotale = qtyTotale - ebookInCart
@@ -1288,6 +1330,8 @@ const CheckoutScreen = props => {
     totalDiscount += parseFloat(disTourReducPrice);
   if (disXyloReducPrice)
     totalDiscount += parseFloat(disXyloReducPrice);
+  if (disKakoReducPrice)
+    totalDiscount += parseFloat(disKakoReducPrice);
   if (tourReducPrice)
     totalDiscount += parseFloat(tourReducPrice);
   if (xyloReducPrice)
@@ -1301,7 +1345,20 @@ const CheckoutScreen = props => {
 
   totalPrice2 = totalPrice1 + prixLivraison;
 
+  let percentageTotalDiscount = (totalDiscount / totalBeforeDiscount) * 100;
+
+  const [isCollapsibleOpen, setIsCollapsibleOpen] = useState(true)
+
   const { t, i18n } = useTranslation();
+
+  const coordonneesNum = React.createElement('p', { className: 'coordonneesNum' }, "1");
+  const coordonneesTitle = React.createElement('p', { className: 'coordonneesTitle' }, t("Checkout.2"));
+  const coordonneesSubTitle = React.createElement('p', { className: 'coordonneesSubTitle' }, t("Checkout.3"));
+  const coordonneesSubDiv = React.createElement('div', {}, [coordonneesTitle, coordonneesSubTitle]);
+  const coordonneesArrow = React.createElement('i', { className: 'fas fa-chevron-down coordonneesArrow' }, "");
+  const coordonneesPanierDiv = React.createElement('div', { className: 'coordonneesDiv coordonneesLinkContainer' }, [coordonneesNum, coordonneesSubDiv,coordonneesArrow]);
+
+  const refPaiementDiv = useRef(null)
 
   return (
     <PayPalScriptProvider options={{ "client-id": process.env.PAYPAL_CLIENT_ID }}>
@@ -1338,15 +1395,10 @@ const CheckoutScreen = props => {
 
           <div>
 
-            <div className="produitPaiementContainer">
-              <div className="produitContainer">
-                <div className='coordonneesDiv'>
-                  <p className="coordonneesNum">1</p>
-                  <div>
-                    <p className="coordonneesTitle">{t("Checkout.2")}</p>
-                    <p className="coordonneesSubTitle">{t("Checkout.3")}</p>
-                  </div>
-                </div>
+            <div className="produitPaiementContainer" id="produits-container">
+            
+              <div className="produitContainer" ref={refPaiementDiv}>
+              <Collapsible trigger={coordonneesPanierDiv} open={isCollapsibleOpen} >
                 {(!cart || cart.products.length === 0) && (
                   <h2>{t("Checkout.4")}</h2>
                 )}
@@ -1443,6 +1495,15 @@ const CheckoutScreen = props => {
                     </div>
 
                     <div>
+                      {disKakoInCart.length !== 0 && (
+                        <div className="prix-reduc-container">
+                          <p className="sousTotalText">Discount Kako</p>
+                          <p className="itemTotalPrice">{disKakoReducPrice} €</p>
+                        </div>
+                      )}
+                    </div>
+
+                    <div>
                       {tourInCart.length !== 0 && (
                         <div className="prix-reduc-container">
                           <p className="sousTotalText">{t("Checkout.10")}</p>
@@ -1498,7 +1559,7 @@ const CheckoutScreen = props => {
                     </div>
 
                     <div className="prix-reduc-container">
-                      <p className="totalDiscountText">{t("Checkout.16")}</p>
+                      <p className="totalDiscountText">{t("Checkout.16")} (-{percentageTotalDiscount.toFixed(0)}%)</p>
                       <p className="totalDiscountPrice">{totalDiscount.toFixed(2)} €</p>
                     </div>
 
@@ -1530,13 +1591,7 @@ const CheckoutScreen = props => {
                       </div>
 
                       <hr />
-                      <div>
-                        <div className="prix-reduc-container">
-                          <p className="sousTotalText2" style={{ fontWeight: 'bold' }}>{t("Checkout.19")}</p>
-                          <p className="itemTotalPrice2" style={{ fontWeight: 'bold' }}>{totalPrice2.toFixed(2)} €</p>
-                        </div>
-                      </div>
-                      <hr />
+                      
 
                       <div>
 
@@ -1545,6 +1600,15 @@ const CheckoutScreen = props => {
                     </div>
                   )}
                 </div>
+                </Collapsible>
+                <div className="sousTotal" style={{marginTop:"15px"}}>
+                <div>
+                        <div className="prix-reduc-container">
+                          <p className="sousTotalText2" style={{ fontWeight: 'bold' }}>{t("Checkout.19")}</p>
+                          <p className="itemTotalPrice2" style={{ fontWeight: 'bold' }}>{totalPrice2.toFixed(2)} €</p>
+                        </div>
+                      </div>
+                      </div>
 
                 <div className="codepromoContainer">
                   <div>
@@ -1674,7 +1738,7 @@ const CheckoutScreen = props => {
                 {cart ?
                   <div>
                     <div className="prixText">
-                      <a href="javascript:void(0);" onClick={() => router.reload(window.location.pathname)} style={{ width: '50%' }}>
+                      <a href="javascript:void(0);" onClick={() => router.reload(window.location.pathname)} className={!goPaiement ? 'coordonneesLinkContainer' : 'coordonneesLinkContainerLight'}>
                         <div className={!goPaiement ? 'coordonneesDiv' : 'coordonneesDivLight'}>
                           <p className="coordonneesNum">2</p>
                           <div>
@@ -1683,7 +1747,7 @@ const CheckoutScreen = props => {
                           </div>
                         </div>
                       </a>
-                      <a href="javascript:void(0);" style={{ width: '50%' }}>
+                      <a href="javascript:void(0);" className={goPaiement ? 'coordonneesLinkContainer' : 'coordonneesLinkContainerLight'}>
                         <div className={goPaiement ? 'coordonneesDiv' : 'coordonneesDivLight'}>
                           <p className="coordonneesNum">3</p>
                           <div>
@@ -1750,6 +1814,7 @@ const CheckoutScreen = props => {
                             } else {
                               localStorage.setItem('livraison', JSON.stringify(donnesClient))
                               setGoPaiement(true)
+                              setIsCollapsibleOpen(false)
                             }
                           }}
                         >
@@ -2313,9 +2378,9 @@ const CheckoutScreen = props => {
 
 
 
-                                <Link href="#">
-                                  <button className="cart-valide" type="submit" onClick={props.handleSubmit}>{t("Checkout.56")}</button>
-                                </Link>
+                                <a href="#produits-container" onClick={props.handleSubmit}>
+                                  <button className="cart-valide" type="submit" >{t("Checkout.56")}</button>
+                                </a>
                               </div>
                             </form>
                           )

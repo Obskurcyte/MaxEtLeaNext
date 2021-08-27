@@ -19,6 +19,7 @@ const CartItem = ({ item }) => {
       if (-1 < playboardExistsIndex) {
         const xyloExistsIndex = isProductInCart(existingCart.products, products[0].id);
         const tourExistsIndex = isProductInCart(existingCart.products, products[1].id);
+        const kakoExistsIndex = isProductInCart(existingCart.products, products[4].id);
         if (-1 < xyloExistsIndex) {
           const qtyXylo = existingCart.products[xyloExistsIndex].qty;
           const updatedCart = removeProduct(products[0].id);
@@ -37,9 +38,19 @@ const CartItem = ({ item }) => {
           localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
           localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
         }
+        if (-1 < kakoExistsIndex) {
+          const qtyKako = existingCart.products[kakoExistsIndex].qty;
+          const updatedCart = removeProduct(products[4].id);
+          const newProduct = createNewProduct(products[7], products[7].price, qtyKako)
+          updatedCart.products.push(newProduct);
+          setCart(updatedCart)
+          localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+          localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
+        }
       } else {
         const disXyloExistsIndex = isProductInCart(existingCart.products, products[5].id);
         const distourExistsIndex = isProductInCart(existingCart.products, products[6].id);
+        const disKakoExistsIndex = isProductInCart(existingCart.products, products[7].id);
         if (-1 < disXyloExistsIndex) {
           const qtyXylo = existingCart.products[disXyloExistsIndex].qty;
           let updatedCart = removeProduct(products[5].id);
@@ -67,6 +78,22 @@ const CartItem = ({ item }) => {
             }
           }
           const newProduct = createNewProduct(products[1], products[1].price, qtyTour)
+          updatedCart.products.push(newProduct);
+          setCart(updatedCart)
+          localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+          localStorage.setItem('commande-cart', JSON.stringify(updatedCart))
+        }
+        if (-1 < disKakoExistsIndex) {
+          const qtyKako = existingCart.products[disKakoExistsIndex].qty;
+          let updatedCart = removeProduct(products[7].id);
+          if (updatedCart == null) {
+            updatedCart = {
+              products: [],
+              totalProductCount: 1,
+              totalProductsPrice: products[4].price
+            }
+          }
+          const newProduct = createNewProduct(products[4], products[4].price, qtyKako)
           updatedCart.products.push(newProduct);
           setCart(updatedCart)
           localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));

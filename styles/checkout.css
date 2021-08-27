@@ -279,7 +279,13 @@ legend span {
 }
 
 .prixText {
-  display: flex;
+  display: table;
+  width: 100%;
+}
+
+.coordonneesLinkContainerLight,.coordonneesLinkContainer{
+  width: 50%;
+  display: table-cell;
 }
 
 .coordonneesDiv,.coordonneesDivLight{
@@ -287,15 +293,27 @@ legend span {
   max-height: 150px;
   display: flex;
   padding: 15px;
+  position: relative;
+  cursor: pointer;
 }
 
-.coordonneesDiv {
+.coordonneesArrow{
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.is-closed .coordonneesArrow{
+  transform: rotate(180deg);
+}
+
+.coordonneesLinkContainer {
   border-bottom: 5px solid;
   border-color: #6EC1E4;
   background-color: #fff;
 }
 
-.coordonneesDivLight {
+.coordonneesLinkContainerLight {
   border-bottom: 5px solid;
   border-color: #c9c4c4;
   background-color: #EDEDED;

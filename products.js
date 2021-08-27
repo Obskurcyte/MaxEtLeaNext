@@ -66,6 +66,16 @@ export const products = [
     slug: "tour-arc-en-ciel",
     __typename: "SimpleProduct",
     image: "/tour-top.webp"
+  },
+  {
+    description: null,
+    id: "17693",
+    name: "Livre Kako",
+    price: "9.90",
+    priceAugmente: "12.90",
+    slug: "livre-kako",
+    __typename: "SimpleProduct",
+    image: "/MaxAndLea-Livre-Kako-Ouvert.webp"
   }
 ]
 

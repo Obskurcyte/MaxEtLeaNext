@@ -167,7 +167,11 @@ const CardHoverItem = ({item}) => {
             <div className="flex-column w-50">
               <p className={styles.itemName}>{item.name}</p>
               <div className="quantityContainer flex justify-content-between w-100">
-                <p>{productCount} x {item.price}</p>
+              <p className="qtyProducts">x{productCount}</p>
+                <div>
+                  <p className="itemPrixBarre">{item.oldPrice ? `${parseFloat(item.oldPrice).toFixed(2)}€` : ''}</p>
+                  <p>{parseFloat(item.price).toFixed(2)}€</p>
+                </div>
                 <td className="croix ml-4"><div className="croix itemsuppr" onClick={(e) => handleRemoveProduct(e, item.productId)}><i className="far fa-times-circle"></i></div></td>
               </div>
             </div>
