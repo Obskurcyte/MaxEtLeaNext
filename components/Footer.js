@@ -71,8 +71,8 @@ const Footer = () => {
               >
                 <DialogContent>
                   <div className="arbresDialogContainer">
-                    <h5>257 {t("Forest.1")}</h5>
-                    <p>{t("Forest.2")}( {t("avis.portugal")} <img src="/portugal-flag.webp"></img> )</p>
+                    <h5 className="forestTitle">257 {t("Forest.1")}</h5>
+                    <p className="forestSubTitle">{t("Forest.2")}( {t("avis.portugal")} <img src="/portugal-flag.webp"></img> )</p>
                     <hr />
                       <p style={{textAlign: 'center'}}>{t("Forest.3")}</p>
                     <div className="beneficesContainer">

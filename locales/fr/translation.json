@@ -5,7 +5,9 @@
   "products":{
     "xylo" : "Xylophone",
     "tour" : "Tour arc-en-ciel",
-    "playboard" : "Playboard",
+    "playboard" : "La Playboard",
+    "kako" : "Livre Kako",
+    "ebooks" : "Ebooks Playboard",
     "cart": "Ajouter au panier",
     "savoir": "Voir plus →"
   },

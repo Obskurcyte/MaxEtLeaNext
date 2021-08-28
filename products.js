@@ -5,8 +5,7 @@ export const products = [
     name: "Xylophone",
     price: "17.90",
     priceAugmente: "21.90",
-    slug: "xylophone",
-    __typename: "SimpleProduct",
+    slug: "xylo",
     image: "/Xylo-OmbrageSansFond.webp"
   },
   {
@@ -15,8 +14,7 @@ export const products = [
     name: "Tour Arc en ciel",
     price: "14.90",
     priceAugmente: "19.90",
-    slug: "tour-arc-en-ciel",
-    __typename: "SimpleProduct",
+    slug: "tour",
     image: "/tour-top.webp"
   },
   {
@@ -25,8 +23,7 @@ export const products = [
     name: "La PlayBoard",
     price: "29.90",
     priceAugmente: "49.90",
-    slug: "play-board",
-    __typename: "SimpleProduct",
+    slug: "playboard",
     image: "/PLAYBOARD-ombresSansFond.webp"
   },
   {
@@ -34,8 +31,8 @@ export const products = [
     id: "17014",
     name: "Ebook Playboard",
     price: "9.90",
-    slug: "ebook-playboard",
-    __typename: "SimpleProduct",
+    priceAugmente: "12.90",
+    slug: "ebooks",
     image: "/kako.png"
   },
   {
@@ -43,8 +40,7 @@ export const products = [
     id: "17011",
     name: "Livre Kako",
     price: "12.90",
-    slug: "livre-kako",
-    __typename: "SimpleProduct",
+    slug: "kako",
     image: "/MaxAndLea-Livre-Kako-Ouvert.webp"
   },
   {
@@ -53,8 +49,7 @@ export const products = [
     name: "Xylophone",
     price: "12.90",
     priceAugmente: "21.90",
-    slug: "xylophone",
-    __typename: "SimpleProduct",
+    slug: "xylo",
     image: "/Xylo-OmbrageSansFond.webp"
   },
   {
@@ -63,8 +58,7 @@ export const products = [
     name: "Tour Arc en ciel",
     price: "9.90",
     priceAugmente: "19.90",
-    slug: "tour-arc-en-ciel",
-    __typename: "SimpleProduct",
+    slug: "tour",
     image: "/tour-top.webp"
   },
   {
@@ -73,8 +67,7 @@ export const products = [
     name: "Livre Kako",
     price: "9.90",
     priceAugmente: "12.90",
-    slug: "livre-kako",
-    __typename: "SimpleProduct",
+    slug: "kako",
     image: "/MaxAndLea-Livre-Kako-Ouvert.webp"
   }
 ]

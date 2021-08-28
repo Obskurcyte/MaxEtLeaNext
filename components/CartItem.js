@@ -3,13 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import * as productAction from "../store/actions/product";
 import { AppContext } from "./context/AppContext";
 import * as productFile from "../products";
-
+import { useTranslation } from "react-i18next";
+import Link from 'next/link';
 
 const CartItem = ({ item }) => {
 
   const [cart, setCart] = useContext(AppContext)
 
   const products = productFile.products
+
+  const { t, i18n } = useTranslation();
 
   const changeCartProductsExtraDiscounts = () => {
     let existingCart = localStorage.getItem('woo-next-cart');
@@ -172,6 +175,7 @@ const CartItem = ({ item }) => {
       price: productPrice,
       qty: qty,
       image: product.image,
+      slug: product.slug,
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };
@@ -291,13 +295,13 @@ const CartItem = ({ item }) => {
         </span>
 
         <div className="imgContainerCart">
-          <img src={item.image} className="cart-image" alt="" />
+          <Link href={item.slug== "ebooks" ? "/playboard" : "/"+item.slug}><a><img src={item.image} className="cart-image" alt="" /></a></Link>
         </div>
 
         <div className="prixDescriptionContainer">
 
           <div className="descriptionProduit">
-            <p className="descriptionProduitText">{item.name}</p>
+            <Link href={item.slug== "ebooks" ? "/playboard" : "/"+item.slug}><a><p className="descriptionProduitText">{t("products."+item.slug)}</p></a></Link>
           </div>
           <div className="nameAndQty">
             <div className="input-quantity">

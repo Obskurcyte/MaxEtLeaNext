@@ -31,6 +31,11 @@
   color : #6EC1E4 !important;
 }
 
+.arbresDialogSuperContainer{
+  width: 500px;
+  max-width: 80%;
+}
+
 .arbresDialogContainer h5{
   color: #91BB1F;
   font-size: 35px;
@@ -40,13 +45,25 @@
   color : #3f3f3f;
 }
 
+.forestTitle{
+ text-align: center;
+ width: 440px;
+ max-width: 100%;
+}
+
+.forestSubTitle{
+  margin: auto;
+  max-width: 270px;
+  text-align: center;
+}
+
 .copyright {
   color: #6EC1E4;
   font-size: 12px;
 }
 
 .arbresRow h5 {
-  font-size: 25px;
+  font-size: 21px;
 }
 
 .arbresButtonClose {

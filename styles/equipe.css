@@ -86,8 +86,23 @@
 }
 
 @media (max-width: 767px){
+  .colequipe{
+    width: 50% !important;
+  }
   .equipeContainer{
     background-position: center center;
     background-size: cover;
+  }
+  .equipeDescriptionContainer p{
+    font-size: 12px;
+  }
+  .equipeDescriptionContainer h5{
+    font-size: 19px;
+  }
+  .imgPresentationContainer img{
+    max-width: 90px;
+  }
+  .imgPresentationContainer{
+    max-width: 100%;
   }
 }

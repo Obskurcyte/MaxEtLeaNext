@@ -151,7 +151,6 @@
   width: 20px;
   height: 20px;
   border-radius: 14px;
-  background-color: #00b2cc;
   align-items: center;
   position: absolute;
   padding-left: 15px;
@@ -167,6 +166,9 @@
   font-weight: 500;
   font-family: "Roboto", sans-serif;
   text-align: center;
+  padding: 5px 8px;
+  border-radius: 15px;
+  background-color: #6bbcdf;
 }
 
 

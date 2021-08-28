@@ -33,10 +33,13 @@ const CardHoverItem = ({item}) => {
 
   const createNewProduct = (product, productPrice, qty) => {
     return {
-      productId: product.productId,
+      productId: product.id,
+      oldPrice: product.priceAugmente,
       name: product.name,
       price: productPrice,
       qty: qty,
+      image: product.image,
+      slug: product.slug,
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };
@@ -162,10 +165,10 @@ const CardHoverItem = ({item}) => {
     <React.Fragment>
         <div className={styles.innerContainer}>
           <div className={styles.imageContainer}>
-            <img src={item.image} alt="product-image" className={styles.image}/>
+          <Link href={item.slug== "ebooks" ? "/playboard" : "/"+item.slug}><a><img src={item.image} alt="product-image" className={styles.image}/></a></Link>
           </div>
             <div className="flex-column w-50">
-              <p className={styles.itemName}>{item.name}</p>
+            <Link href={item.slug== "ebooks" ? "/playboard" : "/"+item.slug}><a><p className={styles.itemName}>{item.name}</p></a></Link>
               <div className="quantityContainer flex justify-content-between w-100">
               <p className="qtyProducts">x{productCount}</p>
                 <div>

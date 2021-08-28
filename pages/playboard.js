@@ -112,6 +112,7 @@ const PlayBoardScreen = props => {
       price: productPrice,
       qty: qty,
       image: product.image,
+      slug: product.slug,
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };

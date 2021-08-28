@@ -396,7 +396,6 @@ const CheckoutScreen = props => {
   };
 
   const createNewProduct = (product, productPrice, qty) => {
-
     return {
       productId: product.id,
       oldPrice: product.priceAugmente,
@@ -404,6 +403,7 @@ const CheckoutScreen = props => {
       price: productPrice,
       qty: qty,
       image: product.image,
+      slug: product.slug,
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };
@@ -1203,6 +1203,7 @@ const CheckoutScreen = props => {
     }
   }
 
+  let ebookReducPrice = 0
   let ebookInCart = []
   if (cart) {
     const ebook = cart.products.filter(obj => {
@@ -1210,6 +1211,7 @@ const CheckoutScreen = props => {
     })
     if (ebook.length !== 0) {
       ebookInCart = ebook[0].qty
+      ebookReducPrice = Number((ebook[0].qty * (products[3].priceAugmente - products[3].price)).toFixed(2))
     }
   }
 
@@ -1336,6 +1338,8 @@ const CheckoutScreen = props => {
     totalDiscount += parseFloat(tourReducPrice);
   if (xyloReducPrice)
     totalDiscount += parseFloat(xyloReducPrice);
+  if (ebookReducPrice)
+    totalDiscount += parseFloat(ebookReducPrice);
   if (playboardReducPrice)
     totalDiscount += parseFloat(playboardReducPrice);
   if (discountPanier)
@@ -1522,6 +1526,15 @@ const CheckoutScreen = props => {
                     </div>
 
                     <div>
+                      {ebookInCart.length !== 0 && (
+                        <div className="prix-reduc-container">
+                          <p className="sousTotalText">Discount ebook</p>
+                          <p className="itemTotalPrice">{ebookReducPrice} €</p>
+                        </div>
+                      )}
+                    </div>
+
+                    <div>
                       {qtyTotale === 2 && (
                         <div className="prix-reduc-container">
                           <p className="sousTotalText">{t("Checkout.12")}</p>
@@ -1660,8 +1673,9 @@ const CheckoutScreen = props => {
                           handleClickOpenPlayboard()
                         }}>
                           <img src="/PLAYBOARD-ombresSansFond.webp" alt="playboard" className="articleImg" />
+                        
+                        <p className="modal-know-more">{t("products.savoir")}</p>
                         </div>
-                        <Link href="/playboard"><a target="_blank"><p className="modal-know-more">{t("products.savoir")}</p></a></Link>
                       </div>
 
                       <SimpleDialogPlayboard open={openPlayboard} onClose={handleClosePlayboard} />
@@ -1689,8 +1703,9 @@ const CheckoutScreen = props => {
                           handleClickOpenXylo()
                         }}>
                           <img src="/Xylo-OmbrageSansFond.webp" alt="playboard" className="articleImg" />
+                        
+                        <p className="modal-know-more">{t("products.savoir")}</p>
                         </div>
-                        <a href="/xylophone" target="_blank"><p className="modal-know-more">{t("products.savoir")}</p></a>
 
                       </div>
                       <SimpleDialogXylo open={openXylo} onClose={handleCloseXylo} />
@@ -1718,8 +1733,9 @@ const CheckoutScreen = props => {
                           handleClickOpenTour()
                         }}>
                           <img src="/tour.png" alt="playboard" className="articleImg" />
+                        
+                        <p className="modal-know-more">{t("products.savoir")}</p>
                         </div>
-                        <a href="/tour" target="_blank"><p className="modal-know-more">{t("products.savoir")}</p></a>
                       </div>
                       <SimpleDialogTour open={openTour} onClose={handleCloseTour} />
 
@@ -1737,7 +1753,7 @@ const CheckoutScreen = props => {
               <div className="prixContainer">
                 {cart ?
                   <div>
-                    <div className="prixText">
+                    <div className="prixText"> 
                       <a href="javascript:void(0);" onClick={() => router.reload(window.location.pathname)} className={!goPaiement ? 'coordonneesLinkContainer' : 'coordonneesLinkContainerLight'}>
                         <div className={!goPaiement ? 'coordonneesDiv' : 'coordonneesDivLight'}>
                           <p className="coordonneesNum">2</p>
@@ -1747,7 +1763,7 @@ const CheckoutScreen = props => {
                           </div>
                         </div>
                       </a>
-                      <a href="javascript:void(0);" className={goPaiement ? 'coordonneesLinkContainer' : 'coordonneesLinkContainerLight'}>
+                      <a href="javascript:void(0);" className={goPaiement ? 'coordonneesLinkContainer' : 'coordonneesLinkContainerLight'} id="go-to-payment-header">
                         <div className={goPaiement ? 'coordonneesDiv' : 'coordonneesDivLight'}>
                           <p className="coordonneesNum">3</p>
                           <div>
@@ -2379,7 +2395,7 @@ const CheckoutScreen = props => {
 
 
                                 <a href="#produits-container" onClick={props.handleSubmit}>
-                                  <button className="cart-valide" type="submit" >{t("Checkout.56")}</button>
+                                  <button className="cart-valide" id="cart-valide" type="submit" >{t("Checkout.56")}</button>
                                 </a>
                               </div>
                             </form>

@@ -59,7 +59,7 @@ const HomeScreen = () => {
             <div className="row-card-home">
 
               <Card className="card-jouet card-xylo">
-                <Link href="/xylophone">
+                <Link href="/xylo">
                   <a>
                     <img src={'/Xylo-OmbrageSansFond.webp'} alt="" className="img-card" />
                   </a>

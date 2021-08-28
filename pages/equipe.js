@@ -28,7 +28,7 @@ const Equipe = () => {
 
             <div className="mainEquipeContainer">
               <div className="row">
-                <div className="col">
+                <div className="col colequipe">
                   <div className="imgPresentationContainer">
                     <img src={'/PC.jpg'} alt="" />
                   </div>
@@ -43,7 +43,7 @@ const Equipe = () => {
                   </div>
                 </div>
 
-                <div className="col">
+                <div className="col colequipe">
                   <div className="imgPresentationContainer">
                     <img src={'/Ludo.png'} alt="" />
                   </div>
@@ -59,7 +59,7 @@ const Equipe = () => {
 
                 </div>
 
-                <div className="col">
+                <div className="col colequipe">
                   <div className="imgPresentationContainer">
                     <img src={'/theo.jpg'} alt="" />
                   </div>
@@ -74,7 +74,7 @@ const Equipe = () => {
                   </div>
                 </div>
 
-                <div className="col">
+                <div className="col colequipe">
                   <div className="imgPresentationContainer">
                     <img src={'/sandrine.jpg'} alt="" />
                   </div>
