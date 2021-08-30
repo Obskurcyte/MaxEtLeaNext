@@ -355,7 +355,7 @@ const HeaderTour = (props) => {
           <div className="jouet">
             <div className="prixJouet">
               <p className="jouetName">{t("Tour.1")}</p>
-              <p className="jouetPrix">12,90€</p>
+              <p className="jouetPrix">14,90€</p>
             </div>
 
             <div className="prixReduc">

@@ -86,7 +86,7 @@ const HomeScreen = () => {
               <Card className="card-jouet card-kako">
                 <Link href="/kako">
                   <a>
-                    <img src={'/kako.png'} alt="" className="img-card" />
+                    <img src={'/kako-seul-ferme.webp'} alt="" className="img-card" />
                   </a>
                 </Link>
               </Card>

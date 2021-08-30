@@ -295,13 +295,13 @@ const CartItem = ({ item }) => {
         </span>
 
         <div className="imgContainerCart">
-          <Link href={item.slug== "ebooks" ? "/playboard" : "/"+item.slug}><a><img src={item.image} className="cart-image" alt="" /></a></Link>
+          <Link href={item.slug == "ebooks" ? "/playboard" : "/" + item.slug}><a><img src={item.image} className="cart-image" alt="" /></a></Link>
         </div>
 
         <div className="prixDescriptionContainer">
 
           <div className="descriptionProduit">
-            <Link href={item.slug== "ebooks" ? "/playboard" : "/"+item.slug}><a><p className="descriptionProduitText">{t("products."+item.slug)}</p></a></Link>
+            <Link href={item.slug == "ebooks" ? "/playboard" : "/" + item.slug}><a><p className="descriptionProduitText">{t("products." + item.slug)}</p></a></Link>
           </div>
           <div className="nameAndQty">
             <div className="input-quantity">
@@ -310,14 +310,12 @@ const CartItem = ({ item }) => {
               <button className="increase-button" style={{ color: "#e72c59" }} onClick={onIncreaseClick} target={item.productId}>+</button>
             </div>
             <div>
-              <p className="itemPrixBarre">{item.oldPrice ? `${parseFloat(item.oldPrice).toFixed(2)} €` : ''}</p>
+              <p className="itemPrixBarre">{item.oldPrice ? `${parseFloat(item.oldPrice * productCount).toFixed(2)} €` : ''}</p>
               <p className="itemPrix">{parseFloat(item.totalPrice).toFixed(2)} €</p>
             </div>
           </div>
         </div>
-
       </div>
-      
     </div>
   )
 }

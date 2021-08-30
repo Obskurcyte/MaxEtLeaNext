@@ -225,16 +225,7 @@ const XylophoneScreen = props => {
             <div className="slider-container">
               <Slider {...settings}>
                 <div>
-                  <img src={'/xylo1.jpg'} alt="" />
-                </div>
-                <div>
-                  <img src={'/xylo2.jpg'} alt="" />
-                </div>
-                <div>
-                  <img src={'/xylo3.jpg'} alt="" />
-                </div>
-                <div>
-                  <img src={'/xylo4.jpg'} alt="" />
+                  <img src={'/xylo-diapo.webp'} alt="" />
                 </div>
               </Slider>
             </div>
@@ -338,7 +329,7 @@ const XylophoneScreen = props => {
 
 
               <div className="col miniIconeContainer2">
-                <FontAwesomeIcon icon={faPalette} color="#CE51C6" className="paletteImg" />
+              <img src={'/music-icon.webp'} style={{maxHeight:"75px"}} alt="" />
                 <h5>{t("Xylo.21")}</h5>
                 <p>{t("Xylo.22")}<span>{t("Xylo.22a")}</span>{t("Xylo.22b")}<span>{t("Xylo.22c")}</span>{t("Xylo.22d")}<span>{t("Xylo.22e")}</span></p>
               </div>

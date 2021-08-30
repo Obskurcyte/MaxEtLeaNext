@@ -243,13 +243,7 @@ const KakoScreen = props => {
             <div className="slider-container">
               <Slider {...settings}>
                 <div>
-                  <img src={'/kako-seul.webp'} alt="" />
-                </div>
-                <div>
-                  <img src={'/MaxAndLea-Livre-Kako-Ouvert-1.webp'} alt="" />
-                </div>
-                <div>
-                  <img src={'/MaxAndLea-Livre-Kako-Ouvert-2.webp'} alt="" />
+                  <img src={'/kako-diapo.webp'} alt="" />
                 </div>
               </Slider>
             </div>
