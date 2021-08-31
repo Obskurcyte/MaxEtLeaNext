@@ -12,7 +12,7 @@ const XylophoneQualite = () => {
     <div className="container my-5 wola" id={styles.qualite}>
       <h1 className={styles.title}>{t("Xylo.26")}<br/>{t("Xylo.27")}</h1>
       <div className={styles.firstRow}>
-        <img src={'/qualiteXylo1.jpg'} alt=""/>
+        <img src={'/qualiteXylo1.jpg'} className={styles.imgQualite} alt=""/>
         <div className={styles.constructionRobuste}>
           <h5>{t("Xylo.28")}</h5>
           <div className={styles.list}>
@@ -62,7 +62,7 @@ const XylophoneQualite = () => {
             <p>{t("Xylo.57")}<span className="fw-bold">{t("Xylo.58")}</span>{t("Xylo.59")}<span className="fw-bold">{t("Xylo.60")}</span>{t("Xylo.61")}</p>
           </div>
         </div>
-        <img src={'/qualiteXylo2.jpg'} alt=""/>
+        <img src={'/qualiteXylo2.jpg'} className={styles.imgQualite} alt=""/>
       </div>
 
     </div>

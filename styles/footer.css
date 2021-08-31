@@ -22,24 +22,48 @@
 .footer-container a{
   color : #020101 !important;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .footer-container a:hover{
   color : #6EC1E4 !important;
 }
 
+.arbresDialogSuperContainer{
+  width: 500px;
+  max-width: 80%;
+}
+
 .arbresDialogContainer h5{
   color: #91BB1F;
   font-size: 35px;
 }
+
+.arbresDialogContainer .beneficesContainer h5{
+  color : #3f3f3f;
+}
+
+.forestTitle{
+ text-align: center;
+ width: 440px;
+ max-width: 100%;
+}
+
+.forestSubTitle{
+  margin: auto;
+  max-width: 270px;
+  text-align: center;
+}
+
 .copyright {
   color: #6EC1E4;
   font-size: 12px;
 }
 
 .arbresRow h5 {
-  font-size: 25px;
+  font-size: 21px;
 }
 
 .arbresButtonClose {
@@ -56,9 +80,17 @@
 }
 .arbresRow {
   width: 80%;
-  margin: 0 auto;
-  justify-content: space-between;
+  margin: 0px auto 15px auto;
 }
+
+.arbresRow img{
+  margin-right: 10px;
+}
+
+.arbresRow h5{
+  text-align: left;
+}
+
 .seePage {
   color: #91BB1F !important;
   text-align: center;

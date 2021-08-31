@@ -17,7 +17,6 @@ import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 const HeaderXylophone = (props) => {
 
   const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
-  console.log(cart)
 
   const router = useRouter();
   const products = product.products
@@ -61,7 +60,6 @@ const HeaderXylophone = (props) => {
     newCart.products.push(newProduct);
     localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
     localStorage.setItem('commande-cart', JSON.stringify(newCart))
-    console.log('newCart', newCart)
     return newCart
 
   };
@@ -74,6 +72,7 @@ const HeaderXylophone = (props) => {
       price: productPrice,
       qty: qty,
       image: product.image,
+      slug: product.slug,
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };
@@ -85,9 +84,6 @@ const HeaderXylophone = (props) => {
 
       total.totalPrice = item.totalPrice;
       total.qty += item.qty;
-      console.log('total', total)
-      console.log('item', item)
-      console.log(total)
       return total;
     }
 
@@ -151,8 +147,6 @@ const HeaderXylophone = (props) => {
     if (process.browser) {
       let existingCart = localStorage.getItem('woo-next-cart');
       let commandeCart = localStorage.getItem('commande-cart');
-      console.log('clicked')
-      console.log('existingCart', existingCart)
       if (existingCart != null) {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
@@ -174,7 +168,6 @@ const HeaderXylophone = (props) => {
   const [open, setOpen] = useState(false);
 
   const lang = i18next.language;
-  console.log('cart', cart);
   const [codePromo, setCodePromo] = useState('')
   useEffect(() => {
     if (process.browser) {
@@ -237,7 +230,7 @@ const HeaderXylophone = (props) => {
   let ebookInCart = []
   if (cart) {
     const ebook = cart.products.filter(obj => {
-      return obj.productId === 'hdkfhdhfdjjJ'
+      return obj.productId === '17014'
     })
     if (ebook.length !== 0) {
       ebookInCart = ebook
@@ -259,7 +252,9 @@ const HeaderXylophone = (props) => {
   }
 
   let totalPriceIntermediaire = sumPanier - discountPanier
-  const reducCodePromo = totalPriceIntermediaire * (1 / codePromo?.amount)
+  let reducCodePromo = 0;
+  if(codePromo?.amount)
+    reducCodePromo = totalPriceIntermediaire * (1 / codePromo?.amount)
 
   let totalPrice1 = sumPanier - discountPanier - reducCodePromo
   let user = '';
@@ -267,16 +262,20 @@ const HeaderXylophone = (props) => {
   let numberOfProducts = 0;
   if (cart) {
     for (let data in cart.products) {
-      console.log(cart.products[data].qty)
       numberOfProducts += parseInt(cart.products[data].qty)
     }
   }
 
   useEffect(() => {
-    if (localStorage.getItem('userName')) {
-      user = localStorage.getItem('userName');
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const setLangFromStorage = async () => {
+      await delay(50);
+      if (localStorage.getItem('lang')) {
+        handleClose(localStorage.getItem('lang'))
+      }
     }
-  })
+    setLangFromStorage()
+  }, []);
 
 
   const productCount = (null !== cart && Object.keys(cart).length) ? cart.totalProductCount : '';
@@ -284,16 +283,19 @@ const HeaderXylophone = (props) => {
 
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const drapeau = useSelector(state => state.drapeau.drapeau)
 
+  const dispatch = useDispatch()
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const dispatch = useDispatch()
-  const drapeau = useSelector(state => state.drapeau.drapeau)
+  const handleCloseOutside = () => {
+    i18n.changeLanguage(lang).then(() => setAnchorEl(null))
+  };
 
-  console.log(open)
   const handleClose = (lang) => {
+    localStorage.setItem('lang',lang)
     i18n.changeLanguage(lang).then(() => setAnchorEl(null))
     if (lang === 'fr') {
       dispatch(getDrapeau('/flagfr.png'))
@@ -337,7 +339,7 @@ const HeaderXylophone = (props) => {
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
-            onClose={handleClose}
+            onClose={handleCloseOutside}
           >
             <MenuItem onClick={() => handleClose('en')}><img src={'/flagen.png'} alt="" /></MenuItem>
             <MenuItem onClick={() => handleClose('es')}><img src={'/flages.png'} alt="" /></MenuItem>

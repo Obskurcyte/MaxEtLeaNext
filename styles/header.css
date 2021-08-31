@@ -151,7 +151,6 @@
   width: 20px;
   height: 20px;
   border-radius: 14px;
-  background-color: #00b2cc;
   align-items: center;
   position: absolute;
   padding-left: 15px;
@@ -167,6 +166,9 @@
   font-weight: 500;
   font-family: "Roboto", sans-serif;
   text-align: center;
+  padding: 5px 8px;
+  border-radius: 15px;
+  background-color: #6bbcdf;
 }
 
 
@@ -193,11 +195,22 @@
 
 .quantityContainer {
   color: #d4d4d4;
-  font-weight: bold;
   font-size: 14px;
 }
 .quantityContainer p{
   margin-bottom: 0px;
+  color: #868686;
+}
+
+.quantityContainer .itemPrixBarre{
+  font-weight: 300;
+}
+
+.qtyProducts{
+  margin-top: 7px;
+  color: #868686;
+  font-size: 17px;
+  font-weight: 400;
 }
 
 .prixJouet {
@@ -209,6 +222,7 @@
   display: flex;
   flex-direction: column;
   margin-left: 15px;
+  margin-top: 10px;
 }
 
 .jouetName {
@@ -239,20 +253,23 @@
   font-weight: 400;
   font-family: "Roboto", sans-serif;
   text-align: center;
+  margin-bottom: 3px;
 }
 
 .prixBarre {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1;
   color: #adadad;
-  font-weight: 400;
+  font-weight: 500;
   font-family: "Roboto", sans-serif;
   text-align: center;
   text-decoration: line-through;
+  margin-bottom: 3px;
 }
 
 .prixReduc {
   display: flex;
+  justify-content: space-between;
 }
 
 .ajouterPanier {
@@ -333,6 +350,10 @@
 .productPrice {
   width: 40%;
   margin-top: 3.5%;
+}
+
+.linksContainer{
+  padding-top: 5px;
 }
 
 .linksContainer a{

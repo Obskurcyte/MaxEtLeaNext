@@ -7,7 +7,7 @@
 }
 
 .itemPrixBarre {
-  color: lightgrey;
+  color: #636363;
   margin-right: 10px;
   margin-bottom: 0px;
   margin-top: 3px;
@@ -50,7 +50,6 @@ table {
 .itemPrix {
   font-size: 17px;
   letter-spacing: -1px;
-  color: #11c47e;
   margin-bottom: 0;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
@@ -243,6 +242,15 @@ th {
   letter-spacing: 0px;
   font-family: "Roboto", sans-serif;
 }
+.totalDiscountText, .totalDiscountPrice{
+  font-size: 15px;
+  margin: 0.2rem;
+  letter-spacing: 0px;
+  font-weight: 700;
+  color: #11c47e;
+  font-family: "Roboto", sans-serif;
+}
+
 .itemTotalPrice {
   font-size: 15px;
   margin: 0.2rem;

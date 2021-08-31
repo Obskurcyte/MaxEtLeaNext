@@ -23,7 +23,6 @@ const Footer = () => {
     setOpen(false);
   };
 
-  console.log(open)
 
   const { t, i18n } = useTranslation();
 
@@ -32,15 +31,14 @@ const Footer = () => {
     <footer className="footer-container">
       <div className="container">
         <div className="footer-subcontainer">
-        <div class="container">
-        <div class="row">
+        <div className="container">
+        <div className="row">
           <div className="col-8 col-md-3 order-5 order-md-1 flex-column d-flex">
           <Link href="/"><a href="/"><img src={'/logogrand.webp'} alt="" className="img-footer"/></a></Link>
             <span className="copyright">Copyright © 2021 | Max And Lea</span>
             <div className="icons-social">
               <a href="https://www.facebook.com/MaxandleaToys/" target="_blank"><FontAwesomeIcon icon={faFacebookSquare} className="iconFacebook"/></a>
-              <a href="https://www.instagram.com/max.and.lea/" target="_blank" style={{marginTop: '2px'}}><FontAwesomeIcon icon={faInstagram} className="iconInstagram" href=""/></a>
-              <a href="https://www.youtube.com/channel/UCHaUOBoknhDUyNExyux9yvg/featured" target="_blank"><FontAwesomeIcon icon={faYoutubeSquare} className="iconYoutube"/></a>
+              <a href="https://www.instagram.com/max.and.lea/" target="_blank" style={{marginTop: '7px'}}><FontAwesomeIcon icon={faInstagram} className="iconInstagram" href=""/></a>
             </div>
           </div>
           <div className="col-6 col-md-3 order-2 order-md-2 my-auto flex-column d-flex phone-none">
@@ -73,10 +71,10 @@ const Footer = () => {
               >
                 <DialogContent>
                   <div className="arbresDialogContainer">
-                    <h5>257 {t("Forest.1")}</h5>
-                    <p>{t("Forest.2")}( {t("avis.portugal")} <img src="/portugal-flag.webp"></img> )</p>
+                    <h5 className="forestTitle">257 {t("Forest.1")}</h5>
+                    <p className="forestSubTitle">{t("Forest.2")}( {t("avis.portugal")} <img src="/portugal-flag.webp"></img> )</p>
                     <hr />
-                      <p>{t("Forest.3")}</p>
+                      <p style={{textAlign: 'center'}}>{t("Forest.3")}</p>
                     <div className="beneficesContainer">
                       <div className="arbresRow">
                             <div>
@@ -118,7 +116,7 @@ const Footer = () => {
                         </div>
                       </div>
 
-                      <p style={{textAlign: 'center', fontSize: '12px'}}>{t("Forest.12")}</p>
+                      <p style={{textAlign: 'center', fontSize: '12px',margin:'0px'}}>{t("Forest.12")}</p>
                       <a href="https://www.reforestaction.com/en/max-lea" target="_blank" className="seePage"><p>{t("Forest.13")}</p></a>
                     </div>
                     <button className="arbresButtonClose" onClick={() => handleClose()}>x</button>

@@ -47,9 +47,12 @@ const PourquoiLesEnfantsJouent = () => {
   const createNewProduct = (product, productPrice, qty) => {
     return {
       productId: product.id,
+      oldPrice: product.priceAugmente,
       name: product.name,
       price: productPrice,
       qty: qty,
+      image: product.image,
+      slug: product.slug,
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };

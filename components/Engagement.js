@@ -22,7 +22,7 @@ const Engagement = () => {
         </div>
         <div className="col" style={{minWidth: '170px'}}>
           <div>
-            <img src={'/eco-label.png'} alt="" className={styles.imageGaranties}/>
+            <img src={'/eco-icon.webp'} alt="" className={styles.imageGaranties}/>
           </div>
           <h3 className={styles.garantiesUndertitle}>{t("Engagement.4")}</h3>
           <p className={styles.garantiesParagraph}>{t("Engagement.5")}</p>
@@ -36,7 +36,7 @@ const Engagement = () => {
         </div>
         <div className="col" style={{minWidth: '170px'}}>
           <div>
-            <img src={'/ellipse2.png'} alt="" className={styles.imageGaranties}/>
+            <img src={'/smile-icon.webp'} alt="" className={styles.imageGaranties}/>
           </div>
           <h3 className={styles.garantiesUndertitle}>{t("Engagement.8")}</h3>
           <p className={styles.garantiesParagraph}>{t("Engagement.9")}</p>

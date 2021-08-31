@@ -24,18 +24,22 @@ const ContactScreen = props => {
         <title>Max And Lea - Contact</title>
       </Head>
       <Header />
-      <div className="contact">
-        <h1 className="contact-us">{t("Contact.1")}</h1>
-      </div>
-      <iframe
-        width="740"
-        height="705"
-        src="https://b31d5692.sibforms.com/serve/MUIEALeHloHr3oeQjJIdOnstS0X8NDMtM-xNZD3ttoNXRLBnsiFHQI_rp3gSIZ52m3iYdfobk4K6mdMVdnf9FLmpc4kKT-tlHrc658CrAAW1Jgq2Ve86sWuMviHukCkg3K6CzBlKVPi5uf0-nmIpPi8uv_l2qzUoAZqKl6CF_4DDDZZKTO60iZ95YOPEl4v0K6MWPCmD6xdWCUBK"
-        frameBorder="0"
-        scrolling="auto"
-        allowFullScreen
+      <div className="page-supercontainer">
+        <div className="contact">
+          <h1 className="contact-us">{t("Contact.1")}</h1>
+        </div>
+        <div className="contact-form-container">
+        <iframe 
+        width="540" 
+        height="785" 
+        src="https://b31d5692.sibforms.com/serve/MUIEAGfa8jbmh8CmjZAXZ-wJ0wdyNRxDzcNr7oStVQ-5JMx3DnOqSfKNYZF-Q2HFH5MZkZFL_1E2_JnpVwFUJREeKXB9cp14fUmENgzvyHjLhaDgC5PFMJg1fNhgQfFBk9OzQyZYahV9m4dzpMAtzq_YpDnETyLFw_a_lh7qECfDb5aqT1JjFqGGAgB5YcXdVda9IpU4qI_VWxSB" 
+        frameborder="0" 
+        scrolling="auto" 
+        allowfullscreen 
         style={{display:"block", marginLeft: "auto", marginRight: "auto",maxWidth:"100%", marginBottom: "20px" }} >
-      </iframe>
+        </iframe>
+        </div>
+      </div>
       <Footer />
     </div>
 

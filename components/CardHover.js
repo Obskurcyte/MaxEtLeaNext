@@ -9,7 +9,6 @@ import {useTranslation} from "react-i18next";
 const CardHoverItem = ({item}) => {
 
   const [cart, setCart] = useContext(AppContext);
-  console.log('cart', cart)
 
   const getFloatVal = (string) => {
     let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
@@ -34,10 +33,13 @@ const CardHoverItem = ({item}) => {
 
   const createNewProduct = (product, productPrice, qty) => {
     return {
-      productId: product.productId,
+      productId: product.id,
+      oldPrice: product.priceAugmente,
       name: product.name,
       price: productPrice,
       qty: qty,
+      image: product.image,
+      slug: product.slug,
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };
@@ -48,9 +50,6 @@ const CardHoverItem = ({item}) => {
 
       total.totalPrice += item.totalPrice;
       total.qty += item.qty;
-      console.log('total', total)
-      console.log('item', item)
-      console.log(total)
       return total;
     }
 
@@ -67,7 +66,6 @@ const CardHoverItem = ({item}) => {
     return updatedCart
   };
 
-  console.log(cart)
 
   /**
    * Get updated products array
@@ -110,13 +108,11 @@ const CardHoverItem = ({item}) => {
 
 
 
-  console.log('item', item)
   const [productCount, setProductCount] = useState(item.qty);
 
   const handleQtyChange = (event) => {
     if (process.browser) {
       const newQty = event.target.value
-      console.log('new Qty', newQty)
       setProductCount(newQty)
 
       let existingCart = localStorage.getItem('woo-next-cart');
@@ -133,19 +129,13 @@ const CardHoverItem = ({item}) => {
 
     let existingCart = localStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart);
-    console.log('existing', existingCart)
-
-    console.log('existing products' ,existingCart.products.length)
     if (1 === existingCart.products.length) {
       localStorage.removeItem('woo-next-cart')
       return null;
     }
 
     const productExistIndex = isProductInCart(existingCart.products, productId);
-
-    console.log('product exist index', productExistIndex)
-
-    console.log('product', existingCart.products)
+    
     if (-1 < productExistIndex) {
       const productToBeRemoved = existingCart.products[productExistIndex];
       const qtyTBeRemovedFromTotal = productToBeRemoved.qty;
@@ -175,13 +165,17 @@ const CardHoverItem = ({item}) => {
     <React.Fragment>
         <div className={styles.innerContainer}>
           <div className={styles.imageContainer}>
-            <img src={item.image} alt="product-image" className={styles.image}/>
+          <Link href={item.slug== "ebooks" ? "/playboard" : "/"+item.slug}><a><img src={item.image} alt="product-image" className={styles.image}/></a></Link>
           </div>
             <div className="flex-column w-50">
-              <p className={styles.itemName}>{item.name}</p>
+            <Link href={item.slug== "ebooks" ? "/playboard" : "/"+item.slug}><a><p className={styles.itemName}>{item.name}</p></a></Link>
               <div className="quantityContainer flex justify-content-between w-100">
-                <p>{productCount} x {item.price}</p>
-                <td className="croix ml-4"><div className="croix itemsuppr" onClick={(e) => handleRemoveProduct(e, item.productId)}><i class="far fa-times-circle"></i></div></td>
+              <p className="qtyProducts">x{productCount}</p>
+                <div>
+                  <p className="itemPrixBarre">{item.oldPrice ? `${parseFloat(item.oldPrice).toFixed(2)}€` : ''}</p>
+                  <p>{parseFloat(item.price).toFixed(2)}€</p>
+                </div>
+                <td className="croix ml-4"><div className="croix itemsuppr" onClick={(e) => handleRemoveProduct(e, item.productId)}><i className="far fa-times-circle"></i></div></td>
               </div>
             </div>
           <hr/>
@@ -286,7 +280,7 @@ const CardHover = () => {
   let ebookInCart = []
   if (cart) {
     const ebook = cart.products.filter(obj => {
-      return obj.productId === 'hdkfhdhfdjjJ'
+      return obj.productId === '17014'
     })
     if (ebook.length !== 0) {
       ebookInCart = ebook

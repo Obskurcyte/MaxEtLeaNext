@@ -46,6 +46,21 @@
   box-shadow: inset 5000px 0 0 0 rgb(255 255 255 / 85%);
 }
 
+.card-blog-list-container .card-title{
+  color: black;
+}
+
+.card-blog-list-container .card-text{
+  font-size: 16px;
+}
+
+.card-blog-list-container h2{
+  color: black;
+}
+
+.card-blog-list-container .paragraph-math{
+  font-size: 16px;
+}
 
 .read-more-button {
   color: #ffffff!important;

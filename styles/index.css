@@ -69,9 +69,9 @@ body {
 }
 
 .card-kako .img-card{
-  margin: 0px auto 0px auto;
-  max-width: 390px;
-  width:90%;
+  margin: 45px 0px 0px 30px;
+  max-width: 250px;
+  width:70%;
 }
 
 .card-jouet {
@@ -732,6 +732,9 @@ body {
   }
   .account-shopping {
     width: 20%;
+  }
+  .card-kako .img-card{
+    max-width: 195px;
   }
 }
 

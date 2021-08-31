@@ -2,8 +2,11 @@ import React from 'react';
 import styles from './Recommande.module.css';
 import Slider from "react-slick";
 import Link from "next/link";
+import {useTranslation} from "react-i18next";
 
 const Recommande = () => {
+
+  const { t, i18n } = useTranslation();
 
   var settings = {
     dots: true,
@@ -40,9 +43,9 @@ const Recommande = () => {
               <img src={"/Je-suis-Papa.jpg"} alt="" className={styles.avatarImg}/>
             </div>
             <div>
-              <p className={styles.title}>Je suis Papa​</p>
-              <p className={styles.subtitle}>Blogueur et Papa</p>
-              <p className={styles.description}>« Avec ses jolis dégradés de couleurs, la PlayBoard est idéale pour découvrir les couleurs, les chiffres, les formes et bien d’autres jeux d’éveil. »</p>
+              <p className={styles.title}>{t("Recommande.1")}</p>
+              <p className={styles.subtitle}>{t("Recommande.2")}</p>
+              <p className={styles.description}>{t("Recommande.3")}</p>
             </div>
           </div>
           <div className={styles.avisInnerContainer}>
@@ -50,9 +53,9 @@ const Recommande = () => {
               <img src={"/maman-plume.png"} alt="" className={styles.avatarImg}/>
             </div>
             <div>
-              <p className={styles.title}>Maman Plume</p>
-              <p className={styles.subtitle}>Blogueuse et Maman</p>
-              <p className={styles.description}>« Mon avis de Maman : Un gros coup de coeur pour la PlayBoard. Un jeu super complet, qui à lui seul, contient 8 jeux ludiques.Bébé adore et Maman aussi ! »</p>
+              <p className={styles.title}>{t("Recommande.4")}</p>
+              <p className={styles.subtitle}>{t("Recommande.5")}</p>
+              <p className={styles.description}>{t("Recommande.6")}</p>
             </div>
           </div>
           <div className={styles.avisInnerContainer}>
@@ -60,9 +63,9 @@ const Recommande = () => {
               <img src={"/aounZoom.png"} alt="" className={styles.avatarImg}/>
             </div>
             <div>
-              <p className={styles.title}>Dr. Julia AOUN</p>
-              <p className={styles.subtitle}>Pediatre et Maman</p>
-              <p className={styles.description}>« La PlayBoard est un jouet éducatif, ludique et écologique très complet qui commence du plus jeune âge jusqu’aux plus grands. Ce jouet permet le développement de la motricité fine et de la coordination avec un principe que je recommande : zéro-écran et zero-plastique. »</p>
+              <p className={styles.title}>{t("Recommande.7")}</p>
+              <p className={styles.subtitle}>{t("Recommande.8")}</p>
+              <p className={styles.description}>{t("Recommande.9")}</p>
             </div>
           </div>
           <div className={styles.avisInnerContainer}>
@@ -70,9 +73,9 @@ const Recommande = () => {
               <img src={"/Angelique.jpg"} alt="" className={styles.avatarImg}/>
             </div>
             <div>
-              <p className={styles.title}>Angélique KOSINSKI-CIMELIERE</p>
-              <p className={styles.subtitle}>Psychologue <br></br> & Psychomotricienne - <br></br>Spécialiste de la petite enfance</p>
-              <p className={styles.description}>« La PlayBoard de Max & Lea est l’outil idéal pour stimuler les fonctions cognitives de l’enfant. »</p>
+              <p className={styles.title}>{t("Recommande.10")}</p>
+              <p className={styles.subtitle}>{t("Recommande.11")} <br></br> {t("Recommande.12")} - <br></br>{t("Recommande.13")}</p>
+              <p className={styles.description}>{t("Recommande.14")}</p>
             </div>
           </div>
           <div className={styles.avisInnerContainer}>
@@ -80,9 +83,9 @@ const Recommande = () => {
               <img src={"/Babadins.jpg"} alt="" className={styles.avatarImg}/>
             </div>
             <div>
-              <p className={styles.title}>Les ptits Babadins</p>
-              <p className={styles.subtitle}>Réseau de 80 micro-crèches en France</p>
-              <p className={styles.description}>« Un superbe jouet pour favoriser l’éveil des tous petits et des plus grands. »</p>
+              <p className={styles.title}>{t("Recommande.15")}</p>
+              <p className={styles.subtitle}>{t("Recommande.16")}</p>
+              <p className={styles.description}>{t("Recommande.17")}</p>
             </div>
           </div>
           <div className={styles.avisInnerContainer}>
@@ -90,9 +93,9 @@ const Recommande = () => {
               <img src={"/Julia-Kobus.jpg"} alt="" className={styles.avatarImg}/>
             </div>
             <div>
-              <p className={styles.title}>Julia Kobus</p>
-              <p className={styles.subtitle}>Blogueuse et Maman</p>
-              <p className={styles.description}>« J’aime beaucoup la PlayBoard. C’est un jouet 8 en 1 idéal de 1 à 6 ans : calcul, couleurs, dégradés de couleur, éveil, animaux, formes, coordination et nombre. »</p>
+              <p className={styles.title}>{t("Recommande.18")}</p>
+              <p className={styles.subtitle}>{t("Recommande.19")}</p>
+              <p className={styles.description}>{t("Recommande.20")}</p>
             </div>
           </div>
       </Slider>

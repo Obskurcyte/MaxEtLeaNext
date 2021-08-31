@@ -48,9 +48,12 @@ const MusiquesEtJeunesEnfants = () => {
   const createNewProduct = (product, productPrice, qty) => {
     return {
       productId: product.id,
+      oldPrice: product.priceAugmente,
       name: product.name,
       price: productPrice,
       qty: qty,
+      image: product.image,
+      slug: product.slug,
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };
@@ -261,7 +264,7 @@ const MusiquesEtJeunesEnfants = () => {
 
               <Col sm={4} md={4} lg={4} xl={4} className="col-card">
                 <Card className="card-list-container">
-                  <Link href='/playboard'>
+                  <Link href='/xylo'>
                     <Card.Img src={products[0].image} variant="top" className="math-image" />
                   </Link>
                   <Card.Body className="card-body">

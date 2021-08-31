@@ -85,7 +85,7 @@ const Header = (props) => {
   let ebookInCart = []
   if (cart) {
     const ebook = cart.products.filter(obj => {
-      return obj.productId === 'hdkfhdhfdjjJ'
+      return obj.productId === '17014'
     })
     if (ebook.length !== 0) {
       ebookInCart = ebook
@@ -124,16 +124,20 @@ const Header = (props) => {
   let numberOfProducts = 0;
   if (cart) {
     for (let data in cart.products) {
-      console.log(cart.products[data].qty)
       numberOfProducts += parseInt(cart.products[data].qty)
     }
   }
 
   useEffect(() => {
-    if (localStorage.getItem('userName')) {
-      user = localStorage.getItem('userName');
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const setLangFromStorage = async () => {
+      await delay(50);
+      if (localStorage.getItem('lang')) {
+        handleClose(localStorage.getItem('lang'))
+      }
     }
-  })
+    setLangFromStorage()
+  }, []);
 
   const drapeau = useSelector(state => state.drapeau.drapeau)
 
@@ -141,12 +145,6 @@ const Header = (props) => {
 
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-
-  /*useEffect(() => {
-    window.addEventListener("click", (event){
-      var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
-    });
-  });*/
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -157,6 +155,7 @@ const Header = (props) => {
   };
 
   const handleClose = (lang) => {
+    localStorage.setItem('lang',lang)
     i18n.changeLanguage(lang).then(() => setAnchorEl(null))
     if (lang === 'fr') {
       dispatch(getDrapeau('/flagfr.png'))
@@ -195,7 +194,7 @@ const Header = (props) => {
           <div className="linksContainer">
             <Link href="/">Home</Link>
             <Link href="/about">{t("Footer.1")}</Link>
-            <Link href="/contact">{t("Footer.4")}</Link>
+            <Link href="/contact">{t("Footer.contact")}</Link>
             <Link href="/blogs">{t("Footer.3")}</Link>
           </div>
 

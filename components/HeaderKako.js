@@ -16,9 +16,7 @@ import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
 
 const HeaderKako = (props) => {
 
-  console.log(product)
   const [cart, setCart, commandeCart, setCommandeCart] = useContext(AppContext);
-  console.log(cart)
 
   const router = useRouter()
   const products = product.products
@@ -29,7 +27,7 @@ const HeaderKako = (props) => {
   let valueCount = 1;
 
   const onIncreaseClick = () => {
-    valueCount ++;
+    valueCount++;
     document.querySelector('.change-quantity').value = valueCount;
   }
 
@@ -37,14 +35,14 @@ const HeaderKako = (props) => {
     if (valueCount === 1) {
       return;
     } else {
-      valueCount --;
+      valueCount--;
       document.querySelector('.change-quantity').value = valueCount;
     }
   }
 
   const getFloatVal = (string) => {
     let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
-    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)): '';
+    return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)) : '';
   };
 
   const addFirstProduct = (product) => {
@@ -60,7 +58,6 @@ const HeaderKako = (props) => {
     newCart.products.push(newProduct);
     localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
     localStorage.setItem('commande-cart', JSON.stringify(newCart))
-    console.log('newCart', newCart)
     return newCart
 
   };
@@ -68,10 +65,12 @@ const HeaderKako = (props) => {
   const createNewProduct = (product, productPrice, qty) => {
     return {
       productId: product.id,
+      oldPrice: product.priceAugmente,
       name: product.name,
       price: productPrice,
       qty: qty,
       image: product.image,
+      slug: product.slug,
       totalPrice: parseFloat((productPrice * qty).toFixed(2))
     }
   };
@@ -83,14 +82,11 @@ const HeaderKako = (props) => {
 
       total.totalPrice = item.totalPrice;
       total.qty += item.qty;
-      console.log('total', total)
-      console.log('item', item)
-      console.log(total)
       return total;
     }
 
     // Loop through the updated product array and add the totalPrice of each item to get the totalPrice
-    let total = updatedProducts.reduce(addPrice, {totalPrice: 0, qty: 0})
+    let total = updatedProducts.reduce(addPrice, { totalPrice: 0, qty: 0 })
 
     const updatedCart = {
       products: updatedProducts,
@@ -118,7 +114,7 @@ const HeaderKako = (props) => {
    */
 
 
-  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty=false) => {
+  const getUpdatedProducts = (existingProductsInCart, product, qtyToBeAdded, newQty = false) => {
     const productExistsIndex = isProductInCart(existingProductsInCart, products[4].id);
 
     if (-1 < productExistsIndex) {
@@ -153,9 +149,7 @@ const HeaderKako = (props) => {
     if (process.browser) {
       let existingCart = localStorage.getItem('woo-next-cart');
       let commandeCart = localStorage.getItem('commande-cart');
-      console.log('clicked')
-      console.log('existingCart', existingCart)
-      if (existingCart!=null) {
+      if (existingCart != null) {
         commandeCart = JSON.parse(commandeCart)
         existingCart = JSON.parse(existingCart)
         const qtyToBeAdded = 1
@@ -176,38 +170,136 @@ const HeaderKako = (props) => {
   const [open, setOpen] = useState(false);
 
   const lang = i18next.language;
-  console.log('cart', cart);
-  let totalPrice1 = 0;
+  const [codePromo, setCodePromo] = useState('')
+  useEffect(() => {
+    if (process.browser) {
+      let cartData = localStorage.getItem('livraison');
+      const trueData = JSON.parse(cartData);
+      let codePromoData = localStorage.getItem('promoCode');
+      const promoCodeData = JSON.parse(codePromoData)
+      setCodePromo(promoCodeData)
+    }
+  }, []);
+  let sumPanier = 0;
+  let totalPrice2 = 0
+  let qtyTotale = 0
   if (cart) {
     for (let data in cart.products) {
-      totalPrice1 += parseFloat(cart.products[data].totalPrice)
+      sumPanier += parseFloat(cart.products[data].totalPrice)
+      qtyTotale += parseFloat(cart.products[data].qty)
     }
   }
-  console.log(totalPrice1)
+
+
+
+  let playboardReducPrice = 0
+  let playboardInCart = []
+  if (cart) {
+    const playboard = cart.products.filter(obj => {
+      return obj.productId === '3163'
+    })
+    if (playboard.length !== 0) {
+      playboardInCart = playboard
+      playboardReducPrice = playboard[0].qty * 20
+    }
+  }
+
+  let tourReducPrice = 0
+  let tourInCart = []
+  if (cart) {
+    const tour = cart.products.filter(obj => {
+      return obj.productId === '4527'
+    })
+    if (tour.length !== 0) {
+      tourInCart = tour
+      tourReducPrice = tour[0].qty * 7
+    }
+  }
+
+
+  let xyloReducPrice = 0
+  let xyloInCart = []
+  if (cart) {
+    const xylo = cart.products.filter(obj => {
+      return obj.productId === '4535'
+    })
+    if (xylo.length !== 0) {
+      xyloInCart = xylo
+      xyloReducPrice = xylo[0].qty * 9
+    }
+  }
+
+  let ebookInCart = []
+  if (cart) {
+    const ebook = cart.products.filter(obj => {
+      return obj.productId === '17014'
+    })
+    if (ebook.length !== 0) {
+      ebookInCart = ebook
+    }
+  }
+
+  //On enlève les ebooks de la qty totale
+  if (ebookInCart.length !== 0) {
+    qtyTotale = qtyTotale - ebookInCart.length
+  }
+
+  let discountPanier = 0;
+  if (qtyTotale === 2) {
+    discountPanier = (sumPanier * 0.10).toFixed(2)
+  } else if (qtyTotale === 3) {
+    discountPanier = (sumPanier * 0.15).toFixed(2)
+  } else if (qtyTotale >= 4) {
+    discountPanier = (sumPanier * 0.20).toFixed(2)
+  }
+
+
+  let totalPriceIntermediaire = sumPanier - discountPanier
+  let reducCodePromo = 0;
+  if(codePromo?.amount)
+    reducCodePromo = totalPriceIntermediaire * (1 / codePromo?.amount)
+
+  let totalPrice1 = sumPanier - discountPanier - reducCodePromo
   let user = '';
 
-  useEffect(() => {
-    if (localStorage.getItem('userName')) {
-      user = localStorage.getItem('userName');
+
+  let numberOfProducts = 0;
+  if (cart) {
+    for (let data in cart.products) {
+      numberOfProducts += parseInt(cart.products[data].qty)
     }
-  })
+  }
+
+  useEffect(() => {
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const setLangFromStorage = async () => {
+      await delay(50);
+      if (localStorage.getItem('lang')) {
+        handleClose(localStorage.getItem('lang'))
+      }
+    }
+    setLangFromStorage()
+  }, []);
 
 
   const productCount = (null !== cart && Object.keys(cart).length) ? cart.totalProductCount : '';
-  const totalPrice = (null !== cart && Object.keys(cart).length) ? cart.totalProductsPrice: '';
+  const totalPrice = (null !== cart && Object.keys(cart).length) ? cart.totalProductsPrice : '';
 
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const drapeau = useSelector(state => state.drapeau.drapeau)
 
+  const dispatch = useDispatch();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const dispatch = useDispatch();
-  const drapeau = useSelector(state => state.drapeau.drapeau)
-
+  const handleCloseOutside = () => {
+    i18n.changeLanguage(lang).then(() => setAnchorEl(null))
+  };
 
   const handleClose = (lang) => {
+    localStorage.setItem('lang',lang)
     i18n.changeLanguage(lang).then(() => setAnchorEl(null))
     if (lang === 'fr') {
       dispatch(getDrapeau('/flagfr.png'))
@@ -251,7 +343,7 @@ const HeaderKako = (props) => {
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
-            onClose={handleClose}
+            onClose={handleCloseOutside}
           >
             <MenuItem onClick={() => handleClose('en')}><img src={'/flagen.png'} alt=""/></MenuItem>
             <MenuItem onClick={() => handleClose('es')}><img src={'/flages.png'} alt=""/></MenuItem>
