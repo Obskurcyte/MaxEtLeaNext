@@ -17,23 +17,33 @@ const TourQualite = () => {
         <div className={styles.constructionRobuste}>
           <h5>{t("Tour.28")}</h5>
           <div className={styles.list}>
-            <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
+            <div>
+              <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
+              </div>
             <p>{t("Tour.29")}<span className="fw-bold">{t("Tour.30")}</span>{t("Tour.31")}</p>
           </div>
           <div className={styles.list}>
+          <div>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
+            </div>
             <p>{t("Tour.32")}<span className="fw-bold">{t("Tour.33")}</span>{t("Tour.34")}<span className="fw-bold">{t("Tour.35")}</span></p>
           </div>
           <div className={styles.list}>
+          <div>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
+            </div>
             <p>{t("Tour.36")}<span className="fw-bold">{t("Tour.37")}</span>{t("Tour.38")}<span className="fw-bold">{t("Tour.39")}</span></p>
           </div>
           <div className={styles.list}>
+          <div>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
+            </div>
             <p>{t("Tour.40")}<span className="fw-bold">{t("Tour.41")}</span>{t("Tour.42")}</p>
           </div>
           <div className={styles.list}>
+          <div>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
+            </div>
             <p><span className="fw-bold">{t("Tour.43")}</span></p>
           </div>
         </div>
@@ -43,23 +53,33 @@ const TourQualite = () => {
         <div className={styles.constructionRobuste}>
           <h5 className={styles.finitions}>{t("Tour.44")}</h5>
           <div className={styles.list}>
+          <div>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
+            </div>
             <p>{t("Tour.45")}<span className="fw-bold">{t("Tour.46")}</span></p>
           </div>
           <div className={styles.list}>
+          <div>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
+            </div>
             <p>{t("Tour.47")}<span className="fw-bold">{t("Tour.48")}</span>{t("Tour.49")}<span className="fw-bold">{t("Tour.50")}</span></p>
           </div>
           <div className={styles.list}>
+          <div>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
+            </div>
             <p>{t("Tour.51")}<span className="fw-bold">{t("Tour.52")}</span>{t("Tour.53")}</p>
           </div>
           <div className={styles.list}>
+          <div>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
+            </div>
             <p>{t("Tour.54")}</p>
           </div>
           <div className={styles.list}>
+          <div>
             <FontAwesomeIcon icon={faCheck} color="#E72C59" className={styles.icon}/>
+            </div>
             <p>{t("Tour.55")}<span className="fw-bold">{t("Tour.56")}</span></p>
           </div>
         </div>

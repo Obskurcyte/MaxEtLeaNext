@@ -1,7 +1,6 @@
 .hoverContainer {
   position: absolute;
   left: 60%;
-  margin-top: 70px;
   width: 20%;
   max-width: 280px;
   z-index: 3;
@@ -101,15 +100,15 @@
   .hoverContainer {
     left: 65%;
     width: 30%;
-    margin-top: 40px;
   }
 }
 
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 900px){
   .hoverContainer {
     left: 63%;
     width: 40%;
+    margin-top: 10px;
   }
 }
 
@@ -133,7 +132,6 @@
   .hoverContainer {
     left: 39%;
     width: 60%;
-    margin-top: 30px;
   }
 
 }

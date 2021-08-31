@@ -16,7 +16,7 @@ const About = () => {
       </Head>
       <Header />
       <div className="bienvenue">
-        <h1 className="bienvenue-title">{t("Propos.1")}</h1>
+        <h1 className="bienvenue-title">{t("Propos.1")} <br/> {t("products.max")}</h1>
       </div>
       <main>
       <div className="container1000">
@@ -44,7 +44,7 @@ const About = () => {
         </div>
         <br></br>
         <div className="row">
-          <div className="col-sm-6">
+          <div className="col-sm-6 order-2 order-md-1">
             <div className="paragraph4">
               <p>              <img src="https://maxandlea.com/wp-content/uploads/2020/05/dot_4.svg" alt="" className="petite-photo4"/>
                 {t("Propos.10")}<span>{t("Propos.11")}</span>{t("Propos.12")}</p>
@@ -54,12 +54,12 @@ const About = () => {
                 {t("Propos.13")}<span>{t("Propos.14")}</span>{t("Propos.15")}<span>{t("Propos.16")}</span></p>
             </div>
           </div>
-          <div className="col-sm-6">
+          <div className="col-sm-6 order-1 order-md-2">
             <img src={'/internet11.webp'} alt="" className="moyenne-photo"/>
           </div>
         </div>
         <div className="card-citation container-about">
-          <div style={{display: 'flex', marginBottom: '5%'}}>
+          <div style={{display: 'flex', marginBottom: '45px'}}>
             <i className="fas fa-quote-left"/>
             <p>{t("Propos.17")}</p>
           </div>

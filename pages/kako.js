@@ -256,7 +256,7 @@ const KakoScreen = props => {
               <img src={"/bebeIcone.png"} alt="" className="img-bebe" />
             </div>
             <div className="pensee-paragraph-container">
-              <p className="pensee-paragraph">De superbes contes en Version Papier + Téléchargeables</p>
+              <p className="pensee-paragraph">8 superbes contes en Version Papier + Téléchargeables</p>
               <p className="pensee-paragraph">114 pages illustrées pour les enfants de 1 à 4 ans.</p>
             </div>
           </div>
@@ -304,7 +304,7 @@ const KakoScreen = props => {
                     <p className="question" onClick={async () => {
                       await router.push('/contact')
                     }}>Une question ? Contactez-nous</p>
-                    <p>
+                    <p className="kakoDesc">
                       ✅ Kako glisse sur la girafe 🦒<br></br>
                       ✅ Kako encourage son ami le Kangourou 🦘<br></br>
                       ✅ Kako vole sur le dos d’un Hibou 🦉<br></br>

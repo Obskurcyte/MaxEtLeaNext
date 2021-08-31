@@ -1,18 +1,18 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Nav } from 'react-bootstrap';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useTranslation } from 'react-i18next';
-import {AppContext} from "./context/AppContext";
+import { AppContext } from "./context/AppContext";
 import i18next from "i18next";
 import CardHover from "./CardHover";
 import Link from 'next/link';
 import * as product from '../products';
-import {getDrapeau} from "../store/actions/drapeau";
-import {useDispatch, useSelector} from "react-redux";
-import {useRouter} from "next/router";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faShoppingBasket} from "@fortawesome/free-solid-svg-icons";
+import { getDrapeau } from "../store/actions/drapeau";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 
 const HeaderKako = (props) => {
 
@@ -256,7 +256,7 @@ const HeaderKako = (props) => {
 
   let totalPriceIntermediaire = sumPanier - discountPanier
   let reducCodePromo = 0;
-  if(codePromo?.amount)
+  if (codePromo?.amount)
     reducCodePromo = totalPriceIntermediaire * (1 / codePromo?.amount)
 
   let totalPrice1 = sumPanier - discountPanier - reducCodePromo
@@ -274,6 +274,18 @@ const HeaderKako = (props) => {
     const delay = ms => new Promise(res => setTimeout(res, ms));
     const setLangFromStorage = async () => {
       await delay(50);
+      if (localStorage.getItem('lang')) {
+        handleClose(localStorage.getItem('lang'))
+      }
+      await delay(600);
+      if (localStorage.getItem('lang')) {
+        handleClose(localStorage.getItem('lang'))
+      }
+      await delay(1200);
+      if (localStorage.getItem('lang')) {
+        handleClose(localStorage.getItem('lang'))
+      }
+      await delay(2000);
       if (localStorage.getItem('lang')) {
         handleClose(localStorage.getItem('lang'))
       }
@@ -299,7 +311,7 @@ const HeaderKako = (props) => {
   };
 
   const handleClose = (lang) => {
-    localStorage.setItem('lang',lang)
+    localStorage.setItem('lang', lang)
     i18n.changeLanguage(lang).then(() => setAnchorEl(null))
     if (lang === 'fr') {
       dispatch(getDrapeau('/flagfr.png'))
@@ -327,12 +339,12 @@ const HeaderKako = (props) => {
       <nav className="containerHeader">
         <div className="drapeauContainer">
           <p className="langue">{lang}</p>
-          <img src={drapeau} alt="drapeau français" className="drapeauImg" onClick={handleClick}/>
+          <img src={drapeau} alt="drapeau français" className="drapeauImg" onClick={handleClick} />
         </div>
         <Nav className="navBar container">
           <div className="imgContainer">
             <Link href="/">
-            <a href="/">
+              <a href="/">
                 <img src={'/logogrand.webp'} alt="" className="imgNavbar" />
               </a>
             </Link>
@@ -345,10 +357,10 @@ const HeaderKako = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleCloseOutside}
           >
-            <MenuItem onClick={() => handleClose('en')}><img src={'/flagen.png'} alt=""/></MenuItem>
-            <MenuItem onClick={() => handleClose('es')}><img src={'/flages.png'} alt=""/></MenuItem>
-            <MenuItem onClick={() => handleClose('al')}><img src={'/flagal.png'} className="drapeauAllemand" alt=""/></MenuItem>
-            <MenuItem onClick={() => handleClose('fr')}><img src={'/flagfr.png'} alt=""/></MenuItem>
+            <MenuItem onClick={() => handleClose('en')}><img src={'/flagen.png'} alt="" /></MenuItem>
+            <MenuItem onClick={() => handleClose('es')}><img src={'/flages.png'} alt="" /></MenuItem>
+            <MenuItem onClick={() => handleClose('al')}><img src={'/flagal.png'} className="drapeauAllemand" alt="" /></MenuItem>
+            <MenuItem onClick={() => handleClose('fr')}><img src={'/flagfr.png'} alt="" /></MenuItem>
 
           </Menu>
 
@@ -369,25 +381,27 @@ const HeaderKako = (props) => {
           }}>
             <Link href="javascript:void(0)"><p className="ajouterPanierText">Ajouter au panier</p></Link>
           </div>
-          <div className="accountShopping" onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-            <Link href="/cart">
-              <Nav.Link>
+          <div className="accountShopping">
+            <div onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+              <Link href="/cart">
+                <Nav.Link>
 
-                <div className="cartWrap">
-                  <div className="productsCountContainer">
-                    <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{productCount}</span> : <span className="productCountText">0</span>}</div>
-                  </div>
-                  <div className="flex">
-                    <div className='productPrice'>
-                      {totalPrice1 ? <span className="totalPriceSpan">{totalPrice1.toFixed(2)} €</span> : <span className="totalPriceSpan">0, 00 €</span>}
+                  <div className="cartWrap">
+                    <div className="productsCountContainer">
+                      <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{productCount}</span> : <span className="productCountText">0</span>}</div>
                     </div>
-                    <FontAwesomeIcon icon={faShoppingBasket} className="shoppingCart"/>
+                    <div className="flex">
+                      <div className='productPrice'>
+                        {totalPrice1 ? <span className="totalPriceSpan">{totalPrice1.toFixed(2)} €</span> : <span className="totalPriceSpan">0, 00 €</span>}
+                      </div>
+                      <FontAwesomeIcon icon={faShoppingBasket} className="shoppingCart" />
+                    </div>
                   </div>
-                </div>
-              </Nav.Link>
+                </Nav.Link>
 
-            </Link>
-            {open && renderCart()}
+              </Link>
+              {open && renderCart()}
+            </div>
           </div>
         </Nav>
       </nav>

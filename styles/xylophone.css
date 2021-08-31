@@ -94,3 +94,22 @@
   font-weight: 300;
   letter-spacing: 1px;
 }
+
+.icone-container1-xylo-mobile{
+  display: none;
+}
+
+@media screen and (max-width: 900px){
+  .icone-mini-container span{
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .icone-container1-xylo-mobile{
+    display: block;
+  }
+  .icone-container1-xylo-computer{
+    display: none;
+  }
+}

@@ -8,7 +8,7 @@
 }
 
 .icon {
-  width: 2%;
+  width: 12px;
 }
 
 .constructionRobuste {
@@ -76,12 +76,9 @@
   .firstRow {
     flex-direction: column;
   }
-  .firstRow img {
-    width: 30%;
-    margin: 3% auto;
-  }
-  .secondRow img {
-    width: 30%;
+  .firstRow img,.secondRow img {
+    width: 80%;
+    max-width: 370px;
     margin: 3% auto;
   }
   .constructionRobuste {

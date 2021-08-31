@@ -182,7 +182,8 @@ main {
   padding: 18px 30px 18px 30px;
   border-color: #FFFFFF;
   cursor: pointer;
-  margin: 0 auto
+  margin: 0 auto;
+  text-align: center;
 }
 
 .equipe-button:hover {
@@ -245,13 +246,9 @@ main {
   .card-citation {
     padding: 5% 2%;
   }
-    .signature {
-      left: 45%;
-    }
-}
-
-
-@media screen and (max-width: 600px){
+  .signature {
+    left: 45%;
+  }
   main {
     padding: 5% 2%;
   }
@@ -261,12 +258,15 @@ main {
   .signature {
     left: 45%;
   }
+  .grande-photo {
+    margin-bottom: 25px;
+  }
+  .equipe-button {
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 450px){
-  .card-citation {
-    height: 200px;
-  }
   .signature {
     left: 35%;
   }
@@ -274,9 +274,6 @@ main {
 
 
 @media screen and (max-width: 400px){
-  .card-citation {
-    height: 220px;
-  }
   .signature {
     left: 25%;
   }

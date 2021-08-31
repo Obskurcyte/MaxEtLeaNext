@@ -277,6 +277,18 @@ const HeaderTour = (props) => {
       if (localStorage.getItem('lang')) {
         handleClose(localStorage.getItem('lang'))
       }
+      await delay(600);
+      if (localStorage.getItem('lang')) {
+        handleClose(localStorage.getItem('lang'))
+      }
+      await delay(1200);
+      if (localStorage.getItem('lang')) {
+        handleClose(localStorage.getItem('lang'))
+      }
+      await delay(2000);
+      if (localStorage.getItem('lang')) {
+        handleClose(localStorage.getItem('lang'))
+      }
     }
     setLangFromStorage()
   }, []);
@@ -378,25 +390,27 @@ const HeaderTour = (props) => {
           }}>
             <Link href="javascript:void(0)"><p className="ajouterPanierText">{t("Playboard101")}</p></Link>
           </div>
-          <div className="accountShopping" onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-            <Link href="/cart">
-              <Nav.Link>
+          <div className="accountShopping">
+            <div onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+              <Link href="/cart">
+                <Nav.Link>
 
-                <div className="cartWrap">
-                  <div className="productsCountContainer">
-                    <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{numberOfProducts}</span> : <span className="productCountText">0</span>}</div>
-                  </div>
-                  <div className="flex">
-                    <div className='productPrice'>
-                      {totalPrice1 ? <span className="totalPriceSpan">{totalPrice1.toFixed(2)} €</span> : <span className="totalPriceSpan">0, 00 €</span>}
+                  <div className="cartWrap">
+                    <div className="productsCountContainer">
+                      <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{productCount}</span> : <span className="productCountText">0</span>}</div>
                     </div>
-                    <FontAwesomeIcon icon={faShoppingBasket} className="shoppingCart" />
+                    <div className="flex">
+                      <div className='productPrice'>
+                        {totalPrice1 ? <span className="totalPriceSpan">{totalPrice1.toFixed(2)} €</span> : <span className="totalPriceSpan">0, 00 €</span>}
+                      </div>
+                      <FontAwesomeIcon icon={faShoppingBasket} className="shoppingCart" />
+                    </div>
                   </div>
-                </div>
-              </Nav.Link>
+                </Nav.Link>
 
-            </Link>
-            {open && renderCart()}
+              </Link>
+              {open && renderCart()}
+            </div>
           </div>
         </Nav>
       </nav>
