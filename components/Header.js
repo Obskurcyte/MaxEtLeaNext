@@ -129,7 +129,6 @@ const Header = (props) => {
     }
   }
 
-
   useEffect(() => {
     if (localStorage.getItem('userName')) {
       user = localStorage.getItem('userName');
