@@ -8,6 +8,15 @@
   border: 1px solid #ddd;
 }
 
+.paypalImgClicked {
+  width: 150px;
+  margin: 5% auto;
+}
+
+.paypalImg {
+  width: 150px;
+  margin: 5% auto;
+}
 .securePayment{
   padding-top: 10px;
   padding-bottom: 10px;
