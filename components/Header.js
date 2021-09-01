@@ -130,7 +130,6 @@ const Header = (props) => {
     }
   }
 
-
   useEffect(() => {
     const delay = ms => new Promise(res => setTimeout(res, ms));
     const setLangFromStorage = async () => {

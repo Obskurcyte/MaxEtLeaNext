@@ -27,6 +27,7 @@ import Typography from '@material-ui/core/Typography';
 import { blue } from '@material-ui/core/colors';
 import { date } from "yup/lib/locale";
 import {useTranslation} from "react-i18next";
+import ApplePay from "./ApplePay";
 
 const CHECKOUT_MUTATION = gql`
 mutation CHECKOUT_MUTATION( $input: CheckoutInput! ) {
@@ -467,7 +468,7 @@ const CheckoutFormStripe = ({
           name: accountholderName.value,
         },
       },
-      return_url: 'http://localhost:3000/thankyou',
+      return_url: 'http://localhost:3000/',
     });
 
     if (error) {
@@ -628,7 +629,7 @@ return (
           buttonType="buy"
         />
 
-        {/*<ApplePay totalPrice={totalPrice2}/>*/}
+        <ApplePay totalPrice={totalPrice2}/>
 
         <div className={styles.paymentMethods}>
           <div className={visaClicked ? styles.visaContainerClicked : styles.visaContainer} onClick={() => {
@@ -649,13 +650,15 @@ return (
         </div>
 
         {pays === 'BE' && (
-          <div className={bancontactClicked ? styles.banContactContainerClicked : styles.banContactContainer} onClick={() => {
-            setVisaClicked(false)
-            setPaypalClicked(false)
-            setBancontactClicked(true)
-          }}>
-            <img src={'/Bancontact.png'} alt="" className={bancontactClicked ? styles.paypalImgClicked : styles.paypalImg}/>
-          </div>
+            <img src={'/Bancontact.png'}
+                 alt=""
+                 className={bancontactClicked ? styles.paypalImgClicked : styles.paypalImg}
+                 onClick={() => {
+                   setVisaClicked(false)
+                   setPaypalClicked(false)
+                   setBancontactClicked(true)
+                 }}
+            />
         )}
       </div>
 
@@ -1085,14 +1088,21 @@ return (
               amount: parseInt(totalPrice2 * 100)
             });
 
+            var url = new URL(window.location);
+            var clientSecret = url.searchParams.get('payment_intent_client_secret');
+
+
+
             const {error} = await stripe.confirmBancontactPayment(response.data, {
               payment_method: {
                 billing_details: {
                   name: values.name,
                 },
               },
-              return_url: 'http://localhost:3000/thankyou',
+              return_url: 'http://localhost:3000/remerciement/',
             });
+
+
 
             if (error) {
               // Show error to your customer.

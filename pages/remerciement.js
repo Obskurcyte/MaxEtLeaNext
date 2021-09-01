@@ -21,7 +21,55 @@ const Remerciement = (props) => {
     version: 'wc/v3'
   });
 
-  
+
+    const createReference = async () => {
+        if(localStorage.getItem('ref') != null){
+            const encoded = window.btoa("51c3be50ab9c71d50de81306ddb8590a:bdf2b2c8119512ea65c31d49d96c7e92");
+
+            const res = await fetch(`https://maxandlea.fr/wp-json/affwp/v1/affiliates?user=1`, {
+                //method: 'POST',
+                headers: {
+                    'Authorization': "Basic "+encoded
+                }
+            })
+            const newData = await res.json();
+            var aff_id = 0;
+            var aff_rate = 0;
+            newData.forEach( aff => {
+                if(localStorage.getItem('ref').toLowerCase()==aff.user.user_login.toLowerCase()){
+                    aff_id = aff.affiliate_id;
+                    aff_rate = aff.rate;
+                }
+            });
+            if(aff_id != 0){
+                const livraisonData = localStorage.getItem('livraison');
+                const livraisonObject = JSON.parse(livraisonData);
+                var total = parseFloat(livraisonObject.total);
+                total = total / 100;
+                total = total * aff_rate;
+                const linkRefCreate = `https://maxandlea.fr/wp-json/affwp/v1/referrals?affiliate_id=`+aff_id+`&amount=`+total.toFixed(2)+`&status=unpaid`;
+                const ref = await fetch( linkRefCreate, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': "Basic "+encoded
+                    }
+                })
+                const newRef = await ref.json();
+                localStorage.removeItem('ref');
+            }
+        }
+        router.push('/remerciement').then(() => window.location.reload())
+    }
+
+ useEffect(() => {
+    const url = new URL(window.location);
+    const params = new URLSearchParams(url.search)
+    if (params.get('payment_intent')) {
+        localStorage.setItem('moyenPaiement', 'Bancontact')
+        localStorage.removeItem('woo-next-cart')
+    }
+  }, [])
+
 
   useEffect(() => {
     if ( process.browser) {

@@ -1,15 +1,19 @@
 .contact {
-  background-color: #f8f6f3;
   transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
-  padding: 080px 0px 0110px 0px;
+  padding-top: 5%;
   text-align: center;
 }
 
 .contact-us {
-  font-size: 3.25rem;
+  font-size: 2.125rem;
   color: #333333;
+  font-weight: 700;
 }
 
+.contact-container {
+  width: 60%;
+  margin: 5% auto;
+}
 .contact-form {
   padding: 5%;
   border-radius: 3%;
@@ -44,12 +48,48 @@
   margin-left: 30px;
 }
 
-input {
+.contact-container input {
   width: 100% ;
   height: 50px;
   margin-top: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #eaeaea;
+  border-radius: 2px;
+  background: #fafafa;
 }
 
+#wpforms-5987-field_1_1 {
+  background: url(https://maxandlea.com/wp-content/uploads/2020/06/sad_bj1tuj-1.svg) center;
+}
+
+#wpforms-5987-field_1_2 {
+  background: url(https://maxandlea.com/wp-content/uploads/2020/06/neutral_t3q8hz.svg) center;
+  background-size: cover;
+}
+
+#wpforms-5987-field_1_3 {
+  background: url(https://maxandlea.com/wp-content/uploads/2020/06/happy_ampvnc-1.svg) center;
+  background-size: cover;
+}
+.rating input[type="radio"]:hover {
+  filter: drop-shadow(2px 2px 2px #000);
+}
+.rating input[type="radio"]:checked {
+  filter: drop-shadow(2px 2px 2px #000);
+  border: none !important;
+}
+.rating input[type="radio"] {
+  -webkit-appearance: none;
+  width: 90px;
+  height: 90px;
+  border: none;
+  cursor: pointer;
+  transition: border .2s ease;
+  margin: 0 5px;
+  transition: all .2s ease;
+  outline: none;
+}
 .star {
   color: #ff0000
 }
@@ -66,6 +106,13 @@ label {
   height: 150px;
 }
 
+.bonhomme-container {
+  margin-top: 2%;
+}
+.avis {
+  display: flex;
+  flex-direction: column;
+}
 .send {
   color: #FFFFFF;
   background-color: #e72c59;
