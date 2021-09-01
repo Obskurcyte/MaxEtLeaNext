@@ -7,7 +7,8 @@
     "tour" : "Torre Arco Iris",
     "playboard" : "Playboard",
     "cart": "Añadir al carrito",
-    "savoir": "Leer más →"
+    "savoir": "Leer más →",
+    "max": "Max & Lea"
   },
 
   "Garanties1": "GARANTÍAS DE MAX & LEA",
@@ -629,7 +630,7 @@
 
   "Propos": {
     "title": "Quienes Somos",
-    "1": "Damos la bienvenida a la página web de Max & Lea",
+    "1": "Damos la bienvenida a la página web de ",
     "2": "Nuestros primeros bocetos tomaron forma al observar a nuestros hijos jugar y evolucionar. Max & Lea es el resultado de una buena dosis de creatividad y reflexión para diseñar",
     "3": " juguetes lúdicos, adaptables y resistentes.",
     "4": " Nuestros primeros bocetos fueron diseñados después de observar a nuestros niños jugar ",

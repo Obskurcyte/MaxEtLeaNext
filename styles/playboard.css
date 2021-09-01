@@ -503,6 +503,7 @@
   line-height: 1.6em;
   letter-spacing: 2px;
   margin-top: 7px;
+  overflow: hidden;
 }
 
 .playboardBoisImg {
@@ -784,7 +785,7 @@
 .clients img{
   margin: auto;
   width: 100%;
-  max-width: 120px;
+  max-width: 100px;
   transition: 0.7s;
 }
 
@@ -796,7 +797,7 @@
 .distributeurs img{
   margin: auto;
   width: 100%;
-  max-width: 170px;
+  max-width: 120px;
 }
 
 .pour p {
@@ -959,7 +960,7 @@
 }
 
 .innerPlayboard{
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
 }
 
@@ -1203,12 +1204,15 @@
 .anneauxImg {
   width: 35%;
 }
+.childImg, .anneauxImg,.eveilImg{
+  max-height: 75px;
+}
 .eveilImg {
   width: 32% !important;
   height: fit-content !important;
 }
 
-.childImg {
+.childImg{
   width: 26%;
   color: #08a7e0!important;
   margin-top: 0!important;
@@ -1279,6 +1283,7 @@
 
 .icone-container1 img{
   height: 75px;
+  margin-bottom: 15px;
 }
 
 .innerBtnCart{
@@ -1323,8 +1328,29 @@
 }
 
 @media screen and (max-width: 900px){
+  .sourireContainer {
+    margin-top: 50px;
+  }
+  .slick-slider,.recommendation {
+    max-width: 80%;
+  }
+  .recommendation {
+    margin-top: 0px;
+  }
+  .add-to-cart-container .ajouterPanierText{
+    font-size: 18px !important;
+  }
+  .add-to-cart-container .ajouterPanier{
+    padding: 5px 20px 5px 20px;
+  }
+  .reducImg{
+    padding-right: 0px;
+  }
+  .huitEnUnBigText {
+    font-size: 55px;
+  }
   .playboard-title{
-    font-size: 35px;
+    font-size: 40px;
   }
   .robusteContainer .p1, .robusteContainer .p2, .robusteContainer .p3, .robusteContainer .p4{
     font-size: 15px;
@@ -1338,7 +1364,8 @@
 
   }
   .playboard-paragraph, .pensee-paragraph,.apprendreContainer p{
-    font-size: 20px;
+    font-size: 23px;
+    line-height: 1.6;
     width: 90%;
     margin: auto;
   }
@@ -1347,13 +1374,14 @@
   }
   .voir-offre{
     width: 100%;
-    max-width: 250px;
+    max-width: 200px;
     top: auto;
-    margin: 0px auto 10px auto;
+    margin: 0px auto 25px auto;
+    padding: 12px 20px 12px 20px;
     left: 0;
   }
   .voir-offre-title{
-    font-size: 25px;
+    font-size: 20px;
   }
   .computer{
     display: none;
@@ -1369,7 +1397,7 @@
     margin-top: 20px;
   }
   .sourireTextContainer h5, .huitEnUnText, .apprentissage h5, .UnaSixTitle, .recommendation-title, .clientSatisfait h5, .faqContainer h5{
-    font-size: 25px;
+    font-size: 22px;
   }
   .UnaSixTitle{
     letter-spacing: 0px;
@@ -1475,7 +1503,7 @@
   .video-presentation{
     height: 300px !important;
   }
-  .ebooksContainer {
+  .ebooksContainer, .recommendation-title {
     display: none;
   }
   .playboardImgContainer {
@@ -1489,6 +1517,9 @@
   }
   .playboardContainer p {
     text-align: center;
+  }
+  .kakoDesc{
+    text-align: left !important;
   }
   .ajouterPanierContainer p {
     margin-top: 0;
@@ -1525,3 +1556,8 @@
   }
 }
 
+@media screen and (max-width: 450px) {
+  .videoMidContainer{
+    margin-top: -10px;
+  }
+}

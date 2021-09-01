@@ -241,7 +241,7 @@ const XylophoneScreen = props => {
               <p className="pensee-paragraph">{t("Xylo.2")}</p>
             </div>
 
-            <div className="icone-container1">
+            <div className="icone-container1 icone-container1-xylo-computer">
               <div className="row">
 
                 <div className="col icone-mini-container">
@@ -281,6 +281,51 @@ const XylophoneScreen = props => {
 
               </div>
             </div>
+            <div className="icone-container1 icone-container1-xylo-mobile">
+              <div className="row">
+
+                <div className="col icone-mini-container">
+
+                  <img src={'/habilite.png'} alt="" />
+                  <p className="xyloPara"><span>{t("Xylo.3")}</span><br />{t("Xylo.4")}</p>
+                </div>
+
+                <div className="col icone-mini-container">
+                  <img src={'/motricite.png'} alt="" />
+                  <p className="xyloPara"><span>{t("Xylo.5")}</span><br />{t("Xylo.6")}</p>
+                </div>
+
+
+              </div>
+
+              <div className="row">
+
+                <div className="col icone-mini-container">
+
+                  <img src={'/creativite.png'} alt="" />
+                  <p className="xyloPara"><span>{t("Xylo.7")}</span><br />{t("Xylo.8")}</p>
+                </div>
+
+                <div className="col icone-mini-container">
+                  <img src={'/concentration.png'} alt="" />
+                  <p className="xyloPara"><span>{t("Xylo.9")}</span><br />{t("Xylo.10")}</p>
+                </div>
+
+              </div>
+              <div className="row">
+
+                <div className="col icone-mini-container">
+                  <img src={'/apprendre.png'} alt="" />
+                  <p className="xyloPara"><span>{t("Xylo.11")}</span><br />{t("Xylo.12")}</p>
+                </div>
+
+                <div className="col icone-mini-container">
+                  <img src={'/autonomie.png'} alt="" />
+                  <p className="xyloPara"><span>{t("Xylo.13")}</span><br />{t("Xylo.14")}</p>
+                </div>
+
+              </div>
+            </div>
           </div>
         </div>
 
@@ -290,8 +335,8 @@ const XylophoneScreen = props => {
               <i className="fas fa-quote-left" style={{ marginRight: "25px" }} />
               <p>{t("Xylo.quote")}</p>
             </div>
-            <p className="signature" style={{ marginLeft: "25px" }}>
-              Max & Lea</p>
+            <span>
+              Max & Lea</span>
           </div>
         </div>
 
@@ -329,7 +374,7 @@ const XylophoneScreen = props => {
 
 
               <div className="col miniIconeContainer2">
-              <img src={'/music-icon.webp'} style={{maxHeight:"75px"}} alt="" />
+                <img src={'/music-icon.webp'} style={{ maxHeight: "75px" }} alt="" />
                 <h5>{t("Xylo.21")}</h5>
                 <p>{t("Xylo.22")}<span>{t("Xylo.22a")}</span>{t("Xylo.22b")}<span>{t("Xylo.22c")}</span>{t("Xylo.22d")}<span>{t("Xylo.22e")}</span></p>
               </div>

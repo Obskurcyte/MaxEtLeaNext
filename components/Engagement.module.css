@@ -113,4 +113,7 @@
   .garantiesUndertitle{
     font-size: 17px;
   }
+  .photo1 {
+    max-width: 180px;
+  }
 }

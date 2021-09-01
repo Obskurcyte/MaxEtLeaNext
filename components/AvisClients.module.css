@@ -6,13 +6,17 @@
 
 .avisName{
     color: #272727;
-    font-style: italic;
-    font-weight: 500;
+    font-weight: 700;
     margin-bottom: 0px;
 }
 
 .paysContainer{
     width: 100%;
+}
+
+.paysName{
+    font-size: 14px;
+    font-style: italic;
 }
 
 .paysContainer p, .paysContainer img{

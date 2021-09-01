@@ -9,7 +9,7 @@
 }
 
 .icon {
-  width: 2%;
+  width: 12px;
 }
 
 .constructionRobuste {
@@ -82,6 +82,9 @@
   .constructionRobuste {
     width: 95%;
     margin: 0 auto;
+  }
+  .constructionRobuste h5 {
+    font-size: 20px;
   }
   .secondRow {
     flex-direction: column-reverse;

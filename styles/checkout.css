@@ -3,7 +3,7 @@
   font-family: "Roboto, sans-serif";
   margin: auto;
   background-color: #fff;
-  padding-top: 100px;
+  padding-top: 40px;
   padding-bottom: 30px;
 }
 
@@ -191,7 +191,6 @@ legend span {
   text-transform: uppercase;
   letter-spacing: 2.5px;
   text-align: center;
-  margin-top: 50px;
 }
 
 .checkoutText {
@@ -874,6 +873,9 @@ div.MRW-Content>div:last-child {
   .Carousel {
     width: 95% !important;
   }
+  .innerArticleTitle{
+    font-size: 1em;
+  }
 }
 
 
@@ -896,13 +898,13 @@ div.MRW-Content>div:last-child {
     display: none;
   }
   .produitPaiementContainer {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
   .separation {
     display: none
   }
-  .produitContainer {
-    width: 95%;
+  .prixContainer {
+    width: 100%;
   }
   .addArticleTitle {
     font-size: 17px;
@@ -930,9 +932,10 @@ div.MRW-Content>div:last-child {
   .carouselContainer {
     height: 300px;
   }
-  .prixContainer {
-    width: 95%;
-    margin-top: 5%;
+  .produitContainer {
+    width: 100%;
+    margin-top: -70px;
+    margin-bottom: 20px;
   }
   .checkoutText {
     font-size: 90px;
@@ -957,14 +960,10 @@ div.MRW-Content>div:last-child {
     font-size: 15px;
   }
   .cadeauContainerText {
-    font-size: 2em;
-    margin-top: 20px;
+    font-size: 1.7em;
   }
   .checkout-sub-container{
-    padding-top: 60px;
-  }
-  .ebookContainer .free{
-    display: none;
+    padding-top: 70px;
   }
 }
 

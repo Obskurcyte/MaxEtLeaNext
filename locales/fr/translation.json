@@ -9,7 +9,8 @@
     "kako" : "Livre Kako",
     "ebooks" : "Ebooks Playboard",
     "cart": "Ajouter au panier",
-    "savoir": "Voir plus →"
+    "savoir": "Voir plus →",
+    "max": "Max & Lea"
   },
 
   "Garanties1": "LES GARANTIES MAX & LEA",
@@ -210,7 +211,7 @@
   "Playboard106" : "1 cahier de coloriage",
   "Playboard107" : "1 sac de rangement OFFERT :",
   "Playboard108" : "Conçu pour ranger les pièces de la Playboard",
-  "Playboard109" : "LE SOURIRE DE VOS ENFANTS NOTRE PLUS BELLE RECOMPENSE",
+  "Playboard109" : "Le sourire de vos enfants notre plus belle recompense",
   "Playboard110" : "Ils recommandent la Playboard®",
   "Playboard111" : "QUESTIONS FRÉQUENTES",
   "Playboard112" : "La PlayBoard est conçue à base de hêtre, un bois solide et résistant. L’ensemble de ses pièces sont parfaitement peintes, ce qui leur donne une durée de vie de plusieurs dizaines d’années en restant intactes.\n",
@@ -495,9 +496,9 @@
     "21": "Votre code promo a été validé",
     "22": "Loading...",
     "23": "Valider votre code promo",
-    "24": "+1 Jouet : -10% sur TOUT votre panier !",
-    "25": "+1 Jouet : -15% sur TOUT votre panier !",
-    "26": "+1 Jouet : -20% sur TOUT votre panier !",
+    "24": "Ajoutez 1 Jouet et Obtenez -10% sur TOUT votre panier",
+    "25": "Ajoutez 1 Jouet et Obtenez -15% sur TOUT votre panier",
+    "26": "Ajoutez 1 Jouet et Obtenez -20% sur TOUT votre panier",
     "27": "Ajouter la Playboard !",
     "28": "-41% economisez",
     "29": "Ajouter le Xylophone !",
@@ -831,7 +832,7 @@
 
   "Propos": {
     "title": "A propos",
-    "1": "Bienvenue chez Max & Léa",
+    "1": "Bienvenue chez ",
     "2": "C’est en regardant nos enfants jouer et évoluer que nos premières esquisses se sont profilées. Max & Lea est le fruit d’une bonne dose de créativité et de reflexion pour penser des jouets",
     "3": " ludiques, évolutifs et durables.",
     "4": " c’est l’histoire de deux supers Papa ",

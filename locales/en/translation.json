@@ -7,7 +7,8 @@
     "tour" : "Rainbow Tower",
     "playboard" : "Playboard",
     "cart": "Add to cart",
-    "savoir": "Read more →"
+    "savoir": "Read more →",
+    "max": "Max & Lea"
   },
 
   "Garanties1": "MAX & LEA GUARANTEES",
@@ -635,7 +636,7 @@
 
   "Propos": {
     "title": "About",
-    "1": "Welcome to the Max & Lea website",
+    "1": "Welcome to ",
     "2": "Our first sketches took shape by watching our own children play and evolve . Max & Lea is the result of a good dose of creativity and reflection to design",
     "3": " playful, adaptable and resistant toys.",
     "4": " is the story of two great dads ",

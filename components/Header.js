@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDrapeau } from "../store/actions/drapeau";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { slide as BurgerMenu } from 'react-burger-menu'
 
 const Header = (props) => {
 
@@ -108,15 +109,15 @@ const Header = (props) => {
 
 
   let totalIntermediaire = sumPanier
-  if(discountPanier)
+  if (discountPanier)
     totalIntermediaire -= discountPanier;
 
-  const reducCodePromo = totalIntermediaire * (1/codePromo?.amount)
+  const reducCodePromo = totalIntermediaire * (1 / codePromo?.amount)
 
   let totalPrice1 = sumPanier
-  if(discountPanier)
+  if (discountPanier)
     totalPrice1 -= discountPanier;
-  if(reducCodePromo)
+  if (reducCodePromo)
     totalPrice1 -= reducCodePromo;
 
   let user = '';
@@ -132,6 +133,18 @@ const Header = (props) => {
     const delay = ms => new Promise(res => setTimeout(res, ms));
     const setLangFromStorage = async () => {
       await delay(50);
+      if (localStorage.getItem('lang')) {
+        handleClose(localStorage.getItem('lang'))
+      }
+      await delay(600);
+      if (localStorage.getItem('lang')) {
+        handleClose(localStorage.getItem('lang'))
+      }
+      await delay(1200);
+      if (localStorage.getItem('lang')) {
+        handleClose(localStorage.getItem('lang'))
+      }
+      await delay(2000);
       if (localStorage.getItem('lang')) {
         handleClose(localStorage.getItem('lang'))
       }
@@ -155,7 +168,7 @@ const Header = (props) => {
   };
 
   const handleClose = (lang) => {
-    localStorage.setItem('lang',lang)
+    localStorage.setItem('lang', lang)
     i18n.changeLanguage(lang).then(() => setAnchorEl(null))
     if (lang === 'fr') {
       dispatch(getDrapeau('/flagfr.png'))
@@ -198,6 +211,8 @@ const Header = (props) => {
             <Link href="/blogs">{t("Footer.3")}</Link>
           </div>
 
+
+
           <Menu
             id="simple-menu"
             anchorEl={anchorEl}
@@ -211,26 +226,37 @@ const Header = (props) => {
             <MenuItem onClick={() => handleClose('fr')}><img src={'/flagfr.png'} alt="" /></MenuItem>
 
           </Menu>
-          <div className="accountShopping" onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-            <Link href="/cart">
-              <Nav.Link>
+          <div className="accountShopping" >
+            <div onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+              <Link href="/cart">
+                <Nav.Link>
 
-                <div className="cartWrap">
-                  <div className="productsCountContainer">
-                    <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{numberOfProducts}</span> : <span className="productCountText">0</span>}</div>
-                  </div>
-                  <div className="flex">
-                    <div className='productPrice'>
-                      {totalPrice1 ? <span className="totalPriceSpan">{totalPrice1.toFixed(2)} €</span> : <span className="totalPriceSpan">0, 00 €</span>}
+                  <div className="cartWrap">
+                    <div className="productsCountContainer">
+                      <div className="productCountInnerContainer">{productCount ? <span className="productCountText">{numberOfProducts}</span> : <span className="productCountText">0</span>}</div>
                     </div>
-                    <FontAwesomeIcon icon={faShoppingBasket} className="shoppingCart" />
+                    <div className="flex">
+                      <div className='productPrice'>
+                        {totalPrice1 ? <span className="totalPriceSpan">{totalPrice1.toFixed(2)} €</span> : <span className="totalPriceSpan">0, 00 €</span>}
+                      </div>
+                      <FontAwesomeIcon icon={faShoppingBasket} className="shoppingCart" />
+                    </div>
                   </div>
-                </div>
-              </Nav.Link>
+                </Nav.Link>
 
-            </Link>
-            {open && renderCart()}
+              </Link>
+              {open && renderCart()}
+            </div>
+            <div className="burgerMenuContainer">
+              <BurgerMenu right>
+                <Link href="/">Home</Link><br />
+                <Link href="/about">{t("Footer.1")}</Link><br />
+                <Link href="/contact">{t("Footer.contact")}</Link><br />
+                <Link href="/blogs">{t("Footer.3")}</Link>
+              </BurgerMenu>
+            </div>
           </div>
+
         </Nav>
       </nav>
     </div>
