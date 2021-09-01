@@ -67,24 +67,19 @@
   margin-top: 8%;
 }
 
+
 @media screen and (max-width: 900px){
   .firstRow {
     flex-direction: column;
   }
-  .firstRow img {
-    width: 30%;
-    margin: 3% auto;
-  }
-  .secondRow img {
-    width: 30%;
+  .firstRow img,.secondRow img {
+    width: 80%;
+    max-width: 370px;
     margin: 3% auto;
   }
   .constructionRobuste {
     width: 95%;
     margin: 0 auto;
-  }
-  .constructionRobuste h5 {
-    font-size: 20px;
   }
   .secondRow {
     flex-direction: column-reverse;

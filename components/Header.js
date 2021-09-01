@@ -11,7 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDrapeau } from "../store/actions/drapeau";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { slide as BurgerMenu } from 'react-burger-menu'
+import Hamburger from 'react-hamburgers';
+import Collapsible from "react-collapsible";
 
 const Header = (props) => {
 
@@ -159,6 +160,20 @@ const Header = (props) => {
 
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [burgerActive, setBurgerActive] = React.useState(false);
+  const [burgerTempClass, setBurgerTempClass] = React.useState(false);
+
+  const delayTime = ms => new Promise(res => setTimeout(res, ms));
+  const setBurgerTempClassFunc = async () => {
+    setBurgerTempClass(true)
+    await delayTime(450);
+    setBurgerTempClass(false)
+  }
+
+  const burgerDiv = React.createElement('div', {}, <Hamburger active={burgerActive} type="spring" onClick={() => {
+    setBurgerActive(!burgerActive)
+    setBurgerTempClassFunc()
+  }} />);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -192,12 +207,12 @@ const Header = (props) => {
         <h1 className="freeLivraison">{t("BandeauLivraison")}</h1>
       </div>
       <nav className="containerHeader">
-        <div className="drapeauContainer">
+        <div className="drapeauContainer" style={{ zIndex: "1" }}>
           <p className="langue">{lang}</p>
           <img src={drapeau} alt="drapeau français" className="drapeauImg" onClick={handleClick} />
         </div>
         <Nav className="navBar">
-          <div className="imgContainer">
+          <div className="imgContainer" style={{ zIndex: "1" }}>
             <Link href="/">
               <a href="/">
                 <img src={'/logogrand.webp'} alt="" className="imgNavbar" />
@@ -220,6 +235,7 @@ const Header = (props) => {
             keepMounted
             open={Boolean(anchorEl)}
             onClose={handleCloseOutside}
+            style={{ zIndex: "1" }}
           >
             <MenuItem onClick={() => handleClose('en')}><img src={'/flagen.png'} alt="" /></MenuItem>
             <MenuItem onClick={() => handleClose('es')}><img src={'/flages.png'} alt="" /></MenuItem>
@@ -227,7 +243,7 @@ const Header = (props) => {
             <MenuItem onClick={() => handleClose('fr')}><img src={'/flagfr.png'} alt="" /></MenuItem>
 
           </Menu>
-          <div className="accountShopping" >
+          <div className="accountShopping accountShoppingMobileMain" style={{ zIndex: "1" }}>
             <div onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
               <Link href="/cart">
                 <Nav.Link>
@@ -248,18 +264,21 @@ const Header = (props) => {
               </Link>
               {open && renderCart()}
             </div>
-            <div className="burgerMenuContainer">
-              <BurgerMenu right>
-                <Link href="/">Home</Link><br />
-                <Link href="/about">{t("Footer.1")}</Link><br />
-                <Link href="/contact">{t("Footer.contact")}</Link><br />
-                <Link href="/blogs">{t("Footer.3")}</Link>
-              </BurgerMenu>
-            </div>
-          </div>
 
+          </div>
+          
         </Nav>
       </nav>
+      <div className={!burgerTempClass ? "burgerMenuContainer" : "burgerMenuContainer burgerMenuContainerTemp"}>
+        <Collapsible trigger={burgerDiv} overflowWhenOpen="visible" contentInnerClassName="customMenuContainer">
+          <div className="linksContainerMobile">
+            <Link href="/">Home</Link>
+            <Link href="/about">{t("Footer.1")}</Link>
+            <Link href="/contact">{t("Footer.contact")}</Link>
+            <Link href="/blogs">{t("Footer.3")}</Link>
+          </div>
+        </Collapsible>
+      </div>
     </div>
   )
 }
