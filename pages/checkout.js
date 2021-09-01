@@ -1162,8 +1162,7 @@ const CheckoutScreen = props => {
     adresseLivraison: Yup.string().required('Ce champ est requis'),
     codePostalLivraison: Yup.string().required('Ce champ est requis'),
     villeLivraison: Yup.string().required('Ce champ est requis'),
-    pays: Yup.string().required('Ce champ est requis'),
-    phone: Yup.string().required('Ce champ est requis'),
+    pays: Yup.string().required('Ce champ est requis')
   });
 
   let dataClientEmail = ''
@@ -1699,6 +1698,7 @@ const CheckoutScreen = props => {
                     <div className="prix-reduc-container">
                       <p className="sousTotalText2" style={{ fontWeight: 'bold' }}>{t("Checkout.19")}</p>
                       <p className="itemTotalPrice2" style={{ fontWeight: 'bold' }}>{totalPrice2.toFixed(2)} €</p>
+                      <input type="hidden" id="total-price" value={totalPrice2.toFixed(2)} />
                     </div>
                   </div>
                 </div>
