@@ -137,6 +137,7 @@
   outline: inherit;
   position: absolute;
   font-size: 20px;
+  background: none;
 }
 
 .add-to-cart-container{
@@ -283,7 +284,7 @@
   font-family: "Roboto", Sans-serif;
   font-size: 65px;
   text-transform: none;
-  line-height: 0.5em;
+  line-height: 1;
   letter-spacing: 3.7px;
   text-align: center;
 }
@@ -1328,6 +1329,9 @@
 }
 
 @media screen and (max-width: 900px){
+  .miniIconeContainer2 h5 {
+    font-size: 16px;
+  }
   .sourireContainer {
     margin-top: 50px;
   }

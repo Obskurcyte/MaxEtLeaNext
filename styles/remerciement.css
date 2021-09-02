@@ -100,3 +100,18 @@
 .white {
   height: 1000px;
 }
+
+
+@media screen and (max-width: 900px){
+  .adresseContainer {
+    flex-direction: column;
+  }
+  .adresseFacturation {
+    width: 100%;
+  }
+  
+  .adresseLivraison  {
+    width: 100%;
+  }
+}
+

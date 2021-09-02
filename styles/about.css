@@ -37,6 +37,7 @@ main {
 
 .container-about {
   display: flex;
+  flex-direction: column;
 }
 
 .container-photo {
