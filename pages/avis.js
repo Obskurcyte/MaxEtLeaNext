@@ -31,7 +31,7 @@ const Avis = () => {
                         onSubmit={async values => {
                             console.log(values)
                             try {
-                                await axios.post("/api/contact", {
+                                await axios.post("/api/avis", {
                                     nom: values.nom,
                                     prenom: values.prenom,
                                     email: values.email,
