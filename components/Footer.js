@@ -64,7 +64,6 @@ const Footer = () => {
               <img src={t("Forest.img")} alt="" className="img-footer" onClick={() => setOpen(true)}/>
 
               <Dialog
-                fullScreen={fullScreen}
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="responsive-dialog-title"
