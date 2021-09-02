@@ -6,6 +6,8 @@
     "xylo" : "Xylophone",
     "tour" : "Rainbow Tower",
     "playboard" : "Playboard",
+    "kako" : "Kako book",
+    "ebooks" : "Ebooks Playboard",
     "cart": "Add to cart",
     "savoir": "Read more →",
     "max": "Max & Lea"
@@ -472,6 +474,20 @@
     "FAQanswer4b": " ou via ",
     "FAQanswer4c": "notre formulaire ",
     "FAQanswer4d": "nous vous le renverrons avec plaisir."
+  },
+
+  "kako":{
+    "1":"Follow the story of Kako the little Koala through 8 Tales",
+    "2":"8 great tales in Paper Version + File",
+    "3":"114 illustrated pages for children from 1 to 4 years.",
+    "4":"Kako slides on the giraffe",
+    "5":"Kako encourages his friend the Kangaroo",
+    "6":"Kako flies on the back of an Owl",
+    "7":"Kako plays with his friend the panda",
+    "8":"Kako meets a lion",
+    "9":"Kako bitten by Jojo the hedgehog",
+    "10":"Kako on the back of a Dolphin",
+    "11":"Kako meets a Frog"
   },
 
 

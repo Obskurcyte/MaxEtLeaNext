@@ -267,6 +267,8 @@ const useStyles = makeStyles((theme) => ({
 
 const CheckoutScreen = props => {
 
+  const { t, i18n } = useTranslation();
+
   const router = useRouter();
 
   const [goodCodePromo, setGoodCodePromo] = useState(false)
@@ -1167,13 +1169,13 @@ const CheckoutScreen = props => {
 
 
   const livraisonSchema = Yup.object().shape({
-    email: Yup.string().email('Cet email est invalide').required('Ce champ est requis'),
-    prenom: Yup.string().required('Ce champ est requis'),
-    nom: Yup.string().required('Ce champ est requis'),
-    adresseLivraison: Yup.string().required('Ce champ est requis'),
-    codePostalLivraison: Yup.string().required('Ce champ est requis'),
-    villeLivraison: Yup.string().required('Ce champ est requis'),
-    pays: Yup.string().required('Ce champ est requis')
+    email: Yup.string().email('Cet email est invalide').required(t("Checkout.37")),
+    prenom: Yup.string().required(t("Checkout.37")),
+    nom: Yup.string().required(t("Checkout.37")),
+    adresseLivraison: Yup.string().required(t("Checkout.37")),
+    codePostalLivraison: Yup.string().required(t("Checkout.37")),
+    villeLivraison: Yup.string().required(t("Checkout.37")),
+    pays: Yup.string().required(t("Checkout.37"))
   });
 
   let dataClientEmail = ''
@@ -1442,7 +1444,7 @@ const CheckoutScreen = props => {
     }
   }, []); // Empty array ensures that effect is only run on mount
 
-  const { t, i18n } = useTranslation();
+  
 
   const coordonneesNum = React.createElement('p', { className: 'coordonneesNum' }, "1");
   const coordonneesTitle = React.createElement('p', { className: 'coordonneesTitle' }, t("Checkout.2"));
