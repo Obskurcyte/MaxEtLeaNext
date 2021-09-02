@@ -141,3 +141,35 @@ label {
   width: 20%;
 }
 
+
+@media screen and (max-width: 1024px){
+  .contact-container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .contact-container {
+    width: 95%;
+  }
+  .container-send {
+    width: 50%;
+  }
+  .container-send button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 425px){
+  .nomprenom {
+    flex-direction: column;
+  }
+  .prenom {
+    margin-left: 0;
+    margin-top: 5%;
+  }
+  .rating input[type="radio"] {
+    width: 70px;
+    height: 70px;
+  }
+}
