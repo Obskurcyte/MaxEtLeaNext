@@ -113,6 +113,7 @@ label {
   display: flex;
   flex-direction: column;
 }
+
 .send {
   color: #FFFFFF;
   background-color: #e72c59;
@@ -128,6 +129,11 @@ label {
   margin-top: 40%;
 }
 
+.form-contact {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  margin-top: 10%;
+}
 .contact-wrapper {
   margin-bottom: 5%;
 }
@@ -141,7 +147,14 @@ label {
   width: 20%;
 }
 
-
+.avis-donne-container {
+  align-items: center;
+}
+.avis-donne-container h1 {
+  text-align: center;
+  margin-top: 15%;
+  margin-bottom: 18%;
+}
 @media screen and (max-width: 1024px){
   .contact-container {
     width: 80%;
