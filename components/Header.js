@@ -234,7 +234,7 @@ const Header = (props) => {
             keepMounted
             open={Boolean(anchorEl)}
             onClose={handleCloseOutside}
-            style={{ zIndex: "1" }}
+            style={{ zIndex: "9999" }}
           >
             <MenuItem onClick={() => handleClose('en')}><img src={'/flagen.png'} alt="" /></MenuItem>
             <MenuItem onClick={() => handleClose('es')}><img src={'/flages.png'} alt="" /></MenuItem>

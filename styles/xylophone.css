@@ -99,6 +99,10 @@
   display: none;
 }
 
+.img-top{
+  cursor: pointer;
+}
+
 @media screen and (max-width: 900px){
   .icone-mini-container span{
     font-size: 15px;

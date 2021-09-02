@@ -61,27 +61,27 @@ function SimpleDialogPlayboard(props) {
               <div className="col miniIconeContainer2">
                 <img src={'/calcul.png'} alt="" />
                 <h5>{t("Playboard18")}</h5>
-                <p>{t("Playboard19")}<span>{t("Playboard20")}</span>{t("Playboard21")}<span>{t("Playboard22")}</span>{t("Playboard23")}<span>{t("Playboard24")}</span>{t("Playboard25")}<span>{t("Playboard26")}</span>{t("Playboard27")}<span>{t("Playboard28")}</span></p>
+                <p className="computer">{t("Playboard19")}<span>{t("Playboard20")}</span>{t("Playboard21")}<span>{t("Playboard22")}</span>{t("Playboard23")}<span>{t("Playboard24")}</span>{t("Playboard25")}<span>{t("Playboard26")}</span>{t("Playboard27")}<span>{t("Playboard28")}</span></p>
               </div>
 
 
               <div className="col miniIconeContainer2">
                 <img src={'/couleur.png'} alt="" />
                 <h5>{t("Playboard29")}</h5>
-                <p>{t("Playboard30")} <span>{t("Playboard30.1")}</span>{t("Playboard30.2")} <span>{t("Playboard30.3")}</span> {t("Playboard30.4")} <span>{t("Playboard30.5")}</span>{t("Playboard30.6")} <span>{t("Playboard30.7")}</span></p>
+                <p className="computer">{t("Playboard30")} <span>{t("Playboard30.1")}</span>{t("Playboard30.2")} <span>{t("Playboard30.3")}</span> {t("Playboard30.4")} <span>{t("Playboard30.5")}</span>{t("Playboard30.6")} <span>{t("Playboard30.7")}</span></p>
               </div>
 
 
               <div className="col miniIconeContainer2">
                 <img src={'/degrade.png'} alt="" />
                 <h5>{t("Playboard31")}</h5>
-                <p>{t("Playboard32")}<span>{t("Playboard32.1")}</span>{t("Playboard32.2")}<span>{t("Playboard32.3")}</span>{t("Playboard32.4")}<span>{t("Playboard32.5")}</span>{t("Playboard32.4")}<span>{t("Playboard32.7")}</span></p>
+                <p className="computer">{t("Playboard32")}<span>{t("Playboard32.1")}</span>{t("Playboard32.2")}<span>{t("Playboard32.3")}</span>{t("Playboard32.4")}<span>{t("Playboard32.5")}</span>{t("Playboard32.4")}<span>{t("Playboard32.7")}</span></p>
               </div>
 
               <div className="col miniIconeContainer2">
                 <img src={'/eveil.png'} alt="" />
                 <h5>{t("Playboard33")}</h5>
-                <p>{t("Playboard34")}<span>{t("Playboard34.1")}</span>{t("Playboard34.2")}<span>{t("Playboard34.3")}</span></p>
+                <p className="computer">{t("Playboard34")}<span>{t("Playboard34.1")}</span>{t("Playboard34.2")}<span>{t("Playboard34.3")}</span></p>
               </div>
 
             </div>
@@ -91,25 +91,25 @@ function SimpleDialogPlayboard(props) {
               <div className="col miniIconeContainer2">
                 <img src={'/animaux.png'} alt="" />
                 <h5>{t("Playboard35")}</h5>
-                <p>{t("Playboard36")}<span>{t("Playboard36.1")}</span>{t("Playboard36.2")}<span>{t("Playboard36.3")}</span>{t("Playboard36.4")}<span>{t("Playboard36.5")}</span>{t("Playboard36.6")}<span>{t("Playboard36.7")}</span></p>
+                <p className="computer">{t("Playboard36")}<span>{t("Playboard36.1")}</span>{t("Playboard36.2")}<span>{t("Playboard36.3")}</span>{t("Playboard36.4")}<span>{t("Playboard36.5")}</span>{t("Playboard36.6")}<span>{t("Playboard36.7")}</span></p>
               </div>
 
               <div className="col miniIconeContainer2">
                 <img src={'/formes.png'} alt="" />
                 <h5>{t("Playboard37")}</h5>
-                <p>{t("Playboard38")}<span>{t("Playboard38.1")}</span>{t("Playboard38.2")}<span>{t("Playboard38.3")}</span>{t("Playboard38.4")}<span>{t("Playboard38.5")}</span></p>
+                <p className="computer">{t("Playboard38")}<span>{t("Playboard38.1")}</span>{t("Playboard38.2")}<span>{t("Playboard38.3")}</span>{t("Playboard38.4")}<span>{t("Playboard38.5")}</span></p>
               </div>
 
               <div className="col miniIconeContainer2">
                 <img src={'/coordination.png'} alt="" />
                 <h5>{t("Playboard39")}</h5>
-                <p>{t("Playboard40")}<span>{t("Playboard40.1")}</span>{t("Playboard40.2")}<span>{t("Playboard40.3")}</span>{t("Playboard40.4")}<span>{t("Playboard40.5")}</span></p>
+                <p className="computer">{t("Playboard40")}<span>{t("Playboard40.1")}</span>{t("Playboard40.2")}<span>{t("Playboard40.3")}</span>{t("Playboard40.4")}<span>{t("Playboard40.5")}</span></p>
               </div>
 
               <div className="col miniIconeContainer2">
                 <img src={'/nombres.png'} alt="" />
                 <h5>{t("Playboard41")}</h5>
-                <p>{t("Playboard42")}<span>{t("Playboard42.1")}</span>{t("Playboard42.2")}<span>{t("Playboard42.3")}</span>{t("Playboard42.4")}<span>{t("Playboard42.5")}</span>{t("Playboard42.6")}<span>{t("Playboard42.7")}</span></p>
+                <p className="computer">{t("Playboard42")}<span>{t("Playboard42.1")}</span>{t("Playboard42.2")}<span>{t("Playboard42.3")}</span>{t("Playboard42.4")}<span>{t("Playboard42.5")}</span>{t("Playboard42.6")}<span>{t("Playboard42.7")}</span></p>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@ function SimpleDialogXylo(props) {
   };
 
   return (
-    <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+    <Dialog onClose={handleClose} maxWidth="md" aria-labelledby="simple-dialog-title" open={open}>
       <div>
         <img src={'/xylo-diapo.webp'} alt="" style={{ maxWidth: '100%', marginBottom:'35px' }} />
         <div className="container1000">
@@ -143,27 +143,31 @@ function SimpleDialogXylo(props) {
               <div className="col miniIconeContainer2">
                 <FontAwesomeIcon icon={faMusic} color="#E72C59" className="anneauxImg" />
                 <h5>{t("Xylo.17")}</h5>
-                <p>{t("Xylo.18")}<span>{t("Xylo.18a")}</span>{t("Xylo.18b")}<span>{t("Xylo.18c")}</span>{t("Xylo.18d")}<span>{t("Xylo.18e")}</span>{t("Xylo.18f")}<span>{t("Xylo.18g")}</span></p>
+                <p className="computer">{t("Xylo.18")}<span>{t("Xylo.18a")}</span>{t("Xylo.18b")}<span>{t("Xylo.18c")}</span>{t("Xylo.18d")}<span>{t("Xylo.18e")}</span>{t("Xylo.18f")}<span>{t("Xylo.18g")}</span></p>
+                <p className="mobile">{t("Xylo.18mobile")}</p>
               </div>
 
 
               <div className="col miniIconeContainer2">
                 <FontAwesomeIcon icon={faChild} color="lightblue" className="childImg" />
                 <h5>{t("Xylo.19")}</h5>
-                <p>{t("Xylo.20")}<span>{t("Xylo.20a")}</span>{t("Xylo.20b")}<span>{t("Xylo.20c")}</span>{t("Xylo.20d")}<span>{t("Xylo.20e")}</span>{t("Xylo.20f")}</p>
+                <p className="computer">{t("Xylo.20")}<span>{t("Xylo.20a")}</span>{t("Xylo.20b")}<span>{t("Xylo.20c")}</span>{t("Xylo.20d")}<span>{t("Xylo.20e")}</span>{t("Xylo.20f")}</p>
+                <p className="mobile">{t("Xylo.20mobile")}</p>
               </div>
             </div>
             <div className="row">
               <div className="col miniIconeContainer2">
-                <img src={'/music-icon.webp'} style={{ maxHeight: "75px" }} alt="" />
+                <img src={'/music-icon.webp'} style={{ maxHeight: "75px",maxWidth:"55%" }} alt="" />
                 <h5>{t("Xylo.21")}</h5>
-                <p>{t("Xylo.22")}<span>{t("Xylo.22a")}</span>{t("Xylo.22b")}<span>{t("Xylo.22c")}</span>{t("Xylo.22d")}<span>{t("Xylo.22e")}</span></p>
+                <p className="computer">{t("Xylo.22")}<span>{t("Xylo.22a")}</span>{t("Xylo.22b")}<span>{t("Xylo.22c")}</span>{t("Xylo.22d")}<span>{t("Xylo.22e")}</span></p>
+                <p className="mobile">{t("Xylo.22mobile")}</p>
               </div>
 
               <div className="col miniIconeContainer2">
                 <FontAwesomeIcon icon={faGrinStars} color="#F28D2A" className="eveilImg" />
                 <h5>{t("Xylo.23")}</h5>
-                <p>{t("Xylo.24")}<span>{t("Xylo.24a")}</span>{t("Xylo.24b")}<span>{t("Xylo.24c")}</span></p>
+                <p className="computer">{t("Xylo.24")}<span>{t("Xylo.24a")}</span>{t("Xylo.24b")}<span>{t("Xylo.24c")}</span></p>
+                <p className="mobile">{t("Xylo.24mobile")}</p>
               </div>
             </div>
         </div>
@@ -187,31 +191,38 @@ function SimpleDialogTour(props) {
   };
 
   return (
-    <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+    <Dialog onClose={handleClose} maxWidth="md" aria-labelledby="simple-dialog-title" open={open}>
       <div>
         <img src={'/tourPopup.webp'} alt="" style={{ maxWidth: '100%' }} />
-        <div>
-          <div className="flex iconContainer">
-            <FontAwesomeIcon icon={faCheck} className='checkIcon' />
-            <p>{t("Checkout.popUpTour.1")} <span className="fw-bold">{t("Checkout.popUpTour.2")}</span> {t("Checkout.popUpTour.3")} <span className="fw-bold">{t("Checkout.popUpTour.4")}</span></p>
-          </div>
-          <div className="flex iconContainer">
-            <FontAwesomeIcon icon={faCheck} className='checkIcon' />
-            <p><span className="fw-bold">{t("Checkout.popUpTour.5")}</span> {t("Checkout.popUpTour.6")}</p>
-          </div>
-          <div className="flex iconContainer">
-            <FontAwesomeIcon icon={faCheck} className='checkIcon' />
-            <p><span className="fw-bold">{t("Checkout.popUpTour.7")}</span> {t("Checkout.popUpTour.8")}</p>
-          </div>
-          <div className="flex iconContainer">
-            <FontAwesomeIcon icon={faCheck} className='checkIcon' />
-            <p><span className="fw-bold">{t("Checkout.popUpTour.9")}</span></p>
-          </div>
-          <div className="flex iconContainer">
-            <FontAwesomeIcon icon={faCheck} className='checkIcon' />
-            <p><span className="fw-bold">{t("Checkout.popUpTour.10")}</span></p>
-          </div>
-        </div>
+        <div className="row">
+
+              <div className="col miniIconeContainer2">
+                <FontAwesomeIcon icon={faDotCircle} color="#35A936" className="anneauxImg" />
+                <h5>{t("Tour.17")}</h5>
+                <p className="computer">{t("Tour.18")}<span>{t("Tour.18a")}</span>{t("Tour.18b")}<span>{t("Tour.18c")}</span></p>
+              </div>
+
+
+              <div className="col miniIconeContainer2">
+                <img src={'/couleur.png'} style={{ maxHeight: "75px",maxWidth:"35%" }} alt="" />
+                <h5>{t("Tour.19")}</h5>
+                <p className="computer">{t("Tour.20")}<span>{t("Tour.20a")}</span>{t("Tour.20b")}<span>{t("Tour.20c")}</span></p>
+              </div>
+
+
+              <div className="col miniIconeContainer2">
+                <img src={'/degrade.png'} style={{ maxHeight: "75px",maxWidth:"29%" }} alt="" />
+                <h5>{t("Tour.21")}</h5>
+                <p className="computer">{t("Tour.22")}<span>{t("Tour.22a")}</span>{t("Tour.22b")}<span>{t("Tour.22c")}</span>{t("Tour.22d")}<span>{t("Tour.22e")}</span></p>
+              </div>
+
+              <div className="col miniIconeContainer2">
+                <FontAwesomeIcon icon={faGrinStars} color="#E72C59" className="eveilImg" />
+                <h5>{t("Tour.23")}</h5>
+                <p className="computer">{t("Tour.24")}<span>{t("Tour.24a")}</span>{t("Tour.24b")}<span>{t("Tour.24c")}</span>{t("Tour.24d")}<span>{t("Tour.24e")}</span></p>
+              </div>
+
+            </div>
         <a href="/tour" target="_blank"><p className="modal-know-more">{t("products.savoir")}</p></a>
       </div>
     </Dialog>

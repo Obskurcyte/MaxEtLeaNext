@@ -47,20 +47,19 @@ const XylophoneScreen = props => {
     return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)) : '';
   };
 
-  const addFirstProduct = (product) => {
+  const addFirstProduct = (product, qty) => {
     let productPrice = getFloatVal(product.price)
 
     let newCart = {
       products: [],
-      totalProductCount: 1,
-      totalProductsPrice: productPrice
+      totalProductCount: qty,
+      totalProductsPrice: productPrice * qty
     }
 
-    const newProduct = createNewProduct(product, productPrice, 1)
+    const newProduct = createNewProduct(product, productPrice, qty)
     newCart.products.push(newProduct);
     localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
     return newCart
-
   };
 
   const createNewProduct = (product, productPrice, qty) => {
@@ -154,7 +153,7 @@ const XylophoneScreen = props => {
         const updatedCart = updateCart(existingCart, products[0], qtyToBeAdded);
         setCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[0]);
+        const newCart = addFirstProduct(products[0], productCount);
         setCart(newCart)
       }
     }
@@ -173,6 +172,11 @@ const XylophoneScreen = props => {
       setProductCount(productCount - 1);
     }
   }
+
+  const [openImgTop, setOpenImgTop] = React.useState(false);
+  const handleCloseImgTop = () => {
+    setOpenImgTop(false);
+  };
 
 
   var settings = {
@@ -222,12 +226,8 @@ const XylophoneScreen = props => {
             <div className="voir-offre">
               <Link href="#offre"><h3 className="voir-offre-title">{t("Playboard2")}</h3></Link>
             </div>
-            <div className="slider-container">
-              <Slider {...settings}>
-                <div>
-                  <img src={'/xylo-diapo.webp'} alt="" />
-                </div>
-              </Slider>
+            <div className="slider-container" >
+              <img src={'/xylo-diapo.webp'} alt="" />
             </div>
 
           </div>
@@ -426,9 +426,22 @@ const XylophoneScreen = props => {
                       await router.push('/contact')
                     }}>{t("Playboard102")}</p>
                   </div>
-                  <div className="productImgContainer">
+                  <div className="productImgContainer img-top" onClick={() => setOpenImgTop(true)}>
                     <img src={'/xylo-top.webp'} alt="" className="reducImg" />
                   </div>
+                  <Dialog
+              open={openImgTop}
+              onClose={handleCloseImgTop}
+              aria-labelledby="responsive-dialog-title"
+              maxWidth="lg"
+            >
+              <DialogContent>
+                <div>
+                  <img src={'/xylo-top.webp'} alt="" style={{marginBottom:"12px",maxWidth:"100%"}} />
+                  <button className="buttonPopupClose" onClick={() => setOpenImgTop(false)}>x</button>
+                </div>
+              </DialogContent>
+            </Dialog>
                 </div>
               </div>
             </div>

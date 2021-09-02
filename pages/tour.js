@@ -53,20 +53,19 @@ const TourScreen = props => {
     return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)) : '';
   };
 
-  const addFirstProduct = (product) => {
+  const addFirstProduct = (product,qty) => {
     let productPrice = getFloatVal(product.price)
 
     let newCart = {
       products: [],
-      totalProductCount: 1,
-      totalProductsPrice: productPrice
+      totalProductCount: qty,
+      totalProductsPrice: productPrice * qty
     }
 
-    const newProduct = createNewProduct(product, productPrice, 1)
+    const newProduct = createNewProduct(product, productPrice, qty)
     newCart.products.push(newProduct);
     localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
     return newCart
-
   };
 
   const createNewProduct = (product, productPrice, qty) => {
@@ -160,7 +159,7 @@ const TourScreen = props => {
         const updatedCart = updateCart(existingCart, products[1], qtyToBeAdded);
         setCart(updatedCart)
       } else {
-        const newCart = addFirstProduct(products[1]);
+        const newCart = addFirstProduct(products[1],productCount);
         setCart(newCart)
       }
     }
