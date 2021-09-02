@@ -7,8 +7,10 @@ import Footer from "../components/Footer";
 
 const Avis = () => {
     const { t, i18n } = useTranslation();
+    const [avisDonne, setAvisDonne] = useState(false);
+    const [success, setSuccess] = useState('');
+    const [avis, setAvis] = useState('')
 
-    const [success, setSuccess] = useState('')
     const initialValues = {
         nom: '',
         prenom: '',
@@ -19,9 +21,11 @@ const Avis = () => {
     return (
         <div>
             <Header />
-            <div className="contact">
-                <h1 className="contact-us">Formulaire Avis</h1>
-            </div>
+            {!avisDonne ?
+                <div className="page-supercontainer">
+                    <div className="contact">
+                        <h1 className="contact-us">Formulaire Avis</h1>
+                    </div>
                     <Formik
                         initialValues={initialValues}
                         onSubmit={async values => {
@@ -32,8 +36,9 @@ const Avis = () => {
                                     prenom: values.prenom,
                                     email: values.email,
                                     sujet: values.sujet,
+                                    avis: avis,
                                     message: values.message
-                                })
+                                }).then(() => setAvisDonne(true))
                             } catch (err) {
                                 console.log(err)
                             }
@@ -69,11 +74,39 @@ const Avis = () => {
                                 </div>
 
                                 <div className="input-container avis">
-                                <label>Votre avis<span className="star"> *</span></label>
+                                    <label>Votre avis<span className="star"> *</span></label>
                                     <div className="bonhomme-container">
-                                <input type="radio" id="wpforms-5987-field_1_1" name="wpforms[fields][1]" value="Pas content" required="" />
-                                <input type="radio" id="wpforms-5987-field_1_2" name="wpforms[fields][1]" value="Moyen content" required=""/>
-                                <input type="radio" id="wpforms-5987-field_1_3" name="wpforms[fields][1]" value="Content" required="" className="wpforms-valid" />
+                                        <input
+                                            type="radio"
+                                            id="wpforms-5987-field_1_1"
+                                            name="wpforms[fields][1]"
+                                            value="Pas content"
+                                            required=""
+                                            onClick={() => {
+                                               setAvis('Bon')
+                                            }}
+                                        />
+                                        <input
+                                            type="radio"
+                                            id="wpforms-5987-field_1_2"
+                                            name="wpforms[fields][1]"
+                                            value="Moyen content"
+                                            required=""
+                                            onClick={() => {
+                                                setAvis('Moyen')
+                                            }}
+                                        />
+                                        <input
+                                            type="radio"
+                                            id="wpforms-5987-field_1_3"
+                                            name="wpforms[fields][1]"
+                                            value="Content"
+                                            required=""
+                                            className="wpforms-valid"
+                                            onClick={() => {
+                                                setAvis('Mauvais')
+                                            }}
+                                        />
                                     </div>
                                 </div>
                                 <div className="message input-container">
@@ -91,6 +124,13 @@ const Avis = () => {
                         )}
 
                     </Formik>
+                </div> :
+
+                <div className="avis-donne-container">
+                    <h1>Merci d'avoir donné votre avis</h1>
+                </div>
+            }
+
             <Footer />
         </div>
     )}

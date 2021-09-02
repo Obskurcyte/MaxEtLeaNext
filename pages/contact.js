@@ -10,7 +10,9 @@ const ContactScreen = props => {
 
   const { t, i18n } = useTranslation();
 
-  const [success, setSuccess] = useState('')
+  const [success, setSuccess] = useState('');
+  const [avisDonne, setAvisDonne] = useState(false);
+
   const initialValues = {
     nom: '',
     prenom: '',
@@ -18,6 +20,7 @@ const ContactScreen = props => {
     sujet: '',
     message: ''
   }
+
   return (
     <div>
       <Head>
@@ -25,20 +28,87 @@ const ContactScreen = props => {
       </Head>
       <Header />
       <div className="page-supercontainer">
-        <div className="contact">
-          <h1 className="contact-us">{t("Contact.1")}</h1>
-        </div>
-        <div className="contact-form-container">
-        <iframe 
-        width="540" 
-        height="785" 
-        src="https://b31d5692.sibforms.com/serve/MUIEAGfa8jbmh8CmjZAXZ-wJ0wdyNRxDzcNr7oStVQ-5JMx3DnOqSfKNYZF-Q2HFH5MZkZFL_1E2_JnpVwFUJREeKXB9cp14fUmENgzvyHjLhaDgC5PFMJg1fNhgQfFBk9OzQyZYahV9m4dzpMAtzq_YpDnETyLFw_a_lh7qECfDb5aqT1JjFqGGAgB5YcXdVda9IpU4qI_VWxSB" 
-        frameborder="0" 
-        scrolling="auto" 
-        allowfullscreen 
-        style={{display:"block", marginLeft: "auto", marginRight: "auto",maxWidth:"100%", marginBottom: "20px" }} >
-        </iframe>
-        </div>
+          {!avisDonne ?
+            <div>
+                <div className="contact">
+                    <h1 className="contact-us">{t("Contact.1")}</h1>
+                </div>
+                <div className="contact-form-container">
+                    <Formik
+                        initialValues={initialValues}
+                        onSubmit={async values => {
+                            console.log(values)
+                            try {
+                                await axios.post("/api/contact", {
+                                    nom: values.nom,
+                                    prenom: values.prenom,
+                                    email: values.email,
+                                    sujet: values.sujet,
+                                    message: values.message
+                                }).then(() => setAvisDonne(true))
+                            } catch (err) {
+                                console.log(err)
+                            }
+                        }
+                        }
+                    >
+                        {props => (
+                            <div className="contact-container rating form-contact">
+                                {success}
+                                <div className="nomprenom">
+                                    <div className="nom">
+                                        <label>{t("Contact.2")}<span className="star"> *</span></label>
+                                        <input
+                                            type="text"
+                                            onChange={props.handleChange('nom')}
+                                            value={props.values.nom}/>
+                                    </div>
+                                    <div className="prenom">
+                                        <label>{t("Contact.3")}<span className="star"> *</span></label>
+                                        <input
+                                            type="text"
+                                            onChange={props.handleChange('prenom')}
+                                            value={props.values.prenom}/>
+                                    </div>
+                                </div>
+                                <div className="email input-container">
+                                    <label>{t("Contact.4")}<span className="star"> *</span></label>
+                                    <input
+                                        type="text"
+                                        onChange={props.handleChange('email')}
+                                        value={props.values.email}
+                                    />
+                                </div>
+
+                                <div className="email input-container">
+                                    <label>Sujet<span className="star"> *</span></label>
+                                    <input
+                                        type="text"
+                                        onChange={props.handleChange('sujet')}
+                                        value={props.values.sujet}
+                                    />
+                                </div>
+                                <div className="message input-container">
+                                    <label>Message<span className="star"> *</span></label>
+                                    <input
+                                        type="text-area"
+                                        onChange={props.handleChange('message')}
+                                        value={props.values.message}
+                                    />
+                                </div>
+                                <div className="container-send">
+                                    <button className="send" type="submit" onClick={props.handleSubmit}>{t("Contact.7")}</button>
+                                </div>
+                            </div>
+                        )}
+                    </Formik>
+                </div>
+            </div> :
+              <div className="avis-donne-container">
+                  <h1>Merci de nous avoir contacté</h1>
+              </div>
+          }
+
       </div>
       <Footer />
     </div>
