@@ -29,16 +29,17 @@ const Avis = () => {
                     <Formik
                         initialValues={initialValues}
                         onSubmit={async values => {
-                            console.log(values)
                             try {
-                                await axios.post("/api/avis", {
+                                setAvisDonne(true)
+                               const response = await axios.post("/api/avis", {
                                     nom: values.nom,
                                     prenom: values.prenom,
                                     email: values.email,
                                     sujet: values.sujet,
                                     avis: avis,
                                     message: values.message
-                                }).then(() => setAvisDonne(true))
+                                })
+                                console.log(response)
                             } catch (err) {
                                 console.log(err)
                             }
