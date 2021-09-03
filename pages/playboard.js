@@ -363,7 +363,7 @@ const PlayBoardScreen = props => {
               <div className="col miniIconeContainer2">
                 <img src={'/animaux.png'} alt="" />
                 <h5>{t("Playboard35")}</h5>
-                <p>{t("Playboard36")}<span>{t("Playboard36.1")}</span>{t("Playboard36.2")}<span>{t("Playboard36.3")}</span>{t("Playboard36.4")}<span>{t("Playboard36.5")}</span>{t("Playboard36.6")}<span>{t("Playboard36.7")}</span></p>
+                <p>{t("Playboard36")}<span>{t("Playboard36.1")}</span>{t("Playboard36.2")}<span>{t("Playboard36.3")}</span>{t("Playboard36.4")}<span>{t("Playboard36.5")}</span>{t("Playboard36.6")}<span>{t("Playboard36.7")}</span>{t("Playboard36.8")}</p>
               </div>
 
               <div className="col miniIconeContainer2">

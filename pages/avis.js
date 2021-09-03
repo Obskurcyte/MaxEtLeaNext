@@ -75,7 +75,7 @@ const Avis = () => {
                                 </div>
 
                                 <div className="input-container avis">
-                                    <label>Votre avis<span className="star"> *</span></label>
+                                    <label>{t("Contact.8")}<span className="star"> *</span></label>
                                     <div className="bonhomme-container">
                                         <input
                                             type="radio"
@@ -111,7 +111,7 @@ const Avis = () => {
                                     </div>
                                 </div>
                                 <div className="message input-container">
-                                    <label>Details</label>
+                                    <label>{t("Contact.9")}</label>
                                     <input
                                         type="text-area"
                                         onChange={props.handleChange('message')}

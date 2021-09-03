@@ -82,7 +82,7 @@ const ContactScreen = props => {
                                 </div>
 
                                 <div className="email input-container">
-                                    <label>Sujet<span className="star"> *</span></label>
+                                    <label>{t("Contact.5")}<span className="star"> *</span></label>
                                     <input
                                         type="text"
                                         onChange={props.handleChange('sujet')}
@@ -90,7 +90,7 @@ const ContactScreen = props => {
                                     />
                                 </div>
                                 <div className="message input-container">
-                                    <label>Message<span className="star"> *</span></label>
+                                    <label>{t("Contact.6")}<span className="star"> *</span></label>
                                     <input
                                         type="text-area"
                                         onChange={props.handleChange('message')}

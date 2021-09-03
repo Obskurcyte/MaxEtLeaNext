@@ -29,7 +29,7 @@ const About = () => {
             <div className="paragraph1">
               <p>
                 <img src={'/internet4.svg'} alt="" className="petite-photo1"/>
-                Max & Lea
+                {t("Propos.3a")}
                 <span>{t("Propos.4")}</span>{t("Propos.5")}</p>
             </div>
             <div className="paragraph2">
