@@ -37,15 +37,16 @@ const ContactScreen = props => {
                     <Formik
                         initialValues={initialValues}
                         onSubmit={async values => {
-                            console.log(values)
                             try {
-                                await axios.post("/api/contact", {
+                                setAvisDonne(true)
+                                const response = await axios.post("/api/contact", {
                                     nom: values.nom,
                                     prenom: values.prenom,
                                     email: values.email,
                                     sujet: values.sujet,
                                     message: values.message
-                                }).then(() => setAvisDonne(true))
+                                })
+                                console.log(response)
                             } catch (err) {
                                 console.log(err)
                             }

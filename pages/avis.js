@@ -84,7 +84,7 @@ const Avis = () => {
                                             value="Pas content"
                                             required=""
                                             onClick={() => {
-                                               setAvis('Bon')
+                                               setAvis('Mauvais')
                                             }}
                                         />
                                         <input
@@ -105,7 +105,7 @@ const Avis = () => {
                                             required=""
                                             className="wpforms-valid"
                                             onClick={() => {
-                                                setAvis('Mauvais')
+                                                setAvis('Bon')
                                             }}
                                         />
                                     </div>

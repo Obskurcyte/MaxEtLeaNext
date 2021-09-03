@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-const handler = (req, res) => {
+const handler = async (req, res) => {
   console.log(req.body)
   if (req.method === 'POST') {
     const output = `
@@ -25,17 +25,31 @@ const handler = (req, res) => {
           }
       });
 
-    // send mail with defined transport object
-    let info = transporter.sendMail({
-      from: "contact@maxandlea.com", // sender address
-      to: "hadrien.jaubert99@gmail.com, theodore.d.avray@efrei.net",  // list of receivers
-      subject: `${req.body.sujet}`, // Subject line
-      text: "Hello world?", // plain text body
-      html: output, // html body,
-    });
+      await new Promise((resolve, reject) => {
+          // verify connection configuration
+          transporter.verify(function (error, success) {
+              if (error) {
+                  console.log(error);
+                  reject(error);
+              } else {
+                  console.log("Server is ready to take our messages");
+                  resolve(success);
+              }
+          });
+      });
 
-    res.send('ok')
-    console.log("Message sent: %s", info.messageId);
+      await new Promise((resolve, reject) => {
+          // send mail with defined transport object
+          transporter.sendMail({
+              from: "contact@maxandlea.com", // sender address
+              to: "hadrien.jaubert99@gmail.com, theodore.d.avray@efrei.net",  // list of receivers
+              subject: `${req.body.sujet}`, // Subject line
+              text: "Hello world?", // plain text body
+              html: output, // html body,
+          });
+      });
+
+      res.status(200).json({status: "OK"})
   }
 };
 
