@@ -213,7 +213,7 @@ const KakoScreen = props => {
   return (
     <div>
       <Head>
-        <title>Max And Lea - Livre Kako</title>
+        <title>Max And Lea - {t("products.kako")}</title>
         <link
           rel="stylesheet"
           type="text/css"
@@ -231,10 +231,10 @@ const KakoScreen = props => {
         <div className="container1000">
           <div className="imgCouverture">
             <div className="playboard-title-container">
-              <h1 className="playboard-title">Livre Kako</h1>
+              <h1 className="playboard-title">{t("products.kako")}</h1>
             </div>
             <div className="playboard-paragraph-container">
-              <p className="playboard-paragraph">Suivez l'histoire de Kako le petit Koala au travers de 8 Contes</p>
+              <p className="playboard-paragraph">{t("kako.1")}</p>
             </div>
             <div className="voir-offre">
               <Link href="#offre"><h3 className="voir-offre-title">{t("Playboard2")}</h3></Link>
@@ -255,8 +255,8 @@ const KakoScreen = props => {
               <img src={"/bebeIcone.png"} alt="" className="img-bebe" />
             </div>
             <div className="pensee-paragraph-container">
-              <p className="pensee-paragraph">8 superbes contes en Version Papier + Téléchargeables</p>
-              <p className="pensee-paragraph">114 pages illustrées pour les enfants de 1 à 4 ans.</p>
+              <p className="pensee-paragraph">{t("kako.2")}</p>
+              <p className="pensee-paragraph">{t("kako.3")}</p>
             </div>
           </div>
         </div>
@@ -302,16 +302,16 @@ const KakoScreen = props => {
                     </div>
                     <p className="question" onClick={async () => {
                       await router.push('/contact')
-                    }}>Une question ? Contactez-nous</p>
+                    }}>{t("Playboard102")}</p>
                     <p className="kakoDesc">
-                      ✅ Kako glisse sur la girafe 🦒<br></br>
-                      ✅ Kako encourage son ami le Kangourou 🦘<br></br>
-                      ✅ Kako vole sur le dos d’un Hibou 🦉<br></br>
-                      ✅ Kako joue avec son ami le panda 🐼<br></br>
-                      ✅ Kako rencontre un lion 🦁<br></br>
-                      ✅ Kako piqué par Jojo le hérisson 🦔<br></br>
-                      ✅ Kako sur le dos d’un Dauphin 🐬<br></br>
-                      ✅ Kako rencontre une Grenouille 🐸<br></br>
+                      ✅ {t("kako.4")} 🦒<br></br>
+                      ✅ {t("kako.5")} 🦘<br></br>
+                      ✅ {t("kako.6")} 🦉<br></br>
+                      ✅ {t("kako.7")} 🐼<br></br>
+                      ✅ {t("kako.8")} 🦁<br></br>
+                      ✅ {t("kako.9")} 🦔<br></br>
+                      ✅ {t("kako.10")} 🐬<br></br>
+                      ✅ {t("kako.11")} 🐸<br></br>
                     </p>
                   </div>
                   <div className="productImgContainer">

@@ -6,6 +6,8 @@
     "xylo" : "Xilófono",
     "tour" : "Torre Arco Iris",
     "playboard" : "Playboard",
+    "kako" : "Libro Kako",
+    "ebooks" : "Ebooks Playboard",
     "cart": "Añadir al carrito",
     "savoir": "Leer más →",
     "max": "Max & Lea"
@@ -459,6 +461,20 @@
     "FAQanswer4b": " ou via ",
     "FAQanswer4c": "notre formulaire ",
     "FAQanswer4d": "nous vous le renverrons avec plaisir."
+  },
+
+  "kako":{
+    "1":"Sigue la historia de Kako el pequeño Koala a través de 8 Cuentos",
+    "2":"8 grandes relatos en versión papel + descarga",
+    "3":"114 páginas ilustradas para niños de 1 a 4 años.",
+    "4":"Kako se desliza sobre la jirafa",
+    "5":"Kako anima a su amigo el Canguro",
+    "6":"Kako vuela a lomos de un búho",
+    "7":"Kako juega con su amigo el panda",
+    "8":"Kako se encuentra con un león",
+    "9":"Kako mordido por el erizo Jojo",
+    "10":"Kako a lomos de un Delfín",
+    "11":"Kako conoce a una rana"
   },
 
   "Checkout": {
