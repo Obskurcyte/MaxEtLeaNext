@@ -91,8 +91,7 @@ const ContactScreen = props => {
                                 </div>
                                 <div className="message input-container">
                                     <label>{t("Contact.6")}<span className="star"> *</span></label>
-                                    <input
-                                        type="text-area"
+                                    <textarea
                                         onChange={props.handleChange('message')}
                                         value={props.values.message}
                                     />
