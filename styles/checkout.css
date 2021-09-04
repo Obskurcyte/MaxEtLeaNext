@@ -302,7 +302,20 @@ legend span {
   right: 30px;
 }
 
-.is-closed .coordonneesArrow{
+.prix-reduc-container .coordonneesArrow{
+  top: 40px;
+}
+
+.collapsilbeSimpleCartDiv{
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.collapsilbeSimpleCartDiv .sousTotalText2{
+  font-weight: 700;
+}
+
+.is-open .coordonneesArrow{
   transform: rotate(180deg);
 }
 
@@ -897,9 +910,6 @@ div.MRW-Content>div:last-child {
   .hrContainerCheckout {
     display: none;
   }
-  .produitPaiementContainer {
-    flex-direction: column;
-  }
   .separation {
     display: none
   }
@@ -933,9 +943,7 @@ div.MRW-Content>div:last-child {
     height: 300px;
   }
   .produitContainer {
-    width: 100%;
-    margin-top: -70px;
-    margin-bottom: 20px;
+    display: none;
   }
   .checkoutText {
     font-size: 90px;
@@ -952,6 +960,13 @@ div.MRW-Content>div:last-child {
   }
   .cart-valide {
     margin-bottom: 3%
+  }
+  .coordonneesLinkContainerLight,.coordonneesLinkContainer{
+    width: 33%;
+    display: table-cell !important;
+  }
+  .coordonneesTitle{
+    margin-top: 7px;
   }
 }
 

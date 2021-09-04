@@ -72,16 +72,16 @@ p{
 }
 
 .mobile{
-  display: none;
+  display: none !important;
 }
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 790px){
 
   .computer{
-    display: none;
+    display: none !important;
   }
   
   .mobile{
-    display: block;
+    display: block !important;
   }
 }

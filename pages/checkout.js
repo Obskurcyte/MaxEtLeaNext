@@ -5,6 +5,7 @@ import { AppContext } from "../components/context/AppContext";
 import { CardElement } from '@stripe/react-stripe-js';
 import CheckoutFormStripe from "../components/CheckoutFormStripe";
 import CartItem from "../components/CartItem";
+import CartItemSimple from "../components/CartItemSimple";
 import { Spinner } from "react-bootstrap";
 import { Formik } from "formik";
 import TextField from "@material-ui/core/TextField";
@@ -53,7 +54,7 @@ function SimpleDialogPlayboard(props) {
   return (
     <Dialog onClose={handleClose} maxWidth="md" aria-labelledby="simple-dialog-title" open={open}>
       <div>
-        <img src={t("Checkout.popUpImg")} alt="" style={{ maxWidth: '100%', display:'block',margin:'auto'}} />
+        <img src={t("Checkout.popUpImg")} alt="" style={{ maxWidth: '100%', display: 'block', margin: 'auto' }} />
         <div className="container1000">
           <div className="containerIcones2">
             <div className="row">
@@ -135,7 +136,7 @@ function SimpleDialogXylo(props) {
   return (
     <Dialog onClose={handleClose} maxWidth="md" aria-labelledby="simple-dialog-title" open={open}>
       <div>
-        <img src={'/xylo-diapo.webp'} alt="" style={{ maxWidth: '100%', marginBottom:'35px' }} />
+        <img src={'/xylo-diapo.webp'} alt="" style={{ maxWidth: '100%', marginBottom: '35px' }} />
         <div className="container1000">
           <div className="containerIcones2">
             <div className="row">
@@ -157,7 +158,7 @@ function SimpleDialogXylo(props) {
             </div>
             <div className="row">
               <div className="col miniIconeContainer2">
-                <img src={'/music-icon.webp'} style={{ maxHeight: "75px",maxWidth:"55%" }} alt="" />
+                <img src={'/music-icon.webp'} style={{ maxHeight: "75px", maxWidth: "55%" }} alt="" />
                 <h5>{t("Xylo.21")}</h5>
                 <p className="computer">{t("Xylo.22")}<span>{t("Xylo.22a")}</span>{t("Xylo.22b")}<span>{t("Xylo.22c")}</span>{t("Xylo.22d")}<span>{t("Xylo.22e")}</span></p>
                 <p className="mobile">{t("Xylo.22mobile")}</p>
@@ -170,9 +171,9 @@ function SimpleDialogXylo(props) {
                 <p className="mobile">{t("Xylo.24mobile")}</p>
               </div>
             </div>
+          </div>
         </div>
-      </div>
-      <a href="/xylophone" target="_blank"><p className="modal-know-more">{t("products.savoir")}</p></a>
+        <a href="/xylophone" target="_blank"><p className="modal-know-more">{t("products.savoir")}</p></a>
       </div>
     </Dialog >
   );
@@ -196,33 +197,33 @@ function SimpleDialogTour(props) {
         <img src={'/tourPopup.webp'} alt="" style={{ maxWidth: '100%' }} />
         <div className="row">
 
-              <div className="col miniIconeContainer2">
-                <FontAwesomeIcon icon={faDotCircle} color="#35A936" className="anneauxImg" />
-                <h5>{t("Tour.17")}</h5>
-                <p className="computer">{t("Tour.18")}<span>{t("Tour.18a")}</span>{t("Tour.18b")}<span>{t("Tour.18c")}</span></p>
-              </div>
+          <div className="col miniIconeContainer2">
+            <FontAwesomeIcon icon={faDotCircle} color="#35A936" className="anneauxImg" />
+            <h5>{t("Tour.17")}</h5>
+            <p className="computer">{t("Tour.18")}<span>{t("Tour.18a")}</span>{t("Tour.18b")}<span>{t("Tour.18c")}</span></p>
+          </div>
 
 
-              <div className="col miniIconeContainer2">
-                <img src={'/couleur.png'} style={{ maxHeight: "75px",maxWidth:"35%" }} alt="" />
-                <h5>{t("Tour.19")}</h5>
-                <p className="computer">{t("Tour.20")}<span>{t("Tour.20a")}</span>{t("Tour.20b")}<span>{t("Tour.20c")}</span></p>
-              </div>
+          <div className="col miniIconeContainer2">
+            <img src={'/couleur.png'} style={{ maxHeight: "75px", maxWidth: "35%" }} alt="" />
+            <h5>{t("Tour.19")}</h5>
+            <p className="computer">{t("Tour.20")}<span>{t("Tour.20a")}</span>{t("Tour.20b")}<span>{t("Tour.20c")}</span></p>
+          </div>
 
 
-              <div className="col miniIconeContainer2">
-                <img src={'/degrade.png'} style={{ maxHeight: "75px",maxWidth:"29%" }} alt="" />
-                <h5>{t("Tour.21")}</h5>
-                <p className="computer">{t("Tour.22")}<span>{t("Tour.22a")}</span>{t("Tour.22b")}<span>{t("Tour.22c")}</span>{t("Tour.22d")}<span>{t("Tour.22e")}</span></p>
-              </div>
+          <div className="col miniIconeContainer2">
+            <img src={'/degrade.png'} style={{ maxHeight: "75px", maxWidth: "29%" }} alt="" />
+            <h5>{t("Tour.21")}</h5>
+            <p className="computer">{t("Tour.22")}<span>{t("Tour.22a")}</span>{t("Tour.22b")}<span>{t("Tour.22c")}</span>{t("Tour.22d")}<span>{t("Tour.22e")}</span></p>
+          </div>
 
-              <div className="col miniIconeContainer2">
-                <FontAwesomeIcon icon={faGrinStars} color="#E72C59" className="eveilImg" />
-                <h5>{t("Tour.23")}</h5>
-                <p className="computer">{t("Tour.24")}<span>{t("Tour.24a")}</span>{t("Tour.24b")}<span>{t("Tour.24c")}</span>{t("Tour.24d")}<span>{t("Tour.24e")}</span></p>
-              </div>
+          <div className="col miniIconeContainer2">
+            <FontAwesomeIcon icon={faGrinStars} color="#E72C59" className="eveilImg" />
+            <h5>{t("Tour.23")}</h5>
+            <p className="computer">{t("Tour.24")}<span>{t("Tour.24a")}</span>{t("Tour.24b")}<span>{t("Tour.24c")}</span>{t("Tour.24d")}<span>{t("Tour.24e")}</span></p>
+          </div>
 
-            </div>
+        </div>
         <a href="/tour" target="_blank"><p className="modal-know-more">{t("products.savoir")}</p></a>
       </div>
     </Dialog>
@@ -1318,6 +1319,7 @@ const CheckoutScreen = props => {
   const [firstStep, setFirstStep] = useState(false);
 
   const [goPaiement, setGoPaiement] = useState(false)
+  const [goCart, setGoCart] = useState(false)
 
 
   const [errorLivraison, setErrorLivraison] = useState(false)
@@ -1444,7 +1446,7 @@ const CheckoutScreen = props => {
     }
   }, []); // Empty array ensures that effect is only run on mount
 
-  
+
 
   const coordonneesNum = React.createElement('p', { className: 'coordonneesNum' }, "1");
   const coordonneesTitle = React.createElement('p', { className: 'coordonneesTitle' }, t("Checkout.2"));
@@ -1452,6 +1454,11 @@ const CheckoutScreen = props => {
   const coordonneesSubDiv = React.createElement('div', {}, [coordonneesTitle, coordonneesSubTitle]);
   const coordonneesArrow = React.createElement('i', { className: 'fas fa-chevron-down coordonneesArrow' }, "");
   const coordonneesPanierDiv = React.createElement('div', { className: 'coordonneesDiv coordonneesLinkContainer' }, [coordonneesNum, coordonneesSubDiv, coordonneesArrow]);
+
+  const totalTitle = React.createElement('p', { className: 'sousTotalText2' }, t("Checkout.19"));
+  const totalValue = React.createElement('p', { className: 'sousTotalText2' }, totalPrice2.toFixed(2)+"€");
+  const totalArrow = React.createElement('i', { className: 'fas fa-chevron-down coordonneesArrow' }, "");
+  const totalDiv = React.createElement('div', { className: 'prix-reduc-container collapsilbeSimpleCartDiv'}, [totalTitle, totalValue, totalArrow]);
 
   const refPaiementDiv = useRef(null)
 
@@ -1492,6 +1499,7 @@ const CheckoutScreen = props => {
           <div>
 
             <div className="produitPaiementContainer" id="produits-container">
+            <input type="hidden" id="total-price" value={totalPrice2.toFixed(2)} />
 
               <div className="produitContainer" ref={refPaiementDiv}>
                 <Collapsible trigger={coordonneesPanierDiv} open={isCollapsibleOpen} >
@@ -1696,8 +1704,6 @@ const CheckoutScreen = props => {
                         </div>
 
                         <hr />
-
-
                         <div>
 
                         </div>
@@ -1711,7 +1717,6 @@ const CheckoutScreen = props => {
                     <div className="prix-reduc-container">
                       <p className="sousTotalText2" style={{ fontWeight: 'bold' }}>{t("Checkout.19")}</p>
                       <p className="itemTotalPrice2" style={{ fontWeight: 'bold' }}>{totalPrice2.toFixed(2)} €</p>
-                      <input type="hidden" id="total-price" value={totalPrice2.toFixed(2)} />
                     </div>
                   </div>
                 </div>
@@ -1839,7 +1844,7 @@ const CheckoutScreen = props => {
 
               </div>
 
-              <div className="separationCheckout"></div>
+              <div className="separationCheckout computer"></div>
 
 
 
@@ -1847,28 +1852,380 @@ const CheckoutScreen = props => {
                 {cart ?
                   <div>
                     <div className="prixText">
-                      <a href="javascript:void(0);" onClick={() => router.reload(window.location.pathname)} className={!goPaiement ? 'coordonneesLinkContainer' : 'coordonneesLinkContainerLight'}>
-                        <div className={!goPaiement ? 'coordonneesDiv' : 'coordonneesDivLight'}>
-                          <p className="coordonneesNum">2</p>
+                      <a href="javascript:void(0);" onClick={() => setGoCart(true)} className={goCart ? 'coordonneesLinkContainer mobile' : 'coordonneesLinkContainerLight mobile'}>
+                        <div className={goCart ? 'coordonneesDiv' : 'coordonneesDivLight'}>
+                          <p className="coordonneesNum">1</p>
                           <div>
-                            <p className="coordonneesTitle">{t("Checkout.33")}</p>
-                            <p className="coordonneesSubTitle">{t("Checkout.34")}</p>
+                            <p className="coordonneesTitle">{t("Checkout.2")}</p>
                           </div>
                         </div>
                       </a>
-                      <a href="javascript:void(0);" className={goPaiement ? 'coordonneesLinkContainer' : 'coordonneesLinkContainerLight'} id="go-to-payment-header">
-                        <div className={goPaiement ? 'coordonneesDiv' : 'coordonneesDivLight'}>
+                      <a href="javascript:void(0);" onClick={() => {
+                        router.reload(window.location.pathname)
+                        setGoCart(false)
+                      }} className={!goPaiement && !goCart ? 'coordonneesLinkContainer' : 'coordonneesLinkContainerLight'}>
+                        <div className={!goPaiement && !goCart ? 'coordonneesDiv' : 'coordonneesDivLight'}>
+                          <p className="coordonneesNum">2</p>
+                          <div>
+                            <p className="coordonneesTitle">{t("Checkout.33")}</p>
+                            <p className="coordonneesSubTitle computer">{t("Checkout.34")}</p>
+                          </div>
+                        </div>
+                      </a>
+                      <a href="javascript:void(0);" onClick={() => setGoCart(false)} className={goPaiement && !goCart ? 'coordonneesLinkContainer' : 'coordonneesLinkContainerLight'} id="go-to-payment-header">
+                        <div className={goPaiement && !goCart ? 'coordonneesDiv' : 'coordonneesDivLight'}>
                           <p className="coordonneesNum">3</p>
                           <div>
                             <p className="coordonneesTitle">{t("Checkout.35")}</p>
-                            <p className="coordonneesSubTitle">{t("Checkout.36")}</p>
+                            <p className="coordonneesSubTitle computer">{t("Checkout.36")}</p>
                           </div>
                         </div>
                       </a>
                     </div>
 
                     <div className="checkoutContent">
-                      {!goPaiement ? (
+                      {goCart ? (
+                        <div className="mobile">
+                          <div className="productContainer">
+                            <div>
+                              {
+                                cart && cart.products.length && (
+                                  cart.products.map((item) => {
+                                    return (
+                                      item.productId == 3163 ? (
+                                        <>
+                                          <div>
+                                            <CartItem
+                                              key={item.productId}
+                                              item={item}
+                                              setCart={setCart}
+                                            />
+                                            <div className="ebookContainer">
+                                              <div className="ebookInner free">
+                                                <Checkbox
+                                                  checked={true}
+                                                  disabled
+                                                  onChange={() => {
+                                                    setCheckedEbookPlayboard(!checkedEbookPlayboard)
+                                                    handleAddToCartEbookPlayboard()
+                                                  }}
+                                                />
+                                                <p>{t("Checkout.5")}</p>
+                                              </div>
+                                              <div className="ebookInner free">
+                                                <Checkbox checked={ebookImprime ? true : checkedEbookPlayboard}
+                                                  onChange={(event) => {
+                                                    handleAddToCartEbookPlayboard();
+                                                  }} />
+                                                <p>{t("Checkout.6")}</p>
+                                              </div>
+                                            </div>
+                                            <hr />
+                                          </div>
+                                        </>
+                                      ) : (
+                                        <div>
+                                          <CartItem
+                                            key={item.productId}
+                                            item={item}
+                                            setCart={setCart}
+                                          />
+                                          <hr />
+                                        </div>
+                                      )
+                                    )
+                                  }
+                                  )
+                                )
+                              }
+                            </div>
+                          </div>
+
+                          <div className="prixRecap">
+                            <div className="sousTotal">
+
+                              <div>
+                                <div className="prix-reduc-container">
+                                  <p className="sousTotalText2">{t("Checkout.totalAvantDiscount")}</p>
+                                  <p className="itemTotalPrice2">{totalBeforeDiscount.toFixed(2)} €</p>
+                                </div>
+                              </div>
+
+                              <div>
+                                {playboardInCart.length !== 0 && (
+                                  <div className="prix-reduc-container">
+                                    <p className="sousTotalText">{t("Checkout.7")}</p>
+                                    <p className="itemTotalPrice">{playboardReducPrice} €</p>
+                                  </div>
+                                )}
+                              </div>
+
+                              <div>
+                                {xyloInCart.length !== 0 && (
+                                  <div className="prix-reduc-container">
+                                    <p className="sousTotalText">{t("Checkout.8")}</p>
+                                    <p className="itemTotalPrice">{xyloReducPrice} €</p>
+                                  </div>
+                                )}
+                              </div>
+
+                              <div>
+                                {disXyloInCart.length !== 0 && (
+                                  <div className="prix-reduc-container">
+                                    <p className="sousTotalText">{t("Checkout.9")}</p>
+                                    <p className="itemTotalPrice">{disXyloReducPrice} €</p>
+                                  </div>
+                                )}
+                              </div>
+
+                              <div>
+                                {disKakoInCart.length !== 0 && (
+                                  <div className="prix-reduc-container">
+                                    <p className="sousTotalText">Discount Kako</p>
+                                    <p className="itemTotalPrice">{disKakoReducPrice} €</p>
+                                  </div>
+                                )}
+                              </div>
+
+                              <div>
+                                {tourInCart.length !== 0 && (
+                                  <div className="prix-reduc-container">
+                                    <p className="sousTotalText">{t("Checkout.10")}</p>
+                                    <p className="itemTotalPrice">{tourReducPrice} €</p>
+                                  </div>
+                                )}
+                              </div>
+
+                              <div>
+                                {disTourInCart.length !== 0 && (
+                                  <div className="prix-reduc-container">
+                                    <p className="sousTotalText">{t("Checkout.11")}</p>
+                                    <p className="itemTotalPrice">{disTourReducPrice} €</p>
+                                  </div>
+                                )}
+                              </div>
+
+                              <div>
+                                {ebookInCart.length !== 0 && (
+                                  <div className="prix-reduc-container">
+                                    <p className="sousTotalText">Discount ebook</p>
+                                    <p className="itemTotalPrice">{ebookReducPrice} €</p>
+                                  </div>
+                                )}
+                              </div>
+
+                              <div>
+                                {qtyTotale === 2 && (
+                                  <div className="prix-reduc-container">
+                                    <p className="sousTotalText">{t("Checkout.12")}</p>
+                                    <p className="itemTotalPrice">{discountPanier} €</p>
+                                  </div>
+                                )}
+                              </div>
+
+                              <div>
+                                {qtyTotale === 3 && (
+                                  <div className="prix-reduc-container">
+                                    <p className="sousTotalText">{t("Checkout.13")}</p>
+                                    <p className="itemTotalPrice">{discountPanier} €</p>
+                                  </div>
+                                )}
+                              </div>
+
+                              <div>
+                                {qtyTotale >= 4 && (
+                                  <div className="prix-reduc-container">
+                                    <p className="sousTotalText">{t("Checkout.14")}</p>
+                                    <p className="itemTotalPrice">{discountPanier} €</p>
+                                  </div>
+                                )}
+                              </div>
+
+
+                              <div>
+                                {(codePromo && codePromo.amount) && (
+                                  <div className="prix-reduc-container">
+                                    <p className="sousTotalText">{t("Checkout.15")}</p>
+                                    <p className="itemTotalPrice">{codePromo.amount} %</p>
+                                  </div>
+                                )}
+                              </div>
+
+                              <div className="prix-reduc-container">
+                                <p className="totalDiscountText">{t("Checkout.16")} (-{percentageTotalDiscount.toFixed(0)}%)</p>
+                                <p className="totalDiscountPrice">{totalDiscount.toFixed(2)} €</p>
+                              </div>
+
+                              <div>
+
+                              </div>
+
+                            </div>
+
+                            <hr />
+
+
+                            {(cart && cart.products.length) && (
+                              <div className="sousTotal">
+
+                                <div>
+                                  <div className="prix-reduc-container">
+                                    <p className="sousTotalText2">{t("Checkout.17")}</p>
+                                    <p className="itemTotalPrice2">{totalPrice1.toFixed(2)} €</p>
+                                  </div>
+                                </div>
+                                <div>
+                                  {prixLivraison !== 0 && (
+                                    <div className="prix-reduc-container">
+                                      <p className="sousTotalText2">{t("Checkout.18")}</p>
+                                      <p className="itemTotalPrice2">{prixLivraison} €</p>
+                                    </div>
+                                  )}
+                                </div>
+
+                                <hr />
+                                <div>
+
+                                </div>
+
+                              </div>
+                            )}
+                          </div>
+                          <div className="sousTotal" style={{ marginTop: "15px" }}>
+                            <div>
+                              <div className="prix-reduc-container">
+                                <p className="sousTotalText2" style={{ fontWeight: 'bold' }}>{t("Checkout.19")}</p>
+                                <p className="itemTotalPrice2" style={{ fontWeight: 'bold' }}>{totalPrice2.toFixed(2)} €</p>
+                                <input type="hidden" id="total-price" value={totalPrice2.toFixed(2)} />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="codepromoContainer">
+                            <div>
+                              {codePromoIncorrect ? <p style={{ color: 'red' }}>{t("Checkout.20")}</p> : ''}
+                              {goodCodePromo ? <p style={{ color: 'green' }}>{t("Checkout.21")}</p> : ''}
+                              <input type="text" onChange={event => setpromoCode(event.target.value)} placeholder="Code promo" className="inputPromo" />
+                            </div>
+                            {codePromoLoading && <Spinner animation="border" role="status" >
+                              <span className="sr-only">{t("Checkout.22")}</span>
+                            </Spinner>}
+                            <button className="buttonCodepromo" onClick={() => { checkPromo() }}>{t("Checkout.23")}</button>
+                          </div>
+
+                          <div className="addOtherArticlesPanier">
+                            {qtyTotale === 1 && (
+                              <h5 className="addArticleTitle">{t("Checkout.24")}</h5>
+                            )}
+
+                            {qtyTotale === 2 && (
+                              <h5 className="addArticleTitle">{t("Checkout.25")}</h5>
+                            )}
+
+                            {qtyTotale >= 3 && (
+                              <h5 className="addArticleTitle">{t("Checkout.26")}</h5>
+                            )}
+                            <Slider {...settingsSlider}>
+                              <div className="innerArticleContainer">
+                                <div className="innerArticleTop">
+                                  <label className="labelArticleTop">
+                                    <Checkbox
+                                      id={products[2].id}
+                                      className="checkArticle"
+                                      style={{ display: 'inlineBlock' }}
+                                      checked={checkedPlayboard}
+                                      onChange={(event) => {
+                                        handleAddToCartPlayboard()
+                                      }}></Checkbox>
+                                    <span className="innerArticleTitle">{t("Checkout.27")}</span>
+                                    <br></br>
+                                    <strike className="innerArticleStrike">{products[2].priceAugmente} €</strike>
+                                    <span className="innerArticlePrice">{products[2].price} €</span>
+                                    <p className="innerArticleReductionContainer">
+                                      <span className="innerArticleReduction">({t("Checkout.28")} {products[2].priceAugmente - products[2].price} €)</span>
+                                    </p>
+                                  </label>
+                                </div>
+                                <div className="innerArticleBottom" >
+                                  <div onClick={() => {
+                                    handleClickOpenPlayboard()
+                                  }}>
+                                    <img src="/PLAYBOARD-ombresSansFond.webp" alt="playboard" className="articleImg" />
+
+                                    <p className="modal-know-more">{t("products.savoir")}</p>
+                                  </div>
+                                </div>
+
+                                <SimpleDialogPlayboard open={openPlayboard} onClose={handleClosePlayboard} />
+
+                              </div>
+
+                              <div className="innerArticleContainer">
+                                <div className="innerArticleTop">
+                                  <label className="labelArticleTop">
+                                    <Checkbox style={{ display: 'inlineBlock' }} onChange={() => {
+                                      handleAddToCartXylo()
+                                    }} checked={checkedXylo}></Checkbox>
+                                    <span className="innerArticleTitle">{t("Checkout.29")}</span>
+                                    <br></br>
+                                    <strike className="innerArticleStrike">{products[0].priceAugmente} €</strike>
+                                    <span className="innerArticlePrice">{products[0].price} €</span>
+                                    <br></br>
+                                    <p className="innerArticleReductionContainer">
+                                      <span className="innerArticleReduction">{t("Checkout.30")} {products[5].price}€ {t("Checkout.31")}</span>
+                                    </p>
+                                  </label>
+                                </div>
+                                <div className="innerArticleBottom">
+                                  <div onClick={() => {
+                                    handleClickOpenXylo()
+                                  }}>
+                                    <img src="/Xylo-OmbrageSansFond.webp" alt="playboard" className="articleImg" />
+
+                                    <p className="modal-know-more">{t("products.savoir")}</p>
+                                  </div>
+
+                                </div>
+                                <SimpleDialogXylo open={openXylo} onClose={handleCloseXylo} />
+
+                              </div>
+
+                              <div className="innerArticleContainer">
+                                <div className="innerArticleTop">
+                                  <label className="labelArticleTop">
+                                    <Checkbox style={{ display: 'inlineBlock' }} onChange={() => {
+                                      handleAddToCartTour()
+                                    }} checked={checkedTour}></Checkbox>
+                                    <span className="innerArticleTitle">{t("Checkout.32")}</span>
+                                    <br></br>
+                                    <strike className="innerArticleStrike">{products[1].priceAugmente} €</strike>
+                                    <span className="innerArticlePrice">{products[1].price} €</span>
+                                    <br></br>
+                                    <p className="innerArticleReductionContainer">
+                                      <span className="innerArticleReduction">{t("Checkout.30")} {products[6].price}€ {t("Checkout.31")}</span>
+                                    </p>
+                                  </label>
+                                </div>
+                                <div className="innerArticleBottom" >
+                                  <div onClick={() => {
+                                    handleClickOpenTour()
+                                  }}>
+                                    <img src="/tour.png" alt="playboard" className="articleImg" />
+
+                                    <p className="modal-know-more">{t("products.savoir")}</p>
+                                  </div>
+                                </div>
+                                <SimpleDialogTour open={openTour} onClose={handleCloseTour} />
+
+                              </div>
+
+                            </Slider>
+                          </div>
+                          <a href="/checkout" >
+                            <button className="cart-valide">{t("Checkout.56")}</button>
+                          </a>
+                        </div>
+                      ) : !goPaiement ? (
                         <Formik
                           initialValues={getInitialValues()}
                           enableReinitialize={true}
@@ -1929,6 +2286,60 @@ const CheckoutScreen = props => {
                         >
                           {props => (
                             <form className={classes.root} noValidate autoComplete="off">
+                              <Collapsible trigger={totalDiv} open={isCollapsibleOpen} >
+                              <div>
+                      {
+                        cart && cart.products.length && (
+                          cart.products.map((item) => {
+                            return (
+                              item.productId == 3163 ? (
+                                <>
+                                  <div>
+                                    <CartItemSimple
+                                      key={item.productId}
+                                      item={item}
+                                      setCart={setCart}
+                                    />
+                                    <div className="ebookContainer">
+                                      <div className="ebookInner free">
+                                        <Checkbox
+                                          checked={true}
+                                          disabled
+                                          onChange={() => {
+                                            setCheckedEbookPlayboard(!checkedEbookPlayboard)
+                                            handleAddToCartEbookPlayboard()
+                                          }}
+                                        />
+                                        <p>{t("Checkout.5")}</p>
+                                      </div>
+                                      <div className="ebookInner free">
+                                        <Checkbox checked={ebookImprime ? true : checkedEbookPlayboard}
+                                          onChange={(event) => {
+                                            handleAddToCartEbookPlayboard();
+                                          }} />
+                                        <p>{t("Checkout.6")}</p>
+                                      </div>
+                                    </div>
+                                    <hr />
+                                  </div>
+                                </>
+                              ) : (
+                                <div>
+                                  <CartItemSimple
+                                    key={item.productId}
+                                    item={item}
+                                    setCart={setCart}
+                                  />
+                                  <hr />
+                                </div>
+                              )
+                            )
+                          }
+                          )
+                        )
+                      }
+                    </div>
+                                </Collapsible>
                               <div className="checkout-form">
                                 <div className="inputContainer">
                                   <TextField
@@ -2487,8 +2898,8 @@ const CheckoutScreen = props => {
 
 
 
-                                <a href="#produits-container" onClick={props.handleSubmit}>
-                                  <button className="cart-valide" id="cart-valide" type="submit" >{t("Checkout.56")}</button>
+                                <a href="#produits-container" >
+                                  <button className="cart-valide" id="cart-valide" type="submit" onClick={props.handleSubmit}>{t("Checkout.56")}</button>
                                 </a>
                               </div>
                             </form>
@@ -2517,8 +2928,8 @@ const CheckoutScreen = props => {
                               phone={phone}
                             />
                           </div>
-                        </Elements>}
-
+                        </Elements>
+                      }
                     </div>
                   </div>
                   : <p className="articlesInPanier">{t("Checkout.57")}</p>}
