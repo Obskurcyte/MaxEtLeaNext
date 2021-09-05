@@ -1852,7 +1852,10 @@ const CheckoutScreen = props => {
                 {cart ?
                   <div>
                     <div className="prixText">
-                      <a href="javascript:void(0);" onClick={() => setGoCart(true)} className={goCart ? 'coordonneesLinkContainer mobile' : 'coordonneesLinkContainerLight mobile'}>
+                      <a href="javascript:void(0);" onClick={() =>{
+                         setGoCart(true)
+                         setGoPaiement(false)
+                         }} className={goCart ? 'coordonneesLinkContainer mobile' : 'coordonneesLinkContainerLight mobile'}>
                         <div className={goCart ? 'coordonneesDiv' : 'coordonneesDivLight'}>
                           <p className="coordonneesNum">1</p>
                           <div>
@@ -1860,9 +1863,9 @@ const CheckoutScreen = props => {
                           </div>
                         </div>
                       </a>
-                      <a href="javascript:void(0);" onClick={() => {
-                        router.reload(window.location.pathname)
+                      <a href="javascript:void(0);" id="addresses-block" onClick={() => {
                         setGoCart(false)
+                        setGoPaiement(false)
                       }} className={!goPaiement && !goCart ? 'coordonneesLinkContainer' : 'coordonneesLinkContainerLight'}>
                         <div className={!goPaiement && !goCart ? 'coordonneesDiv' : 'coordonneesDivLight'}>
                           <p className="coordonneesNum">2</p>
@@ -1884,8 +1887,7 @@ const CheckoutScreen = props => {
                     </div>
 
                     <div className="checkoutContent">
-                      {goCart ? (
-                        <div className="mobile">
+                        <div className={goCart ? 'showTab mobile' : 'hideTab mobile'}>
                           <div className="productContainer">
                             <div>
                               {
@@ -2221,11 +2223,11 @@ const CheckoutScreen = props => {
 
                             </Slider>
                           </div>
-                          <a href="/checkout" >
+                          <a id="cart-to-addresses" onClick={() => setGoCart(false)}>
                             <button className="cart-valide">{t("Checkout.56")}</button>
                           </a>
                         </div>
-                      ) : !goPaiement ? (
+                      <div className={!goPaiement && !goCart ? 'showTab' : 'hideTab'}>
                         <Formik
                           initialValues={getInitialValues()}
                           enableReinitialize={true}
@@ -2286,6 +2288,7 @@ const CheckoutScreen = props => {
                         >
                           {props => (
                             <form className={classes.root} noValidate autoComplete="off">
+                              <div className="mobile">
                               <Collapsible trigger={totalDiv} open={isCollapsibleOpen} >
                               <div>
                       {
@@ -2340,6 +2343,7 @@ const CheckoutScreen = props => {
                       }
                     </div>
                                 </Collapsible>
+                                </div>
                               <div className="checkout-form">
                                 <div className="inputContainer">
                                   <TextField
@@ -2898,7 +2902,7 @@ const CheckoutScreen = props => {
 
 
 
-                                <a href="#produits-container" >
+                                <a id="addresses-to-payment" >
                                   <button className="cart-valide" id="cart-valide" type="submit" onClick={props.handleSubmit}>{t("Checkout.56")}</button>
                                 </a>
                               </div>
@@ -2906,7 +2910,8 @@ const CheckoutScreen = props => {
                           )
                           }
                         </Formik>
-                      ) :
+                      </div>
+                      <div className={goPaiement && !goCart ? 'showTab' : 'hideTab'}>
                         <Elements stripe={stripePromise}>
                           <div className="formData">
                             <CheckoutFormStripe
@@ -2929,7 +2934,7 @@ const CheckoutScreen = props => {
                             />
                           </div>
                         </Elements>
-                      }
+                      </div>
                     </div>
                   </div>
                   : <p className="articlesInPanier">{t("Checkout.57")}</p>}

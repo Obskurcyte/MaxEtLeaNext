@@ -761,6 +761,10 @@ div.MRW-Content>div:last-child {
   margin-top: 15px;
 }
 
+.hideTab{
+  display: none !important;
+}
+
 @media screen and (min-width: 2100px) {
   .carouselContainer {
     height: 400px
@@ -904,6 +908,10 @@ div.MRW-Content>div:last-child {
 
 
 @media screen and (max-width: 790px) {
+  .coordonneesDiv .coordonneesTitle,.coordonneesDivLight .coordonneesTitle {
+    font-size: 14px;
+    font-weight: 550;
+  }
   .progressBarContainer {
     display: none;
   }
@@ -966,7 +974,10 @@ div.MRW-Content>div:last-child {
     display: table-cell !important;
   }
   .coordonneesTitle{
-    margin-top: 7px;
+    margin-top: 9px;
+  }
+  .produitPaiementContainer{
+    margin-top: -70px;
   }
 }
 
