@@ -731,7 +731,11 @@ legend span {
 .spinner-border{
   position: absolute;
   top: 27px;
-  right: 10%;
+  right: 150px;
+}
+
+.checkout-recommendation .distributeurs{
+  display: none;
 }
 
 .relay-container{

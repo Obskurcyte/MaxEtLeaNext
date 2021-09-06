@@ -2249,6 +2249,7 @@ const CheckoutScreen = props => {
                                 codePostalFacturation: values.codePostalFacturation,
                                 villeFacturation: values.villeFacturation,
                                 villeLivraison: values.villeLivraison,
+                                paysFacturation: values.paysFacturation,
                                 email: values.email,
                                 nom: values.nom,
                                 prenom: values.prenom,
@@ -2268,6 +2269,7 @@ const CheckoutScreen = props => {
                                 codePostalFacturation: values.codePostalLivraison,
                                 villeFacturation: values.villeLivraison,
                                 villeLivraison: values.villeLivraison,
+                                paysFacturation: values.pays,
                                 email: values.email,
                                 nom: values.nom,
                                 pays: values.pays,
@@ -2496,22 +2498,15 @@ const CheckoutScreen = props => {
                                         variant="outlined"
                                         className="inputMoyenGauche"
                                       />
-                                      <TextField
-                                        select
-                                        value={props.values.paysFacturation}
-                                        onChange={props.handleChange('paysFacturation')}
-                                        label={t("Checkout.fields.pays")}
-                                        helperText="Veuillez sélectionner un pays"
-                                        defaultValue="France"
-                                        className="inputMoyenDroit"
-                                      >
-                                        {countries.listCountries.map((option) => (
-                                          <MenuItem key={option.code} value={option.name}>
-                                            {option.name}
-                                          </MenuItem>
-                                        ))}
 
-                                      </TextField>
+                                      <div className="MuiFormControl-root MuiTextField-root inputMoyenDroit">
+                                        <label style={{ zIndex: "2" }} className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required" data-shrink="true" for="pays" id="pays-label">{t("Checkout.fields.pays")}<span aria-hidden="true" class="MuiFormLabel-asterisk MuiInputLabel-asterisk"> *</span></label>
+                                        <SelectSearch onChange={(val) => {
+                                          props.handleChange('paysFacturation');
+                                          setPaysFacturation(val);
+                                          props.setFieldValue('paysFacturation', val);
+                                        }} options={countries.listCountries} value={props.values.pays} id="pays" name="country" placeholder={t("Checkout.fields.pays")} search={true} filterOptions={fuzzySearch} />
+                                      </div>
                                     </div>
                                   </div>
                                 ) : ''}
@@ -3064,13 +3059,15 @@ const CheckoutScreen = props => {
             </div>
           </div>
 
-          <div className="recommendation">
-            <h5 className="recommendation-title">{t("Checkout.58")}</h5>
-            <Recommande />
-          </div>
           <div>
             <Garanties />
           </div>
+
+          <div className="recommendation checkout-recommendation">
+            <h5 className="recommendation-title">{t("Checkout.58")}</h5>
+            <Recommande />
+          </div>
+          
         </div>
 
       </div>
