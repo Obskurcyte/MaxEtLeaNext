@@ -2286,13 +2286,9 @@ const CheckoutScreen = props => {
                             }
                             actions.setFieldValue("email", values.email);
                             actions.setSubmitting(false);
-                            if (!checked1 && !checked2 && !checked3) {
-                              setErrorLivraison(true)
-                            } else {
                               localStorage.setItem('livraison', JSON.stringify(donnesClient))
                               setGoPaiement(true)
                               setIsCollapsibleOpen(false)
-                            }
                           }}
                         >
                           {props => (
@@ -2511,387 +2507,6 @@ const CheckoutScreen = props => {
                                   </div>
                                 ) : ''}
 
-
-
-
-
-                                <div className="livraison">
-                                  <h4 className="livraisonTitle">{t("Checkout.39")}</h4>
-                                  {(pays === 'FR' || pays === 'MC') && (
-                                    <div className="livraisonListContainer">
-                                      <div className="livraisonRow">
-                                        <div className="checkboxLivraisonContainer">
-                                          <label className="livraisonChoice">
-                                            <div className="livraisonInnerRow">
-                                              <Checkbox
-                                                checked={checked1}
-                                                onChange={() => {
-                                                  handleChange1(event, 4.99, "Livraison standard")
-                                                  setMondialRelay(false)
-                                                }}
-                                                inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                              <p>{t("Checkout.40")}</p>
-                                            </div>
-                                          </label>
-                                        </div>
-                                        <div className="livraisonPrice">
-                                          <p>4,99 €</p>
-                                        </div>
-                                      </div>
-
-                                      <div className="livraisonRow">
-                                        <div className="checkboxLivraisonContainer">
-                                          <label className="livraisonChoice">
-                                            <div className="livraisonInnerRow">
-                                              <Checkbox
-                                                id="relay_check"
-                                                checked={checked2}
-                                                onChange={() => {
-                                                  handleChange2(event, 4.99, "Livraison en point Mondial Relay")
-                                                  setMondialRelay(true)
-                                                  handleClickOpenRelay()
-                                                }}
-                                                inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                              <p>{t("Checkout.41")}</p>
-                                            </div>
-                                          </label>
-                                        </div>
-                                        <div className="livraisonPrice">
-                                          <p>4,99 €</p>
-                                        </div>
-                                      </div>
-
-                                      <div className="livraisonRow">
-                                        <div className="checkboxLivraisonContainer">
-                                          <label className="livraisonChoice">
-                                            <div className="livraisonInnerRow">
-                                              <Checkbox
-                                                checked={checked3}
-                                                onChange={() => {
-                                                  handleChange3(event, 6.99, "Livraison express")
-                                                  setMondialRelay(false)
-                                                }}
-                                                inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                              <p>{t("Checkout.42")}</p>
-                                            </div>
-                                          </label>
-
-                                        </div>
-                                        <div className="livraisonPrice">
-                                          <p>6,99 €</p>
-                                        </div>
-                                      </div>
-                                      {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
-                                    </div>
-
-                                  )}
-
-
-                                  {pays === 'US' && (
-                                    <div className="livraisonListContainer">
-                                      <div className="livraisonRow">
-                                        <div className="checkboxLivraisonContainer">
-                                          <label className="livraisonChoice">
-                                            <div className="livraisonInnerRow">
-                                              <Checkbox
-                                                checked={checked1}
-                                                onChange={() => handleChange3(event, 19.99)}
-                                                inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                              <p>{t("Checkout.44")}</p>
-                                            </div>
-                                          </label>
-
-                                        </div>
-                                        <div className="livraisonPrice">
-                                          <p>19,99 €</p>
-                                        </div>
-                                        {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
-
-                                      </div>
-                                    </div>
-                                  )}
-
-
-                                  {(pays === 'RU') && (
-                                    <div className="livraisonListContainer">
-                                      <div className="livraisonRow">
-                                        <div className="checkboxLivraisonContainer">
-                                          <label className="livraisonChoice">
-                                            <div className="livraisonInnerRow">
-                                              <Checkbox
-                                                checked={checked1}
-                                                onChange={() => handleChange1(event, 6.99, "Livraison standard")}
-                                                inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                              <p>{t("Checkout.46")}</p>
-                                            </div>
-                                          </label>
-
-                                        </div>
-                                        <div className="livraisonPrice">
-                                          <p>6,99 €</p>
-                                        </div>
-                                      </div>
-
-                                      <div className="livraisonRow">
-                                        <div className="checkboxLivraisonContainer">
-                                          <label className="livraisonChoice">
-                                            <div className="livraisonInnerRow">
-                                              <Checkbox
-                                                checked={checked2}
-                                                onChange={() => handleChange2(event, 9.99, "Livraison express")}
-                                                inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                              <p>{t("Checkout.47")}</p>
-                                            </div>
-                                          </label>
-                                        </div>
-                                        <div className="livraisonPrice">
-                                          <p>9,99 €</p>
-                                        </div>
-                                      </div>
-                                      {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
-
-                                    </div>
-                                  )}
-
-
-
-                                  {(pays === 'AL'
-                                    || pays === 'DZ'
-                                    || pays === 'AR'
-                                    || pays === 'BO'
-                                    || pays === 'BG'
-                                    || pays === 'BR'
-                                    || pays === 'CA'
-                                    || pays === 'CL'
-                                    || pays === 'CY'
-                                    || pays === 'CO'
-                                    || pays === 'CR'
-                                    || pays === 'GI'
-                                    || pays === 'GP'
-                                    || pays === 'GT'
-                                    || pays === 'GY'
-                                    || pays === 'GF'
-                                    || pays === 'ISR'
-                                    || pays === 'LR'
-                                    || pays === 'LB'
-                                    || pays === 'MT'
-                                    || pays === 'MA'
-                                    || pays === 'MQ'
-                                    || pays === 'YT'
-                                    || pays === 'MX'
-                                    || pays === 'MD'
-                                    || pays === 'NC'
-                                    || pays === 'PA'
-                                    || pays === 'PY'
-                                    || pays === 'PR'
-                                    || pays === 'PO'
-                                    || pays === 'PM'
-                                    || pays === 'VC'
-                                    || pays === 'TW'
-                                    || pays === 'TJ'
-                                    || pays === 'UA'
-                                    || pays === 'UY'
-                                    || pays === 'VU'
-                                    || pays === 'VE'
-                                    || pays === 'EQ') && (
-                                      <div className="livraisonListContainer">
-                                        <div className="livraisonRow">
-                                          <div className="checkboxLivraisonContainer">
-                                            <label className="livraisonChoice">
-                                              <div className="livraisonInnerRow">
-                                                <Checkbox
-                                                  checked={checked1}
-                                                  onChange={() => handleChange1(event, 47.99, "Livraison standard")}
-                                                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                                <p>{t("Checkout.48")}</p>
-                                              </div>
-                                            </label>
-                                          </div>
-                                          <div className="livraisonPrice">
-                                            <p>47,99 €</p>
-                                          </div>
-                                        </div>
-
-                                        <div className="livraisonRow">
-                                          <div className="checkboxLivraisonContainer">
-                                            <label className="livraisonChoice">
-                                              <div className="livraisonInnerRow">
-                                                <Checkbox
-                                                  checked={checked2}
-                                                  onChange={() => handleChange2(event, 54.99, "Livraison express")}
-                                                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                                <p>{t("Checkout.49")}</p>
-                                              </div>
-                                            </label>
-                                          </div>
-                                          <div className="livraisonPrice">
-                                            <p>54,99 €</p>
-                                          </div>
-                                        </div>
-                                        {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
-
-                                      </div>
-                                    )}
-
-
-
-                                  {(pays === 'ES'
-                                    || pays === 'DE'
-                                    || pays === 'AD'
-                                    || pays === 'AT'
-                                    || pays === 'BE'
-                                    || pays === 'DK'
-                                    || pays === 'HU'
-                                    || pays === 'IR'
-                                    || pays === 'IT'
-                                    || pays === 'LU'
-                                    || pays === 'LI'
-                                    || pays === 'PB'
-                                    || pays === 'PL'
-                                    || pays === 'PT'
-                                    || pays === 'RT') && (
-                                      <div className="livraisonListContainer">
-                                        <div className="livraisonRow">
-                                          <div className="checkboxLivraisonContainer">
-                                            <label className="livraisonChoice">
-                                              <div className="livraisonInnerRow">
-                                                <Checkbox
-                                                  checked={checked1}
-                                                  onChange={() => handleChange1(event, 9.99, "Livraison standard")}
-                                                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                                <p>{t("Checkout.50")}</p>
-                                              </div>
-                                            </label>
-                                          </div>
-                                          <div className="livraisonPrice">
-                                            <p>9,99 €</p>
-                                          </div>
-                                        </div>
-
-                                        <div className="livraisonRow">
-                                          <div className="checkboxLivraisonContainer">
-                                            <label className="livraisonChoice">
-                                              <div className="livraisonInnerRow">
-                                                <Checkbox
-                                                  checked={checked2}
-                                                  onChange={() => handleChange2(event, 12.99, "Livraison express")}
-                                                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                                <p>{t("Checkout.51")}</p>
-                                              </div>
-                                            </label>
-                                          </div>
-                                          <div className="livraisonPrice">
-                                            <p>12,99 €</p>
-                                          </div>
-                                        </div>
-                                        {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
-
-                                      </div>
-                                    )}
-
-
-
-                                  {(pays === 'HR'
-                                    || pays === 'IS'
-                                    || pays === 'NO') && (
-                                      <div className="livraisonListContainer">
-                                        <div className="livraisonRow">
-                                          <div className="checkboxLivraisonContainer">
-                                            <label className="livraisonChoice">
-                                              <div className="livraisonInnerRow">
-                                                <Checkbox
-                                                  checked={checked1}
-                                                  onChange={() => handleChange1(event, 24.99, "Livraison standard")}
-                                                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                                <p>{t("Checkout.52")}</p>
-                                              </div>
-                                            </label>
-                                          </div>
-                                          <div className="livraisonPrice">
-                                            <p>24,99 €</p>
-                                          </div>
-                                        </div>
-
-                                        <div className="livraisonRow">
-                                          <div className="checkboxLivraisonContainer">
-                                            <label className="livraisonChoice">
-                                              <div className="livraisonInnerRow">
-                                                <Checkbox
-                                                  checked={checked2}
-                                                  onChange={() => handleChange2(event, 29.99, "Livraison express")}
-                                                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                                <p>{t("Checkout.53")}</p>
-                                              </div>
-                                            </label>
-                                          </div>
-                                          <div className="livraisonPrice">
-                                            <p>29,99 €</p>
-                                          </div>
-                                        </div>
-                                        {errorLivraison ? <p className='text-danger'>{t("Checkout.53")}</p> : ''}
-
-                                      </div>
-                                    )}
-
-
-
-                                  {(pays === 'EE'
-                                    || pays === 'FI'
-                                    || pays === 'GR'
-                                    || pays === 'LT'
-                                    || pays === 'LIT'
-                                    || pays === 'RO'
-                                    || pays === 'SK'
-                                    || pays === 'SI'
-                                    || pays === 'SO') && (
-                                      <div className="livraisonListContainer">
-                                        <div className="livraisonRow">
-                                          <div className="checkboxLivraisonContainer">
-                                            <label className="livraisonChoice">
-                                              <div className="livraisonInnerRow">
-                                                <Checkbox
-                                                  checked={checked1}
-                                                  onChange={() => handleChange1(event, 14.99, "Livraison standard")}
-                                                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                                <p>{t("Checkout.50")}</p>
-                                              </div>
-                                            </label>
-                                          </div>
-                                          <div className="livraisonPrice">
-                                            <p>14,99 €</p>
-                                          </div>
-                                        </div>
-
-                                        <div className="livraisonRow">
-                                          <div className="checkboxLivraisonContainer">
-                                            <label className="livraisonChoice">
-                                              <div className="livraisonInnerRow">
-                                                <Checkbox
-                                                  checked={checked2}
-                                                  onChange={() => handleChange2(event, 19.99, "Livraison express")}
-                                                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
-                                                <p>{t("Checkout.51")}</p>
-                                              </div>
-                                            </label>
-                                          </div>
-                                          <div className="livraisonPrice">
-                                            <p>19,99 €</p>
-                                          </div>
-                                        </div>
-                                        {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
-
-                                      </div>
-                                    )}
-
-                                  {(pays === '') && (
-                                    <label style={{ textAlign: "center", width: "100%" }}>{t("Checkout.54")}</label>
-                                  )}
-
-
-
-
-                                </div>
-
                                 <input type="hidden" id="relay_value"></input>
                                 <div className={mondialRelay ? "display" : "displayNone"} >
                                   <label id="relay_text" onClick={() => {
@@ -2917,6 +2532,362 @@ const CheckoutScreen = props => {
                         </Formik>
                       </div>
                       <div className={goPaiement && !goCart ? 'showTab' : 'hideTab'}>
+                          <div className="livraison">
+                          <h4 className="livraisonTitle">{t("Checkout.39")}</h4>
+                          {(pays === 'FR' || pays === 'MC') && (
+                              <div className="livraisonListContainer">
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <input type="radio" id="standard-delivery" name="drone" value="huey"
+                                               onChange={() => handleChange1(event, 4.99, "Livraison standard")}
+                                        />
+                                        <p>{t("Checkout.40")}</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>4,99 €</p>
+                                  </div>
+                                </div>
+
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <input type="radio" id="huey" name="drone" value="huey"
+                                               onChange={() => handleChange2(event, 4.99, "Livraison en point Mondial Relay")}
+                                        />
+                                        <p>{t("Checkout.41")}</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>4,99 €</p>
+                                  </div>
+                                </div>
+
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <input type="radio" id="huey" name="drone" value="huey"
+                                               onChange={() => handleChange3(event, 6.99, "Livraison express")}
+                                        />
+                                        <p>{t("Checkout.42")}</p>
+                                      </div>
+                                    </label>
+
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>6,99 €</p>
+                                  </div>
+                                </div>
+                                {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
+                              </div>
+
+                          )}
+
+
+                          {pays === 'US' && (
+                              <div className="livraisonListContainer">
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <input type="radio" id="standard-delivery" name="drone" value="huey"
+                                               onChange={() => handleChange1(event, 19.99, "Livraison standard")}
+                                        />
+                                        <p>{t("Checkout.44")}</p>
+                                      </div>
+                                    </label>
+
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>19,99 €</p>
+                                  </div>
+                                  {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
+
+                                </div>
+                              </div>
+                          )}
+
+
+                          {(pays === 'RU') && (
+                              <div className="livraisonListContainer">
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <input type="radio" id="standard-delivery" name="drone" value="huey"
+                                               onChange={() => handleChange1(event, 6.99, "Livraison standard")}
+                                        />
+                                        <p>{t("Checkout.46")}</p>
+                                      </div>
+                                    </label>
+
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>6,99 €</p>
+                                  </div>
+                                </div>
+
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <input type="radio" id="huey" name="drone" value="huey"
+                                               onChange={() => handleChange2(event, 9.99, "Livraison express")}
+
+                                        />
+                                        <p>{t("Checkout.47")}</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>9,99 €</p>
+                                  </div>
+                                </div>
+                                {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
+
+                              </div>
+                          )}
+
+
+
+                          {(pays === 'AL'
+                              || pays === 'DZ'
+                              || pays === 'AR'
+                              || pays === 'BO'
+                              || pays === 'BG'
+                              || pays === 'BR'
+                              || pays === 'CA'
+                              || pays === 'CL'
+                              || pays === 'CY'
+                              || pays === 'CO'
+                              || pays === 'CR'
+                              || pays === 'GI'
+                              || pays === 'GP'
+                              || pays === 'GT'
+                              || pays === 'GY'
+                              || pays === 'GF'
+                              || pays === 'ISR'
+                              || pays === 'LR'
+                              || pays === 'LB'
+                              || pays === 'MT'
+                              || pays === 'MA'
+                              || pays === 'MQ'
+                              || pays === 'YT'
+                              || pays === 'MX'
+                              || pays === 'MD'
+                              || pays === 'NC'
+                              || pays === 'PA'
+                              || pays === 'PY'
+                              || pays === 'PR'
+                              || pays === 'PO'
+                              || pays === 'PM'
+                              || pays === 'VC'
+                              || pays === 'TW'
+                              || pays === 'TJ'
+                              || pays === 'UA'
+                              || pays === 'UY'
+                              || pays === 'VU'
+                              || pays === 'VE'
+                              || pays === 'EQ') && (
+                              <div className="livraisonListContainer">
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <input type="radio" id="standard-delivery" name="drone" value="huey"
+                                               onChange={() => handleChange1(event, 47.99, "Livraison standard")}
+                                        />
+                                        <p>{t("Checkout.48")}</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>47,99 €</p>
+                                  </div>
+                                </div>
+
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <input type="radio" id="huey" name="drone" value="huey"
+                                               onChange={() => handleChange2(event, 54.99, "Livraison express")}
+                                        />
+                                        <p>{t("Checkout.49")}</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>54,99 €</p>
+                                  </div>
+                                </div>
+                                {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
+
+                              </div>
+                          )}
+
+
+
+                          {(pays === 'ES'
+                              || pays === 'DE'
+                              || pays === 'AD'
+                              || pays === 'AT'
+                              || pays === 'BE'
+                              || pays === 'DK'
+                              || pays === 'HU'
+                              || pays === 'IR'
+                              || pays === 'IT'
+                              || pays === 'LU'
+                              || pays === 'LI'
+                              || pays === 'PB'
+                              || pays === 'PL'
+                              || pays === 'PT'
+                              || pays === 'RT') && (
+                              <div className="livraisonListContainer">
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <input type="radio" id="standard-delivery" name="drone" value="huey"
+                                               onChange={() => handleChange1(event, 9.99, "Livraison standard")}
+                                        />
+                                        <p>{t("Checkout.50")}</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>9,99 €</p>
+                                  </div>
+                                </div>
+
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <input type="radio" id="huey" name="drone" value="huey"
+                                               onChange={() => handleChange2(event, 12.99, "Livraison express")}
+
+                                        />
+                                        <p>{t("Checkout.51")}</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>12,99 €</p>
+                                  </div>
+                                </div>
+                                {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
+
+                              </div>
+                          )}
+
+
+
+                          {(pays === 'HR'
+                              || pays === 'IS'
+                              || pays === 'NO') && (
+                              <div className="livraisonListContainer">
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <input type="radio" id="standard-delivery" name="drone" value="huey"
+                                               onChange={() => handleChange1(event, 24.99, "Livraison standard")}
+
+                                        />
+                                        <p>{t("Checkout.52")}</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>24,99 €</p>
+                                  </div>
+                                </div>
+
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <input type="radio" id="huey" name="drone" value="huey"
+                                               onChange={() => handleChange2(event, 29.99, "Livraison express")}
+
+                                        />
+                                        <p>{t("Checkout.53")}</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>29,99 €</p>
+                                  </div>
+                                </div>
+                                {errorLivraison ? <p className='text-danger'>{t("Checkout.53")}</p> : ''}
+
+                              </div>
+                          )}
+
+
+
+                          {(pays === 'EE'
+                              || pays === 'FI'
+                              || pays === 'GR'
+                              || pays === 'LT'
+                              || pays === 'LIT'
+                              || pays === 'RO'
+                              || pays === 'SK'
+                              || pays === 'SI'
+                              || pays === 'SO') && (
+                              <div className="livraisonListContainer">
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <input type="radio" id="standard-delivery" name="drone" value="huey"
+                                               onChange={() => handleChange1(event, 14.99, "Livraison standard")}
+
+                                        />
+                                        <p>{t("Checkout.50")}</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>14,99 €</p>
+                                  </div>
+                                </div>
+
+                                <div className="livraisonRow">
+                                  <div className="checkboxLivraisonContainer">
+                                    <label className="livraisonChoice">
+                                      <div className="livraisonInnerRow">
+                                        <input type="radio" id="huey" name="drone" value="huey"
+                                               onChange={() => handleChange2(event, 19.99, "Livraison express")}
+
+                                        />
+                                        <p>{t("Checkout.51")}</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <div className="livraisonPrice">
+                                    <p>19,99 €</p>
+                                  </div>
+                                </div>
+                                {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
+                              </div>
+                          )}
+
+                          {(pays === '') && (
+                              <label style={{ textAlign: "center", width: "100%" }}>{t("Checkout.54")}</label>
+                          )}
+
+
+
+
+                        </div>
                         <Elements stripe={stripePromise}>
                           <div className="formData">
                             <CheckoutFormStripe

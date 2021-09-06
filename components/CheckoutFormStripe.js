@@ -28,6 +28,7 @@ import { blue } from '@material-ui/core/colors';
 import { date } from "yup/lib/locale";
 import {useTranslation} from "react-i18next";
 import ApplePay from "./ApplePay";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const CHECKOUT_MUTATION = gql`
 mutation CHECKOUT_MUTATION( $input: CheckoutInput! ) {
@@ -493,13 +494,36 @@ const CheckoutFormStripe = ({
     setOpen(false);
 
   };
-return (
+  const [errorLivraison, setErrorLivraison] = useState(false)
+
+  const handleChange1 = (event, prix, titre = "") => {
+    setChecked1(!checked1);
+    setChecked2(false);
+    setChecked3(false);
+    setPrixLivraison(prix);
+    setTitreLivraison(titre);
+  };
+
+  const handleChange2 = (event, prix, titre = "") => {
+    setChecked2(!checked2);
+    setChecked1(false);
+    setChecked3(false);
+    setPrixLivraison(prix);
+    setTitreLivraison(titre);
+  }
+
+  const handleChange3 = (event, prix, titre = "") => {
+    setChecked3(!checked3);
+    setChecked1(false);
+    setChecked2(false);
+    setPrixLivraison(prix);
+    setTitreLivraison(titre);
+  }
+
+  return (
 
 
     <div>
-      <Head >
-        <title>CheckoutStripe</title>
-      </Head>
       <div className={styles.paymentMethodsSuperContainer}>
         <GooglePayButton
           environment="TEST"
@@ -629,7 +653,7 @@ return (
           buttonType="buy"
         />
 
-        <ApplePay totalPrice={totalPrice2}/>
+        {/*<ApplePay totalPrice={totalPrice2}/>*/}
 
         <div className={styles.paymentMethods}>
           <div className={visaClicked ? styles.visaContainerClicked : styles.visaContainer} onClick={() => {
