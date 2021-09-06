@@ -469,7 +469,7 @@ const CheckoutFormStripe = ({
           name: accountholderName.value,
         },
       },
-      return_url: 'http://localhost:3000/',
+      return_url: 'https://maxandlea.com',
     });
 
     if (error) {
@@ -1123,7 +1123,7 @@ const CheckoutFormStripe = ({
                   name: values.name,
                 },
               },
-              return_url: 'http://localhost:3000/remerciement/',
+              return_url: 'https://maxandlea.com/remerciement/',
             });
 
 

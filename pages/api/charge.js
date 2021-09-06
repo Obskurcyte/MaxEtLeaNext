@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-const stripe = new Stripe('sk_test_51IjLvTHhHoTNAiE0EVFu8ue0eTtiCsVuZsY0Y3FGCsvtiIMkgAKLg5eertKQZMFrolIcUnVJnoxpUlqIEAOJkfKC00EtAYyMKt',  {
+const stripe = new Stripe('sk_live_8m7VdM5hThNGqpZBrVjHUThX006PWZ1YAT',  {
   apiVersion: '2020-08-27',
 })
 

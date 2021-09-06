@@ -37,7 +37,7 @@ import Collapsible from "react-collapsible";
 import * as Scroll from 'react-scroll';
 import { faChevronRight, faDotCircle, faGrinStars, faMusic, faChild, faPalette } from "@fortawesome/free-solid-svg-icons";
 
-const stripePromise = loadStripe('pk_test_51IjLvTHhHoTNAiE0pkif0qnH6Dl91AUale4WRxVMbPoAGKaScqGFyXxy82Pi2DZw8bfsD82mTceXZ6tIoqqV4XVe00hBpIWhvL')
+const stripePromise = loadStripe('pk_live_luKWO27EAVo2urKWTn24imjD00rA2inI5V')
 
 function SimpleDialogPlayboard(props) {
   const { t, i18n } = useTranslation();
@@ -2507,16 +2507,6 @@ const CheckoutScreen = props => {
                                   </div>
                                 ) : ''}
 
-                                <input type="hidden" id="relay_value"></input>
-                                <div className={mondialRelay ? "display" : "displayNone"} >
-                                  <label id="relay_text" onClick={() => {
-                                    handleClickOpenRelay()
-                                  }}>
-                                    {t("Checkout.55")}
-                                  </label>
-                                  <SimpleDialogRelay open={openRelay} onClose={handleCloseRelay} />
-                                </div>
-
 
 
                                 <a id="addresses-to-payment" >
@@ -2541,7 +2531,10 @@ const CheckoutScreen = props => {
                                     <label className="livraisonChoice">
                                       <div className="livraisonInnerRow">
                                         <input type="radio" id="standard-delivery" name="drone" value="huey"
-                                               onChange={() => handleChange1(event, 4.99, "Livraison standard")}
+                                               onChange={() => {
+                                                 handleChange1(event, 4.99, "Livraison standard")
+                                                 setMondialRelay(false)
+                                               }}
                                         />
                                         <p>{t("Checkout.40")}</p>
                                       </div>
@@ -2557,7 +2550,11 @@ const CheckoutScreen = props => {
                                     <label className="livraisonChoice">
                                       <div className="livraisonInnerRow">
                                         <input type="radio" id="huey" name="drone" value="huey"
-                                               onChange={() => handleChange2(event, 4.99, "Livraison en point Mondial Relay")}
+                                               onChange={() => {
+                                                handleChange2(event, 4.99, "Livraison en point Mondial Relay")
+                                                setMondialRelay(true)
+                                                handleClickOpenRelay()
+                                              }}
                                         />
                                         <p>{t("Checkout.41")}</p>
                                       </div>
@@ -2573,7 +2570,10 @@ const CheckoutScreen = props => {
                                     <label className="livraisonChoice">
                                       <div className="livraisonInnerRow">
                                         <input type="radio" id="huey" name="drone" value="huey"
-                                               onChange={() => handleChange3(event, 6.99, "Livraison express")}
+                                               onChange={() => {
+                                                handleChange3(event, 6.99, "Livraison express")
+                                                setMondialRelay(false)
+                                              }}
                                         />
                                         <p>{t("Checkout.42")}</p>
                                       </div>
@@ -2585,7 +2585,19 @@ const CheckoutScreen = props => {
                                   </div>
                                 </div>
                                 {errorLivraison ? <p className='text-danger'>{t("Checkout.43")}</p> : ''}
+
+                                <input type="hidden" id="relay_value"></input>
+                                <div className={mondialRelay ? "display" : "displayNone"} >
+                                  <label id="relay_text" onClick={() => {
+                                    handleClickOpenRelay()
+                                  }}>
+                                    {t("Checkout.55")}
+                                  </label>
+                                  <SimpleDialogRelay open={openRelay} onClose={handleCloseRelay} />
+                                </div>
                               </div>
+
+                              
 
                           )}
 
