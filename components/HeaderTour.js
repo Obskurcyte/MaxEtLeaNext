@@ -401,7 +401,7 @@ const HeaderTour = (props) => {
                     </div>
                     <div className="flex">
                       <div className='productPrice'>
-                        {totalPrice1 ? <span className="totalPriceSpan">{totalPrice1.toFixed(2)} €</span> : <span className="totalPriceSpan">0, 00 €</span>}
+                        {totalPrice1 ? <span className="totalPriceSpan">{totalPrice1.toFixed(2).replace(".", ",")} €</span> : <span className="totalPriceSpan">0, 00 €</span>}
                       </div>
                       <FontAwesomeIcon icon={faShoppingBasket} className="shoppingCart" />
                     </div>

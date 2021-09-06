@@ -513,7 +513,7 @@
     "20": "Ce code est incorrect",
     "21": "Votre code promo a été validé",
     "22": "Loading...",
-    "23": "Valider votre code promo",
+    "23": "Valider",
     "24": "Ajoutez 1 Jouet et Obtenez -10% sur TOUT votre panier",
     "25": "Ajoutez 1 Jouet et Obtenez -15% sur TOUT votre panier",
     "26": "Ajoutez 1 Jouet et Obtenez -20% sur TOUT votre panier",
@@ -528,7 +528,7 @@
     "35": "Paiement",
     "36": "Confirmez votre commande",
     "37": "Ce champ est requis",
-    "38": "Utiliser une adresse de facturation différente",
+    "38": "Facturer à une adresse différente",
     "39": "Méthode d'expédition",
     "40": "Livraison standard (3-5 jours)",
     "41": "Livraison en point Mondial Relay (2-4 jours)",
@@ -559,7 +559,7 @@
       "cp" : "Code Postal",
       "ville" : "Ville",
       "tel" : "Numéro de téléphone (facultatif)",
-      "fac" : "Utiliser une adresse de facturation différente"
+      "fac" : "Facturer à une adresse différente"
     },
     "popUpImg": "/popup.png",
     "popUpXylo": {

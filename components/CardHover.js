@@ -168,12 +168,12 @@ const CardHoverItem = ({item}) => {
           <Link href={item.slug== "ebooks" ? "/playboard" : "/"+item.slug}><a><img src={item.image} alt="product-image" className={styles.image}/></a></Link>
           </div>
             <div className="flex-column w-50">
-            <Link href={item.slug== "ebooks" ? "/playboard" : "/"+item.slug}><a><p className={styles.itemName}>{item.name}</p></a></Link>
+            <Link href={item.slug== "ebooks" ? "/playboard" : "/"+item.slug}><a><p className={styles.itemName}>{t("products." + item.slug)}</p></a></Link>
               <div className="quantityContainer flex justify-content-between w-100">
               <p className="qtyProducts">x{productCount}</p>
                 <div>
-                  <p className="itemPrixBarre">{item.oldPrice ? `${parseFloat(item.oldPrice).toFixed(2)}€` : ''}</p>
-                  <p>{parseFloat(item.price).toFixed(2)}€</p>
+                  <p className="itemPrixBarre">{item.oldPrice ? `${parseFloat(item.oldPrice).toFixed(2).replace(".", ",")}€` : ''}</p>
+                  <p>{parseFloat(item.price).toFixed(2).replace(".", ",")}€</p>
                 </div>
                 <td className="croix ml-4"><div className="croix itemsuppr" onClick={(e) => handleRemoveProduct(e, item.productId)}><i className="far fa-times-circle"></i></div></td>
               </div>
@@ -346,12 +346,12 @@ const CardHover = () => {
 
 
       <div className="prix-container">
-        <p className={styles.subtotal}>{t('Checkout.16')} : {totalDiscount.toFixed(2)} €</p>
+        <p className={styles.subtotal}>{t('Checkout.16')} : {totalDiscount.toFixed(2).replace(".", ",")} €</p>
         <hr/>
       </div>
 
       <div className="prix-container">
-        <p className={styles.subtotal}>{t('Checkout.17')} : {totalPrice1.toFixed(2)} €</p>
+        <p className={styles.subtotal}>{t('Checkout.17')} : {totalPrice1.toFixed(2).replace(".", ",")} €</p>
         <hr/>
       </div>
       <Link href="/checkout">

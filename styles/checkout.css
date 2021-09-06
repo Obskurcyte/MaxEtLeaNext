@@ -39,8 +39,7 @@
 .codepromoContainer{
   display: flex;
   justify-content: space-around;
-  flex-direction: column;
-  max-width: 300px;
+  max-width: 350px;
   margin: 0px auto;
   padding-top: 20px;
   position: relative;
@@ -53,8 +52,17 @@
   top: 2px;
 }
 
+.codepromoContainerCol1{
+  width: 70%;
+  padding-right: 20px;
+}
+
 .inputPromo{
-  margin-bottom: 10px;
+  min-height: 33px;
+  padding: 11px 12px;
+  border-radius: 3px;
+  border: 1px solid;
+  border-color: #d4d4d4;
 }
 
 .articlesInPanier {
@@ -84,10 +92,10 @@ legend span {
   margin: 0.3rem;
 }
 .buttonCodepromo {
-  padding-top: 15px;
-  padding-right: 35px;
-  padding-bottom: 15px;
-  padding-left: 35px;
+  padding-top: 12px;
+  padding-right: 30px;
+  padding-bottom: 12px;
+  padding-left: 30px;
   color: #ffffff;
   font-size: 1em;
   cursor: pointer;
@@ -397,6 +405,10 @@ legend span {
   background-color: #f5f5f5;
 }
 
+.spacer-crossSells{
+  height: 85px;
+}
+
 .separationImg {
   width: 10%;
 }
@@ -406,7 +418,8 @@ legend span {
 }
 
 .formData {
-  width: 80%;
+  width: 100%;
+  padding: 0px 10px;
   align-items: center;
   text-align: center;
   margin: 0 auto;
@@ -839,12 +852,6 @@ div.MRW-Content>div:last-child {
     width: 95%;
     justify-content: space-between;
   }
-  .codepromoContainer {
-    flex-direction: column;
-  }
-  .buttonCodepromo {
-    margin-top: 3%;
-  }
 
 }
 
@@ -927,9 +934,6 @@ div.MRW-Content>div:last-child {
   .addArticleTitle {
     font-size: 17px;
   }
-  .buttonCodepromo {
-    margin-top: 0;
-  }
   .carouselDescription {
     font-size: 20px;
   }
@@ -993,14 +997,6 @@ div.MRW-Content>div:last-child {
   }
 }
 
-@media screen and (max-width: 600px) {
-  .codepromoContainer {
-    flex-direction: column;
-  }
-  .buttonCodepromo {
-    margin-top: 3%;
-  }
-}
 @media screen and (max-width: 480px) {
   .Recommande_recommandeTitle__1bDJl {
     font-size: 50px!important;

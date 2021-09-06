@@ -59,6 +59,9 @@
   padding: 1.5% 5%;
   text-align: center;
   margin: 4% auto;
+  position: absolute;
+  left: 20px;
+  bottom: 0px;
 }
 
 .paymentMethods {

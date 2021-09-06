@@ -1130,7 +1130,6 @@ return (
 
         </Formik>
       )}
-      <div className={styles.securePayment}><p>* {t("Form.6")} *</p></div>
     </div>
   );
 };

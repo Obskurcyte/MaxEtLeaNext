@@ -310,8 +310,8 @@ const CartItem = ({ item }) => {
               <button className="increase-button" style={{ color: "#e72c59" }} onClick={onIncreaseClick} target={item.productId}>+</button>
             </div>
             <div>
-              <p className="itemPrixBarre">{item.oldPrice ? `${parseFloat(item.oldPrice * productCount).toFixed(2)} €` : ''}</p>
-              <p className="itemPrix">{parseFloat(item.totalPrice).toFixed(2)} €</p>
+              <p className="itemPrixBarre">{item.oldPrice ? `${parseFloat(item.oldPrice * productCount).toFixed(2).replace(".", ",")} €` : ''}</p>
+              <p className="itemPrix">{parseFloat(item.totalPrice).toFixed(2).replace(".", ",")} €</p>
             </div>
           </div>
         </div>
