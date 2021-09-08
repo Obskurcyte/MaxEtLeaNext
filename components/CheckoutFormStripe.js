@@ -829,6 +829,8 @@ const CheckoutFormStripe = ({
                     console.log(response.data);
                     localStorage.removeItem('woo-next-cart')
                     localStorage.setItem('moyenPaiement', moyenPaiement);
+                    localStorage.setItem('total', totalPrice2);
+                    localStorage.setItem('prixLivraison', prixLivraison);
                     createReference();
                     
                   })
@@ -857,190 +859,11 @@ const CheckoutFormStripe = ({
                  handlePayment()
                }
 
-
-
-
-
-               /* let dataClientCart = JSON.parse(localStorage.getItem('livraison'));
-                let cartClientCommande = JSON.parse(localStorage.getItem('commande-cart'));
-
-                var line_items_array = [];
-                if (cartClientCommande && cartClientCommande.products) {
-                  cartClientCommande.products.forEach(product => {
-                    var temp_obj = {product_id: product.productId, quantity: product.qty};
-                    line_items_array.push(temp_obj);
-                  });
-                }
-                const data = {
-                  payment_method: moyenPaiement,
-                  payment_method_title: moyenPaiement,
-                  set_paid: true,
-                  billing: {
-                    first_name: dataClientCart.prenom,
-                    last_name: dataClientCart.nom,
-                    address_1: dataClientCart.adresseFacturation,
-                    address_2: "",
-                    city: dataClientCart.villeFacturation,
-                    state: "",
-                    postcode: dataClientCart.codePostalFacturation,
-                    country: dataClientCart.pays,
-                    email: dataClientCart.email,
-                    phone: dataClientCart.phone
-                  },
-                  shipping: {
-                    first_name: dataClientCart.prenom,
-                    last_name: dataClientCart.nom,
-                    address_1: dataClientCart.adresseLivraison,
-                    address_2: "",
-                    city: dataClientCart.villeLivraison,
-                    state: "",
-                    postcode: dataClientCart.codePostalLivraison,
-                    country: dataClientCart.pays
-                  },
-                  line_items: line_items_array,
-                  shipping_lines: [
-                    {
-                      method_id: "flat_rate",
-                      method_title: "Flat Rate",
-                      total: dataClientCart.prixLivraison.toString()
-                    }
-                  ],
-                  meta_data: [
-                    {
-                      key: "Mondial Relay Parcel Shop ID",
-                      value: "FR-051322"
-                    }
-                  ]
-                };
-                WooCommerce.post("orders", data)
-                  .then((response) => {
-                    console.log(response.data);
-                    setProcessingTo(false)
-                    localStorage.removeItem('woo-next-cart')
-                    localStorage.setItem('moyenPaiement', moyenPaiement);
-                    router.push('/remerciement').then(() => window.location.reload())
-                  })
-
-                */
               } catch (err) {
                 setProcessingTo(false)
                 console.log(err)
               }
             }
-
-
-            /*try {
-              const { data: clientSecret } = await axios.post("/api/payment_intents", {
-                amount: parseInt(totalPrice2 * 100)
-              });
-
-
-
-              const paymentMethodReq = await stripe.createPaymentMethod({
-                type: "card",
-                card: cardElement,
-                billing_details: billingDetails
-              });
-
-              console.log('payment', paymentMethodReq)
-              if (paymentMethodReq.error) {
-                setCheckoutError(paymentMethodReq.error.message);
-                setProcessingTo(false);
-                return;
-              }
-
-              const { error } = await stripe.confirmCardPayment(clientSecret, {
-                payment_method: paymentMethodReq.paymentMethod.id
-              });
-
-
-              console.log('error', error)
-              if (error) {
-                setCheckoutError(error.message);
-                setProcessingTo(false);
-                return;
-              }
-
-
-              let dataClientCart = JSON.parse(localStorage.getItem('livraison'));
-              let cartClientCommande = JSON.parse(localStorage.getItem('commande-cart'));
-
-              var line_items_array = [];
-              if (cartClientCommande && cartClientCommande.products) {
-                cartClientCommande.products.forEach(product => {
-                  var temp_obj = {product_id: product.productId, quantity: product.qty};
-                  line_items_array.push(temp_obj);
-                });
-              }
-              const data = {
-                payment_method: moyenPaiement,
-                payment_method_title: moyenPaiement,
-                set_paid: true,
-                billing: {
-                  first_name: dataClientCart.prenom,
-                  last_name: dataClientCart.nom,
-                  address_1: dataClientCart.adresseFacturation,
-                  address_2: "",
-                  city: dataClientCart.villeFacturation,
-                  state: "",
-                  postcode: dataClientCart.codePostalFacturation,
-                  country: dataClientCart.pays,
-                  email: dataClientCart.email,
-                  phone: dataClientCart.phone
-                },
-                shipping: {
-                  first_name: dataClientCart.prenom,
-                  last_name: dataClientCart.nom,
-                  address_1: dataClientCart.adresseLivraison,
-                  address_2: "",
-                  city: dataClientCart.villeLivraison,
-                  state: "",
-                  postcode: dataClientCart.codePostalLivraison,
-                  country: dataClientCart.pays
-                },
-                line_items: line_items_array,
-                shipping_lines: [
-                  {
-                    method_id: "flat_rate",
-                    method_title: "Flat Rate",
-                    total: dataClientCart.prixLivraison.toString()
-                  }
-                ],
-                meta_data: [
-                  {
-                    key: "Mondial Relay Parcel Shop ID",
-                    value: "FR-051322"
-                  }
-                ]
-              };
-              WooCommerce.post("orders", data)
-                .then((response) => {
-                  console.log(response.data);
-                  setProcessingTo(false)
-                  localStorage.removeItem('woo-next-cart')
-                  localStorage.setItem('moyenPaiement', moyenPaiement);
-                  router.push('/remerciement').then(() => window.location.reload())
-                })
-                .catch((error) => {
-                  setProcessingTo(false)
-                  console.log('err', error)
-                });
-            } catch (err) {
-              console.log(err)
-              setCheckoutError(err.message);
-            }
-
-
-           /* if (stripeError) {
-              setStripeCheckoutError('Une erreur pendant le paiement est survenue !')
-              setProcessingTo(false)
-              console.log('front', stripeError)
-            }
-            */
-
-
-
-
               }
           }
         >
@@ -1114,8 +937,8 @@ const CheckoutFormStripe = ({
 
             var url = new URL(window.location);
             var clientSecret = url.searchParams.get('payment_intent_client_secret');
-
-
+            localStorage.setItem('total', totalPrice2);
+            localStorage.setItem('prixLivraison', prixLivraison);
 
             const {error} = await stripe.confirmBancontactPayment(response.data, {
               payment_method: {

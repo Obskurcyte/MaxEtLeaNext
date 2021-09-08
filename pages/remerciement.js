@@ -71,15 +71,22 @@ const Remerciement = (props) => {
   }, [])
 
 
+
+    const [total, setTotal] = useState(0);
+    const [prixLivraison, setPrixlivraison] = useState(0)
   useEffect(() => {
     if ( process.browser) {
       let cartData = localStorage.getItem('livraison');
       let moyenPaiement = localStorage.getItem('moyenPaiement')
       let cartNewData = localStorage.getItem('commande-cart');
+      let prixLivraison = localStorage.getItem('prixLivraison');
+      let total = localStorage.getItem('total');
       const trueData = JSON.parse(cartData);
       const trueCartData = JSON.parse(cartNewData);
       setDataClient(trueData)
       setCartCommande(trueCartData)
+        setTotal(parseFloat(total))
+        setPrixlivraison(parseFloat(prixLivraison))
       setMoyenPaiement(moyenPaiement)
     }
   }, []);
@@ -131,7 +138,7 @@ const Remerciement = (props) => {
                 </tr>
                 <tr className="bg-gray-200">
                   <td className="woo-next-checkout-total font-normal text-xl textLeft tdInner">{t("Remerciement.7")}</td>
-                  <td className="woo-next-checkout-total font-bold text-xl textLeft">{dataClient.prixLivraison} €</td>
+                  <td className="woo-next-checkout-total font-bold text-xl textLeft">{prixLivraison.toFixed(2)} €</td>
                 </tr>
                 <tr className="bg-gray-200">
                   <td className="woo-next-checkout-total font-normal text-xl textLeft tdInner">{t("Remerciement.8")}</td>
@@ -139,7 +146,7 @@ const Remerciement = (props) => {
                 </tr>
                 <tr className="bg-gray-200">
                   <td className="woo-next-checkout-total font-normal text-xl textLeft tdInner">{t("Remerciement.5")}</td>
-                  <td className="woo-next-checkout-total font-bold text-xl textLeft">{dataClient.total} €</td>
+                  <td className="woo-next-checkout-total font-bold text-xl textLeft">{total.toFixed(2)} €</td>
                 </tr>
 
                 </thead>
@@ -191,42 +198,6 @@ const Remerciement = (props) => {
         </div>
       ) : ''}
 
-
-      {/*<Fragment>
-        { commandeCart ? (
-          <Fragment>
-
-            <table className="checkout-cart table table-hover w-full mb-10">
-              <thead>
-              <tr className="woo-next-cart-head-container text-left">
-                <th className="woo-next-cart-heading-el" scope="col"/>
-                <th className="woo-next-cart-heading-el" scope="col">Product</th>
-                <th className="woo-next-cart-heading-el" scope="col">Total</th>
-              </tr>
-              </thead>
-              <tbody>
-              { commandeCart.products && (
-                commandeCart.products.map( item => (
-                  <CartItem key={ item.productId } item={ item } />
-                ) )
-              ) }
-
-              <tr className="bg-gray-200">
-                <td className=""/>
-                <td className="woo-next-checkout-total font-normal text-xl">Subtotal</td>
-                <td className="woo-next-checkout-total font-bold text-xl">{totalPrice1} €</td>
-              </tr>
-              {/* <tr className="">
-							<td className=""/>
-							<td className="woo-next-checkout-total">Total</td>
-							<td className="woo-next-checkout-total">{ cart.totalProductsPrice }</td>
-						</tr>
-              </tbody>
-            </table>
-          </Fragment>
-        ) : '' }
-      </Fragment>
-*/}
       <Footer/>
     </div>
   );

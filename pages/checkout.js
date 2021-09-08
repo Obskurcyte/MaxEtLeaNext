@@ -2351,27 +2351,31 @@ const CheckoutScreen = props => {
                               </div>
                               <div className="checkout-form">
                                 <div className="inputContainer">
-                                  <TextField
-                                    required
-                                    value={props.values.prenom}
-                                    onChange={props.handleChange('prenom')}
-                                    id="prenom"
-                                    label={t("Checkout.fields.prenom")}
-                                    variant="outlined"
-                                    className="inputMoyenGauche"
-                                  />
-                                  {props.errors.prenom && props.touched.prenom && <div style={{ color: 'red' }}>{props.errors.prenom}</div>}
+                                  <div className="prenomContainer">
+                                    <TextField
+                                        required
+                                        value={props.values.prenom}
+                                        onChange={props.handleChange('prenom')}
+                                        id="prenom"
+                                        label={t("Checkout.fields.prenom")}
+                                        variant="outlined"
+                                        className="inputMoyenGauche"
+                                    />
+                                    {props.errors.prenom && props.touched.prenom && <div className="errorsCheckout" style={{ color: 'red' }}>{props.errors.prenom}</div>}
+                                  </div>
 
-                                  <TextField
-                                    id="nom"
-                                    value={props.values.nom}
-                                    onChange={props.handleChange('nom')}
-                                    required
-                                    label={t("Checkout.fields.nom")}
-                                    variant="outlined"
-                                    className="inputMoyenDroit"
-                                  />
-                                  {props.errors.nom && props.touched.nom && <div style={{ color: 'red' }}>{props.errors.nom}</div>}
+                                  <div className="prenomContainer">
+                                    <TextField
+                                        id="nom"
+                                        value={props.values.nom}
+                                        onChange={props.handleChange('nom')}
+                                        required
+                                        label={t("Checkout.fields.nom")}
+                                        variant="outlined"
+                                        className="inputMoyenDroit"
+                                    />
+                                    {props.errors.nom && props.touched.nom && <div className="errorsCheckout" style={{ color: 'red' }}>{props.errors.nom}</div>}
+                                  </div>
 
                                 </div>
                                 <div>
@@ -2386,7 +2390,7 @@ const CheckoutScreen = props => {
                                     className="bigInput"
                                   />
                                 </div>
-                                {props.errors.email && props.touched.email && <div style={{ color: 'red' }}>{props.errors.email}</div>}
+                                {props.errors.email && props.touched.email && <div className="errorsCheckout" style={{ color: 'red' }}>{props.errors.email}</div>}
 
                                 <div className="MuiFormControl-root MuiTextField-root bigInput">
                                   <label style={{ zIndex: "2" }} className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required" data-shrink="true" for="pays" id="pays-label">{t("Checkout.fields.pays")}<span aria-hidden="true" class="MuiFormLabel-asterisk MuiInputLabel-asterisk"> *</span></label>
@@ -2399,7 +2403,7 @@ const CheckoutScreen = props => {
                                     props.setFieldValue('pays', val);
                                   }} options={countries.listCountries} value={props.values.pays} id="pays" name="country" placeholder={t("Checkout.fields.pays")} search={true} filterOptions={fuzzySearch} />
                                 </div>
-                                {props.errors.pays && props.touched.pays && <div style={{ color: 'red' }}>{t("Checkout.37")}</div>}
+                                {props.errors.pays && props.touched.pays && <div className="errorsCheckout" style={{ color: 'red' }}>{t("Checkout.37")}</div>}
                                 <input type="hidden" id="pays_holder" value={props.values.pays} />
 
 
@@ -2413,7 +2417,7 @@ const CheckoutScreen = props => {
                                     variant="outlined"
                                     className="bigInput"
                                   />
-                                  {props.errors.adresseLivraison && props.touched.adresseLivraison && <div style={{ color: 'red' }}>{props.errors.adresseLivraison}</div>}
+                                  {props.errors.adresseLivraison && props.touched.adresseLivraison && <div className="errorsCheckout" style={{ color: 'red' }}>{props.errors.adresseLivraison}</div>}
                                 </div>
                                 <div>
                                   <TextField
@@ -2425,7 +2429,7 @@ const CheckoutScreen = props => {
                                     variant="outlined"
                                     className="bigInput"
                                   />
-                                  {props.errors.codePostalLivraison && props.touched.codePostalLivraison && <div style={{ color: 'red' }}>{props.errors.codePostalLivraison}</div>}
+                                  {props.errors.codePostalLivraison && props.touched.codePostalLivraison && <div className="errorsCheckout" style={{ color: 'red' }}>{props.errors.codePostalLivraison}</div>}
                                 </div>
 
                                 <div>
@@ -2438,7 +2442,7 @@ const CheckoutScreen = props => {
                                     variant="outlined"
                                     className="bigInput"
                                   />
-                                  {props.errors.villeLivraison && props.touched.villeLivraison && <div style={{ color: 'red' }}>{props.errors.villeLivraison}</div>}
+                                  {props.errors.villeLivraison && props.touched.villeLivraison && <div style={{ color: 'red' }} className="errorsCheckout">{props.errors.villeLivraison}</div>}
                                 </div>
 
                                 <div className="inputContainer">
