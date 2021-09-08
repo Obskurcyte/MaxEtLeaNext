@@ -797,6 +797,12 @@ div.MRW-Content>div:last-child {
   display: none !important;
 }
 
+.checkboxLivraisonContainer input{
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 @media screen and (min-width: 2100px) {
   .carouselContainer {
     height: 400px
